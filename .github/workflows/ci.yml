@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11", "3.12"]
+        python-version: ["3.11", "3.12", "3.13"]
       fail-fast: false
 
     steps:
@@ -47,6 +47,11 @@ jobs:
         run: |
           npm ci
           npm run lint
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check static/app.js
+          node --check static/sw.js
 
       - name: Run tests with pytest & coverage
         run: |

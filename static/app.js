@@ -5,6 +5,16 @@ installButton?.addEventListener('click', async () => { await installPrompt?.prom
 
 if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register(`${document.body.dataset.prefix}sw.js`));
 
+// Isolates each feature's initialization: an error in one feature must not
+// prevent the following features from initializing.
+const initFeature = (label, init) => {
+  try {
+    init();
+  } catch (err) {
+    console.error(`[CookiGram] Initialisation « ${label} » impossible`, err);
+  }
+};
+
 // --- Theme Management ---
 const THEME_KEY = 'cookigram:theme';
 const OLD_THEME_KEY = 'cookgram:theme';
@@ -97,7 +107,7 @@ document.querySelectorAll('.share-btn').forEach(btn => {
 
 // --- Instant Catalogue Search & Filtering ---
 const catalogueSection = document.querySelector('.catalogue');
-if (catalogueSection) {
+if (catalogueSection) initFeature('catalogue', () => {
   const searchInput = document.getElementById('recipe-search');
   const searchClear = document.querySelector('.search-clear');
   const chips = document.querySelectorAll('.filter-chips .chip');
@@ -238,7 +248,7 @@ if (catalogueSection) {
     updateAdvancedUI();
     filterCatalogue();
   });
-}
+});
 
 const parseQuantityValue = raw => {
   const parts = String(raw).trim().split(/\s+/);
@@ -300,10 +310,11 @@ const scaleText = (source, factor) =>
   String(source || '').replace(/\(([^)]*)\)/g, (_, content) => `(${scaleIngredientText(content, factor)})`);
 
 const portionPicker = document.querySelector('.portion-picker');
-if (portionPicker) {
+if (portionPicker) initFeature('portions', () => {
   const base = Number(portionPicker.dataset.basePortions);
   const min = Number(portionPicker.dataset.min);
   const max = Number(portionPicker.dataset.max);
+  const step = Number(portionPicker.dataset.step) || 1;
   const storageKey = `cookigram:${portionPicker.dataset.recipe}:portions`;
   const oldStorageKey = `cookgram:${portionPicker.dataset.recipe}:portions`;
   let portions = Math.min(max, Math.max(min, Number(localStorage.getItem(storageKey) || localStorage.getItem(oldStorageKey) || base)));
@@ -328,7 +339,7 @@ if (portionPicker) {
     });
   });
   renderPortions();
-}
+});
 
 // --- Global Toast Notification ---
 const toastEl = document.querySelector('.toast');
@@ -347,7 +358,8 @@ const showToast = (message, duration = 3200) => {
 
 // --- Shopping List & Checklist ---
 const checklistEl = document.querySelector('.ingredient-list.checklist');
-if (checklistEl) {
+if (checklistEl) initFeature('checklist', () => {
+  const recipeSlug = checklistEl.dataset.recipe || '';
   const storageKey = `cookigram:${recipeSlug}:checked`;
   const oldStorageKey = `cookgram:${recipeSlug}:checked`;
 
@@ -630,7 +642,7 @@ if (checklistEl) {
       showToast('✓ Liste copiée pour partage !');
     });
   });
-}
+});
 
 // --- Web Audio & Sound synthesis ---
 let audioCtx = null;
@@ -696,8 +708,10 @@ const formatSpeechText = (text) => {
 
 let isSpeaking = false;
 
+const hasSpeechSynthesis = 'speechSynthesis' in window && Boolean(window.speechSynthesis);
+
 const speak = (text, onEnd) => {
-  if (!('speechSynthesis' in window)) return;
+  if (!hasSpeechSynthesis) return;
   window.speechSynthesis.cancel();
   isSpeaking = true;
   const utterance = new SpeechSynthesisUtterance(text);
@@ -717,7 +731,7 @@ const speak = (text, onEnd) => {
 };
 
 const stopSpeech = () => {
-  if ('speechSynthesis' in window) {
+  if (hasSpeechSynthesis) {
     window.speechSynthesis.cancel();
   }
   isSpeaking = false;
@@ -730,7 +744,7 @@ const playConfirmBeep = () => {
   playAlarmTone(ctx, 880, t, 0.08, 0.2);
 };
 
-if ('speechSynthesis' in window) {
+if (hasSpeechSynthesis) {
   window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
 }
 
@@ -874,7 +888,8 @@ class RecipeTimer {
 }
 
 const cook = document.querySelector('.cook');
-if (cook) {
+if (cook) initFeature('cook', () => {
+  const steps = [...document.querySelectorAll('.cook-step')];
   const key = `cookigram:${cook.dataset.recipe}:step`;
   const oldKey = `cookgram:${cook.dataset.recipe}:step`;
   let current = Math.min(Number(localStorage.getItem(key) || localStorage.getItem(oldKey) || 0), steps.length - 1);
@@ -893,7 +908,7 @@ if (cook) {
   const autoSpeakBtn = document.querySelector('.auto-speak');
   let autoSpeakEnabled = (localStorage.getItem(autoSpeakKey) || localStorage.getItem(oldAutoSpeakKey)) === 'true';
   if (autoSpeakBtn) {
-    if (!('speechSynthesis' in window)) {
+    if (!hasSpeechSynthesis) {
       autoSpeakBtn.hidden = true;
     } else {
       autoSpeakBtn.setAttribute('aria-pressed', String(autoSpeakEnabled));
@@ -1012,7 +1027,7 @@ if (cook) {
   steps.forEach((step) => {
     const btn = step.querySelector('.step-speak');
     if (btn) {
-      if (!('speechSynthesis' in window)) {
+      if (!hasSpeechSynthesis) {
         btn.hidden = true;
       } else {
         btn.addEventListener('click', () => {
@@ -1254,13 +1269,15 @@ if (cook) {
   });
 
   render();
-}
+});
 
-let wakeLock;
-document.querySelector('.wake')?.addEventListener('click', async event => {
-  try {
-    if (wakeLock) { await wakeLock.release(); wakeLock = null; }
-    else wakeLock = await navigator.wakeLock.request('screen');
-    event.currentTarget.setAttribute('aria-pressed', String(Boolean(wakeLock)));
-  } catch (_) { event.currentTarget.title = 'Fonction non disponible sur ce navigateur'; }
+initFeature('wake', () => {
+  let wakeLock;
+  document.querySelector('.wake')?.addEventListener('click', async event => {
+    try {
+      if (wakeLock) { await wakeLock.release(); wakeLock = null; }
+      else wakeLock = await navigator.wakeLock.request('screen');
+      event.currentTarget.setAttribute('aria-pressed', String(Boolean(wakeLock)));
+    } catch (_) { event.currentTarget.title = 'Fonction non disponible sur ce navigateur'; }
+  });
 });
