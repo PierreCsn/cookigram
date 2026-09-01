@@ -652,8 +652,15 @@ if (cook) {
     const btn = activeStep.querySelector('.step-speak');
     const action = activeStep.querySelector('h1')?.textContent || '';
     const instruction = activeStep.querySelector('.instruction')?.textContent || '';
+    const substepsTexts = [...activeStep.querySelectorAll('.substep-text')].map(el => el.textContent.trim());
     const stepNum = current + 1;
-    const textToSpeak = formatSpeechText(`Étape ${stepNum} sur ${steps.length}. ${action}. ${instruction}`);
+
+    let speechParts = [`Étape ${stepNum} sur ${steps.length}. ${action}.`];
+    if (instruction) speechParts.push(instruction);
+    if (substepsTexts.length > 0) {
+      speechParts.push(substepsTexts.join('. '));
+    }
+    const textToSpeak = formatSpeechText(speechParts.join(' '));
 
     if (btn) {
       btn.classList.add('speaking');
@@ -675,6 +682,52 @@ if (cook) {
       }
     });
   };
+
+  // Substeps checklist in Cook Mode
+  const updateSubstepsProgress = (stepEl) => {
+    const card = stepEl.querySelector('.substeps-card');
+    if (!card) return;
+    const items = [...card.querySelectorAll('.substep-item')];
+    const checkedCount = items.filter(it => it.classList.contains('checked')).length;
+    const progressEl = card.querySelector('.substeps-progress');
+    if (progressEl) {
+      const total = items.length;
+      progressEl.textContent = `${checkedCount} / ${total}${checkedCount === total && total > 0 ? ' ✓' : ''}`;
+      progressEl.classList.toggle('all-done', checkedCount === total && total > 0);
+    }
+  };
+
+  steps.forEach((stepEl, stepIdx) => {
+    const card = stepEl.querySelector('.substeps-card');
+    if (!card) return;
+    const storageKey = `cookgram:${cook.dataset.recipe}:substeps:${stepIdx}`;
+
+    let saved = [];
+    try {
+      saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    } catch (_) {}
+    const savedSet = new Set(saved);
+
+    const items = card.querySelectorAll('.substep-item');
+    items.forEach((item, idx) => {
+      const cb = item.querySelector('.substep-checkbox');
+      const isChecked = savedSet.has(idx);
+      if (cb) cb.checked = isChecked;
+      item.classList.toggle('checked', isChecked);
+
+      cb?.addEventListener('change', () => {
+        item.classList.toggle('checked', cb.checked);
+        const currentCheckboxes = [...card.querySelectorAll('.substep-checkbox')];
+        const newSaved = currentCheckboxes
+          .map((c, i) => c.checked ? i : null)
+          .filter(v => v !== null);
+        localStorage.setItem(storageKey, JSON.stringify(newSaved));
+        updateSubstepsProgress(stepEl);
+      });
+    });
+
+    updateSubstepsProgress(stepEl);
+  });
 
   steps.forEach((step) => {
     const btn = step.querySelector('.step-speak');
@@ -746,6 +799,9 @@ if (cook) {
     if (/\b(minuteur|chrono|d[ée]marr|d[ée]marre|lanc|lance|top)\b/.test(text)) {
       return 'timer';
     }
+    if (/\b(fait|faite|valid[ée]|valid[ée]e|coch[ée]|coch[ée]e)\b/.test(text)) {
+      return 'check';
+    }
     return null;
   };
 
@@ -769,6 +825,18 @@ if (cook) {
         showVoiceFeedback(`✓ Commande : <em>« Répéter »</em>`);
         readActiveStep();
         break;
+      case 'check': {
+        const activeStep = steps[current];
+        const nextUnchecked = activeStep?.querySelector('.substep-item:not(.checked) .substep-checkbox');
+        if (nextUnchecked) {
+          nextUnchecked.checked = true;
+          nextUnchecked.dispatchEvent(new Event('change'));
+          showVoiceFeedback(`✓ Sous-étape validée`);
+        } else {
+          showVoiceFeedback(`ℹ Toutes les sous-étapes sont validées`);
+        }
+        break;
+      }
       case 'timer': {
         const activeStep = steps[current];
         const timerEl = activeStep?.querySelector('.timer');

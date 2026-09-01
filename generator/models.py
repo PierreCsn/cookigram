@@ -15,6 +15,7 @@ class Step:
     temperatures: list[str] = field(default_factory=list)
     ingredients: list[Ingredient] = field(default_factory=list)
     equipment: list[str] = field(default_factory=list)
+    substeps: list[str] = field(default_factory=list)
     plugins: dict = field(default_factory=dict)
 
 

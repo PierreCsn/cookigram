@@ -46,7 +46,26 @@
         {% endfor %}
       </ul>
     </section>
-    <section><h2>Préparation</h2><ol class="steps-preview">{% for step in recipe.steps %}<li><b>{{ step.action }}</b><span data-scale-text="{{ step.text }}">{{ step.text }}</span></li>{% endfor %}</ol></section>
+    <section>
+      <h2>Préparation</h2>
+      <ol class="steps-preview">
+        {% for step in recipe.steps %}
+        <li>
+          <b>{{ step.action }}</b>
+          <div class="step-details">
+            {% if step.text %}<span class="step-intro" data-scale-text="{{ step.text }}">{{ step.text }}</span>{% endif %}
+            {% if step.substeps %}
+            <ul class="substeps-preview-list">
+              {% for substep in step.substeps %}
+              <li data-scale-text="{{ substep }}">{{ substep }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
   </div>
 </main>
 {% endblock %}

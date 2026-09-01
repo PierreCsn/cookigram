@@ -31,7 +31,7 @@ scaling:
   reason: "Quantités calibrées pour le bol du Thermomix TM31 ; volume et chauffe non validés à une autre échelle."
 ```
 
-## Steps and actions
+## Steps, actions and sub-steps
 
 Each line beginning with `[Action]` becomes one guided cooking step:
 
@@ -39,7 +39,20 @@ Each line beginning with `[Action]` becomes one guided cooking step:
 [Préchauffer] Préchauffer le #four{} à ^{180 C}.
 ```
 
-Use a short imperative action label. Keep one main operation per step so that mobile cooking mode remains useful.
+Use a short imperative action label. Keep one main operation per step so that mobile cooking mode remains clear.
+
+### Sub-steps (Sous-étapes interactives)
+
+When a step involves several sequential gestures or ingredients to combine, decompose it with bullet lines (`- `):
+
+```gram
+[Préparer le panier]
+- Verser l'@eau{800 g} et le @sel{1 c. à café} dans le #bol Thermomix{}.
+- Peser le @riz basmati{200 g} dans le #panier cuisson{}.
+- Insérer le panier dans le bol et fermer le couvercle.
+```
+
+CookGram renders sub-steps as interactive checklists in Cook Mode, allowing cooks to tick them off on their screen or validate them hands-free with the voice command *« Validé »* / *« Fait »* before advancing to the next step. Annotations (`@ingredient{}`, `#equipment{}`, `~{timer}`, `^{temperature}`) are fully supported on sub-step lines.
 
 ## Ingredients
 

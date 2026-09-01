@@ -12,7 +12,8 @@ import yaml
 
 from .models import Ingredient, Recipe, Step
 
-ACTION = re.compile(r"^\[([^]]+)]\s*(.+)$")
+ACTION = re.compile(r"^\[([^]]+)]\s*(.*)$")
+SUBSTEP = re.compile(r"^[-*]\s+(.+)$")
 INGREDIENT = re.compile(r"@([^@{}]+)\{([^}]*)}")
 EQUIPMENT = re.compile(r"#([^#{}]+)\{[^}]*}")
 TIMER = re.compile(r"~(?:_[\w-]+)?\{\s*(\d+(?:[.,]\d+)?)\s*(s|sec|m|min|h)\s*}", re.I)
@@ -45,21 +46,56 @@ def parse_recipe(path: Path) -> Recipe:
     all_ingredients: dict[str, Ingredient] = {}
     all_equipment: list[str] = []
 
+    step_blocks: list[dict] = []
+    current_block: dict | None = None
+
     for raw in source.splitlines():
         line = raw.strip()
         if line.startswith("## ") and not title:
             title = line[3:].strip()
-        match = ACTION.match(line)
-        if not match:
             continue
-        action, body = match.groups()
-        ingredients = [Ingredient(m.group(1).strip(), m.group(2).strip()) for m in INGREDIENT.finditer(body)]
-        equipment = [m.group(1).strip() for m in EQUIPMENT.finditer(body)]
+
+        action_match = ACTION.match(line)
+        if action_match:
+            if current_block:
+                step_blocks.append(current_block)
+            action, body = action_match.groups()
+            current_block = {
+                "action": action.strip(),
+                "body": body.strip(),
+                "substeps": [],
+                "raw_lines": [body.strip()] if body.strip() else [],
+            }
+            continue
+
+        substep_match = SUBSTEP.match(line)
+        if substep_match and current_block is not None:
+            substep_text = substep_match.group(1).strip()
+            current_block["substeps"].append(substep_text)
+            current_block["raw_lines"].append(substep_text)
+            continue
+
+        if line and not line.startswith("#") and current_block is not None:
+            current_block["raw_lines"].append(line)
+            if not current_block["body"]:
+                current_block["body"] = line
+            else:
+                current_block["body"] += " " + line
+
+    if current_block:
+        step_blocks.append(current_block)
+
+    for block in step_blocks:
+        action = block["action"]
+        full_text = " ".join(block["raw_lines"])
+        ingredients = [Ingredient(m.group(1).strip(), m.group(2).strip()) for m in INGREDIENT.finditer(full_text)]
+        equipment = [m.group(1).strip() for m in EQUIPMENT.finditer(full_text)]
         timers = [
             {"seconds": _seconds(m.group(1), m.group(2)), "label": f"{m.group(1)} {m.group(2)}"}
-            for m in TIMER.finditer(body)
+            for m in TIMER.finditer(full_text)
         ]
-        temperatures = [m.group(1).strip() for m in TEMPERATURE.finditer(body)]
+        temperatures = [m.group(1).strip() for m in TEMPERATURE.finditer(full_text)]
+
         for ingredient in ingredients:
             key = ingredient.name.casefold()
             current = all_ingredients.get(key)
@@ -68,7 +104,19 @@ def parse_recipe(path: Path) -> Recipe:
         for item in equipment:
             if item not in all_equipment:
                 all_equipment.append(item)
-        steps.append(Step(action, _clean(body), timers, temperatures, ingredients, equipment))
+
+        cleaned_body = _clean(block["body"])
+        cleaned_substeps = [_clean(s) for s in block["substeps"]]
+
+        steps.append(Step(
+            action=action,
+            text=cleaned_body,
+            timers=timers,
+            temperatures=temperatures,
+            ingredients=ingredients,
+            equipment=equipment,
+            substeps=cleaned_substeps,
+        ))
 
     portions = int(metadata.get("portions", 4))
     scaling = metadata.get("scaling", {})

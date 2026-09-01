@@ -32,7 +32,26 @@
           <span class="speak-label">Écouter</span>
         </button>
       </div>
-      <h1>{{ step.action }}</h1><p class="instruction" data-scale-text="{{ step.text }}">{{ step.text }}</p>
+      <h1>{{ step.action }}</h1>
+      {% if step.text %}<p class="instruction" data-scale-text="{{ step.text }}">{{ step.text }}</p>{% endif %}
+      {% if step.substeps %}
+      <div class="substeps-card">
+        <div class="substeps-header">
+          <span class="substeps-title">Sous-étapes</span>
+          <span class="substeps-progress" data-total="{{ step.substeps|length }}">0 / {{ step.substeps|length }}</span>
+        </div>
+        <ul class="substeps-list" data-step="{{ step_idx }}">
+          {% for substep in step.substeps %}
+          <li class="substep-item">
+            <label class="substep-label">
+              <input type="checkbox" class="substep-checkbox" data-substep-idx="{{ loop.index0 }}">
+              <span class="substep-text" data-scale-text="{{ substep }}">{{ substep }}</span>
+            </label>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
       {% if step.temperatures %}<div class="chips">{% for temp in step.temperatures %}<span>🌡 {{ temp }}</span>{% endfor %}</div>{% endif %}
       {% for timer in step.timers %}
         <div class="timer" data-seconds="{{ timer.seconds }}" data-step="{{ step_idx }}" data-step-num="{{ step_num }}" data-label="{{ timer.label }}">

@@ -39,14 +39,18 @@ gram import "SOURCE_URL" -o recipes/slug.gram
 
 Review the output rather than accepting it blindly. Otherwise convert manually from the researched facts. Normalize the result to French unless the user requests another language.
 
-Make each actionable paragraph one Gram step. Ensure that:
+Structure the recipe into clear, readable, bite-sized steps with interactive sub-steps:
 
-- every ingredient first appears with its total useful quantity;
-- preparation details such as “émincé” or “à température ambiante” remain explicit;
-- timers and temperatures are annotations, not prose-only values;
-- equipment is annotated where it changes the method;
-- doneness cues accompany timing when timing alone is unreliable;
-- appliance instructions name the compatible model or capability without pretending to control the device.
+- **Granularité fine des étapes** : Never condense an entire multi-gesture phase into an opaque wall of text. Break operations down into discrete, focused steps (e.g., 6 to 10 logical steps for a complete meal).
+- **Sous-étapes interactives (`- `)** : When an action involves multiple sequential gestures (such as weighing an ingredient, positioning a steamer tray, and adjusting seasoning), write each gesture as a bullet point (`- `) under the `[Action]`. CookGram parses these into interactive checklist items in Cook Mode so cooks can validate them as done before proceeding.
+- **Annotations sur les sous-étapes** : Place `@ingredient{quantity}`, `#equipment{}`, `~{timer}`, and `^{temperature}` annotations directly within the relevant sub-step or action line.
+- **Lisibilité mobile** : Keep each sub-step to 1 or 2 lines maximum so instructions remain comfortable to read on a phone at arm's length.
+- Every ingredient first appears with its total useful quantity;
+- Preparation details such as “émincé” or “à température ambiante” remain explicit;
+- Timers and temperatures are annotations, not prose-only values;
+- Equipment is annotated where it changes the method;
+- Doneness cues accompany timing when timing alone is unreliable;
+- Appliance instructions name the compatible model or capability without pretending to control the device.
 
 Choose a lowercase kebab-case filename. Do not overwrite a similarly named recipe until its identity and intended replacement are clear.
 
