@@ -1,0 +1,3 @@
+interface:
+  display_name: "Importer une recette Gram"
+  short_description: "Recherche une recette web et l'ajoute à CookGram"
