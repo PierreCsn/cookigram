@@ -2,6 +2,8 @@ from pathlib import Path
 
 import yaml
 
+from generator.gram import parse_recipe
+
 
 def test_ingredient_database_has_valid_minimal_entries():
     payload = yaml.safe_load(Path(".gram/ingredients.yaml").read_text(encoding="utf-8"))
@@ -20,6 +22,20 @@ def test_magret_recipe_is_covered_by_database():
     magret = payload["ingredients"]["magret-de-canard"]
 
     assert "magrets de canard" in magret["aliases"]
+
+
+def test_all_recipe_ingredients_are_covered_by_database():
+    database = yaml.safe_load(Path(".gram/ingredients.yaml").read_text(encoding="utf-8"))["ingredients"]
+    known_names = {
+        value.casefold()
+        for ingredient in database.values()
+        for value in [ingredient["name"], *ingredient.get("aliases", [])]
+    }
+
+    for path in Path("recipes").glob("*.gram"):
+        recipe = parse_recipe(path)
+        missing = {item.name for item in recipe.ingredients if item.name.casefold() not in known_names}
+        assert not missing, f"{path}: ingrédients absents de la base : {sorted(missing)}"
 
 
 def test_provenance_covers_database_and_uses_known_statuses():

@@ -11,6 +11,7 @@ pour découvrir la syntaxe complète et son CLI.
 
 - catalogue responsive ;
 - fiche recette et mode cuisson étape par étape ;
+- temps de préparation et durée totale ;
 - minuteurs, reprise locale et maintien de l'écran allumé ;
 - PWA avec cache hors ligne ;
 - enrichissement build-time par plugins ;
@@ -23,6 +24,7 @@ python -m venv .venv
 . .venv/bin/activate
 pip install -e '.[dev]'
 python -m generator.build
+python -m pytest -q
 python -m http.server 8000 -d _site
 ```
 
@@ -74,6 +76,13 @@ scaling:
 La PWA recalcule les quantités numériques et mémorise le choix sur l'appareil.
 Les temps et températures ne sont jamais ajustés silencieusement.
 
+Les recettes d'appareil demandent une attention particulière. Si la source
+propose plusieurs rendements mais modifie certaines quantités ou certains
+réglages de façon non linéaire, CookGram conserve une variante vérifiée et
+désactive le calcul automatique. La raison doit être écrite dans
+`scaling.reason`. Une prise en charge future pourra enregistrer plusieurs
+variantes officielles plutôt que de les approximer.
+
 ## Ajouter une recette
 
 Créer un fichier `.gram` avec un frontmatter et une instruction par paragraphe :
@@ -82,7 +91,17 @@ Créer un fichier `.gram` avec un frontmatter et une instruction par paragraphe 
 ---
 title: Ma recette
 portions: 4
+prep_time: 15 min
+total_time: 50 min
 tags: [rapide]
+source: https://example.com/ma-recette
+author: Nom de l'auteur
+scaling:
+  enabled: true
+  min_portions: 2
+  max_portions: 8
+  step: 1
+  note: Les temps de cuisson restent inchangés.
 ---
 
 [Cuire] Cuire les @pommes de terre{800 g} au #four{} pendant ~{35 min} à ^{190 C}.
@@ -92,6 +111,25 @@ Le générateur utilise un modèle canonique interne. L'adaptateur Gram du MVP
 prend en charge actions, ingrédients, matériel, minuteurs et températures. Son
 remplacement futur par le compilateur officiel ne modifiera ni les templates ni
 les plugins.
+
+`prep_time` et `total_time` sont affichés sur la fiche ; le temps de
+préparation apparaît également dans le catalogue. Ils sont exportés dans
+`_site/recipes.json` avec le reste du modèle canonique.
+
+### Importer une recette du Web avec un agent
+
+Le skill `.agents/skills/import-recipe-gram/` explique aux agents comment :
+
+1. consulter la source originale et relever l'auteur ;
+2. reformuler les instructions sans inventer les informations manquantes ;
+3. associer chaque ingrédient à `.gram/ingredients.yaml` et compléter la
+   provenance ;
+4. décider explicitement si les portions sont calculables ;
+5. exécuter les tests et générer le site.
+
+Une page protégée peut nécessiter une capture ou un export fourni par
+l'utilisateur. Les réglages d'un appareil ne doivent jamais être déduits d'une
+recette incomplète.
 
 ## GitHub Pages
 

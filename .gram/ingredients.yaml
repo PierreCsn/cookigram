@@ -1,10 +1,92 @@
 # Base locale CookGram. Les valeurs physiques et nutritionnelles ne doivent être
 # ajoutées qu'après vérification humaine avec `gram db enrich`.
 ingredients:
+  ail:
+    name: "Ail"
+    aliases:
+      - "ail"
+      - "gousse d'ail"
+      - "gousses d'ail"
+    category: "Légumes et aromates"
+  concentre-de-tomate:
+    name: "Concentré de tomate"
+    aliases:
+      - "concentré de tomate"
+    category: "Condiments"
+  coriandre-fraiche:
+    name: "Coriandre fraîche"
+    aliases:
+      - "coriandre fraîche"
+      - "feuilles de coriandre fraîche"
+    category: "Herbes et épices"
+  courgette:
+    name: "Courgette"
+    aliases:
+      - "courgette"
+      - "courgettes"
+    category: "Légumes et aromates"
+  curry-en-poudre:
+    name: "Curry en poudre"
+    aliases:
+      - "curry en poudre"
+    category: "Herbes et épices"
+  eau:
+    name: "Eau"
+    aliases:
+      - "eau"
+    category: "Boissons et liquides"
+  filet-de-poulet:
+    name: "Filet de poulet"
+    aliases:
+      - "filet de poulet"
+      - "filets de poulet"
+    category: "Viandes"
+  huile-vegetale:
+    name: "Huile végétale"
+    aliases:
+      - "huile végétale"
+    category: "Matières grasses"
+  lait-de-coco:
+    name: "Lait de coco"
+    aliases:
+      - "lait de coco"
+    category: "Boissons et liquides"
   magret-de-canard:
     name: "Magret de canard"
     aliases:
       - "magret de canard"
       - "magrets de canard"
     category: "Viandes"
-
+  miel:
+    name: "Miel"
+    aliases:
+      - "miel"
+    category: "Produits sucrés"
+  oignon:
+    name: "Oignon"
+    aliases:
+      - "oignon"
+      - "oignons"
+    category: "Légumes et aromates"
+  poivre-moulu:
+    name: "Poivre moulu"
+    aliases:
+      - "poivre moulu"
+      - "poivre"
+    category: "Herbes et épices"
+  poivron:
+    name: "Poivron"
+    aliases:
+      - "poivron"
+      - "poivrons"
+    category: "Légumes et aromates"
+  riz-basmati:
+    name: "Riz basmati"
+    aliases:
+      - "riz basmati"
+    category: "Céréales et féculents"
+  sel:
+    name: "Sel"
+    aliases:
+      - "sel"
+    category: "Condiments"

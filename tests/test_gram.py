@@ -30,3 +30,12 @@ scaling:
     recipe = parse_recipe(source)
     assert recipe.scalable is False
     assert recipe.scaling_note == "Calibrée pour un bol précis."
+
+
+def test_cookidoo_recipe_exposes_preparation_times():
+    recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
+
+    assert recipe.prep_time == "10 min"
+    assert recipe.total_time == "45 min"
+    assert recipe.scalable is False
+    assert recipe.metadata["appliances"]["thermomix"] == ["TM5", "TM6", "TM7"]

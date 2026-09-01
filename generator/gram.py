@@ -90,6 +90,8 @@ def parse_recipe(path: Path) -> Recipe:
         ingredients=list(all_ingredients.values()),
         equipment=all_equipment,
         metadata=metadata,
+        prep_time=str(metadata.get("prep_time", "")).strip(),
+        total_time=str(metadata.get("total_time", "")).strip(),
         scalable=scalable,
         min_portions=max(1, int(scaling.get("min_portions", 1))),
         max_portions=max(portions, int(scaling.get("max_portions", max(12, portions)))),

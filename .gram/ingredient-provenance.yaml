@@ -11,9 +11,83 @@ sources:
     usage: "Produits de marque uniquement ; données contributives à vérifier"
 
 ingredients:
+  ail:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+  concentre-de-tomate:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+  coriandre-fraiche:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+  courgette:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+  curry-en-poudre:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+  eau:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+  filet-de-poulet:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+  huile-vegetale:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+  lait-de-coco:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
   magret-de-canard:
     status: incomplete
     locked: false
     sources: []
     note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
-
+  miel:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+  oignon:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+  poivre-moulu:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+  poivron:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+  riz-basmati:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+  sel:
+    status: incomplete
+    locked: false
+    sources: []
+    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
