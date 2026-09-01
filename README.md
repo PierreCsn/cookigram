@@ -10,6 +10,7 @@ pour découvrir la syntaxe complète et son CLI.
 ## Fonctionnalités du MVP
 
 - catalogue responsive ;
+- recherche instantanée et filtres par catégories sur le catalogue ;
 - fiche recette et mode cuisson étape par étape ;
 - temps de préparation et durée totale ;
 - minuteurs interactifs avec alerte sonore Web Audio, vibration et reprise locale ;

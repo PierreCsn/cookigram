@@ -8,14 +8,44 @@
     <p>Écrites en Gram, disponibles hors ligne et pensées pour cuisiner une étape à la fois.</p>
   </section>
   <section class="catalogue">
-    <div class="section-title"><h2>À cuisiner</h2><span>{{ recipes|length }} recette{% if recipes|length > 1 %}s{% endif %}</span></div>
+    <div class="search-section">
+      <div class="search-bar">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input type="search" id="recipe-search" class="search-input" placeholder="Rechercher une recette, un ingrédient..." aria-label="Rechercher une recette">
+        <button type="button" class="search-clear" aria-label="Effacer la recherche" hidden>×</button>
+      </div>
+      <div class="filter-chips" role="group" aria-label="Filtrer par catégorie">
+        <button type="button" class="chip active" data-tag="all">Tous</button>
+        {% if all_tags is defined %}
+          {% for tag in all_tags %}
+          <button type="button" class="chip" data-tag="{{ tag }}">{{ tag }}</button>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="section-title">
+      <h2>À cuisiner</h2>
+      <span class="recipes-count" data-total="{{ recipes|length }}">{{ recipes|length }} recette{% if recipes|length > 1 %}s{% endif %}</span>
+    </div>
+
     <div class="cards">
     {% for recipe in recipes %}
-      <a class="recipe-card" href="recipes/{{ recipe.slug }}/">
+      <a class="recipe-card" href="recipes/{{ recipe.slug }}/"
+         data-title="{{ recipe.title }}"
+         data-description="{{ recipe.description }}"
+         data-tags="{{ recipe.tags|join(' ') }}"
+         data-ingredients="{% for item in recipe.ingredients %}{{ item.name }} {% endfor %}">
         <div class="card-visual">{% if recipe.image %}<img src="assets/{{ recipe.image }}" alt="" loading="lazy">{% else %}<span>{{ recipe.title[:2]|upper }}</span>{% endif %}</div>
         <div><div class="tags">{% for tag in recipe.tags[:2] %}<span>{{ tag }}</span>{% endfor %}</div><h3>{{ recipe.title }}</h3><p>{{ recipe.description }}</p><small>{% if recipe.prep_time %}Préparation {{ recipe.prep_time }} · {% endif %}{{ recipe.steps|length }} étapes · {{ recipe.portions }} portions</small></div>
       </a>
     {% endfor %}
+    </div>
+
+    <div class="empty-search" hidden>
+      <p class="empty-title">Aucune recette trouvée 🔍</p>
+      <p class="empty-desc">Aucune recette ne correspond à vos critères de recherche. Essayez d'autres mots-clés ou réinitialisez le filtre.</p>
+      <button type="button" class="reset-search-btn">Voir toutes les recettes</button>
     </div>
   </section>
 </main>

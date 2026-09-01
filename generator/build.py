@@ -25,8 +25,8 @@ def build(output: Path) -> None:
         apply_plugins(recipe, ROOT / "plugins")
 
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape())
-    env.globals["asset"] = lambda name: f"assets/{name}"
-    (output / "index.html").write_text(env.get_template("index.html").render(recipes=recipes), encoding="utf-8")
+    all_tags = sorted({tag for recipe in recipes for tag in recipe.tags})
+    (output / "index.html").write_text(env.get_template("index.html").render(recipes=recipes, all_tags=all_tags), encoding="utf-8")
 
     for recipe in recipes:
         recipe_dir = output / "recipes" / recipe.slug

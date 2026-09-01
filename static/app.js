@@ -94,6 +94,86 @@ document.querySelectorAll('.share-btn').forEach(btn => {
   btn.addEventListener('click', () => shareRecipe(btn));
 });
 
+// --- Instant Catalogue Search & Filtering ---
+const catalogueSection = document.querySelector('.catalogue');
+if (catalogueSection) {
+  const searchInput = document.getElementById('recipe-search');
+  const searchClear = document.querySelector('.search-clear');
+  const chips = document.querySelectorAll('.filter-chips .chip');
+  const cards = [...document.querySelectorAll('.recipe-card')];
+  const countEl = document.querySelector('.recipes-count');
+  const emptyState = document.querySelector('.empty-search');
+  const resetSearchBtn = document.querySelector('.reset-search-btn');
+
+  let activeTag = 'all';
+
+  const normalize = (str) => (str || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+
+  const filterCatalogue = () => {
+    const rawQuery = searchInput?.value || '';
+    const queryTokens = normalize(rawQuery).split(/\s+/).filter(Boolean);
+
+    if (searchClear) {
+      searchClear.hidden = rawQuery.length === 0;
+    }
+
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const title = normalize(card.dataset.title);
+      const desc = normalize(card.dataset.description);
+      const tags = normalize(card.dataset.tags);
+      const ingredients = normalize(card.dataset.ingredients);
+
+      const matchesTag = activeTag === 'all' || tags.includes(normalize(activeTag));
+      const fullText = `${title} ${desc} ${tags} ${ingredients}`;
+      const matchesQuery = queryTokens.length === 0 || queryTokens.every(token => fullText.includes(token));
+
+      const isVisible = matchesTag && matchesQuery;
+      card.style.display = isVisible ? '' : 'none';
+      if (isVisible) visibleCount++;
+    });
+
+    if (countEl) {
+      countEl.textContent = `${visibleCount} recette${visibleCount > 1 ? 's' : ''}`;
+    }
+
+    if (emptyState) {
+      emptyState.hidden = visibleCount > 0;
+    }
+  };
+
+  searchInput?.addEventListener('input', filterCatalogue);
+
+  searchClear?.addEventListener('click', () => {
+    if (searchInput) {
+      searchInput.value = '';
+      searchInput.focus();
+      filterCatalogue();
+    }
+  });
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeTag = chip.dataset.tag;
+      filterCatalogue();
+    });
+  });
+
+  resetSearchBtn?.addEventListener('click', () => {
+    if (searchInput) searchInput.value = '';
+    activeTag = 'all';
+    chips.forEach(c => c.classList.toggle('active', c.dataset.tag === 'all'));
+    filterCatalogue();
+  });
+}
+
 const formatScaled = value => {
   const rounded = Math.round(value * 100) / 100;
   return Number.isInteger(rounded) ? String(rounded) : String(rounded).replace('.', ',');
