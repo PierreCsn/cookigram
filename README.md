@@ -17,6 +17,7 @@ pour découvrir la syntaxe complète et son CLI.
 - commande vocale mains libres (Speech Recognition) pour piloter la recette sans toucher l'écran ;
 - maintien de l'écran allumé (Screen Wake Lock) ;
 - thème sombre automatique (Dark Mode) et bascule manuelle instantanée ;
+- partage rapide de recette (Web Share API avec copie dans le presse-papier) ;
 - PWA avec cache hors ligne ;
 - enrichissement build-time par plugins ;
 - déploiement automatique sur GitHub Pages.

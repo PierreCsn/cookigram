@@ -50,6 +50,50 @@ document.querySelectorAll('.theme-toggle').forEach(btn => {
   btn.addEventListener('click', toggleTheme);
 });
 
+// --- Share Recipe ---
+const showShareFeedback = (btn, text = '✓ Lien copié !') => {
+  btn.classList.add('copied');
+  const label = btn.querySelector('.share-label') || btn;
+  const original = label.textContent;
+  label.textContent = text;
+  setTimeout(() => {
+    btn.classList.remove('copied');
+    label.textContent = original;
+  }, 2000);
+};
+
+const shareRecipe = async (btn) => {
+  const title = document.title || 'CookGram';
+  const desc = document.querySelector('.recipe-heading p')?.textContent || 'Découvrez cette recette sur CookGram !';
+  const url = window.location.href;
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title, text: `${title} - ${desc}`, url });
+      return;
+    } catch (err) {
+      if (err.name === 'AbortError') return;
+    }
+  }
+
+  try {
+    await navigator.clipboard.writeText(url);
+    showShareFeedback(btn, '✓ Lien copié !');
+  } catch (_) {
+    const tempInput = document.createElement('input');
+    tempInput.value = url;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+    showShareFeedback(btn, '✓ Lien copié !');
+  }
+};
+
+document.querySelectorAll('.share-btn').forEach(btn => {
+  btn.addEventListener('click', () => shareRecipe(btn));
+});
+
 const formatScaled = value => {
   const rounded = Math.round(value * 100) / 100;
   return Number.isInteger(rounded) ? String(rounded) : String(rounded).replace('.', ',');
