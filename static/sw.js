@@ -1,7 +1,7 @@
-const CACHE = 'cookigram-v19';
+const CACHE = 'cookigram-v21';
 self.addEventListener('install', event => {
   self.skipWaiting();
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(['./', './app.css?v=19', './app.js?v=19'])));
+  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(['./', './app.css?v=21', './app.js?v=21'])));
 });
 self.addEventListener('activate', event => {
   event.waitUntil(
