@@ -60,6 +60,10 @@ pytest --cov=generator --cov-report=term-missing
 ruff check generator tests
 ruff format --check generator tests
 
+# Vérifier le linting JavaScript avec Biome
+npm ci
+npm run lint
+
 # Vérifier la cohérence de la base d'ingrédients et de provenance
 pytest tests/test_ingredients_database.py
 ```
