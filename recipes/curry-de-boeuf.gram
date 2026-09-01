@@ -1,0 +1,51 @@
+---
+title: Curry de boeuf
+portions: 4
+prep_time: 15 min
+total_time: 65 min
+tags: [viande, thermomix, boeuf, curry, mijoté]
+source: https://www.cookomix.com/recettes/curry-de-boeuf-thermomix/
+author: Bibou
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: Temps de mijotage et capacité du bol calibrés pour 4 portions au Thermomix.
+image: images/curry-de-boeuf.jpg
+image_credit:
+  author: Bibou
+  source: https://www.cookomix.com/recettes/curry-de-boeuf-thermomix/
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  modifications: Image redimensionnée et recadrée.
+---
+
+[Préparer la pâte aromatique]
+- Mettre les @gousses d'ail{2 pièces}, le @gingembre{5 g} et le @piment rouge{1 pièce, épépiné} dans le #bol Thermomix{}.
+- Poser le couvercle avec le #gobelet doseur{}.
+- Hacher ~{5 s} à vitesse 7.
+- Ajouter les @oignons{2 pièces, coupés en quatre}.
+- Hacher ~{5 s} à vitesse 5.
+- Racler les parois avec la #spatule{}.
+
+[Torréfier les épices]
+- Ajouter l'@huile d'olive{20 g}, les @graines de moutarde{1 c. à café}, le @curcuma{1 c. à café} et le @curry{2 c. à soupe}.
+- Faire rissoler ~{5 min} à ^{120 C} et vitesse 1 sans le gobelet doseur.
+
+[Saisir le boeuf]
+- Ajouter le @paleron de boeuf{600 g, coupé en dés de 3 cm}.
+- Faire revenir ~{5 min} à ^{120 C}, sens inverse et vitesse cuillère sans le gobelet doseur.
+
+[Mijoter le curry]
+- Ajouter le @vin blanc{50 g}, le @vinaigre blanc{1 c. à soupe}, le @sucre{1 c. à café}, le @fond de viande{2 c. à soupe}, les @tomates concassées{400 g}, le @sel{1 pincée} et le @poivre{1 pincée}.
+- Poser le #panier cuisson{} sur le couvercle à la place du gobelet doseur pour éviter les projections.
+- Laisser mijoter ~{40 min} à ^{100 C}, sens inverse et vitesse cuillère.
+
+[Crémer et lier la sauce]
+- Ajouter la @crème fraîche liquide{150 g}.
+- Poser le couvercle avec le gobelet doseur.
+- Poursuivre la cuisson ~{5 min} à ^{100 C}, sens inverse et vitesse cuillère.
+
+[Dresser et servir]
+- Transvaser dans un plat chaud.
+- Parsemer de @coriandre fraîche{10 feuilles, ciselées} et accompagner de riz basmati.

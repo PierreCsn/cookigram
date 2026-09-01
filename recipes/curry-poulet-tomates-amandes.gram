@@ -1,0 +1,48 @@
+---
+title: Curry crémeux de poulet, tomates et amandes
+portions: 6
+prep_time: 20 min
+total_time: 55 min
+tags: [volaille, thermomix, poulet, amandes, curry, indien]
+source: https://www.cookomix.com/recettes/curry-poulet-tomates-amandes-thermomix/
+author: Bibou
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: Cuisson douce et texture de sauce calibrées pour 6 portions au Thermomix.
+image: images/curry-poulet-tomates-amandes.jpg
+image_credit:
+  author: Bibou
+  source: https://www.cookomix.com/recettes/curry-poulet-tomates-amandes-thermomix/
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  modifications: Image redimensionnée et recadrée.
+---
+
+[Mariner le poulet]
+- Dans un plat, mélanger les @cuisses de poulet{750 g, hauts de cuisse désossés en morceaux}, le @jus de citron vert{40 g}, le @sel{0.5 c. à café}, le @poivre{2 pincées}, le @paprika{1 c. à soupe}, le @curry{1 c. à soupe}, la @cannelle en poudre{0.25 c. à café} et l'@ail en poudre{0.25 c. à café}.
+- Laisser mariner ~{20 min} au frais.
+
+[Hacher les aromates]
+- Mettre les @échalotes{2 pièces}, les @gousses d'ail{2 pièces} et le @gingembre{5 g} dans le #bol Thermomix{}.
+- Poser le couvercle avec le #gobelet doseur{}.
+- Hacher ~{5 s} à vitesse 5.
+- Racler les parois avec la #spatule{}.
+
+[Faire revenir les aromates au beurre]
+- Ajouter le @beurre{50 g}.
+- Faire rissoler ~{5 min} à ^{120 C} et vitesse 1 sans le gobelet doseur.
+
+[Préparer la base de sauce]
+- Ajouter la @sauce tomate{150 g}, le @concentré de tomates{50 g}, le @sucre roux{30 g}, le @curry{1 c. à soupe}, le @sel{1 c. à café}, le @poivre{2 pincées}, les @amandes en poudre{20 g} et l'@eau{50 g}.
+- Poser le #panier cuisson{} sur le couvercle pour éviter les projections.
+- Cuire ~{10 min} à ^{Varoma}, sens inverse et vitesse 1.
+
+[Cuire le poulet mariné]
+- Ajouter les morceaux de poulet marinés avec leur jus dans le bol.
+- Cuire ~{12 min} à ^{100 C}, sens inverse et vitesse cuillère avec le panier cuisson sur le couvercle.
+
+[Dresser et servir]
+- Transvaser dans un plat chaud.
+- Parsemer de @coriandre fraîche{2 c. à soupe, ciselée} et servir avec un riz basmati parfumé.

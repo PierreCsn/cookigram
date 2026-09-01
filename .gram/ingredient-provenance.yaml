@@ -6,11 +6,38 @@ ingredients:
     sources:
     - ciqual
     status: verified
+  ail-en-poudre:
+    source: ANSES-CIQUAL
+    status: verified
+  amande-en-poudre:
+    source: ANSES-CIQUAL
+    status: verified
+  aubergine:
+    source: ANSES-CIQUAL
+    status: verified
+  beurre:
+    source: ANSES-CIQUAL
+    status: verified
+  bouquet-garni:
+    source: ANSES-CIQUAL
+    status: verified
+  brocoli:
+    source: ANSES-CIQUAL
+    status: verified
+  cannelle:
+    source: ANSES-CIQUAL
+    status: verified
+  carotte:
+    source: ANSES-CIQUAL
+    status: verified
   champignons-de-paris:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
     sources:
     - ciqual
+    status: verified
+  chou-fleur:
+    source: ANSES-CIQUAL
     status: verified
   concentre-de-tomate:
     locked: false
@@ -24,17 +51,35 @@ ingredients:
     sources:
     - ciqual
     status: verified
+  courge-butternut:
+    source: ANSES-CIQUAL
+    status: verified
   courgette:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
     sources:
     - ciqual
     status: verified
+  creme-fraiche-epaisse:
+    source: ANSES-CIQUAL
+    status: verified
+  creme-fraiche-liquide:
+    source: ANSES-CIQUAL
+    status: verified
+  cube-de-bouillon-de-legumes:
+    source: ANSES-CIQUAL
+    status: verified
   cube-de-bouillon-de-volaille:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
     sources:
     - ciqual
+    status: verified
+  cuisse-de-poulet:
+    source: ANSES-CIQUAL
+    status: verified
+  curcuma:
+    source: ANSES-CIQUAL
     status: verified
   curry-en-poudre:
     locked: false
@@ -54,11 +99,38 @@ ingredients:
     sources:
     - ciqual
     status: verified
+  emmental-rape:
+    source: ANSES-CIQUAL
+    status: verified
+  epinards:
+    source: ANSES-CIQUAL
+    status: verified
+  farfalle:
+    source: ANSES-CIQUAL
+    status: verified
+  farine:
+    source: ANSES-CIQUAL
+    status: verified
   filet-de-poulet:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
     sources:
     - ciqual
+    status: verified
+  filet-mignon-de-porc:
+    source: ANSES-CIQUAL
+    status: verified
+  fond-de-legumes:
+    source: ANSES-CIQUAL
+    status: verified
+  fond-de-viande:
+    source: ANSES-CIQUAL
+    status: verified
+  gingembre:
+    source: ANSES-CIQUAL
+    status: verified
+  graine-de-moutarde:
+    source: ANSES-CIQUAL
     status: verified
   huile-olive:
     locked: false
@@ -72,11 +144,29 @@ ingredients:
     sources:
     - ciqual
     status: verified
+  jus-de-citron-vert:
+    source: ANSES-CIQUAL
+    status: verified
+  la-vache-qui-rit:
+    source: ANSES-CIQUAL
+    status: verified
   lait-de-coco:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
     sources:
     - ciqual
+    status: verified
+  lait-demi-ecreme:
+    source: ANSES-CIQUAL
+    status: verified
+  lardons:
+    source: ANSES-CIQUAL
+    status: verified
+  laurier:
+    source: ANSES-CIQUAL
+    status: verified
+  lentilles-corail:
+    source: ANSES-CIQUAL
     status: verified
   magret-de-canard:
     locked: false
@@ -96,17 +186,47 @@ ingredients:
     sources:
     - ciqual
     status: verified
+  moutarde-de-dijon:
+    source: ANSES-CIQUAL
+    status: verified
+  noix-de-muscade:
+    source: ANSES-CIQUAL
+    status: verified
   oignon:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
     sources:
     - ciqual
     status: verified
+  olives-noires:
+    source: ANSES-CIQUAL
+    status: verified
+  paleron-de-boeuf:
+    source: ANSES-CIQUAL
+    status: verified
+  paprika:
+    source: ANSES-CIQUAL
+    status: verified
   parmesan:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
     sources:
     - ciqual
+    status: verified
+  penne:
+    source: ANSES-CIQUAL
+    status: verified
+  persil-frais:
+    source: ANSES-CIQUAL
+    status: verified
+  petits-pois:
+    source: ANSES-CIQUAL
+    status: verified
+  piment-rouge:
+    source: ANSES-CIQUAL
+    status: verified
+  poireau:
+    source: ANSES-CIQUAL
     status: verified
   poivre-moulu:
     locked: false
@@ -120,6 +240,9 @@ ingredients:
     sources:
     - ciqual
     status: verified
+  pomme-de-terre:
+    source: ANSES-CIQUAL
+    status: verified
   riz-a-risotto:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
@@ -132,17 +255,38 @@ ingredients:
     sources:
     - ciqual
     status: verified
+  sauce-tomate:
+    source: ANSES-CIQUAL
+    status: verified
+  saumon-fume:
+    source: ANSES-CIQUAL
+    status: verified
   sel:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
     sources:
     - ciqual
     status: verified
+  sucre:
+    source: ANSES-CIQUAL
+    status: verified
+  sucre-roux:
+    source: ANSES-CIQUAL
+    status: verified
+  tomates-concassees:
+    source: ANSES-CIQUAL
+    status: verified
+  torsades:
+    source: ANSES-CIQUAL
+    status: verified
   vin-blanc:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
     sources:
     - ciqual
+    status: verified
+  vinaigre-blanc:
+    source: ANSES-CIQUAL
     status: verified
 sources:
   ciqual:

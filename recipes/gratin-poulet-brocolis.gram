@@ -1,0 +1,48 @@
+---
+title: Gratin de poulet et brocolis
+portions: 6
+prep_time: 15 min
+total_time: 50 min
+tags: [gratin, thermomix, poulet, brocolis, réconfort]
+source: https://www.cookomix.com/recettes/gratin-poulet-brocolis-thermomix/
+author: Minou
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: Cuisson vapeur combinée au Varoma et capacité du bol Thermomix.
+image: images/gratin-poulet-brocolis.jpg
+image_credit:
+  author: Minou
+  source: https://www.cookomix.com/recettes/gratin-poulet-brocolis-thermomix/
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  modifications: Image redimensionnée et recadrée.
+---
+
+[Préchauffer le four et hacher les aromates]
+- Préchauffer le #four{} à ^{200 C}.
+- Mettre l'@oignon{1 pièce, coupé en deux} et les @gousses d'ail{4 pièces} dans le #bol Thermomix{}.
+- Poser le couvercle avec le #gobelet doseur{}.
+- Hacher ~{5 s} à vitesse 5.
+- Racler les parois avec la #spatule{}.
+- Ajouter l'@huile d'olive{30 g}.
+- Faire rissoler ~{5 min} à ^{120 C} et vitesse 1 sans le gobelet doseur.
+
+[Cuisson vapeur au Varoma]
+- Ajouter dans le bol le @chou-fleur{500 g, en petits morceaux}, le @fond de légumes{1 c. à soupe}, le @poivre{1 pincée} et le @lait de coco{400 g}.
+- Installer l'ensemble #Varoma{}.
+- Mettre les @brocolis{550 g, en bouquets} dans le bol Varoma et les @escalopes de poulet{600 g, coupées en morceaux} sur le plateau vapeur.
+- Cuire ~{25 min} à ^{Varoma} et vitesse 1.
+
+[Mixer la sauce au chou-fleur et coco]
+- Retirer le Varoma et disposer le poulet et les brocolis cuits dans un plat à gratin.
+- Ajouter dans le bol le @curry{1.5 c. à café} et l'@ail en poudre{1.5 c. à café}.
+- Poser le couvercle avec le gobelet doseur.
+- Mixer ~{1 min} en augmentant progressivement la vitesse de 5 jusqu'à 9 pour obtenir une sauce onctueuse.
+
+[Gratiner au four]
+- Verser la sauce chaude sur la viande et les brocolis dans le plat à gratin.
+- Parsemer avec l'@emmental râpé{150 g}.
+- Enfourner ~{15 min} à ^{200 C} au four jusqu'à ce que le fromage soit bien doré.
+- Servir bien chaud.

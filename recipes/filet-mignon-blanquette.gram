@@ -1,0 +1,47 @@
+---
+title: Filet mignon façon blanquette
+portions: 4
+prep_time: 15 min
+total_time: 45 min
+tags: [viande, thermomix, porc, blanquette, traditionnel]
+source: https://www.cookomix.com/recettes/filet-mignon-blanquette-thermomix/
+author: Pierrette
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: Format du filet mignon et volume de sauce calibrés pour le Thermomix.
+image: images/filet-mignon-blanquette.jpg
+image_credit:
+  author: Pierrette
+  source: https://www.cookomix.com/recettes/filet-mignon-blanquette-thermomix/
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  modifications: Image redimensionnée et recadrée.
+---
+
+[Hacher les aromates]
+- Mettre les @échalotes{2 pièces} et la @gousse d'ail{1 pièce} dans le #bol Thermomix{}.
+- Poser le couvercle avec le #gobelet doseur{}.
+- Hacher ~{5 s} à vitesse 5.
+
+[Faire suer les légumes]
+- Ajouter les @carottes{150 g, en rondelles}, les @poireaux{250 g, émincés} et l'@huile d'olive{20 g}.
+- Faire suer ~{5 min} à ^{Varoma}, sens inverse et vitesse 1 sans le gobelet doseur.
+
+[Cuire le filet mignon et les champignons]
+- Ajouter le @filet mignon de porc{600 g, coupé en tronçons}, le @vin blanc{200 g}, l'@eau{280 g}, le @cube de bouillon de volaille{1 pièce}, la @moutarde de Dijon{1 c. à soupe}, les feuilles de @laurier{2 pièces}, le @sel{2 pincées} et le @poivre{2 pincées}.
+- Installer l'ensemble #Varoma{} avec les @champignons de Paris{300 g, coupés en morceaux}.
+- Cuire ~{20 min} à ^{Varoma}, sens inverse et vitesse cuillère.
+
+[Épaissir le bouillon en sauce]
+- Retirer le Varoma et jeter les feuilles de laurier.
+- Transvaser la viande, les poireaux, les carottes et les champignons dans un plat chaud.
+- Conserver 300 g de bouillon dans le bol, puis ajouter la @farine{35 g} et le @beurre{35 g}.
+- Poser le couvercle avec le gobelet doseur.
+- Cuire ~{5 min} à ^{90 C} et vitesse 4.
+
+[Crémer et servir]
+- Ajouter la @crème fraîche épaisse{40 g}.
+- Mélanger ~{1 min} à vitesse 3.
+- Napper le filet mignon et parsemer de @persil frais{15 feuilles, ciselées}.
