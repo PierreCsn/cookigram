@@ -7,6 +7,13 @@ description: Lasagnes fondantes à l'aubergine, à la viande hachée et au basil
 tags: [lasagnes, aubergines, viande hachée, gratin, four, méditerranéen]
 source: https://www.marmiton.org/recettes/recette_lasagnes-de-moussaka_49464.aspx
 author: Anonyme
+image: images/lasagnes-moussaka.jpg
+image_credit:
+  author: Marmiton
+  source: https://www.marmiton.org/recettes/recette_lasagnes-de-moussaka_49464.aspx
+  license: Droits réservés
+  license_url: https://www.marmiton.org/
+  modifications: Image convertie au format JPEG et redimensionnée à 960 × 540 pixels.
 scaling:
   enabled: true
   min_portions: 2
