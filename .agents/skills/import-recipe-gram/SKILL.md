@@ -52,6 +52,31 @@ Structure the recipe into clear, readable, bite-sized steps with interactive sub
 - Doneness cues accompany timing when timing alone is unreliable;
 - Appliance instructions name the compatible model or capability without pretending to control the device.
 
+### Thermomix and Cookomix-style instructions
+
+When importing from Cookomix or adapting a Thermomix recipe:
+
+1. **Avoid micro-step fragmentation** : Cookomix often generates 25-35 atomic lines (e.g. "Ajouter couvercle", "Mettre gobelet", "Transvaser"). Regroup these into **6 to 10 logical culinary phases**, placing micro-actions as checklist sub-steps (`- `).
+2. **Declare appliance metadata** :
+   ```yaml
+   appliances:
+     thermomix: [TM31, TM5, TM6]
+   tags: [..., thermomix]
+   ```
+3. **Write Thermomix parameters with standard vocabulary** :
+   - **Durée** : annotate with `~{10 s}`, `~{4 min}`, `~{16 min}`.
+   - **Température** : annotate with `^{100 C}`, `^{120 C}`, `^{95 C}` or mention `Varoma`.
+   - **Sens inverse** : explicitly state `sens inverse` or `rotation inverse` when blades must not cut.
+   - **Vitesse** : use `vitesse cuillère` (or `vitesse mijotage`), `vitesse 1` to `10`, `turbo`, or `mode pétrin` / `épi`.
+   - **Accessoires** : annotate with `#bol Thermomix{}`, `#gobelet doseur{}`, `#panier cuisson{}`, `#Varoma{}`, `#fouet papillon{}`, `#spatule{}`.
+4. **Automatic Cookomix-style visual badges** :
+   CookGram automatically extracts these parameters and generates Cookomix-style parameter badges with dedicated SVG icons:
+   - ⏱ **Durée** (chronomètre)
+   - 🌡 **Température** (thermomètre ou Varoma)
+   - 🔄 **Sens inverse** (flèche circulaire antihoraire, comme `icon-rotate_cw_2` de Cookomix)
+   - 🥄 **Vitesse cuillère** (icône cuillère de mijotage, comme `icon-step_spoon` de Cookomix)
+   - 🔪 **Vitesse lames** (icône lames de couteaux 4 branches, comme `icon-lames` de Cookomix)
+
 Choose a lowercase kebab-case filename. Do not overwrite a similarly named recipe until its identity and intended replacement are clear.
 
 ## Update the ingredient database

@@ -95,6 +95,29 @@ Put the timer in the step that starts it. Prefer `min` over ambiguous abbreviati
 
 Use the value and meaning supplied by the source. For food safety, distinguish oven temperature from internal temperature.
 
+## Thermomix and Cookomix conventions
+
+For Thermomix recipes, declare the appliance in frontmatter:
+```yaml
+appliances:
+  thermomix: [TM31, TM5, TM6]
+tags: [..., thermomix]
+```
+
+When formulating steps, specify:
+- **Durée** : `~{10 s}`, `~{4 min}`, `~{16 min}`
+- **Température** : `^{100 C}`, `^{120 C}`, `Varoma`
+- **Sens inverse** : mentionner `sens inverse`
+- **Vitesse** : `vitesse cuillère` (ou `vitesse mijotage`), `vitesse 1` à `10`, `turbo`, `pétrin`
+- **Accessoires** : `#bol Thermomix{}`, `#gobelet doseur{}`, `#panier cuisson{}`, `#Varoma{}`, `#fouet papillon{}`, `#spatule{}`
+
+CookGram automatically detects these parameters and displays a Cookomix-style badge with SVG icons:
+- ⏱ Minuteur (chronomètre)
+- 🌡 Température / Varoma (thermomètre)
+- 🔄 Sens inverse (flèche circulaire antihoraire)
+- 🥄 Vitesse cuillère (icône cuillère de mijotage)
+- 🔪 Vitesse lames (icône lames de mixage)
+
 ## Complete example
 
 ```gram
