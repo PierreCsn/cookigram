@@ -27,6 +27,7 @@
       <div class="ingredients-header">
         <h2>Ingrédients</h2>
         <div class="shopping-toolbar">
+          <button type="button" class="shopping-btn open-shopping-modal highlight" title="Évaluer et personnaliser la liste de courses">🛒 Évaluer la liste ({{ recipe.shopping.to_buy_count }})</button>
           <button type="button" class="shopping-btn copy-list" title="Copier la liste des courses">📋 Copier</button>
           <button type="button" class="shopping-btn keep-list" title="Créer une note dans Google Keep">🟡 Keep</button>
           <button type="button" class="shopping-btn share-list" title="Partager la liste de courses">↗ Partager</button>
@@ -157,5 +158,80 @@
       </ol>
     </section>
   </div>
+
+  <dialog id="shopping-modal" class="shopping-modal" aria-labelledby="shopping-modal-title">
+    <div class="modal-card">
+      <div class="modal-card-header">
+        <div>
+          <h3 id="shopping-modal-title">🛒 Évaluation des courses</h3>
+          <p class="modal-card-subtitle">{{ recipe.title }} · <span class="portion-summary">{{ recipe.portions }} portions</span></p>
+        </div>
+        <button type="button" class="modal-close-btn" aria-label="Fermer la fenêtre">×</button>
+      </div>
+      <div class="modal-card-body">
+        <div class="eval-intro-bar">
+          <span>Sélectionnez ce qu'il vous faut. Les basiques de cuisine sont isolés.</span>
+          <div class="eval-quick-actions">
+            <button type="button" class="eval-btn-mini select-all-to-buy">Tout cocher</button>
+            <button type="button" class="eval-btn-mini uncheck-all">Tout décocher</button>
+          </div>
+        </div>
+
+        <div class="eval-section">
+          <div class="eval-section-title">
+            <h4>À acheter au supermarché</h4>
+            <span class="eval-count-badge to-buy-counter">{{ recipe.shopping.to_buy_count }} articles</span>
+          </div>
+          {% for aisle, items in recipe.shopping.aisles.items() %}
+          <div class="aisle-group">
+            <h5 class="aisle-heading">{{ aisle }}</h5>
+            <ul class="eval-item-list">
+              {% for item in items %}
+              <li class="eval-row">
+                <label class="eval-item-label">
+                  <input type="checkbox" class="eval-item-cb to-buy-cb" checked data-slug="{{ item.slug }}" data-name="{{ item.name }}" data-qty="{{ item.quantity }}" data-aisle="{{ aisle }}">
+                  <span class="eval-item-name"><strong>{{ item.name }}</strong></span>
+                </label>
+                <span class="eval-item-qty">{{ item.quantity }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endfor %}
+        </div>
+
+        {% if recipe.shopping.staples %}
+        <div class="eval-section staples-group">
+          <div class="eval-section-title">
+            <h4>🧂 Fond de placard & indispensables</h4>
+            <span class="staples-tag">En réserve</span>
+          </div>
+          <p class="staples-explain"><small>Ingrédients courants habituellement présents chez vous. Cochez uniquement si votre stock est vide.</small></p>
+          <ul class="eval-item-list">
+            {% for item in recipe.shopping.staples %}
+            <li class="eval-row staple-row">
+              <label class="eval-item-label">
+                <input type="checkbox" class="eval-item-cb staple-cb" data-slug="{{ item.slug }}" data-name="{{ item.name }}" data-qty="{{ item.quantity }}" data-aisle="Fond de placard">
+                <span class="eval-item-name">{{ item.name }}</span>
+              </label>
+              <span class="eval-item-qty">{{ item.quantity }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+      <div class="modal-card-footer">
+        <div class="modal-status">
+          <strong class="active-count">{{ recipe.shopping.to_buy_count }}</strong> article(s) à acheter
+        </div>
+        <div class="modal-action-btns">
+          <button type="button" class="shopping-btn keep-list modal-keep-btn">🟡 Keep</button>
+          <button type="button" class="shopping-btn copy-list modal-copy-btn">📋 Copier</button>
+          <button type="button" class="shopping-btn share-list modal-share-btn">↗ Partager</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
 </main>
 {% endblock %}

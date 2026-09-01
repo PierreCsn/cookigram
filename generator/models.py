@@ -39,3 +39,4 @@ class Recipe:
     portion_step: int = 1
     scaling_note: str = ""
     nutrition: dict = field(default_factory=dict)
+    shopping: dict = field(default_factory=dict)

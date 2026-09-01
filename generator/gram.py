@@ -12,6 +12,7 @@ import yaml
 
 from .models import Ingredient, Recipe, Step
 from .nutrition import calculate_recipe_nutrition
+from .shopping import evaluate_recipe_shopping
 
 ACTION = re.compile(r"^\[([^]]+)]\s*(.*)$")
 SUBSTEP = re.compile(r"^[-*]\s+(.+)$")
@@ -148,4 +149,5 @@ def parse_recipe(path: Path) -> Recipe:
         scaling_note=scaling_note,
     )
     recipe.nutrition = calculate_recipe_nutrition(recipe)
+    recipe.shopping = evaluate_recipe_shopping(recipe)
     return recipe
