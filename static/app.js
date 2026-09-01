@@ -370,17 +370,29 @@ if (checklistEl) {
     });
   }
 
-  const generateShoppingText = () => {
+  const generateShoppingText = (format = 'standard') => {
     const title = document.querySelector('h1')?.textContent.trim() || 'Recette';
     const portions = document.querySelector('.portion-summary')?.textContent.trim() || '';
 
-    // Prioritize evaluated shopping modal data (grouped by department)
+    // Prioritize evaluated shopping modal data
     if (shoppingModal) {
       const checkedBoxes = [...shoppingModal.querySelectorAll('.eval-item-cb:checked')];
       if (checkedBoxes.length === 0) {
         return `🛒 Courses · ${title}${portions ? ` (${portions})` : ''}\n\nAucun article sélectionné à acheter.`;
       }
 
+      // Format for Google Keep: 1 clean line per item, perfectly convertible to native Keep checkboxes!
+      if (format === 'keep') {
+        const lines = [];
+        checkedBoxes.forEach(cb => {
+          const name = cb.dataset.name || '';
+          const qty = cb.dataset.qty || '';
+          lines.push(qty ? `${name} : ${qty}` : name);
+        });
+        return lines.join('\n');
+      }
+
+      // Standard copy/share format with unicode ballot box checkboxes (☐) and department grouping
       const byAisle = {};
       const staplesList = [];
 
@@ -405,7 +417,7 @@ if (checklistEl) {
         aisles.forEach(aisle => {
           text += `📍 Rayon ${aisle} :\n`;
           byAisle[aisle].forEach(item => {
-            text += `  • ${item}\n`;
+            text += `  ☐ ${item}\n`;
           });
           text += '\n';
         });
@@ -414,7 +426,7 @@ if (checklistEl) {
       if (staplesList.length > 0) {
         text += `🧂 Fond de placard (à réapprovisionner) :\n`;
         staplesList.forEach(item => {
-          text += `  • ${item}\n`;
+          text += `  ☐ ${item}\n`;
         });
         text += '\n';
       }
@@ -434,14 +446,18 @@ if (checklistEl) {
       }
     });
 
+    if (format === 'keep') {
+      return toBuy.join('\n');
+    }
+
     let text = `🛒 Courses · ${title}${portions ? ` (${portions})` : ''}\n\n`;
-    text += `À acheter :\n${toBuy.map(i => `• ${i}`).join('\n')}\n\n`;
+    text += `À acheter :\n${toBuy.map(i => `☐ ${i}`).join('\n')}\n\n`;
     text += `Lien : ${window.location.href}`;
     return text;
   };
 
-  const copyShoppingList = async () => {
-    const text = generateShoppingText();
+  const copyShoppingList = async (format = 'standard') => {
+    const text = generateShoppingText(format);
     try {
       await navigator.clipboard.writeText(text);
       return true;
@@ -458,22 +474,22 @@ if (checklistEl) {
 
   document.querySelectorAll('.copy-list').forEach(btn => {
     btn.addEventListener('click', async () => {
-      await copyShoppingList();
-      showToast('📋 Liste de courses copiée dans le presse-papier !');
+      await copyShoppingList('standard');
+      showToast('📋 Liste de courses copiée (avec cases ☐) !');
     });
   });
 
   document.querySelectorAll('.keep-list').forEach(btn => {
     btn.addEventListener('click', async () => {
-      await copyShoppingList();
+      await copyShoppingList('keep');
       window.open('https://keep.new', '_blank', 'noopener,noreferrer');
-      showToast('🟡 Liste copiée ! Collez-la dans votre note Google Keep (Ctrl+V).', 4500);
+      showToast('🟡 Liste copiée pour Keep ! Collez (Ctrl+V) puis cliquez sur ⋮ > « Afficher les cases à cocher »', 6000);
     });
   });
 
   document.querySelectorAll('.share-list').forEach(btn => {
     btn.addEventListener('click', async () => {
-      const text = generateShoppingText();
+      const text = generateShoppingText('standard');
       const title = document.querySelector('h1')?.textContent.trim() || 'Courses';
 
       if (navigator.share) {
@@ -485,7 +501,7 @@ if (checklistEl) {
         }
       }
 
-      await copyShoppingList();
+      await copyShoppingList('standard');
       showToast('✓ Liste copiée pour partage !');
     });
   });

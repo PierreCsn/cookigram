@@ -9,11 +9,9 @@ source: https://www.cookomix.com/recettes/risotto-poulet-champignons-thermomix/
 author: Lisa
 image: images/risotto-poulet-champignons.jpg
 image_credit:
-  author: Katrin Gilger
-  source: https://commons.wikimedia.org/wiki/File:Mushroom_Risotto_(4789415965).jpg
-  license: CC BY-SA 2.0
-  license_url: https://creativecommons.org/licenses/by-sa/2.0/
-  modifications: Image recadrée et redimensionnée à 960 × 720 pixels.
+  author: Lisa
+  source: https://www.cookomix.com/recettes/risotto-poulet-champignons-thermomix/
+  license: Cookomix
 appliances:
   thermomix: [TM31, TM5, TM6]
 scaling:
