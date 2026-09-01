@@ -24,6 +24,13 @@ Record the exact primary URL in frontmatter as `source:` and the displayed autho
 
 Read [CookGram Gram profile](references/cookgram-gram-profile.md) before writing or modifying a recipe.
 
+Before choosing ingredient names, read `.gram/ingredients.yaml`. Match each researched ingredient against canonical keys, `name`, and `aliases`:
+
+- reuse the existing canonical wording when an entry already represents the ingredient;
+- do not create singular/plural, translated, or spelling variants as separate entries;
+- when no entry matches, plan a new canonical lowercase kebab-case key and use a clear French `name`;
+- add source wording as an alias only when it is genuinely useful for future matching.
+
 When the official Gram CLI is installed and configured, prefer its structured importer for a compatible page or YouTube URL:
 
 ```bash
@@ -43,6 +50,18 @@ Make each actionable paragraph one Gram step. Ensure that:
 
 Choose a lowercase kebab-case filename. Do not overwrite a similarly named recipe until its identity and intended replacement are clear.
 
+## Update the ingredient database
+
+Updating `.gram/ingredients.yaml` is part of the recipe import, not an optional cleanup. After drafting the recipe:
+
+1. run `gram db sync` when the CLI is available so every new ingredient receives an entry;
+2. inspect the diff and merge accidental duplicates into one canonical entry with aliases;
+3. ensure every ingredient used by the new recipe resolves through a key, `name`, or alias;
+4. add a defensible `category` when obvious;
+5. leave `physical` and `nutrition` absent until their values are verified or accepted by a human during `gram db enrich`.
+
+When the CLI is unavailable, add the missing minimal entries manually. A valid minimal entry contains `name`; aliases and category are optional. Never postpone missing database entries to an unspecified later task.
+
 ## Validate
 
 Run the repository checks from its root:
@@ -55,7 +74,12 @@ python -m generator.build
 If the official CLI is available, also run:
 
 ```bash
+gram db sync
+gram db lint
+gram db validate --strict
 gram check recipes/<slug>.gram --skip-db
 ```
+
+Review changes made by `gram db sync` and keep `.gram/ingredients.yaml` in the same commit as the new recipe. `gram db lint` may require the configured AI provider; when it is unavailable, report that the semantic deduplication step was skipped rather than faking its result. Do not accept nutrition or density estimates without human review.
 
 Fix parser or build errors before handing off. Inspect the generated recipe page and `recipes.json` when the change uses a new syntax construct. Do not commit or push unless the user's request authorizes repository changes.
