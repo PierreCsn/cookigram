@@ -14,15 +14,38 @@
         <input type="search" id="recipe-search" class="search-input" placeholder="Rechercher une recette, un ingrédient..." aria-label="Rechercher une recette">
         <button type="button" class="search-clear" aria-label="Effacer la recherche" hidden>×</button>
       </div>
+    <div class="filter-bar-row">
       <div class="filter-chips" role="group" aria-label="Filtrer par catégorie">
         <button type="button" class="chip active" data-tag="all">Tous</button>
-        {% if all_tags is defined %}
-          {% for tag in all_tags %}
-          <button type="button" class="chip" data-tag="{{ tag }}">{{ tag }}</button>
-          {% endfor %}
-        {% endif %}
+        {% set tags_to_show = primary_tags if primary_tags is defined else (all_tags if all_tags is defined else []) %}
+        {% for tag in tags_to_show %}
+        <button type="button" class="chip" data-tag="{{ tag }}">{{ tag|capitalize }}</button>
+        {% endfor %}
+      </div>
+      {% if advanced_tags is defined and advanced_tags %}
+      <button type="button" class="advanced-filter-toggle" aria-expanded="false" aria-controls="advanced-filters-panel" title="Ouvrir les filtres avancés">
+        <span class="adv-icon">⚙️</span>
+        <span class="adv-label">Filtres avancés</span>
+        <span class="adv-badge" hidden>0</span>
+        <span class="adv-chevron" aria-hidden="true">▾</span>
+      </button>
+      {% endif %}
+    </div>
+
+    {% if advanced_tags is defined and advanced_tags %}
+    <div id="advanced-filters-panel" class="advanced-filters-panel" hidden>
+      <div class="advanced-filters-header">
+        <span class="adv-header-title">Options & Tags avancés</span>
+        <button type="button" class="clear-advanced-btn" hidden>Réinitialiser</button>
+      </div>
+      <div class="advanced-chips-group">
+        {% for tag in advanced_tags %}
+        <button type="button" class="chip adv-chip" data-advanced-tag="{{ tag }}">{{ tag }}</button>
+        {% endfor %}
       </div>
     </div>
+    {% endif %}
+  </div>
 
     <div class="section-title">
       <h2>À cuisiner</h2>

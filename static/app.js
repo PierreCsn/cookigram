@@ -116,6 +116,54 @@ if (catalogueSection) {
   }
 
   let activeTag = 'all';
+  const activeAdvancedTags = new Set();
+
+  const advancedToggleBtn = document.querySelector('.advanced-filter-toggle');
+  const advancedPanel = document.getElementById('advanced-filters-panel');
+  const advChips = document.querySelectorAll('.adv-chip');
+  const clearAdvancedBtn = document.querySelector('.clear-advanced-btn');
+  const advBadge = document.querySelector('.adv-badge');
+
+  const updateAdvancedUI = () => {
+    const count = activeAdvancedTags.size;
+    if (advBadge) {
+      advBadge.textContent = count;
+      advBadge.hidden = count === 0;
+    }
+    if (clearAdvancedBtn) {
+      clearAdvancedBtn.hidden = count === 0;
+    }
+  };
+
+  if (advancedToggleBtn && advancedPanel) {
+    advancedToggleBtn.addEventListener('click', () => {
+      const isExpanded = advancedToggleBtn.getAttribute('aria-expanded') === 'true';
+      advancedToggleBtn.setAttribute('aria-expanded', String(!isExpanded));
+      advancedPanel.hidden = isExpanded;
+    });
+  }
+
+  advChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const tag = chip.dataset.advancedTag;
+      if (activeAdvancedTags.has(tag)) {
+        activeAdvancedTags.delete(tag);
+        chip.classList.remove('active');
+      } else {
+        activeAdvancedTags.add(tag);
+        chip.classList.add('active');
+      }
+      updateAdvancedUI();
+      filterCatalogue();
+    });
+  });
+
+  clearAdvancedBtn?.addEventListener('click', () => {
+    activeAdvancedTags.clear();
+    advChips.forEach(c => c.classList.remove('active'));
+    updateAdvancedUI();
+    filterCatalogue();
+  });
 
   const normalize = (str) => (str || '')
     .normalize('NFD')
@@ -140,10 +188,12 @@ if (catalogueSection) {
       const ingredients = normalize(card.dataset.ingredients);
 
       const matchesTag = activeTag === 'all' || tags.includes(normalize(activeTag));
+      const matchesAdvanced = activeAdvancedTags.size === 0 ||
+        [...activeAdvancedTags].every(t => tags.includes(normalize(t)));
       const fullText = `${title} ${desc} ${tags} ${ingredients}`;
       const matchesQuery = queryTokens.length === 0 || queryTokens.every(token => fullText.includes(token));
 
-      const isVisible = matchesTag && matchesQuery;
+      const isVisible = matchesTag && matchesAdvanced && matchesQuery;
       card.style.display = isVisible ? '' : 'none';
       if (isVisible) visibleCount++;
     });
@@ -180,6 +230,9 @@ if (catalogueSection) {
     if (searchInput) searchInput.value = '';
     activeTag = 'all';
     chips.forEach(c => c.classList.toggle('active', c.dataset.tag === 'all'));
+    activeAdvancedTags.clear();
+    advChips.forEach(c => c.classList.remove('active'));
+    updateAdvancedUI();
     filterCatalogue();
   });
 }

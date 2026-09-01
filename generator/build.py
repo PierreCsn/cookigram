@@ -24,8 +24,30 @@ def build(output: Path) -> None:
         apply_plugins(recipe, ROOT / "plugins")
 
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape())
+    PRIMARY_THEMES = [
+        "pâtes",
+        "soupe",
+        "mijoté",
+        "curry",
+        "gratin",
+        "volaille",
+        "viande",
+        "one-pot",
+        "risotto",
+    ]
     all_tags = sorted({tag for recipe in recipes for tag in recipe.tags})
-    (output / "index.html").write_text(env.get_template("index.html").render(recipes=recipes, all_tags=all_tags), encoding="utf-8")
+    primary_tags = [tag for tag in PRIMARY_THEMES if any(tag in r.tags for r in recipes)]
+    advanced_tags = sorted({tag for tag in all_tags if tag not in PRIMARY_THEMES and tag != "thermomix"})
+
+    (output / "index.html").write_text(
+        env.get_template("index.html").render(
+            recipes=recipes,
+            all_tags=all_tags,
+            primary_tags=primary_tags,
+            advanced_tags=advanced_tags,
+        ),
+        encoding="utf-8",
+    )
 
     for recipe in recipes:
         recipe_dir = output / "recipes" / recipe.slug
