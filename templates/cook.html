@@ -10,10 +10,15 @@
     </div>
     <div class="cook-tools">
       <button class="theme-toggle" type="button" aria-label="Changer de thème" title="Basculer le mode sombre">🌙</button>
+      <button class="voice-cmd" type="button" aria-pressed="false" title="Mode mains libres : contrôlez la cuisson à la voix (Suivant, Précédent, Minuteur...)">🎙️</button>
       <button class="auto-speak" type="button" aria-pressed="false" title="Activer la lecture vocale automatique des étapes">🗣️</button>
       <button class="wake" type="button" aria-pressed="false" title="Garder l'écran allumé">☀</button>
     </div>
   </header>
+  <aside class="voice-feedback" hidden>
+    <span class="voice-indicator" aria-hidden="true"></span>
+    <span class="voice-feedback-text">Mains libres actif : dites <em>« Suivant »</em>, <em>« Précédent »</em>, <em>« Répéter »</em> ou <em>« Minuteur »</em></span>
+  </aside>
   {% if not recipe.scalable %}<aside class="cook-fixed">Proportions fixes · {{ recipe.scaling_note }}</aside>{% endif %}
   <div class="cook-stage">
   {% for step in recipe.steps %}

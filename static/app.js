@@ -145,9 +145,12 @@ const formatSpeechText = (text) => {
     .trim();
 };
 
+let isSpeaking = false;
+
 const speak = (text, onEnd) => {
   if (!('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel();
+  isSpeaking = true;
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'fr-FR';
   utterance.rate = 1.0;
@@ -155,10 +158,12 @@ const speak = (text, onEnd) => {
   const voices = window.speechSynthesis.getVoices();
   const frVoice = voices.find(v => v.lang && (v.lang.startsWith('fr') || v.lang.replace('_', '-').startsWith('fr')));
   if (frVoice) utterance.voice = frVoice;
-  if (onEnd) {
-    utterance.onend = onEnd;
-    utterance.onerror = onEnd;
-  }
+  const finish = () => {
+    isSpeaking = false;
+    if (onEnd) onEnd();
+  };
+  utterance.onend = finish;
+  utterance.onerror = finish;
   window.speechSynthesis.speak(utterance);
 };
 
@@ -166,6 +171,14 @@ const stopSpeech = () => {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
   }
+  isSpeaking = false;
+};
+
+const playConfirmBeep = () => {
+  const ctx = getAudioContext();
+  if (!ctx) return;
+  const t = ctx.currentTime;
+  playAlarmTone(ctx, 880, t, 0.08, 0.2);
 };
 
 if ('speechSynthesis' in window) {
@@ -410,6 +423,182 @@ if (cook) {
 
   const timers = [...document.querySelectorAll('.timer')].map(el => new RecipeTimer(el));
 
+  // --- Hands-Free Voice Control (Speech Recognition) ---
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const voiceCmdBtn = document.querySelector('.voice-cmd');
+  const voiceFeedback = document.querySelector('.voice-feedback');
+  const voiceFeedbackText = document.querySelector('.voice-feedback-text');
+  let recognition = null;
+  let voiceCmdActive = false;
+  let feedbackTimeout = null;
+
+  const defaultFeedbackHtml = 'Mains libres actif : dites <em>« Suivant »</em>, <em>« Précédent »</em>, <em>« Répéter »</em> ou <em>« Minuteur »</em>';
+
+  const showVoiceFeedback = (message, isCommand = true) => {
+    if (!voiceFeedback || !voiceFeedbackText) return;
+    if (feedbackTimeout) clearTimeout(feedbackTimeout);
+    voiceFeedbackText.innerHTML = message;
+    if (isCommand) {
+      voiceFeedback.classList.add('command-recognized');
+      feedbackTimeout = setTimeout(() => {
+        voiceFeedback.classList.remove('command-recognized');
+        voiceFeedbackText.innerHTML = defaultFeedbackHtml;
+      }, 1600);
+    } else {
+      voiceFeedback.classList.remove('command-recognized');
+    }
+  };
+
+  const parseVoiceCommand = (rawText) => {
+    const text = rawText.toLowerCase().trim();
+
+    if (/\b(stop|arr[êe]t|arr[êe]te|tais-toi|silence|coupe|merci)\b/.test(text)) {
+      return 'stop';
+    }
+    if (/\b(suivant|suivante|avanc|apr[èe]s|continuer|continues)\b/.test(text)) {
+      return 'next';
+    }
+    if (/\b(pr[ée]c[ée]dent|pr[ée]c[ée]dente|retour|arri[èe]re|recul)\b/.test(text)) {
+      return 'prev';
+    }
+    if (/\b(r[ée]p[èe]t|r[ée]p[èe]te|lis|lire|relis|relire|[ée]coute|[ée]couter|instruction)\b/.test(text)) {
+      return 'repeat';
+    }
+    if (/\b(pause)\b/.test(text)) {
+      return 'pause';
+    }
+    if (/\b(r[ée]initialis|reset|z[ée]ro)\b/.test(text)) {
+      return 'reset';
+    }
+    if (/\b(minuteur|chrono|d[ée]marr|d[ée]marre|lanc|lance|top)\b/.test(text)) {
+      return 'timer';
+    }
+    return null;
+  };
+
+  let lastCmdTime = 0;
+  const executeVoiceCommand = (cmd) => {
+    const now = Date.now();
+    if (now - lastCmdTime < 700) return;
+    lastCmdTime = now;
+    playConfirmBeep();
+
+    switch (cmd) {
+      case 'next':
+        showVoiceFeedback(`✓ Commande : <em>« Suivant »</em>`);
+        document.querySelector('.next')?.click();
+        break;
+      case 'prev':
+        showVoiceFeedback(`✓ Commande : <em>« Précédent »</em>`);
+        document.querySelector('.prev')?.click();
+        break;
+      case 'repeat':
+        showVoiceFeedback(`✓ Commande : <em>« Répéter »</em>`);
+        readActiveStep();
+        break;
+      case 'timer': {
+        const activeStep = steps[current];
+        const timerEl = activeStep?.querySelector('.timer');
+        if (timerEl) {
+          showVoiceFeedback(`✓ Commande : <em>« Minuteur »</em>`);
+          timerEl.querySelector('.timer-toggle')?.click();
+        } else {
+          showVoiceFeedback(`ℹ Aucun minuteur sur cette étape`);
+        }
+        break;
+      }
+      case 'pause': {
+        const activeStep = steps[current];
+        const timerEl = activeStep?.querySelector('.timer.running');
+        if (timerEl) {
+          showVoiceFeedback(`✓ Commande : <em>« Pause minuteur »</em>`);
+          timerEl.querySelector('.timer-toggle')?.click();
+        } else {
+          showVoiceFeedback(`ℹ Aucun minuteur en cours`);
+        }
+        break;
+      }
+      case 'reset': {
+        const activeStep = steps[current];
+        const timerEl = activeStep?.querySelector('.timer');
+        if (timerEl) {
+          showVoiceFeedback(`✓ Commande : <em>« Réinitialiser »</em>`);
+          timerEl.querySelector('.timer-reset')?.click();
+        }
+        break;
+      }
+      case 'stop':
+        showVoiceFeedback(`✓ Commande : <em>« Arrêt »</em>`);
+        stopStepSpeaking();
+        timers.forEach(t => t.stopAlarmOnly());
+        break;
+    }
+  };
+
+  if (voiceCmdBtn) {
+    if (!SpeechRecognition) {
+      voiceCmdBtn.setAttribute('title', 'Reconnaissance vocale non disponible sur ce navigateur');
+      voiceCmdBtn.disabled = true;
+      voiceCmdBtn.style.opacity = '0.35';
+    } else {
+      recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = false;
+      recognition.lang = 'fr-FR';
+
+      recognition.onresult = (event) => {
+        if (isSpeaking) return;
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          const transcript = event.results[i][0].transcript;
+          const cmd = parseVoiceCommand(transcript);
+          if (cmd) {
+            executeVoiceCommand(cmd);
+            break;
+          }
+        }
+      };
+
+      recognition.onerror = (event) => {
+        if (event.error === 'not-allowed') {
+          voiceCmdActive = false;
+          voiceCmdBtn.setAttribute('aria-pressed', 'false');
+          if (voiceFeedback) voiceFeedback.hidden = true;
+          alert("L'accès au microphone a été refusé. Veuillez l'autoriser pour utiliser la commande vocale mains libres.");
+        }
+      };
+
+      recognition.onend = () => {
+        if (voiceCmdActive) {
+          try {
+            recognition.start();
+          } catch (_) {}
+        }
+      };
+
+      voiceCmdBtn.addEventListener('click', () => {
+        getAudioContext();
+        voiceCmdActive = !voiceCmdActive;
+        voiceCmdBtn.setAttribute('aria-pressed', String(voiceCmdActive));
+
+        if (voiceCmdActive) {
+          playConfirmBeep();
+          if (voiceFeedback) {
+            voiceFeedback.hidden = false;
+            showVoiceFeedback(defaultFeedbackHtml, false);
+          }
+          try {
+            recognition.start();
+          } catch (_) {}
+        } else {
+          if (voiceFeedback) voiceFeedback.hidden = true;
+          try {
+            recognition.stop();
+          } catch (_) {}
+        }
+      });
+    }
+  }
+
   const render = () => {
     stopStepSpeaking();
     steps.forEach((step, index) => step.classList.toggle('active', index === current));
@@ -434,6 +623,10 @@ if (cook) {
     } else {
       stopStepSpeaking();
       timers.forEach(t => t.stopAlarmOnly());
+      if (voiceCmdActive && recognition) {
+        voiceCmdActive = false;
+        try { recognition.stop(); } catch (_) {}
+      }
       localStorage.removeItem(key);
       location.href = '../';
     }

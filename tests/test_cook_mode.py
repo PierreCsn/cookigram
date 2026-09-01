@@ -14,6 +14,8 @@ def test_cook_template_contains_voice_and_timer_controls():
     rendered = env.get_template("cook.html").render(recipe=recipe)
 
     assert "auto-speak" in rendered
+    assert "voice-cmd" in rendered
+    assert "voice-feedback" in rendered
     assert "step-speak" in rendered
     assert "timer" in rendered
     assert "timer-toggle" in rendered
