@@ -105,6 +105,15 @@ if (catalogueSection) {
   const countEl = document.querySelector('.recipes-count');
   const emptyState = document.querySelector('.empty-search');
   const resetSearchBtn = document.querySelector('.reset-search-btn');
+  const filterChipsBar = document.querySelector('.filter-chips');
+  if (filterChipsBar) {
+    filterChipsBar.addEventListener('wheel', (e) => {
+      if (e.deltaY !== 0 && !e.shiftKey) {
+        filterChipsBar.scrollLeft += e.deltaY;
+        e.preventDefault();
+      }
+    }, { passive: false });
+  }
 
   let activeTag = 'all';
 
