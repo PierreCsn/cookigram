@@ -65,6 +65,10 @@ ingredients:
   creme-fraiche-liquide:
     source: ANSES-CIQUAL
     status: verified
+  cube-de-bouillon:
+    note: Valeurs moyennées entre les variantes légumes et volaille de la table CIQUAL.
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: estimated
   cube-de-bouillon-de-legumes:
     source: ANSES-CIQUAL
     status: verified

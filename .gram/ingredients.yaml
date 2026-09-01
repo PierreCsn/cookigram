@@ -194,6 +194,18 @@ ingredients:
       carbs: 3.0
       fat: 30.0
       protein: 2.2
+  cube-de-bouillon:
+    name: Cube de bouillon
+    aliases:
+    - cube de bouillon
+    - cubes de bouillon
+    category: Condiments
+    pantry_staple: true
+    nutrition:
+      calories: 235
+      carbs: 20.0
+      fat: 12.0
+      protein: 8.0
   cube-de-bouillon-de-legumes:
     name: Cube de bouillon de légumes
     aliases:

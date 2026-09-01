@@ -157,6 +157,8 @@ Dernier audit : 1er septembre 2026.
   requêtes de production.
 - [ ] Extraire les fragments de template répétés, notamment les badges et icônes
   Thermomix, dans des macros Jinja.
+- [ ] Afficher des icônes de matériel nécessaire (robot, Varoma, Cookeo, etc.)
+  sur les vignettes des recettes du catalogue, en plus des fiches recette.
 - [ ] Formaliser l'interface des plugins et éviter de recharger chaque module pour
   chaque recette.
 
