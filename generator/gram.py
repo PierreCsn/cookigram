@@ -29,7 +29,9 @@ def _seconds(value: str, unit: str) -> int:
 
 
 def _clean(text: str) -> str:
-    text = INGREDIENT.sub(lambda m: f"{m.group(1).strip()}" + (f" ({m.group(2).strip()})" if m.group(2).strip() else ""), text)
+    text = INGREDIENT.sub(
+        lambda m: f"{m.group(1).strip()}" + (f" ({m.group(2).strip()})" if m.group(2).strip() else ""), text
+    )
     text = EQUIPMENT.sub(lambda m: m.group(1).strip(), text)
     text = TIMER.sub(lambda m: f"{m.group(1)} {m.group(2)}", text)
     text = TEMPERATURE.sub(lambda m: m.group(1).strip(), text)
@@ -110,15 +112,17 @@ def parse_recipe(path: Path) -> Recipe:
         cleaned_body = _clean(block["body"])
         cleaned_substeps = [_clean(s) for s in block["substeps"]]
 
-        steps.append(Step(
-            action=action,
-            text=cleaned_body,
-            timers=timers,
-            temperatures=temperatures,
-            ingredients=ingredients,
-            equipment=equipment,
-            substeps=cleaned_substeps,
-        ))
+        steps.append(
+            Step(
+                action=action,
+                text=cleaned_body,
+                timers=timers,
+                temperatures=temperatures,
+                ingredients=ingredients,
+                equipment=equipment,
+                substeps=cleaned_substeps,
+            )
+        )
 
     portions = int(metadata.get("portions", 4))
     scaling = metadata.get("scaling", {})

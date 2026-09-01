@@ -14,4 +14,3 @@ def apply_plugins(recipe, plugin_dir: Path) -> None:
         spec.loader.exec_module(module)
         if hasattr(module, "enrich"):
             module.enrich(recipe)
-

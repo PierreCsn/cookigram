@@ -13,7 +13,8 @@ def test_example_recipe_is_parsed():
 
 def test_scalable_recipe_parsing(tmp_path):
     source = tmp_path / "scalable.gram"
-    source.write_text("""---
+    source.write_text(
+        """---
 title: Recette ajustable
 portions: 4
 scaling:
@@ -23,7 +24,9 @@ scaling:
   step: 1
 ---
 [Cuire] Cuire les @pommes de terre{800 g} pendant ~{20 min}.
-""", encoding="utf-8")
+""",
+        encoding="utf-8",
+    )
     recipe = parse_recipe(source)
     assert recipe.scalable is True
     assert recipe.min_portions == 2
@@ -32,7 +35,8 @@ scaling:
 
 def test_fixed_recipe_requires_a_reason(tmp_path):
     source = tmp_path / "fixed.gram"
-    source.write_text("""---
+    source.write_text(
+        """---
 title: Recette précise
 portions: 4
 scaling:
@@ -40,7 +44,9 @@ scaling:
   reason: Calibrée pour un bol précis.
 ---
 [Mélanger] Mélanger @farine{100 g}.
-""", encoding="utf-8")
+""",
+        encoding="utf-8",
+    )
 
     recipe = parse_recipe(source)
     assert recipe.scalable is False

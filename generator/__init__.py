@@ -1,2 +1,1 @@
 """Static CookiGram site generator."""
-

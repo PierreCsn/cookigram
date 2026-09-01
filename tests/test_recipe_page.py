@@ -33,4 +33,3 @@ def test_recipe_page_contains_shopping_checklist_and_export():
     assert "reset-checklist" in rendered
     assert "ingredient-checkbox" in rendered
     assert "toast" in rendered
-

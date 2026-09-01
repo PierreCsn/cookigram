@@ -35,7 +35,12 @@ def clean_shopping_quantity(raw_qty: str) -> str:
         return ""
     q = raw_qty.strip()
     q = re.sub(r",\s*sur\s+.*", "", q, flags=re.IGNORECASE)
-    q = re.sub(r",\s*(?:sans peau|en morceaux|en dés|en lanières|coupé[es]*|épluché[es]*|émincé[es]*|plus selon|selon|facultatif|spécial|blancs).*$", "", q, flags=re.IGNORECASE)
+    q = re.sub(
+        r",\s*(?:sans peau|en morceaux|en dés|en lanières|coupé[es]*|épluché[es]*|émincé[es]*|plus selon|selon|facultatif|spécial|blancs).*$",
+        "",
+        q,
+        flags=re.IGNORECASE,
+    )
     q = re.sub(r",?\s*\bémietté[es]*\b", "", q, flags=re.IGNORECASE)
     q = q.strip().rstrip(",")
     if q.isdigit():
