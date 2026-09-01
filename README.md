@@ -12,7 +12,9 @@ pour découvrir la syntaxe complète et son CLI.
 - catalogue responsive ;
 - fiche recette et mode cuisson étape par étape ;
 - temps de préparation et durée totale ;
-- minuteurs, reprise locale et maintien de l'écran allumé ;
+- minuteurs interactifs avec alerte sonore Web Audio, vibration et reprise locale ;
+- synthèse vocale (Web Speech API) des étapes et option de lecture automatique ;
+- maintien de l'écran allumé (Screen Wake Lock) ;
 - PWA avec cache hors ligne ;
 - enrichissement build-time par plugins ;
 - déploiement automatique sur GitHub Pages.

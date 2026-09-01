@@ -2,15 +2,44 @@
 {% block title %}Cuisson · {{ recipe.title }}{% endblock %}
 {% block body %}
 <main class="cook" data-recipe="{{ recipe.slug }}" data-base-portions="{{ recipe.portions }}" data-scalable="{{ 'true' if recipe.scalable else 'false' }}">
-  <header><a href="../" aria-label="Quitter">×</a><div><small>{{ recipe.title }} · <span class="cook-portions">{{ recipe.portions }} portions</span></small><div class="progress"><i></i></div></div><button class="wake" aria-pressed="false" title="Garder l'écran allumé">☀</button></header>
+  <header>
+    <a href="../" aria-label="Quitter">×</a>
+    <div>
+      <small>{{ recipe.title }} · <span class="cook-portions">{{ recipe.portions }} portions</span></small>
+      <div class="progress"><i></i></div>
+    </div>
+    <div class="cook-tools">
+      <button class="auto-speak" type="button" aria-pressed="false" title="Activer la lecture vocale automatique des étapes">🗣️</button>
+      <button class="wake" type="button" aria-pressed="false" title="Garder l'écran allumé">☀</button>
+    </div>
+  </header>
   {% if not recipe.scalable %}<aside class="cook-fixed">Proportions fixes · {{ recipe.scaling_note }}</aside>{% endif %}
   <div class="cook-stage">
   {% for step in recipe.steps %}
-    <article class="cook-step{% if loop.first %} active{% endif %}" data-step="{{ loop.index0 }}">
-      <p class="step-count">Étape {{ loop.index }} sur {{ recipe.steps|length }}</p>
+    {% set step_idx = loop.index0 %}
+    {% set step_num = loop.index %}
+    <article class="cook-step{% if loop.first %} active{% endif %}" data-step="{{ step_idx }}">
+      <div class="step-meta">
+        <p class="step-count">Étape {{ step_num }} sur {{ recipe.steps|length }}</p>
+        <button class="step-speak" type="button" aria-label="Lire cette étape à voix haute" title="Écouter l'instruction">
+          <span class="speak-icon">🔊</span>
+          <span class="speak-label">Écouter</span>
+        </button>
+      </div>
       <h1>{{ step.action }}</h1><p class="instruction" data-scale-text="{{ step.text }}">{{ step.text }}</p>
       {% if step.temperatures %}<div class="chips">{% for temp in step.temperatures %}<span>🌡 {{ temp }}</span>{% endfor %}</div>{% endif %}
-      {% for timer in step.timers %}<button class="timer" data-seconds="{{ timer.seconds }}"><span>Minuteur</span><strong>{{ timer.label }}</strong><i>Démarrer</i></button>{% endfor %}
+      {% for timer in step.timers %}
+        <div class="timer" data-seconds="{{ timer.seconds }}" data-step="{{ step_idx }}" data-step-num="{{ step_num }}" data-label="{{ timer.label }}">
+          <div class="timer-info">
+            <span class="timer-status">Minuteur</span>
+            <strong class="timer-display">{{ timer.label }}</strong>
+          </div>
+          <div class="timer-controls">
+            <button class="timer-btn timer-toggle" type="button" aria-label="Démarrer le minuteur"><i>Démarrer</i></button>
+            <button class="timer-btn timer-reset" type="button" aria-label="Réinitialiser" title="Réinitialiser" hidden>↺</button>
+          </div>
+        </div>
+      {% endfor %}
       {% for plugin in step.plugins.values() %}<aside class="plugin"><b>{{ plugin.label }}</b><span>{{ plugin.instruction }}</span></aside>{% endfor %}
     </article>
   {% endfor %}
