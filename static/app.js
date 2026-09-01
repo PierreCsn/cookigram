@@ -253,9 +253,9 @@ if (portionPicker) {
   const base = Number(portionPicker.dataset.basePortions);
   const min = Number(portionPicker.dataset.min);
   const max = Number(portionPicker.dataset.max);
-  const step = Number(portionPicker.dataset.step);
-  const storageKey = `cookgram:${portionPicker.dataset.recipe}:portions`;
-  let portions = Math.min(max, Math.max(min, Number(localStorage.getItem(storageKey) || base)));
+  const storageKey = `cookigram:${portionPicker.dataset.recipe}:portions`;
+  const oldStorageKey = `cookgram:${portionPicker.dataset.recipe}:portions`;
+  let portions = Math.min(max, Math.max(min, Number(localStorage.getItem(storageKey) || localStorage.getItem(oldStorageKey) || base)));
   const renderPortions = () => {
     const factor = portions / base;
     portionPicker.querySelector('output').textContent = portions;
@@ -291,12 +291,12 @@ const showToast = (message, duration = 3200) => {
 // --- Shopping List & Checklist ---
 const checklistEl = document.querySelector('.ingredient-list.checklist');
 if (checklistEl) {
-  const recipeSlug = checklistEl.dataset.recipe;
-  const storageKey = `cookgram:${recipeSlug}:checked`;
+  const storageKey = `cookigram:${recipeSlug}:checked`;
+  const oldStorageKey = `cookgram:${recipeSlug}:checked`;
 
   const getSavedChecked = () => {
     try {
-      return JSON.parse(localStorage.getItem(storageKey) || '[]');
+      return JSON.parse(localStorage.getItem(storageKey) || localStorage.getItem(oldStorageKey) || '[]');
     } catch (_) {
       return [];
     }
@@ -334,6 +334,7 @@ if (checklistEl) {
   const resetBtn = document.querySelector('.reset-checklist');
   resetBtn?.addEventListener('click', () => {
     localStorage.removeItem(storageKey);
+    localStorage.removeItem(oldStorageKey);
     checklistEl.querySelectorAll('.ingredient-item').forEach(item => {
       updateItemState(item, false);
     });
@@ -345,11 +346,12 @@ if (checklistEl) {
   const openModalBtn = document.querySelector('.open-shopping-modal');
   const closeModalBtn = shoppingModal?.querySelector('.modal-close-btn');
 
-  const evalStorageKey = `cookgram:${recipeSlug}:shopping-eval`;
+  const evalStorageKey = `cookigram:${recipeSlug}:shopping-eval`;
+  const oldEvalStorageKey = `cookgram:${recipeSlug}:shopping-eval`;
 
   const getSavedEval = () => {
     try {
-      const stored = localStorage.getItem(evalStorageKey);
+      const stored = localStorage.getItem(evalStorageKey) || localStorage.getItem(oldEvalStorageKey);
       return stored ? JSON.parse(stored) : null;
     } catch (_) {
       return null;
@@ -816,20 +818,21 @@ class RecipeTimer {
 
 const cook = document.querySelector('.cook');
 if (cook) {
-  const steps = [...document.querySelectorAll('.cook-step')];
-  const key = `cookgram:${cook.dataset.recipe}:step`;
-  let current = Math.min(Number(localStorage.getItem(key) || 0), steps.length - 1);
+  const key = `cookigram:${cook.dataset.recipe}:step`;
+  const oldKey = `cookgram:${cook.dataset.recipe}:step`;
+  let current = Math.min(Number(localStorage.getItem(key) || localStorage.getItem(oldKey) || 0), steps.length - 1);
   if (cook.dataset.scalable === 'true') {
     const basePortions = Number(cook.dataset.basePortions);
-    const portions = Number(localStorage.getItem(`cookgram:${cook.dataset.recipe}:portions`) || basePortions);
+    const portions = Number(localStorage.getItem(`cookigram:${cook.dataset.recipe}:portions`) || localStorage.getItem(`cookgram:${cook.dataset.recipe}:portions`) || basePortions);
     const factor = portions / basePortions;
     document.querySelector('.cook-portions').textContent = `${portions} portion${portions > 1 ? 's' : ''}`;
     document.querySelectorAll('[data-scale-text]').forEach(node => node.textContent = scaleText(node.dataset.scaleText, factor));
   }
 
-  const autoSpeakKey = 'cookgram:autospeak';
+  const autoSpeakKey = 'cookigram:autospeak';
+  const oldAutoSpeakKey = 'cookgram:autospeak';
   const autoSpeakBtn = document.querySelector('.auto-speak');
-  let autoSpeakEnabled = localStorage.getItem(autoSpeakKey) === 'true';
+  let autoSpeakEnabled = (localStorage.getItem(autoSpeakKey) || localStorage.getItem(oldAutoSpeakKey)) === 'true';
   if (autoSpeakBtn) {
     if (!('speechSynthesis' in window)) {
       autoSpeakBtn.hidden = true;
@@ -917,11 +920,12 @@ if (cook) {
   steps.forEach((stepEl, stepIdx) => {
     const card = stepEl.querySelector('.substeps-card');
     if (!card) return;
-    const storageKey = `cookgram:${cook.dataset.recipe}:substeps:${stepIdx}`;
+    const storageKey = `cookigram:${cook.dataset.recipe}:substeps:${stepIdx}`;
+    const oldStorageKey = `cookgram:${cook.dataset.recipe}:substeps:${stepIdx}`;
 
     let saved = [];
     try {
-      saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      saved = JSON.parse(localStorage.getItem(storageKey) || localStorage.getItem(oldStorageKey) || '[]');
     } catch (_) {}
     const savedSet = new Set(saved);
 

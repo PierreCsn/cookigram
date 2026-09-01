@@ -7,7 +7,7 @@ def apply_plugins(recipe, plugin_dir: Path) -> None:
     for path in sorted(plugin_dir.glob("*.py")):
         if path.name.startswith("_"):
             continue
-        spec = spec_from_file_location(f"cookgram_plugin_{path.stem}", path)
+        spec = spec_from_file_location(f"cookigram_plugin_{path.stem}", path)
         if not spec or not spec.loader:
             continue
         module = module_from_spec(spec)
