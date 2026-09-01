@@ -136,10 +136,13 @@ if (catalogueSection) {
   };
 
   if (advancedToggleBtn && advancedPanel) {
-    advancedToggleBtn.addEventListener('click', () => {
+    advancedToggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       const isExpanded = advancedToggleBtn.getAttribute('aria-expanded') === 'true';
-      advancedToggleBtn.setAttribute('aria-expanded', String(!isExpanded));
-      advancedPanel.hidden = isExpanded;
+      const nextExpanded = !isExpanded;
+      advancedToggleBtn.setAttribute('aria-expanded', String(nextExpanded));
+      advancedPanel.hidden = !nextExpanded;
+      advancedPanel.classList.toggle('open', nextExpanded);
     });
   }
 

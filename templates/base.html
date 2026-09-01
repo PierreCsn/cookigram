@@ -15,7 +15,7 @@
   </script>
   <meta name="description" content="CookiGram, le carnet de recettes guidées et hors ligne.">
   <link rel="manifest" href="{{ prefix }}manifest.webmanifest">
-  <link rel="stylesheet" href="{{ prefix }}assets/app.css">
+  <link rel="stylesheet" href="{{ prefix }}assets/app.css?v=19">
   <link rel="stylesheet" href="{{ prefix }}assets/scaling.css">
   <link rel="stylesheet" href="{{ prefix }}assets/images.css">
   <title>{% block title %}CookiGram{% endblock %}</title>
@@ -23,6 +23,6 @@
 <body data-prefix="{{ prefix }}">
   {% block body %}{% endblock %}
   <div class="toast" role="status" aria-live="polite" hidden></div>
-  <script src="{{ prefix }}assets/app.js" defer></script>
+  <script src="{{ prefix }}assets/app.js?v=19" defer></script>
 </body>
 </html>
