@@ -1,7 +1,7 @@
 {% set prefix = '../../' %}{% extends "base.html" %}
 {% block title %}{{ recipe.title }} · CookGram{% endblock %}
 {% block body %}
-<header class="topbar"><a class="brand" href="../../"><span>CG</span> CookGram</a></header>
+<header class="topbar"><a class="brand" href="../../"><span>CG</span> CookGram</a><div class="topbar-actions"><button class="theme-toggle" type="button" aria-label="Changer de thème" title="Basculer le mode sombre">🌙</button></div></header>
 <main class="recipe-page">
   <a class="back" href="../../">← Toutes les recettes</a>
   <section class="recipe-heading"><div><div class="tags">{% for tag in recipe.tags %}<span>{{ tag }}</span>{% endfor %}</div><h1>{{ recipe.title }}</h1><p>{{ recipe.description }}</p><div class="facts"><span class="portion-summary">{{ recipe.portions }} portions</span>{% if recipe.prep_time %}<span>Préparation {{ recipe.prep_time }}</span>{% endif %}{% if recipe.total_time %}<span>Total {{ recipe.total_time }}</span>{% endif %}<span>{{ recipe.steps|length }} étapes</span></div>{% if recipe.metadata.source %}<p class="source">Source : <a href="{{ recipe.metadata.source }}" rel="noreferrer">{{ recipe.metadata.author or recipe.metadata.source }}</a></p>{% endif %}</div><div class="plate">{% if recipe.image %}<img src="../../assets/{{ recipe.image }}" alt="Illustration de {{ recipe.title }}">{% else %}{{ recipe.title[:2]|upper }}{% endif %}</div></section>

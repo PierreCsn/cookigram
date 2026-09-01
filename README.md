@@ -15,6 +15,7 @@ pour découvrir la syntaxe complète et son CLI.
 - minuteurs interactifs avec alerte sonore Web Audio, vibration et reprise locale ;
 - synthèse vocale (Web Speech API) des étapes et option de lecture automatique ;
 - maintien de l'écran allumé (Screen Wake Lock) ;
+- thème sombre automatique (Dark Mode) et bascule manuelle instantanée ;
 - PWA avec cache hors ligne ;
 - enrichissement build-time par plugins ;
 - déploiement automatique sur GitHub Pages.

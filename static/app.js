@@ -5,6 +5,51 @@ installButton?.addEventListener('click', async () => { await installPrompt?.prom
 
 if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register(`${document.body.dataset.prefix}sw.js`));
 
+// --- Theme Management ---
+const THEME_KEY = 'cookgram:theme';
+const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+
+const applyTheme = (theme) => {
+  document.documentElement.setAttribute('data-theme', theme);
+  const isDark = theme === 'dark';
+  if (metaThemeColor) {
+    metaThemeColor.setAttribute('content', isDark ? '#161514' : '#fff8ed');
+  }
+  document.querySelectorAll('.theme-toggle').forEach(btn => {
+    btn.textContent = isDark ? '☀️' : '🌙';
+    btn.setAttribute('aria-label', isDark ? 'Passer au thème clair' : 'Passer au thème sombre');
+    btn.setAttribute('title', isDark ? 'Passer au thème clair' : 'Passer au thème sombre');
+  });
+};
+
+const getInitialTheme = () => {
+  const saved = localStorage.getItem(THEME_KEY);
+  if (saved === 'dark' || saved === 'light') return saved;
+  return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+};
+
+let currentTheme = getInitialTheme();
+applyTheme(currentTheme);
+
+if (window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!localStorage.getItem(THEME_KEY)) {
+      currentTheme = e.matches ? 'dark' : 'light';
+      applyTheme(currentTheme);
+    }
+  });
+}
+
+const toggleTheme = () => {
+  currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem(THEME_KEY, currentTheme);
+  applyTheme(currentTheme);
+};
+
+document.querySelectorAll('.theme-toggle').forEach(btn => {
+  btn.addEventListener('click', toggleTheme);
+});
+
 const formatScaled = value => {
   const rounded = Math.round(value * 100) / 100;
   return Number.isInteger(rounded) ? String(rounded) : String(rounded).replace('.', ',');
