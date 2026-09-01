@@ -712,22 +712,29 @@ const hasSpeechSynthesis = 'speechSynthesis' in window && Boolean(window.speechS
 
 const speak = (text, onEnd) => {
   if (!hasSpeechSynthesis) return;
+  const start = () => {
+    window.speechSynthesis.resume();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'fr-FR';
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+    const voices = window.speechSynthesis.getVoices();
+    const frVoice = voices.find(v => v.lang && (v.lang.startsWith('fr') || v.lang.replace('_', '-').startsWith('fr')));
+    if (frVoice) utterance.voice = frVoice;
+    const finish = () => {
+      isSpeaking = false;
+      if (onEnd) onEnd();
+    };
+    utterance.onend = finish;
+    utterance.onerror = () => {
+      finish();
+      showToast('⚠️ Synthèse vocale indisponible sur cet appareil');
+    };
+    window.speechSynthesis.speak(utterance);
+  };
   window.speechSynthesis.cancel();
   isSpeaking = true;
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'fr-FR';
-  utterance.rate = 1.0;
-  utterance.pitch = 1.0;
-  const voices = window.speechSynthesis.getVoices();
-  const frVoice = voices.find(v => v.lang && (v.lang.startsWith('fr') || v.lang.replace('_', '-').startsWith('fr')));
-  if (frVoice) utterance.voice = frVoice;
-  const finish = () => {
-    isSpeaking = false;
-    if (onEnd) onEnd();
-  };
-  utterance.onend = finish;
-  utterance.onerror = finish;
-  window.speechSynthesis.speak(utterance);
+  setTimeout(start, 0);
 };
 
 const stopSpeech = () => {

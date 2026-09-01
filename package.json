@@ -2,11 +2,13 @@
   "name": "cookigram",
   "private": true,
   "description": "Static CookiGram site generator — frontend tooling",
-  "scripts": {
-    "lint": "biome lint static/",
-    "lint:fix": "biome lint --write static/"
+"scripts": {
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "test:e2e": "playwright test"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.11"
+    "@biomejs/biome": "^2.5.11",
+    "@playwright/test": "^1.57.0"
   }
 }

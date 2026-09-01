@@ -22,11 +22,11 @@ Dernier audit : 1er septembre 2026.
 - [x] Vérifier qu'une erreur dans une fonctionnalité n'empêche pas
   l'initialisation des fonctionnalités suivantes (blocs initialisés via
   `initFeature`, gardes `speechSynthesis` fiabilisées).
-- [ ] Ajouter un test navigateur pour modifier le nombre de portions et vérifier
+- [x] Ajouter un test navigateur pour modifier le nombre de portions et vérifier
   le recalcul, les limites min/max et la persistance après rechargement.
-- [ ] Ajouter un test navigateur pour cocher, restaurer et réinitialiser la liste
+- [x] Ajouter un test navigateur pour cocher, restaurer et réinitialiser la liste
   d'ingrédients.
-- [ ] Ajouter un test navigateur pour ouvrir la fenêtre de courses et copier ou
+- [x] Ajouter un test navigateur pour ouvrir la fenêtre de courses et copier ou
   partager la sélection.
 
 > Note (2 sept. 2026) : les variables non déclarées `step`, `recipeSlug` et
@@ -40,11 +40,11 @@ Dernier audit : 1er septembre 2026.
 
 ## P1 — Mettre en place un vrai filet de sécurité
 
-- [ ] Ajouter Playwright, avec une configuration adaptée au site statique.
+- [x] Ajouter Playwright, avec une configuration adaptée au site statique.
 - [ ] Couvrir au minimum les scénarios de bout en bout suivants :
   - [ ] recherche et filtres du catalogue ;
-  - [ ] changement du nombre de portions ;
-  - [ ] checklist et évaluation des courses ;
+  - [x] changement du nombre de portions ;
+  - [x] checklist et évaluation des courses ;
   - [ ] navigation dans le mode cuisine ;
   - [ ] démarrage, pause, reprise et remise à zéro d'un minuteur ;
   - [ ] comportement sans les API optionnelles de voix, partage et Wake Lock ;
