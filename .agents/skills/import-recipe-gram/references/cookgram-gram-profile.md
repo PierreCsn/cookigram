@@ -91,3 +91,23 @@ source: https://example.org/pommes-de-terre
 ## Current compatibility boundary
 
 The official Gram language supports more constructs than CookGram's MVP parser. In particular, treat modules, intermediate variables, relative quantities, named timers, composite ingredients, and advanced calculations as unsupported unless the generator and its tests are updated together.
+
+## Ingredient database matching
+
+Before writing an `@ingredient{}`, inspect `.gram/ingredients.yaml`. Prefer the canonical French name already present in the database. Matching must consider:
+
+- the YAML key, such as `magret-de-canard`;
+- `name`, such as `Magret de canard`;
+- every string in `aliases`.
+
+For a missing ingredient, add a minimal entry alongside the recipe:
+
+```yaml
+ingredients:
+  huile-olive:
+    name: "Huile d'olive"
+    aliases: ["huile d’olive"]
+    category: "Huiles et matières grasses"
+```
+
+Do not add estimated `physical` or `nutrition` blocks merely to make the database look complete.
