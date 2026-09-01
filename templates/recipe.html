@@ -73,6 +73,29 @@
             <span class="stat-name">Lipides</span>
           </div>
         </div>
+        {% if recipe.nutrition.breakdown %}
+        <details class="nutrition-breakdown">
+          <summary class="nutrition-breakdown-toggle">
+            <span>Détail calorique par ingrédient</span>
+            <span class="breakdown-toggle-icon">▾</span>
+          </summary>
+          <ul class="breakdown-list">
+            {% for item in recipe.nutrition.breakdown %}
+            {% if item.calories > 0 %}
+            <li class="breakdown-item">
+              <div class="breakdown-header">
+                <span class="breakdown-name">{{ item.name }}{% if item.quantity %} <small>({{ item.quantity }})</small>{% endif %}</span>
+                <span class="breakdown-calories"><strong>{{ item.calories }} kcal</strong> <small class="breakdown-pct">({{ item.percentage }}%)</small></span>
+              </div>
+              <div class="breakdown-progress">
+                <div class="breakdown-bar" style="width: {{ item.percentage }}%"></div>
+              </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </details>
+        {% endif %}
       </div>
       {% endif %}
     </section>

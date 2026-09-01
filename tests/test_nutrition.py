@@ -36,6 +36,8 @@ def test_nutrition_rendered_in_templates():
     rendered_index = env.get_template("index.html").render(recipes=[curry], all_tags=[])
 
     assert "nutrition-card" in rendered_recipe
+    assert "nutrition-breakdown" in rendered_recipe
+    assert "breakdown-item" in rendered_recipe
     assert "nutrition-tag" in rendered_index
     assert f"{curry.nutrition['calories']} kcal" in rendered_recipe
     assert f"{curry.nutrition['calories']} kcal" in rendered_index

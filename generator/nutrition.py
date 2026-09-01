@@ -134,6 +134,7 @@ def calculate_recipe_nutrition(recipe: Recipe, db_path: Path | None = None) -> d
     total_protein = 0.0
     total_carbs = 0.0
     total_fat = 0.0
+    breakdown_items = []
 
     for item in recipe.ingredients:
         slug = get_ingredient_slug(item.name, database)
@@ -146,18 +147,37 @@ def calculate_recipe_nutrition(recipe: Recipe, db_path: Path | None = None) -> d
         grams = parse_quantity_grams(item.quantity, slug)
         factor = grams / 100.0
 
-        total_calories += nutrition.get("calories", 0.0) * factor
+        item_cal = nutrition.get("calories", 0.0) * factor
+        total_calories += item_cal
         total_protein += nutrition.get("protein", 0.0) * factor
         total_carbs += nutrition.get("carbs", 0.0) * factor
         total_fat += nutrition.get("fat", 0.0) * factor
 
+        breakdown_items.append({
+            "name": item.name,
+            "quantity": item.quantity,
+            "calories_raw": item_cal,
+        })
+
     portions = max(1, recipe.portions)
+
+    formatted_breakdown = []
+    for bi in sorted(breakdown_items, key=lambda x: x["calories_raw"], reverse=True):
+        cals_per_portion = round(bi["calories_raw"] / portions)
+        pct = round((bi["calories_raw"] / total_calories * 100), 1) if total_calories else 0.0
+        formatted_breakdown.append({
+            "name": bi["name"],
+            "quantity": bi["quantity"],
+            "calories": cals_per_portion,
+            "percentage": pct,
+        })
 
     return {
         "calories": round(total_calories / portions),
         "protein": round(total_protein / portions, 1),
         "carbs": round(total_carbs / portions, 1),
         "fat": round(total_fat / portions, 1),
+        "breakdown": formatted_breakdown,
     }
 
 
