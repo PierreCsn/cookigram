@@ -16,3 +16,21 @@ def test_recipe_page_contains_share_button():
     assert "share-btn" in rendered
     assert "recipe-actions" in rendered
     assert "Partager" in rendered
+
+
+def test_recipe_page_contains_shopping_checklist_and_export():
+    recipe = parse_recipe(Path("recipes/magret-rose.gram"))
+    env = Environment(
+        loader=FileSystemLoader(Path("templates")),
+        autoescape=select_autoescape(),
+    )
+    rendered = env.get_template("recipe.html").render(recipe=recipe)
+
+    assert "checklist" in rendered
+    assert "copy-list" in rendered
+    assert "keep-list" in rendered
+    assert "share-list" in rendered
+    assert "reset-checklist" in rendered
+    assert "ingredient-checkbox" in rendered
+    assert "toast" in rendered
+

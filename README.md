@@ -18,6 +18,7 @@ pour découvrir la syntaxe complète et son CLI.
 - maintien de l'écran allumé (Screen Wake Lock) ;
 - thème sombre automatique (Dark Mode) et bascule manuelle instantanée ;
 - partage rapide de recette (Web Share API avec copie dans le presse-papier) ;
+- liste de courses interactive avec export vers Google Keep, partage et copie presse-papier ;
 - PWA avec cache hors ligne ;
 - enrichissement build-time par plugins ;
 - déploiement automatique sur GitHub Pages.

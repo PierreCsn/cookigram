@@ -23,7 +23,29 @@
     </button>
   </div>
   <div class="recipe-grid">
-    <section><h2>Ingrédients</h2><ul class="ingredient-list">{% for item in recipe.ingredients %}<li><span>{{ item.name }}</span><strong data-scale-quantity="{{ item.quantity }}">{{ item.quantity }}</strong></li>{% endfor %}</ul></section>
+    <section class="ingredients-card">
+      <div class="ingredients-header">
+        <h2>Ingrédients</h2>
+        <div class="shopping-toolbar">
+          <button type="button" class="shopping-btn copy-list" title="Copier la liste des courses">📋 Copier</button>
+          <button type="button" class="shopping-btn keep-list" title="Créer une note dans Google Keep">🟡 Keep</button>
+          <button type="button" class="shopping-btn share-list" title="Partager la liste de courses">↗ Partager</button>
+          <button type="button" class="shopping-btn reset-checklist" title="Décocher tous les ingrédients" aria-label="Réinitialiser la liste">↺</button>
+        </div>
+      </div>
+      <p class="shopping-hint"><small>Cochez les ingrédients que vous avez déjà en réserve.</small></p>
+      <ul class="ingredient-list checklist" data-recipe="{{ recipe.slug }}">
+        {% for item in recipe.ingredients %}
+        <li class="ingredient-item">
+          <label class="ingredient-label">
+            <input type="checkbox" class="ingredient-checkbox" data-name="{{ item.name }}">
+            <span class="ingredient-name">{{ item.name }}</span>
+          </label>
+          <strong data-scale-quantity="{{ item.quantity }}">{{ item.quantity }}</strong>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
     <section><h2>Préparation</h2><ol class="steps-preview">{% for step in recipe.steps %}<li><b>{{ step.action }}</b><span data-scale-text="{{ step.text }}">{{ step.text }}</span></li>{% endfor %}</ol></section>
   </div>
 </main>

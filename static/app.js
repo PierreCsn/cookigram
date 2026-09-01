@@ -127,6 +127,155 @@ if (portionPicker) {
   renderPortions();
 }
 
+// --- Global Toast Notification ---
+const toastEl = document.querySelector('.toast');
+let toastTimer = null;
+const showToast = (message, duration = 3200) => {
+  if (!toastEl) return;
+  if (toastTimer) clearTimeout(toastTimer);
+  toastEl.innerHTML = message;
+  toastEl.hidden = false;
+  requestAnimationFrame(() => toastEl.classList.add('visible'));
+  toastTimer = setTimeout(() => {
+    toastEl.classList.remove('visible');
+    setTimeout(() => { toastEl.hidden = true; }, 300);
+  }, duration);
+};
+
+// --- Shopping List & Checklist ---
+const checklistEl = document.querySelector('.ingredient-list.checklist');
+if (checklistEl) {
+  const recipeSlug = checklistEl.dataset.recipe;
+  const storageKey = `cookgram:${recipeSlug}:checked`;
+
+  const getSavedChecked = () => {
+    try {
+      return JSON.parse(localStorage.getItem(storageKey) || '[]');
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const saveChecked = (checkedArray) => {
+    localStorage.setItem(storageKey, JSON.stringify(checkedArray));
+  };
+
+  const updateItemState = (item, isChecked) => {
+    item.classList.toggle('checked', isChecked);
+    const cb = item.querySelector('.ingredient-checkbox');
+    if (cb) cb.checked = isChecked;
+  };
+
+  const savedChecked = new Set(getSavedChecked());
+  checklistEl.querySelectorAll('.ingredient-item').forEach(item => {
+    const cb = item.querySelector('.ingredient-checkbox');
+    const name = cb?.dataset.name || '';
+    const isChecked = savedChecked.has(name);
+    updateItemState(item, isChecked);
+
+    cb?.addEventListener('change', () => {
+      const currentSaved = new Set(getSavedChecked());
+      if (cb.checked) {
+        currentSaved.add(name);
+      } else {
+        currentSaved.delete(name);
+      }
+      saveChecked([...currentSaved]);
+      updateItemState(item, cb.checked);
+    });
+  });
+
+  const resetBtn = document.querySelector('.reset-checklist');
+  resetBtn?.addEventListener('click', () => {
+    localStorage.removeItem(storageKey);
+    checklistEl.querySelectorAll('.ingredient-item').forEach(item => {
+      updateItemState(item, false);
+    });
+    showToast('✓ Checklist réinitialisée');
+  });
+
+  const generateShoppingText = () => {
+    const title = document.querySelector('h1')?.textContent.trim() || 'Recette';
+    const portions = document.querySelector('.portion-summary')?.textContent.trim() || '';
+    const items = [...checklistEl.querySelectorAll('.ingredient-item')];
+
+    const toBuy = [];
+    const inStock = [];
+
+    items.forEach(item => {
+      const name = item.querySelector('.ingredient-name')?.textContent.trim() || '';
+      const qty = item.querySelector('strong')?.textContent.trim() || '';
+      const line = qty ? `${name} : ${qty}` : name;
+      if (item.classList.contains('checked')) {
+        inStock.push(line);
+      } else {
+        toBuy.push(line);
+      }
+    });
+
+    let text = `🛒 Courses · ${title}${portions ? ` (${portions})` : ''}\n\n`;
+
+    if (inStock.length > 0 && toBuy.length > 0) {
+      text += `À acheter :\n${toBuy.map(i => `• ${i}`).join('\n')}\n\n`;
+      text += `Déjà en stock :\n${inStock.map(i => `✓ ${i}`).join('\n')}\n\n`;
+    } else if (inStock.length > 0 && toBuy.length === 0) {
+      text += `Tous les ingrédients sont déjà en stock !\n${inStock.map(i => `✓ ${i}`).join('\n')}\n\n`;
+    } else {
+      text += `Ingrédients :\n${toBuy.map(i => `• ${i}`).join('\n')}\n\n`;
+    }
+
+    text += `Lien : ${window.location.href}`;
+    return text;
+  };
+
+  const copyShoppingList = async () => {
+    const text = generateShoppingText();
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (_) {
+      const temp = document.createElement('textarea');
+      temp.value = text;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+      return true;
+    }
+  };
+
+  const copyListBtn = document.querySelector('.copy-list');
+  copyListBtn?.addEventListener('click', async () => {
+    await copyShoppingList();
+    showToast('📋 Liste copiée dans le presse-papier !');
+  });
+
+  const keepBtn = document.querySelector('.keep-list');
+  keepBtn?.addEventListener('click', async () => {
+    await copyShoppingList();
+    window.open('https://keep.new', '_blank', 'noopener,noreferrer');
+    showToast('🟡 Liste copiée ! Collez-la dans votre note Google Keep (Ctrl+V).', 4500);
+  });
+
+  const shareListBtn = document.querySelector('.share-list');
+  shareListBtn?.addEventListener('click', async () => {
+    const text = generateShoppingText();
+    const title = document.querySelector('h1')?.textContent.trim() || 'Courses';
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: `Courses · ${title}`, text });
+        return;
+      } catch (err) {
+        if (err.name === 'AbortError') return;
+      }
+    }
+
+    await copyShoppingList();
+    showToast('✓ Liste copiée pour partage !');
+  });
+}
+
 // --- Web Audio & Sound synthesis ---
 let audioCtx = null;
 const getAudioContext = () => {
