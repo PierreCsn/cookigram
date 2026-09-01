@@ -12,10 +12,24 @@ description: Poulet doré, jus court au citron et à l'ail.
 tags: [poulet, four, familial]
 source: https://example.org/recipe
 author: Nom affiché sur la source
+scaling:
+  enabled: true
+  min_portions: 2
+  max_portions: 8
+  step: 1
+  note: Les temps de cuisson ne sont pas recalculés.
 ---
 ```
 
 Required for a well-finished recipe: `title`, `portions`, `description`, and `tags`. Add `source` and `author` for an Internet import. Omit `author` when the source does not identify one.
+
+Every recipe must also declare scaling. For a fixed appliance recipe:
+
+```yaml
+scaling:
+  enabled: false
+  reason: "Quantités calibrées pour le bol du Thermomix TM31 ; volume et chauffe non validés à une autre échelle."
+```
 
 ## Steps and actions
 

@@ -70,10 +70,19 @@ def parse_recipe(path: Path) -> Recipe:
                 all_equipment.append(item)
         steps.append(Step(action, _clean(body), timers, temperatures, ingredients, equipment))
 
+    portions = int(metadata.get("portions", 4))
+    scaling = metadata.get("scaling", {})
+    if isinstance(scaling, bool):
+        scaling = {"enabled": scaling}
+    scalable = bool(scaling.get("enabled", True))
+    scaling_note = str(scaling.get("note" if scalable else "reason", "")).strip()
+    if not scalable and not scaling_note:
+        raise ValueError(f"{path}: a non-scalable recipe must declare scaling.reason")
+
     return Recipe(
         slug=path.stem,
         title=title or path.stem.replace("-", " ").title(),
-        portions=int(metadata.get("portions", 4)),
+        portions=portions,
         description=metadata.get("description", ""),
         tags=list(metadata.get("tags", [])),
         image=metadata.get("image", ""),
@@ -81,5 +90,9 @@ def parse_recipe(path: Path) -> Recipe:
         ingredients=list(all_ingredients.values()),
         equipment=all_equipment,
         metadata=metadata,
+        scalable=scalable,
+        min_portions=max(1, int(scaling.get("min_portions", 1))),
+        max_portions=max(portions, int(scaling.get("max_portions", max(12, portions)))),
+        portion_step=max(1, int(scaling.get("step", 1))),
+        scaling_note=scaling_note,
     )
-

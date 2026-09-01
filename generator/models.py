@@ -30,4 +30,8 @@ class Recipe:
     ingredients: list[Ingredient]
     equipment: list[str]
     metadata: dict = field(default_factory=dict)
-
+    scalable: bool = True
+    min_portions: int = 1
+    max_portions: int = 12
+    portion_step: int = 1
+    scaling_note: str = ""

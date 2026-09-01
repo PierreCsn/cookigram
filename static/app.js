@@ -5,11 +5,51 @@ installButton?.addEventListener('click', async () => { await installPrompt?.prom
 
 if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register(`${document.body.dataset.prefix}sw.js`));
 
+const formatScaled = value => {
+  const rounded = Math.round(value * 100) / 100;
+  return Number.isInteger(rounded) ? String(rounded) : String(rounded).replace('.', ',');
+};
+
+const scaleQuantity = (source, factor) => source.replace(/^(\s*)(\d+(?:[.,]\d+)?)/, (_, space, number) => `${space}${formatScaled(Number(number.replace(',', '.')) * factor)}`);
+const scaleText = (source, factor) => source.replace(/\((\d+(?:[.,]\d+)?)\s*([^)]*)\)/g, (_, number, suffix) => `(${formatScaled(Number(number.replace(',', '.')) * factor)}${suffix ? ` ${suffix.trim()}` : ''})`);
+
+const portionPicker = document.querySelector('.portion-picker');
+if (portionPicker) {
+  const base = Number(portionPicker.dataset.basePortions);
+  const min = Number(portionPicker.dataset.min);
+  const max = Number(portionPicker.dataset.max);
+  const step = Number(portionPicker.dataset.step);
+  const storageKey = `cookgram:${portionPicker.dataset.recipe}:portions`;
+  let portions = Math.min(max, Math.max(min, Number(localStorage.getItem(storageKey) || base)));
+  const renderPortions = () => {
+    const factor = portions / base;
+    portionPicker.querySelector('output').textContent = portions;
+    document.querySelector('.portion-summary').textContent = `${portions} portion${portions > 1 ? 's' : ''}`;
+    document.querySelectorAll('[data-scale-quantity]').forEach(node => node.textContent = scaleQuantity(node.dataset.scaleQuantity, factor));
+    document.querySelectorAll('[data-scale-text]').forEach(node => node.textContent = scaleText(node.dataset.scaleText, factor));
+    portionPicker.querySelector('[data-change="-1"]').disabled = portions <= min;
+    portionPicker.querySelector('[data-change="1"]').disabled = portions >= max;
+    localStorage.setItem(storageKey, portions);
+  };
+  portionPicker.querySelectorAll('[data-change]').forEach(button => button.addEventListener('click', () => {
+    portions = Math.min(max, Math.max(min, portions + Number(button.dataset.change) * step));
+    renderPortions();
+  }));
+  renderPortions();
+}
+
 const cook = document.querySelector('.cook');
 if (cook) {
   const steps = [...document.querySelectorAll('.cook-step')];
   const key = `cookgram:${cook.dataset.recipe}:step`;
   let current = Math.min(Number(localStorage.getItem(key) || 0), steps.length - 1);
+  if (cook.dataset.scalable === 'true') {
+    const basePortions = Number(cook.dataset.basePortions);
+    const portions = Number(localStorage.getItem(`cookgram:${cook.dataset.recipe}:portions`) || basePortions);
+    const factor = portions / basePortions;
+    document.querySelector('.cook-portions').textContent = `${portions} portion${portions > 1 ? 's' : ''}`;
+    document.querySelectorAll('[data-scale-text]').forEach(node => node.textContent = scaleText(node.dataset.scaleText, factor));
+  }
   const render = () => {
     steps.forEach((step, index) => step.classList.toggle('active', index === current));
     document.querySelector('.progress i').style.width = `${((current + 1) / steps.length) * 100}%`;

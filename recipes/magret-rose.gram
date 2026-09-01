@@ -3,6 +3,12 @@ title: Magret de canard rosé
 portions: 3
 description: Une cuisson précise, avec peau croustillante et cœur rosé.
 tags: [canard, four, repas]
+scaling:
+  enabled: true
+  min_portions: 1
+  max_portions: 8
+  step: 1
+  note: Les temps de cuisson dépendent surtout de l'épaisseur des magrets et ne sont pas recalculés.
 ---
 
 ## Magret de canard rosé
@@ -18,4 +24,3 @@ tags: [canard, four, repas]
 [Enfourner] Placer les magrets au #four{} pendant ~{6 min} à ^{180 C}.
 
 [Reposer] Couvrir sans serrer et laisser reposer ~{5 min} avant de trancher.
-

@@ -62,6 +62,21 @@ Updating `.gram/ingredients.yaml` is part of the recipe import, not an optional 
 
 When the CLI is unavailable, add the missing minimal entries manually. A valid minimal entry contains `name`; aliases and category are optional. Never postpone missing database entries to an unspecified later task.
 
+For physical or nutritional values, also read `.gram/ingredient-provenance.yaml`. Prefer CIQUAL/ANSES for generic foods used in France. Use Open Food Facts only for an identified branded product and treat its community data as an estimate. Every populated estimate must have a source entry and one of these statuses:
+
+- `estimated`: sourced approximation not reviewed by a human;
+- `verified`: value checked by a human against the cited source;
+- `manual`: value deliberately chosen by a human;
+- `incomplete`: no usable value yet.
+
+`locked: true` means a human owns the values in `.gram/ingredients.yaml`. Never overwrite or “improve” a locked entry automatically. A human may set any Gram-valid value directly in `ingredients.yaml`, then record `status: manual`, `locked: true`, and an explanatory note in the provenance file. The provenance sidecar is project metadata; Gram continues to consume only `ingredients.yaml`.
+
+## Decide whether portions can scale
+
+Every imported recipe must declare a `scaling` block. Use `enabled: true` only when multiplying ingredient quantities is meaningful, and define `min_portions`, `max_portions`, `step`, and a note explaining which timings do not scale. Use `enabled: false` with a concrete `reason` when vessel capacity, appliance programs, emulsion ratios, fermentation geometry, or another precision constraint makes automatic scaling unsafe or misleading.
+
+Do not assume every Thermomix recipe is fixed, but treat bowl capacity, minimum mixing volume, blade coverage, heating behavior, and model-specific guided programs as reasons to assess it carefully. When unsure, mark the recipe fixed instead of presenting unverified scaled quantities.
+
 ## Validate
 
 Run the repository checks from its root:

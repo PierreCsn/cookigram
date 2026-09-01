@@ -4,12 +4,20 @@
 <header class="topbar"><a class="brand" href="../../"><span>CG</span> CookGram</a></header>
 <main class="recipe-page">
   <a class="back" href="../../">← Toutes les recettes</a>
-  <section class="recipe-heading"><div><div class="tags">{% for tag in recipe.tags %}<span>{{ tag }}</span>{% endfor %}</div><h1>{{ recipe.title }}</h1><p>{{ recipe.description }}</p><div class="facts"><span>{{ recipe.portions }} portions</span><span>{{ recipe.steps|length }} étapes</span></div></div><div class="plate">{{ recipe.title[:2]|upper }}</div></section>
+  <section class="recipe-heading"><div><div class="tags">{% for tag in recipe.tags %}<span>{{ tag }}</span>{% endfor %}</div><h1>{{ recipe.title }}</h1><p>{{ recipe.description }}</p><div class="facts"><span class="portion-summary">{{ recipe.portions }} portions</span><span>{{ recipe.steps|length }} étapes</span></div></div><div class="plate">{{ recipe.title[:2]|upper }}</div></section>
+  {% if recipe.scalable %}
+  <section class="portion-picker" data-base-portions="{{ recipe.portions }}" data-min="{{ recipe.min_portions }}" data-max="{{ recipe.max_portions }}" data-step="{{ recipe.portion_step }}" data-recipe="{{ recipe.slug }}">
+    <div><small>Adapter les quantités</small><strong>Nombre de portions</strong></div>
+    <div class="portion-controls"><button type="button" data-change="-1" aria-label="Retirer des portions">−</button><output>{{ recipe.portions }}</output><button type="button" data-change="1" aria-label="Ajouter des portions">+</button></div>
+    <p>{{ recipe.scaling_note or "Les quantités sont recalculées ; les durées et températures restent à vérifier." }}</p>
+  </section>
+  {% else %}
+  <aside class="scaling-locked"><b>Recette à proportions fixes</b><span>{{ recipe.scaling_note or "Cette recette ne doit pas être redimensionnée automatiquement." }}</span></aside>
+  {% endif %}
   <a class="primary" href="cook/">Commencer la recette <span>→</span></a>
   <div class="recipe-grid">
-    <section><h2>Ingrédients</h2><ul class="ingredient-list">{% for item in recipe.ingredients %}<li><span>{{ item.name }}</span><strong>{{ item.quantity }}</strong></li>{% endfor %}</ul></section>
-    <section><h2>Préparation</h2><ol class="steps-preview">{% for step in recipe.steps %}<li><b>{{ step.action }}</b><span>{{ step.text }}</span></li>{% endfor %}</ol></section>
+    <section><h2>Ingrédients</h2><ul class="ingredient-list">{% for item in recipe.ingredients %}<li><span>{{ item.name }}</span><strong data-scale-quantity="{{ item.quantity }}">{{ item.quantity }}</strong></li>{% endfor %}</ul></section>
+    <section><h2>Préparation</h2><ol class="steps-preview">{% for step in recipe.steps %}<li><b>{{ step.action }}</b><span data-scale-text="{{ step.text }}">{{ step.text }}</span></li>{% endfor %}</ol></section>
   </div>
 </main>
 {% endblock %}
-
