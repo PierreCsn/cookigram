@@ -125,6 +125,60 @@ CIQUAL_NUTRITION_PER_100G: dict[str, dict[str, float]] = {
 }
 
 
+# Unicode fraction glyphs (½, ¼, ...) sometimes found in handwritten quantities.
+UNICODE_FRACTION_VALUES = {
+    "¼": 0.25,
+    "½": 0.5,
+    "¾": 0.75,
+    "⅓": 1 / 3,
+    "⅔": 2 / 3,
+    "⅛": 1 / 8,
+    "⅜": 3 / 8,
+    "⅝": 5 / 8,
+    "⅞": 7 / 8,
+}
+
+MIXED_NUMBER_CHARS = "0-9.,/ \t¼½¾⅓⅔⅛⅜⅝⅞"
+
+
+def parse_value_token(token: str) -> float | None:
+    """Parses a quantity token: '2', '0,5', '1/2', '1 1/2' or '1½'.
+
+    Returns None when the token contains anything but a valid quantity.
+    """
+    token = token.strip()
+    if not token:
+        return None
+    for char, value in UNICODE_FRACTION_VALUES.items():
+        if char in token:
+            whole = token.replace(char, "").strip()
+            if not whole:
+                return value
+            if re.fullmatch(r"\d+(?:[.,]\d+)?", whole):
+                return float(whole.replace(",", ".")) + value
+            return None
+    total = 0.0
+    for part in token.split():
+        part = part.replace(",", ".")
+        if "/" in part:
+            numerator, _, denominator = part.partition("/")
+            if not re.fullmatch(r"\d+(?:\.\d+)?", numerator) or not re.fullmatch(r"\d+(?:\.\d+)?", denominator):
+                return None
+            total += float(numerator) / float(denominator)
+        elif re.fullmatch(r"\d+(?:\.\d+)?", part):
+            total += float(part)
+        else:
+            return None
+    return total
+
+
+def _quantity_with_unit(raw: str, unit_pattern: str) -> float | None:
+    m = re.search(rf"([{MIXED_NUMBER_CHARS}]+?)\s*{unit_pattern}", raw, re.IGNORECASE)
+    if not m:
+        return None
+    return parse_value_token(m.group(1))
+
+
 def parse_quantity_grams(quantity_str: str, ingredient_slug: str = "") -> float:
     """Estimates the weight in grams from a human-readable Gram quantity string."""
     if not quantity_str:
@@ -132,57 +186,31 @@ def parse_quantity_grams(quantity_str: str, ingredient_slug: str = "") -> float:
 
     raw = quantity_str.lower().strip()
 
-    # Direct grams: "800 g", "200g"
-    m_g = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:g|gr)\b", raw)
-    if m_g:
-        return float(m_g.group(1).replace(",", "."))
+    # Unit-based quantities. Kilogram before gram, milliliter/centiliter before liter,
+    # so "1.5 kg", "270 ml" and "25 cl" never fall into a shorter unit pattern.
+    if (value := _quantity_with_unit(raw, r"(?:kg)\b")) is not None:
+        return value * 1000.0
+    if (value := _quantity_with_unit(raw, r"(?:ml)\b")) is not None:
+        return value
+    if (value := _quantity_with_unit(raw, r"(?:cl)\b")) is not None:
+        return value * 10.0
+    if (value := _quantity_with_unit(raw, r"(?:l)\b")) is not None:
+        return value * 1000.0
+    if (value := _quantity_with_unit(raw, r"(?:g|gr)\b")) is not None:
+        return value
 
-    # Kilograms: "1.2 kg"
-    m_kg = re.search(r"(\d+(?:[.,]\d+)?)\s*kg\b", raw)
-    if m_kg:
-        return float(m_kg.group(1).replace(",", ".")) * 1000.0
+    # Spoons, pinches, cloves: per-species proxies (~15 g, ~5 g, ~0.5 g, ~5 g).
+    if (value := _quantity_with_unit(raw, r"(?:c\.\s*à\s*soupe|cuill[èe]res?\s*à\s*soupe)")) is not None:
+        return value * 15.0
+    if (value := _quantity_with_unit(raw, r"(?:c\.\s*à\s*caf[ée]|cuill[èe]res?\s*à\s*caf[ée])")) is not None:
+        return value * 5.0
+    if (value := _quantity_with_unit(raw, r"pinc[ée]es?")) is not None:
+        return value * 0.5
+    if (value := _quantity_with_unit(raw, r"gousses?")) is not None:
+        return value * 5.0
 
-    # Milliliters: "270 ml"
-    m_ml = re.search(r"(\d+(?:[.,]\d+)?)\s*ml\b", raw)
-    if m_ml:
-        return float(m_ml.group(1).replace(",", "."))
-
-    # Centiliters: "25 cl"
-    m_cl = re.search(r"(\d+(?:[.,]\d+)?)\s*cl\b", raw)
-    if m_cl:
-        return float(m_cl.group(1).replace(",", ".")) * 10.0
-
-    # Liters: "1 l"
-    m_l = re.search(r"(\d+(?:[.,]\d+)?)\s*l\b", raw)
-    if m_l:
-        return float(m_l.group(1).replace(",", ".")) * 1000.0
-
-    # Tablespoons (c. à soupe ~ 15g)
-    m_cs = re.search(r"(\d+(?:[.,]\d+)?|\d+/\d+)\s*(?:c\.\s*à\s*soupe|cuill[èe]res?\s*à\s*soupe)", raw)
-    if m_cs:
-        val = eval_fraction(m_cs.group(1))
-        return val * 15.0
-
-    # Teaspoons (c. à café ~ 5g)
-    m_cc = re.search(r"(\d+(?:[.,]\d+)?|\d+/\d+)\s*(?:c\.\s*à\s*caf[ée]|cuill[èe]res?\s*à\s*caf[ée])", raw)
-    if m_cc:
-        val = eval_fraction(m_cc.group(1))
-        return val * 5.0
-
-    # Pinches (pincée ~ 0.5g)
-    m_pinc = re.search(r"(\d+)\s*pinc[ée]es?", raw)
-    if m_pinc:
-        return float(m_pinc.group(1)) * 0.5
-
-    # Cloves (gousse ~ 5g)
-    m_gousse = re.search(r"(\d+)\s*gousses?", raw)
-    if m_gousse:
-        return float(m_gousse.group(1)) * 5.0
-
-    # Pure count: e.g. "3" for magrets (~350g each)
-    m_num = re.match(r"^(\d+(?:[.,]\d+)?)$", raw)
-    if m_num:
-        count = float(m_num.group(1).replace(",", "."))
+    # Pure count: e.g. "3" for magrets (~350 g each).
+    if re.fullmatch(f"[{MIXED_NUMBER_CHARS}]+", raw) and (count := parse_value_token(raw)) is not None:
         if "magret" in ingredient_slug:
             return count * 350.0
         if "echalote" in ingredient_slug:
@@ -195,11 +223,9 @@ def parse_quantity_grams(quantity_str: str, ingredient_slug: str = "") -> float:
 
 
 def eval_fraction(token: str) -> float:
-    token = token.replace(",", ".")
-    if "/" in token:
-        parts = token.split("/")
-        return float(parts[0]) / float(parts[1])
-    return float(token)
+    """Backwards-compatible single-token parser (decimal or plain fraction)."""
+    value = parse_value_token(token)
+    return float(value) if value is not None else 0.0
 
 
 def get_ingredient_slug(ingredient_name: str, database: dict) -> str:
@@ -247,11 +273,13 @@ def calculate_recipe_nutrition(recipe: Recipe, db_path: Path | None = None) -> d
         total_carbs += nutrition.get("carbs", 0.0) * factor
         total_fat += nutrition.get("fat", 0.0) * factor
 
-        breakdown_items.append({
-            "name": item.name,
-            "quantity": item.quantity,
-            "calories_raw": item_cal,
-        })
+        breakdown_items.append(
+            {
+                "name": item.name,
+                "quantity": item.quantity,
+                "calories_raw": item_cal,
+            }
+        )
 
     portions = max(1, recipe.portions)
 
@@ -259,12 +287,14 @@ def calculate_recipe_nutrition(recipe: Recipe, db_path: Path | None = None) -> d
     for bi in sorted(breakdown_items, key=lambda x: x["calories_raw"], reverse=True):
         cals_per_portion = round(bi["calories_raw"] / portions)
         pct = round((bi["calories_raw"] / total_calories * 100), 1) if total_calories else 0.0
-        formatted_breakdown.append({
-            "name": bi["name"],
-            "quantity": bi["quantity"],
-            "calories": cals_per_portion,
-            "percentage": pct,
-        })
+        formatted_breakdown.append(
+            {
+                "name": bi["name"],
+                "quantity": bi["quantity"],
+                "calories": cals_per_portion,
+                "percentage": pct,
+            }
+        )
 
     return {
         "calories": round(total_calories / portions),
@@ -302,16 +332,16 @@ def enrich_ingredient_database(
             }
 
     # Re-write ingredients.yaml
-    ing_header = (
-        "# Base locale CookiGram enrichie avec les données nutritionnelles ANSES CIQUAL.\n"
+    ing_header = "# Base locale CookiGram enrichie avec les données nutritionnelles ANSES CIQUAL.\n"
+    ingredients_path.write_text(
+        ing_header + yaml.safe_dump(ing_data, sort_keys=False, allow_unicode=True), encoding="utf-8"
     )
-    ingredients_path.write_text(ing_header + yaml.safe_dump(ing_data, sort_keys=False, allow_unicode=True), encoding="utf-8")
 
     # Re-write ingredient-provenance.yaml
-    prov_header = (
-        "# Suivi de la provenance des ingrédients et niveaux de confiance.\n"
+    prov_header = "# Suivi de la provenance des ingrédients et niveaux de confiance.\n"
+    provenance_path.write_text(
+        prov_header + yaml.safe_dump(prov_data, sort_keys=False, allow_unicode=True), encoding="utf-8"
     )
-    provenance_path.write_text(prov_header + yaml.safe_dump(prov_data, sort_keys=False, allow_unicode=True), encoding="utf-8")
 
 
 if __name__ == "__main__":

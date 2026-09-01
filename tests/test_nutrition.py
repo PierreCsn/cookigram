@@ -10,10 +10,19 @@ def test_parse_quantity_grams():
     assert parse_quantity_grams("800 g") == 800.0
     assert parse_quantity_grams("1.5 kg") == 1500.0
     assert parse_quantity_grams("250 ml") == 250.0
+    assert parse_quantity_grams("25 cl") == 250.0
+    assert parse_quantity_grams("0,5 l") == 500.0
     assert parse_quantity_grams("2 c. à soupe") == 30.0
     assert parse_quantity_grams("1 c. à café") == 5.0
     assert parse_quantity_grams("2 pincées") == 1.0
     assert parse_quantity_grams("3", "magrets-de-canard") == 1050.0
+
+
+def test_parse_quantity_mixed_fractions():
+    assert parse_quantity_grams("1 1/2 c. à café") == 7.5
+    assert parse_quantity_grams("1/2 c. à café") == 2.5
+    assert parse_quantity_grams("1 1/2 c. à soupe") == 22.5
+    assert parse_quantity_grams("2 1/4 pincées") == 1.125
 
 
 def test_calculate_recipe_nutrition():

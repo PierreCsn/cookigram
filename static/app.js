@@ -26,7 +26,7 @@ const applyTheme = (theme) => {
 const getInitialTheme = () => {
   const saved = localStorage.getItem(THEME_KEY) || localStorage.getItem(OLD_THEME_KEY);
   if (saved === 'dark' || saved === 'light') return saved;
-  return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  return (window.matchMedia?.('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
 };
 
 let currentTheme = getInitialTheme();
@@ -163,7 +163,7 @@ if (catalogueSection) {
 
   clearAdvancedBtn?.addEventListener('click', () => {
     activeAdvancedTags.clear();
-    advChips.forEach(c => c.classList.remove('active'));
+    advChips.forEach(c => { c.classList.remove('active'); });
     updateAdvancedUI();
     filterCatalogue();
   });
@@ -222,7 +222,7 @@ if (catalogueSection) {
 
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
-      chips.forEach(c => c.classList.remove('active'));
+      chips.forEach(c => { c.classList.remove('active'); });
       chip.classList.add('active');
       activeTag = chip.dataset.tag;
       filterCatalogue();
@@ -232,21 +232,72 @@ if (catalogueSection) {
   resetSearchBtn?.addEventListener('click', () => {
     if (searchInput) searchInput.value = '';
     activeTag = 'all';
-    chips.forEach(c => c.classList.toggle('active', c.dataset.tag === 'all'));
+    chips.forEach(c => { c.classList.toggle('active', c.dataset.tag === 'all'); });
     activeAdvancedTags.clear();
-    advChips.forEach(c => c.classList.remove('active'));
+    advChips.forEach(c => { c.classList.remove('active'); });
     updateAdvancedUI();
     filterCatalogue();
   });
 }
 
-const formatScaled = value => {
-  const rounded = Math.round(value * 100) / 100;
-  return Number.isInteger(rounded) ? String(rounded) : String(rounded).replace('.', ',');
+const parseQuantityValue = raw => {
+  const parts = String(raw).trim().split(/\s+/);
+  let total = 0;
+  for (const part of parts) {
+    if (!part) continue;
+    const p = part.replace(',', '.');
+    if (p.includes('/')) {
+      const [n, d] = p.split('/');
+      if (!/^\d+(\.\d+)?$/.test(n) || !/^\d+(\.\d+)?$/.test(d)) return NaN;
+      total += Number(n) / Number(d);
+    } else if (/^\d+(\.\d+)?$/.test(p)) {
+      total += Number(p);
+    } else {
+      return NaN;
+    }
+  }
+  return total;
 };
 
-const scaleQuantity = (source, factor) => source.replace(/^(\s*)(\d+(?:[.,]\d+)?)/, (_, space, number) => `${space}${formatScaled(Number(number.replace(',', '.')) * factor)}`);
-const scaleText = (source, factor) => source.replace(/\((\d+(?:[.,]\d+)?)\s*([^)]*)\)/g, (_, number, suffix) => `(${formatScaled(Number(number.replace(',', '.')) * factor)}${suffix ? ` ${suffix.trim()}` : ''})`);
+// A leading quantity expression: "800", "0,5", "1/2" or "1 1/2".
+const QUANTITY_TOKEN = /(\d+(?:[.,]\d+)?(?:(?:\s+\d+)?\s*\/\s*\d+)?)/;
+const parseQuantity = raw => {
+  const value = parseQuantityValue(String(raw));
+  return Number.isFinite(value) ? value : null;
+};
+
+const formatScaled = value => {
+  const rounded = Math.round(value * 100) / 100;
+  if (Number.isInteger(rounded)) return String(rounded);
+  const whole = Math.floor(rounded);
+  const frac = rounded - whole;
+  // Keep fractions for small cooking quantities ("1 1/2", "3/4"), decimals
+  // otherwise ("37,5 cl") where a mixed number would be harder to read.
+  if (whole < 10) {
+    for (let d = 2; d <= 4; d += 1) {
+      for (let n = 1; n < d; n += 1) {
+        if (Math.abs(frac - n / d) < 0.01) {
+          return whole > 0 ? `${whole} ${n}/${d}` : `${n}/${d}`;
+        }
+      }
+    }
+  }
+  return String(rounded).replace('.', ',');
+};
+
+// Scales the leading quantity and any "sur <total>" occurrences of an ingredient
+// quantity string, leaving prep directives such as "en morceaux de 2 cm" untouched.
+const scaleIngredientText = (text, factor) => {
+  let scaled = String(text).replace(QUANTITY_TOKEN, token => formatScaled(parseQuantity(token) * factor));
+  scaled = scaled.replace(
+    /,\s*(sur\s+)(\d+(?:[.,]\d+)?(?:(?:\s+\d+)?\s*\/\s*\d+)?)/gi,
+    (_, keyword, token) => `, ${keyword}${formatScaled(parseQuantity(token) * factor)}`
+  );
+  return scaled;
+};
+const scaleQuantity = (source, factor) => scaleIngredientText(source || '', factor);
+const scaleText = (source, factor) =>
+  String(source || '').replace(/\(([^)]*)\)/g, (_, content) => `(${scaleIngredientText(content, factor)})`);
 
 const portionPicker = document.querySelector('.portion-picker');
 if (portionPicker) {
@@ -260,16 +311,22 @@ if (portionPicker) {
     const factor = portions / base;
     portionPicker.querySelector('output').textContent = portions;
     document.querySelector('.portion-summary').textContent = `${portions} portion${portions > 1 ? 's' : ''}`;
-    document.querySelectorAll('[data-scale-quantity]').forEach(node => node.textContent = scaleQuantity(node.dataset.scaleQuantity, factor));
-    document.querySelectorAll('[data-scale-text]').forEach(node => node.textContent = scaleText(node.dataset.scaleText, factor));
+    document.querySelectorAll('[data-scale-quantity]').forEach(node => {
+      node.textContent = scaleQuantity(node.dataset.scaleQuantity, factor);
+    });
+    document.querySelectorAll('[data-scale-text]').forEach(node => {
+      node.textContent = scaleText(node.dataset.scaleText, factor);
+    });
     portionPicker.querySelector('[data-change="-1"]').disabled = portions <= min;
     portionPicker.querySelector('[data-change="1"]').disabled = portions >= max;
     localStorage.setItem(storageKey, portions);
   };
-  portionPicker.querySelectorAll('[data-change]').forEach(button => button.addEventListener('click', () => {
-    portions = Math.min(max, Math.max(min, portions + Number(button.dataset.change) * step));
-    renderPortions();
-  }));
+  portionPicker.querySelectorAll('[data-change]').forEach(button => {
+    button.addEventListener('click', () => {
+      portions = Math.min(max, Math.max(min, portions + Number(button.dataset.change) * step));
+      renderPortions();
+    });
+  });
   renderPortions();
 }
 
@@ -826,7 +883,9 @@ if (cook) {
     const portions = Number(localStorage.getItem(`cookigram:${cook.dataset.recipe}:portions`) || localStorage.getItem(`cookgram:${cook.dataset.recipe}:portions`) || basePortions);
     const factor = portions / basePortions;
     document.querySelector('.cook-portions').textContent = `${portions} portion${portions > 1 ? 's' : ''}`;
-    document.querySelectorAll('[data-scale-text]').forEach(node => node.textContent = scaleText(node.dataset.scaleText, factor));
+    document.querySelectorAll('[data-scale-text]').forEach(node => {
+      node.textContent = scaleText(node.dataset.scaleText, factor);
+    });
   }
 
   const autoSpeakKey = 'cookigram:autospeak';
@@ -875,7 +934,7 @@ if (cook) {
     const substepsTexts = [...activeStep.querySelectorAll('.substep-text')].map(el => el.textContent.trim());
     const stepNum = current + 1;
 
-    let speechParts = [`Étape ${stepNum} sur ${steps.length}. ${action}.`];
+    const speechParts = [`Étape ${stepNum} sur ${steps.length}. ${action}.`];
     if (instruction) speechParts.push(instruction);
     if (substepsTexts.length > 0) {
       speechParts.push(substepsTexts.join('. '));
@@ -1092,7 +1151,7 @@ if (cook) {
       case 'stop':
         showVoiceFeedback(`✓ Commande : <em>« Arrêt »</em>`);
         stopStepSpeaking();
-        timers.forEach(t => t.stopAlarmOnly());
+        timers.forEach(t => { t.stopAlarmOnly(); });
         break;
     }
   };
@@ -1163,7 +1222,7 @@ if (cook) {
 
   const render = () => {
     stopStepSpeaking();
-    steps.forEach((step, index) => step.classList.toggle('active', index === current));
+    steps.forEach((step, index) => { step.classList.toggle('active', index === current); });
     document.querySelector('.progress i').style.width = `${((current + 1) / steps.length) * 100}%`;
     document.querySelector('.prev').disabled = current === 0;
     document.querySelector('.next').textContent = current === steps.length - 1 ? 'Terminer ✓' : 'Suivant →';
@@ -1184,7 +1243,7 @@ if (cook) {
       render();
     } else {
       stopStepSpeaking();
-      timers.forEach(t => t.stopAlarmOnly());
+      timers.forEach(t => { t.stopAlarmOnly(); });
       if (voiceCmdActive && recognition) {
         voiceCmdActive = false;
         try { recognition.stop(); } catch (_) {}
