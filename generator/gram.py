@@ -18,7 +18,7 @@ ACTION = re.compile(r"^\[([^]]+)]\s*(.*)$")
 SUBSTEP = re.compile(r"^[-*]\s+(.+)$")
 INGREDIENT = re.compile(r"@([^@{}]+)\{([^}]*)}")
 EQUIPMENT = re.compile(r"#([^#{}]+)\{[^}]*}")
-TIMER = re.compile(r"~(?:_[\w-]+)?\{\s*(\d+(?:[.,]\d+)?)\s*(s|sec|m|min|h)\s*}", re.I)
+TIMER = re.compile(r"~(?:_[\w-]+)?\{\s*(\d+(?:[.,]\d+)?)\s*(s|sec|m|min|h)\s*}", re.IGNORECASE)
 TEMPERATURE = re.compile(r"\^\{\s*([^}]+)\s*}")
 
 

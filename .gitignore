@@ -1,5 +1,8 @@
 _site/
 __pycache__/
 .pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 .venv/
 *.egg-info/

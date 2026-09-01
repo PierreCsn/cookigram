@@ -9,7 +9,6 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from .gram import parse_recipe
 from .plugins import apply_plugins
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 

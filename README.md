@@ -1,42 +1,55 @@
-# CookGram
+# CookGram 🍳
 
-Carnet de recettes statique et installable, généré depuis des fichiers `.gram`.
+[![CI](https://github.com/PierreCsn/cookigram/actions/workflows/ci.yml/badge.svg)](https://github.com/PierreCsn/cookigram/actions/workflows/ci.yml)
+[![Deploy GitHub Pages](https://github.com/PierreCsn/cookigram/actions/workflows/pages.yml/badge.svg)](https://pierrecsn.github.io/cookigram/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)](pyproject.toml)
+[![Gram Language](https://img.shields.io/badge/Gram-Gram%20Language-orange.svg)](https://gram-lang.org)
 
-Le projet utilise [Gram](https://gram-lang.org/fr/), un langage open source
-conçu pour écrire des recettes structurées, calculables et versionnables avec
-Git. Consultez la [documentation officielle de Gram](https://gram-lang.org/fr/docs/)
-pour découvrir la syntaxe complète et son CLI.
+Carnet de recettes statique, moderne et installable (PWA), propulsé par des fichiers culinaires `.gram`.
 
-## Fonctionnalités du MVP
+> 🌐 **Démo en direct :** [https://pierrecsn.github.io/cookigram/](https://pierrecsn.github.io/cookigram/)  
+> 🇬🇧 **English documentation:** [README.en.md](README.en.md) | 🤝 **Contribuer :** [CONTRIBUTING.md](CONTRIBUTING.md)
 
-- catalogue responsive ;
-- recherche instantanée et filtres par catégories sur le catalogue ;
-- fiche recette et mode cuisson étape par étape ;
-- temps de préparation et durée totale ;
-- minuteurs interactifs avec alerte sonore Web Audio, vibration et reprise locale ;
-- synthèse vocale (Web Speech API) des étapes et option de lecture automatique ;
-- commande vocale mains libres (Speech Recognition) pour piloter la recette sans toucher l'écran ;
-- maintien de l'écran allumé (Screen Wake Lock) ;
-- thème sombre automatique (Dark Mode) et bascule manuelle instantanée ;
-- partage rapide de recette (Web Share API avec copie dans le presse-papier) ;
-- liste de courses interactive avec export vers Google Keep, partage et copie presse-papier ;
-- calcul automatique et affichage des valeurs nutritionnelles par portion (calories, protéines, glucides, lipides basés sur ANSES CIQUAL) ;
-- PWA avec cache hors ligne ;
-- enrichissement build-time par plugins ;
-- déploiement automatique sur GitHub Pages.
+Le projet utilise [Gram](https://gram-lang.org/fr/), un langage open source conçu pour écrire des recettes structurées, calculables et versionnables avec Git. Consultez la [documentation officielle de Gram](https://gram-lang.org/fr/docs/) pour découvrir la syntaxe complète et son écosystème.
 
-## Développement
+## Fonctionnalités clés
+
+- 📱 **PWA Offline-first** : consultable partout, sans connexion réseau, installable sur mobile & bureau ;
+- 🍳 **Mode cuisine guidée pas-à-pas** : étapes grand format avec sous-étapes cochables interactives ;
+- 🎙️ **Commande vocale mains libres** : pilotez la recette (« *suivant* », « *précédent* », « *minuteur* ») sans toucher l'écran ;
+- 🗣️ **Synthèse vocale intégrée** : lecture audio des instructions avec synthèse vocale naturelle du navigateur ;
+- ⏱️ **Minuteurs multiples** : alertes sonores Web Audio, vibrations et reprise locale ;
+- 🛒 **Évaluation intelligente des courses** : filtre le fond de placard, calcule les rayons et exporte directement vers **Google Keep** ;
+- 📊 **Analyse nutritionnelle CIQUAL** : calcul automatique des calories et macronutriments (protéines, glucides, lipides) par portion ;
+- 🤖 **Réglages pour robots culinaires (Thermomix)** : badges visuels compacts avec temps, température, vitesse et sens inverse ;
+- 🌙 **Thème sombre & clair** : adaptation automatique aux préférences système ou bascule manuelle instantanée ;
+- 🔒 **Maintien de l'écran allumé (Wake Lock)** : évite la mise en veille de l'écran pendant la cuisine.
+
+## Démarrage rapide et développement
 
 ```bash
+# 1. Cloner le dépôt et configurer l'environnement virtuel
+git clone https://github.com/PierreCsn/cookigram.git
+cd cookigram
 python -m venv .venv
-. .venv/bin/activate
+source .venv/bin/activate  # ou .venv\Scripts\activate sous Windows
+
+# 2. Installer les dépendances (avec outils de dev)
 pip install -e '.[dev]'
+
+# 3. Lancer les tests et la vérification du code
+pytest --cov=generator
+ruff check generator tests
+
+# 4. Construire le site statique
 python -m generator.build
-python -m pytest -q
+
+# 5. Prévisualiser localement
 python -m http.server 8000 -d _site
 ```
 
-Ouvrir `http://localhost:8000`. Les recettes sont dans `recipes/`.
+Ouvrir [http://localhost:8000](http://localhost:8000) dans votre navigateur. Les recettes se trouvent dans `recipes/`.
 
 ## Base d'ingrédients Gram
 
