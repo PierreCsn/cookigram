@@ -1,7 +1,7 @@
 [project]
-name = "cookgram"
+name = "cookigram"
 version = "0.1.0"
-description = "Carnet de recettes Gram, PWA statique et mode cuisson guidée"
+description = "Carnet de recettes Gram, PWA statique et mode cuisson guidée CookiGram"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.11"

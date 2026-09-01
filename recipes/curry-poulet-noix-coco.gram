@@ -18,7 +18,7 @@ appliances:
   thermomix: [TM5, TM6, TM7]
 scaling:
   enabled: false
-  reason: Cookidoo propose des variantes calibrées pour 4, 6 et 8 portions, avec des quantités et réglages qui ne suivent pas tous une règle linéaire. CookGram conserve ici la version 4 portions jusqu'à la prise en charge de ces variantes.
+  reason: Cookidoo propose des variantes calibrées pour 4, 6 et 8 portions, avec des quantités et réglages qui ne suivent pas tous une règle linéaire. CookiGram conserve ici la version 4 portions jusqu'à la prise en charge de ces variantes.
 ---
 
 ## Curry de poulet à la noix de coco

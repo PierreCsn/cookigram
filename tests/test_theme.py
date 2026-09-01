@@ -19,4 +19,4 @@ def test_theme_toggle_is_present_on_all_pages():
     assert "theme-toggle" in index_html
     assert "theme-toggle" in recipe_html
     assert "theme-toggle" in cook_html
-    assert "cookgram:theme" in index_html
+    assert "cookigram:theme" in index_html

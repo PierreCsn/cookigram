@@ -1,4 +1,4 @@
-# CookGram 🍳
+# CookiGram 🍳
 
 [![CI](https://github.com/PierreCsn/cookigram/actions/workflows/ci.yml/badge.svg)](https://github.com/PierreCsn/cookigram/actions/workflows/ci.yml)
 [![Deploy GitHub Pages](https://github.com/PierreCsn/cookigram/actions/workflows/pages.yml/badge.svg)](https://pierrecsn.github.io/cookigram/)
@@ -99,7 +99,7 @@ Les temps et températures ne sont jamais ajustés silencieusement.
 
 Les recettes d'appareil demandent une attention particulière. Si la source
 propose plusieurs rendements mais modifie certaines quantités ou certains
-réglages de façon non linéaire, CookGram conserve une variante vérifiée et
+réglages de façon non linéaire, CookiGram conserve une variante vérifiée et
 désactive le calcul automatique. La raison doit être écrite dans
 `scaling.reason`. Une prise en charge future pourra enregistrer plusieurs
 variantes officielles plutôt que de les approximer.

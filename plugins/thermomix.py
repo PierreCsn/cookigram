@@ -1,4 +1,4 @@
-"""Thermomix parameter extractor for CookGram.
+"""Thermomix parameter extractor for CookiGram.
 
 Parses time, temperature/Varoma, reverse direction (sens inverse), and speeds (cuillère, 1-10, turbo, pétrin)
 to generate Cookomix-style visual badges with icons.

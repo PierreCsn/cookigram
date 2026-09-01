@@ -1,4 +1,4 @@
-# CookGram 🍳
+# CookiGram 🍳
 
 [![CI](https://github.com/PierreCsn/cookigram/actions/workflows/ci.yml/badge.svg)](https://github.com/PierreCsn/cookigram/actions/workflows/ci.yml)
 [![Deploy GitHub Pages](https://github.com/PierreCsn/cookigram/actions/workflows/pages.yml/badge.svg)](https://pierrecsn.github.io/cookigram/)
@@ -11,7 +11,7 @@ A modern, offline-first static recipe notebook and Progressive Web App (PWA) pow
 > 🌐 **Live Demo:** [https://pierrecsn.github.io/cookigram/](https://pierrecsn.github.io/cookigram/)  
 > 🇫🇷 **Documentation en français :** [README.md](README.md) | 🤝 **Contributing:** [CONTRIBUTING.md](CONTRIBUTING.md)
 
-CookGram is built on top of [Gram](https://gram-lang.org), an open-source culinary language engineered to make recipes structured, computable, and version-controllable with Git. Check out the [official Gram documentation](https://gram-lang.org/docs/) to explore the full syntax.
+CookiGram is built on top of [Gram](https://gram-lang.org), an open-source culinary language engineered to make recipes structured, computable, and version-controllable with Git. Check out the [official Gram documentation](https://gram-lang.org/docs/) to explore the full syntax.
 
 ---
 

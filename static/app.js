@@ -6,7 +6,8 @@ installButton?.addEventListener('click', async () => { await installPrompt?.prom
 if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register(`${document.body.dataset.prefix}sw.js`));
 
 // --- Theme Management ---
-const THEME_KEY = 'cookgram:theme';
+const THEME_KEY = 'cookigram:theme';
+const OLD_THEME_KEY = 'cookgram:theme';
 const metaThemeColor = document.querySelector('meta[name="theme-color"]');
 
 const applyTheme = (theme) => {
@@ -23,7 +24,7 @@ const applyTheme = (theme) => {
 };
 
 const getInitialTheme = () => {
-  const saved = localStorage.getItem(THEME_KEY);
+  const saved = localStorage.getItem(THEME_KEY) || localStorage.getItem(OLD_THEME_KEY);
   if (saved === 'dark' || saved === 'light') return saved;
   return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
 };
@@ -33,7 +34,7 @@ applyTheme(currentTheme);
 
 if (window.matchMedia) {
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    if (!localStorage.getItem(THEME_KEY)) {
+    if (!localStorage.getItem(THEME_KEY) && !localStorage.getItem(OLD_THEME_KEY)) {
       currentTheme = e.matches ? 'dark' : 'light';
       applyTheme(currentTheme);
     }
@@ -63,8 +64,8 @@ const showShareFeedback = (btn, text = '✓ Lien copié !') => {
 };
 
 const shareRecipe = async (btn) => {
-  const title = document.title || 'CookGram';
-  const desc = document.querySelector('.recipe-heading p')?.textContent || 'Découvrez cette recette sur CookGram !';
+  const title = document.title || 'CookiGram';
+  const desc = document.querySelector('.recipe-heading p')?.textContent || 'Découvrez cette recette sur CookiGram !';
   const url = window.location.href;
 
   if (navigator.share) {

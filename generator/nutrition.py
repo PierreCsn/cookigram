@@ -1,4 +1,4 @@
-"""Nutritional data and calculation engine for CookGram.
+"""Nutritional data and calculation engine for CookiGram.
 
 Uses official ANSES CIQUAL / Open Food Facts reference values per 100g.
 """
@@ -221,7 +221,7 @@ def enrich_ingredient_database(
 
     # Re-write ingredients.yaml
     ing_header = (
-        "# Base locale CookGram enrichie avec les données nutritionnelles ANSES CIQUAL.\n"
+        "# Base locale CookiGram enrichie avec les données nutritionnelles ANSES CIQUAL.\n"
     )
     ingredients_path.write_text(ing_header + yaml.safe_dump(ing_data, sort_keys=False, allow_unicode=True), encoding="utf-8")
 

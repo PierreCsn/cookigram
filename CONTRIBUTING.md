@@ -1,6 +1,6 @@
-# Guide de contribution à CookGram 🍳
+# Guide de contribution à CookiGram 🍳
 
-Merci de vous intéresser à CookGram ! Ce projet vise à proposer un carnet de recettes moderne, résilient, offline-first et respectueux de la vie privée, propulsé par le langage culinaire [Gram](https://gram-lang.org).
+Merci de vous intéresser à CookiGram ! Ce projet vise à proposer un carnet de recettes moderne, résilient, offline-first et respectueux de la vie privée, propulsé par le langage culinaire [Gram](https://gram-lang.org).
 
 ---
 

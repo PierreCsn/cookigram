@@ -1,2 +1,2 @@
-"""Static CookGram site generator."""
+"""Static CookiGram site generator."""
 
