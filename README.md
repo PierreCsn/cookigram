@@ -2,7 +2,10 @@
 
 Carnet de recettes statique et installable, généré depuis des fichiers `.gram`.
 
-**PWA publiée automatiquement : [pierrecsn.github.io/cookigram](https://pierrecsn.github.io/cookigram/)**
+Le projet utilise [Gram](https://gram-lang.org/fr/), un langage open source
+conçu pour écrire des recettes structurées, calculables et versionnables avec
+Git. Consultez la [documentation officielle de Gram](https://gram-lang.org/fr/docs/)
+pour découvrir la syntaxe complète et son CLI.
 
 ## Fonctionnalités du MVP
 
@@ -24,6 +27,21 @@ python -m http.server 8000 -d _site
 ```
 
 Ouvrir `http://localhost:8000`. Les recettes sont dans `recipes/`.
+
+## Base d'ingrédients Gram
+
+La base locale se trouve dans `.gram/ingredients.yaml`. Après l'ajout d'une
+recette, la maintenir avec le CLI officiel :
+
+```bash
+gram db sync
+gram db lint
+gram db enrich
+gram db validate --strict
+```
+
+Les densités et données nutritionnelles proposées par `gram db enrich` doivent
+être relues avant d'être conservées.
 
 ## Ajouter une recette
 
