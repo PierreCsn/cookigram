@@ -17,12 +17,13 @@ Le projet utilise [Gram](https://gram-lang.org/fr/), un langage open source con�
 
 - 📱 **PWA Offline-first** : consultable partout, sans connexion réseau, installable sur mobile & bureau ;
 - 🍳 **Mode cuisine guidée pas-à-pas** : étapes grand format avec sous-étapes cochables interactives ;
+- 🔍 **Recherche instantanée et filtres avancés** : recherche en temps réel par titre ou ingrédient, filtres rapides par catégorie (*volaille, poisson, porc, mijoté, curry, pâtes, gratin, soupe...*) et panneau de filtres avancés multi-tags ;
 - 🎙️ **Commande vocale mains libres** : pilotez la recette (« *suivant* », « *précédent* », « *minuteur* ») sans toucher l'écran ;
 - 🗣️ **Synthèse vocale intégrée** : lecture audio des instructions avec synthèse vocale naturelle du navigateur ;
 - ⏱️ **Minuteurs multiples** : alertes sonores Web Audio, vibrations et reprise locale ;
 - 🛒 **Évaluation intelligente des courses** : filtre le fond de placard, calcule les rayons et exporte directement vers **Google Keep** ;
 - 📊 **Analyse nutritionnelle CIQUAL** : calcul automatique des calories et macronutriments (protéines, glucides, lipides) par portion ;
-- 🤖 **Réglages pour robots culinaires (Thermomix)** : badges visuels compacts avec temps, température, vitesse et sens inverse ;
+- 🤖 **Réglages pour robots culinaires (Thermomix)** : badges visuels compacts avec temps, température, vitesse, fouet et sens inverse ;
 - 🌙 **Thème sombre & clair** : adaptation automatique aux préférences système ou bascule manuelle instantanée ;
 - 🔒 **Maintien de l'écran allumé (Wake Lock)** : évite la mise en veille de l'écran pendant la cuisine.
 
@@ -38,18 +39,30 @@ source .venv/bin/activate  # ou .venv\Scripts\activate sous Windows
 # 2. Installer les dépendances (avec outils de dev)
 pip install -e '.[dev]'
 
-# 3. Lancer les tests et la vérification du code
-pytest --cov=generator
-ruff check generator tests
-
-# 4. Construire le site statique
+# 3. Construire le site statique
 python -m generator.build
 
-# 5. Prévisualiser localement
+# 4. Prévisualiser localement
 python -m http.server 8000 -d _site
 ```
 
 Ouvrir [http://localhost:8000](http://localhost:8000) dans votre navigateur. Les recettes se trouvent dans `recipes/`.
+
+## Tests et qualité
+
+Le projet est validé par une suite complète de tests automatisés atteignant **87% de couverture** :
+
+```bash
+# Exécuter les tests avec rapport de couverture
+pytest --cov=generator --cov-report=term-missing
+
+# Vérifier le style et le linting avec Ruff
+ruff check generator tests
+ruff format --check generator tests
+
+# Vérifier la cohérence de la base d'ingrédients et de provenance
+pytest tests/test_ingredients_database.py
+```
 
 ## Base d'ingrédients Gram
 

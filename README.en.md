@@ -19,12 +19,13 @@ CookiGram is built on top of [Gram](https://gram-lang.org), an open-source culin
 
 - 📱 **Offline-First PWA**: Installable on both mobile and desktop, works seamlessly without an active internet connection.
 - 🍳 **Step-by-step Guided Cook Mode**: Distraction-free full-screen interface with checkable substeps.
+- 🔍 **Instant Search & Advanced Filters**: Live filtering by title or ingredient, quick category chips (*poultry, fish, pork, stew, curry, pasta, bake, soup...*), and multi-tag advanced filters panel.
 - 🎙️ **Hands-free Voice Commands**: Navigate through instructions ("*next*", "*previous*", "*timer*") using the Web Speech Recognition API without touching your screen.
 - 🗣️ **Text-to-Speech (TTS)**: Built-in step audio reading using native browser voice synthesis.
 - ⏱️ **Multiple Timers**: Visual countdowns with Web Audio sound alerts and local state resumption.
 - 🛒 **Smart Shopping List**: Isolates pantry staples, organizes items by supermarket aisles, and exports seamlessly to **Google Keep** checkboxes.
 - 📊 **Nutritional Analysis**: Automatic CIQUAL-based calculation of calories and macronutrients (proteins, carbs, fats) per serving with ingredient breakdown.
-- 🤖 **Culinary Robot Settings (Thermomix)**: Sleek parameter badges for time, temperature, reverse mode, and blade speeds.
+- 🤖 **Culinary Robot Settings (Thermomix)**: Sleek parameter badges for time, temperature, butterfly whisk, reverse mode, and blade speeds.
 - 🌙 **Adaptive Dark / Light Theme**: Respects system preferences or toggles instantly with one tap.
 - 🔒 **Screen Wake Lock**: Prevents your device display from turning off while cooking.
 
@@ -42,18 +43,32 @@ source .venv/bin/activate  # or .venv\Scripts\activate on Windows
 # 2. Install dependencies with development tools
 pip install -e '.[dev]'
 
-# 3. Run test suite with coverage and code linter
-pytest --cov=generator
-ruff check generator tests
-
-# 4. Build the static site
+# 3. Build the static site
 python -m generator.build
 
-# 5. Preview locally
+# 4. Preview locally
 python -m http.server 8000 -d _site
 ```
 
 Open [http://localhost:8000](http://localhost:8000) in your browser. Recipe files reside in the `recipes/` directory.
+
+---
+
+## Testing and Quality
+
+CookiGram maintains a strict test suite achieving **87% code coverage**:
+
+```bash
+# Run tests with detailed coverage report
+pytest --cov=generator --cov-report=term-missing
+
+# Lint and check code formatting with Ruff
+ruff check generator tests
+ruff format --check generator tests
+
+# Validate ingredient database and provenance
+pytest tests/test_ingredients_database.py
+```
 
 ---
 
