@@ -1,0 +1,42 @@
+---
+title: Lasagnes de moussaka
+portions: 4
+prep_time: 40 min
+total_time: 1 h 15 min
+description: Lasagnes fondantes à l'aubergine, à la viande hachée et au basilic, nappées de béchamel au fromage râpé.
+tags: [lasagnes, aubergines, viande hachée, gratin, four, méditerranéen]
+source: https://www.marmiton.org/recettes/recette_lasagnes-de-moussaka_49464.aspx
+author: Anonyme
+scaling:
+  enabled: true
+  min_portions: 2
+  max_portions: 8
+  step: 1
+  note: Le temps de revenu et la cuisson au four ne sont pas recalculés.
+---
+
+[Préparer les aubergines]
+- Laver et couper les @aubergines{2 pièces, en petits cubes}.
+- Les réserver dans une #passoire{} en les saupoudrant de gros @sel{}.
+
+[Préparer la sauce à la viande]
+- Faire revenir les @oignons{2 pièces, émincés} puis la @viande hachée{400 g} dans une #poêle{}.
+- Ajouter la @sauce tomate{1 pot}, le @sel{}, le @poivre{} et le @basilic frais{}.
+- Mélanger puis réserver la sauce de côté.
+
+[Faire revenir les aubergines]
+- Faire revenir les cubes d'aubergine à feu doux dans l'@huile d'olive{} pendant ~{10 min}.
+
+[Préparer la béchamel au fromage]
+- Préparer la @béchamel{50 cl}.
+- Ajouter le @fromage râpé{} en fin de cuisson.
+
+[Monter les lasagnes]
+- Préchauffer le #four{} à ^{180 C} (thermostat 6).
+- Disposer des @feuilles de lasagne{} au fond d'un #plat rectangulaire{}.
+- Alterner les couches d'aubergines, de viande hachée et de feuilles de lasagne jusqu'à épuisement des ingrédients.
+
+[Napper et enfourner]
+- Terminer par une couche de feuilles de lasagne.
+- Verser la totalité de la @béchamel{} sur le dessus.
+- Enfourner ~{35 min} à ^{180 C} au four jusqu'à ce que le dessus soit bien gratiné.

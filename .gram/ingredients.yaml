@@ -746,6 +746,7 @@ ingredients:
   sel:
     aliases:
     - sel
+    - gros sel
     category: Condiments
     name: Sel
     nutrition:
@@ -1202,3 +1203,38 @@ ingredients:
       protein: 0.1
       carbs: 4.0
       fat: 0.0
+  bechamel:
+    name: Béchamel
+    aliases:
+    - béchamel
+    - sauce béchamel
+    category: Produits laitiers et matières grasses
+  fromage-rape:
+    name: Fromage râpé
+    aliases:
+    - fromage râpé
+    category: Fromages
+  feuilles-de-lasagne:
+    name: Feuilles de lasagne
+    aliases:
+    - feuilles de lasagne
+    - pâte sèche à lasagne
+    - lasagnes
+    category: Épicerie salée
+    nutrition:
+      calories: 350
+      protein: 12.0
+      carbs: 70.0
+      fat: 1.5
+  viande-hachee:
+    name: Viande hachée
+    aliases:
+    - viande hachée
+    - viande hachée porc et boeuf
+    - viande hachée porc et bœuf
+    category: Boucherie et volaille
+    nutrition:
+      calories: 240
+      protein: 19.0
+      carbs: 0.0
+      fat: 18.0

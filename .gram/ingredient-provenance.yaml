@@ -389,6 +389,16 @@ ingredients:
   vinaigre-de-riz:
     source: ANSES CIQUAL 2024 / Open Food Facts
     status: verified
+  bechamel:
+    status: incomplete
+  fromage-rape:
+    status: incomplete
+  feuilles-de-lasagne:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  viande-hachee:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
 sources:
   ciqual:
     name: Table Ciqual de l'ANSES
