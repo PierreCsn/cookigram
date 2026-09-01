@@ -32,6 +32,8 @@ def build(output: Path) -> None:
         "gratin",
         "volaille",
         "viande",
+        "poisson",
+        "porc",
         "one-pot",
         "risotto",
     ]

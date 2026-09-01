@@ -1,10 +1,10 @@
-# Base locale CookiGram enrichie avec les données nutritionnelles ANSES CIQUAL.
 ingredients:
   ail:
     aliases:
     - ail
     - gousse d'ail
     - gousses d'ail
+    - gousses d'ail entières
     category: Légumes et aromates
     name: Ail
     nutrition:
@@ -187,6 +187,7 @@ ingredients:
     aliases:
     - crème fraîche liquide
     - crème liquide
+    - crème fraîche liquide entière
     category: Produits laitiers et matières grasses
     nutrition:
       calories: 292
@@ -290,6 +291,7 @@ ingredients:
     aliases:
     - épinards
     - épinards frais
+    - épinards surgelés
     category: Légumes et aromates
     nutrition:
       calories: 23
@@ -525,6 +527,7 @@ ingredients:
     - moutarde de Dijon
     - moutarde de dijon
     - moutarde
+    - moutarde douce
     category: Condiments
     pantry_staple: true
     nutrition:
@@ -676,6 +679,8 @@ ingredients:
     aliases:
     - poivron
     - poivrons
+    - poivron vert
+    - poivron rouge
     category: Légumes et aromates
     name: Poivron
     nutrition:
@@ -776,6 +781,8 @@ ingredients:
     name: Tomates concassées
     aliases:
     - tomates concassées
+    - pulpe de tomate
+    - pulpe de tomates en dés
     category: Légumes et aromates
     nutrition:
       calories: 25
@@ -816,3 +823,382 @@ ingredients:
       carbs: 0.5
       fat: 0.0
       protein: 0.0
+  aneth:
+    name: Aneth
+    aliases:
+    - aneth
+    category: Condiments
+    nutrition:
+      calories: 43
+      protein: 3.5
+      carbs: 7.0
+      fat: 1.1
+  basilic-frais:
+    name: Basilic frais
+    aliases:
+    - basilic frais
+    - basilic
+    category: Légumes et aromates
+    nutrition:
+      calories: 23
+      protein: 3.2
+      carbs: 2.7
+      fat: 0.6
+  bouillon-de-legumes:
+    name: Bouillon de légumes
+    aliases:
+    - bouillon de légumes
+    - bouillon de légumes réservé
+    category: Épicerie salée
+    nutrition:
+      calories: 15
+      protein: 0.5
+      carbs: 2.5
+      fat: 0.3
+  capres:
+    name: Câpres
+    aliases:
+    - câpres
+    category: Condiments
+    nutrition:
+      calories: 23
+      protein: 2.4
+      carbs: 4.9
+      fat: 0.9
+  chapelure:
+    name: Chapelure
+    aliases:
+    - chapelure
+    category: Épicerie salée
+    nutrition:
+      calories: 360
+      protein: 12.0
+      carbs: 72.0
+      fat: 2.0
+  citron:
+    name: Citron
+    aliases:
+    - jus de citron
+    - citron
+    category: Fruits et légumes
+    nutrition:
+      calories: 29
+      protein: 1.1
+      carbs: 9.3
+      fat: 0.3
+  cube-de-bouillon-de-boeuf:
+    name: Cube de bouillon de boeuf
+    aliases:
+    - cube de bouillon de boeuf
+    - cube de bouillon de bœuf
+    category: Épicerie salée
+    nutrition:
+      calories: 240
+      protein: 12.0
+      carbs: 18.0
+      fat: 12.0
+  cumin:
+    name: Cumin
+    aliases:
+    - cumin
+    - cumin en poudre
+    category: Épicerie salée
+    nutrition:
+      calories: 375
+      protein: 17.8
+      carbs: 44.2
+      fat: 22.3
+  echine-de-porc:
+    name: Échine de porc
+    aliases:
+    - échine de porc
+    category: Boucherie et volaille
+    nutrition:
+      calories: 245
+      protein: 19.5
+      carbs: 0.0
+      fat: 18.5
+  filet-de-poisson:
+    name: Filets de poisson
+    aliases:
+    - filets de poisson blanc
+    - filet de poisson
+    - filets de poisson
+    - filets de merlan
+    - merlan
+    category: Poissons et fruits de mer
+    nutrition:
+      calories: 80
+      protein: 17.5
+      carbs: 0.0
+      fat: 1.0
+  gingembre-moulu:
+    name: Gingembre moulu
+    aliases:
+    - gingembre moulu
+    category: Épicerie salée
+    nutrition:
+      calories: 335
+      protein: 9.0
+      carbs: 71.6
+      fat: 4.2
+  graine-de-sesame:
+    name: Graines de sésame
+    aliases:
+    - graines de sésame blanc
+    - graines de sésame
+    - graine de sésame
+    category: Fruits à coque et graines
+    nutrition:
+      calories: 573
+      protein: 17.7
+      carbs: 23.4
+      fat: 49.7
+  herbes-de-provence:
+    name: Herbes de Provence
+    aliases:
+    - herbes de Provence
+    - herbes de provence
+    category: Condiments
+    nutrition:
+      calories: 275
+      protein: 9.0
+      carbs: 45.0
+      fat: 7.0
+  huile-de-coco:
+    name: Huile de coco
+    aliases:
+    - huile de coco
+    category: Épicerie salée
+    nutrition:
+      calories: 892
+      protein: 0.0
+      carbs: 0.0
+      fat: 99.1
+  huile-de-sesame:
+    name: Huile de sésame
+    aliases:
+    - huile de sésame
+    category: Épicerie salée
+    nutrition:
+      calories: 900
+      protein: 0.0
+      carbs: 0.0
+      fat: 100.0
+  lait-de-soja:
+    name: Lait de soja
+    aliases:
+    - lait de soja
+    - boisson au soja
+    category: Produits laitiers et substituts
+    nutrition:
+      calories: 45
+      protein: 3.3
+      carbs: 2.2
+      fat: 1.8
+  mais:
+    name: Maïs en boîte
+    aliases:
+    - maïs en boîte
+    - maïs
+    - maïs doux
+    category: Conserves et bocaux
+    nutrition:
+      calories: 96
+      protein: 3.2
+      carbs: 18.7
+      fat: 1.2
+  maizena:
+    name: Maïzena
+    aliases:
+    - maïzena
+    - fécule de maïs
+    category: Épicerie salée
+    nutrition:
+      calories: 355
+      protein: 0.3
+      carbs: 87.0
+      fat: 0.1
+  nouilles-chinoises:
+    name: Nouilles chinoises
+    aliases:
+    - nouilles chinoises
+    - nouilles asiatiques
+    - ramen
+    category: Épicerie salée
+    nutrition:
+      calories: 350
+      protein: 10.0
+      carbs: 70.0
+      fat: 2.5
+  oeuf:
+    name: Oeuf
+    aliases:
+    - oeuf
+    - oeufs
+    - œuf
+    - œufs
+    category: Crèmerie et oeufs
+    nutrition:
+      calories: 143
+      protein: 12.6
+      carbs: 0.7
+      fat: 9.5
+  olives-vertes:
+    name: Olives vertes
+    aliases:
+    - olives vertes
+    - olives vertes dénoyautées
+    category: Conserves et bocaux
+    nutrition:
+      calories: 145
+      protein: 1.0
+      carbs: 3.8
+      fat: 15.3
+  origan:
+    name: Origan
+    aliases:
+    - origan
+    - origan séché
+    category: Condiments
+    nutrition:
+      calories: 265
+      protein: 9.0
+      carbs: 68.9
+      fat: 4.3
+  pain-de-mie:
+    name: Pain de mie
+    aliases:
+    - pain de mie
+    category: Boulangerie
+    nutrition:
+      calories: 265
+      protein: 8.5
+      carbs: 49.0
+      fat: 3.5
+  pate-miso:
+    name: Pâte miso
+    aliases:
+    - pâte miso
+    - miso
+    category: Épicerie salée
+    nutrition:
+      calories: 198
+      protein: 11.7
+      carbs: 26.5
+      fat: 6.0
+  piment-de-cayenne:
+    name: Piment de Cayenne
+    aliases:
+    - piment de Cayenne
+    - piment de cayenne
+    - piment d'Espelette
+    - piment d'espelette
+    - piment doux
+    - purée de piment
+    category: Condiments
+    nutrition:
+      calories: 318
+      protein: 12.0
+      carbs: 56.6
+      fat: 17.3
+  porc-hache:
+    name: Haché de porc
+    aliases:
+    - haché de porc
+    - porc haché
+    category: Boucherie et volaille
+    nutrition:
+      calories: 263
+      protein: 17.0
+      carbs: 0.0
+      fat: 21.5
+  poulet:
+    name: Poulet
+    aliases:
+    - poulet
+    category: Boucherie et volaille
+    nutrition:
+      calories: 121
+      protein: 21.0
+      carbs: 0.0
+      fat: 3.8
+  roti-de-porc:
+    name: Rôti de porc
+    aliases:
+    - rôti de porc
+    category: Boucherie et volaille
+    nutrition:
+      calories: 180
+      protein: 24.0
+      carbs: 0.0
+      fat: 9.0
+  sauce-soja:
+    name: Sauce soja
+    aliases:
+    - sauce soja salée
+    - sauce soja
+    category: Condiments
+    nutrition:
+      calories: 53
+      protein: 8.1
+      carbs: 4.9
+      fat: 0.1
+  saumon-frais:
+    name: Saumon frais
+    aliases:
+    - pavés de saumon
+    - pavé de saumon
+    - filets de saumon
+    - filet de saumon
+    category: Poissons et fruits de mer
+    nutrition:
+      calories: 208
+      protein: 20.4
+      carbs: 0.0
+      fat: 13.4
+  tahini:
+    name: Tahini
+    aliases:
+    - tahini - crème de sésame
+    - tahini
+    - purée de sésame
+    category: Épicerie salée
+    nutrition:
+      calories: 595
+      protein: 17.0
+      carbs: 21.0
+      fat: 54.0
+  thym:
+    name: Thym
+    aliases:
+    - thym
+    - thym séché
+    category: Condiments
+    nutrition:
+      calories: 276
+      protein: 9.1
+      carbs: 63.9
+      fat: 7.4
+  tomate-cerise:
+    name: Tomates cerises
+    aliases:
+    - tomates cerises
+    - tomates cerises rouges
+    - tomate cerise
+    category: Légumes et aromates
+    nutrition:
+      calories: 18
+      protein: 0.9
+      carbs: 3.9
+      fat: 0.2
+  vinaigre-de-riz:
+    name: Vinaigre de riz
+    aliases:
+    - vinaigre de riz
+    category: Condiments
+    nutrition:
+      calories: 18
+      protein: 0.1
+      carbs: 4.0
+      fat: 0.0

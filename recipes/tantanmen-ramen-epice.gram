@@ -1,0 +1,48 @@
+---
+title: Tantanmen – Ramen épicé
+portions: 4
+prep_time: 20 min
+total_time: 50 min
+tags: [soupe, pâtes, thermomix, asiatique, porc, japon, épicé]
+source: https://www.cookomix.com/recettes/tantanmen-ramen-epice-thermomix/
+author: clarouroux
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: Équilibre et contenance du bol Thermomix pour le bouillon émulsionné.
+image: images/tantanmen-ramen-epice.jpg
+image_credit:
+  author: clarouroux
+  source: https://www.cookomix.com/recettes/tantanmen-ramen-epice-thermomix/
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  modifications: Image redimensionnée et recadrée.
+---
+
+[Préparer l'huile pimentée parfumée]
+- Mettre le @gingembre frais{10 g, épluché} et les @gousses d'ail{2 pièces} dans le #bol Thermomix{}.
+- Hacher ~{5 s} à vitesse 8.5 puis racler les parois à la #spatule{}.
+- Ajouter l'@huile de sésame{40 g}, le @paprika{3 c. à café} et le @piment de Cayenne{0.75 c. à café}.
+- Faire rissoler ~{3 min} à ^{120 C} et vitesse 1 sans gobelet doseur.
+- Transvaser la moitié de cette huile pimentée dans un bol et réserver pour le dressage.
+
+[Faire revenir la viande de porc assaisonnée]
+- Dans le bol, ajouter le @haché de porc{300 g}, la @sauce soja salée{2 c. à soupe} et le @sel{0.5 c. à café}.
+- Mélanger ~{7 s} à vitesse 3 puis rissoler ~{5 min} à ^{120 C} et vitesse 1.
+- Transvaser les 2/3 de la viande sautée dans un bol et réserver au chaud pour la garniture.
+
+[Cuisson du bouillon et des légumes vapeur]
+- Dans le bol contenant le reste de porc, ajouter le @tahini - crème de sésame{2 c. à soupe}, la @pâte miso{2 c. à café}, la @sauce soja salée{2 c. à soupe}, le @vinaigre de riz{1 c. à café}, le @cube de bouillon de volaille{1 pièce}, le @sel{0.5 c. à café} et l'@eau{900 g}.
+- Installer l'ensemble #Varoma{}.
+- Mettre les @épinards surgelés{200 g} et le @maïs en boîte{150 g} dans le Varoma.
+- Cuire ~{12 min} à ^{120 C} et vitesse 1.
+- Retirer le Varoma et ajouter le @lait de soja{400 g} dans le bol.
+- Chauffer le bouillon crémeux ~{5 min} à ^{95 C} et vitesse 1.
+
+[Cuisson des nouilles et assemblage]
+- Cuire les @nouilles chinoises{250 g} dans une #casserole{} d'eau bouillante selon le temps indiqué sur l'emballage.
+- Égoutter les nouilles et les répartir dans 4 grands bols à ramen.
+- Verser le bouillon onctueux chaud par-dessus.
+- Garnir chaque bol avec le porc sauté réservé, les épinards vapeur et le maïs.
+- Napper avec un filet d'huile pimentée réservée et parsemer de graines de sésame. Servir fumant avec un œuf mollet si désiré.

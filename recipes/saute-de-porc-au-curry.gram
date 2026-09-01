@@ -1,0 +1,40 @@
+---
+title: Sauté de porc au curry
+portions: 4
+prep_time: 15 min
+total_time: 40 min
+tags: [curry, viande, porc, mijoté, thermomix, rapide, réconfort]
+source: https://www.cookomix.com/recettes/saute-de-porc-au-curry-thermomix/
+author: Pierro
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: Cuisson au bol Thermomix avec préservation de la texture de la viande.
+image: images/saute-de-porc-au-curry.jpg
+image_credit:
+  author: Pierro
+  source: https://www.cookomix.com/recettes/saute-de-porc-au-curry-thermomix/
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  modifications: Image redimensionnée et recadrée.
+---
+
+[Hacher les aromates et le poivron]
+- Mettre l'@oignon jaune{1 pièce, coupé en deux} et la @gousse d'ail{1 pièce} dans le #bol Thermomix{}.
+- Poser le couvercle avec le #gobelet doseur{}.
+- Hacher ~{5 s} à vitesse 5.
+- Racler les parois avec la #spatule{}.
+- Ajouter le @poivron rouge{1 pièce, coupé en morceaux}.
+- Hacher de nouveau ~{5 s} à vitesse 5 puis racler les parois.
+
+[Faire suer les légumes]
+- Ajouter l'@huile de coco{10 g}.
+- Cuire ~{4 min} à ^{Varoma} et vitesse 1 sans le gobelet doseur.
+
+[Mijoter le porc au curry et lait de coco]
+- Ajouter le @filet mignon de porc{400 g, coupé en cubes de 3 cm}.
+- Ajouter la @sauce soja salée{1 c. à soupe}, la @moutarde de Dijon{1 c. à soupe}, le @curry en poudre{1 c. à soupe}, la @pulpe de tomate{100 g}, le @lait de coco{200 g}, le @sel{0.5 c. à café}, le @poivre{2 pincées} et le @paprika{0.5 c. à café}.
+- Poser le couvercle avec le gobelet doseur.
+- Cuire ~{17 min} à ^{100 C} en sens inverse à vitesse cuillère.
+- Servir bien chaud accompagné de riz basmati ou thaï.

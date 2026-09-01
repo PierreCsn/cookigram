@@ -1,0 +1,40 @@
+---
+title: Poisson à la Veracruz
+portions: 6
+prep_time: 10 min
+total_time: 40 min
+tags: [poisson, mijoté, thermomix, mexicain, rapide, tomates]
+source: https://www.cookomix.com/recettes/poisson-veracruz-thermomix/
+author: Lisa
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: Cuisson étagée vapeur au Varoma des filets de poisson.
+image: images/poisson-a-la-veracruz.jpg
+image_credit:
+  author: Lisa
+  source: https://www.cookomix.com/recettes/poisson-veracruz-thermomix/
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  modifications: Image redimensionnée et recadrée.
+---
+
+[Hacher les aromates et faire revenir]
+- Mettre les @gousses d'ail{2 pièces} dans le #bol Thermomix{}.
+- Hacher ~{3 s} à vitesse 7 puis racler les parois à la #spatule{}.
+- Ajouter les @oignons{180 g, en morceaux} et l'@huile d'olive{50 g}.
+- Hacher ~{5 s} à vitesse 5 puis racler les parois.
+- Faire rissoler ~{4 min} à ^{120 C} et vitesse 1 sans gobelet doseur.
+
+[Préparer la sauce veracruzana]
+- Ajouter la @pulpe de tomates en dés{800 g}, le @poivron vert{0.25 pièce, en lanières}, le @poivron rouge{0.25 pièce, en lanières}, les @feuilles de laurier{2 feuilles}, le @sel{0.75 c. à café}, le @poivre{2 pincées}, le @sucre en poudre{1 c. à café}, la @purée de piment{1 c. à café}, les @câpres{40 g} et les @olives vertes dénoyautées{100 g, en rondelles}.
+- Installer l'ensemble #Varoma{}.
+- Disposer les @filets de poisson blanc{6 pièces} dans le Varoma.
+- Assaisonner le poisson avec le @jus de citron vert{0.5 pièce}, le @sel{2 pincées}, le @poivre{1 pincée} et la @noix de muscade{1 pincée}.
+
+[Cuisson vapeur et service]
+- Fermer le Varoma avec son couvercle.
+- Cuire ~{20 min} à ^{Varoma} en sens inverse à vitesse 1.
+- Vérifier la cuisson du poisson et prolonger de ~{3 min} si nécessaire.
+- Servir les filets de poisson bien chauds nappés de sauce tomate relevée aux olives et câpres, accompagnés d'un riz blanc parfumé.

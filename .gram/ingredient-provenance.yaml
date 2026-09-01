@@ -1,4 +1,3 @@
-# Suivi de la provenance des ingrédients et niveaux de confiance.
 ingredients:
   ail:
     locked: false
@@ -287,6 +286,108 @@ ingredients:
     status: verified
   vinaigre-blanc:
     source: ANSES-CIQUAL
+    status: verified
+  aneth:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  basilic-frais:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  bouillon-de-legumes:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  capres:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  chapelure:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  citron:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  cube-de-bouillon-de-boeuf:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  cumin:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  echine-de-porc:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  filet-de-poisson:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  gingembre-moulu:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  graine-de-sesame:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  herbes-de-provence:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  huile-de-coco:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  huile-de-sesame:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  lait-de-soja:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  mais:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  maizena:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  nouilles-chinoises:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  oeuf:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  olives-vertes:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  origan:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  pain-de-mie:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  pate-miso:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  piment-de-cayenne:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  porc-hache:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  poulet:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  roti-de-porc:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  sauce-soja:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  saumon-frais:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  tahini:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  thym:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  tomate-cerise:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  vinaigre-de-riz:
+    source: ANSES CIQUAL 2024 / Open Food Facts
     status: verified
 sources:
   ciqual:

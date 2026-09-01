@@ -1,0 +1,43 @@
+---
+title: Saumon à la Toscane
+portions: 2
+prep_time: 10 min
+total_time: 35 min
+tags: [poisson, thermomix, saumon, épinards, italien, rapide]
+source: https://www.cookomix.com/recettes/saumon-toscane-thermomix/
+author: 🐱UnchatEnCuisine
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: true
+image: images/saumon-a-la-toscane.jpg
+image_credit:
+  author: 🐱UnchatEnCuisine
+  source: https://www.cookomix.com/recettes/saumon-toscane-thermomix/
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  modifications: Image redimensionnée et recadrée.
+---
+
+[Préparer les aromates]
+- Si les pavés de saumon sont congelés, les décongeler au préalable puis retirer la peau et réserver.
+- Mettre la @gousse d'ail{1 pièce, épluchée} dans le #bol Thermomix{}.
+- Hacher ~{3 s} à vitesse 7. Racler les parois du bol avec la #spatule{}.
+- Ajouter l'@oignon jaune{1 pièce, coupé en morceaux}.
+- Hacher ~{10 s} à vitesse 6. Racler les parois.
+- Ajouter l'@huile d'olive{20 g}.
+- Faire suer ~{1 min 30 s} à ^{100 C} et vitesse 1.
+
+[Préparer la sauce crémeuse épinards et parmesan]
+- Préchauffer le #four{} à ^{200 C} en chaleur tournante.
+- Ajouter les @épinards surgelés{250 g, décongelés}, le @sel{2 pincées}, le @poivre{1 pincée}, l'@aneth{1 c. à café}, le @basilic frais{1 c. à soupe, ciselé} et le @parmesan râpé{40 g}.
+- Cuire ~{5 min} à ^{90 C} et vitesse 2.
+- Ajouter la @crème fraîche liquide entière{200 g}.
+- Mélanger ~{30 s} à vitesse 2.
+
+[Gratiner le saumon au four]
+- Transvaser la sauce crémeuse dans un plat à gratin (28x23 cm).
+- Déposer les @pavés de saumon{2 pièces} sur la préparation.
+- Répartir les @tomates cerises{8 pièces, coupées en deux} autour du saumon.
+- Enfourner ~{17 min} à ^{200 C} au four en chaleur tournante.
+- Déguster chaud avec des tagliatelles ou du riz.
