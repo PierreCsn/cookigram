@@ -20,6 +20,7 @@ pour découvrir la syntaxe complète et son CLI.
 - thème sombre automatique (Dark Mode) et bascule manuelle instantanée ;
 - partage rapide de recette (Web Share API avec copie dans le presse-papier) ;
 - liste de courses interactive avec export vers Google Keep, partage et copie presse-papier ;
+- calcul automatique et affichage des valeurs nutritionnelles par portion (calories, protéines, glucides, lipides basés sur ANSES CIQUAL) ;
 - PWA avec cache hors ligne ;
 - enrichissement build-time par plugins ;
 - déploiement automatique sur GitHub Pages.

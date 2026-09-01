@@ -38,3 +38,4 @@ class Recipe:
     max_portions: int = 12
     portion_step: int = 1
     scaling_note: str = ""
+    nutrition: dict = field(default_factory=dict)

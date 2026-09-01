@@ -11,6 +11,7 @@ from pathlib import Path
 import yaml
 
 from .models import Ingredient, Recipe, Step
+from .nutrition import calculate_recipe_nutrition
 
 ACTION = re.compile(r"^\[([^]]+)]\s*(.*)$")
 SUBSTEP = re.compile(r"^[-*]\s+(.+)$")
@@ -127,7 +128,7 @@ def parse_recipe(path: Path) -> Recipe:
     if not scalable and not scaling_note:
         raise ValueError(f"{path}: a non-scalable recipe must declare scaling.reason")
 
-    return Recipe(
+    recipe = Recipe(
         slug=path.stem,
         title=title or path.stem.replace("-", " ").title(),
         portions=portions,
@@ -146,3 +147,5 @@ def parse_recipe(path: Path) -> Recipe:
         portion_step=max(1, int(scaling.get("step", 1))),
         scaling_note=scaling_note,
     )
+    recipe.nutrition = calculate_recipe_nutrition(recipe)
+    return recipe

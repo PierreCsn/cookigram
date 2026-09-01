@@ -37,7 +37,7 @@
          data-tags="{{ recipe.tags|join(' ') }}"
          data-ingredients="{% for item in recipe.ingredients %}{{ item.name }} {% endfor %}">
         <div class="card-visual">{% if recipe.image %}<img src="assets/{{ recipe.image }}" alt="" loading="lazy">{% else %}<span>{{ recipe.title[:2]|upper }}</span>{% endif %}</div>
-        <div><div class="tags">{% for tag in recipe.tags[:2] %}<span>{{ tag }}</span>{% endfor %}</div><h3>{{ recipe.title }}</h3><p>{{ recipe.description }}</p><small>{% if recipe.prep_time %}Préparation {{ recipe.prep_time }} · {% endif %}{{ recipe.steps|length }} étapes · {{ recipe.portions }} portions</small></div>
+        <div><div class="tags">{% for tag in recipe.tags[:2] %}<span>{{ tag }}</span>{% endfor %}{% if recipe.nutrition and recipe.nutrition.calories %}<span class="nutrition-tag">🔥 {{ recipe.nutrition.calories }} kcal</span>{% endif %}</div><h3>{{ recipe.title }}</h3><p>{{ recipe.description }}</p><small>{% if recipe.prep_time %}Préparation {{ recipe.prep_time }} · {% endif %}{{ recipe.steps|length }} étapes · {{ recipe.portions }} portions</small></div>
       </a>
     {% endfor %}
     </div>

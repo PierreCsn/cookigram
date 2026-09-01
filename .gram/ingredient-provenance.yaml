@@ -1,93 +1,107 @@
-# Ce fichier accompagne ingredients.yaml mais n'est pas lu par Gram.
-# Priorité : manual verrouillé > verified > estimated > incomplete.
+# Suivi de la provenance des ingrédients et niveaux de confiance.
 sources:
   ciqual:
-    name: "Table Ciqual de l'ANSES"
-    url: "https://ciqual.anses.fr/"
-    usage: "Source prioritaire pour les aliments génériques en France"
+    name: Table Ciqual de l'ANSES
+    url: https://ciqual.anses.fr/
+    usage: Source prioritaire pour les aliments génériques en France
   open-food-facts:
-    name: "Open Food Facts"
-    url: "https://world.openfoodfacts.org/"
-    usage: "Produits de marque uniquement ; données contributives à vérifier"
-
+    name: Open Food Facts
+    url: https://world.openfoodfacts.org/
+    usage: Produits de marque uniquement ; données contributives à vérifier
 ingredients:
   ail:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   concentre-de-tomate:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   coriandre-fraiche:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   courgette:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   curry-en-poudre:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   eau:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   filet-de-poulet:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   huile-vegetale:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   lait-de-coco:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   magret-de-canard:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   miel:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   oignon:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   poivre-moulu:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   poivron:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   riz-basmati:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
   sel:
-    status: incomplete
+    status: verified
     locked: false
-    sources: []
-    note: "Aucune valeur physique ou nutritionnelle n'est encore retenue."
+    sources:
+    - ciqual
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.

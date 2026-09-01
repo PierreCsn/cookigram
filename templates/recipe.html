@@ -4,7 +4,7 @@
 <header class="topbar"><a class="brand" href="../../"><span>CG</span> CookGram</a><div class="topbar-actions"><button class="share-btn share-btn-compact" type="button" aria-label="Partager la recette" title="Partager la recette">↗</button><button class="theme-toggle" type="button" aria-label="Changer de thème" title="Basculer le mode sombre">🌙</button></div></header>
 <main class="recipe-page">
   <a class="back" href="../../">← Toutes les recettes</a>
-  <section class="recipe-heading"><div><div class="tags">{% for tag in recipe.tags %}<span>{{ tag }}</span>{% endfor %}</div><h1>{{ recipe.title }}</h1><p>{{ recipe.description }}</p><div class="facts"><span class="portion-summary">{{ recipe.portions }} portions</span>{% if recipe.prep_time %}<span>Préparation {{ recipe.prep_time }}</span>{% endif %}{% if recipe.total_time %}<span>Total {{ recipe.total_time }}</span>{% endif %}<span>{{ recipe.steps|length }} étapes</span></div>{% if recipe.metadata.source %}<p class="source">Source : <a href="{{ recipe.metadata.source }}" rel="noreferrer">{{ recipe.metadata.author or recipe.metadata.source }}</a></p>{% endif %}</div><div class="plate">{% if recipe.image %}<img src="../../assets/{{ recipe.image }}" alt="Illustration de {{ recipe.title }}">{% else %}{{ recipe.title[:2]|upper }}{% endif %}</div></section>
+  <section class="recipe-heading"><div><div class="tags">{% for tag in recipe.tags %}<span>{{ tag }}</span>{% endfor %}</div><h1>{{ recipe.title }}</h1><p>{{ recipe.description }}</p><div class="facts"><span class="portion-summary">{{ recipe.portions }} portions</span>{% if recipe.prep_time %}<span>Préparation {{ recipe.prep_time }}</span>{% endif %}{% if recipe.total_time %}<span>Total {{ recipe.total_time }}</span>{% endif %}<span>{{ recipe.steps|length }} étapes</span>{% if recipe.nutrition and recipe.nutrition.calories %}<span>🔥 {{ recipe.nutrition.calories }} kcal / part</span>{% endif %}</div>{% if recipe.metadata.source %}<p class="source">Source : <a href="{{ recipe.metadata.source }}" rel="noreferrer">{{ recipe.metadata.author or recipe.metadata.source }}</a></p>{% endif %}</div><div class="plate">{% if recipe.image %}<img src="../../assets/{{ recipe.image }}" alt="Illustration de {{ recipe.title }}">{% else %}{{ recipe.title[:2]|upper }}{% endif %}</div></section>
   {% if recipe.metadata.image_credit %}<p class="image-credit">Photo : <a href="{{ recipe.metadata.image_credit.source }}" rel="noreferrer">{{ recipe.metadata.image_credit.author }}</a> · <a href="{{ recipe.metadata.image_credit.license_url }}" rel="license noreferrer">{{ recipe.metadata.image_credit.license }}</a>{% if recipe.metadata.image_credit.modifications %} · {{ recipe.metadata.image_credit.modifications }}{% endif %}</p>{% endif %}
   {% if recipe.scalable %}
   <section class="portion-picker" data-base-portions="{{ recipe.portions }}" data-min="{{ recipe.min_portions }}" data-max="{{ recipe.max_portions }}" data-step="{{ recipe.portion_step }}" data-recipe="{{ recipe.slug }}">
@@ -45,6 +45,36 @@
         </li>
         {% endfor %}
       </ul>
+      {% if recipe.nutrition and recipe.nutrition.calories %}
+      <div class="nutrition-card">
+        <div class="nutrition-header">
+          <h3>Valeurs nutritionnelles</h3>
+          <span class="nutrition-badge">par portion (CIQUAL)</span>
+        </div>
+        <div class="nutrition-grid">
+          <div class="nutrition-stat">
+            <span class="stat-value">{{ recipe.nutrition.calories }}</span>
+            <span class="stat-unit">kcal</span>
+            <span class="stat-name">Énergie</span>
+          </div>
+          <div class="nutrition-stat">
+            <span class="stat-value">{{ recipe.nutrition.protein }}</span>
+            <span class="stat-unit">g</span>
+            <span class="stat-name">Protéines</span>
+          </div>
+          <div class="nutrition-stat">
+            <span class="stat-value">{{ recipe.nutrition.carbs }}</span>
+            <span class="stat-unit">g</span>
+            <span class="stat-name">Glucides</span>
+          </div>
+          <div class="nutrition-stat">
+            <span class="stat-value">{{ recipe.nutrition.fat }}</span>
+            <span class="stat-unit">g</span>
+            <span class="stat-name">Lipides</span>
+          </div>
+        </div>
+      </div>
+      {% endif %}
     </section>
     <section>
       <h2>Préparation</h2>
