@@ -2,7 +2,7 @@
 
 Carnet de recettes statique et installable, généré depuis des fichiers `.gram`.
 
-**Site : [pierrecsn.github.io/cookigram](https://pierrecsn.github.io/cookigram/)**
+**PWA publiée automatiquement : [pierrecsn.github.io/cookigram](https://pierrecsn.github.io/cookigram/)**
 
 ## Fonctionnalités du MVP
 
