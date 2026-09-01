@@ -1,0 +1,23 @@
+{% set prefix = '' %}{% extends "base.html" %}
+{% block body %}
+<header class="topbar"><a class="brand" href="./"><span>CG</span> CookGram</a><button class="install" hidden>Installer</button></header>
+<main class="home">
+  <section class="hero">
+    <p class="eyebrow">Votre cuisine, simplement</p>
+    <h1>Des recettes qui vous guident vraiment.</h1>
+    <p>Écrites en Gram, disponibles hors ligne et pensées pour cuisiner une étape à la fois.</p>
+  </section>
+  <section class="catalogue">
+    <div class="section-title"><h2>À cuisiner</h2><span>{{ recipes|length }} recette{% if recipes|length > 1 %}s{% endif %}</span></div>
+    <div class="cards">
+    {% for recipe in recipes %}
+      <a class="recipe-card" href="recipes/{{ recipe.slug }}/">
+        <div class="card-visual"><span>{{ recipe.title[:2]|upper }}</span></div>
+        <div><div class="tags">{% for tag in recipe.tags[:2] %}<span>{{ tag }}</span>{% endfor %}</div><h3>{{ recipe.title }}</h3><p>{{ recipe.description }}</p><small>{{ recipe.steps|length }} étapes · {{ recipe.portions }} portions</small></div>
+      </a>
+    {% endfor %}
+    </div>
+  </section>
+</main>
+{% endblock %}
+
