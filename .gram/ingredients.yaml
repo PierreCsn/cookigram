@@ -1,0 +1,10 @@
+# Base locale CookGram. Les valeurs physiques et nutritionnelles ne doivent être
+# ajoutées qu'après vérification humaine avec `gram db enrich`.
+ingredients:
+  magret-de-canard:
+    name: "Magret de canard"
+    aliases:
+      - "magret de canard"
+      - "magrets de canard"
+    category: "Viandes"
+
