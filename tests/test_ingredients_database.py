@@ -17,11 +17,11 @@ def test_ingredient_database_has_valid_minimal_entries():
         assert len(ingredient.get("aliases", [])) == len(set(ingredient.get("aliases", [])))
 
 
-def test_magret_recipe_is_covered_by_database():
+def test_curry_recipe_is_covered_by_database():
     payload = yaml.safe_load(Path(".gram/ingredients.yaml").read_text(encoding="utf-8"))
-    magret = payload["ingredients"]["magret-de-canard"]
+    poulet = payload["ingredients"]["filet-de-poulet"]
 
-    assert "magrets de canard" in magret["aliases"]
+    assert "filet de poulet" in poulet["aliases"]
 
 
 def test_all_recipe_ingredients_are_covered_by_database():

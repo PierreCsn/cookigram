@@ -6,7 +6,7 @@ from generator.gram import parse_recipe
 
 
 def test_recipe_page_contains_share_button():
-    recipe = parse_recipe(Path("recipes/magret-rose.gram"))
+    recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
     env = Environment(
         loader=FileSystemLoader(Path("templates")),
         autoescape=select_autoescape(),
@@ -19,7 +19,7 @@ def test_recipe_page_contains_share_button():
 
 
 def test_recipe_page_contains_shopping_checklist_and_export():
-    recipe = parse_recipe(Path("recipes/magret-rose.gram"))
+    recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
     env = Environment(
         loader=FileSystemLoader(Path("templates")),
         autoescape=select_autoescape(),

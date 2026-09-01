@@ -6,7 +6,7 @@ from generator.gram import parse_recipe
 
 
 def test_index_page_contains_search_and_filter_elements():
-    recipe1 = parse_recipe(Path("recipes/magret-rose.gram"))
+    recipe1 = parse_recipe(Path("recipes/risotto-poulet-champignons.gram"))
     recipe2 = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
     recipes = [recipe1, recipe2]
     all_tags = sorted({t for r in recipes for t in r.tags})

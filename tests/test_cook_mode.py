@@ -6,7 +6,7 @@ from generator.gram import parse_recipe
 
 
 def test_cook_template_contains_voice_and_timer_controls():
-    recipe = parse_recipe(Path("recipes/magret-rose.gram"))
+    recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
     env = Environment(
         loader=FileSystemLoader(Path("templates")),
         autoescape=select_autoescape(),
@@ -20,5 +20,5 @@ def test_cook_template_contains_voice_and_timer_controls():
     assert "timer" in rendered
     assert "timer-toggle" in rendered
     assert "timer-reset" in rendered
-    assert 'data-seconds="420"' in rendered
+    assert 'data-seconds="1200"' in rendered
     assert 'data-step-num="3"' in rendered

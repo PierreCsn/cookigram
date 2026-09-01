@@ -6,7 +6,7 @@ from generator.gram import parse_recipe
 
 
 def test_theme_toggle_is_present_on_all_pages():
-    recipe = parse_recipe(Path("recipes/magret-rose.gram"))
+    recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
     env = Environment(
         loader=FileSystemLoader(Path("templates")),
         autoescape=select_autoescape(),
