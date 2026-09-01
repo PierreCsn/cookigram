@@ -1,0 +1,32 @@
+.card-visual img,
+.plate img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.plate {
+  overflow: hidden;
+}
+
+.image-credit {
+  margin: 12px 0 0 auto;
+  max-width: 320px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.image-credit a,
+.source a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 720px) {
+  .image-credit {
+    margin-right: auto;
+    text-align: left;
+  }
+}

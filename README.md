@@ -116,6 +116,26 @@ les plugins.
 préparation apparaît également dans le catalogue. Ils sont exportés dans
 `_site/recipes.json` avec le reste du modèle canonique.
 
+### Ajouter une photo
+
+Placer l'image optimisée dans `static/images/`, puis déclarer son chemin relatif
+aux assets dans le frontmatter. Les initiales du titre restent le fallback si
+`image` est absent.
+
+```yaml
+image: images/ma-recette.jpg
+image_credit:
+  author: Nom du photographe
+  source: https://example.com/page-de-la-photo
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  modifications: Image redimensionnée et recadrée.
+```
+
+Pour une image sous licence avec attribution, conserver le nom de l'auteur, la
+page source, la licence et les modifications éventuelles. La fiche recette
+affiche automatiquement ces informations sous la photo.
+
 ### Importer une recette du Web avec un agent
 
 Le skill `.agents/skills/import-recipe-gram/` explique aux agents comment :

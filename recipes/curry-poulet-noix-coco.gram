@@ -7,6 +7,13 @@ description: Curry complet au Thermomix, avec riz basmati et légumes cuits au V
 tags: [poulet, curry, noix-de-coco, thermomix]
 source: https://cookidoo.fr/recipes/recipe/fr-FR/r787793
 author: Vorwerk Home & Co. KmG
+image: images/curry-poulet-noix-coco.jpg
+image_credit:
+  author: Infrogmation of New Orleans
+  source: https://commons.wikimedia.org/wiki/File:Friday_dinner_-_Curry_chicken_with_bell_peppers_and_rice_-_01.jpg
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  modifications: Image redimensionnée à 960 × 720 pixels.
 appliances:
   thermomix: [TM5, TM6, TM7]
 scaling:
