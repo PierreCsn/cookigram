@@ -17,21 +17,29 @@ if TYPE_CHECKING:
 # Nutritional values per 100g of edible portion (CIQUAL / Open Food Facts)
 CIQUAL_NUTRITION_PER_100G: dict[str, dict[str, float]] = {
     "ail": {"calories": 131, "protein": 6.4, "carbs": 23.5, "fat": 0.5},
+    "champignons-de-paris": {"calories": 22, "protein": 2.5, "carbs": 1.4, "fat": 0.4},
     "concentre-de-tomate": {"calories": 96, "protein": 4.8, "carbs": 14.8, "fat": 0.6},
     "coriandre-fraiche": {"calories": 28, "protein": 2.1, "carbs": 1.9, "fat": 0.5},
     "courgette": {"calories": 17, "protein": 1.2, "carbs": 1.8, "fat": 0.3},
+    "cube-de-bouillon-de-volaille": {"calories": 240, "protein": 12.0, "carbs": 20.0, "fat": 12.0},
     "curry-en-poudre": {"calories": 337, "protein": 12.7, "carbs": 32.2, "fat": 13.8},
     "eau": {"calories": 0, "protein": 0.0, "carbs": 0.0, "fat": 0.0},
+    "echalote": {"calories": 72, "protein": 2.5, "carbs": 14.5, "fat": 0.1},
     "filet-de-poulet": {"calories": 110, "protein": 23.9, "carbs": 0.0, "fat": 1.2},
+    "huile-olive": {"calories": 900, "protein": 0.0, "carbs": 0.0, "fat": 100.0},
     "huile-vegetale": {"calories": 900, "protein": 0.0, "carbs": 0.0, "fat": 100.0},
     "lait-de-coco": {"calories": 181, "protein": 1.6, "carbs": 2.8, "fat": 18.0},
     "magret-de-canard": {"calories": 230, "protein": 25.0, "carbs": 0.0, "fat": 14.0},
+    "mascarpone": {"calories": 412, "protein": 4.5, "carbs": 3.5, "fat": 42.0},
     "miel": {"calories": 327, "protein": 0.4, "carbs": 81.1, "fat": 0.0},
     "oignon": {"calories": 39, "protein": 1.3, "carbs": 7.1, "fat": 0.2},
+    "parmesan": {"calories": 431, "protein": 35.8, "carbs": 0.0, "fat": 32.7},
     "poivre-moulu": {"calories": 283, "protein": 10.4, "carbs": 38.3, "fat": 3.3},
     "poivron": {"calories": 28, "protein": 1.1, "carbs": 4.9, "fat": 0.3},
+    "riz-a-risotto": {"calories": 355, "protein": 7.5, "carbs": 78.0, "fat": 0.8},
     "riz-basmati": {"calories": 355, "protein": 8.5, "carbs": 77.0, "fat": 0.9},
     "sel": {"calories": 0, "protein": 0.0, "carbs": 0.0, "fat": 0.0},
+    "vin-blanc": {"calories": 82, "protein": 0.1, "carbs": 1.5, "fat": 0.0},
 }
 
 
@@ -95,6 +103,10 @@ def parse_quantity_grams(quantity_str: str, ingredient_slug: str = "") -> float:
         count = float(m_num.group(1).replace(",", "."))
         if "magret" in ingredient_slug:
             return count * 350.0
+        if "echalote" in ingredient_slug:
+            return count * 25.0
+        if "bouillon" in ingredient_slug:
+            return count * 10.0
         return count * 100.0
 
     return 10.0

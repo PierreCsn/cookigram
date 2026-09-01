@@ -1,4 +1,149 @@
 # Suivi de la provenance des ingrédients et niveaux de confiance.
+ingredients:
+  ail:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  champignons-de-paris:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  concentre-de-tomate:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  coriandre-fraiche:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  courgette:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  cube-de-bouillon-de-volaille:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  curry-en-poudre:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  eau:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  echalote:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  filet-de-poulet:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  huile-olive:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  huile-vegetale:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  lait-de-coco:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  magret-de-canard:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  mascarpone:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  miel:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  oignon:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  parmesan:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  poivre-moulu:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  poivron:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  riz-a-risotto:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  riz-basmati:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  sel:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
+  vin-blanc:
+    locked: false
+    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
+    sources:
+    - ciqual
+    status: verified
 sources:
   ciqual:
     name: Table Ciqual de l'ANSES
@@ -8,100 +153,3 @@ sources:
     name: Open Food Facts
     url: https://world.openfoodfacts.org/
     usage: Produits de marque uniquement ; données contributives à vérifier
-ingredients:
-  ail:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  concentre-de-tomate:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  coriandre-fraiche:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  courgette:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  curry-en-poudre:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  eau:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  filet-de-poulet:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  huile-vegetale:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  lait-de-coco:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  magret-de-canard:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  miel:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  oignon:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  poivre-moulu:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  poivron:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  riz-basmati:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
-  sel:
-    status: verified
-    locked: false
-    sources:
-    - ciqual
-    note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
