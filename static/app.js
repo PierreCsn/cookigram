@@ -5,6 +5,7 @@
 
 import { initChecklist } from './js/modules/checklist.js';
 import { initCookMode, initSubsteps } from './js/modules/cook.js';
+import { initOfflineSave } from './js/modules/offline-save.js';
 import { initPortions } from './js/modules/portions.js';
 import { initCatalogueSearch } from './js/modules/search.js';
 import { initShare } from './js/modules/share.js';
@@ -33,6 +34,7 @@ initFeature('share', initShare);
 initFeature('portions', initPortions);
 initFeature('checklist', initChecklist);
 initFeature('shopping', initShoppingModal);
+initFeature('offline-save', initOfflineSave);
 
 // Catalogue page features
 initFeature('search', initCatalogueSearch);

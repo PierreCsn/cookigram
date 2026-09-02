@@ -32,7 +32,9 @@ const networkFirst = async request => {
   try {
     return await cacheSuccessful(cache, request, await fetch(request));
   } catch (_) {
-    return (await cache.match(request, { ignoreSearch: true })) || cache.match('./');
+    const offline = await cache.match(request, { ignoreSearch: true });
+    if (offline) return offline;
+    return (await cache.match('./offline.html')) || Response.error();
   }
 };
 

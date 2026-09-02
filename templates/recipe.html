@@ -56,6 +56,10 @@
   {% endif %}
   <div class="recipe-actions">
     <a class="primary start-cooking" href="cook/{% if recipe.variants %}?variant={{ view.id }}{% endif %}">Commencer la recette <span>→</span></a>
+    <button class="offline-save-btn" type="button" data-offline-slug="{{ recipe.slug }}" aria-label="Télécharger cette recette pour une utilisation hors ligne">
+      <span class="offline-save-icon">⬇</span>
+      <span class="offline-save-label">Télécharger hors ligne</span>
+    </button>
     <button class="share-btn" type="button" aria-label="Partager cette recette" title="Partager la recette">
       <span class="share-icon">↗</span>
       <span class="share-label">Partager</span>

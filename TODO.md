@@ -118,15 +118,15 @@ Dernier audit : 2 septembre 2026.
 
 - [x] Choisir et documenter une stratégie :
   - [x] précharger toutes les recettes et leurs images ; ou
-  - [ ] proposer un téléchargement hors ligne explicite par recette.
+  - [x] proposer un téléchargement hors ligne explicite par recette.
 - [x] Inclure `recipes.json` et les pages nécessaires dans la stratégie de cache.
-- [ ] Ajouter une page de secours lorsqu'une ressource non téléchargée est
+- [x] Ajouter une page de secours lorsqu'une ressource non téléchargée est
   demandée hors ligne.
 - [x] Définir les stratégies de cache séparément pour HTML, données, scripts,
   styles et images.
 - [x] Vérifier qu'une nouvelle version du service worker met à jour les assets
   sans laisser une interface incohérente.
-- [ ] Tester l'installation fraîche, la mise à jour et le retour en ligne.
+- [x] Tester l'installation fraîche, la mise à jour et le retour en ligne.
 - [x] Tester en CI le mode avion sur une fiche, son image et son mode cuisine.
 - [x] Ajuster la promesse « consultable partout, sans connexion » si toutes les
   recettes ne sont pas disponibles après la première installation.
