@@ -9,11 +9,16 @@ source: https://cookidoo.fr/recipes/recipe/fr-FR/r505976
 author: Vorwerk Home & Co. KmG
 image: images/porc-au-caramel.jpg
 image_credit:
-  author: Vorwerk Home & Co. KmG
-  source: https://cookidoo.fr/recipes/recipe/fr-FR/r505976
-  license: Droits réservés
-  license_url: https://cookidoo.fr/
-  modifications: Image convertie au format JPEG.
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-02"
+  prompt_file: image-prompts/porc-au-caramel.md
 appliances:
   thermomix: [TM6, TM7]
 scaling:
