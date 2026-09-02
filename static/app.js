@@ -15,6 +15,55 @@ const initFeature = (label, init) => {
   }
 };
 
+// Resolve static recipe variants before the other page features bind to the DOM.
+// Invalid shared links fall back to the declared default and are canonicalized.
+const variantPicker = document.querySelector('.variant-picker');
+if (variantPicker) initFeature('variants', () => {
+  const templates = [...document.querySelectorAll('template[data-variant]')];
+  const cookGroups = [...document.querySelectorAll('[data-cook-variant]')];
+  const validIds = new Set([
+    ...templates.map(template => template.dataset.variant),
+    ...cookGroups.map(group => group.dataset.cookVariant),
+  ]);
+  const params = new URLSearchParams(window.location.search);
+  const requested = params.get('variant');
+  const defaultId = variantPicker.dataset.defaultVariant;
+  const selectedId = validIds.has(requested) ? requested : defaultId;
+
+  if (requested && !validIds.has(requested)) {
+    params.delete('variant');
+    const query = params.toString();
+    history.replaceState(null, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
+  }
+
+  const template = templates.find(item => item.dataset.variant === selectedId);
+  if (template) {
+    template.content.querySelectorAll('[data-fragment]').forEach(fragment => {
+      const target = document.querySelector(`[data-variant-target="${fragment.dataset.fragment}"]`);
+      if (target) target.replaceChildren(...fragment.cloneNode(true).childNodes);
+    });
+  }
+  cookGroups.forEach(group => { group.hidden = group.dataset.cookVariant !== selectedId; });
+
+  const select = variantPicker.querySelector('.variant-select');
+  if (select) {
+    select.value = selectedId;
+    select.addEventListener('change', () => {
+      const nextParams = new URLSearchParams(window.location.search);
+      nextParams.set('variant', select.value);
+      window.location.assign(`${window.location.pathname}?${nextParams}${window.location.hash}`);
+    });
+  }
+  document.querySelector('.ingredient-list')?.setAttribute('data-variant', selectedId);
+  const start = document.querySelector('.start-cooking');
+  if (start) start.href = `cook/?variant=${encodeURIComponent(selectedId)}`;
+  const cookPage = document.querySelector('.cook');
+  if (cookPage) cookPage.dataset.variant = selectedId;
+  const leave = document.querySelector('.leave-cook');
+  if (leave) leave.href = `../?variant=${encodeURIComponent(selectedId)}`;
+  document.documentElement.dataset.recipeVariant = selectedId;
+});
+
 // --- Theme Management ---
 const THEME_KEY = 'cookigram:theme';
 const OLD_THEME_KEY = 'cookgram:theme';
@@ -360,12 +409,15 @@ const showToast = (message, duration = 3200) => {
 const checklistEl = document.querySelector('.ingredient-list.checklist');
 if (checklistEl) initFeature('checklist', () => {
   const recipeSlug = checklistEl.dataset.recipe || '';
-  const storageKey = `cookigram:${recipeSlug}:checked`;
+  const variantId = checklistEl.dataset.variant || 'main';
+  const storageKey = `cookigram:${recipeSlug}:${variantId}:checked`;
+  const legacyStorageKey = `cookigram:${recipeSlug}:checked`;
   const oldStorageKey = `cookgram:${recipeSlug}:checked`;
+  const legacyValue = variantId === 'main' ? (localStorage.getItem(legacyStorageKey) || localStorage.getItem(oldStorageKey)) : null;
 
   const getSavedChecked = () => {
     try {
-      return JSON.parse(localStorage.getItem(storageKey) || localStorage.getItem(oldStorageKey) || '[]');
+      return JSON.parse(localStorage.getItem(storageKey) || legacyValue || '[]');
     } catch (_) {
       return [];
     }
@@ -403,6 +455,7 @@ if (checklistEl) initFeature('checklist', () => {
   const resetBtn = document.querySelector('.reset-checklist');
   resetBtn?.addEventListener('click', () => {
     localStorage.removeItem(storageKey);
+    if (variantId === 'main') localStorage.removeItem(legacyStorageKey);
     localStorage.removeItem(oldStorageKey);
     checklistEl.querySelectorAll('.ingredient-item').forEach(item => {
       updateItemState(item, false);
@@ -925,10 +978,13 @@ class RecipeTimer {
 
 const cook = document.querySelector('.cook');
 if (cook) initFeature('cook', () => {
-  const steps = [...document.querySelectorAll('.cook-step')];
-  const key = `cookigram:${cook.dataset.recipe}:step`;
+  const steps = [...document.querySelectorAll('.cook-steps:not([hidden]) .cook-step')];
+  const key = `cookigram:${cook.dataset.recipe}:step-id`;
   const oldKey = `cookgram:${cook.dataset.recipe}:step`;
-  let current = Math.min(Number(localStorage.getItem(key) || localStorage.getItem(oldKey) || 0), steps.length - 1);
+  const savedStepId = localStorage.getItem(key);
+  const matchedStep = savedStepId ? steps.findIndex(step => step.dataset.stepId === savedStepId) : -1;
+  const legacyStep = Number(localStorage.getItem(oldKey) || 0);
+  let current = matchedStep >= 0 ? matchedStep : Math.min(legacyStep, steps.length - 1);
   if (cook.dataset.scalable === 'true') {
     const basePortions = Number(cook.dataset.basePortions);
     const portions = Number(localStorage.getItem(`cookigram:${cook.dataset.recipe}:portions`) || localStorage.getItem(`cookgram:${cook.dataset.recipe}:portions`) || basePortions);
@@ -1027,11 +1083,12 @@ if (cook) initFeature('cook', () => {
     }
   };
 
-  steps.forEach((stepEl, stepIdx) => {
+  steps.forEach((stepEl) => {
     const card = stepEl.querySelector('.substeps-card');
     if (!card) return;
-    const storageKey = `cookigram:${cook.dataset.recipe}:substeps:${stepIdx}`;
-    const oldStorageKey = `cookgram:${cook.dataset.recipe}:substeps:${stepIdx}`;
+    const stepId = stepEl.dataset.stepId;
+    const storageKey = `cookigram:${cook.dataset.recipe}:substeps:${stepId}`;
+    const oldStorageKey = `cookgram:${cook.dataset.recipe}:substeps:${stepEl.dataset.step}`;
 
     let saved = [];
     try {
@@ -1060,6 +1117,21 @@ if (cook) initFeature('cook', () => {
     updateSubstepsProgress(stepEl);
   });
 
+  steps.forEach(stepEl => {
+    const stepId = stepEl.dataset.stepId;
+    stepEl.querySelectorAll('.parallel-operation').forEach(operation => {
+      const storageKey = `cookigram:${cook.dataset.recipe}:parallel:${stepId}:${operation.dataset.operationId}`;
+      const checkbox = operation.querySelector('.parallel-checkbox');
+      const checked = localStorage.getItem(storageKey) === 'true';
+      if (checkbox) checkbox.checked = checked;
+      operation.classList.toggle('checked', checked);
+      checkbox?.addEventListener('change', () => {
+        operation.classList.toggle('checked', checkbox.checked);
+        localStorage.setItem(storageKey, String(checkbox.checked));
+      });
+    });
+  });
+
   steps.forEach((step) => {
     const btn = step.querySelector('.step-speak');
     if (btn) {
@@ -1078,7 +1150,7 @@ if (cook) initFeature('cook', () => {
     }
   });
 
-  const timers = [...document.querySelectorAll('.timer')].map(el => new RecipeTimer(el));
+  const timers = [...document.querySelectorAll('.cook-steps:not([hidden]) .timer')].map(el => new RecipeTimer(el));
 
   // --- Hands-Free Voice Control (Speech Recognition) ---
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -1277,7 +1349,7 @@ if (cook) initFeature('cook', () => {
     document.querySelector('.progress i').style.width = `${((current + 1) / steps.length) * 100}%`;
     document.querySelector('.prev').disabled = current === 0;
     document.querySelector('.next').textContent = current === steps.length - 1 ? 'Terminer ✓' : 'Suivant →';
-    localStorage.setItem(key, current);
+    localStorage.setItem(key, steps[current]?.dataset.stepId || '');
     if (autoSpeakEnabled) {
       readActiveStep();
     }

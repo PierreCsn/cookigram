@@ -12,7 +12,7 @@ from .plugins import apply_plugins
 
 ROOT = Path(__file__).resolve().parents[1]
 
-ASSETS_TO_VERSION = ("app.css", "scaling.css", "images.css", "app.js")
+ASSETS_TO_VERSION = ("app.css", "scaling.css", "variants.css", "images.css", "app.js")
 
 
 def compute_asset_version(assets_path: Path) -> str:

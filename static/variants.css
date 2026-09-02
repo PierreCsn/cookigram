@@ -1,0 +1,36 @@
+.variant-picker { margin: 26px 0; background: var(--cream); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; max-width: 680px; }
+.variant-picker label { display: flex; align-items: center; gap: 14px; font-weight: 800; }
+.variant-picker label > span { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.variant-select { min-height: 48px; flex: 1; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink); padding: 10px 42px 10px 14px; font: inherit; font-weight: 800; cursor: pointer; }
+.variant-picker p { margin: 12px 0 0; color: var(--muted); line-height: 1.5; }
+.equipment-card { max-width: 680px; margin: 34px 0; padding: 22px; background: var(--cream); border: 1px solid var(--line); border-radius: 18px; }
+.equipment-card h2 { margin-top: 0; font-family: Georgia, serif; }
+.equipment-card ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
+.equipment-card li, .compatibility span { background: var(--card); border: 1px solid var(--line); border-radius: 99px; padding: 7px 11px; font-size: 13px; }
+.compatibility { border-top: 1px solid var(--line); padding-top: 14px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.parallel-block { margin-top: 12px; padding: 14px; background: var(--cream); border: 1px solid var(--line); border-left: 4px solid var(--orange); border-radius: 12px; }
+.parallel-heading { display: block; margin-bottom: 10px; color: var(--orange); }
+.parallel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+.parallel-grid article { padding: 12px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
+.parallel-grid p { margin: 5px 0 0; font-size: 14px; line-height: 1.45; }
+.cook-variant-picker { padding: 8px 14px; background: var(--cream); border-bottom: 1px solid var(--line); display: flex; justify-content: center; }
+.cook-variant-picker label { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 800; }
+.cook-variant-picker select { min-height: 44px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); padding: 8px 34px 8px 12px; font: inherit; font-weight: 700; }
+.parallel-cook-card { max-width: 680px; margin: 20px auto; text-align: left; background: var(--cream); border: 1px solid var(--line); border-left: 5px solid var(--orange); border-radius: 18px; padding: 18px; }
+.parallel-cook-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-top: 12px; }
+.parallel-operation { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+.parallel-operation label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+.parallel-operation input { width: 20px; height: 20px; accent-color: var(--orange); flex-shrink: 0; }
+.parallel-operation p { margin: 7px 0 0; line-height: 1.45; }
+.parallel-operation.checked p { text-decoration: line-through; opacity: .6; }
+
+@media (max-width: 720px) {
+  .variant-picker { position: sticky; top: 8px; z-index: 20; box-shadow: var(--shadow); padding: 14px; }
+  .variant-picker label { align-items: stretch; flex-direction: column; gap: 6px; }
+  .variant-select { width: 100%; font-size: 16px; }
+  .facts { flex-wrap: wrap; gap: 10px 16px; }
+  .recipe-actions .primary { min-height: 54px; }
+  .parallel-grid, .parallel-cook-grid { grid-template-columns: 1fr; }
+  .cook-variant-picker label { width: 100%; justify-content: space-between; }
+  .cook-variant-picker select { max-width: 68%; font-size: 16px; }
+}

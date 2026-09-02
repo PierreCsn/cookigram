@@ -3,6 +3,7 @@ const PRECACHE = [
   './',
   './assets/app.css?__VERSION__',
   './assets/scaling.css?__VERSION__',
+  './assets/variants.css?__VERSION__',
   './assets/images.css?__VERSION__',
   './assets/app.js?__VERSION__',
   './manifest.webmanifest',

@@ -1,9 +1,11 @@
 {% set prefix = '../../../' %}{% extends "base.html" %}
 {% block title %}Cuisson · {{ recipe.title }}{% endblock %}
 {% block body %}
-<main class="cook" data-recipe="{{ recipe.slug }}" data-base-portions="{{ recipe.portions }}" data-scalable="{{ 'true' if recipe.scalable else 'false' }}">
+{% set default_variant = (recipe.variants|selectattr('default')|first) if recipe.variants else none %}
+{% set views = recipe.variants if recipe.variants else [recipe] %}
+<main class="cook" data-recipe="{{ recipe.slug }}" data-variant="{{ default_variant.id if default_variant else 'main' }}" data-base-portions="{{ recipe.portions }}" data-scalable="{{ 'true' if recipe.scalable else 'false' }}">
   <header>
-    <a href="../" aria-label="Quitter">×</a>
+    <a class="leave-cook" href="../{% if default_variant %}?variant={{ default_variant.id }}{% endif %}" aria-label="Quitter">×</a>
     <div>
       <small>{{ recipe.title }} · <span class="cook-portions">{{ recipe.portions }} portions</span></small>
       <div class="progress"><i></i></div>
@@ -19,14 +21,21 @@
     <span class="voice-indicator" aria-hidden="true"></span>
     <span class="voice-feedback-text">Mains libres actif : dites <em>« Suivant »</em>, <em>« Précédent »</em>, <em>« Répéter »</em> ou <em>« Minuteur »</em></span>
   </aside>
+  {% if recipe.variants|length > 1 %}
+  <aside class="cook-variant-picker variant-picker" data-default-variant="{{ default_variant.id }}">
+    <label for="cook-variant-select">Méthode <select id="cook-variant-select" class="variant-select">{% for variant in recipe.variants %}<option value="{{ variant.id }}"{% if variant.default %} selected{% endif %}>{{ variant.name }}</option>{% endfor %}</select></label>
+  </aside>
+  {% endif %}
   {% if not recipe.scalable %}<aside class="cook-fixed">Proportions fixes · {{ recipe.scaling_note }}</aside>{% endif %}
   <div class="cook-stage">
-  {% for step in recipe.steps %}
+  {% for view in views %}
+  <div class="cook-steps" data-cook-variant="{{ view.id if recipe.variants else 'main' }}"{% if recipe.variants and not view.default %} hidden{% endif %}>
+  {% for step in view.steps %}
     {% set step_idx = loop.index0 %}
     {% set step_num = loop.index %}
-    <article class="cook-step{% if loop.first %} active{% endif %}" data-step="{{ step_idx }}">
+    <article class="cook-step{% if loop.first %} active{% endif %}" data-step="{{ step_idx }}" data-step-id="{{ step.id }}">
       <div class="step-meta">
-        <p class="step-count">Étape {{ step_num }} sur {{ recipe.steps|length }}</p>
+        <p class="step-count">Étape {{ step_num }} sur {{ view.steps|length }}</p>
         <button class="step-speak" type="button" aria-label="Lire cette étape à voix haute" title="Écouter l'instruction">
           <span class="speak-icon">🔊</span>
           <span class="speak-label">Écouter</span>
@@ -50,6 +59,18 @@
           </li>
           {% endfor %}
         </ul>
+      </div>
+      {% endif %}
+      {% if step.parallel %}
+      <div class="parallel-cook-card">
+        <strong>⏱ À réaliser en parallèle</strong>
+        <div class="parallel-cook-grid">
+          {% for operation in step.parallel %}
+          <article class="parallel-operation" data-operation-id="{{ operation.id }}">
+            <label><input type="checkbox" class="parallel-checkbox"><span><b>{{ operation.label }}</b><p data-scale-text="{{ operation.text }}">{{ operation.text }}</p></span></label>
+          </article>
+          {% endfor %}
+        </div>
       </div>
       {% endif %}
       {% if step.plugins.thermomix_settings %}
@@ -104,6 +125,8 @@
       {% endfor %}
       {% for plugin in step.plugins.values() %}<aside class="plugin"><b>{{ plugin.label }}</b><span>{{ plugin.instruction }}</span></aside>{% endfor %}
     </article>
+  {% endfor %}
+  </div>
   {% endfor %}
   </div>
   <nav class="cook-nav"><button class="prev">← Précédent</button><button class="next">Suivant →</button></nav>
