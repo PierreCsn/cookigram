@@ -435,6 +435,11 @@
   text-align:left;
 }
 
+.plugin:empty,
+.plugin:not(:has(*:not(:empty))) {
+  display:none;
+}
+
 .cook-nav {
   display:flex;
   justify-content:space-between;

@@ -110,7 +110,7 @@
           </div>
         </div>
       {% endfor %}
-      {% for plugin in step.plugins.values() %}<aside class="plugin"><b>{{ plugin.label }}</b><span>{{ plugin.instruction }}</span></aside>{% endfor %}
+      {% for key, plugin in step.plugins.items() if key != 'thermomix_settings' and (plugin.instruction or plugin.label) %}<aside class="plugin"><b>{{ plugin.label }}</b><span>{{ plugin.instruction }}</span></aside>{% endfor %}
     </article>
   {% endfor %}
   </div>
