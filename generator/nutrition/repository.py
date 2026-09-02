@@ -1,20 +1,18 @@
-"""Nutritional data and calculation engine for CookiGram.
-
-Uses official ANSES CIQUAL / Open Food Facts reference values per 100g.
-"""
+"""Repository managing ingredient nutritional reference data, density, piece weights, and provenance."""
 
 from __future__ import annotations
 
 import re
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import Any
 
 import yaml
 
-if TYPE_CHECKING:
-    from .models import Recipe
+from .models import IngredientData, IngredientProvenance, NutritionalValues
 
-# Nutritional values per 100g of edible portion (CIQUAL / Open Food Facts)
+ROOT = Path(__file__).resolve().parents[2]
+
+# Standard CIQUAL fallback reference values per 100g
 CIQUAL_NUTRITION_PER_100G: dict[str, dict[str, float]] = {
     "ail": {"calories": 131, "protein": 6.4, "carbs": 23.5, "fat": 0.5},
     "ail-en-poudre": {"calories": 331, "protein": 16.5, "carbs": 64.0, "fat": 0.7},
@@ -22,12 +20,14 @@ CIQUAL_NUTRITION_PER_100G: dict[str, dict[str, float]] = {
     "aneth": {"calories": 43, "protein": 3.5, "carbs": 7.0, "fat": 1.1},
     "aubergine": {"calories": 21, "protein": 0.9, "carbs": 2.5, "fat": 0.2},
     "basilic-frais": {"calories": 23, "protein": 3.2, "carbs": 2.7, "fat": 0.6},
+    "bechamel": {"calories": 135, "protein": 3.5, "carbs": 9.5, "fat": 9.0},
     "beurre": {"calories": 751, "protein": 0.8, "carbs": 0.7, "fat": 82.5},
     "bouillon-de-legumes": {"calories": 15, "protein": 0.5, "carbs": 2.5, "fat": 0.3},
     "bouquet-garni": {"calories": 10, "protein": 0.5, "carbs": 1.5, "fat": 0.2},
     "brocoli": {"calories": 35, "protein": 3.1, "carbs": 2.4, "fat": 0.6},
     "cannelle": {"calories": 261, "protein": 4.0, "carbs": 56.1, "fat": 1.2},
     "capres": {"calories": 23, "protein": 2.4, "carbs": 4.9, "fat": 0.9},
+    "caramel-liquide": {"calories": 310, "protein": 0.0, "carbs": 77.0, "fat": 0.1},
     "carotte": {"calories": 40, "protein": 0.8, "carbs": 7.6, "fat": 0.3},
     "champignons-de-paris": {"calories": 22, "protein": 2.5, "carbs": 1.4, "fat": 0.4},
     "chapelure": {"calories": 360, "protein": 12.0, "carbs": 72.0, "fat": 2.0},
@@ -39,6 +39,7 @@ CIQUAL_NUTRITION_PER_100G: dict[str, dict[str, float]] = {
     "courgette": {"calories": 17, "protein": 1.2, "carbs": 1.8, "fat": 0.3},
     "creme-fraiche-epaisse": {"calories": 292, "protein": 2.2, "carbs": 3.0, "fat": 30.0},
     "creme-fraiche-liquide": {"calories": 292, "protein": 2.2, "carbs": 3.0, "fat": 30.0},
+    "cube-de-bouillon": {"calories": 240, "protein": 12.0, "carbs": 20.0, "fat": 12.0},
     "cube-de-bouillon-de-boeuf": {"calories": 240, "protein": 12.0, "carbs": 18.0, "fat": 12.0},
     "cube-de-bouillon-de-legumes": {"calories": 230, "protein": 8.0, "carbs": 20.0, "fat": 12.0},
     "cube-de-bouillon-de-volaille": {"calories": 240, "protein": 12.0, "carbs": 20.0, "fat": 12.0},
@@ -58,6 +59,7 @@ CIQUAL_NUTRITION_PER_100G: dict[str, dict[str, float]] = {
     "filet-mignon-de-porc": {"calories": 120, "protein": 22.0, "carbs": 0.0, "fat": 3.5},
     "fond-de-legumes": {"calories": 180, "protein": 6.0, "carbs": 25.0, "fat": 5.0},
     "fond-de-viande": {"calories": 190, "protein": 10.0, "carbs": 20.0, "fat": 6.0},
+    "fromage-rape": {"calories": 380, "protein": 26.0, "carbs": 1.0, "fat": 30.0},
     "gingembre": {"calories": 80, "protein": 1.8, "carbs": 15.8, "fat": 0.8},
     "gingembre-moulu": {"calories": 335, "protein": 9.0, "carbs": 71.6, "fat": 4.2},
     "graine-de-moutarde": {"calories": 508, "protein": 26.1, "carbs": 28.1, "fat": 36.2},
@@ -98,14 +100,18 @@ CIQUAL_NUTRITION_PER_100G: dict[str, dict[str, float]] = {
     "petits-pois": {"calories": 70, "protein": 5.5, "carbs": 9.5, "fat": 0.5},
     "piment-de-cayenne": {"calories": 318, "protein": 12.0, "carbs": 56.6, "fat": 17.3},
     "piment-rouge": {"calories": 40, "protein": 1.9, "carbs": 7.0, "fat": 0.4},
+    "pistaches": {"calories": 600, "protein": 18.0, "carbs": 12.0, "fat": 53.0},
     "poireau": {"calories": 31, "protein": 1.5, "carbs": 4.0, "fat": 0.3},
     "poivre-moulu": {"calories": 283, "protein": 10.4, "carbs": 38.3, "fat": 3.3},
     "poivron": {"calories": 28, "protein": 1.1, "carbs": 4.9, "fat": 0.3},
+    "pomme": {"calories": 52, "protein": 0.3, "carbs": 13.8, "fat": 0.2},
     "pomme-de-terre": {"calories": 80, "protein": 2.0, "carbs": 17.0, "fat": 0.1},
     "porc-hache": {"calories": 263, "protein": 17.0, "carbs": 0.0, "fat": 21.5},
     "poulet": {"calories": 121, "protein": 21.0, "carbs": 0.0, "fat": 3.8},
+    "quatre-epices": {"calories": 260, "protein": 6.0, "carbs": 45.0, "fat": 5.0},
     "riz-a-risotto": {"calories": 355, "protein": 7.5, "carbs": 78.0, "fat": 0.8},
     "riz-basmati": {"calories": 355, "protein": 8.5, "carbs": 77.0, "fat": 0.9},
+    "riz-long-blanc": {"calories": 355, "protein": 7.0, "carbs": 79.0, "fat": 0.6},
     "roti-de-porc": {"calories": 180, "protein": 24.0, "carbs": 0.0, "fat": 9.0},
     "sauce-soja": {"calories": 53, "protein": 8.1, "carbs": 4.9, "fat": 0.1},
     "sauce-tomate": {"calories": 50, "protein": 1.5, "carbs": 7.0, "fat": 1.5},
@@ -116,6 +122,7 @@ CIQUAL_NUTRITION_PER_100G: dict[str, dict[str, float]] = {
     "sucre-roux": {"calories": 390, "protein": 0.0, "carbs": 97.5, "fat": 0.0},
     "tahini": {"calories": 595, "protein": 17.0, "carbs": 21.0, "fat": 54.0},
     "thym": {"calories": 276, "protein": 9.1, "carbs": 63.9, "fat": 7.4},
+    "tomate": {"calories": 19, "protein": 0.8, "carbs": 2.5, "fat": 0.3},
     "tomate-cerise": {"calories": 18, "protein": 0.9, "carbs": 3.9, "fat": 0.2},
     "tomates-concassees": {"calories": 25, "protein": 1.2, "carbs": 3.8, "fat": 0.2},
     "torsades": {"calories": 355, "protein": 12.5, "carbs": 72.0, "fat": 1.5},
@@ -125,228 +132,136 @@ CIQUAL_NUTRITION_PER_100G: dict[str, dict[str, float]] = {
 }
 
 
-# Unicode fraction glyphs (½, ¼, ...) sometimes found in handwritten quantities.
-UNICODE_FRACTION_VALUES = {
-    "¼": 0.25,
-    "½": 0.5,
-    "¾": 0.75,
-    "⅓": 1 / 3,
-    "⅔": 2 / 3,
-    "⅛": 1 / 8,
-    "⅜": 3 / 8,
-    "⅝": 5 / 8,
-    "⅞": 7 / 8,
-}
+class NutritionRepository:
+    """Loads and queries ingredient data, nutritional values, and provenance."""
 
-MIXED_NUMBER_CHARS = "0-9.,/ \t¼½¾⅓⅔⅛⅜⅝⅞"
+    def __init__(self, db_path: Path | None = None, provenance_path: Path | None = None):
+        self.db_path = db_path or (ROOT / ".gram" / "ingredients.yaml")
+        self.provenance_path = provenance_path or (ROOT / ".gram" / "ingredient-provenance.yaml")
+        self._ingredients: dict[str, IngredientData] = {}
+        self._alias_map: dict[str, str] = {}
+        self._load()
+
+    def _load(self) -> None:
+        ingredients_data: dict[str, Any] = {}
+        if self.db_path.exists():
+            payload = yaml.safe_load(self.db_path.read_text(encoding="utf-8")) or {}
+            ingredients_data = payload.get("ingredients", {})
+
+        provenance_data: dict[str, Any] = {}
+        if self.provenance_path.exists():
+            payload = yaml.safe_load(self.provenance_path.read_text(encoding="utf-8")) or {}
+            provenance_data = payload.get("ingredients", {})
+
+        for slug, raw in ingredients_data.items():
+            name = str(raw.get("name", slug))
+            aliases = [str(a) for a in raw.get("aliases", [])]
+            category = str(raw.get("category", ""))
+            pantry_staple = bool(raw.get("pantry_staple", False))
+            density = float(raw["density"]) if "density" in raw else None
+            piece_weight = float(raw["piece_weight"]) if "piece_weight" in raw else None
+            conversions = {str(k): float(v) for k, v in raw.get("conversions", {}).items()}
+
+            nutr = None
+            if "nutrition" in raw and isinstance(raw["nutrition"], dict):
+                n_dict = raw["nutrition"]
+                nutr = NutritionalValues(
+                    calories=float(n_dict.get("calories", 0.0)),
+                    protein=float(n_dict.get("protein", 0.0)),
+                    carbs=float(n_dict.get("carbs", 0.0)),
+                    fat=float(n_dict.get("fat", 0.0)),
+                )
+            elif slug in CIQUAL_NUTRITION_PER_100G:
+                n_dict = CIQUAL_NUTRITION_PER_100G[slug]
+                nutr = NutritionalValues(
+                    calories=float(n_dict.get("calories", 0.0)),
+                    protein=float(n_dict.get("protein", 0.0)),
+                    carbs=float(n_dict.get("carbs", 0.0)),
+                    fat=float(n_dict.get("fat", 0.0)),
+                )
+
+            # Provenance
+            prov_raw = provenance_data.get(slug, {})
+            sources = []
+            if "sources" in prov_raw:
+                sources = [str(s).upper() if str(s).lower() == "ciqual" else str(s) for s in prov_raw["sources"]]
+            elif "source" in prov_raw:
+                s = str(prov_raw["source"])
+                sources = ["CIQUAL" if "ciqual" in s.lower() else s]
+            elif nutr is not None:
+                sources = ["CIQUAL"]
+
+            prov = IngredientProvenance(
+                status=str(prov_raw.get("status", "verified" if nutr else "unspecified")),
+                sources=sources,
+                note=str(prov_raw.get("note", "")),
+                locked=bool(prov_raw.get("locked", False)),
+            )
+
+            item = IngredientData(
+                slug=slug,
+                name=name,
+                aliases=aliases,
+                category=category,
+                pantry_staple=pantry_staple,
+                nutrition=nutr,
+                density=density,
+                piece_weight=piece_weight,
+                conversions=conversions,
+                provenance=prov,
+            )
+            self._ingredients[slug] = item
+
+            # Index aliases
+            self._alias_map[slug.casefold().strip()] = slug
+            self._alias_map[name.casefold().strip()] = slug
+            for alias in aliases:
+                self._alias_map[alias.casefold().strip()] = slug
+
+    def get_ingredient_slug(self, ingredient_name: str) -> str:
+        """Finds matching slug in database by checking slug, name and aliases."""
+        clean = ingredient_name.casefold().strip()
+        if clean in self._alias_map:
+            return self._alias_map[clean]
+        with_spaces = clean.replace("-", " ")
+        if with_spaces in self._alias_map:
+            return self._alias_map[with_spaces]
+        with_hyphens = clean.replace(" ", "-")
+        if with_hyphens in self._alias_map:
+            return self._alias_map[with_hyphens]
+
+        # Singular/plural variants
+        for cand in (clean, with_spaces, with_hyphens):
+            if cand.endswith("s") and cand[:-1] in self._alias_map:
+                return self._alias_map[cand[:-1]]
+
+        # Fallback slug generation
+        return re.sub(r"[^\w]+", "-", clean).strip("-")
+
+    def get_ingredient(self, ingredient_name_or_slug: str) -> IngredientData | None:
+        """Looks up ingredient by name, alias, or slug."""
+        if ingredient_name_or_slug in self._ingredients:
+            return self._ingredients[ingredient_name_or_slug]
+        slug = self.get_ingredient_slug(ingredient_name_or_slug)
+        if slug in self._ingredients:
+            return self._ingredients[slug]
+        return None
 
 
-def parse_value_token(token: str) -> float | None:
-    """Parses a quantity token: '2', '0,5', '1/2', '1 1/2' or '1½'.
+def get_ingredient_slug(ingredient_name: str, database: dict | None = None) -> str:
+    """Finds matching slug in database by checking slug, name and aliases.
 
-    Returns None when the token contains anything but a valid quantity.
+    Compatible with legacy dictionary signature or uses default repository.
     """
-    token = token.strip()
-    if not token:
-        return None
-    for char, value in UNICODE_FRACTION_VALUES.items():
-        if char in token:
-            whole = token.replace(char, "").strip()
-            if not whole:
-                return value
-            if re.fullmatch(r"\d+(?:[.,]\d+)?", whole):
-                return float(whole.replace(",", ".")) + value
-            return None
-    total = 0.0
-    for part in token.split():
-        part = part.replace(",", ".")
-        if "/" in part:
-            numerator, _, denominator = part.partition("/")
-            if not re.fullmatch(r"\d+(?:\.\d+)?", numerator) or not re.fullmatch(r"\d+(?:\.\d+)?", denominator):
-                return None
-            total += float(numerator) / float(denominator)
-        elif re.fullmatch(r"\d+(?:\.\d+)?", part):
-            total += float(part)
-        else:
-            return None
-    return total
-
-
-def _quantity_with_unit(raw: str, unit_pattern: str) -> float | None:
-    m = re.search(rf"([{MIXED_NUMBER_CHARS}]+?)\s*{unit_pattern}", raw, re.IGNORECASE)
-    if not m:
-        return None
-    return parse_value_token(m.group(1))
-
-
-def parse_quantity_grams(quantity_str: str, ingredient_slug: str = "") -> float:
-    """Estimates the weight in grams from a human-readable Gram quantity string."""
-    if not quantity_str:
-        return 0.0
-
-    raw = quantity_str.lower().strip()
-    total = re.search(r",\s*sur\s+(.+?)(?:\s+au total)?$", raw)
-    if total:
-        raw = total.group(1).strip()
-
-    # Unit-based quantities. Kilogram before gram, milliliter/centiliter before liter,
-    # so "1.5 kg", "270 ml" and "25 cl" never fall into a shorter unit pattern.
-    if (value := _quantity_with_unit(raw, r"(?:kg)\b")) is not None:
-        return value * 1000.0
-    if (value := _quantity_with_unit(raw, r"(?:ml)\b")) is not None:
-        return value
-    if (value := _quantity_with_unit(raw, r"(?:cl)\b")) is not None:
-        return value * 10.0
-    if (value := _quantity_with_unit(raw, r"(?:l)\b")) is not None:
-        return value * 1000.0
-    if (value := _quantity_with_unit(raw, r"(?:g|gr)\b")) is not None:
-        return value
-
-    # Spoons, pinches, cloves: per-species proxies (~15 g, ~5 g, ~0.5 g, ~5 g).
-    if (value := _quantity_with_unit(raw, r"(?:c\.\s*à\s*soupe|cuill[èe]res?\s*à\s*soupe)")) is not None:
-        return value * 15.0
-    if (value := _quantity_with_unit(raw, r"(?:c\.\s*à\s*caf[ée]|cuill[èe]res?\s*à\s*caf[ée])")) is not None:
-        return value * 5.0
-    if (value := _quantity_with_unit(raw, r"pinc[ée]es?")) is not None:
-        return value * 0.5
-    if (value := _quantity_with_unit(raw, r"gousses?")) is not None:
-        return value * 5.0
-
-    # Pure count: e.g. "3" for magrets (~350 g each).
-    if re.fullmatch(f"[{MIXED_NUMBER_CHARS}]+", raw) and (count := parse_value_token(raw)) is not None:
-        if "magret" in ingredient_slug:
-            return count * 350.0
-        if "echalote" in ingredient_slug:
-            return count * 25.0
-        if "bouillon" in ingredient_slug:
-            return count * 10.0
-        return count * 100.0
-
-    return 10.0
-
-
-def eval_fraction(token: str) -> float:
-    """Backwards-compatible single-token parser (decimal or plain fraction)."""
-    value = parse_value_token(token)
-    return float(value) if value is not None else 0.0
-
-
-def get_ingredient_slug(ingredient_name: str, database: dict) -> str:
-    """Finds matching slug in database by checking slug, name and aliases."""
-    name_clean = ingredient_name.casefold().strip()
-    for slug, data in database.items():
-        if slug == name_clean or data.get("name", "").casefold() == name_clean:
-            return slug
-        for alias in data.get("aliases", []):
-            if alias.casefold() == name_clean:
+    clean = ingredient_name.casefold().strip()
+    if database is not None:
+        for slug, data in database.items():
+            if slug == clean or data.get("name", "").casefold() == clean:
                 return slug
-    return re.sub(r"[^\w]+", "-", name_clean)
+            for alias in data.get("aliases", []):
+                if alias.casefold() == clean:
+                    return slug
+        return re.sub(r"[^\w]+", "-", clean).strip("-")
 
-
-def calculate_recipe_nutrition(recipe: Recipe, db_path: Path | None = None) -> dict[str, float]:
-    """Calculates nutrition per portion for a given recipe."""
-    if db_path is None:
-        db_path = Path(".gram/ingredients.yaml")
-
-    database = {}
-    if db_path.exists():
-        payload = yaml.safe_load(db_path.read_text(encoding="utf-8")) or {}
-        database = payload.get("ingredients", {})
-
-    total_calories = 0.0
-    total_protein = 0.0
-    total_carbs = 0.0
-    total_fat = 0.0
-    breakdown_items = []
-
-    for item in recipe.ingredients:
-        slug = get_ingredient_slug(item.name, database)
-        data = database.get(slug, {})
-        nutrition = data.get("nutrition") or CIQUAL_NUTRITION_PER_100G.get(slug)
-
-        if not nutrition:
-            continue
-
-        grams = parse_quantity_grams(item.quantity, slug)
-        factor = grams / 100.0
-
-        item_cal = nutrition.get("calories", 0.0) * factor
-        total_calories += item_cal
-        total_protein += nutrition.get("protein", 0.0) * factor
-        total_carbs += nutrition.get("carbs", 0.0) * factor
-        total_fat += nutrition.get("fat", 0.0) * factor
-
-        breakdown_items.append(
-            {
-                "name": item.name,
-                "quantity": item.quantity,
-                "calories_raw": item_cal,
-            }
-        )
-
-    portions = max(1, recipe.portions)
-
-    formatted_breakdown = []
-    for bi in sorted(breakdown_items, key=lambda x: x["calories_raw"], reverse=True):
-        cals_per_portion = round(bi["calories_raw"] / portions)
-        pct = round((bi["calories_raw"] / total_calories * 100), 1) if total_calories else 0.0
-        formatted_breakdown.append(
-            {
-                "name": bi["name"],
-                "quantity": bi["quantity"],
-                "calories": cals_per_portion,
-                "percentage": pct,
-            }
-        )
-
-    return {
-        "calories": round(total_calories / portions),
-        "protein": round(total_protein / portions, 1),
-        "carbs": round(total_carbs / portions, 1),
-        "fat": round(total_fat / portions, 1),
-        "breakdown": formatted_breakdown,
-    }
-
-
-def enrich_ingredient_database(
-    ingredients_path: Path = Path(".gram/ingredients.yaml"),
-    provenance_path: Path = Path(".gram/ingredient-provenance.yaml"),
-) -> None:
-    """Populates ingredients.yaml with CIQUAL nutrition and updates provenance.yaml."""
-    if not ingredients_path.exists():
-        return
-
-    ing_data = yaml.safe_load(ingredients_path.read_text(encoding="utf-8")) or {}
-    ingredients = ing_data.get("ingredients", {})
-
-    prov_data = {}
-    if provenance_path.exists():
-        prov_data = yaml.safe_load(provenance_path.read_text(encoding="utf-8")) or {}
-    prov_ingredients = prov_data.setdefault("ingredients", {})
-
-    for slug, values in CIQUAL_NUTRITION_PER_100G.items():
-        if slug in ingredients:
-            ingredients[slug]["nutrition"] = values
-            prov_ingredients[slug] = {
-                "status": "verified",
-                "locked": False,
-                "sources": ["ciqual"],
-                "note": "Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.",
-            }
-
-    # Re-write ingredients.yaml
-    ing_header = "# Base locale CookiGram enrichie avec les données nutritionnelles ANSES CIQUAL.\n"
-    ingredients_path.write_text(
-        ing_header + yaml.safe_dump(ing_data, sort_keys=False, allow_unicode=True), encoding="utf-8"
-    )
-
-    # Re-write ingredient-provenance.yaml
-    prov_header = "# Suivi de la provenance des ingrédients et niveaux de confiance.\n"
-    provenance_path.write_text(
-        prov_header + yaml.safe_dump(prov_data, sort_keys=False, allow_unicode=True), encoding="utf-8"
-    )
-
-
-if __name__ == "__main__":
-    enrich_ingredient_database()
-    print("Database enriched successfully with ANSES CIQUAL nutrition!")
+    repo = NutritionRepository()
+    return repo.get_ingredient_slug(ingredient_name)

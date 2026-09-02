@@ -1,6 +1,7 @@
 const CACHE = 'cookigram-__VERSION__';
 const PRECACHE = __PRECACHE__;
 
+
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(PRECACHE)));

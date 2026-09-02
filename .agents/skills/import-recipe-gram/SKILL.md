@@ -52,6 +52,16 @@ Structure the recipe into clear, readable, bite-sized steps with interactive sub
 - Doneness cues accompany timing when timing alone is unreliable;
 - Appliance instructions name the compatible model or capability without pretending to control the device.
 
+### Marmiton
+
+When importing from marmiton.org:
+
+- The ingredient icons and links point to affiliate products (Amazon, Puget…), not recipe facts. Never derive nutrition or density values from them during `gram db enrich`.
+- Several quantities are deliberately vague: `1 pot de sauce tomate`, `fromage râpé` without weight, feuilles de lasagne without count, herbs without measures. Keep them unquantified (`@fromage râpé{}`) or record the unit as given (`@sauce tomate{1 pot}`); never invent a weight or count.
+- Confirm the author against the Schema.org `Recipe` JSON-LD metadata. Marmiton labels unnamed contributors `Anonyme`; keep that label instead of inventing a name.
+- Default portions are usually 4, matching the interactive `- +` personnes selector on the page. Use them when the JSON-LD `recipeYield` is missing or ambiguous.
+- User ratings and comments can surface practical doneness or salting issues (e.g. « trop salé si on ne rince pas les aubergines »). Mention them only as a quality cue in the final response; prefer the method body's quantities and doneness cues for the recipe itself.
+
 ### Thermomix and Cookomix-style instructions
 
 When importing from Cookomix or adapting a Thermomix recipe:

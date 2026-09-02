@@ -1,3 +1,4 @@
+# Suivi de la provenance des ingrédients et niveaux de confiance.
 ingredients:
   ail:
     locked: false
@@ -393,16 +394,152 @@ ingredients:
   vinaigre-de-riz:
     source: ANSES CIQUAL 2024 / Open Food Facts
     status: verified
-  bechamel:
-    status: incomplete
-  fromage-rape:
-    status: incomplete
+  amandes-effilees:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  asperges:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  banane:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  celeri:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  cerfeuil:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  chataignes:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  chorizo:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  coriandre-moulue:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  crevettes:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  crottin-de-chevre:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  epices-cajun:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  estragon:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  fenouil:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
   feuilles-de-lasagne:
     source: ANSES CIQUAL 2024 / Open Food Facts
     status: verified
+  fruits-secs:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  galettes-de-riz:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  garam-masala:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  ghee:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  graine-de-fenouil:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  huile-de-pepins-de-raisin:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  jaune-d-oeuf:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  jus-de-canneberge:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  langoustines:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  lard:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  oignon-nouveau:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  panais:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  pate-tikka:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  piment-vert:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  pois-gourmands:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  pomme:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  potiron:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  radis:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  sauge:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  tomates-sechees:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  riz-long-blanc:
+    status: verified
+    sources:
+    - ciqual
+    note: Table CIQUAL ANSES (code 9100).
+  tomate:
+    status: verified
+    sources:
+    - ciqual
+    note: Table CIQUAL ANSES (code 20047).
   viande-hachee:
     source: ANSES CIQUAL 2024 / Open Food Facts
     status: verified
+  vin-rouge:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  wasabi:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  whisky:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  bechamel:
+    status: verified
+    sources:
+    - ciqual
+    note: Table CIQUAL ANSES (code 11003).
+  fromage-rape:
+    status: verified
+    sources:
+    - ciqual
+    note: Table CIQUAL ANSES (code 12002).
+  caramel-liquide:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  pistaches:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  quatre-epices:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  jus-de-cuisson-sous-vide:
+    source: Estimation jus de cuisson
+    status: estimated
 sources:
   ciqual:
     name: Table Ciqual de l'ANSES

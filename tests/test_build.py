@@ -96,3 +96,22 @@ def test_build_versions_assets_consistently(tmp_path: Path):
         assert f"assets/app.css?v={version}" in html
         assert f"assets/app.js?v={version}" in html
         assert "assets/app.css?v=23" not in html
+
+
+def test_compile_css_assembles_modular_stylesheets(tmp_path: Path):
+    from generator.build import compile_css
+
+    css_dir = tmp_path / "css"
+    css_dir.mkdir()
+    (css_dir / "variables.css").write_text(":root { --test-var: 1; }")
+    (css_dir / "base.css").write_text("body { margin: 0; }")
+
+    out_file = tmp_path / "bundled.css"
+    compile_css(css_dir, out_file)
+
+    content = out_file.read_text(encoding="utf-8")
+    assert "/* === variables.css === */" in content
+    assert "--test-var: 1" in content
+    assert "/* === base.css === */" in content
+    assert "body { margin: 0; }" in content
+

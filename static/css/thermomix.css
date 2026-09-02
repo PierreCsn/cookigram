@@ -1,0 +1,127 @@
+.tmx-badge {
+  display:flex;
+  justify-content:center;
+  margin:18px 0;
+}
+
+.tmx-badge-compact {
+  justify-content:flex-start;
+  margin:6px 0 2px;
+}
+
+.tmx-badge-pill {
+  display:inline-flex;
+  align-items:center;
+  background:rgba(36,79,67,0.08);
+  border:1px solid rgba(36,79,67,0.22);
+  border-radius:99px;
+  padding:4px 8px;
+  gap:6px;
+  font-size:13px;
+  flex-wrap:wrap;
+}
+
+.tmx-badge-compact .tmx-badge-pill {
+  padding:3px 8px;
+  gap:4px;
+  font-size:11.5px;
+  background:rgba(36,79,67,0.05);
+  border-color:rgba(36,79,67,0.15);
+  border-radius:6px;
+}
+
+.tmx-logo {
+  background:var(--green);
+  color:#fff;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.08em;
+  padding:3px 7px;
+  border-radius:99px;
+  line-height:1;
+}
+
+.tmx-segment {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:2px 8px;
+  border-left:1px solid rgba(36,79,67,0.18);
+  color:var(--ink);
+  line-height:1;
+}
+
+.tmx-badge-compact .tmx-segment {
+  padding:1px 5px;
+  gap:3px;
+}
+
+.tmx-segment:first-of-type {
+  border-left:none;
+}
+
+.tmx-segment strong {
+  font-weight:800;
+}
+
+.tmx-icon {
+  width:16px;
+  height:16px;
+  max-width:16px;
+  max-height:16px;
+  color:var(--green);
+  flex-shrink:0;
+}
+
+.tmx-badge-compact .tmx-icon {
+  width:12px!important;
+  height:12px!important;
+  max-width:12px!important;
+  max-height:12px!important;
+}
+
+.tmx-reverse .tmx-icon {
+  color:var(--orange);
+}
+
+.tmx-spoon {
+  width:15px;
+  height:15px;
+}
+
+.tmx-blade {
+  width:16px;
+  height:16px;
+}
+
+.tmx-badge-compact .tmx-spoon {
+  width:12px!important;
+  height:12px!important;
+}
+
+.tmx-badge-compact .tmx-blade {
+  width:12px!important;
+  height:12px!important;
+}
+
+[data-theme="dark"] .tmx-badge-pill {
+  background:rgba(43,112,94,0.18);
+  border-color:rgba(43,112,94,0.45);
+}
+
+[data-theme="dark"] .tmx-badge-compact .tmx-badge-pill {
+  background:rgba(43,112,94,0.12);
+  border-color:rgba(43,112,94,0.3);
+}
+
+[data-theme="dark"] .tmx-segment {
+  border-left-color:rgba(255,255,255,0.15);
+}
+
+[data-theme="dark"] .tmx-icon {
+  color:#34d399;
+}
+
+[data-theme="dark"] .tmx-reverse .tmx-icon {
+  color:#fb923c;
+}

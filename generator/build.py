@@ -8,9 +8,10 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from .gram import parse_recipe
-from .plugins import apply_plugins
+from .plugins import PluginManager
 
 ROOT = Path(__file__).resolve().parents[1]
+
 
 ASSETS_TO_VERSION = ("app.css", "scaling.css", "variants.css", "images.css", "app.js")
 
@@ -49,19 +50,54 @@ def build_precache_urls(output: Path, version: str) -> list[str]:
     return list(dict.fromkeys(urls))
 
 
+CSS_SOURCES = (
+    "variables.css",
+    "base.css",
+    "topbar.css",
+    "catalogue.css",
+    "recipe.css",
+    "ingredients.css",
+    "modal.css",
+    "cook.css",
+    "timers.css",
+    "thermomix.css",
+)
+
+
+def compile_css(css_dir: Path, output_file: Path) -> None:
+    """Concatenates modular CSS source files into a unified production stylesheet."""
+    if not css_dir.exists():
+        return
+    parts = []
+    for filename in CSS_SOURCES:
+        file_path = css_dir / filename
+        if file_path.exists():
+            parts.append(f"/* === {filename} === */\n" + file_path.read_text(encoding="utf-8").strip())
+    if parts:
+        bundled = "\n\n".join(parts) + "\n"
+        output_file.write_text(bundled, encoding="utf-8")
+
+
 def build(output: Path) -> None:
     if output.exists():
         shutil.rmtree(output)
     output.mkdir(parents=True)
     shutil.copytree(ROOT / "static", output / "assets")
 
+    # Compile modular CSS sources into a unified app.css
+    compile_css(ROOT / "static" / "css", output / "assets" / "app.css")
+    compile_css(ROOT / "static" / "css", ROOT / "static" / "app.css")
+
     # Keep the site root as the single, correct service worker location.
     # static/sw.js acts as a template rendered with the build version.
     (output / "assets" / "sw.js").unlink(missing_ok=True)
 
+
     recipes = [parse_recipe(path) for path in sorted((ROOT / "recipes").glob("*.gram"))]
+    plugin_manager = PluginManager.from_directory(ROOT / "plugins")
     for recipe in recipes:
-        apply_plugins(recipe, ROOT / "plugins")
+        plugin_manager.apply(recipe)
+
 
     version = compute_asset_version(output / "assets")
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape())
@@ -96,7 +132,7 @@ def build(output: Path) -> None:
     for recipe in recipes:
         recipe_dir = output / "recipes" / recipe.slug
         cook_dir = recipe_dir / "cook"
-        cook_dir.mkdir(parents=True)
+        cook_dir.mkdir(parents=True, exist_ok=True)
         (recipe_dir / "index.html").write_text(
             env.get_template("recipe.html").render(recipe=recipe, asset_version=version), encoding="utf-8"
         )
@@ -117,6 +153,23 @@ def build(output: Path) -> None:
         "__PRECACHE__", json.dumps(precache_urls, ensure_ascii=False, indent=2)
     )
     (output / "sw.js").write_text(rendered_sw, encoding="utf-8")
+
+    cov_path = ROOT / "coverage.json"
+    if cov_path.exists():
+        try:
+            cov_data = json.loads(cov_path.read_text(encoding="utf-8"))
+            cov_pct = int(round(float(cov_data["totals"]["percent_covered_display"])))
+            color = "brightgreen" if cov_pct >= 80 else "yellow" if cov_pct >= 60 else "red"
+            (output / "coverage.json").write_text(
+                json.dumps(
+                    {"schemaVersion": 1, "label": "coverage", "message": f"{cov_pct}%", "color": color}, indent=2
+                ),
+                encoding="utf-8",
+            )
+        except Exception:
+            pass
+    elif (ROOT / "static" / "coverage.json").exists():
+        shutil.copy(ROOT / "static" / "coverage.json", output / "coverage.json")
 
 
 if __name__ == "__main__":

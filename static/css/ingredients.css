@@ -1,0 +1,58 @@
+.ingredients-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:6px;
+}
+
+.ingredients-header h2 {
+  margin:0;
+}
+
+.shopping-toolbar {
+  display:flex;
+  gap:6px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.shopping-btn {
+  border:1px solid var(--line);
+  background:var(--btn-bg);
+  color:var(--ink);
+  border-radius:10px;
+  padding:7px 11px;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  transition:all .2s;
+  font-family:inherit;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+
+.shopping-btn:hover {
+  background:var(--btn-hover);
+  border-color:var(--muted);
+}
+
+.shopping-btn.keep-list {
+  color:#d97706;
+}
+
+[data-theme="dark"] .shopping-btn.keep-list {
+  color:#fbbf24;
+}
+
+.shopping-btn.highlight {
+  background:var(--orange);
+  color:white;
+  border-color:var(--orange);
+}
+
+.shopping-btn.highlight:hover {
+  background:#d85f2c;
+}

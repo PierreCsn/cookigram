@@ -13,6 +13,7 @@ import yaml
 
 from .models import Ingredient, ParallelOperation, Recipe, RecipeVariant, Step
 from .nutrition import calculate_recipe_nutrition
+from .schema import ROOT, RecipeValidationError, validate_recipe_contract
 from .shopping import evaluate_recipe_shopping
 
 ACTION = re.compile(r"^\[([^]]+)]\s*(.*)$")
@@ -110,9 +111,9 @@ def _parse_steps(source: str, path: Path) -> list[Step]:
     steps: list[Step] = []
     for block in step_blocks:
         if not re.fullmatch(r"[a-z0-9][a-z0-9-]*", block["id"]):
-            raise ValueError(f"{path}: invalid step id '{block['id']}'")
+            raise RecipeValidationError(path, "steps.id", block["id"], f"invalid step id '{block['id']}'")
         if block["id"] in seen_step_ids:
-            raise ValueError(f"{path}: duplicate step id '{block['id']}'")
+            raise RecipeValidationError(path, "steps.id", block["id"], f"duplicate step id '{block['id']}'")
         seen_step_ids.add(block["id"])
 
         full_text = " ".join(block["raw_lines"])
@@ -121,7 +122,12 @@ def _parse_steps(source: str, path: Path) -> list[Step]:
         seen_operation_ids: set[str] = set()
         for operation in block["parallel"]:
             if operation["id"] in seen_operation_ids:
-                raise ValueError(f"{path}: duplicate parallel operation id '{operation['id']}' in step '{block['id']}'")
+                raise RecipeValidationError(
+                    path,
+                    "parallel.id",
+                    operation["id"],
+                    f"duplicate parallel operation id '{operation['id']}' in step '{block['id']}'",
+                )
             seen_operation_ids.add(operation["id"])
             op_ingredients, op_equipment, op_timers, op_temperatures = _mentions(operation["body"])
             parallel.append(
@@ -272,7 +278,7 @@ def _build_variants(metadata: dict, base_steps: list[Step], portions: int, path:
     return variants
 
 
-def parse_recipe(path: Path) -> Recipe:
+def parse_recipe(path: Path, validate: bool = True, root: Path = ROOT) -> Recipe:
     source = path.read_text(encoding="utf-8")
     metadata: dict = {}
     if source.startswith("---"):
@@ -299,7 +305,7 @@ def parse_recipe(path: Path) -> Recipe:
     scalable = bool(scaling.get("enabled", True))
     scaling_note = str(scaling.get("note" if scalable else "reason", "")).strip()
     if not scalable and not scaling_note:
-        raise ValueError(f"{path}: a non-scalable recipe must declare scaling.reason")
+        raise RecipeValidationError(path, "scaling.reason", None, "a non-scalable recipe must declare scaling.reason")
 
     recipe = Recipe(
         slug=path.stem,
@@ -315,12 +321,16 @@ def parse_recipe(path: Path) -> Recipe:
         prep_time=str(metadata.get("prep_time", "")).strip(),
         total_time=str(metadata.get("total_time", "")).strip(),
         scalable=scalable,
-        min_portions=max(1, int(scaling.get("min_portions", 1))),
-        max_portions=max(portions, int(scaling.get("max_portions", max(12, portions)))),
-        portion_step=max(1, int(scaling.get("step", 1))),
+        min_portions=int(scaling.get("min_portions", 1)),
+        max_portions=int(scaling.get("max_portions", max(12, portions))),
+        portion_step=int(scaling.get("step", 1)),
         scaling_note=scaling_note,
     )
-    recipe.nutrition = calculate_recipe_nutrition(recipe)
-    recipe.shopping = evaluate_recipe_shopping(recipe)
+    recipe.nutrition = calculate_recipe_nutrition(recipe, db_path=root / ".gram/ingredients.yaml")
+    recipe.shopping = evaluate_recipe_shopping(recipe, db_path=root / ".gram/ingredients.yaml")
     recipe.variants = _build_variants(metadata, steps, portions, path)
+
+    if validate:
+        validate_recipe_contract(recipe, path, metadata, root=root)
+
     return recipe

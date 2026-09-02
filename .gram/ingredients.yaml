@@ -1,3 +1,4 @@
+# Base locale CookiGram enrichie avec les données nutritionnelles ANSES CIQUAL.
 ingredients:
   ail:
     aliases:
@@ -12,6 +13,9 @@ ingredients:
       carbs: 23.5
       fat: 0.5
       protein: 6.4
+    piece_weight: 5.0
+    conversions:
+      gousse: 5.0
   ail-en-poudre:
     name: Ail en poudre
     aliases:
@@ -45,6 +49,7 @@ ingredients:
       carbs: 2.5
       fat: 0.2
       protein: 0.9
+    piece_weight: 250.0
   beurre:
     name: Beurre
     aliases:
@@ -57,6 +62,7 @@ ingredients:
       carbs: 0.7
       fat: 82.5
       protein: 0.8
+    density: 0.91
   bouquet-garni:
     name: Bouquet garni
     aliases:
@@ -69,6 +75,7 @@ ingredients:
       carbs: 1.5
       fat: 0.2
       protein: 0.5
+    piece_weight: 10.0
   brocoli:
     name: Brocolis
     aliases:
@@ -80,6 +87,7 @@ ingredients:
       carbs: 2.4
       fat: 0.6
       protein: 3.1
+    piece_weight: 300.0
   cannelle:
     name: Cannelle en poudre
     aliases:
@@ -103,6 +111,7 @@ ingredients:
       carbs: 7.6
       fat: 0.3
       protein: 0.8
+    piece_weight: 100.0
   champignons-de-paris:
     aliases:
     - champignon de paris
@@ -127,6 +136,7 @@ ingredients:
       carbs: 2.4
       fat: 0.3
       protein: 1.9
+    piece_weight: 600.0
   concentre-de-tomate:
     aliases:
     - concentré de tomate
@@ -138,6 +148,7 @@ ingredients:
       carbs: 14.8
       fat: 0.6
       protein: 4.8
+    density: 1.15
   coriandre-fraiche:
     aliases:
     - coriandre fraîche
@@ -149,6 +160,12 @@ ingredients:
       carbs: 1.9
       fat: 0.5
       protein: 2.1
+    conversions:
+      brin: 2.0
+      branche: 5.0
+      feuille: 0.2
+      botte: 30.0
+      bouquet: 30.0
   courge-butternut:
     name: Butternut
     aliases:
@@ -160,6 +177,7 @@ ingredients:
       carbs: 9.6
       fat: 0.1
       protein: 1.0
+    piece_weight: 800.0
   courgette:
     aliases:
     - courgette
@@ -171,6 +189,7 @@ ingredients:
       carbs: 1.8
       fat: 0.3
       protein: 1.2
+    piece_weight: 200.0
   creme-fraiche-epaisse:
     name: Crème fraîche épaisse
     aliases:
@@ -182,6 +201,7 @@ ingredients:
       carbs: 3.0
       fat: 30.0
       protein: 2.2
+    density: 0.98
   creme-fraiche-liquide:
     name: Crème fraîche liquide
     aliases:
@@ -194,6 +214,7 @@ ingredients:
       carbs: 3.0
       fat: 30.0
       protein: 2.2
+    density: 1.01
   cube-de-bouillon:
     name: Cube de bouillon
     aliases:
@@ -206,6 +227,7 @@ ingredients:
       carbs: 20.0
       fat: 12.0
       protein: 8.0
+    piece_weight: 10.0
   cube-de-bouillon-de-legumes:
     name: Cube de bouillon de légumes
     aliases:
@@ -218,6 +240,7 @@ ingredients:
       carbs: 20.0
       fat: 12.0
       protein: 8.0
+    piece_weight: 10.0
   cube-de-bouillon-de-volaille:
     aliases:
     - bouillon de volaille en cube
@@ -231,6 +254,7 @@ ingredients:
       carbs: 20.0
       fat: 12.0
       protein: 12.0
+    piece_weight: 10.0
   cuisse-de-poulet:
     name: Cuisses de poulet
     aliases:
@@ -243,6 +267,7 @@ ingredients:
       carbs: 0.0
       fat: 11.5
       protein: 19.0
+    piece_weight: 200.0
   curcuma:
     name: Curcuma
     aliases:
@@ -276,6 +301,7 @@ ingredients:
       carbs: 0.0
       fat: 0.0
       protein: 0.0
+    density: 1.0
   echalote:
     aliases:
     - échalote
@@ -287,6 +313,7 @@ ingredients:
       carbs: 14.5
       fat: 0.1
       protein: 2.5
+    piece_weight: 25.0
   emmental-rape:
     name: Emmental râpé
     aliases:
@@ -345,6 +372,7 @@ ingredients:
       carbs: 0.0
       fat: 1.2
       protein: 23.9
+    piece_weight: 160.0
   filet-mignon-de-porc:
     name: Filet mignon de porc
     aliases:
@@ -356,6 +384,7 @@ ingredients:
       carbs: 0.0
       fat: 3.5
       protein: 22.0
+    piece_weight: 450.0
   fond-de-legumes:
     name: Fond de légumes
     aliases:
@@ -367,6 +396,7 @@ ingredients:
       carbs: 25.0
       fat: 5.0
       protein: 6.0
+    density: 1.05
   fond-de-viande:
     name: Fond de viande
     aliases:
@@ -379,6 +409,17 @@ ingredients:
       carbs: 20.0
       fat: 6.0
       protein: 10.0
+    density: 1.05
+  fromage-rape:
+    name: Fromage râpé
+    aliases:
+    - fromage râpé
+    category: Fromages
+    nutrition:
+      calories: 380
+      protein: 26.0
+      carbs: 1.0
+      fat: 30.0
   gingembre:
     name: Gingembre
     aliases:
@@ -413,6 +454,7 @@ ingredients:
       carbs: 0.0
       fat: 100.0
       protein: 0.0
+    density: 0.92
   huile-vegetale:
     aliases:
     - huile végétale
@@ -423,6 +465,7 @@ ingredients:
       carbs: 0.0
       fat: 100.0
       protein: 0.0
+    density: 0.92
   jus-de-citron-vert:
     name: Jus de citron vert
     aliases:
@@ -434,6 +477,10 @@ ingredients:
       carbs: 2.8
       fat: 0.1
       protein: 0.4
+    density: 1.03
+    piece_weight: 20.0
+    conversions:
+      piece: 40.0
   la-vache-qui-rit:
     name: La Vache qui rit
     aliases:
@@ -446,6 +493,9 @@ ingredients:
       carbs: 6.5
       fat: 19.5
       protein: 10.5
+    piece_weight: 17.5
+    conversions:
+      portion: 17.5
   lait-de-coco:
     aliases:
     - lait de coco
@@ -456,6 +506,7 @@ ingredients:
       carbs: 2.8
       fat: 18.0
       protein: 1.6
+    density: 0.98
   lait-demi-ecreme:
     name: Lait demi-écrémé
     aliases:
@@ -467,6 +518,7 @@ ingredients:
       carbs: 4.8
       fat: 1.6
       protein: 3.3
+    density: 1.03
   lardons:
     name: Lardons
     aliases:
@@ -492,6 +544,10 @@ ingredients:
       carbs: 48.7
       fat: 8.4
       protein: 7.6
+    conversions:
+      feuille: 1.0
+      piece: 1.0
+    piece_weight: 1.0
   lentilles-corail:
     name: Lentilles corail
     aliases:
@@ -513,6 +569,7 @@ ingredients:
       carbs: 0.0
       fat: 14.0
       protein: 25.0
+    piece_weight: 350.0
   mascarpone:
     aliases:
     - mascarpone
@@ -533,6 +590,7 @@ ingredients:
       carbs: 81.1
       fat: 0.0
       protein: 0.4
+    density: 1.42
   moutarde-de-dijon:
     name: Moutarde de Dijon
     aliases:
@@ -547,6 +605,7 @@ ingredients:
       carbs: 5.0
       fat: 11.0
       protein: 7.0
+    density: 1.05
   noix-de-muscade:
     name: Noix de muscade
     aliases:
@@ -572,6 +631,7 @@ ingredients:
       carbs: 7.1
       fat: 0.2
       protein: 1.3
+    piece_weight: 120.0
   olives-noires:
     name: Olives noires
     aliases:
@@ -583,6 +643,8 @@ ingredients:
       carbs: 3.0
       fat: 13.0
       protein: 1.0
+    conversions:
+      piece: 4.0
   paleron-de-boeuf:
     name: Paleron de boeuf
     aliases:
@@ -636,12 +698,20 @@ ingredients:
     - persil
     - persil frais
     - feuilles de persil
+    - persil plat frais
+    - persil plat
     category: Légumes et aromates
     nutrition:
       calories: 36
       carbs: 3.5
       fat: 0.8
       protein: 3.0
+    conversions:
+      brin: 2.0
+      branche: 5.0
+      feuille: 0.2
+      botte: 30.0
+      bouquet: 30.0
   petits-pois:
     name: Petits pois
     aliases:
@@ -665,6 +735,7 @@ ingredients:
       carbs: 7.0
       fat: 0.4
       protein: 1.9
+    piece_weight: 15.0
   poireau:
     name: Poireaux
     aliases:
@@ -676,10 +747,15 @@ ingredients:
       carbs: 4.0
       fat: 0.3
       protein: 1.5
+    piece_weight: 150.0
   poivre-moulu:
     aliases:
     - poivre moulu
     - poivre
+    - poivre blanc
+    - poivre blanc moulu
+    - poivre noir
+    - poivre noir moulu
     category: Herbes et épices
     name: Poivre moulu
     nutrition:
@@ -700,6 +776,7 @@ ingredients:
       carbs: 4.9
       fat: 0.3
       protein: 1.1
+    piece_weight: 160.0
   pomme-de-terre:
     name: Pommes de terre
     aliases:
@@ -711,6 +788,7 @@ ingredients:
       carbs: 17.0
       fat: 0.1
       protein: 2.0
+    piece_weight: 150.0
   riz-a-risotto:
     aliases:
     - riz à risotto
@@ -734,6 +812,30 @@ ingredients:
       carbs: 77.0
       fat: 0.9
       protein: 8.5
+  riz-long-blanc:
+    name: Riz long blanc
+    aliases:
+    - riz long blanc
+    - riz thaï
+    - riz jasmin
+    category: Céréales et féculents
+    nutrition:
+      calories: 355
+      protein: 7.0
+      carbs: 79.0
+      fat: 0.6
+  tomate:
+    name: Tomate
+    aliases:
+    - tomate
+    - tomates
+    category: Fruits et légumes
+    nutrition:
+      calories: 19
+      protein: 0.8
+      carbs: 2.5
+      fat: 0.3
+    piece_weight: 120.0
   sauce-tomate:
     name: Sauce tomate
     aliases:
@@ -744,6 +846,9 @@ ingredients:
       carbs: 7.0
       fat: 1.5
       protein: 1.5
+    density: 1.05
+    conversions:
+      pot: 190.0
   saumon-fume:
     name: Saumon fumé
     aliases:
@@ -802,6 +907,8 @@ ingredients:
       carbs: 3.8
       fat: 0.2
       protein: 1.2
+    conversions:
+      boite: 400.0
   torsades:
     name: Torsades
     aliases:
@@ -817,6 +924,7 @@ ingredients:
     aliases:
     - vin blanc
     - vin blanc sec
+    - riesling
     category: Boissons et liquides
     name: Vin blanc
     nutrition:
@@ -824,6 +932,7 @@ ingredients:
       carbs: 1.5
       fat: 0.0
       protein: 0.1
+    density: 0.99
   vinaigre-blanc:
     name: Vinaigre blanc
     aliases:
@@ -836,6 +945,7 @@ ingredients:
       carbs: 0.5
       fat: 0.0
       protein: 0.0
+    density: 1.01
   aneth:
     name: Aneth
     aliases:
@@ -846,17 +956,36 @@ ingredients:
       protein: 3.5
       carbs: 7.0
       fat: 1.1
+    conversions:
+      brin: 2.0
+      branche: 4.0
   basilic-frais:
     name: Basilic frais
     aliases:
     - basilic frais
     - basilic
+    - basilic séché
     category: Légumes et aromates
     nutrition:
       calories: 23
       protein: 3.2
       carbs: 2.7
       fat: 0.6
+    conversions:
+      feuille: 0.5
+      branche: 5.0
+  bechamel:
+    name: Béchamel
+    aliases:
+    - béchamel
+    - sauce béchamel
+    category: Produits laitiers et matières grasses
+    nutrition:
+      calories: 135
+      protein: 3.5
+      carbs: 9.5
+      fat: 9.0
+    density: 1.05
   bouillon-de-legumes:
     name: Bouillon de légumes
     aliases:
@@ -868,6 +997,9 @@ ingredients:
       protein: 0.5
       carbs: 2.5
       fat: 0.3
+    density: 1.0
+    conversions:
+      dose: 10.0
   capres:
     name: Câpres
     aliases:
@@ -899,6 +1031,7 @@ ingredients:
       protein: 1.1
       carbs: 9.3
       fat: 0.3
+    piece_weight: 120.0
   cube-de-bouillon-de-boeuf:
     name: Cube de bouillon de boeuf
     aliases:
@@ -910,6 +1043,7 @@ ingredients:
       protein: 12.0
       carbs: 18.0
       fat: 12.0
+    piece_weight: 10.0
   cumin:
     name: Cumin
     aliases:
@@ -945,6 +1079,7 @@ ingredients:
       protein: 17.5
       carbs: 0.0
       fat: 1.0
+    piece_weight: 150.0
   gingembre-moulu:
     name: Gingembre moulu
     aliases:
@@ -988,6 +1123,7 @@ ingredients:
       protein: 0.0
       carbs: 0.0
       fat: 99.1
+    density: 0.92
   huile-de-sesame:
     name: Huile de sésame
     aliases:
@@ -998,6 +1134,7 @@ ingredients:
       protein: 0.0
       carbs: 0.0
       fat: 100.0
+    density: 0.92
   lait-de-soja:
     name: Lait de soja
     aliases:
@@ -1009,6 +1146,7 @@ ingredients:
       protein: 3.3
       carbs: 2.2
       fat: 1.8
+    density: 1.02
   mais:
     name: Maïs en boîte
     aliases:
@@ -1021,6 +1159,8 @@ ingredients:
       protein: 3.2
       carbs: 18.7
       fat: 1.2
+    conversions:
+      boite: 285.0
   maizena:
     name: Maïzena
     aliases:
@@ -1057,6 +1197,7 @@ ingredients:
       protein: 12.6
       carbs: 0.7
       fat: 9.5
+    piece_weight: 60.0
   olives-vertes:
     name: Olives vertes
     aliases:
@@ -1068,6 +1209,8 @@ ingredients:
       protein: 1.0
       carbs: 3.8
       fat: 15.3
+    conversions:
+      piece: 4.0
   origan:
     name: Origan
     aliases:
@@ -1089,6 +1232,9 @@ ingredients:
       protein: 8.5
       carbs: 49.0
       fat: 3.5
+    piece_weight: 25.0
+    conversions:
+      tranche: 25.0
   pate-miso:
     name: Pâte miso
     aliases:
@@ -1100,6 +1246,7 @@ ingredients:
       protein: 11.7
       carbs: 26.5
       fat: 6.0
+    density: 1.2
   piment-de-cayenne:
     name: Piment de Cayenne
     aliases:
@@ -1146,17 +1293,20 @@ ingredients:
       protein: 24.0
       carbs: 0.0
       fat: 9.0
+    piece_weight: 800.0
   sauce-soja:
     name: Sauce soja
     aliases:
     - sauce soja salée
     - sauce soja
+    - sauce de soja
     category: Condiments
     nutrition:
       calories: 53
       protein: 8.1
       carbs: 4.9
       fat: 0.1
+    density: 1.15
   saumon-frais:
     name: Saumon frais
     aliases:
@@ -1170,6 +1320,7 @@ ingredients:
       protein: 20.4
       carbs: 0.0
       fat: 13.4
+    piece_weight: 150.0
   tahini:
     name: Tahini
     aliases:
@@ -1182,6 +1333,7 @@ ingredients:
       protein: 17.0
       carbs: 21.0
       fat: 54.0
+    density: 1.1
   thym:
     name: Thym
     aliases:
@@ -1193,6 +1345,9 @@ ingredients:
       protein: 9.1
       carbs: 63.9
       fat: 7.4
+    conversions:
+      branche: 2.0
+      brin: 2.0
   tomate-cerise:
     name: Tomates cerises
     aliases:
@@ -1205,6 +1360,7 @@ ingredients:
       protein: 0.9
       carbs: 3.9
       fat: 0.2
+    piece_weight: 15.0
   vinaigre-de-riz:
     name: Vinaigre de riz
     aliases:
@@ -1215,17 +1371,173 @@ ingredients:
       protein: 0.1
       carbs: 4.0
       fat: 0.0
-  bechamel:
-    name: Béchamel
+    density: 1.01
+  amandes-effilees:
+    name: Amandes effilées
     aliases:
-    - béchamel
-    - sauce béchamel
-    category: Produits laitiers et matières grasses
-  fromage-rape:
-    name: Fromage râpé
+    - amandes effilées
+    - amandes en lamelles
+    category: Fruits à coque et graines
+    nutrition:
+      calories: 600
+      protein: 21.0
+      carbs: 6.0
+      fat: 54.0
+  asperges:
+    name: Asperges
     aliases:
-    - fromage râpé
-    category: Fromages
+    - asperges
+    - asperges vertes
+    - pointes d'asperges
+    category: Légumes et aromates
+    nutrition:
+      calories: 20
+      protein: 2.2
+      carbs: 3.9
+      fat: 0.1
+    piece_weight: 20.0
+  banane:
+    name: Banane
+    aliases:
+    - banane
+    - bananes
+    category: Fruits et légumes
+    nutrition:
+      calories: 89
+      protein: 1.1
+      carbs: 22.8
+      fat: 0.3
+    piece_weight: 120.0
+  celeri:
+    name: Céleri
+    aliases:
+    - céleri
+    - branche de céleri
+    - céleri-branche
+    - céleri-rave
+    category: Légumes et aromates
+    nutrition:
+      calories: 18
+      protein: 1.2
+      carbs: 3.5
+      fat: 0.2
+    piece_weight: 150.0
+    conversions:
+      branche: 40.0
+  cerfeuil:
+    name: Cerfeuil frais
+    aliases:
+    - cerfeuil
+    - cerfeuil frais
+    category: Légumes et aromates
+    nutrition:
+      calories: 237
+      protein: 23.0
+      carbs: 49.0
+      fat: 3.9
+    conversions:
+      brin: 2.0
+      branche: 4.0
+  chataignes:
+    name: Châtaignes
+    aliases:
+    - châtaignes
+    - châtaignes cuites
+    - marrons
+    category: Fruits à coque et graines
+    nutrition:
+      calories: 213
+      protein: 2.4
+      carbs: 45.0
+      fat: 2.2
+    conversions:
+      piece: 10.0
+  chorizo:
+    name: Chorizo
+    aliases:
+    - chorizo
+    - chorizo doux
+    category: Charcuterie
+    nutrition:
+      calories: 455
+      protein: 24.0
+      carbs: 2.0
+      fat: 38.0
+  coriandre-moulue:
+    name: Coriandre moulue
+    aliases:
+    - coriandre moulue
+    - graines de coriandre moulues
+    category: Épicerie salée
+    nutrition:
+      calories: 298
+      protein: 12.0
+      carbs: 55.0
+      fat: 17.8
+  crevettes:
+    name: Crevettes
+    aliases:
+    - crevettes
+    - crevettes crues
+    - gambas
+    - gambas crues
+    category: Poissons et fruits de mer
+    nutrition:
+      calories: 95
+      protein: 20.0
+      carbs: 0.5
+      fat: 1.5
+    piece_weight: 15.0
+  crottin-de-chevre:
+    name: Crottin de chèvre
+    aliases:
+    - crottin de Chavignol
+    - crottin de chèvre
+    - fromage de chèvre
+    category: Crèmerie et oeufs
+    nutrition:
+      calories: 320
+      protein: 21.0
+      carbs: 1.5
+      fat: 26.0
+    piece_weight: 60.0
+  epices-cajun:
+    name: Épices cajun
+    aliases:
+    - épices cajun
+    - mélange cajun
+    category: Condiments
+    nutrition:
+      calories: 280
+      protein: 10.0
+      carbs: 50.0
+      fat: 5.0
+  estragon:
+    name: Estragon frais
+    aliases:
+    - estragon
+    - estragon frais
+    category: Condiments
+    nutrition:
+      calories: 295
+      protein: 23.0
+      carbs: 50.0
+      fat: 7.2
+    conversions:
+      brin: 2.0
+      branche: 4.0
+  fenouil:
+    name: Fenouil
+    aliases:
+    - fenouil
+    - bulbe de fenouil
+    category: Légumes et aromates
+    nutrition:
+      calories: 31
+      protein: 1.2
+      carbs: 7.3
+      fat: 0.2
+    piece_weight: 200.0
   feuilles-de-lasagne:
     name: Feuilles de lasagne
     aliases:
@@ -1238,6 +1550,253 @@ ingredients:
       protein: 12.0
       carbs: 70.0
       fat: 1.5
+    piece_weight: 20.0
+  fruits-secs:
+    name: Fruits secs variés
+    aliases:
+    - fruits secs variés
+    - fruits secs
+    - raisins secs
+    category: Fruits à coque et graines
+    nutrition:
+      calories: 450
+      protein: 8.0
+      carbs: 55.0
+      fat: 22.0
+    conversions:
+      piece: 15.0
+  galettes-de-riz:
+    name: Galettes de riz
+    aliases:
+    - galettes de riz
+    - feuilles de riz
+    category: Épicerie salée
+    nutrition:
+      calories: 350
+      protein: 3.0
+      carbs: 83.0
+      fat: 0.5
+    piece_weight: 10.0
+  garam-masala:
+    name: Garam masala
+    aliases:
+    - garam masala
+    - garam masala en poudre
+    category: Condiments
+    nutrition:
+      calories: 379
+      protein: 13.0
+      carbs: 45.0
+      fat: 15.0
+  ghee:
+    name: Ghee
+    aliases:
+    - ghee
+    - beurre clarifié
+    category: Crèmerie et oeufs
+    nutrition:
+      calories: 900
+      protein: 0.0
+      carbs: 0.0
+      fat: 99.5
+    density: 0.9
+  graine-de-fenouil:
+    name: Graines de fenouil
+    aliases:
+    - graines de fenouil
+    - graine de fenouil
+    category: Condiments
+    nutrition:
+      calories: 345
+      protein: 15.8
+      carbs: 52.0
+      fat: 14.9
+  huile-de-pepins-de-raisin:
+    name: Huile de pépins de raisin
+    aliases:
+    - huile de pépins de raisin
+    - huile de pépin de raisin
+    category: Épicerie salée
+    nutrition:
+      calories: 900
+      protein: 0.0
+      carbs: 0.0
+      fat: 100.0
+    density: 0.92
+  jaune-d-oeuf:
+    name: Jaunes d'œufs
+    aliases:
+    - jaunes d'œufs
+    - jaune d'oeuf
+    - jaunes d'oeufs
+    category: Crèmerie et oeufs
+    nutrition:
+      calories: 322
+      protein: 16.0
+      carbs: 0.6
+      fat: 27.0
+    piece_weight: 20.0
+  jus-de-canneberge:
+    name: Jus de canneberge
+    aliases:
+    - jus de canneberge
+    - jus de cranberry
+    category: Boissons
+    nutrition:
+      calories: 46
+      protein: 0.1
+      carbs: 12.0
+      fat: 0.1
+  langoustines:
+    name: Langoustines
+    aliases:
+    - langoustines
+    - langoustines crues
+    category: Poissons et fruits de mer
+    nutrition:
+      calories: 90
+      protein: 19.0
+      carbs: 0.0
+      fat: 1.2
+    piece_weight: 30.0
+  lard:
+    name: Lard
+    aliases:
+    - lard
+    - tranches fines de lard
+    - poitrine fumée
+    category: Charcuterie
+    nutrition:
+      calories: 330
+      protein: 16.0
+      carbs: 0.0
+      fat: 30.0
+    conversions:
+      tranche: 15.0
+  oignon-nouveau:
+    name: Oignon nouveau
+    aliases:
+    - oignon nouveau
+    - cébette
+    - oignons nouveaux
+    category: Légumes et aromates
+    nutrition:
+      calories: 32
+      protein: 1.8
+      carbs: 7.3
+      fat: 0.2
+    piece_weight: 25.0
+  panais:
+    name: Panais
+    aliases:
+    - panais
+    category: Légumes et aromates
+    nutrition:
+      calories: 75
+      protein: 1.2
+      carbs: 18.0
+      fat: 0.3
+    piece_weight: 100.0
+  pate-tikka:
+    name: Pâte tikka
+    aliases:
+    - pâte tikka
+    - tikka paste
+    - pâte de curry tikka
+    category: Condiments
+    nutrition:
+      calories: 210
+      protein: 3.5
+      carbs: 15.0
+      fat: 15.0
+    density: 1.15
+  piment-vert:
+    name: Piment vert
+    aliases:
+    - piment vert
+    - piments verts
+    category: Légumes et aromates
+    nutrition:
+      calories: 40
+      protein: 1.9
+      carbs: 8.8
+      fat: 0.4
+    piece_weight: 15.0
+  pois-gourmands:
+    name: Pois gourmands
+    aliases:
+    - pois gourmands
+    - pois mange-tout
+    category: Légumes et aromates
+    nutrition:
+      calories: 42
+      protein: 2.8
+      carbs: 7.5
+      fat: 0.2
+  pomme:
+    name: Pomme
+    aliases:
+    - pomme
+    - pommes
+    - pomme granny-smith
+    category: Fruits et légumes
+    nutrition:
+      calories: 52
+      protein: 0.3
+      carbs: 13.8
+      fat: 0.2
+    piece_weight: 150.0
+  potiron:
+    name: Potiron
+    aliases:
+    - potiron
+    - chair de potiron
+    category: Légumes et aromates
+    nutrition:
+      calories: 26
+      protein: 1.0
+      carbs: 6.5
+      fat: 0.1
+    piece_weight: 1000.0
+  radis:
+    name: Radis roses
+    aliases:
+    - radis roses
+    - radis
+    - fanes de radis
+    category: Légumes et aromates
+    nutrition:
+      calories: 16
+      protein: 0.7
+      carbs: 3.4
+      fat: 0.1
+  sauge:
+    name: Sauge fraîche
+    aliases:
+    - sauge
+    - sauge fraîche
+    category: Légumes et aromates
+    nutrition:
+      calories: 315
+      protein: 10.0
+      carbs: 60.0
+      fat: 12.0
+    conversions:
+      branche: 2.0
+      feuille: 0.5
+  tomates-sechees:
+    name: Tomates séchées
+    aliases:
+    - tomates séchées
+    - tomates séchées à l'huile
+    category: Conserves et bocaux
+    nutrition:
+      calories: 213
+      protein: 6.0
+      carbs: 30.0
+      fat: 8.0
+    conversions:
+      piece: 7.0
   viande-hachee:
     name: Viande hachée
     aliases:
@@ -1250,3 +1809,86 @@ ingredients:
       protein: 19.0
       carbs: 0.0
       fat: 18.0
+  vin-rouge:
+    name: Vin rouge
+    aliases:
+    - vin rouge
+    - vin rouge sec
+    category: Épicerie salée
+    nutrition:
+      calories: 85
+      protein: 0.1
+      carbs: 2.6
+      fat: 0.0
+    density: 0.99
+  wasabi:
+    name: Wasabi
+    aliases:
+    - wasabi
+    - pâte de wasabi
+    category: Condiments
+    nutrition:
+      calories: 292
+      protein: 5.0
+      carbs: 46.0
+      fat: 9.5
+  whisky:
+    name: Whisky
+    aliases:
+    - whisky
+    category: Boissons
+    nutrition:
+      calories: 238
+      protein: 0.0
+      carbs: 0.1
+      fat: 0.0
+    density: 0.94
+  jus-de-cuisson-sous-vide:
+    name: Jus de cuisson sous vide
+    aliases:
+    - jus de cuisson sous vide
+    - jus de cuisson
+    category: Viandes et volailles
+    nutrition:
+      calories: 25
+      protein: 3.0
+      carbs: 0.5
+      fat: 1.0
+    density: 1.0
+  caramel-liquide:
+    name: Caramel liquide
+    aliases:
+    - caramel liquide
+    - caramel
+    category: Produits sucrés
+    nutrition:
+      calories: 310
+      carbs: 77.0
+      fat: 0.1
+      protein: 0.0
+    density: 1.35
+  pistaches:
+    name: Pistaches
+    aliases:
+    - pistaches
+    - pistache
+    - pistaches décortiquées
+    - pistaches non salées
+    category: Fruits à coque et graines
+    nutrition:
+      calories: 600
+      carbs: 12.0
+      fat: 53.0
+      protein: 18.0
+  quatre-epices:
+    name: Quatre-épices
+    aliases:
+    - quatre-épices
+    - 4 épices
+    - mélange quatre-épices
+    category: Herbes et épices
+    nutrition:
+      calories: 260
+      carbs: 45.0
+      fat: 5.0
+      protein: 6.0

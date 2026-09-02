@@ -23,9 +23,20 @@ Le projet utilise [Gram](https://gram-lang.org/fr/), un langage open source con�
 - ⏱️ **Minuteurs multiples** : alertes sonores Web Audio, vibrations et reprise locale ;
 - 🛒 **Évaluation intelligente des courses** : filtre le fond de placard, calcule les rayons et exporte directement vers **Google Keep** ;
 - 📊 **Analyse nutritionnelle CIQUAL** : calcul automatique des calories et macronutriments (protéines, glucides, lipides) par portion ;
+- 🧠 **Savoir-faire d'ingestion LLM & IA** : méthodologie et outillage éprouvés (compétence d'agent dédiée, schéma strict, réconciliation automatique) permettant aux modèles de langage d'importer des recettes du web et de les convertir proprement dans le format standardisé et calculable `.gram` ;
 - 🤖 **Réglages pour robots culinaires (Thermomix)** : badges visuels compacts avec temps, température, vitesse, fouet et sens inverse ;
 - 🌙 **Thème sombre & clair** : adaptation automatique aux préférences système ou bascule manuelle instantanée ;
 - 🔒 **Maintien de l'écran allumé (Wake Lock)** : évite la mise en veille de l'écran pendant la cuisine.
+
+## Savoir-faire et import assisté par LLM / IA
+
+L'une des forces majeures de CookiGram réside dans son architecture pensée pour et avec les agents IA (LLM). Le projet intègre un savoir-faire complet pour permettre à un modèle de langage (Claude, Gemini, GPT, etc.) de sourcer, structurer et intégrer des recettes sans dégradation de qualité :
+
+- **Skill d'importation standardisée** ([import-recipe-gram](.agents/skills/import-recipe-gram/SKILL.md)) : guide pas-à-pas pour les agents (syntaxe Gram, étapes atomiques, sous-étapes, réglages robots, extraction d'images libres de droits et mentions légales) ;
+- **Contrat canonique strict** (`generator/schema.py`) : validation déterministe au build bloquant toute recette incomplète, mal typée ou incohérente ;
+- **Réconciliation automatique de la base d'ingrédients** (`.gram/ingredients.yaml`) : vérification systématique de l'existence de chaque ingrédient, résolution des synonymes et traçabilité de la provenance (`.gram/ingredient-provenance.yaml`) ;
+- **Fiabilisation des données culinaires** : durées, températures, grammages réels et portions calibrées pour éviter les approximations et garantir un rendu parfait dans le mode cuisine guidée et le calcul nutritionnel.
+
 
 ## Démarrage rapide et développement
 
@@ -50,23 +61,57 @@ Ouvrir [http://localhost:8000](http://localhost:8000) dans votre navigateur. Les
 
 ## Tests et qualité
 
-Le projet est validé par une suite complète de tests automatisés atteignant **88% de couverture** :
+Le projet est validé par une suite complète de tests automatisés (Python & JavaScript) atteignant **89% de couverture** :
 
 ```bash
-# Exécuter les tests avec rapport de couverture
+# Tests unitaires Python avec rapport de couverture
 pytest --cov=generator --cov-report=term-missing
 
-# Vérifier le style et le linting avec Ruff
+# Tests unitaires JavaScript (fonctions pures, parsing de quantités, normalisation vocale)
+npm run test:unit
+
+# Tests end-to-end Playwright (simulateur de parcours navigateur et mode hors ligne)
+npm run test:e2e
+
+# Vérifier le style et le linting Python avec Ruff
 ruff check generator plugins tests
 ruff format --check generator plugins tests
 
 # Vérifier le linting JavaScript avec Biome
-npm ci
 npm run lint
+
+# Contrôler la syntaxe JavaScript
+node --check static/app.js
+node --check static/sw.js
+for f in static/js/modules/*.js; do node --check "$f"; done
 
 # Vérifier la cohérence de la base d'ingrédients et de provenance
 pytest tests/test_ingredients_database.py
 ```
+
+## Architecture frontend modulaire
+
+L'interface de CookiGram est conçue sans framework lourd, selon une architecture en modules ES natifs (`type="module"`) et un découpage CSS par domaine :
+
+- **Modules JavaScript (`static/js/modules/`)** :
+  - `utils.js` : isolation de l'initialisation des fonctionnalités (`initFeature`) et notifications toast ;
+  - `theme.js` : bascule sombre/clair, écoute des préférences système, prompt d'installation PWA et enregistrement du Service Worker ;
+  - `portions.js` : parsing robuste des quantités culinaires (fractions, décimales, nombres mixtes), redimensionnement dynamique des portions et formatage ;
+  - `checklist.js` : liste interactive des ingrédients cochables avec persistance `localStorage` par recette et variante ;
+  - `shopping.js` : évaluation de placard, tri par rayon, sélection des fonds de placard et export formaté pour Google Keep (cases à cocher natives) ;
+  - `search.js` : recherche textuelle instantanée normalisée (sans accents) et panneau de filtres multi-tags ;
+  - `cook.js` : mode cuisine guidé pas-à-pas, sous-étapes cochables, opérations en parallèle et navigation clavier ;
+  - `timers.js` : minuteurs interactifs avec synthèse sonore Web Audio multi-tons (carillon mélodieux et vibrations) ;
+  - `voice.js` : synthèse vocale naturelle des étapes (`SpeechSynthesis`), reconnaissance vocale mains-libres (`SpeechRecognition`) et maintien de l'écran allumé (`WakeLock`) ;
+  - `variants.js` : basculement dynamique et synchronisation de l'URL pour les méthodes alternatives.
+
+- **Styles CSS par composant (`static/css/`)** :
+  - Les styles sources sont découpés de manière lisible et maintenable en fichiers dédiés (`variables.css`, `base.css`, `topbar.css`, `catalogue.css`, `recipe.css`, `ingredients.css`, `modal.css`, `cook.css`, `timers.css`, `thermomix.css`) ;
+  - Lors de la génération (`generator/build.py`), ces composants sont automatiquement concaténés dans `output/assets/app.css` afin de ne générer **aucune requête HTTP superflue** en production.
+
+- **Macros Jinja réutilisables (`templates/macros.html`)** :
+  - Centralisation du rendu des badges Thermomix (`tmx_badge`) et des vignettes d'appareils (`appliance_tags`), garantissant un affichage cohérent du catalogue au mode cuisine.
+
 
 ## Base d'ingrédients Gram
 

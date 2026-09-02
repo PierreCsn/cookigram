@@ -24,6 +24,6 @@
 <body data-prefix="{{ prefix }}">
   {% block body %}{% endblock %}
   <div class="toast" role="status" aria-live="polite" hidden></div>
-  <script src="{{ prefix }}assets/app.js?v={{ asset_version or '' }}" defer></script>
+  <script type="module" src="{{ prefix }}assets/app.js?v={{ asset_version or '' }}"></script>
 </body>
 </html>

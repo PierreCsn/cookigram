@@ -16,6 +16,8 @@ STAPLE_SLUGS = {
 
 CATEGORY_TO_AISLE = {
     "Viandes": "Boucherie & Volailles",
+    "Boucherie et volaille": "Boucherie & Volailles",
+    "Boucherie et volailles": "Boucherie & Volailles",
     "Poissons": "Poissonnerie",
     "Légumes et aromates": "Fruits & Légumes",
     "Fruits": "Fruits & Légumes",
@@ -48,10 +50,13 @@ def clean_shopping_quantity(raw_qty: str) -> str:
     return q
 
 
+ROOT = Path(__file__).resolve().parents[1]
+
+
 def evaluate_recipe_shopping(recipe: Recipe, db_path: Path | None = None) -> dict:
     """Evaluates ingredients to produce a real grocery shopping list."""
     if db_path is None:
-        db_path = Path(".gram/ingredients.yaml")
+        db_path = ROOT / ".gram" / "ingredients.yaml"
 
     database = {}
     if db_path.exists():

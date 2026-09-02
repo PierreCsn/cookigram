@@ -25,9 +25,22 @@ CookiGram is built on top of [Gram](https://gram-lang.org), an open-source culin
 - ⏱️ **Multiple Timers**: Visual countdowns with Web Audio sound alerts and local state resumption.
 - 🛒 **Smart Shopping List**: Isolates pantry staples, organizes items by supermarket aisles, and exports seamlessly to **Google Keep** checkboxes.
 - 📊 **Nutritional Analysis**: Automatic CIQUAL-based calculation of calories and macronutrients (proteins, carbs, fats) per serving with ingredient breakdown.
+- 🧠 **LLM & AI-Powered Recipe Ingestion**: Proven methodology and agent tooling allowing Large Language Models to cleanly import web recipes and standardize them into robust, computable `.gram` format.
 - 🤖 **Culinary Robot Settings (Thermomix)**: Sleek parameter badges for time, temperature, butterfly whisk, reverse mode, and blade speeds.
 - 🌙 **Adaptive Dark / Light Theme**: Respects system preferences or toggles instantly with one tap.
 - 🔒 **Screen Wake Lock**: Prevents your device display from turning off while cooking.
+
+---
+
+## LLM & AI-Assisted Recipe Ingestion
+
+A cornerstone of CookiGram is its built-in architecture and methodology enabling AI agents (LLMs) to reliably import and standardize recipes from the web into clean, computable `.gram` format:
+
+- **Dedicated Agent Skill** ([import-recipe-gram](.agents/skills/import-recipe-gram/SKILL.md)): Encapsulates extraction protocols (Gram syntax, atomic steps, appliance settings, CC-licensed imagery, and legal attributions);
+- **Strict Canonical Validation** (`generator/schema.py`): Deterministic validation pipeline blocking incomplete, improperly typed, or contradictory recipes;
+- **Automated Ingredient Reconciliation** (`.gram/ingredients.yaml` & `ingredient-provenance.yaml`): Alias resolution, nutrient matching, and origin verification;
+- **Culinary Reliability Guardrails**: Precise units, durations, temperatures, and piece weights ready for immediate cooking execution and nutritional analysis.
+
 
 ---
 
@@ -56,19 +69,57 @@ Open [http://localhost:8000](http://localhost:8000) in your browser. Recipe file
 
 ## Testing and Quality
 
-CookiGram maintains a strict test suite achieving **88% code coverage**:
+CookiGram maintains a strict test suite across Python and JavaScript achieving **89% code coverage**:
 
 ```bash
-# Run tests with detailed coverage report
+# Python unit tests with coverage report
 pytest --cov=generator --cov-report=term-missing
+
+# JavaScript unit tests (pure functions, quantity parsing, speech normalization)
+npm run test:unit
+
+# End-to-end browser tests with Playwright (catalogue, cook mode, offline PWA)
+npm run test:e2e
 
 # Lint and check code formatting with Ruff
 ruff check generator plugins tests
 ruff format --check generator plugins tests
 
+# Lint JavaScript with Biome
+npm run lint
+
+# Validate JavaScript syntax
+node --check static/app.js
+node --check static/sw.js
+for f in static/js/modules/*.js; do node --check "$f"; done
+
 # Validate ingredient database and provenance
 pytest tests/test_ingredients_database.py
 ```
+
+## Modular Frontend Architecture
+
+The frontend is engineered with zero framework overhead, using native ES modules (`type="module"`) and clean CSS component separation:
+
+- **JavaScript Feature Modules (`static/js/modules/`)**:
+  - `utils.js`: Isolated feature initialization (`initFeature`) and toast notifications;
+  - `theme.js`: Dark/light mode toggle with system preference watching, PWA install prompt, and Service Worker registration;
+  - `portions.js`: Culinary quantity parsing (fractions, mixed numbers, decimals) and scaling algorithms;
+  - `checklist.js`: Ingredients checklist with per-recipe and per-variant `localStorage` persistence;
+  - `shopping.js`: Pantry evaluation modal, aisle categorization, staples management, and formatted Google Keep export;
+  - `search.js`: Real-time normalized accent-insensitive search and multi-tag filtering;
+  - `cook.js`: Step-by-step cooking wizard, interactive substeps, parallel operations, and keyboard navigation;
+  - `timers.js`: Interactive cooking timers with Web Audio melodic 3-note chime synthesis;
+  - `voice.js`: Natural text-to-speech reading (`SpeechSynthesis`), hands-free voice commands (`SpeechRecognition`), and screen Wake Lock;
+  - `variants.js`: Seamless recipe variant switching and URL state synchronization.
+
+- **Component-Level CSS (`static/css/`)**:
+  - Cleanly separated into maintainable domain files (`variables.css`, `base.css`, `topbar.css`, `catalogue.css`, `recipe.css`, `ingredients.css`, `modal.css`, `cook.css`, `timers.css`, `thermomix.css`);
+  - Automatically concatenated at build time into `output/assets/app.css` to avoid multiple HTTP requests in production.
+
+- **Shared Jinja Macros (`templates/macros.html`)**:
+  - Centralized badges for Thermomix models and appliance icons (`tmx_badge`, `appliance_tags`).
+
 
 ## Recipe image skill
 

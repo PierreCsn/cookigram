@@ -73,11 +73,47 @@ jobs:
         run: |
           node --check static/app.js
           node --check static/sw.js
+          for f in static/js/modules/*.js; do node --check "$f"; done
+
+      - name: Run JavaScript unit tests
+        run: |
+          npm run test:unit
+
 
       - name: Run tests with pytest & coverage
         run: |
-          pytest --cov=generator --cov-report=term-missing
+          pytest --cov=generator --cov-report=term-missing --cov-report=json:coverage.json
 
       - name: Validate complete site build & recipes
         run: |
           python -m generator.build
+
+  deploy:
+    name: Deploy GitHub Pages
+    needs: [test, e2e]
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e .[dev]
+      - name: Generate coverage data and build site
+        run: |
+          pytest --cov=generator --cov-report=json:coverage.json
+          python -m generator.build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

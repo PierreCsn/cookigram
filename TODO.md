@@ -35,30 +35,29 @@ Dernier audit : 2 septembre 2026.
 
 ### Critère de sortie P0
 
-- [ ] La recherche, les portions, la checklist, les courses et le mode cuisine
+- [x] La recherche, les portions, la checklist, les courses et le mode cuisine
   fonctionnent sans erreur JavaScript sur une fiche recette représentative.
 
 ## P1 — Mettre en place un vrai filet de sécurité
 
 - [x] Ajouter Playwright, avec une configuration adaptée au site statique.
-- [ ] Couvrir au minimum les scénarios de bout en bout suivants :
-  - [ ] recherche et filtres du catalogue ;
+- [x] Couvrir au minimum les scénarios de bout en bout suivants :
+  - [x] recherche et filtres du catalogue ;
   - [x] changement du nombre de portions ;
   - [x] checklist et évaluation des courses ;
-  - [ ] navigation dans le mode cuisine ;
-  - [ ] démarrage, pause, reprise et remise à zéro d'un minuteur ;
-  - [ ] comportement sans les API optionnelles de voix, partage et Wake Lock ;
-  - [x] navigation hors ligne d'une fiche jusqu'au mode cuisine, image comprise ;
-  - [ ] installation PWA depuis un navigateur compatible.
+  - [x] navigation dans le mode cuisine ;
+  - [x] démarrage, pause, reprise et remise à zéro d'un minuteur ;
+  - [x] comportement sans les API optionnelles de voix, partage et Wake Lock ;
+  - [x] installation et navigation hors ligne de la PWA.
 - [x] Ajouter un contrôle de syntaxe JavaScript explicite à la CI
   (`node --check` sur `app.js` et `sw.js`).
-- [ ] Faire échouer la CI sur les erreurs console non attendues des tests
+- [x] Faire échouer la CI sur les erreurs console non attendues des tests
   navigateur.
 - [x] Faire dépendre le déploiement GitHub Pages de la réussite de la CI, ou
   fusionner build, tests et déploiement dans un pipeline ordonné.
 - [x] Aligner les versions Python annoncées dans le README et celles testées par
   la matrice CI, notamment Python 3.13.
-- [ ] Remplacer le badge de couverture statique par une mesure générée, ou le
+- [x] Remplacer le badge de couverture statique par une mesure générée, ou le
   mettre à jour automatiquement.
 
 ### Critère de sortie P1
@@ -68,51 +67,52 @@ Dernier audit : 2 septembre 2026.
 
 ## P1 — Formaliser le contrat des recettes
 
-- [ ] Définir un schéma canonique pour le frontmatter `.gram`.
-- [ ] Valider explicitement :
-  - [ ] le titre, les portions et la présence d'au moins une étape ;
-  - [ ] les types et valeurs de `tags`, `prep_time` et `total_time` ;
-  - [ ] la cohérence de `scaling` (`min`, `max`, `step`, raison si désactivé) ;
-  - [ ] la présence du fichier image déclaré ;
-  - [ ] la source, l'auteur et les crédits photographiques requis ;
-  - [ ] l'existence de chaque ingrédient dans la base locale ;
-  - [ ] les durées, températures et réglages d'appareil pris en charge.
-- [ ] Produire des erreurs de build précises avec fichier, champ et valeur en
+- [x] Définir un schéma canonique pour le frontmatter `.gram`.
+- [x] Valider explicitement :
+  - [x] le titre, les portions et la présence d'au moins une étape ;
+  - [x] les types et valeurs de `tags`, `prep_time` et `total_time` ;
+  - [x] la cohérence de `scaling` (`min`, `max`, `step`, raison si désactivé) ;
+  - [x] la présence du fichier image déclaré ;
+  - [x] la source, l'auteur et les crédits photographiques requis ;
+  - [x] l'existence de chaque ingrédient dans la base locale ;
+  - [x] les durées, températures et réglages d'appareil pris en charge.
+- [x] Produire des erreurs de build précises avec fichier, champ et valeur en
   cause.
-- [ ] Ajouter des tests de recettes malformées et de métadonnées invalides.
-- [ ] Rendre tous les chemins de données indépendants du répertoire courant ;
+- [x] Ajouter des tests de recettes malformées et de métadonnées invalides.
+- [x] Rendre tous les chemins de données indépendants du répertoire courant ;
   utiliser une racine de projet ou injecter explicitement les chemins.
-- [ ] Décider si le parseur MVP accepte les constructions Gram inconnues avec un
+- [x] Décider si le parseur MVP accepte les constructions Gram inconnues avec un
   avertissement ou les refuse strictement.
 
 ### Critère de sortie du contrat de données
 
-- [ ] Une recette incomplète ou incohérente bloque le build avec un diagnostic
+- [x] Une recette incomplète ou incohérente bloque le build avec un diagnostic
   immédiatement exploitable.
 
 ## P2 — Fiabiliser les calculs nutritionnels
 
-- [ ] Séparer le référentiel nutritionnel, le parsing des quantités, les
+- [x] Séparer le référentiel nutritionnel, le parsing des quantités, les
   conversions et le calcul par recette.
-- [ ] Supprimer le fallback silencieux de 10 g pour une quantité inconnue.
-- [ ] Ne plus traiter tous les millilitres comme des grammes sans densité propre
+- [x] Supprimer le fallback silencieux de 10 g pour une quantité inconnue.
+- [x] Ne plus traiter tous les millilitres comme des grammes sans densité propre
   à l'ingrédient.
-- [ ] Stocker dans la base les densités, poids unitaires et conversions utiles
+- [x] Stocker dans la base les densités, poids unitaires et conversions utiles
   plutôt que des heuristiques codées en dur.
-- [ ] Signaler les ingrédients ignorés et les quantités non convertibles.
-- [ ] Calculer et exposer un taux de couverture nutritionnelle par recette.
-- [ ] Associer les valeurs affichées à leur source et à leur niveau de confiance
+- [x] Signaler les ingrédients ignorés et les quantités non convertibles.
+- [x] Calculer et exposer un taux de couverture nutritionnelle par recette.
+- [x] Associer les valeurs affichées à leur source et à leur niveau de confiance
   (`verified`, `estimated`, `manual`, etc.).
-- [ ] N'afficher un résultat nutritionnel que si son seuil de qualité est atteint,
+- [x] N'afficher un résultat nutritionnel que si son seuil de qualité est atteint,
   ou l'accompagner clairement d'un avertissement.
-- [ ] Ajouter des tests pour les fractions, densités, unités, comptes, valeurs
+- [x] Ajouter des tests pour les fractions, densités, unités, comptes, valeurs
   inconnues et mélanges de sources.
-- [ ] Revoir le libellé « par portion (CIQUAL) » lorsqu'une recette contient des
+- [x] Revoir le libellé « par portion (CIQUAL) » lorsqu'une recette contient des
   estimations ou des données provenant d'une autre source.
 
 ### Critère de sortie nutrition
 
-- [ ] Chaque valeur affichée est traçable et son degré d'approximation est connu.
+- [x] Chaque valeur affichée est traçable et son degré d'approximation est connu.
+
 
 ## P2 — Rendre la PWA réellement utilisable hors ligne
 
@@ -138,34 +138,34 @@ Dernier audit : 2 septembre 2026.
 
 ## P2 — Réduire la dette frontend
 
-- [ ] Découper `static/app.js` en modules par fonctionnalité :
-  - [ ] thème et installation PWA ;
-  - [ ] recherche et filtres ;
-  - [ ] portions et parsing des quantités ;
-  - [ ] checklist et courses ;
-  - [ ] partage et export ;
-  - [ ] mode cuisine et sous-étapes ;
-  - [ ] minuteurs ;
-  - [ ] voix, synthèse vocale et Wake Lock.
-- [ ] Donner à chaque module une fonction d'initialisation indépendante et
+- [x] Découper `static/app.js` en modules par fonctionnalité :
+  - [x] thème et installation PWA ;
+  - [x] recherche et filtres ;
+  - [x] portions et parsing des quantités ;
+  - [x] checklist et courses ;
+  - [x] partage et export ;
+  - [x] mode cuisine et sous-étapes ;
+  - [x] minuteurs ;
+  - [x] voix, synthèse vocale et Wake Lock.
+- [x] Donner à chaque module une fonction d'initialisation indépendante et
   tolérante à l'absence de son HTML.
-- [ ] Éliminer les dépendances à des variables globales implicites.
-- [ ] Ajouter des tests unitaires JavaScript pour les fonctions pures, notamment
+- [x] Éliminer les dépendances à des variables globales implicites.
+- [x] Ajouter des tests unitaires JavaScript pour les fonctions pures, notamment
   le parsing et le redimensionnement des quantités.
-- [ ] Remettre le CSS source dans un format maintenable ; minifier uniquement lors
+- [x] Remettre le CSS source dans un format maintenable ; minifier uniquement lors
   du build si nécessaire.
-- [ ] Découper le CSS par domaine ou composant sans multiplier inutilement les
+- [x] Découper le CSS par domaine ou composant sans multiplier inutilement les
   requêtes de production.
-- [ ] Extraire les fragments de template répétés, notamment les badges et icônes
+- [x] Extraire les fragments de template répétés, notamment les badges et icônes
   Thermomix, dans des macros Jinja.
-- [ ] Afficher des icônes de matériel nécessaire (robot, Varoma, Cookeo, etc.)
+- [x] Afficher des icônes de matériel nécessaire (robot, Varoma, Cookeo, etc.)
   sur les vignettes des recettes du catalogue, en plus des fiches recette.
-- [ ] Formaliser l'interface des plugins et éviter de recharger chaque module pour
+- [x] Formaliser l'interface des plugins et éviter de recharger chaque module pour
   chaque recette.
 
 ### Critère de sortie frontend
 
-- [ ] Chaque fonctionnalité peut être testée et modifiée sans dépendre de l'ordre
+- [x] Chaque fonctionnalité peut être testée et modifiée sans dépendre de l'ordre
   d'exécution d'un script monolithique.
 
 ## P3 — Qualité produit et publication

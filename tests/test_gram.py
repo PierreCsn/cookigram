@@ -27,7 +27,7 @@ scaling:
 """,
         encoding="utf-8",
     )
-    recipe = parse_recipe(source)
+    recipe = parse_recipe(source, validate=False)
     assert recipe.scalable is True
     assert recipe.min_portions == 2
     assert recipe.max_portions == 8
@@ -48,7 +48,7 @@ scaling:
         encoding="utf-8",
     )
 
-    recipe = parse_recipe(source)
+    recipe = parse_recipe(source, validate=False)
     assert recipe.scalable is False
     assert recipe.scaling_note == "Calibrée pour un bol précis."
 

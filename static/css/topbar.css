@@ -1,0 +1,120 @@
+.topbar {
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  max-width:1120px;
+  margin:auto;
+  padding:0 24px;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+}
+
+.brand span {
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:var(--orange);
+  color:white;
+  font-size:12px;
+}
+
+.topbar-actions {
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.install,.wake,.auto-speak,.theme-toggle,.voice-cmd {
+  border:1px solid var(--line);
+  background:var(--btn-bg);
+  border-radius:99px;
+  padding:9px 12px;
+  cursor:pointer;
+  font-size:15px;
+  line-height:1;
+  color:var(--ink);
+  transition:all .2s;
+}
+
+.install:hover,.wake:hover,.auto-speak:hover,.theme-toggle:hover,.voice-cmd:hover {
+  background:var(--btn-hover);
+}
+
+.auto-speak[aria-pressed=true],.wake[aria-pressed=true] {
+  background:var(--orange);
+  color:white;
+  border-color:var(--orange);
+}
+
+.voice-cmd[aria-pressed=true] {
+  background:#dc2626;
+  color:white;
+  border-color:#dc2626;
+  animation:mic-pulse 1.8s infinite;
+}
+
+@keyframes mic-pulse {
+  0% {
+    box-shadow:0 0 0 0 rgba(220,38,38,0.7);
+  }
+  70% {
+    box-shadow:0 0 0 10px rgba(220,38,38,0);
+  }
+  100% {
+    box-shadow:0 0 0 0 rgba(220,38,38,0);
+  }
+}
+
+.voice-feedback {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  background:var(--cream);
+  border-bottom:1px solid var(--line);
+  padding:10px 16px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--ink);
+  text-align:center;
+  transition:background-color .25s ease,color .25s ease;
+}
+
+.voice-feedback[hidden] {
+  display:none;
+}
+
+.voice-indicator {
+  display:inline-block;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#dc2626;
+  animation:blink .8s infinite alternate;
+}
+
+.voice-feedback.command-recognized {
+  background:var(--green);
+  color:white;
+}
+
+.voice-feedback.command-recognized .voice-indicator {
+  background:white;
+}
+
+@keyframes blink {
+  from {
+    opacity:0.25;
+  }
+  to {
+    opacity:1;
+  }
+}

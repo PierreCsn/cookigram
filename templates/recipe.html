@@ -1,8 +1,10 @@
 {% set prefix = '../../' %}{% extends "base.html" %}
+{% from "macros.html" import tmx_badge %}
 {% macro facts(view) -%}<span class="portion-summary">{{ recipe.portions }} portions</span>{% if view.prep_time %}<span>Préparation {{ view.prep_time }}</span>{% endif %}{% if view.total_time %}<span>Total {{ view.total_time }}</span>{% endif %}<span>{{ view.steps|length }} étapes</span>{% if view.nutrition and view.nutrition.calories %}<span>🔥 {{ view.nutrition.calories }} kcal / part</span>{% endif %}{%- endmacro %}
 {% macro ingredient_items(view) -%}{% for item in view.ingredients %}<li class="ingredient-item"><label class="ingredient-label"><input type="checkbox" class="ingredient-checkbox" data-name="{{ item.name }}"><span class="ingredient-name">{{ item.name }}</span></label><strong data-scale-quantity="{{ item.quantity }}">{{ item.quantity }}</strong></li>{% endfor %}{%- endmacro %}
 {% macro equipment_list(view) -%}{% if view.equipment %}<section class="equipment-card"><h2>Matériel</h2><ul>{% for item in view.equipment %}<li>{{ item }}</li>{% endfor %}</ul>{% if view.appliances %}<div class="compatibility"><strong>Compatibilité</strong>{% for family, models in view.appliances.items() %}<span>{{ family|replace('_', ' ')|title }} : {{ models|join(', ') if models is sequence and models is not string else ('oui' if models else 'non') }}</span>{% endfor %}</div>{% endif %}</section>{% endif %}{%- endmacro %}
-{% macro steps_preview(view) -%}{% for step in view.steps %}<li class="step-item" data-step-id="{{ step.id }}"><div class="step-body"><h3 class="step-title">{{ step.action }}</h3>{% if step.text %}<p class="step-intro" data-scale-text="{{ step.text }}">{{ step.text }}</p>{% endif %}{% if step.substeps %}<ul class="substeps-preview-list">{% for substep in step.substeps %}<li data-scale-text="{{ substep }}">{{ substep }}</li>{% endfor %}</ul>{% endif %}{% if step.parallel %}<div class="parallel-block"><strong class="parallel-heading">⏱ En parallèle</strong><div class="parallel-grid">{% for operation in step.parallel %}<article><b>{{ operation.label }}</b><p data-scale-text="{{ operation.text }}">{{ operation.text }}</p></article>{% endfor %}</div></div>{% endif %}{% if step.plugins.thermomix_settings %}{% set tmx = step.plugins.thermomix_settings %}<div class="tmx-badge tmx-badge-compact"><span class="tmx-badge-pill"><span class="tmx-logo">TMX</span>{% if tmx.time %}<span class="tmx-segment tmx-time">{{ tmx.time }}</span>{% endif %}{% if tmx.temp %}<span class="tmx-segment tmx-temp">{{ tmx.temp }}</span>{% endif %}{% if tmx.reverse %}<span class="tmx-segment tmx-reverse">Sens inverse</span>{% endif %}{% if tmx.speed %}<span class="tmx-segment tmx-speed {{ 'tmx-spoon' if tmx.speed_type == 'spoon' else 'tmx-blade' }}">{{ 'Vit. cuillère' if tmx.speed_type == 'spoon' else 'Vit. ' ~ tmx.speed }}</span>{% endif %}</span></div>{% endif %}</div></li>{% endfor %}{%- endmacro %}
+{% macro steps_preview(view) -%}{% for step in view.steps %}<li class="step-item" data-step-id="{{ step.id }}"><div class="step-body"><h3 class="step-title">{{ step.action }}</h3>{% if step.text %}<p class="step-intro" data-scale-text="{{ step.text }}">{{ step.text }}</p>{% endif %}{% if step.substeps %}<ul class="substeps-preview-list">{% for substep in step.substeps %}<li data-scale-text="{{ substep }}">{{ substep }}</li>{% endfor %}</ul>{% endif %}{% if step.parallel %}<div class="parallel-block"><strong class="parallel-heading">⏱ En parallèle</strong><div class="parallel-grid">{% for operation in step.parallel %}<article><b>{{ operation.label }}</b><p data-scale-text="{{ operation.text }}">{{ operation.text }}</p></article>{% endfor %}</div></div>{% endif %}{{ tmx_badge(step.plugins.thermomix_settings, compact=true) }}</div></li>{% endfor %}{%- endmacro %}
+
 {% block title %}{{ recipe.title }} · CookiGram{% endblock %}
 {% block body %}
 {% set view = (recipe.variants|selectattr('default')|first) if recipe.variants else recipe %}
@@ -52,8 +54,11 @@
       <div class="nutrition-card">
         <div class="nutrition-header">
           <h3>Valeurs nutritionnelles</h3>
-          <span class="nutrition-badge">par portion (CIQUAL)</span>
+          <span class="nutrition-badge">{{ recipe.nutrition.badge_label or 'par portion (CIQUAL)' }}</span>
         </div>
+        {% if recipe.nutrition.warning %}
+        <div class="nutrition-warning"><small>⚠️ {{ recipe.nutrition.warning }}</small></div>
+        {% endif %}
         <div class="nutrition-grid">
           <div class="nutrition-stat">
             <span class="stat-value">{{ recipe.nutrition.calories }}</span>
