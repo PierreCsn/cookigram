@@ -13,11 +13,16 @@ scaling:
   reason: Capacité maximale du bol pour le ragoût mijoté avec le fouet.
 image: images/ragout-porc-legumes.jpg
 image_credit:
-  author: Minou
-  source: https://www.cookomix.com/recettes/ragout-porc-legumes-thermomix/
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0/
-  modifications: Image redimensionnée et recadrée.
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-02"
+  prompt_file: image-prompts/ragout-porc-legumes.md
 ---
 
 [Hacher la garniture aromatique]

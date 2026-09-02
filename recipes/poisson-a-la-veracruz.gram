@@ -13,11 +13,16 @@ scaling:
   reason: Cuisson étagée vapeur au Varoma des filets de poisson.
 image: images/poisson-a-la-veracruz.jpg
 image_credit:
-  author: Lisa
-  source: https://www.cookomix.com/recettes/poisson-veracruz-thermomix/
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0/
-  modifications: Image redimensionnée et recadrée.
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-02"
+  prompt_file: image-prompts/poisson-a-la-veracruz.md
 ---
 
 [Hacher les aromates et faire revenir]

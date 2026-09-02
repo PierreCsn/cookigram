@@ -1,6 +1,6 @@
 # Velouté de butternut aux lentilles corail et au curry
 
-- Générateur : Google, génération d'images intégrée à Antigravity
+- Générateur : OpenAI, génération d'images intégrée à ChatGPT
 - Date : 2 septembre 2026
 - Sélection : validée par le propriétaire du projet
 - Usage : illustration horizontale de la fiche et du catalogue CookiGram

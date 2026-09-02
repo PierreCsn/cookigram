@@ -12,11 +12,16 @@ scaling:
   enabled: true
 image: images/saumon-a-la-toscane.jpg
 image_credit:
-  author: 🐱UnchatEnCuisine
-  source: https://www.cookomix.com/recettes/saumon-toscane-thermomix/
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0/
-  modifications: Image redimensionnée et recadrée.
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-02"
+  prompt_file: image-prompts/saumon-a-la-toscane.md
 ---
 
 [Préparer les aromates]

@@ -12,11 +12,16 @@ scaling:
   enabled: true
 image: images/croquettes-de-poissons.jpg
 image_credit:
-  author: Tatamix
-  source: https://www.cookomix.com/recettes/croquettes-de-poissons-thermomix/
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0/
-  modifications: Image redimensionnée et recadrée.
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-02"
+  prompt_file: image-prompts/croquettes-de-poissons.md
 ---
 
 [Hacher les aromates]

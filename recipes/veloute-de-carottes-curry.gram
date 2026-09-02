@@ -16,11 +16,11 @@ image_credit:
   author: CookiGram
   source: https://github.com/PierreCsn/cookigram
   license: Illustration générée par IA pour CookiGram
-  license_url: https://policies.google.com/terms
+  license_url: https://openai.com/policies/terms-of-use/
   modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
 image_generation:
-  provider: Google
-  model: Antigravity image generation
+  provider: OpenAI
+  model: ChatGPT image generation
   generated_at: "2026-09-02"
   prompt_file: image-prompts/veloute-de-carottes-curry.md
 ---
