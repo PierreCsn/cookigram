@@ -726,9 +726,12 @@ const speak = (text, onEnd) => {
       if (onEnd) onEnd();
     };
     utterance.onend = finish;
-    utterance.onerror = () => {
+    utterance.onerror = (errorEvent) => {
+      const code = errorEvent?.error || '';
+      if (code !== 'interrupted' && code !== 'canceled') {
+        markSpeechUnavailable(true);
+      }
       finish();
-      showToast('⚠️ Synthèse vocale indisponible sur cet appareil');
     };
     window.speechSynthesis.speak(utterance);
   };
@@ -744,6 +747,14 @@ const stopSpeech = () => {
   isSpeaking = false;
 };
 
+let speechUnavailable = false;
+const markSpeechUnavailable = (notify) => {
+  if (speechUnavailable) return;
+  speechUnavailable = true;
+  document.querySelectorAll('.step-speak, .auto-speak').forEach(btn => { btn.hidden = true; });
+  if (notify) showToast('⚠️ Synthèse vocale indisponible sur cet appareil');
+};
+
 const playConfirmBeep = () => {
   const ctx = getAudioContext();
   if (!ctx) return;
@@ -752,7 +763,25 @@ const playConfirmBeep = () => {
 };
 
 if (hasSpeechSynthesis) {
-  window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+  const watchSpeechVoices = () => {
+    const voices = window.speechSynthesis.getVoices();
+    if (voices.length > 0) {
+      if (speechUnavailable) {
+        speechUnavailable = false;
+        document.querySelectorAll('.step-speak, .auto-speak').forEach(btn => { btn.hidden = false; });
+      }
+      return;
+    }
+    if (!speechUnavailable) {
+      setTimeout(() => {
+        if (window.speechSynthesis.getVoices().length === 0) {
+          markSpeechUnavailable(false);
+        }
+      }, 2000);
+    }
+  };
+  window.speechSynthesis.onvoiceschanged = watchSpeechVoices;
+  watchSpeechVoices();
 }
 
 class RecipeTimer {
