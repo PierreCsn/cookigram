@@ -1,6 +1,22 @@
 {% set prefix = '' %}{% extends "base.html" %}
 {% from "macros.html" import appliance_tags %}
+{% block meta %}
+  <meta name="description" content="CookiGram, le carnet de recettes culinaires guidées et hors ligne, propulsé par des fichiers Gram.">
+  <link rel="canonical" href="{{ canonical_url | default((site_url | default('https://pierrecsn.github.io/cookigram')) ~ '/') }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CookiGram">
+  <meta property="og:title" content="CookiGram 🍳 — Carnet de recettes culinaires">
+  <meta property="og:description" content="CookiGram, le carnet de recettes culinaires guidées et hors ligne, propulsé par des fichiers Gram.">
+  <meta property="og:url" content="{{ canonical_url | default((site_url | default('https://pierrecsn.github.io/cookigram')) ~ '/') }}">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CookiGram 🍳 — Carnet de recettes culinaires">
+  <meta name="twitter:description" content="CookiGram, le carnet de recettes culinaires guidées et hors ligne, propulsé par des fichiers Gram.">
+  <link rel="alternate" type="application/rss+xml" title="Flux des recettes CookiGram (RSS)" href="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/feed.xml">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/sitemap.xml">
+{% endblock %}
 {% block body %}
+
 
 <header class="topbar"><a class="brand" href="./"><span>CG</span> CookiGram</a><div class="topbar-actions"><button class="theme-toggle" type="button" aria-label="Changer de thème" title="Basculer le mode sombre">🌙</button><button class="install" hidden>Installer</button></div></header>
 <main class="home">

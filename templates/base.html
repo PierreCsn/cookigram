@@ -13,7 +13,10 @@
       if (meta) meta.setAttribute('content', dark ? '#171614' : '#fff8ed');
     })();
   </script>
+  {% block meta %}
   <meta name="description" content="CookiGram, le carnet de recettes guidées et hors ligne.">
+  <link rel="canonical" href="{{ canonical_url | default((site_url | default('https://pierrecsn.github.io/cookigram')) ~ '/') }}">
+  {% endblock %}
   <link rel="manifest" href="{{ prefix }}manifest.webmanifest">
   <link rel="stylesheet" href="{{ prefix }}assets/app.css?v={{ asset_version or '' }}">
   <link rel="stylesheet" href="{{ prefix }}assets/scaling.css?v={{ asset_version or '' }}">

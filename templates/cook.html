@@ -2,6 +2,25 @@
 {% from "macros.html" import tmx_badge %}
 
 {% block title %}Cuisson · {{ recipe.title }}{% endblock %}
+{% block meta %}
+  <meta name="description" content="Mode cuisine guidé pas-à-pas pour {{ recipe.title }}.">
+  <link rel="canonical" href="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/recipes/{{ recipe.slug }}/cook/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CookiGram">
+  <meta property="og:title" content="Mode Cuisine : {{ recipe.title }} · CookiGram">
+  <meta property="og:description" content="Mode cuisine guidé pas-à-pas pour {{ recipe.title }}.">
+  <meta property="og:url" content="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/recipes/{{ recipe.slug }}/cook/">
+  <meta property="og:locale" content="fr_FR">
+  {% if recipe.image %}
+  <meta property="og:image" content="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/assets/{{ recipe.image }}">
+  {% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mode Cuisine : {{ recipe.title }} · CookiGram">
+  <meta name="twitter:description" content="Mode cuisine guidé pas-à-pas pour {{ recipe.title }}.">
+  {% if recipe.image %}
+  <meta name="twitter:image" content="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/assets/{{ recipe.image }}">
+  {% endif %}
+{% endblock %}
 {% block body %}
 {% set default_variant = (recipe.variants|selectattr('default')|first) if recipe.variants else none %}
 {% set views = recipe.variants if recipe.variants else [recipe] %}

@@ -6,6 +6,31 @@
 {% macro steps_preview(view) -%}{% for step in view.steps %}<li class="step-item" data-step-id="{{ step.id }}"><div class="step-body"><h3 class="step-title">{{ step.action }}</h3>{% if step.text %}<p class="step-intro" data-scale-text="{{ step.text }}">{{ step.text }}</p>{% endif %}{% if step.substeps %}<ul class="substeps-preview-list">{% for substep in step.substeps %}<li data-scale-text="{{ substep }}">{{ substep }}</li>{% endfor %}</ul>{% endif %}{% if step.parallel %}<div class="parallel-block"><strong class="parallel-heading">⏱ En parallèle</strong><div class="parallel-grid">{% for operation in step.parallel %}<article><b>{{ operation.label }}</b><p data-scale-text="{{ operation.text }}">{{ operation.text }}</p></article>{% endfor %}</div></div>{% endif %}{{ tmx_badge(step.plugins.thermomix_settings, compact=true) }}</div></li>{% endfor %}{%- endmacro %}
 
 {% block title %}{{ recipe.title }} · CookiGram{% endblock %}
+{% block meta %}
+  <meta name="description" content="{{ recipe.description or (recipe.title ~ ' — recette pas-à-pas sur CookiGram.') }}">
+  <link rel="canonical" href="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/recipes/{{ recipe.slug }}/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CookiGram">
+  <meta property="og:title" content="{{ recipe.title }} · CookiGram">
+  <meta property="og:description" content="{{ recipe.description or (recipe.title ~ ' — recette pas-à-pas sur CookiGram.') }}">
+  <meta property="og:url" content="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/recipes/{{ recipe.slug }}/">
+  <meta property="og:locale" content="fr_FR">
+  {% if recipe.image %}
+  <meta property="og:image" content="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/assets/{{ recipe.image }}">
+  <meta property="og:image:alt" content="{{ recipe.title }}">
+  {% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ recipe.title }} · CookiGram">
+  <meta name="twitter:description" content="{{ recipe.description or (recipe.title ~ ' — recette pas-à-pas sur CookiGram.') }}">
+  {% if recipe.image %}
+  <meta name="twitter:image" content="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/assets/{{ recipe.image }}">
+  {% endif %}
+  {% if schema_json %}
+  <script type="application/ld+json">
+{{ schema_json | safe }}
+  </script>
+  {% endif %}
+{% endblock %}
 {% block body %}
 {% set view = (recipe.variants|selectattr('default')|first) if recipe.variants else recipe %}
 <header class="topbar"><a class="brand" href="../../"><span>CG</span> CookiGram</a><div class="topbar-actions"><button class="share-btn share-btn-compact" type="button" aria-label="Partager la recette" title="Partager la recette">↗</button><button class="theme-toggle" type="button" aria-label="Changer de thème" title="Basculer le mode sombre">🌙</button></div></header>
