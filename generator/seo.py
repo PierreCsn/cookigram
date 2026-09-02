@@ -156,9 +156,9 @@ def build_sitemap_xml(recipes: list[Recipe], site_url: str = DEFAULT_SITE_URL) -
 
     for recipe in recipes:
         recipe_url = f"{base_url}/recipes/{recipe.slug}/"
-        cook_url = f"{base_url}/recipes/{recipe.slug}/cook/"
 
-        # Recipe page
+        # Recipe page (canonical, indexable) — cook-mode pages are excluded from
+        # the sitemap as they are duplicate, non-indexable application pages.
         lines.append("  <url>")
         lines.append(f"    <loc>{recipe_url}</loc>")
         lines.append("    <changefreq>monthly</changefreq>")
@@ -170,13 +170,6 @@ def build_sitemap_xml(recipes: list[Recipe], site_url: str = DEFAULT_SITE_URL) -
             lines.append(f"      <image:loc>{image_url}</image:loc>")
             lines.append(f"      <image:title>{safe_title}</image:title>")
             lines.append("    </image:image>")
-        lines.append("  </url>")
-
-        # Cook mode page
-        lines.append("  <url>")
-        lines.append(f"    <loc>{cook_url}</loc>")
-        lines.append("    <changefreq>monthly</changefreq>")
-        lines.append("    <priority>0.5</priority>")
         lines.append("  </url>")
 
     lines.append("</urlset>")
