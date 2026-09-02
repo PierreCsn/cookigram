@@ -11,7 +11,10 @@ export const test = base.extend({
     page.on('console', (msg) => {
       if (msg.type() === 'error') {
         const text = msg.text();
-        if (text.includes('net::ERR_FAILED') || text.includes('net::ERR_INTERNET_DISCONNECTED')) {
+        if (
+          text.includes('net::ERR_FAILED') ||
+          text.includes('net::ERR_INTERNET_DISCONNECTED')
+        ) {
           return;
         }
         errors.push(`[ConsoleError] ${text}`);
