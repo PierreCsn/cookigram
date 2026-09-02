@@ -64,6 +64,10 @@ jobs:
         run: |
           ruff format --check generator plugins tests
 
+      - name: Type check with mypy
+        run: |
+          mypy generator/
+
       - name: Lint JavaScript with Biome
         run: |
           npm ci
@@ -82,7 +86,7 @@ jobs:
 
       - name: Run tests with pytest & coverage
         run: |
-          pytest --cov=generator --cov-report=term-missing --cov-report=json:coverage.json
+          pytest --cov=generator --cov-report=term-missing --cov-report=json:coverage.json --cov-fail-under=80
 
       - name: Validate complete site build & recipes
         run: |
