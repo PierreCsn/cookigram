@@ -113,3 +113,16 @@ python -m http.server 8000 -d _site
 - Ne soumettez jamais d'images sans mention d'auteur et licence explicite.
 - Privilégiez les formats compressés JPEG ou WebP, dimensions recommandées ~1200x800px, poids inférieur à 200 Ko.
 - Renseignez systématiquement le bloc `image_credit` dans le frontmatter.
+
+---
+
+## Règle de validation et de versionnement Git
+
+Tout travail achevé doit être systématiquement validé, commité et poussé (`git push`) :
+1. Valider le code et les tests (`pytest`, `npm test`, `ruff check generator tests`, `npm run lint`).
+2. Vérifier que la génération du site fonctionne sans erreur : `python -m generator.build`.
+3. Stager les modifications avec `git add`.
+4. Créer un commit clair et précis avec `git commit -m "..."`.
+5. Pousser sur la branche distante avec `git push`.
+6. Vérifier que l'arbre de travail est propre (`nothing to commit, working tree clean`).
+
