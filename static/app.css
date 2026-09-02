@@ -625,6 +625,8 @@ a {
 
 .recipe-card>div:last-child {
   padding:22px;
+  display:flex;
+  flex-direction:column;
 }
 
 .recipe-card h3 {
@@ -641,6 +643,23 @@ a {
 
 .recipe-card small {
   font-weight:700;
+  margin-top:auto;
+  padding-top:14px;
+}
+
+.recipe-meta {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+}
+
+.recipe-meta .meta-total {
+  color:var(--ink);
+  font-weight:800;
+}
+
+.recipe-meta .meta-portions {
+  white-space:nowrap;
 }
 
 .tags {
