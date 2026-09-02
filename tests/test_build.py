@@ -37,12 +37,32 @@ def test_build_precaches_existing_assets(tmp_path: Path):
     build(output_dir)
 
     sw = (output_dir / "sw.js").read_text(encoding="utf-8")
-    urls = re.findall(r"'\./([^']*)'", sw)
+    precache_match = re.search(r"const PRECACHE = (\[.*?]);", sw, re.DOTALL)
+    assert precache_match, "the generated service worker should contain its precache manifest"
+    urls = json.loads(precache_match.group(1))
     assert urls, "the service worker should precache at least the home page"
 
     for url in urls:
-        target = output_dir if url in ("", ".") else output_dir / url.split("?")[0]
-        assert target.exists(), f"precache URL './{url}' does not exist in the build"
+        relative = url.removeprefix("./").split("?")[0]
+        target = output_dir if not relative else output_dir / relative
+        assert target.exists(), f"precache URL '{url}' does not exist in the build"
+
+    assert "./recipes/curry-poulet-noix-coco/" in urls
+    assert "./recipes/curry-poulet-noix-coco/cook/" in urls
+    assert "./assets/images/curry-poulet-noix-coco.jpg" in urls
+    assert "./recipes.json" in urls
+    assert any(url.startswith("./assets/app.js?v=") for url in urls)
+
+
+def test_service_worker_uses_network_first_for_html(tmp_path: Path):
+    output_dir = tmp_path / "_site"
+    build(output_dir)
+
+    sw = (output_dir / "sw.js").read_text(encoding="utf-8")
+    assert "event.request.mode === 'navigate'" in sw
+    assert "networkFirst(event.request)" in sw
+    assert "ignoreSearch: true" in sw
+    assert "__PRECACHE__" not in sw
 
 
 def test_build_versions_assets_consistently(tmp_path: Path):

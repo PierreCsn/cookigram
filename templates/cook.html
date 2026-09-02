@@ -17,6 +17,7 @@
       <button class="wake" type="button" aria-pressed="false" title="Garder l'écran allumé">☀</button>
     </div>
   </header>
+  {% if recipe.metadata.required_equipment %}<aside class="cook-appliance-required"><b>Matériel requis :</b> {{ recipe.metadata.required_equipment|join(', ') }}</aside>{% endif %}
   <aside class="voice-feedback" hidden>
     <span class="voice-indicator" aria-hidden="true"></span>
     <span class="voice-feedback-text">Mains libres actif : dites <em>« Suivant »</em>, <em>« Précédent »</em>, <em>« Répéter »</em> ou <em>« Minuteur »</em></span>

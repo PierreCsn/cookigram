@@ -61,8 +61,17 @@ When importing from Cookomix or adapting a Thermomix recipe:
    ```yaml
    appliances:
      thermomix: [TM31, TM5, TM6]
+   source_appliances:
+     thermomix: [TM5, TM6]
+   required_equipment:
+     - Thermomix TM31, TM5 ou TM6
+     - Varoma
    tags: [..., thermomix]
    ```
+   `source_appliances` records only the models explicitly supported by the
+   source. Add another model to `appliances` only after a documented adaptation
+   or a human test. List every indispensable device or accessory in
+   `required_equipment` so the recipe page warns the cook before starting.
 3. **Write Thermomix parameters with standard vocabulary** :
    - **Durée** : annotate with `~{10 s}`, `~{4 min}`, `~{16 min}`.
    - **Température** : annotate with `^{100 C}`, `^{120 C}`, `^{95 C}` or mention `Varoma`.
@@ -76,6 +85,21 @@ When importing from Cookomix or adapting a Thermomix recipe:
    - 🔄 **Sens inverse** (flèche circulaire antihoraire, comme `icon-rotate_cw_2` de Cookomix)
    - 🥄 **Vitesse cuillère** (icône cuillère de mijotage, comme `icon-step_spoon` de Cookomix)
    - 🔪 **Vitesse lames** (icône lames de couteaux 4 branches, comme `icon-lames` de Cookomix)
+
+When a person has actually cooked a version on a model not declared by the
+source, record that evidence instead of rewriting history:
+
+```yaml
+appliance_validation:
+  TM31:
+    status: human-tested
+    portions: 6
+    note: Version 6 portions testée par le propriétaire du projet sur un TM31.
+```
+
+Never infer `human-tested`. The user must explicitly report the test, and the
+validated yield must match what they tested. Keep source support in
+`source_appliances` and the combined usable models in `appliances`.
 
 Choose a lowercase kebab-case filename. Do not overwrite a similarly named recipe until its identity and intended replacement are clear.
 

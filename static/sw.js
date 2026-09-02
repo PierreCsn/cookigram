@@ -1,13 +1,5 @@
 const CACHE = 'cookigram-__VERSION__';
-const PRECACHE = [
-  './',
-  './assets/app.css?__VERSION__',
-  './assets/scaling.css?__VERSION__',
-  './assets/variants.css?__VERSION__',
-  './assets/images.css?__VERSION__',
-  './assets/app.js?__VERSION__',
-  './manifest.webmanifest',
-];
+const PRECACHE = __PRECACHE__;
 
 self.addEventListener('install', event => {
   self.skipWaiting();
@@ -20,14 +12,32 @@ self.addEventListener('activate', event => {
   );
 });
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.open(CACHE).then(cache =>
-      cache.match(event.request).then(hit => hit || fetch(event.request).then(response => {
-        if (response && response.status === 200 && response.type === 'basic') {
-          cache.put(event.request, response.clone());
-        }
-        return response;
-      }))
-    )
-  );
+  if (event.request.mode === 'navigate') {
+    event.respondWith(networkFirst(event.request));
+    return;
+  }
+  event.respondWith(cacheFirst(event.request));
 });
+
+const cacheSuccessful = async (cache, request, response) => {
+  if (response?.status === 200 && response.type === 'basic') {
+    await cache.put(request, response.clone());
+  }
+  return response;
+};
+
+const networkFirst = async request => {
+  const cache = await caches.open(CACHE);
+  try {
+    return await cacheSuccessful(cache, request, await fetch(request));
+  } catch (_) {
+    return (await cache.match(request, { ignoreSearch: true })) || cache.match('./');
+  }
+};
+
+const cacheFirst = async request => {
+  const cache = await caches.open(CACHE);
+  const hit = await cache.match(request);
+  if (hit) return hit;
+  return cacheSuccessful(cache, request, await fetch(request));
+};

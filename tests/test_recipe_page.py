@@ -33,3 +33,13 @@ def test_recipe_page_contains_shopping_checklist_and_export():
     assert "reset-checklist" in rendered
     assert "ingredient-checkbox" in rendered
     assert "toast" in rendered
+
+
+def test_recipe_page_distinguishes_source_and_human_appliance_compatibility():
+    recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
+    env = Environment(loader=FileSystemLoader(Path("templates")), autoescape=select_autoescape())
+    rendered = env.get_template("recipe.html").render(recipe=recipe)
+
+    assert "Matériel indispensable" in rendered
+    assert "Thermomix TM31, TM5, TM6 ou TM7" in rendered
+    assert "TM31 · compatibilité testée par un humain sur 6 portions" in rendered

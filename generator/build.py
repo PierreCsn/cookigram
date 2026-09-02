@@ -27,6 +27,26 @@ def compute_asset_version(assets_path: Path) -> str:
     return digest.hexdigest()[:12]
 
 
+def build_precache_urls(output: Path, version: str) -> list[str]:
+    """Return every user-facing build resource with its actual request URL."""
+    urls = []
+    for path in sorted(output.rglob("*")):
+        if not path.is_file():
+            continue
+        relative = path.relative_to(output)
+        if relative.as_posix() in {".nojekyll", "sw.js"}:
+            continue
+        if relative.name == "index.html":
+            parent = relative.parent.as_posix()
+            url = "./" if parent == "." else f"./{parent}/"
+        elif relative.parts[0] == "assets" and relative.name in ASSETS_TO_VERSION:
+            url = f"./{relative.as_posix()}?v={version}"
+        else:
+            url = f"./{relative.as_posix()}"
+        urls.append(url)
+    return list(dict.fromkeys(urls))
+
+
 def build(output: Path) -> None:
     if output.exists():
         shutil.rmtree(output)
@@ -89,8 +109,12 @@ def build(output: Path) -> None:
     (output / "manifest.webmanifest").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     (output / ".nojekyll").touch()
 
+    precache_urls = build_precache_urls(output, version)
     sw_source = (ROOT / "static" / "sw.js").read_text(encoding="utf-8")
-    (output / "sw.js").write_text(sw_source.replace("__VERSION__", version), encoding="utf-8")
+    rendered_sw = sw_source.replace("__VERSION__", version).replace(
+        "__PRECACHE__", json.dumps(precache_urls, ensure_ascii=False, indent=2)
+    )
+    (output / "sw.js").write_text(rendered_sw, encoding="utf-8")
 
 
 if __name__ == "__main__":

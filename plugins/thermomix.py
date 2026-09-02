@@ -77,10 +77,7 @@ def parse_thermomix_settings(text: str, timers: list, temperatures: list) -> dic
 
 
 def enrich(recipe):
-    is_tmx_recipe = (
-        "thermomix" in recipe.tags
-        or "thermomix" in recipe.metadata.get("appliances", {})
-    )
+    is_tmx_recipe = "thermomix" in recipe.tags or "thermomix" in recipe.metadata.get("appliances", {})
     for step in recipe.steps:
         full_text = step.text + " " + " ".join(step.substeps)
         if is_tmx_recipe or "thermomix" in full_text.lower():

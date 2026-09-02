@@ -1,16 +1,16 @@
 # Roadmap CookiGram
 
-Dernier audit : 1er septembre 2026.
+Dernier audit : 2 septembre 2026.
 
 ## État du projet au moment de l'audit
 
-- 23 recettes et 146 ingrédients référencés.
-- 28 tests Python réussis.
-- Couverture Python : 86 %.
+- 23 recettes et 111 entrées dans la base d'ingrédients.
+- 40 tests Python réussis.
+- Couverture Python : 88 %.
 - Ruff, Biome et génération complète du site réussis.
-- Site généré : environ 4,5 Mo.
-- Le worktree contient déjà de nombreux changements non commités : les consolider
-  avant d'entamer un chantier transversal.
+- Site généré : environ 3,9 Mo.
+- La branche principale locale suit désormais l'historique GitHub ; l'ancien
+  historique local reste conservé dans `legacy/codex-pre-gemini`.
 
 ## P0 — Stabiliser les parcours principaux
 
@@ -48,12 +48,13 @@ Dernier audit : 1er septembre 2026.
   - [ ] navigation dans le mode cuisine ;
   - [ ] démarrage, pause, reprise et remise à zéro d'un minuteur ;
   - [ ] comportement sans les API optionnelles de voix, partage et Wake Lock ;
-  - [ ] installation et navigation hors ligne de la PWA.
+  - [x] navigation hors ligne d'une fiche jusqu'au mode cuisine, image comprise ;
+  - [ ] installation PWA depuis un navigateur compatible.
 - [x] Ajouter un contrôle de syntaxe JavaScript explicite à la CI
   (`node --check` sur `app.js` et `sw.js`).
 - [ ] Faire échouer la CI sur les erreurs console non attendues des tests
   navigateur.
-- [ ] Faire dépendre le déploiement GitHub Pages de la réussite de la CI, ou
+- [x] Faire dépendre le déploiement GitHub Pages de la réussite de la CI, ou
   fusionner build, tests et déploiement dans un pipeline ordonné.
 - [x] Aligner les versions Python annoncées dans le README et celles testées par
   la matrice CI, notamment Python 3.13.
@@ -62,7 +63,7 @@ Dernier audit : 1er septembre 2026.
 
 ### Critère de sortie P1
 
-- [ ] Aucun déploiement ne peut avoir lieu si le lint, le build, les validations
+- [x] Aucun déploiement ne peut avoir lieu si le lint, le build, les validations
   de données ou un parcours utilisateur critique échouent.
 
 ## P1 — Formaliser le contrat des recettes
@@ -115,24 +116,24 @@ Dernier audit : 1er septembre 2026.
 
 ## P2 — Rendre la PWA réellement utilisable hors ligne
 
-- [ ] Choisir et documenter une stratégie :
-  - [ ] précharger toutes les recettes et leurs images ; ou
+- [x] Choisir et documenter une stratégie :
+  - [x] précharger toutes les recettes et leurs images ; ou
   - [ ] proposer un téléchargement hors ligne explicite par recette.
-- [ ] Inclure `recipes.json` et les pages nécessaires dans la stratégie de cache.
+- [x] Inclure `recipes.json` et les pages nécessaires dans la stratégie de cache.
 - [ ] Ajouter une page de secours lorsqu'une ressource non téléchargée est
   demandée hors ligne.
-- [ ] Définir les stratégies de cache séparément pour HTML, données, scripts,
+- [x] Définir les stratégies de cache séparément pour HTML, données, scripts,
   styles et images.
-- [ ] Vérifier qu'une nouvelle version du service worker met à jour les assets
+- [x] Vérifier qu'une nouvelle version du service worker met à jour les assets
   sans laisser une interface incohérente.
-- [ ] Tester l'installation fraîche, le mode avion, la mise à jour et le retour
-  en ligne.
-- [ ] Ajuster la promesse « consultable partout, sans connexion » si toutes les
+- [ ] Tester l'installation fraîche, la mise à jour et le retour en ligne.
+- [x] Tester en CI le mode avion sur une fiche, son image et son mode cuisine.
+- [x] Ajuster la promesse « consultable partout, sans connexion » si toutes les
   recettes ne sont pas disponibles après la première installation.
 
 ### Critère de sortie PWA
 
-- [ ] Une recette déclarée disponible hors ligne reste intégralement utilisable
+- [x] Une recette déclarée disponible hors ligne reste intégralement utilisable
   en mode avion, image et mode cuisine compris.
 
 ## P2 — Réduire la dette frontend
@@ -195,13 +196,12 @@ Dernier audit : 1er septembre 2026.
 
 ## Ordre de réalisation recommandé
 
-1. Corriger les erreurs JavaScript P0.
-2. Ajouter les premiers tests Playwright.
-3. Bloquer le déploiement lorsque la CI échoue.
-4. Valider strictement les recettes et rendre les chemins reproductibles.
-5. Fiabiliser la nutrition et l'offline.
-6. Modulariser le frontend.
-7. Reprendre ensuite le développement de nouvelles fonctionnalités.
+1. Compléter les scénarios Playwright du parcours principal.
+2. Valider strictement les recettes et rendre les chemins reproductibles.
+3. Fiabiliser les données nutritionnelles et leur niveau de confiance.
+4. Ajouter une page de secours hors ligne et tester les mises à jour PWA.
+5. Modulariser le frontend.
+6. Reprendre ensuite le développement de nouvelles fonctionnalités.
 
 ## Définition de « terminé » pour une tâche
 

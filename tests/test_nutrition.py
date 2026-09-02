@@ -23,6 +23,7 @@ def test_parse_quantity_mixed_fractions():
     assert parse_quantity_grams("1/2 c. à café") == 2.5
     assert parse_quantity_grams("1 1/2 c. à soupe") == 22.5
     assert parse_quantity_grams("2 1/4 pincées") == 1.125
+    assert parse_quantity_grams("1 c. à café, sur 1 1/2 c. à café au total") == 7.5
 
 
 def test_calculate_recipe_nutrition():

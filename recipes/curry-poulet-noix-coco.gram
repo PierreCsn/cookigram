@@ -15,7 +15,18 @@ image_credit:
   license_url: https://creativecommons.org/licenses/by-sa/4.0/
   modifications: Image redimensionnée à 960 × 720 pixels.
 appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+source_appliances:
   thermomix: [TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Varoma avec plateau vapeur
+  - Panier cuisson
+appliance_validation:
+  TM31:
+    status: human-tested
+    portions: 6
+    note: Version 6 portions testée par le propriétaire du projet sur un Thermomix TM31.
 scaling:
   enabled: false
   reason: Cookidoo propose des variantes calibrées pour 4, 6 et 8 portions, avec des quantités et réglages qui ne suivent pas tous une règle linéaire. CookiGram conserve ici la version 4 portions jusqu'à la prise en charge de ces variantes.

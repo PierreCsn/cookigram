@@ -1,7 +1,7 @@
 # CookiGram 🍳
 
 [![Deploy GitHub Pages](https://github.com/PierreCsn/cookigram/actions/workflows/pages.yml/badge.svg)](https://github.com/PierreCsn/cookigram/actions/workflows/pages.yml)
-[![Coverage](https://img.shields.io/badge/coverage-87%25-brightgreen.svg)](#tests-et-qualité)
+[![Coverage](https://img.shields.io/badge/coverage-88%25-brightgreen.svg)](#tests-et-qualité)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)](pyproject.toml)
 [![Gram Language](https://img.shields.io/badge/Gram-Gram%20Language-orange.svg)](https://gram-lang.org)
@@ -50,15 +50,15 @@ Ouvrir [http://localhost:8000](http://localhost:8000) dans votre navigateur. Les
 
 ## Tests et qualité
 
-Le projet est validé par une suite complète de tests automatisés atteignant **87% de couverture** :
+Le projet est validé par une suite complète de tests automatisés atteignant **88% de couverture** :
 
 ```bash
 # Exécuter les tests avec rapport de couverture
 pytest --cov=generator --cov-report=term-missing
 
 # Vérifier le style et le linting avec Ruff
-ruff check generator tests
-ruff format --check generator tests
+ruff check generator plugins tests
+ruff format --check generator plugins tests
 
 # Vérifier le linting JavaScript avec Biome
 npm ci
@@ -153,6 +153,32 @@ les plugins.
 `prep_time` et `total_time` sont affichés sur la fiche ; le temps de
 préparation apparaît également dans le catalogue. Ils sont exportés dans
 `_site/recipes.json` avec le reste du modèle canonique.
+
+### Déclarer un appareil et sa validation
+
+Pour une recette liée à un appareil, séparer ce que dit la source de ce qui a
+réellement été vérifié dans CookiGram :
+
+```yaml
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+source_appliances:
+  thermomix: [TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Varoma avec plateau vapeur
+appliance_validation:
+  TM31:
+    status: human-tested
+    portions: 6
+    note: Version 6 portions testée par le propriétaire du projet sur un TM31.
+```
+
+`source_appliances` conserve la compatibilité annoncée par la source,
+`appliances` liste les modèles utilisables après adaptation documentée et
+`required_equipment` est affiché avant le démarrage. Une validation
+`human-tested` ne doit être ajoutée qu'après le retour explicite de la personne
+qui a cuisiné la recette, avec le rendement réellement testé.
 
 ### Variantes de préparation
 
@@ -293,4 +319,19 @@ recette incomplète.
 ## GitHub Pages
 
 Dans le dépôt GitHub, ouvrir **Settings → Pages → Source** et sélectionner
-**GitHub Actions**. Chaque push sur `main` reconstruit et publie le site.
+**GitHub Actions**. Chaque push sur `main` lance d'abord la CI ; le workflow de
+déploiement ne reconstruit et ne publie le site que si tous les contrôles ont
+réussi.
+
+## Fonctionnement hors ligne
+
+Le build génère un service worker versionné qui précharge le catalogue,
+`recipes.json`, toutes les fiches et tous les modes cuisine, les scripts, les
+styles et les images. Après une première visite terminée, les 23 recettes sont
+donc utilisables en mode avion, image comprise.
+
+Les navigations HTML utilisent une stratégie **network-first** pour obtenir la
+dernière version en ligne, avec repli sur le cache hors ligne. Les autres assets
+utilisent **cache-first**. Le hash des assets change le nom du cache à chaque
+version et l'ancien cache est supprimé lors de l'activation du nouveau service
+worker.

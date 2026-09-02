@@ -101,8 +101,28 @@ For Thermomix recipes, declare the appliance in frontmatter:
 ```yaml
 appliances:
   thermomix: [TM31, TM5, TM6]
+source_appliances:
+  thermomix: [TM5, TM6]
+required_equipment:
+  - Thermomix TM31, TM5 ou TM6
+  - Varoma
 tags: [..., thermomix]
 ```
+
+`source_appliances` is the compatibility stated by the imported source;
+`appliances` is CookiGram's supported set after any documented adaptations.
+`required_equipment` is displayed before cooking. A model may be marked as
+tested only after an explicit human report:
+
+```yaml
+appliance_validation:
+  TM31:
+    status: human-tested
+    portions: 6
+    note: Version 6 portions testée par le propriétaire du projet sur un TM31.
+```
+
+Do not invent a human validation or apply it to untested yields.
 
 When formulating steps, specify:
 - **Durée** : `~{10 s}`, `~{4 min}`, `~{16 min}`

@@ -1,7 +1,7 @@
 # CookiGram 🍳
 
 [![Deploy GitHub Pages](https://github.com/PierreCsn/cookigram/actions/workflows/pages.yml/badge.svg)](https://github.com/PierreCsn/cookigram/actions/workflows/pages.yml)
-[![Coverage](https://img.shields.io/badge/coverage-87%25-brightgreen.svg)](#testing-and-quality)
+[![Coverage](https://img.shields.io/badge/coverage-88%25-brightgreen.svg)](#testing-and-quality)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)](pyproject.toml)
 [![Gram Language](https://img.shields.io/badge/Gram-Gram%20Language-orange.svg)](https://gram-lang.org)
@@ -56,19 +56,53 @@ Open [http://localhost:8000](http://localhost:8000) in your browser. Recipe file
 
 ## Testing and Quality
 
-CookiGram maintains a strict test suite achieving **87% code coverage**:
+CookiGram maintains a strict test suite achieving **88% code coverage**:
 
 ```bash
 # Run tests with detailed coverage report
 pytest --cov=generator --cov-report=term-missing
 
 # Lint and check code formatting with Ruff
-ruff check generator tests
-ruff format --check generator tests
+ruff check generator plugins tests
+ruff format --check generator plugins tests
 
 # Validate ingredient database and provenance
 pytest tests/test_ingredients_database.py
 ```
+
+## Appliance declarations and validation
+
+Keep source compatibility separate from CookiGram's documented support:
+
+```yaml
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+source_appliances:
+  thermomix: [TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 or TM7
+  - Varoma with steaming tray
+appliance_validation:
+  TM31:
+    status: human-tested
+    portions: 6
+    note: Six-serving version tested by the project owner on a TM31.
+```
+
+Only record `human-tested` after an explicit report, and include the yield that
+was actually tested.
+
+## GitHub Pages and offline use
+
+Configure **Settings → Pages → Source** to use **GitHub Actions**. A push to
+`main` runs CI first; Pages deploys the exact tested commit only after CI
+succeeds.
+
+The generated, versioned service worker pre-caches the catalogue,
+`recipes.json`, every recipe and cook page, frontend assets, and recipe images.
+After the first complete visit, all 23 recipes remain available in airplane
+mode. HTML navigation is network-first with an offline cache fallback; static
+assets are cache-first, and stale versioned caches are removed on activation.
 
 ---
 

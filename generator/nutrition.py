@@ -185,6 +185,9 @@ def parse_quantity_grams(quantity_str: str, ingredient_slug: str = "") -> float:
         return 0.0
 
     raw = quantity_str.lower().strip()
+    total = re.search(r",\s*sur\s+(.+?)(?:\s+au total)?$", raw)
+    if total:
+        raw = total.group(1).strip()
 
     # Unit-based quantities. Kilogram before gram, milliliter/centiliter before liter,
     # so "1.5 kg", "270 ml" and "25 cl" never fall into a shorter unit pattern.

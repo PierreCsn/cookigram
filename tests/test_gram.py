@@ -59,6 +59,9 @@ def test_cookidoo_recipe_exposes_preparation_times():
     assert recipe.prep_time == "10 min"
     assert recipe.total_time == "45 min"
     assert recipe.scalable is False
-    assert recipe.metadata["appliances"]["thermomix"] == ["TM5", "TM6", "TM7"]
+    assert recipe.metadata["appliances"]["thermomix"] == ["TM31", "TM5", "TM6", "TM7"]
+    assert recipe.metadata["source_appliances"]["thermomix"] == ["TM5", "TM6", "TM7"]
+    assert recipe.metadata["appliance_validation"]["TM31"]["status"] == "human-tested"
+    assert recipe.metadata["appliance_validation"]["TM31"]["portions"] == 6
     assert recipe.image == "images/curry-poulet-noix-coco.jpg"
     assert recipe.metadata["image_credit"]["license"] == "CC BY-SA 4.0"

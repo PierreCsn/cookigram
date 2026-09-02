@@ -58,11 +58,11 @@ jobs:
 
       - name: Lint with Ruff
         run: |
-          ruff check generator tests
+          ruff check generator plugins tests
 
       - name: Check formatting with Ruff
         run: |
-          ruff format --check generator tests
+          ruff format --check generator plugins tests
 
       - name: Lint JavaScript with Biome
         run: |

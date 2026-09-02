@@ -43,3 +43,15 @@ def test_provenance_covers_database_and_uses_known_statuses():
     provenance = yaml.safe_load(Path(".gram/ingredient-provenance.yaml").read_text(encoding="utf-8"))["ingredients"]
     assert set(database) == set(provenance)
     assert {item["status"] for item in provenance.values()} <= {"incomplete", "estimated", "verified", "manual"}
+
+
+def test_recipe_images_exist_and_have_no_orphans():
+    referenced = set()
+    for path in Path("recipes").glob("*.gram"):
+        recipe = parse_recipe(path)
+        if recipe.image:
+            referenced.add(recipe.image)
+            assert Path("static", recipe.image).is_file(), f"{path}: image introuvable : {recipe.image}"
+
+    available = {path.relative_to("static").as_posix() for path in Path("static/images").iterdir() if path.is_file()}
+    assert referenced == available, f"images orphelines : {sorted(available - referenced)}"

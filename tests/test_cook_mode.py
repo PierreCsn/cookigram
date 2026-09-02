@@ -22,3 +22,5 @@ def test_cook_template_contains_voice_and_timer_controls():
     assert "timer-reset" in rendered
     assert 'data-seconds="1200"' in rendered
     assert 'data-step-num="3"' in rendered
+    assert "Matériel requis :" in rendered
+    assert "Thermomix TM31, TM5, TM6 ou TM7" in rendered

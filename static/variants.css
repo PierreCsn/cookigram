@@ -8,6 +8,9 @@
 .equipment-card ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
 .equipment-card li, .compatibility span { background: var(--card); border: 1px solid var(--line); border-radius: 99px; padding: 7px 11px; font-size: 13px; }
 .compatibility { border-top: 1px solid var(--line); padding-top: 14px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.appliance-required { display: flex; flex-direction: column; gap: 5px; max-width: 680px; margin: 22px 0; padding: 15px 18px; border: 1px solid var(--line); border-left: 5px solid var(--orange); border-radius: 12px; background: var(--cream); }
+.appliance-required small { color: var(--green); font-weight: 800; }
+.cook-appliance-required { margin: 0; padding: 10px 16px; border-bottom: 1px solid var(--line); background: var(--cream); color: var(--ink); text-align: center; font-size: 13px; }
 .parallel-block { margin-top: 12px; padding: 14px; background: var(--cream); border: 1px solid var(--line); border-left: 4px solid var(--orange); border-radius: 12px; }
 .parallel-heading { display: block; margin-bottom: 10px; color: var(--orange); }
 .parallel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
