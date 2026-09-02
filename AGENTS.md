@@ -50,3 +50,25 @@ Ce document définit les règles impératives que tout agent d'assistance ou dé
 * **PWA & Offline-First** :
   * Le Service Worker précharge l'ensemble des recettes, images et assets.
   * Toute modification d'asset ou d'image doit mettre à jour le hash de version du cache.
+
+---
+
+## 3. Gouvernance produit et priorisation des tâches (Human-in-the-loop)
+
+* **Le Product Owner (@PierreCsn) est l'utilisateur n°1** :
+  * CookiGram est construit avant tout pour son expérience réelle en cuisine.
+  * Ses retours qualitatifs prévalent sur les métriques théoriques ou les dogmes conventionnels.
+* **Document de référence : [`PRODUCT_PRINCIPLES.md`](PRODUCT_PRINCIPLES.md)** :
+  * **Principe 1 — Cooking first** : La lisibilité et l'ergonomie en cuisine (plan de travail, mains sales/mouillées, cibles 44 px min, minuteurs accessibles, zéro chevauchement de la barre de navigation `.cook-nav`) ont la priorité absolue.
+  * **Principe 2 — Mobile & tablette first** : Le smartphone et la tablette tactile sont les scénarios d'usage primaires. Aucun débordement horizontal toléré (360 px, 390 px, 768 px).
+  * **Principe 3 — Simplicité & frugalité** : Aucun framework lourd côté client, JavaScript ES natif, CSS compartimenté, rapidité d'exécution.
+* **Ordre officiel de réalisation des tâches** :
+  * L'ordre des travaux est impérativement fixé par l'issue épinglée **[#35](https://github.com/PierreCsn/cookigram/issues/35)** et les **Jalons GitHub (Milestones)**.
+  * Tout développeur ou agent doit respecter strictement l'ordre des lots :
+    1. **Lot 1 — UX Cuisine & Ergonomie Mobile (P0/P1)** : issues #28, #29, #27 (**URGENCE ABSOLUE**)
+    2. **Lot 2 — SEO Critique & Indexation (P1)** : issues #15 (clos), #16 (clos), #20
+    3. **Lot 3 — Ergonomie & Fiche Recette (P1)** : issues #26, #30, #32, #31
+    4. **Lot 4 — SEO Avancé & Performance (P2)** : issues #33, #34, #17, #19, #18, #21, #22, #23, #24
+    5. **Lot 5 — Dette Technique & Socle (P3/P4)** : issues #8, #1
+  * **Interdiction de sauter un lot** pour travailler sur des améliorations secondaires tant que le lot en cours n'est pas soldé, testé et validé.
+

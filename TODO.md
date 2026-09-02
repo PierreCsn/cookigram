@@ -1,8 +1,19 @@
 # Roadmap CookiGram
 
-Dernier audit : 2 septembre 2026.
+> 📌 **Ordre officiel de priorisation produit (Lots 1 à 5)**  
+> Arbitrage validé par le Product Owner (@PierreCsn, utilisateur n°1) et le Product Lead.  
+> Référence GitHub : Issue épinglée **[#35](https://github.com/PierreCsn/cookigram/issues/35)** et **[`PRODUCT_PRINCIPLES.md`](PRODUCT_PRINCIPLES.md)**.
+>
+> 1. 🍳 **Lot 1 — UX Cuisine & Ergonomie Mobile (P0/P1)** : #28, #29, #27 (**EN COURS / PRIORITÉ ABSOLUE**)
+> 2. 🔍 **Lot 2 — SEO Critique & Indexation (P1)** : #15 (fait), #16 (fait), #20
+> 3. 📱 **Lot 3 — Ergonomie & Fiche Recette (P1)** : #26, #30, #32, #31
+> 4. 🎨 **Lot 4 — SEO Avancé & Performance (P2)** : #33, #34, #17, #19, #18, #21, #22, #23, #24
+> 5. 🧱 **Lot 5 — Dette Technique & Évolution Socle (P3/P4)** : #8, #1
+
+Dernier audit : 3 septembre 2026.
 
 ## État du projet au moment de l'audit
+
 
 - 23 recettes et 111 entrées dans la base d'ingrédients.
 - 41 tests Python réussis.
