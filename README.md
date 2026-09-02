@@ -301,6 +301,19 @@ Pour une image sous licence avec attribution, conserver le nom de l'auteur, la
 page source, la licence et les modifications éventuelles. La fiche recette
 affiche automatiquement ces informations sous la photo.
 
+### Générer une illustration originale
+
+Le skill `.agents/skills/generate-recipe-image/` définit l'identité visuelle
+CookiGram : illustration culinaire manga semi-réaliste, chaleureuse, horizontale
+et fidèle à la recette. Il interdit d'utiliser comme référence une photo tierce
+dont les droits ne sont pas établis, sépare clairement un simple test d'un
+remplacement publié et documente l'outil, le prompt et la sélection humaine.
+
+Gemini CLI découvre directement ce skill depuis `.agents/skills/`. Après un
+ajout ou une modification, utiliser `/skills reload`, puis vérifier sa présence
+avec `/skills list`. Si l'agent ne dispose pas d'un générateur d'images, le skill
+lui demande de produire le prompt final sans prétendre avoir créé le fichier.
+
 ### Importer une recette du Web avec un agent
 
 Le skill `.agents/skills/import-recipe-gram/` explique aux agents comment :

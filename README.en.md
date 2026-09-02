@@ -70,6 +70,16 @@ ruff format --check generator plugins tests
 pytest tests/test_ingredients_database.py
 ```
 
+## Recipe image skill
+
+The workspace skill at `.agents/skills/generate-recipe-image/` defines
+CookiGram's approved visual identity: warm, semi-realistic manga culinary
+illustrations in a responsive landscape format. It prevents unlicensed source
+photographs from being used as generation references, distinguishes previews
+from approved repository replacements, and records the provider, prompt and
+human selection. Gemini CLI discovers `.agents/skills/` directly; run
+`/skills reload` after adding or changing a skill.
+
 ## Appliance declarations and validation
 
 Keep source compatibility separate from CookiGram's documented support:
