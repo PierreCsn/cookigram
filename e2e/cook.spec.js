@@ -75,4 +75,32 @@ test.describe('Mode cuisine: navigation et sous-étapes', () => {
     await firstStepReloaded.locator('.substep-checkbox').first().uncheck();
     await expect(firstStepReloaded.locator('.substeps-progress')).toHaveText('0 / 2');
   });
+
+  test('la barre de navigation ne chevauche pas les minuteurs ni les sous-étapes sur mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/recipes/roti-de-porc-sauce-echalote/cook/');
+
+    // Étape 1 du rôti de porc : plusieurs sous-étapes + minuteurs.
+    // Le bas du contenu doit être atteignable sans être masqué par .cook-nav.
+    const firstStep = page.locator('.cook-step').first();
+    const nav = page.locator('.cook-nav');
+
+    const lastElement = firstStep.locator('.substeps-card, .timer').last();
+    await expect(lastElement).toBeVisible();
+
+    // Faire défiler jusqu'au fond du document : la marge de bas de page doit
+    // garantir que le dernier élément reste visible au-dessus de la barre sticky.
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+
+    const lastBox = await lastElement.boundingBox();
+    const navBox = await nav.boundingBox();
+    expect(lastBox).not.toBeNull();
+    expect(navBox).not.toBeNull();
+    expect(lastBox.y + lastBox.height).toBeLessThanOrEqual(navBox.y + 1);
+
+    // Le titre d'étape ne doit pas excéder 3 lignes sur 390px.
+    const h1 = firstStep.locator('h1');
+    const h1Box = await h1.boundingBox();
+    expect(h1Box.height).toBeLessThanOrEqual(3 * 32 * 1.25);
+  });
 });

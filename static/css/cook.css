@@ -500,18 +500,20 @@
   }
   .cook-stage {
     align-items:start;
-    padding-top:55px;
+    padding:55px 24px calc(90px + env(safe-area-inset-bottom));
   }
   .instruction {
     font-size:25px;
   }
   .cook-step h1 {
-    font-size:54px;
+    font-size:clamp(24px,6vw,32px);
+    line-height:1.25;
   }
   .cook-nav {
     position:sticky;
     bottom:0;
     background:var(--cook-bg);
+    box-shadow:0 -4px 12px rgba(0,0,0,0.08);
     padding-inline:12px;
   }
 }
