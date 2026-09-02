@@ -10,6 +10,30 @@ test.describe('PWA et mode hors ligne', () => {
     expect(manifest.display).toBe('standalone');
     expect(manifest.start_url).toBe('./');
     expect(manifest.icons.length).toBeGreaterThan(0);
+
+    const pngIcons = manifest.icons.filter((i) => i.type === 'image/png');
+    expect(pngIcons.length).toBeGreaterThan(0);
+    expect(manifest.icons.some((i) => i.sizes === '192x192')).toBe(true);
+    expect(manifest.icons.some((i) => i.sizes === '512x512')).toBe(true);
+  });
+
+  test('les icônes PNG et le lien apple-touch-icon sont accessibles', async ({ page }) => {
+    await page.goto('/');
+    const appleTouch = page.locator('link[rel="apple-touch-icon"]');
+    await expect(appleTouch).toHaveAttribute('href', /icon-192\.png/);
+
+    const png192 = await page.request.get('/assets/icons/icon-192.png');
+    expect(png192?.status()).toBe(200);
+    expect(png192?.headers()['content-type']).toContain('image/png');
+
+    const png512 = await page.request.get('/assets/icons/icon-512.png');
+    expect(png512?.status()).toBe(200);
+  });
+
+  test('la page 404 personnalisée contient le bon contenu', async ({ page }) => {
+    await page.goto('/404.html');
+    await expect(page.getByRole('heading', { name: 'Page introuvable' })).toBeVisible();
+    await expect(page.locator('.primary')).toHaveAttribute('href', './');
   });
 
   test('le service worker permet la navigation hors ligne après consultation', async ({ page, context }) => {
