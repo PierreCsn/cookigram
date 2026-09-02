@@ -69,4 +69,3 @@ def apply_plugins(recipe: Any, plugin_dir: Path) -> None:
     """Backwards-compatible standalone function for single-recipe enrichment."""
     manager = PluginManager.from_directory(plugin_dir)
     manager.apply(recipe)
-

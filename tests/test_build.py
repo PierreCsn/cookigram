@@ -114,4 +114,3 @@ def test_compile_css_assembles_modular_stylesheets(tmp_path: Path):
     assert "--test-var: 1" in content
     assert "/* === base.css === */" in content
     assert "body { margin: 0; }" in content
-

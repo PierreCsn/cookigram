@@ -130,7 +130,6 @@ def parse_quantity(quantity_str: str) -> ParsedQuantity:
     if total_m:
         norm = total_m.group(1).strip()
 
-
     # Unquantified check
     clean_unquant = re.sub(r"[^\w\s]", "", norm).strip()
     if clean_unquant in UNQUANTIFIED_TERMS or not clean_unquant:

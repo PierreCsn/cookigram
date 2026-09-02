@@ -9,6 +9,13 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from .gram import parse_recipe
 from .plugins import PluginManager
+from .seo import (
+    DEFAULT_SITE_URL,
+    build_recipe_schema,
+    build_robots_txt,
+    build_rss_feed,
+    build_sitemap_xml,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -37,7 +44,7 @@ def build_precache_urls(output: Path, version: str) -> list[str]:
         if not path.is_file():
             continue
         relative = path.relative_to(output)
-        if relative.as_posix() in {".nojekyll", "sw.js"}:
+        if relative.as_posix() in {".nojekyll", "sw.js", "sitemap.xml", "robots.txt", "feed.xml"}:
             continue
         if relative.name == "index.html":
             parent = relative.parent.as_posix()
@@ -78,7 +85,7 @@ def compile_css(css_dir: Path, output_file: Path) -> None:
         output_file.write_text(bundled, encoding="utf-8")
 
 
-def build(output: Path) -> None:
+def build(output: Path, site_url: str = DEFAULT_SITE_URL) -> None:
     if output.exists():
         shutil.rmtree(output)
     output.mkdir(parents=True)
@@ -92,12 +99,10 @@ def build(output: Path) -> None:
     # static/sw.js acts as a template rendered with the build version.
     (output / "assets" / "sw.js").unlink(missing_ok=True)
 
-
     recipes = [parse_recipe(path) for path in sorted((ROOT / "recipes").glob("*.gram"))]
     plugin_manager = PluginManager.from_directory(ROOT / "plugins")
     for recipe in recipes:
         plugin_manager.apply(recipe)
-
 
     version = compute_asset_version(output / "assets")
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape())
@@ -118,6 +123,8 @@ def build(output: Path) -> None:
     primary_tags = [tag for tag in PRIMARY_THEMES if any(tag in r.tags for r in recipes)]
     advanced_tags = sorted({tag for tag in all_tags if tag not in PRIMARY_THEMES and tag != "thermomix"})
 
+    clean_site_url = site_url.rstrip("/")
+
     (output / "index.html").write_text(
         env.get_template("index.html").render(
             recipes=recipes,
@@ -125,6 +132,8 @@ def build(output: Path) -> None:
             primary_tags=primary_tags,
             advanced_tags=advanced_tags,
             asset_version=version,
+            site_url=clean_site_url,
+            canonical_url=f"{clean_site_url}/",
         ),
         encoding="utf-8",
     )
@@ -133,11 +142,26 @@ def build(output: Path) -> None:
         recipe_dir = output / "recipes" / recipe.slug
         cook_dir = recipe_dir / "cook"
         cook_dir.mkdir(parents=True, exist_ok=True)
+
+        schema_data = build_recipe_schema(recipe, clean_site_url)
+        schema_json = json.dumps(schema_data, ensure_ascii=False, indent=2)
+
         (recipe_dir / "index.html").write_text(
-            env.get_template("recipe.html").render(recipe=recipe, asset_version=version), encoding="utf-8"
+            env.get_template("recipe.html").render(
+                recipe=recipe,
+                asset_version=version,
+                site_url=clean_site_url,
+                schema_json=schema_json,
+            ),
+            encoding="utf-8",
         )
         (cook_dir / "index.html").write_text(
-            env.get_template("cook.html").render(recipe=recipe, asset_version=version), encoding="utf-8"
+            env.get_template("cook.html").render(
+                recipe=recipe,
+                asset_version=version,
+                site_url=clean_site_url,
+            ),
+            encoding="utf-8",
         )
 
     payload = [asdict(recipe) for recipe in recipes]
@@ -146,6 +170,11 @@ def build(output: Path) -> None:
     manifest["start_url"] = "./"
     (output / "manifest.webmanifest").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     (output / ".nojekyll").touch()
+
+    # Generate sitemap, robots.txt, and RSS feed
+    (output / "sitemap.xml").write_text(build_sitemap_xml(recipes, clean_site_url), encoding="utf-8")
+    (output / "robots.txt").write_text(build_robots_txt(clean_site_url), encoding="utf-8")
+    (output / "feed.xml").write_text(build_rss_feed(recipes, clean_site_url), encoding="utf-8")
 
     precache_urls = build_precache_urls(output, version)
     sw_source = (ROOT / "static" / "sw.js").read_text(encoding="utf-8")
@@ -175,4 +204,7 @@ def build(output: Path) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, default=ROOT / "_site")
-    build(parser.parse_args().output.resolve())
+    parser.add_argument("--site-url", type=str, default=DEFAULT_SITE_URL)
+    args = parser.parse_args()
+    build(args.output.resolve(), site_url=args.site_url)
+
