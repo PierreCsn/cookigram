@@ -3,8 +3,9 @@
 
 {% block title %}Cuisson · {{ recipe.title }}{% endblock %}
 {% block meta %}
+  <meta name="robots" content="noindex, follow">
   <meta name="description" content="Mode cuisine guidé pas-à-pas pour {{ recipe.title }}.">
-  <link rel="canonical" href="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/recipes/{{ recipe.slug }}/cook/">
+  <link rel="canonical" href="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/recipes/{{ recipe.slug }}/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="CookiGram">
   <meta property="og:title" content="Mode Cuisine : {{ recipe.title }} · CookiGram">

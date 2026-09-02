@@ -69,7 +69,7 @@ def test_build_sitemap_xml():
     assert "<urlset " in sitemap
     assert "<loc>https://example.com/cookigram/</loc>" in sitemap
     assert "<loc>https://example.com/cookigram/recipes/risotto-poulet-champignons/</loc>" in sitemap
-    assert "<loc>https://example.com/cookigram/recipes/risotto-poulet-champignons/cook/</loc>" in sitemap
+    assert "recipes/risotto-poulet-champignons/cook/" not in sitemap
     assert "<image:loc>" in sitemap
 
 
@@ -104,6 +104,7 @@ def test_build_generates_seo_assets_and_metadata(tmp_path: Path):
     # Sitemap content check
     sitemap_content = (output_dir / "sitemap.xml").read_text(encoding="utf-8")
     assert "https://custom.domain.com/cook/recipes/risotto-poulet-champignons/" in sitemap_content
+    assert "/cook/recipes/risotto-poulet-champignons/cook/" not in sitemap_content
 
     # Robots content check
     robots_content = (output_dir / "robots.txt").read_text(encoding="utf-8")
@@ -131,3 +132,19 @@ def test_build_generates_seo_assets_and_metadata(tmp_path: Path):
     assert '<meta property="og:type" content="website">' in index_html
     assert 'href="https://custom.domain.com/cook/feed.xml"' in index_html
     assert 'href="https://custom.domain.com/cook/sitemap.xml"' in index_html
+
+
+def test_build_cook_page_is_noindex_and_canonical_to_recipe(tmp_path: Path):
+    output_dir = tmp_path / "_site"
+    site_url = "https://custom.domain.com/cook"
+    build(output_dir, site_url=site_url)
+
+    cook_html = (output_dir / "recipes" / "risotto-poulet-champignons" / "cook" / "index.html").read_text(
+        encoding="utf-8"
+    )
+    # Noindex to avoid duplicate-content cannibalisation
+    assert '<meta name="robots" content="noindex, follow">' in cook_html
+    # Canonical points to the indexable recipe page, not the cook app page
+    assert (
+        '<link rel="canonical" href="https://custom.domain.com/cook/recipes/risotto-poulet-champignons/">' in cook_html
+    )
