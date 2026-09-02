@@ -154,6 +154,107 @@ les plugins.
 préparation apparaît également dans le catalogue. Ils sont exportés dans
 `_site/recipes.json` avec le reste du modèle canonique.
 
+### Variantes de préparation
+
+Une recette peut proposer plusieurs méthodes sans recopier ses métadonnées ni
+son tronc commun. Les variantes se déclarent dans le frontmatter. La première
+est utilisée par défaut si aucune n'a `default: true`; une seule variante au
+maximum peut être marquée par défaut. Les identifiants utilisent des lettres
+minuscules, des chiffres et des tirets et sont uniques dans la recette.
+
+Les étapes susceptibles d'être adaptées reçoivent un identifiant stable avec
+la syntaxe `[identifiant | Titre de l'étape]`. Une variante peut ensuite les
+`replace`, les `remove`, ou insérer des étapes `before`/`after`. Les références
+inconnues et les identifiants dupliqués font échouer le build.
+
+Exemple condensé de `roti-de-porc-sauce-echalote.gram` :
+
+```gram
+---
+title: Rôti de porc sauce échalote
+portions: 4
+prep_time: 10 min
+total_time: 1 h 15 min
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+variants:
+  - id: thermomix-varoma
+    name: Thermomix / Varoma
+    description: La méthode vapeur d'origine.
+    default: true
+
+  - id: sous-vide-four
+    name: Sous-vide + finition au four
+    description: Cuisson régulière, puis coloration et sauce en parallèle.
+    prep_time: 20 min
+    total_time: 4 h 35 min
+    appliances:
+      thermomix: [TM31, TM5, TM6, TM7]
+      sous_vide: true
+      oven: true
+    equipment:
+      remove: [Varoma]
+      add: [machine sous vide, thermoplongeur, four avec gril]
+    ingredients:
+      remove: [eau, bouillon de légumes]
+      replace:
+        rôti de porc:
+          name: rôti de porc
+          quantity: 800 g
+      add:
+        - name: huile d'olive
+          quantity: 1 c. à soupe
+    steps:
+      replace:
+        steam-cook: |
+          [sous-vide-cook | Cuire le rôti sous vide]
+          - Cuire le @rôti de porc{800 g} dans un #sac sous vide{} ~{4 h} à ^{60 C}.
+          - Récupérer le jus du sac, puis sécher soigneusement le rôti.
+        make-sauce: |
+          [finish-in-parallel | Colorer le rôti et réduire la sauce]
+          - Lancer les deux opérations au même moment.
+          || oven | Four : Colorer le rôti à ^{240–250 C} pendant ~{6 min} à ~{10 min}.
+          || thermomix | Thermomix : Réduire les @échalotes{4 pièces}, le @jus de cuisson sous vide{tout le jus}, le @vin blanc{170 g} et la @maïzena{10 g} pendant ~{8 min}.
+          - Finir la sauce pendant que le rôti repose.
+      after:
+        make-sauce:
+          - |
+            [optional-note | Vérifier la sauce]
+            Rectifier l'assaisonnement avant de servir.
+---
+
+[prepare-roast | Préparer le rôti]
+- Piquer le @rôti de porc{800 g} avec les @gousses d'ail{2 pièces}.
+- Installer le #Varoma{}.
+
+[steam-cook | Cuisson vapeur au Varoma]
+Cuire ~{45 min} à ^{Varoma}.
+
+[make-sauce | Préparer la sauce échalote]
+Cuire les @échalotes{4 pièces} avec le @vin blanc{170 g} et la @maïzena{10 g}.
+
+[serve | Tranchage et service]
+Trancher, napper de sauce et servir.
+```
+
+Les listes `ingredients` et `equipment` sont facultatives : CookiGram les
+recalcule d'abord à partir des étapes résolues, puis applique les opérations
+`remove`, `replace` et `add`. Cela permet aussi de corriger explicitement un
+élément qui n'apparaît pas dans le texte. Les temps et `appliances` héritent de
+la recette et peuvent être redéfinis variante par variante.
+
+Une ligne parallèle suit la forme
+`|| identifiant | Libellé : instruction`. Les opérations sont regroupées
+visuellement et restent cochables séparément en mode cuisine.
+
+Le lien direct d'une méthode est
+`/recipes/roti-de-porc-sauce-echalote/?variant=sous-vide-four` (et le même
+paramètre fonctionne sur `cook/`). Sans paramètre, la méthode par défaut est
+affichée. Une valeur inconnue revient à la méthode par défaut et l'URL est
+nettoyée. La progression est mémorisée par identifiant d'étape : une étape
+réutilisée conserve son état, tandis qu'une étape remplacée ne récupère pas
+aveuglément l'état d'une étape portant le même numéro.
+
 ### Ajouter une photo
 
 Placer l'image optimisée dans `static/images/`, puis déclarer son chemin relatif
