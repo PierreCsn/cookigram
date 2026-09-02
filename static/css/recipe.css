@@ -100,3 +100,72 @@
   font-family:Georgia,serif;
   font-size:30px;
 }
+
+.offline-save-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid var(--line);
+  background:var(--btn-bg);
+  color:var(--ink);
+  border-radius:16px;
+  padding:17px 22px;
+  font-family:inherit;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+  transition:all .2s ease;
+}
+
+.offline-save-btn:hover {
+  background:var(--btn-hover);
+}
+
+.offline-save-btn.offline-saved {
+  background:var(--green);
+  color:white;
+  border-color:var(--green);
+}
+
+.offline-save-btn:disabled {
+  opacity:.7;
+  cursor:default;
+}
+
+.offline-page {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:60vh;
+  padding:24px;
+}
+
+.offline-card {
+  text-align:center;
+  max-width:420px;
+}
+
+.offline-icon {
+  font-size:48px;
+  display:block;
+  margin-bottom:16px;
+}
+
+.offline-card h1 {
+  font-size:24px;
+  margin:0 0 12px;
+}
+
+.offline-card p {
+  color:var(--muted);
+  margin:0 0 8px;
+}
+
+.offline-hint {
+  margin-bottom:24px !important;
+}
+
+.offline-card .primary {
+  display:inline-flex;
+  margin:0 auto;
+}

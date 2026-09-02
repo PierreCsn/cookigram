@@ -138,6 +138,14 @@ def build(output: Path, site_url: str = DEFAULT_SITE_URL) -> None:
         encoding="utf-8",
     )
 
+    (output / "offline.html").write_text(
+        env.get_template("offline.html").render(
+            asset_version=version,
+            site_url=clean_site_url,
+        ),
+        encoding="utf-8",
+    )
+
     for recipe in recipes:
         recipe_dir = output / "recipes" / recipe.slug
         cook_dir = recipe_dir / "cook"

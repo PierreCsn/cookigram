@@ -1,0 +1,14 @@
+{% set prefix = './' %}{% extends "base.html" %}
+{% block title %}Hors ligne · CookiGram{% endblock %}
+{% block body %}
+<header class="topbar"><a class="brand" href="./"><span>CG</span> CookiGram</a><div class="topbar-actions"><button class="theme-toggle" type="button" aria-label="Changer de thème" title="Basculer le mode sombre">🌙</button></div></header>
+<main class="offline-page">
+  <div class="offline-card">
+    <span class="offline-icon" aria-hidden="true">📡</span>
+    <h1>Page non disponible hors ligne</h1>
+    <p>Cette page n'a pas été téléchargée et n'est pas accessible sans connexion Internet.</p>
+    <p class="offline-hint">Vous pouvez revenir à l'accueil, où les recettes déjà consultées restent disponibles.</p>
+    <a class="primary" href="./">← Retour à l'accueil</a>
+  </div>
+</main>
+{% endblock %}
