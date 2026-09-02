@@ -13,11 +13,16 @@ scaling:
   reason: Équilibre liquide et capacité du bol optimisés pour le Thermomix.
 image: images/veloute-butternut-lentilles-corail-curry.jpg
 image_credit:
-  author: Mandy-62
-  source: https://www.cookomix.com/recettes/veloute-butternut-lentilles-corail-curry-thermomix/
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0/
-  modifications: Image redimensionnée et recadrée.
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: Google
+  model: Antigravity image generation
+  generated_at: "2026-09-02"
+  prompt_file: image-prompts/veloute-butternut-lentilles-corail-curry.md
 ---
 
 [Hacher les aromates]

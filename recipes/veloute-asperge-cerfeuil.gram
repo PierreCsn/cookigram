@@ -1,0 +1,57 @@
+---
+title: Velouté d'asperge au cerfeuil
+portions: 6
+prep_time: 5 min
+total_time: 30 min
+description: Velouté d'asperges vertes au cerfeuil et à la crème, garni de pointes
+  vapeur.
+tags:
+- soupe
+- velouté
+- asperges
+- thermomix
+source: https://cookidoo.fr/recipes/recipe/fr-fr/r65773
+author: Vorwerk Home & Co. KmG
+appliances:
+  thermomix:
+  - TM31
+  - TM5
+  - TM6
+  - TM7
+scaling:
+  enabled: false
+  reason: Le volume et les cuissons au Varoma sont calibrés pour 6 portions dans le
+    bol Thermomix.
+image: images/veloute-asperge-cerfeuil.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: Google
+  model: Antigravity image generation
+  generated_at: "2026-09-02"
+  prompt_file: image-prompts/veloute-asperge-cerfeuil.md
+---
+
+[Préparer les asperges]
+- Couper les @asperges vertes{500 g} en tronçons et réserver les pointes pour la cuisson vapeur.
+
+[Faire suer]
+- Mettre l'@oignon nouveau{50 g, avec la tige} et le @beurre{10 g} dans le #bol Thermomix{}.
+- Faire suer ~{5 min} à ^{120 C}, vitesse 1.
+
+[Cuire les asperges]
+- Ajouter 300 g d'@eau{}, le @cube de bouillon de légumes{1} et le @cerfeuil frais{10 g}.
+- Installer le #Varoma{} avec les pointes d'asperges sur le plateau vapeur et cuire ~{15 min} à ^{Varoma}, vitesse 1.
+- Retirer le Varoma et réserver les pointes.
+
+[Mixer le velouté]
+- Mixer ~{30 s} de la vitesse 5 à 10 en augmentant progressivement.
+
+[Finir et servir]
+- Ajouter la @noix de muscade{2 pincées}, la @crème fraîche liquide{200 g}, les 200 g d'eau restants, le @sel{2 pincées} et le @poivre moulu{1 pincée}.
+- Mixer ~{20 s} à vitesse 4, puis chauffer ~{4 min} à ^{90 C}, vitesse 2.
+- Rectifier l'assaisonnement, répartir dans les assiettes et garnir des pointes d'asperges.

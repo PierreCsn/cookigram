@@ -1,0 +1,51 @@
+---
+title: Velouté de potiron à la cannelle
+portions: 4
+prep_time: 20 min
+total_time: 45 min
+description: Velouté de potiron à la cannelle et à la crème.
+tags:
+- soupe
+- velouté
+- potiron
+- thermomix
+source: https://cookidoo.fr/recipes/recipe/fr-fr/r62661
+author: Vorwerk Home & Co. KmG
+appliances:
+  thermomix:
+  - TM31
+  - TM5
+  - TM6
+  - TM7
+scaling:
+  enabled: false
+  reason: Les quantités et paramètres de chauffe sont calibrés pour 4 portions dans
+    le bol Thermomix.
+image: images/veloute-potiron-cannelle.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: Google
+  model: Antigravity image generation
+  generated_at: "2026-09-02"
+  prompt_file: image-prompts/veloute-potiron-cannelle.md
+---
+
+[Hacher le potiron]
+- Mettre les @oignons{130 g, coupés en deux} et la @chair de potiron{700 g, en cubes d'environ 2,5 cm} dans le #bol Thermomix{}.
+- Hacher ~{5 s} à vitesse 5, puis racler les parois avec la #spatule{}.
+
+[Faire revenir]
+- Ajouter le @beurre{30 g} et faire revenir ~{5 min} à ^{120 C}, vitesse cuillère, sans gobelet doseur.
+
+[Cuire le velouté]
+- Ajouter le @cube de bouillon de volaille{1}, l'@eau{500 g} et la @cannelle en poudre{3 pincées}.
+- Cuire ~{20 min} à ^{100 C}, vitesse cuillère.
+
+[Mixer et servir]
+- Ajouter la @crème fraîche liquide{200 g, 35 % M.G.}, le @sel{2 pincées} et le @poivre blanc moulu{2 pincées}.
+- Mixer ~{30 s} de la vitesse 5 à 10 en augmentant progressivement, puis servir aussitôt.

@@ -1,0 +1,49 @@
+---
+title: Velouté glacé aux petits pois
+portions: 4
+prep_time: 5 min
+total_time: 40 min
+description: Velouté froid de petits pois aux herbes, citron et tomates séchées.
+tags:
+- soupe
+- velouté
+- petits-pois
+- thermomix
+source: https://cookidoo.fr/recipes/recipe/fr-fr/r51802
+author: Vorwerk Home & Co. KmG
+appliances:
+  thermomix:
+  - TM31
+  - TM5
+  - TM6
+  - TM7
+scaling:
+  enabled: false
+  reason: La texture et les temps de refroidissement sont calibrés pour 4 portions.
+image: images/veloute-glace-petits-pois.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: Google
+  model: Antigravity image generation
+  generated_at: "2026-09-02"
+  prompt_file: image-prompts/veloute-glace-petits-pois.md
+---
+
+[Cuire les petits pois]
+- Mettre les @petits pois{600 g, frais et écossés}, l'@eau{650 g}, le @thym{4 branches, frais} et l'@estragon frais{1 branche} dans le #bol Thermomix{}.
+- Cuire ~{25 min} à ^{90 C}, vitesse 1.
+- Retirer les aromates et réserver quelques petits pois pour la finition.
+
+[Mixer le velouté]
+- Ajouter le @jus de citron{20 g}, la @crème fraîche liquide{50 g, 30-40 % M.G.}, le @sel{2 pincées} et le @poivre blanc moulu{2 pincées}.
+- Mixer ~{30 s} à vitesse 10 en augmentant progressivement, puis racler les parois avec la #spatule{}.
+
+[Refroidir et servir]
+- Poursuivre la cuisson ~{10 min} à ^{90 C}, vitesse 1.
+- Transvaser dans une soupière, laisser refroidir puis réserver au réfrigérateur.
+- Parsemer de @tomates séchées{60 g, à l'huile, égouttées et en dés} et des petits pois réservés au moment de servir.
