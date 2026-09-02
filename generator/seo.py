@@ -94,16 +94,34 @@ def build_recipe_schema(recipe: Recipe, site_url: str = DEFAULT_SITE_URL) -> dic
             ingredients_list.append(item.name)
     schema["recipeIngredient"] = ingredients_list
 
-    # Step by step instructions
+    # Step by step instructions (substeps are exposed as HowToDirection items)
     instructions = []
     for i, step in enumerate(recipe.steps, 1):
         step_obj: dict[str, Any] = {
             "@type": "HowToStep",
             "position": i,
             "name": step.action,
-            "text": step.text or step.action,
-            "url": f"{canonical_url}cook/#step-{i}",
         }
+        # Substep content is exposed as HowToDirection items; the main text is only
+        # included when it is non-empty (substeps already carry the actionable content).
+        main_text = (step.text or "").strip()
+        directions: list[str] = []
+        if main_text:
+            directions.append(main_text)
+        directions.extend(sub for sub in step.substeps if sub)
+
+        directions_obj: dict[str, Any]
+        if len(directions) > 1:
+            directions_obj = {
+                "@type": "HowToDirection",
+                "itemListElement": [
+                    {"@type": "HowToDirection", "position": j, "text": text} for j, text in enumerate(directions, 1)
+                ],
+            }
+        else:
+            directions_obj = {"@type": "HowToDirection", "text": directions[0] if directions else step.action}
+
+        step_obj["text"] = directions_obj
         instructions.append(step_obj)
     schema["recipeInstructions"] = instructions
 

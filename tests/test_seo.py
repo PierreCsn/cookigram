@@ -41,6 +41,19 @@ def test_build_recipe_schema(tmp_path: Path):
     assert len(schema["recipeInstructions"]) == len(recipe.steps)
     assert schema["recipeInstructions"][0]["@type"] == "HowToStep"
     assert schema["recipeInstructions"][0]["name"] == recipe.steps[0].action
+    assert schema["recipeInstructions"][0]["text"]["@type"] == "HowToDirection"
+
+    # Substeps must be exposed as HowToDirection itemListElement
+    first_step_with_substeps = next((s for s in recipe.steps if s.substeps), None)
+    if first_step_with_substeps:
+        idx = recipe.steps.index(first_step_with_substeps)
+        text = schema["recipeInstructions"][idx]["text"]
+        assert text["@type"] == "HowToDirection"
+        assert "itemListElement" in text
+        assert len(text["itemListElement"]) == len(first_step_with_substeps.substeps) + (
+            1 if (first_step_with_substeps.text or "").strip() else 0
+        )
+        assert text["itemListElement"][0]["@type"] == "HowToDirection"
 
     # Nutrition in schema
     assert "nutrition" in schema
