@@ -1,8 +1,9 @@
 import json
 import re
+import shutil
 from pathlib import Path
 
-from generator.build import build
+from generator.build import build, compute_asset_version
 
 
 def test_build_generates_complete_static_site(tmp_path: Path):
@@ -30,6 +31,18 @@ def test_build_generates_complete_static_site(tmp_path: Path):
     # Re-run build to verify clean overwrite
     build(output_dir)
     assert (output_dir / "index.html").is_file()
+
+
+def test_image_change_bumps_service_worker_version(tmp_path: Path):
+    assets = tmp_path / "assets"
+    shutil.copytree("static", assets)
+    (assets / "sw.js").unlink()
+
+    before = compute_asset_version(assets)
+    image = assets / "images" / "curry-poulet-noix-coco.jpg"
+    image.write_bytes(image.read_bytes() + b"changed")
+
+    assert compute_asset_version(assets) != before
 
 
 def test_build_precaches_existing_assets(tmp_path: Path):

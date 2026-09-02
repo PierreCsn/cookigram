@@ -16,14 +16,16 @@ ASSETS_TO_VERSION = ("app.css", "scaling.css", "variants.css", "images.css", "ap
 
 
 def compute_asset_version(assets_path: Path) -> str:
-    """Content-hash of the versioned assets, used for cache-busting.
+    """Content-hash of every static asset, used for cache-busting.
 
-    Any change to a versioned asset changes the hash, which in turn bumps the
-    URLs referenced by the templates and the service worker cache name.
+    Any change to an asset, including a recipe image, changes the hash. This
+    bumps the frontend URLs and the service worker cache name so an installed
+    PWA never keeps an old image under an unchanged URL.
     """
     digest = hashlib.sha256()
-    for name in ASSETS_TO_VERSION:
-        digest.update(assets_path.joinpath(name).read_bytes())
+    for path in sorted(item for item in assets_path.rglob("*") if item.is_file()):
+        digest.update(path.relative_to(assets_path).as_posix().encode())
+        digest.update(path.read_bytes())
     return digest.hexdigest()[:12]
 
 

@@ -5,7 +5,7 @@ Dernier audit : 2 septembre 2026.
 ## État du projet au moment de l'audit
 
 - 23 recettes et 111 entrées dans la base d'ingrédients.
-- 40 tests Python réussis.
+- 41 tests Python réussis.
 - Couverture Python : 88 %.
 - Ruff, Biome et génération complète du site réussis.
 - Site généré : environ 3,9 Mo.
