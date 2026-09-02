@@ -11,6 +11,7 @@ Ce document définit les règles impératives que tout agent d'assistance ou dé
 ### Procédure de clôture de tâche obligatoire :
 1. **Validation qualité préalable** :
    * S'assurer que le linter Python et le formateur sont satisfaits : `ruff check generator tests` et `ruff format --check generator tests`.
+   * S'assurer que le type checking Python est satisfait : `mypy generator/`.
    * S'assurer que le linter JavaScript est satisfait : `npm run lint`.
    * S'assurer que la syntaxe JavaScript est valide : `node --check static/app.js`, `node --check static/sw.js` et `for f in static/js/modules/*.js; do node --check "$f"; done`.
    * Exécuter la suite complète de tests Python : `pytest`.

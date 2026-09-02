@@ -1,7 +1,7 @@
 # CookiGram 🍳
 
 [![Deploy GitHub Pages](https://github.com/PierreCsn/cookigram/actions/workflows/pages.yml/badge.svg)](https://github.com/PierreCsn/cookigram/actions/workflows/pages.yml)
-[![Coverage](https://img.shields.io/badge/coverage-88%25-brightgreen.svg)](#tests-et-qualité)
+[![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen.svg)](#tests-et-qualité)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)](pyproject.toml)
 [![Gram Language](https://img.shields.io/badge/Gram-Gram%20Language-orange.svg)](https://gram-lang.org)

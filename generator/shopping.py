@@ -98,7 +98,7 @@ def evaluate_recipe_shopping(recipe: Recipe, db_path: Path | None = None) -> dic
             to_buy_items.append(entry)
 
     # Group to_buy_items by aisle
-    aisles_grouped = {}
+    aisles_grouped: dict[str, list] = {}
     for it in to_buy_items:
         aisle = it["aisle"]
         aisles_grouped.setdefault(aisle, []).append(it)

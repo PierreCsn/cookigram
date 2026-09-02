@@ -43,7 +43,7 @@ def enrich_ingredient_database(
     ing_data = yaml.safe_load(ingredients_path.read_text(encoding="utf-8")) or {}
     ingredients = ing_data.get("ingredients", {})
 
-    prov_data = {}
+    prov_data: dict = {}
     if provenance_path.exists():
         prov_data = yaml.safe_load(provenance_path.read_text(encoding="utf-8")) or {}
     prov_ingredients = prov_data.setdefault("ingredients", {})
