@@ -1793,7 +1793,7 @@ a {
   opacity:.3;
 }
 
-@media(max-width:720px) {
+@media(max-width:820px) {
   .hero {
     padding:20px 0 14px;
   }
