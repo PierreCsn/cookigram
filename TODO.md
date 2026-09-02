@@ -177,9 +177,9 @@ Dernier audit : 2 septembre 2026.
 - [ ] Vérifier la dégradation progressive des API Web non universelles : voix,
   partage, vibration, notifications, Wake Lock et presse-papiers.
 - [ ] Définir des budgets de poids pour HTML, JavaScript, CSS et images.
-- [ ] Ajouter des données structurées Schema.org `Recipe`.
-- [ ] Ajouter les URL canoniques, métadonnées Open Graph et cartes sociales.
-- [ ] Générer un sitemap et, si utile, un flux des nouvelles recettes.
+- [x] Ajouter des données structurées Schema.org `Recipe`.
+- [x] Ajouter les URL canoniques, métadonnées Open Graph et cartes sociales.
+- [x] Générer un sitemap et, si utile, un flux des nouvelles recettes.
 - [ ] Mesurer Lighthouse dans la CI sans imposer de seuils instables au départ.
 - [ ] Documenter une courte procédure de release et de retour arrière.
 

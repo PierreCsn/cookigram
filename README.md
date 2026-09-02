@@ -26,6 +26,7 @@ Le projet utilise [Gram](https://gram-lang.org/fr/), un langage open source con�
 - 🧠 **Savoir-faire d'ingestion LLM & IA** : méthodologie et outillage éprouvés (compétence d'agent dédiée, schéma strict, réconciliation automatique) permettant aux modèles de langage d'importer des recettes du web et de les convertir proprement dans le format standardisé et calculable `.gram` ;
 - 🤖 **Réglages pour robots culinaires (Thermomix)** : badges visuels compacts avec temps, température, vitesse, fouet et sens inverse ;
 - 🌙 **Thème sombre & clair** : adaptation automatique aux préférences système ou bascule manuelle instantanée ;
+- 🌐 **SEO & Données structurées** : microdonnées Schema.org `Recipe` (JSON-LD), métadonnées Open Graph / Twitter Cards, `sitemap.xml`, `robots.txt` et flux RSS (`feed.xml`) ;
 - 🔒 **Maintien de l'écran allumé (Wake Lock)** : évite la mise en veille de l'écran pendant la cuisine.
 
 ## Savoir-faire et import assisté par LLM / IA

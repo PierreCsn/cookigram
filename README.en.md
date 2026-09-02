@@ -28,6 +28,7 @@ CookiGram is built on top of [Gram](https://gram-lang.org), an open-source culin
 - 🧠 **LLM & AI-Powered Recipe Ingestion**: Proven methodology and agent tooling allowing Large Language Models to cleanly import web recipes and standardize them into robust, computable `.gram` format.
 - 🤖 **Culinary Robot Settings (Thermomix)**: Sleek parameter badges for time, temperature, butterfly whisk, reverse mode, and blade speeds.
 - 🌙 **Adaptive Dark / Light Theme**: Respects system preferences or toggles instantly with one tap.
+- 🌐 **SEO & Structured Data**: Schema.org `Recipe` JSON-LD microdata, Open Graph / Twitter Cards metadata, `sitemap.xml`, `robots.txt`, and RSS feed (`feed.xml`).
 - 🔒 **Screen Wake Lock**: Prevents your device display from turning off while cooking.
 
 ---
