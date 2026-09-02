@@ -64,4 +64,5 @@ def test_cookidoo_recipe_exposes_preparation_times():
     assert recipe.metadata["appliance_validation"]["TM31"]["status"] == "human-tested"
     assert recipe.metadata["appliance_validation"]["TM31"]["portions"] == 6
     assert recipe.image == "images/curry-poulet-noix-coco.jpg"
-    assert recipe.metadata["image_credit"]["license"] == "CC BY-SA 4.0"
+    assert recipe.metadata["image_credit"]["license"] == "Illustration générée par IA pour CookiGram"
+    assert recipe.metadata["image_generation"]["generated_at"] == "2026-09-02"

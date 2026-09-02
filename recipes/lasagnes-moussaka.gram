@@ -9,11 +9,16 @@ source: https://www.marmiton.org/recettes/recette_lasagnes-de-moussaka_49464.asp
 author: Anonyme
 image: images/lasagnes-moussaka.jpg
 image_credit:
-  author: Marmiton
-  source: https://www.marmiton.org/recettes/recette_lasagnes-de-moussaka_49464.aspx
-  license: Droits réservés
-  license_url: https://www.marmiton.org/
-  modifications: Image convertie au format JPEG et redimensionnée à 960 × 540 pixels.
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-02"
+  prompt_file: image-prompts/lasagnes-moussaka.md
 scaling:
   enabled: true
   min_portions: 2

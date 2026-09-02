@@ -52,6 +52,10 @@ def test_recipe_images_exist_and_have_no_orphans():
         if recipe.image:
             referenced.add(recipe.image)
             assert Path("static", recipe.image).is_file(), f"{path}: image introuvable : {recipe.image}"
+        if generation := recipe.metadata.get("image_generation"):
+            prompt_file = Path(generation["prompt_file"])
+            assert prompt_file.is_file(), f"{path}: prompt d'image introuvable : {prompt_file}"
+            assert recipe.metadata["image_credit"]["author"] == "CookiGram"
 
     available = {path.relative_to("static").as_posix() for path in Path("static/images").iterdir() if path.is_file()}
     assert referenced == available, f"images orphelines : {sorted(available - referenced)}"

@@ -43,3 +43,5 @@ def test_recipe_page_distinguishes_source_and_human_appliance_compatibility():
     assert "Matériel indispensable" in rendered
     assert "Thermomix TM31, TM5, TM6 ou TM7" in rendered
     assert "TM31 · compatibilité testée par un humain sur 6 portions" in rendered
+    assert "Illustration :" in rendered
+    assert "Illustration générée par IA pour CookiGram" in rendered

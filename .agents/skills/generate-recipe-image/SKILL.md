@@ -74,13 +74,15 @@ image_credit:
 image_generation:
   provider: Provider name
   model: Model name if known
-  generated_at: YYYY-MM-DD
+  generated_at: "YYYY-MM-DD"
   prompt_file: image-prompts/recipe-slug.md
 ```
 
 Save the final prompt and any material human art-direction notes in the declared
 `image-prompts/<slug>.md`. Do not put prompt files in `static/images/`, whose
-contents are validated as published recipe images.
+contents are validated as published recipe images. Keep `generated_at` quoted:
+an unquoted ISO date is converted by YAML into a date object that cannot be
+exported to CookiGram's JSON catalogue.
 
 ## Validate
 
