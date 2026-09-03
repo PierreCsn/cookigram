@@ -27,12 +27,28 @@ image_credit:
   source: https://github.com/PierreCsn/cookigram
   license: Illustration générée par IA pour CookiGram
   license_url: https://policies.google.com/terms
-  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en
+    JPEG 1280 × 720.
 image_generation:
   provider: Google
   model: Antigravity image generation
-  generated_at: "2026-09-02"
+  generated_at: '2026-09-02'
   prompt_file: image-prompts/veloute-automne-gambas.md
+spiciness: 0
+flavors:
+  pairing:
+  - châtaignes
+  - canneberge
+  - gambas
+  - sauge
+  notes:
+  - terre-mer
+  - boisé
+  - acidulé
+  harmony: La rondeur douce et farineuse de la châtaigne est réveillée par le jus
+    acidulé de canneberge, créant un contraste saisissant avec l'iode des gambas.
+  tips: Faire revenir les têtes de gambas dans une noix de beurre pour parfumer encore
+    plus intensément le bouillon de cuisson.
 ---
 
 [Préparer la sauge]

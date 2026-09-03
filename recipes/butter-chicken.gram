@@ -28,12 +28,28 @@ image_credit:
   source: https://github.com/PierreCsn/cookigram
   license: Illustration générée par IA pour CookiGram
   license_url: https://openai.com/policies/terms-of-use/
-  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en
+    JPEG 1280 × 720.
 image_generation:
   provider: OpenAI
   model: ChatGPT image generation
-  generated_at: "2026-09-02"
+  generated_at: '2026-09-02'
   prompt_file: image-prompts/butter-chicken.md
+spiciness: 2
+flavors:
+  pairing:
+  - poulet
+  - pâte tikka
+  - beurre
+  - tomate
+  notes:
+  - crémeux
+  - épicé doux
+  - suave
+  harmony: L'onctuosité opulente du ghee et de la crème adoucit le feu des épices
+    indiennes tout en sublimant l'acidité naturelle du concentré de tomate.
+  tips: Faire torréfier une pincée de graines de fenugrec (kasuri methi) séchées au-dessus
+    du plat pour la signature authentique des grands restaurants de Delhi.
 ---
 
 ## Butter Chicken

@@ -3,46 +3,91 @@ title: Rôti de porc sauce échalote
 portions: 4
 prep_time: 10 min
 total_time: 1 h 15 min
-tags: [viande, porc, mijoté, thermomix, traditionnel, réconfort, échalotes]
+tags:
+- viande
+- porc
+- mijoté
+- thermomix
+- traditionnel
+- réconfort
+- échalotes
 source: https://www.cookomix.com/recettes/roti-de-porc-sauce-echalote-thermomix/
 author: Noka88
 appliances:
-  thermomix: [TM31, TM5, TM6, TM7]
+  thermomix:
+  - TM31
+  - TM5
+  - TM6
+  - TM7
 variants:
-  - id: thermomix-varoma
-    name: Thermomix / Varoma
-    description: La méthode vapeur d'origine, simple et entièrement réalisée au Thermomix.
-    default: true
-  - id: sous-vide-four
-    name: Sous-vide + finition au four
-    description: Une cuisson très régulière et juteuse, avec une finition colorée pendant que le Thermomix réduit la sauce.
-    prep_time: 20 min
-    total_time: 4 h 35 min
-    appliances:
-      thermomix: [TM31, TM5, TM6, TM7]
-      sous_vide: true
-      oven: true
-    steps:
-      replace:
-        prepare-roast: |
-          [season-and-bag | Assaisonner et mettre le rôti sous vide]
-          - Sortir le @rôti de porc{800 g} du réfrigérateur et l'éponger.
-          - Le frotter avec les @gousses d'ail{2 pièces, écrasées}, les @herbes de Provence{1 c. à café}, le @thym{2 pincées}, le @sel{2 pincées} et le @poivre{2 pincées}.
-          - Ajouter les @feuilles de laurier{2 feuilles}, puis placer le tout dans un #sac sous vide{} et faire le vide avec une #machine sous vide{}.
-        steam-cook: |
-          [sous-vide-cook | Cuire le rôti sous vide]
-          - Préchauffer le #thermoplongeur{} à ^{60 C} dans un récipient couvert.
-          - Immerger le sac et cuire ~{4 h} à ^{60 C}.
-          - Ouvrir le sac au-dessus d'un bol et récupérer soigneusement tout le jus de cuisson.
-          - Sécher parfaitement le rôti avec du papier absorbant : une surface sèche colorera mieux.
-        make-sauce: |
-          [finish-in-parallel | Colorer le rôti et réduire la sauce en parallèle]
-          - Préchauffer le #four avec gril{} à ^{250 C} et placer le rôti séché dans un plat légèrement enduit d'@huile d'olive{1 c. à soupe}.
-          - Lancer les deux opérations ci-dessous au même moment. Surveiller le rôti dès 6 minutes.
-          || oven | Four : Colorer le rôti à ^{240–250 C} pendant ~{6 min} à ~{10 min}, jusqu'à obtenir une croûte bien dorée.
-          || thermomix | Thermomix : Hacher les @échalotes{4 pièces, épluchées} ~{5 s} à vitesse 5 dans le #bol Thermomix{}, racler, puis faire suer ~{3 min} à ^{120 C} à vitesse cuillère. Ajouter le @jus de cuisson sous vide{tout le jus récupéré}, le @vin blanc{170 g} et la @maïzena{10 g}, puis réduire ~{8 min} à ^{Varoma} et vitesse 2 sans le #gobelet doseur{}.
-          - Sortir le rôti et le laisser reposer 8 à 10 minutes, couvert sans serrer.
-          - Pendant le repos, goûter la sauce, rectifier l'assaisonnement et prolonger la réduction de 2 à 3 minutes si nécessaire.
+- id: thermomix-varoma
+  name: Thermomix / Varoma
+  description: La méthode vapeur d'origine, simple et entièrement réalisée au Thermomix.
+  default: true
+- id: sous-vide-four
+  name: Sous-vide + finition au four
+  description: Une cuisson très régulière et juteuse, avec une finition colorée pendant
+    que le Thermomix réduit la sauce.
+  prep_time: 20 min
+  total_time: 4 h 35 min
+  appliances:
+    thermomix:
+    - TM31
+    - TM5
+    - TM6
+    - TM7
+    sous_vide: true
+    oven: true
+  steps:
+    replace:
+      prepare-roast: '[season-and-bag | Assaisonner et mettre le rôti sous vide]
+
+        - Sortir le @rôti de porc{800 g} du réfrigérateur et l''éponger.
+
+        - Le frotter avec les @gousses d''ail{2 pièces, écrasées}, les @herbes de
+        Provence{1 c. à café}, le @thym{2 pincées}, le @sel{2 pincées} et le @poivre{2
+        pincées}.
+
+        - Ajouter les @feuilles de laurier{2 feuilles}, puis placer le tout dans un
+        #sac sous vide{} et faire le vide avec une #machine sous vide{}.
+
+        '
+      steam-cook: '[sous-vide-cook | Cuire le rôti sous vide]
+
+        - Préchauffer le #thermoplongeur{} à ^{60 C} dans un récipient couvert.
+
+        - Immerger le sac et cuire ~{4 h} à ^{60 C}.
+
+        - Ouvrir le sac au-dessus d''un bol et récupérer soigneusement tout le jus
+        de cuisson.
+
+        - Sécher parfaitement le rôti avec du papier absorbant : une surface sèche
+        colorera mieux.
+
+        '
+      make-sauce: '[finish-in-parallel | Colorer le rôti et réduire la sauce en parallèle]
+
+        - Préchauffer le #four avec gril{} à ^{250 C} et placer le rôti séché dans
+        un plat légèrement enduit d''@huile d''olive{1 c. à soupe}.
+
+        - Lancer les deux opérations ci-dessous au même moment. Surveiller le rôti
+        dès 6 minutes.
+
+        || oven | Four : Colorer le rôti à ^{240–250 C} pendant ~{6 min} à ~{10 min},
+        jusqu''à obtenir une croûte bien dorée.
+
+        || thermomix | Thermomix : Hacher les @échalotes{4 pièces, épluchées} ~{5
+        s} à vitesse 5 dans le #bol Thermomix{}, racler, puis faire suer ~{3 min}
+        à ^{120 C} à vitesse cuillère. Ajouter le @jus de cuisson sous vide{tout le
+        jus récupéré}, le @vin blanc{170 g} et la @maïzena{10 g}, puis réduire ~{8
+        min} à ^{Varoma} et vitesse 2 sans le #gobelet doseur{}.
+
+        - Sortir le rôti et le laisser reposer 8 à 10 minutes, couvert sans serrer.
+
+        - Pendant le repos, goûter la sauce, rectifier l''assaisonnement et prolonger
+        la réduction de 2 à 3 minutes si nécessaire.
+
+        '
 scaling:
   enabled: false
   reason: Cuisson vapeur d'une pièce entière au Varoma.
@@ -52,12 +97,28 @@ image_credit:
   source: https://github.com/PierreCsn/cookigram
   license: Illustration générée par IA pour CookiGram
   license_url: https://openai.com/policies/terms-of-use/
-  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en
+    JPEG 1280 × 720.
 image_generation:
   provider: OpenAI
   model: ChatGPT image generation
-  generated_at: "2026-09-02"
+  generated_at: '2026-09-02'
   prompt_file: image-prompts/roti-de-porc-sauce-echalote.md
+spiciness: 0
+flavors:
+  pairing:
+  - rôti de porc
+  - échalotes
+  - vin blanc
+  - thym
+  notes:
+  - savoureux
+  - compoté
+  - acidulé
+  harmony: Le confit doux et sucré des échalotes rissolées est rehaussé par la vivacité
+    du vin blanc pour souligner la tendreté de la viande blanche.
+  tips: Pour corser la sauce, incorporer une cuillère à café de moutarde à l'ancienne
+    juste avant le service.
 ---
 
 [prepare-roast | Préparer le rôti et lancer le bouillon vapeur]

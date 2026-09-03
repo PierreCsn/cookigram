@@ -27,12 +27,28 @@ image_credit:
   source: https://github.com/PierreCsn/cookigram
   license: Illustration générée par IA pour CookiGram
   license_url: https://policies.google.com/terms
-  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en
+    JPEG 1280 × 720.
 image_generation:
   provider: Google
   model: Antigravity image generation
-  generated_at: "2026-09-02"
+  generated_at: '2026-09-02'
   prompt_file: image-prompts/veloute-potiron-cannelle.md
+spiciness: 0
+flavors:
+  pairing:
+  - potiron
+  - cannelle
+  - crème
+  - beurre
+  notes:
+  - doux
+  - boisé
+  - velouté
+  harmony: Les notes chaudes et boisées de la cannelle s'harmonisent avec le sucre
+    naturel du potiron, liées par le soyeux de la crème fraîche.
+  tips: Parsemer de graines de courge toastées et d'un filet d'huile de noisette pour
+    apporter un contraste croquant sous la cuillère.
 ---
 
 [Hacher le potiron]
