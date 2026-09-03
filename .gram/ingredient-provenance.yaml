@@ -17,10 +17,19 @@ ingredients:
   beurre:
     source: ANSES-CIQUAL
     status: verified
+  cacao-en-poudre:
+    source: Estimation nutritionnelle pour cacao en poudre non sucré.
+    status: estimated
   bouquet-garni:
     source: ANSES-CIQUAL
     status: verified
   brocoli:
+    source: ANSES-CIQUAL
+    status: verified
+  cerise:
+    source: ANSES-CIQUAL
+    status: verified
+  chocolat-noir:
     source: ANSES-CIQUAL
     status: verified
   cannelle:
@@ -134,6 +143,12 @@ ingredients:
     status: verified
   levure-boulangere:
     source: Estimation nutritionnelle pour levure boulangère fraîche ou sèche.
+    status: estimated
+  gousse-de-vanille:
+    source: Estimation nutritionnelle pour une gousse de vanille.
+    status: estimated
+  kirsch:
+    source: Donnée nutritionnelle indicative pour une eau-de-vie de fruits.
     status: estimated
   filet-de-poulet:
     locked: false
