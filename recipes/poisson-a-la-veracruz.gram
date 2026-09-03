@@ -9,6 +9,13 @@ source: https://www.cookomix.com/recettes/poisson-veracruz-thermomix/
 author: Lisa
 appliances:
   thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Varoma avec plateau vapeur
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Plat de service
 scaling:
   enabled: false
   reason: Cuisson étagée vapeur au Varoma des filets de poisson.

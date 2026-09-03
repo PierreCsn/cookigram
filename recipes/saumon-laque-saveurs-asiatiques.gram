@@ -9,6 +9,14 @@ source: https://www.cookomix.com/recettes/saumon-laque-saveurs-asiatiques-thermo
 author: Pasteque
 appliances:
   thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Varoma avec plateau vapeur
+  - Panier cuisson
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Plat de service
 scaling:
   enabled: false
   reason: Cuisson étagée multi-niveaux au bol, panier et Varoma.

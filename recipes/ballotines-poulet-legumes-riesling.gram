@@ -19,6 +19,14 @@ appliances:
   - TM5
   - TM6
   - TM7
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Varoma avec plateau vapeur
+  - Panier cuisson
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Économe
 scaling:
   enabled: false
   reason: La cuisson simultanée au Varoma et au panier est calibrée pour le bol Thermomix

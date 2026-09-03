@@ -19,6 +19,14 @@ appliances:
   - TM5
   - TM6
   - TM7
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Panier cuisson
+  - Saladier
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Plat de service
 scaling:
   enabled: false
   reason: Cuisson vapeur et volume de sauce calibrés pour 4 portions dans le bol du

@@ -7,6 +7,9 @@
 .equipment-card h2 { margin-top: 0; font-family: Georgia, serif; }
 .equipment-card ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
 .equipment-card li, .compatibility span { background: var(--card); border: 1px solid var(--line); border-radius: 99px; padding: 7px 11px; font-size: 13px; }
+.equipment-card li { display:inline-flex; align-items:center; gap:8px; }
+.equipment-icon { width:28px; height:28px; object-fit:contain; flex-shrink:0; }
+.equipment-fallback-icon { font-size:18px; line-height:1; }
 .compatibility { border-top: 1px solid var(--line); padding-top: 14px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .appliance-required { display: flex; flex-direction: column; gap: 5px; max-width: 680px; margin: 22px 0; padding: 15px 18px; border: 1px solid var(--line); border-left: 5px solid var(--orange); border-radius: 12px; background: var(--cream); }
 .appliance-required small { color: var(--green); font-weight: 800; }

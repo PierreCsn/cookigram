@@ -20,13 +20,18 @@
   - Cases à cocher d'incorporation par étape
   - Synthèse et reconnaissance vocale mains-libres (« Lancer la cuisson », « Suivant », « Minuteur »)
   - Rendu responsive mobile/tablette sans défilement parasite
-* **🔶 Jalon 3 — Kitchen Scheduler (Prochain cap prioritaire)** :
-  - **Epic #51** : Ordonnanceur mathématique multi-préparations sous contraintes (Solveur Google OR-Tools CP-SAT).
+* **🔶 Jalon 3 — Kitchen Scheduler (Prochain cap prioritaire — Epic #51)** :
+  - **Issue #91** : Typologie d'effort (actif humain vs passif machine) & élasticité thermique.
+  - **Issue #92** : Ergonomie du « Live Cooking Feed » multi-tâches en Mode Cuisine.
+  - **Issue #93** : Verrous d'équipements exclusifs & micro-étapes de transition de lavage.
+  - **Issue #94** : Stratégie Dual-Engine (Python OR-Tools au build vs Micro-Solveur JS natif PWA client).
+  - **Issue #95** : « Le Panier du Menu » (Sélection multi-recettes, courses consolidées & audit matériel).
 
 ---
 
 ## ✅ Dernières Livraisons Clôturées
 
+* **PR #89** : Pack 2 d'icônes d'ustensiles (planche, plat à gratin, thermomix, moule, panier vapeur, économe) et couverture à 100% de `required_equipment` sur les 46 recettes — *Fusionné dans `main`*.
 * **Issue #80 / PR #81** : Étape 0 « Mise en place du plan de travail » en Mode Cuisine — *Fusionné dans `main`*.
 * **Issue #78 / PR #79** : Persistance de la progression en Mode Cuisine (minuteurs wall-clock, sticky bar contextuelle, cases à cocher ingrédients) — *Fusionné dans `main`*.
 * **PR #76** : Import de 2 nouvelles recettes desserts (Cheesecake japonais & Flan aux œufs) — *Fusionné dans `main`*.

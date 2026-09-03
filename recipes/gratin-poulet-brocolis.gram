@@ -9,6 +9,13 @@ source: https://www.cookomix.com/recettes/gratin-poulet-brocolis-thermomix/
 author: Minou
 appliances:
   thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Varoma avec plateau vapeur
+  - Plat à gratin
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
 scaling:
   enabled: false
   reason: Cuisson vapeur combinée au Varoma et capacité du bol Thermomix.

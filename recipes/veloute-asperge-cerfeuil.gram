@@ -18,6 +18,12 @@ appliances:
   - TM5
   - TM6
   - TM7
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Varoma avec plateau vapeur
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
 scaling:
   enabled: false
   reason: Le volume et les cuissons au Varoma sont calibrés pour 6 portions dans le

@@ -9,6 +9,13 @@ source: https://www.cookomix.com/recettes/pollo-al-ajillo-thermomix/
 author: Minou
 appliances:
   thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Fouet
+  - Plat à gratin
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
 scaling:
   enabled: false
   reason: Volume de volaille et cuisson au bol avec le fouet.

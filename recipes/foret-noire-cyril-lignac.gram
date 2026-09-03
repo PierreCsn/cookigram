@@ -1,0 +1,82 @@
+---
+title: Forêt-noire façon Cyril Lignac
+portions: 8
+prep_time: 12 min
+total_time: 1 h 30 min
+spiciness: 0
+description: Génoise légère au cacao, chantilly vanillée, cerises et sirop au kirsch montés en un gâteau généreux.
+tags: [dessert, gâteau, chocolat, cerises, pâtisserie, fête]
+source: https://www.mesinspirationsculinaires.com/article-recette-foret-noire-de-cyril-lignac.html
+author: Samar
+scaling:
+  enabled: false
+  reason: Les quantités sont calibrées pour une génoise à découper en trois disques ; adapter le diamètre du moule et la cuisson demande un recalibrage.
+flavors:
+  pairing: [chocolat, cerises, crème, kirsch]
+  notes: [chocolaté, fruité, aérien]
+  harmony: "Le cacao amer et le kirsch donnent de la profondeur aux cerises acidulées, tandis que la chantilly apporte une finition légère."
+  tips: "Refroidir complètement la génoise avant de la trancher et garder la crème ainsi que les fouets très froids pour réussir la chantilly."
+conservation:
+  fridge_days: 2
+  freezable: false
+required_equipment:
+  - Moule à gâteau de 20 cm
+  - Saladier résistant à la chaleur pour bain-marie
+  - Batteur électrique
+  - Spatule souple
+  - Fouet
+  - Poche à douille
+  - Grille de refroidissement
+image: images/foret-noire-cyril-lignac.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration générée pour la fiche recette, sans reprise de la photographie source.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/foret-noire-cyril-lignac.md
+---
+
+## Forêt-noire façon Cyril Lignac
+
+[Préparer la génoise au cacao]
+- Préchauffer le #four{} à ^{180 C}.
+- Fouetter les @œufs{6 pièces} avec le @sucre{170 g} au-dessus d'un #bain-marie{} pendant ~{5 min}, jusqu'à ce que le mélange triple de volume.
+- Retirer du bain-marie et continuer à fouetter ~{5 min} pour obtenir une mousse légère.
+- Faire fondre le @beurre{30 g} puis le laisser tiédir.
+- Tamiser la @farine{130 g}, le @cacao amer{40 g} et le @sel{1 pincée}, puis les incorporer délicatement à la spatule avec le beurre fondu.
+
+[Cuire et refroidir la génoise]
+- Beurrer et fariner un #moule à gâteau{} de 20 cm, puis y verser la pâte.
+- Cuire ~{30 min} à ^{180 C}, jusqu'à ce qu'une lame ressorte sèche.
+- Laisser refroidir complètement sur une #grille de refroidissement{} avant de démouler.
+
+[Refroidir le matériel de la chantilly]
+- Placer la @crème liquide{500 ml} et les fouets du #batteur{} au congélateur ~{15 min}.
+
+[Monter la chantilly vanillée]
+- Fendre la @gousse de vanille{1 pièce} et gratter les graines.
+- Fouetter la crème froide avec le @sucre glace{100 g} et les graines de vanille jusqu'à obtenir une chantilly ferme, sans la faire grainer.
+
+[Préparer le sirop]
+- Porter à ébullition le @sucre{100 g} et l'@eau{150 ml} dans une #casserole{}.
+- Retirer du feu, laisser refroidir, puis ajouter le @kirsch{20 ml, ou sirop de cerise sans alcool}.
+
+[Découper et imbiber]
+- Découper la génoise refroidie en trois disques réguliers.
+- Poser le premier disque sur le plat de service et l'imbiber de sirop au pinceau.
+
+[Garnir les étages]
+- Étaler une couche de chantilly à la #spatule{} ou à la #poche à douille{}.
+- Répartir les @cerises{80 g, dénoyautées et coupées en deux}.
+- Poser le deuxième disque, l'imbiber et recommencer avec la chantilly et les cerises.
+- Poser le dernier disque côté imbibé contre la garniture.
+
+[Recouvrir et réserver]
+- Recouvrir entièrement le gâteau avec le reste de chantilly et lisser le dessus ainsi que les côtés.
+- Décorer avec des @copeaux de chocolat{quantité suffisante} et quelques cerises.
+- Réserver au réfrigérateur jusqu'au moment de servir.

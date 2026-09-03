@@ -1,0 +1,37 @@
+---
+title: Sauce au roquefort
+portions: 4
+prep_time: 5 min
+total_time: 20 min
+description: Sauce crémeuse au roquefort et aux échalotes, prête au Thermomix.
+tags: [sauce, roquefort, thermomix, fromage, rapide]
+source: https://cookidoo.fr/recipes/recipe/fr-FR/r68682
+author: Vorwerk Home & Co. KmG
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: La quantité de sauce est calibrée pour quatre portions.
+spiciness: 0
+image: images/sauce-roquefort.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration originale générée pour CookiGram, sans reprise de la photographie source.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/sauce-roquefort.md
+---
+
+[Hacher les échalotes]
+- Mettre les @échalotes{40 g} dans le bol et hacher ~{5 s} à vitesse 5. Racler les parois avec la #spatule{}.
+
+[Cuire la sauce]
+- Ajouter le @beurre{50 g} et faire revenir ~{3 min} à ^{90 C}, vitesse 1, sans gobelet doseur.
+- Ajouter le @roquefort{160 g, en morceaux}, la @crème fraîche épaisse{180 g} et le @poivre moulu{1 à 2 pincées}, puis cuire ~{5 min} à ^{90 C}, vitesse 2.
+- Pour une sauce plus épaisse, ajouter la @fécule de maïs{1 c. à café, facultatif} et prolonger la cuisson ~{4 min} à ^{90 C}, vitesse 3.
+- Servir chaud avec des pâtes ou une viande rouge.

@@ -23,12 +23,12 @@ scaling:
   reason: Les quantités sont calibrées pour le bol et un plat de 40 x 25 x 6 cm ;
     la mise à l'échelle n'est pas validée.
 required_equipment:
+  - Thermomix TM5, TM6 ou TM7
   - Plat à gratin
-  - Grande poêle
-  - Casserole
+  - Panier cuisson
+  - Spatule
   - Couteau de chef
-  - Fouet
-  - Spatule en bois
+  - Planche à découper
 spiciness: 0
 flavors:
   pairing: [bœuf, tomate, béchamel, muscade]

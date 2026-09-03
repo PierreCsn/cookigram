@@ -18,21 +18,38 @@ test.describe("Instruments de cuisine & Required equipment (#56)", () => {
       const icon = icons.nth(i);
       await expect(icon).toBeVisible();
       const src = await icon.getAttribute("src");
-      expect(src).toMatch(/\/assets\/icons\/utensils\/(casserole|poele|saladier|couteau|spatule)\.webp/);
+      expect(src).toMatch(
+        /\/assets\/icons\/utensils\/(casserole|poele|saladier|couteau|spatule|planche|plat-gratin|thermomix|moule|panier-vapeur|econome)\.webp/
+      );
     }
   });
 
-  test("affiche le fallback texte/icône pour les instruments non répertoriés", async ({ page }) => {
+  test("affiche l'icône Thermomix et panier vapeur pour les recettes robot", async ({ page }) => {
     await page.goto("/recipes/curry-poulet-noix-coco/");
 
     const applianceSection = page.locator(".appliance-required");
     await expect(applianceSection).toBeVisible();
 
-    // Thermomix n'a pas d'icône spécifique -> fallback
+    const tmxIcon = applianceSection.locator(".utensil-badge:has-text('Thermomix') .utensil-icon");
+    await expect(tmxIcon).toBeVisible();
+    expect(await tmxIcon.getAttribute("src")).toContain("thermomix.webp");
+
+    const varomaIcon = applianceSection.locator(".utensil-badge:has-text('Varoma') .utensil-icon");
+    await expect(varomaIcon).toBeVisible();
+    expect(await varomaIcon.getAttribute("src")).toContain("panier-vapeur.webp");
+  });
+
+  test("affiche le fallback texte/icône pour les instruments non répertoriés", async ({ page }) => {
+    await page.goto("/recipes/cheesecake-japonais-extra-leger/");
+
+    const applianceSection = page.locator(".appliance-required");
+    await expect(applianceSection).toBeVisible();
+
+    // Papier aluminium n'a pas d'icône spécifique -> fallback
     const fallbackBadge = applianceSection.locator(".utensil-badge.no-icon").first();
     await expect(fallbackBadge).toBeVisible();
     await expect(fallbackBadge.locator(".utensil-fallback-icon")).toHaveText("🍳");
-    await expect(fallbackBadge).toContainText("Thermomix");
+    await expect(fallbackBadge).toContainText("Papier");
   });
 
   test("affiche les instruments requis en mode cuisine sans régression d'URL", async ({ page }) => {

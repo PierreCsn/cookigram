@@ -1,0 +1,44 @@
+---
+title: Poulet Gaston Gérard
+portions: 4
+prep_time: 20 min
+total_time: 1 h 15 min
+description: Cuisses de poulet nappées d'une sauce crémeuse au vin blanc, moutardes et comté.
+tags: [poulet, thermomix, comté, moutarde, français]
+source: https://cookidoo.fr/recipes/recipe/fr-FR/r937614
+author: Vorwerk Home & Co. KmG
+appliances:
+  thermomix: [TM7]
+scaling:
+  enabled: false
+  reason: La cuisson des cuisses est calibrée pour quatre portions et le volume du bol.
+spiciness: 1
+image: images/poulet-gaston-gerard.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration originale générée pour CookiGram, sans reprise de la photographie source.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/poulet-gaston-gerard.md
+---
+
+[Faire chauffer les matières grasses]
+- Mettre l'@huile d'olive{10 g} et le @beurre{10 g} dans le #bol Thermomix{} et chauffer ~{5 min} à ^{90 C}, vitesse 2.
+
+[Cuire le poulet]
+- Ajouter les @cuisses de poulet{4 pièces}, l'@oignon{80 g, ciselé}, le @paprika{1 c. à soupe} et le @sel{1 pincée}, puis cuire ~{15 min} à ^{100 C} en mode cuisson sans couvercle.
+- Ajouter le @vin blanc{200 g} et cuire ~{30 min} à ^{60 C}, sens inverse, vitesse cuillère.
+
+[Préparer la sauce]
+- Préchauffer le #four{} à ^{170 C}.
+- Ajouter la @crème fraîche liquide{250 g}, la @moutarde{2 c. à soupe} et la @moutarde à l'ancienne{2 c. à soupe}, puis cuire ~{5 min} à ^{100 C} en mode cuisson sans couvercle.
+- Ajouter la moitié du @comté{150 g, râpé} et cuire encore ~{5 min} à ^{100 C} en mode cuisson sans couvercle.
+
+[Gratiner]
+- Transvaser dans un #plat à gratin{}, parsemer avec le reste du comté et gratiner au four ~{10 à 15 min} à ^{170 C}.
+- Servir avec du riz ou des pâtes.

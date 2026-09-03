@@ -1,6 +1,7 @@
 from pathlib import Path
 from types import SimpleNamespace
 
+from generator.gram import parse_recipe
 from generator.ingredient_icons import IngredientIconResolver, attach_ingredient_icons
 from generator.models import Ingredient
 
@@ -251,6 +252,18 @@ def test_resolver_returns_empty_string_when_icon_is_missing():
     assert resolver.resolve("ingrédient totalement inconnu", "1") == ""
 
 
+def test_all_recipe_ingredients_have_existing_icons():
+    resolver = IngredientIconResolver()
+    missing = []
+    for path in sorted(Path("recipes").glob("*.gram")):
+        recipe = parse_recipe(path)
+        for ingredient in recipe.ingredients:
+            if not resolver.resolve(ingredient.name, ingredient.quantity):
+                missing.append(f"{path.name}: {ingredient.name}")
+
+    assert missing == []
+
+
 def test_attach_icons_covers_recipe_steps_and_shopping():
     ingredient = Ingredient("Ail", "1 tête")
     recipe = SimpleNamespace(
@@ -268,3 +281,25 @@ def test_attach_icons_covers_recipe_steps_and_shopping():
     assert ingredient.icon == "icons/ingredients/ail-tete.svg"
     assert recipe.shopping["aisles"]["Fruits & Légumes"][0]["icon"].endswith("ail-tete.svg")
     assert recipe.shopping["staples"][0]["icon"].endswith("sel.svg")
+
+
+def test_resolver_covers_recent_recipe_ingredients():
+    resolver = IngredientIconResolver()
+
+    assert resolver.resolve("cacao amer") == "icons/ingredients/chocolat-noir.svg"
+    assert resolver.resolve("gousse de vanille") == "icons/ingredients/extrait-de-vanille.svg"
+    assert resolver.resolve("kirsch") == "icons/ingredients/whisky.svg"
+    assert resolver.resolve("cerises") == "icons/ingredients/cerise.svg"
+    assert resolver.resolve("copeaux de chocolat") == "icons/ingredients/chocolat-noir.svg"
+    assert resolver.resolve("levure boulangère") == "icons/ingredients/levure-chimique.svg"
+    assert resolver.resolve("romarin") == "icons/ingredients/herbes-de-provence.svg"
+
+
+def test_resolver_falls_back_to_category_icon():
+    resolver = IngredientIconResolver()
+    # Mocking a known ingredient without custom SVG but with category in database
+    resolver.database["test-ingredient-viande"] = {"name": "Test Viande", "category": "Boucherie et volailles"}
+    resolver.database["test-ingredient-boisson"] = {"name": "Test Boisson", "category": "Boissons et alcools"}
+
+    assert resolver.resolve("test-ingredient-viande") == "icons/ingredients/boeuf.svg"
+    assert resolver.resolve("test-ingredient-boisson") == "icons/ingredients/whisky.svg"

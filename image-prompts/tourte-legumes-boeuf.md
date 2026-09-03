@@ -1,0 +1,1 @@
+Original editorial food photograph of a golden raised vegetable and ground beef pie with flaky puff pastry, slice revealing colorful zucchini peppers tomato and cheese filling, realistic, no text, logos or watermark.

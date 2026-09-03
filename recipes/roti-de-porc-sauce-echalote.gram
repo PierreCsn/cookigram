@@ -89,6 +89,14 @@ variants:
         la réduction de 2 à 3 minutes si nécessaire.
 
         '
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Varoma avec plateau vapeur
+  - Saladier
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Plat de service
 scaling:
   enabled: false
   reason: Cuisson vapeur d'une pièce entière au Varoma.

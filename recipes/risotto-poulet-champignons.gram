@@ -27,6 +27,13 @@ image_generation:
   prompt_file: image-prompts/risotto-poulet-champignons.md
 appliances:
   thermomix: [TM31, TM5, TM6]
+required_equipment:
+  - Thermomix TM31, TM5 ou TM6
+  - Panier cuisson
+  - Saladier
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
 scaling:
   enabled: false
   reason: Quantités et volumes de bouillon calibrés pour la capacité du bol Thermomix (250 g de riz pour 650 g de liquide) afin de garantir une texture onctueuse sans risque de débordement.

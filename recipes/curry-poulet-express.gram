@@ -18,6 +18,14 @@ appliances:
   - TM5
   - TM6
   - TM7
+required_equipment:
+  - Thermomix TM5, TM6 ou TM7
+  - Varoma avec plateau vapeur
+  - Casserole
+  - Saladier
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
 scaling:
   enabled: false
   reason: Quantités et enchaînement calibrés pour 4 portions avec cuisson simultanée

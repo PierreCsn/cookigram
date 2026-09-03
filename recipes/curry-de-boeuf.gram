@@ -9,6 +9,13 @@ source: https://www.cookomix.com/recettes/curry-de-boeuf-thermomix/
 author: Bibou
 appliances:
   thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Panier cuisson
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Plat de service
 scaling:
   enabled: false
   reason: Temps de mijotage et capacité du bol calibrés pour 4 portions au Thermomix.

@@ -1,0 +1,43 @@
+---
+title: Risotto aux petits pois et au jambon
+portions: 6
+prep_time: 5 min
+total_time: 25 min
+description: Risotto crémeux aux petits pois, jambon, ricotta et persil.
+tags: [risotto, thermomix, petits pois, jambon, rapide]
+source: https://cookidoo.fr/recipes/recipe/fr-FR/r768261
+author: Vorwerk Home & Co. KmG
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: La quantité de liquide et le temps de cuisson sont calibrés pour six portions dans le bol.
+spiciness: 0
+image: images/risotto-petits-pois-jambon.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration originale générée pour CookiGram, sans reprise de la photographie source.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/risotto-petits-pois-jambon.md
+---
+
+[Hacher l'oignon]
+- Mettre l'@oignon{100 g, en quartiers} dans le bol et mixer ~{5 s} à vitesse 5. Racler les parois avec la #spatule{}.
+- Ajouter l'@huile d'olive{2 c. à soupe} et faire revenir ~{3 min} à ^{120 C}, vitesse 1.
+
+[Nacrer le riz]
+- Ajouter le @riz spécial risotto{250 g} et cuire ~{2 min} à ^{120 C}, vitesse 1.
+
+[Cuire le risotto]
+- Ajouter l'@eau{600 g}, le @cube de bouillon de légumes{1 pièce} et les @petits pois{150 g}.
+- Saler avec le @sel{} et poivrer avec le @poivre moulu{}, puis cuire ~{15 min} à ^{100 C}, sens inverse, vitesse cuillère.
+
+[Finir et servir]
+- Ajouter le @jambon{150 g, en dés} et la @ricotta{100 g, émiettée}.
+- Arroser d'un filet d'huile d'olive, parsemer de @persil frais{quelques feuilles, ciselé}, rectifier l'assaisonnement et servir sans attendre.

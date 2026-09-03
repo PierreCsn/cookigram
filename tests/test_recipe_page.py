@@ -36,6 +36,17 @@ def test_recipe_page_distinguishes_source_and_human_appliance_compatibility(rend
     assert "Illustration générée par IA pour CookiGram" in rendered
 
 
+def test_recipe_page_renders_equipment_icons_in_material_card(render_template):
+    recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
+    rendered = render_template("recipe.html", recipe=recipe)
+
+    equipment_card = rendered.split('<section class="equipment-card">', 1)[1].split("</section>", 1)[0]
+    assert 'class="equipment-icon"' in equipment_card
+    assert "assets/icons/utensils/" in equipment_card
+    assert "saladier.webp" in equipment_card
+    assert "spatule.webp" in equipment_card
+
+
 def test_recipe_illustration_is_present_in_heading_with_lcp_hint(render_template):
     recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
     rendered = render_template("recipe.html", recipe=recipe)
