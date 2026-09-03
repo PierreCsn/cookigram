@@ -42,6 +42,23 @@ ICON_FAMILY_BY_SLUG = {
     "piment-rouge": "piment",
     "piment-de-cayenne": "piment",
     "curry-en-poudre": "curry",
+    "ail-en-poudre": "ail",
+    "tomate-cerise": "tomate",
+    "tomates-concassees": "tomate",
+    "poivron": "poivron",
+    "poireau": "poireau",
+    "laurier": "laurier",
+    "thym": "thym",
+    "basilic-frais": "basilic-frais",
+    "lait": "lait",
+    "lait-demi-ecreme": "lait",
+    "noix-de-muscade": "noix-de-muscade",
+    "bouillon-de-legumes": "bouillon-de-legumes",
+    "oeuf": "oeuf",
+    "miel": "miel",
+    "olives-noires": "olives-noires",
+    "paprika": "paprika",
+    "sauce-soja": "sauce-soja",
 }
 
 

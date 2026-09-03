@@ -47,6 +47,42 @@ def test_resolver_covers_common_missing_ingredient_icons():
         assert resolver.resolve(name) == f"icons/ingredients/{filename}"
 
 
+def test_resolver_reuses_icons_for_ingredient_variants():
+    resolver = IngredientIconResolver()
+
+    expected = {
+        "ail en poudre": "ail.svg",
+        "tomates cerises": "tomate.svg",
+        "tomates concassées": "tomate.svg",
+    }
+
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
+def test_resolver_covers_the_first_common_missing_batch():
+    resolver = IngredientIconResolver()
+
+    expected = {
+        "poivron rouge": "poivron.svg",
+        "poireaux": "poireau.svg",
+        "feuilles de laurier": "laurier.svg",
+        "thym": "thym.svg",
+        "basilic frais": "basilic-frais.svg",
+        "lait demi-écrémé": "lait.svg",
+        "noix de muscade": "noix-de-muscade.svg",
+        "bouillon de légumes": "bouillon-de-legumes.svg",
+        "œufs": "oeuf.svg",
+        "miel": "miel.svg",
+        "olives noires": "olives-noires.svg",
+        "paprika": "paprika.svg",
+        "sauce soja salée": "sauce-soja.svg",
+    }
+
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
 def test_resolver_returns_empty_string_when_icon_is_missing():
     resolver = IngredientIconResolver()
 
