@@ -4,7 +4,7 @@ portions: 6
 prep_time: 15 min
 total_time: 1 h 25 min
 spiciness: 0
-description: "Plat de côte de bœuf fondant braisé au vin rouge, carottes et aromates à l'Instant Pot, décongelé ou congelé direct."
+description: "Plat de côte de bœuf fondant braisé au vin rouge, carottes et aromates (Instant Pot, Cookeo ou cocotte en fonte)."
 tags: [bœuf, instant pot, mijoté, réconfort, vin rouge, carottes]
 source: https://github.com/PierreCsn/cookigram
 author: Pierre Cousin
@@ -19,32 +19,100 @@ required_equipment:
   - Couteau de chef
 scaling:
   enabled: false
-  reason: Volume calibré pour la cuve de l'Instant Pot 6-quart avec 2 kg de viande et os.
+  reason: Volume calibré pour 2 kg de viande avec os dans la cuve de l'autocuiseur ou de la cocotte.
 flavors:
   pairing: [plat de côte de bœuf, vin rouge, échalotes, carottes]
   notes: [corsé, fondant, vineux, umami]
   harmony: "La réduction corsée de vin rouge et de sucs de viande enrobe la gélatine fondante du plat de côte longuement braisé."
-  tips: "Bien gratter le fond de la cuve en inox avec la cuillère en bois lors du déglaçage au vin rouge pour éviter la mise en sécurité BURN de l'Instant Pot."
+  tips: "Bien gratter le fond de la cuve en inox avec la cuillère en bois lors du déglaçage au vin rouge pour dissoudre les sucs et éviter la mise en sécurité BURN."
 variants:
-- id: decongele
-  name: Bœuf décongelé (avec dorage Sauté)
-  description: Saisie préalable de la viande en mode Sauté pour développer de puissants sucs de caramélisation avant le braisage sous pression.
+- id: instant-pot
+  name: Instant Pot (Bœuf décongelé)
+  description: Saisie en mode Sauté dans la cuve inox pour caraméliser les sucs, suivie de 50 min sous haute pression.
   default: true
-- id: congele
-  name: Bœuf congelé direct (sans décongélation)
-  description: Braisage direct des morceaux sortant du congélateur avec légumes revenus seuls et temps sous pression prolongé à 70 min.
-  prep_time: 10 min
-  total_time: 1 h 40 min
+- id: cookeo
+  name: Moulinex Cookeo
+  description: Saisie en mode Dorer dans la cuve antiadhésive, puis 45 min en cuisson sous pression et réduction rapide.
+  prep_time: 15 min
+  total_time: 1 h 15 min
+  appliances:
+    cookeo: true
   steps:
     replace:
       sear-meat: |
-        [sweat-veg | Faire suer les légumes et aromates en mode Sauté]
+        [sear-meat-cookeo | Dorer le bœuf en mode Dorer]
+        - Sélectionner le mode **Dorer** sur le #cookeo{} et verser l'@huile d'olive{2 c. à soupe}.
+        - Dès la fin du préchauffage, saisir les morceaux de @plat de côte de bœuf{2000 g, décongelés, en tronçons avec os} sur toutes les faces pendant ~{8 min} à l'aide d'une #cuillère en bois{} ou spatule silicone pour préserver le revêtement.
+        - Réserver la viande dorée sur une assiette.
+      deglaze-pot: |
+        [deglaze-cookeo | Faire suer les légumes et déglacer]
+        - Toujours en mode Dorer, ajouter les @échalotes{4 pièces, épluchées et coupées en deux}, les @carottes{3 pièces, épluchées et en biseaux} et les @gousses d'ail{4 pièces, écrasées}. Faire suer ~{3 min}.
+        - Ajouter le @concentré de tomates{2 c. à soupe} et remuer ~{1 min}.
+        - Verser le @vin rouge{250 g} pour déglacer, puis incorporer le @bouillon de bœuf{250 g}, le @thym{3 branches}, les feuilles de @laurier{2 feuilles}, le @sel{1.5 c. à café} et le @poivre{1 c. à café}.
+      pressure-cook: |
+        [pressure-cook-cookeo | Cuisson sous pression (Mode Express)]
+        - Remettre les morceaux de plat de côte et leur jus réservé dans la cuve.
+        - Fermer et verrouiller le couvercle du Cookeo.
+        - Sélectionner le mode **Cuisson sous pression** (ou Cuisson Express) pendant ~{45 min}.
+      natural-release: |
+        [release-cookeo | Fin de cuisson et repos]
+        - À la fin du bip, laisser reposer ~{10 min} avant d'ouvrir le couvercle pour que la vapeur descende doucement et préserve la tendreté de la viande.
+        - Sortir délicatement les morceaux de bœuf confits avec une #pince de cuisine{} et les déposer dans un plat de service creux.
+      reduce-sauce: |
+        [reduce-sauce-cookeo | Réduire et napper la sauce]
+        - Retirer le thym et le laurier de la cuve.
+        - Réactiver le mode **Dorer** ou Mijoter et laisser réduire la sauce ~{6 min} jusqu'à consistance sirupeuse et brillante.
+        - Napper généreusement le plat de côte de sauce au vin rouge et servir bien chaud.
+- id: cocotte-fonte
+  name: Cocotte en fonte traditionnelle (Sans robot)
+  description: Mijotage traditionnel à feu doux pendant 2 h 45 pour une viande confite à l'ancienne et des sucs concentrés.
+  prep_time: 20 min
+  total_time: 3 h 10 min
+  appliances: {}
+  steps:
+    replace:
+      sear-meat: |
+        [sear-meat-cocotte | Dorer le bœuf dans la cocotte en fonte]
+        - Faire chauffer l'@huile d'olive{2 c. à soupe} dans une grande #cocotte en fonte{} à feu vif.
+        - Déposer les morceaux de @plat de côte de bœuf{2000 g, décongelés, en tronçons avec os} et les faire dorer généreusement sur chaque face pendant ~{10 min} pour développer une croûte caramélisée.
+        - Réserver la viande dorée sur une assiette.
+      deglaze-pot: |
+        [deglaze-cocotte | Faire suer la garniture et déglacer]
+        - Baisser à feu moyen. Dans la graisse de cuisson, faire suer les @échalotes{4 pièces, en deux}, les @carottes{3 pièces, en biseaux} et les @gousses d'ail{4 pièces, écrasées} pendant ~{5 min}.
+        - Ajouter le @concentré de tomates{2 c. à soupe} et remuer ~{1 min}.
+        - Déglacer avec le @vin rouge{250 g} en raclant énergiquement les sucs au fond de la cocotte avec une #cuillère en bois{}.
+        - Ajouter le @bouillon de bœuf{250 g}, le @thym{3 branches}, le @laurier{2 feuilles}, le @sel{1.5 c. à café} et le @poivre{1 c. à café}. Porter à frémissement.
+      pressure-cook: |
+        [simmer-cocotte | Mijoter longuement à couvert]
+        - Replacer les morceaux de plat de côte et leur jus dans la cocotte, en veillant à ce qu'ils soient bien immergés dans le liquide parfumé.
+        - Poser le couvercle de la cocotte et baisser sur feu très doux (ou enfourner la cocotte fermée au four à ^{150 C}).
+        - Laisser mijoter doucement pendant ~{2 h 45 min} sans remuer violemment (la viande devient fondante et se détache de l'os).
+      natural-release: |
+        [rest-meat-cocotte | Repos de la viande]
+        - Retirer le couvercle et laisser reposer la cocotte hors du feu ~{10 min} pour détendre les chairs.
+        - Débarrasser délicatement les morceaux de bœuf confits dans un plat de service chaud avec une #pince de cuisine{}.
+      reduce-sauce: |
+        [reduce-sauce-cocotte | Ajuster et napper la sauce]
+        - Retirer le thym et le laurier. Si la sauce est encore trop fluide, faire réduire à feu vif ~{5 min} à découvert jusqu'à ce qu'elle nappe la cuillère.
+        - Napper généreusement le plat de côte et servir bien chaud avec une purée maison ou des tagliatelles.
+- id: instant-pot-congele
+  name: Instant Pot (Bœuf congelé direct)
+  description: Braisage direct sans décongélation préalable avec légumes revenus seuls et cuisson sous pression prolongée à 70 min.
+  prep_time: 10 min
+  total_time: 1 h 40 min
+  appliances:
+    instant_pot:
+    - instant_pot_6qt
+  steps:
+    replace:
+      sear-meat: |
+        [sweat-veg-frozen | Faire suer les légumes en mode Sauté]
         - Sélectionner le mode **Sauté** sur l'#instant pot{}.
         - Verser l'@huile d'olive{2 c. à soupe}.
         - Ajouter les @échalotes{4 pièces, épluchées et coupées en deux}, les @carottes{3 pièces, épluchées et en biseaux} et les @gousses d'ail{4 pièces, écrasées}.
         - Faire suer ~{4 min} en remuant avec une #cuillère en bois{} jusqu'à légère coloration.
         - Ajouter le @concentré de tomates{2 c. à soupe} et remuer ~{1 min}.
-        - Déglacer avec le @vin rouge{250 g} en raclant soigneusement le fond de la cuve pour éviter l'alerte BURN.
+        - Déglacer avec le @vin rouge{250 g} en raclant soigneusement le fond de la cuve pour dissoudre les sucs et éviter l'alerte BURN.
         - Ajouter le @bouillon de bœuf{250 g}, le @thym{3 branches}, les feuilles de @laurier{2 feuilles}, le @sel{1.5 c. à café} et le @poivre{1 c. à café}.
         - Déposer les morceaux de @plat de côte de bœuf{2000 g, congelés} directement dans le bouillon chaud.
       pressure-cook: |
