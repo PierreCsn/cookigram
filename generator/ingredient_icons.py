@@ -110,6 +110,17 @@ ICON_FAMILY_BY_SLUG = {
     "vinaigre-blanc": "vinaigre-blanc",
     "vinaigre-de-riz": "vinaigre-de-riz",
     "vinaigre-de-vin": "vinaigre-de-vin",
+    "aneth": "aneth",
+    "cerfeuil": "cerfeuil-frais",
+    "estragon": "estragon-frais",
+    "herbes-de-provence": "herbes-de-provence",
+    "gingembre-moulu": "gingembre-moulu",
+    "quatre-epices": "quatre-epices",
+    "garam-masala": "garam-masala",
+    "graine-de-fenouil": "graines-de-fenouil",
+    "graine-de-moutarde": "graines-de-moutarde",
+    "graine-de-sesame": "graines-de-sesame-blanc",
+    "epices-cajun": "epices-cajun",
 }
 
 

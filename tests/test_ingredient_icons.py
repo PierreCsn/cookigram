@@ -186,6 +186,25 @@ def test_resolver_covers_the_sauce_and_liquid_batch():
         assert resolver.resolve(name) == f"icons/ingredients/{filename}"
 
 
+def test_resolver_covers_the_herb_and_spice_batch():
+    resolver = IngredientIconResolver()
+    expected = {
+        "aneth": "aneth.svg",
+        "cerfeuil frais": "cerfeuil-frais.svg",
+        "estragon frais": "estragon-frais.svg",
+        "herbes de Provence": "herbes-de-provence.svg",
+        "gingembre moulu": "gingembre-moulu.svg",
+        "quatre-épices": "quatre-epices.svg",
+        "garam masala": "garam-masala.svg",
+        "graines de fenouil": "graines-de-fenouil.svg",
+        "graines de moutarde": "graines-de-moutarde.svg",
+        "graines de sésame blanc": "graines-de-sesame-blanc.svg",
+        "épices cajun": "epices-cajun.svg",
+    }
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
 def test_resolver_returns_empty_string_when_icon_is_missing():
     resolver = IngredientIconResolver()
 
