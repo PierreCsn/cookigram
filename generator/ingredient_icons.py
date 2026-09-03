@@ -10,6 +10,40 @@ from .nutrition import get_ingredient_slug
 
 ROOT = Path(__file__).resolve().parents[1]
 
+# Several Gram entries describe a preparation or a cut of the same ingredient.
+# Keep one visual vocabulary for those families instead of duplicating SVGs.
+ICON_FAMILY_BY_SLUG = {
+    "creme-fraiche-epaisse": "creme-fraiche",
+    "creme-fraiche-liquide": "creme-fraiche",
+    "parmesan": "parmesan",
+    "saumon-frais": "saumon",
+    "saumon-fume": "saumon",
+    "poulet": "poulet",
+    "filet-de-poulet": "poulet",
+    "cuisse-de-poulet": "poulet",
+    "paleron-de-boeuf": "boeuf",
+    "porc-hache": "porc",
+    "filet-mignon-de-porc": "porc",
+    "echine-de-porc": "porc",
+    "roti-de-porc": "porc",
+    "riz-a-risotto": "riz",
+    "riz-basmati": "riz",
+    "riz-long-blanc": "riz",
+    "farfalle": "pates",
+    "penne": "pates",
+    "torsades": "pates",
+    "nouilles-chinoises": "pates",
+    "champignons-de-paris": "champignon",
+    "concentre-de-tomate": "concentre-tomate",
+    "cube-de-bouillon-de-volaille": "bouillon-volaille",
+    "moutarde-de-dijon": "moutarde",
+    "persil-frais": "persil",
+    "coriandre-fraiche": "coriandre",
+    "piment-rouge": "piment",
+    "piment-de-cayenne": "piment",
+    "curry-en-poudre": "curry",
+}
+
 
 class IngredientIconResolver:
     """Map ingredient names to existing icon assets using the Gram database."""
@@ -30,11 +64,9 @@ class IngredientIconResolver:
 
     @staticmethod
     def _variant_slug(slug: str, quantity: str) -> str:
-        if slug != "ail":
-            return slug
-        if re.search(r"\b(?:tête|têtes)\b", quantity, flags=re.IGNORECASE):
+        if slug == "ail" and re.search(r"\b(?:tête|têtes)\b", quantity, flags=re.IGNORECASE):
             return "ail-tete"
-        return slug
+        return ICON_FAMILY_BY_SLUG.get(slug, slug)
 
 
 def attach_ingredient_icons(recipe: Any, resolver: IngredientIconResolver) -> None:
