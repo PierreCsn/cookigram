@@ -430,63 +430,17 @@ utilisent **cache-first**. Le hash des assets change le nom du cache à chaque
 version et l'ancien cache est supprimé lors de l'activation du nouveau service
 worker.
 
-## Progression des jalons de réalisation
+## 🗺️ Feuille de route & Jalons de maturité (Kitchen OS)
 
-Les jalons de développement suivent l'ordre validé dans [l'issue #35](https://github.com/PierreCsn/cookigram/issues/35) et sont détaillés dans [`TODO.md`](TODO.md) :
+CookiGram ne cherche pas à être un simple afficheur de recettes web, mais le **Système d'Exploitation de la Cuisine (Kitchen OS)**. Son développement s'articule autour de grands paliers d'expérience orientés vers le plan de travail ([PDR-0003](decisions/PDR-0003-validation-roadmap-strategique-v1-v10.md) & [ROADMAP_STRATEGIQUE.md](ROADMAP_STRATEGIQUE.md)) :
 
-```mermaid
-flowchart LR
-    lot1["✅ LOT 1<br/>UX Cuisine & Mobile<br/><small>#28 · #29 · #27 · #37<br/>4/4 terminés</small>"] --> lot2["✅ LOT 2<br/>SEO & Indexation<br/><small>#15 · #16 · #20<br/>3/3 terminés</small>"]
-    lot2 --> lot3["✅ LOT 3<br/>Fiche Recette<br/><small>#26 · #30 · #31 · #32 · #39 · #49<br/>6/6 terminés</small>"]
-    lot3 --> lot4["✅ LOT 4<br/>SEO · Design · Performance<br/><small>#17 · #24 · #34 · #23 · #21 · #22 · #19 · #18 · #33<br/>9/9 terminés</small>"]
-    lot4 --> lot5["🔶 LOT 5<br/>Dette technique & Socle<br/><small>#8 terminé · #1 en attente<br/>1/2 terminés</small>"]
-
-    classDef done fill:#d8f3dc,stroke:#2d6a4f,color:#1b4332
-    classDef current fill:#ffe8b6,stroke:#d97706,color:#7c2d12,stroke-width:3px
-    class lot1,lot2,lot3,lot4 done
-    class lot5 current
-```
-
-**Légende :** ✅ lot terminé · 🔶 lot en cours · `#XX` issue GitHub suivie.
-
-## Vision Produit & Feuille de route (v1 à v10)
-
-CookiGram suit une feuille de route stratégique progressive pour passer de la recette au copilote d'exécution complet ([PDR-0003](decisions/PDR-0003-validation-roadmap-strategique-v1-v10.md) & [ROADMAP_STRATEGIQUE.md](ROADMAP_STRATEGIQUE.md)) :
-
-```mermaid
-flowchart LR
-    v1["✅ v1<br/>Recipe OS<br/><small>Socle livré</small>"] --> v2["🔶 v2<br/>Cooking Assistant<br/><small>Sprint actuel</small>"]
-    v2 --> v3["⏳ v3<br/>Kitchen Scheduler"]
-    v3 --> v4["⏳ v4<br/>Smart Meal Planner"]
-    v4 --> v5["⏳ v5<br/>Batch Cooking"]
-    v5 --> v6["⏳ v6<br/>Kitchen Inventory"]
-    v6 --> v7["⏳ v7<br/>Shopping Agent"]
-    v7 --> v8["⏳ v8<br/>Kitchen Intelligence"]
-    v8 --> v9["⏳ v9<br/>Multi-Cook"]
-    v9 --> v10["⏳ v10<br/>CookiGram Pro"]
-
-    classDef done fill:#d8f3dc,stroke:#2d6a4f,color:#1b4332
-    classDef current fill:#ffe8b6,stroke:#d97706,color:#7c2d12,stroke-width:3px
-    classDef planned fill:#f1f5f9,stroke:#94a3b8,color:#475569
-    class v1 done
-    class v2 current
-    class v3,v4,v5,v6,v7,v8,v9,v10 planned
-```
-
-**Légende :** ✅ livré · 🔶 en cours · ⏳ à venir. Le jalon actif est **v2 —
-Cooking Assistant**, avec le mode cuisine guidé, les minuteurs et les
-interactions mains libres comme priorités.
-
-* **v1 — Recipe OS** : Socle de données déterministe en format `.gram` et moteur nutritionnel CIQUAL traçable.
-* **v2 — Cooking Assistant** : Guidage interactif mains libres en cuisine à 1 mètre avec ingrédients d'étape et minuteurs intégrés (Sprint actuel).
-* **v3 — Kitchen Scheduler** : Ordonnanceur mathématique d'exécution multi-plats sous contraintes (Solveur Google OR-Tools CP-SAT) pour que tout soit prêt simultanément sans stress ([Issue #51](https://github.com/PierreCsn/cookigram/issues/51)).
-* **v4 — Smart Meal Planner** : Planificateur de repas hebdomadaire et liste de courses consolidée sans gâchis avec fond de placard.
-* **v5 — Batch Cooking & Meal Prep** : Mutualisation des découpes, rotation fluide des équipements et chaîne de conservation / remise en température.
-* **v6 — Pragmatic Kitchen Inventory** : Gestion de placard à friction zéro et valorisation intelligente des restes du réfrigérateur.
-* **v7 — Shopping Agent** : Remplissage assisté des paniers Drive marchands sous validation humaine stricte (*Human-in-the-loop*).
-* **v8 — Kitchen Intelligence** : Apprentissage passif des temps réels d'exécution et personnalisation locale (*Privacy-First*).
-* **v9 — Multi-Cook** : Coordination d'une brigade familiale sur plusieurs écrans synchronisés en réseau local.
-* **v10 — CookiGram Pro** : Système d'exécution léger (MES) pour traiteurs et artisans culinaires.
+| Jalon | Nom | Statut | Expérience Cuisinier & Valeur Produit |
+| :--- | :--- | :---: | :--- |
+| **v1** | **Recipe OS** | ✅ **Livré** | **Le socle déterministe** : Fiches recettes canoniques `.gram`, portions dynamiques sans approximation, analyse nutritionnelle CIQUAL traçable, moteur de recherche instantané et fonctionnement 100% hors-ligne. |
+| **v2** | **Cooking Copilot** | 🔶 **Sprint Actif** | **Le copilote du plan de travail** : Mode cuisine plein écran lisible à 1 mètre, minuteurs persistants avec alarme Web Audio, interactions vocales mains-libres, profil sensoriel (accords & piquant) et reconnaissance des ustensiles. |
+| **v3** | **Kitchen Scheduler** | ⏳ *Prochain cap* | **Le chef d'orchestre multi-préparations** : Ordonnancement mathématique sous contraintes (solveur Google CP-SAT). Synchronisation automatique du four, des plaques et du robot pour que tous les plats d'un dîner soient prêts ensemble sans stress ([Issue #51](https://github.com/PierreCsn/cookigram/issues/51)). |
+| **v4** | **Smart Meal Planner** | ⏳ *Planifié* | **La semaine sans charge mentale** : Planification des repas, mutualisation des ingrédients anti-gaspillage, liste de courses consolidée par rayons et export vers notes. |
+| **v5+** | **Kitchen Intelligence** | ⏳ *Exploration* | **L'inventaire pragmatique & Local-First** : Suggestions intelligentes selon les restes du réfrigérateur et le fond de placard, personnalisation locale et respect absolu de la vie privée. |
 
 ---
 

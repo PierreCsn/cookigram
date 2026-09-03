@@ -2,19 +2,15 @@
 
 Ce document définit les règles impératives que tout agent d'assistance ou développeur doit respecter dans ce dépôt.
 
-## Chargement persistant du profil d'agent
+## Chargement persistant du profil d'agent & Registre vivant
 
-Ce fichier est le point d'entrée commun du dépôt pour Codex et OpenCode. Pour
-une session de développement, l'agent doit lire, dans cet ordre :
+Ce fichier est le point d'entrée commun du dépôt pour Codex, OpenCode et Gemini Code.
+Pour une efficacité maximale et une économie drastique de temps et de tokens :
 
-1. ce fichier (`AGENTS.md`) ;
-2. [`PRODUCT_PRINCIPLES.md`](PRODUCT_PRINCIPLES.md) ;
-3. [`.agents/roles/senior-developer.md`](.agents/roles/senior-developer.md) pour le profil complet et le workflow ;
-4. les règles spécialisées pertinentes dans [`.agents/rules/`](.agents/rules/).
-
-[`GEMINI.md`](GEMINI.md) est l'adaptateur d'entrée pour Gemini Code. Il pointe
-vers les mêmes sources versionnées : ne pas créer une variante locale du
-profil dans un autre outil.
+1. Consulter en priorité absolue [`.agents/STATUS.md`](.agents/STATUS.md) et [`.agents/claims.json`](.agents/claims.json) pour connaître l'état vivant du projet et les claims en cours.
+2. Respecter scrupuleusement la règle de verrouillage anti-doublon [`.agents/rules/task-claiming.md`](.agents/rules/task-claiming.md) : **interdiction absolue de coder sans claim préalable ni validation officielle**.
+3. Pour le profil complet du développeur : [`.agents/roles/senior-developer.md`](.agents/roles/senior-developer.md).
+4. [`PRODUCT_PRINCIPLES.md`](PRODUCT_PRINCIPLES.md) et les règles spécialisées dans [`.agents/rules/`](.agents/rules/).
 
 ---
 
@@ -23,6 +19,9 @@ profil dans un autre outil.
 > **Règle d'or :** Tout travail achevé doit être systématiquement **gité, commité et poussé (`git push`)** avant de clore l'intervention. L'arbre de travail (`working tree`) doit être propre à la fin de chaque tâche.
 
 ### Procédure de clôture de tâche obligatoire :
+
+> ⚡ **Économie de temps et de tokens :** Pendant la phase de développement itératif, n'exécutez que les tests ciblés du composant modifié (ex: `npm run test:unit` ou `pytest tests/test_cible.py`). La suite complète (`pytest` globale + `playwright e2e` qui dure 12-14 min) ne doit être lancée **qu'une seule fois**, lors de la validation finale avant commit/push.
+
 1. **Validation qualité préalable** :
    * S'assurer que le linter Python et le formateur sont satisfaits : `ruff check generator tests` et `ruff format --check generator tests`.
    * S'assurer que le type checking Python est satisfait : `mypy generator/`.
