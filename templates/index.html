@@ -1,19 +1,56 @@
 {% set prefix = '' %}{% extends "base.html" %}
 {% from "macros.html" import appliance_tags %}
+{% set homepage_url = canonical_url | default((site_url | default('https://pierrecsn.github.io/cookigram')) ~ '/') %}
+{% block title %}CookiGram 🍳 — Carnet de recettes guidées et Thermomix{% endblock %}
 {% block meta %}
-  <meta name="description" content="CookiGram, le carnet de recettes culinaires guidées et hors ligne, propulsé par des fichiers Gram.">
-  <link rel="canonical" href="{{ canonical_url | default((site_url | default('https://pierrecsn.github.io/cookigram')) ~ '/') }}">
+  <meta name="description" content="CookiGram, le carnet de recettes guidées pas-à-pas et Thermomix, consultable même hors ligne. Des recettes culinaires propulsées par des fichiers Gram.">
+  <link rel="canonical" href="{{ homepage_url }}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CookiGram">
-  <meta property="og:title" content="CookiGram 🍳 — Carnet de recettes culinaires">
-  <meta property="og:description" content="CookiGram, le carnet de recettes culinaires guidées et hors ligne, propulsé par des fichiers Gram.">
-  <meta property="og:url" content="{{ canonical_url | default((site_url | default('https://pierrecsn.github.io/cookigram')) ~ '/') }}">
+  <meta property="og:title" content="CookiGram 🍳 — Carnet de recettes guidées et Thermomix">
+  <meta property="og:description" content="CookiGram, le carnet de recettes guidées pas-à-pas et Thermomix, consultable même hors ligne.">
+  <meta property="og:url" content="{{ homepage_url }}">
   <meta property="og:locale" content="fr_FR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CookiGram 🍳 — Carnet de recettes culinaires">
-  <meta name="twitter:description" content="CookiGram, le carnet de recettes culinaires guidées et hors ligne, propulsé par des fichiers Gram.">
+  <meta name="twitter:title" content="CookiGram 🍳 — Carnet de recettes guidées et Thermomix">
+  <meta name="twitter:description" content="CookiGram, le carnet de recettes guidées pas-à-pas et Thermomix, consultable même hors ligne.">
   <link rel="alternate" type="application/rss+xml" title="Flux des recettes CookiGram (RSS)" href="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/feed.xml">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/sitemap.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "{{ homepage_url }}#website",
+        "url": "{{ homepage_url }}",
+        "name": "CookiGram",
+        "description": "Carnet de recettes guidées pas-à-pas et Thermomix, consultable même hors ligne.",
+        "inLanguage": "fr-FR",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "{{ homepage_url }}?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "{{ homepage_url }}#organization",
+        "name": "CookiGram",
+        "url": "{{ homepage_url }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/assets/icons/icon-512.png",
+          "width": 512,
+          "height": 512
+        }
+      }
+    ]
+  }
+  </script>
 {% endblock %}
 {% block body %}
 
@@ -23,7 +60,7 @@
   <section class="hero hero-banner">
     <div class="hero-banner-content">
       <h1 class="hero-title">Qu'est-ce qu'on cuisine aujourd'hui ?</h1>
-      <p class="hero-lead">Votre carnet de recettes guidées pas-à-pas, pensées pour cuisiner avec plaisir et sans friction.</p>
+      <p class="hero-lead">Votre carnet de recettes guidées pas-à-pas, avec le robot Thermomix ou sans, pensées pour cuisiner avec plaisir et sans friction, même hors ligne.</p>
     </div>
     <div class="hero-banner-visual" aria-hidden="true">
       <img src="assets/illustrations/hero-banner.jpg" alt="" class="hero-banner-img" fetchpriority="high">
