@@ -11,6 +11,8 @@ author: lise_14056503
 required_equipment:
   - Grand saladier
   - Couteau de chef
+  - Couteau d'office
+  - Plat de service
   - Planche à découper
 scaling:
   enabled: true

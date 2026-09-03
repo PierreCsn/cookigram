@@ -102,6 +102,24 @@ ingredients:
     sources:
     - ciqual
     status: verified
+  eau-de-fleur-d-oranger:
+    source: Donnée non nutritionnelle, utilisée comme arôme facultatif.
+    status: incomplete
+  fromage-frais-philadelphia:
+    source: Ingrédient de marque, valeurs nutritionnelles à documenter.
+    status: incomplete
+  blancs-d-oeufs:
+    source: Sous-ingrédient dérivé de l'œuf, valeurs nutritionnelles à documenter.
+    status: incomplete
+  papier-aluminium:
+    source: Accessoire de préparation, non consommable.
+    status: incomplete
+  papier-sulfurise:
+    source: Accessoire de préparation, non consommable.
+    status: incomplete
+  sucre-glace:
+    source: Dérivé du sucre, valeurs nutritionnelles à documenter.
+    status: incomplete
   emmental-rape:
     source: ANSES-CIQUAL
     status: verified

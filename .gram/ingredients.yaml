@@ -313,6 +313,11 @@ ingredients:
       fat: 0.1
       protein: 2.5
     piece_weight: 25.0
+  eau-de-fleur-d-oranger:
+    name: Eau de fleur d'oranger
+    aliases:
+    - eau de fleur d'oranger
+    category: Boissons et liquides
   emmental-rape:
     name: Emmental râpé
     aliases:
@@ -358,6 +363,37 @@ ingredients:
       carbs: 71.0
       fat: 1.2
       protein: 10.0
+  fromage-frais-philadelphia:
+    name: Fromage frais Philadelphia
+    aliases:
+    - fromage blanc Philadelphia
+    - Philadelphia nature
+    category: Fromages
+  blancs-d-oeufs:
+    name: Blancs d'œufs
+    aliases:
+    - blanc d'œuf
+    - blancs d'œufs
+    - blanc d'oeuf
+    - blancs d'oeufs
+    category: Crèmerie et oeufs
+  papier-aluminium:
+    name: Papier aluminium
+    aliases:
+    - papier aluminium
+    category: Épicerie
+  papier-sulfurise:
+    name: Papier sulfurisé
+    aliases:
+    - papier sulfurisé
+    - papier cuisson
+    category: Épicerie
+  sucre-glace:
+    name: Sucre glace
+    aliases:
+    - sucre glace
+    category: Condiments
+    pantry_staple: true
   filet-de-poulet:
     aliases:
     - filet de poulet

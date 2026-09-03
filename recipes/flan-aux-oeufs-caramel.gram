@@ -1,0 +1,68 @@
+---
+title: Flan aux œufs au caramel
+portions: 8
+prep_time: 10 min
+total_time: 50 min
+spiciness: 0
+description: Flan aux œufs fondant nappé de caramel ambré, cuit doucement au bain-marie puis servi bien frais.
+tags: [dessert, flan, œufs, caramel, classique]
+source: https://cuisine.journaldesfemmes.fr/recette/344305-flan-aux-oeufs
+author: Mathilde Domergue
+scaling:
+  enabled: true
+  min_portions: 4
+  max_portions: 12
+  step: 2
+  note: Adapter le temps de cuisson à la taille et à la profondeur du moule ; le centre doit rester légèrement tremblotant.
+flavors:
+  pairing: [œufs, lait, sucre, caramel]
+  notes: [fondant, lacté, caramélisé]
+  harmony: "Le caramel amer équilibre la douceur lactée de la crème aux œufs et prolonge sa texture fondante."
+  tips: "Pour un démoulage net, laisser refroidir puis réfrigérer complètement avant de retourner le flan."
+conservation:
+  fridge_days: 3
+  freezable: false
+required_equipment:
+  - Moule à flan allant au four
+  - Plat profond pour bain-marie
+  - Casserole à fond épais
+image: images/flan-aux-oeufs-caramel.png
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration générée pour la fiche recette, sans reprise de la photographie source.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/flan-aux-oeufs-caramel.md
+---
+
+## Flan aux œufs au caramel
+
+[Préchauffer le four]
+- Préchauffer le #four{} à ^{180 C}.
+
+[Préparer le caramel]
+- Verser le @sucre{100 g, pour le caramel} dans une #casserole{} à fond épais.
+- Chauffer doucement sans remuer ; faire tourner la casserole de temps en temps jusqu'à obtenir une teinte dorée.
+- Verser aussitôt le caramel dans le moule et l'incliner pour couvrir le fond.
+
+[Chauffer le lait]
+- Faire chauffer le @lait{1 l} sans le faire bouillir, puis réserver quelques instants.
+
+[Préparer l'appareil]
+- Battre les @œufs{6 pièces} avec le @sucre{100 g, pour l'appareil}.
+- Ajouter le @lait{1 l, chaud} progressivement en fouettant.
+- Parfumer avec l'@eau de fleur d'oranger{facultatif, quantité non précisée} si désiré.
+
+[Cuire au bain-marie]
+- Verser l'appareil dans le moule caramélisé.
+- Placer le moule dans un #plat profond{} et verser de l'@eau{quantité suffisante, chaude} autour.
+- Cuire ~{30 min} à ^{180 C}, puis prolonger jusqu'à ~{40 min} au total : le centre doit rester légèrement tremblotant.
+
+[Refroidir et démouler]
+- Laisser refroidir à température ambiante, puis placer au réfrigérateur jusqu'à complet refroidissement.
+- Retourner le flan sur un plat de service pour laisser le caramel napper les parts.
