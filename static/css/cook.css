@@ -479,25 +479,39 @@
 
 .step-ingredient-item {
   display:flex;
-  align-items:center;
+  align-items:baseline;
   justify-content:space-between;
-  gap:16px;
+  gap:12px;
   line-height:1.4;
+  padding:6px 0;
+  border-bottom:1px dashed var(--line);
+}
+
+.step-ingredient-item:last-child {
+  border-bottom:none;
+  padding-bottom:0;
 }
 
 .step-ingredient-name {
   font-weight:700;
   color:var(--ink);
+  flex:1 1 auto;
+  min-width:0;
 }
 
 .step-ingredient-qty {
-  flex-shrink:0;
+  flex:0 1 auto;
+  max-width:62%;
   background:var(--btn-bg);
   border:1px solid var(--line);
-  border-radius:99px;
-  padding:5px 12px;
-  font-weight:800;
+  border-radius:10px;
+  padding:4px 10px;
+  font-weight:700;
+  font-size:13.5px;
   color:var(--ink);
+  text-align:right;
+  line-height:1.35;
+  word-break:normal;
 }
 
 .cook-nav {
