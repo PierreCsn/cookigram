@@ -22,6 +22,12 @@ scaling:
   enabled: false
   reason: Quantités et enchaînement calibrés pour 4 portions avec cuisson simultanée
     au Varoma et au panier cuisson.
+spiciness: 2
+flavors:
+  pairing: [poulet, curry, lait de coco, coriandre]
+  notes: [épicé, lacté, chaud, aromatique]
+  harmony: "La rondeur enveloppante du lait de coco tempère le piquant des épices de curry et met en valeur le moelleux du poulet."
+  tips: "Ajouter la coriandre fraîche ciselée hors du feu au moment de servir pour préserver ses notes anisées vives."
 image: images/curry-poulet-express.jpg
 image_credit:
   author: CookiGram

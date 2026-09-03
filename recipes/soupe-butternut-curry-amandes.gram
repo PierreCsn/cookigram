@@ -23,6 +23,12 @@ scaling:
   enabled: false
   reason: Le volume et les paramètres de chauffe du bol Thermomix ne sont pas validés
     à une autre échelle.
+spiciness: 1
+flavors:
+  pairing: [butternut, curry doux, amandes, crème]
+  notes: [doux, noisetté, velouté, toasté]
+  harmony: "La sucrosité automnale de la butternut est réveillée par une pointe de curry doux et contrastée par le croquant grillé des amandes."
+  tips: "Toaster les amandes effilées à sec dans une petite poêle jusqu'à coloration dorée et les parsemer au dernier moment sur le bol chaud."
 image: images/soupe-butternut-curry-amandes.jpg
 image_credit:
   author: CookiGram
