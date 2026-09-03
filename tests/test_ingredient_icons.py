@@ -140,6 +140,20 @@ def test_resolver_covers_the_protein_batch():
         assert resolver.resolve(name) == f"icons/ingredients/{filename}"
 
 
+def test_resolver_covers_the_legume_and_nut_batch():
+    resolver = IngredientIconResolver()
+    expected = {
+        "châtaignes": "chataignes.svg",
+        "pois chiches": "pois-chiches.svg",
+        "pois gourmands": "pois-gourmands.svg",
+        "lentilles vertes": "lentilles-vertes.svg",
+        "pistaches": "pistaches.svg",
+        "pignons de pin": "pignons-de-pin.svg",
+    }
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
 def test_resolver_returns_empty_string_when_icon_is_missing():
     resolver = IngredientIconResolver()
 

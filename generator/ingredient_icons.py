@@ -88,6 +88,12 @@ ICON_FAMILY_BY_SLUG = {
     "lardons": "lardons",
     "jambon-cru": "jambon-cru",
     "chorizo": "chorizo",
+    "chataignes": "chataignes",
+    "pois-chiches": "pois-chiches",
+    "pois-gourmands": "pois-gourmands",
+    "lentilles-vertes": "lentilles-vertes",
+    "pistaches": "pistaches",
+    "pignons-de-pin": "pignons-de-pin",
 }
 
 
