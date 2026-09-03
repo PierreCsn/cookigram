@@ -1,0 +1,40 @@
+---
+title: Chili con carne
+portions: 4
+prep_time: 10 min
+total_time: 30 min
+description: Chili rapide au bœuf, poivrons, maïs, haricots rouges et coriandre.
+tags: [chili, bœuf, thermomix, haricots, épicé]
+source: https://cookidoo.fr/recipes/recipe/fr-FR/r511864
+author: Vorwerk Home & Co. KmG
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: La quantité de viande et de garniture est calibrée pour quatre portions.
+spiciness: 2
+image: images/chili-con-carne.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration originale générée pour CookiGram, sans reprise de la photographie source.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/chili-con-carne.md
+---
+
+[Hacher les légumes]
+- Mettre le @poivron rouge{100 g}, le @poivron vert{100 g}, l'@oignon{100 g, coupé en deux} et l'@ail{2 gousses} dans le bol. Mixer ~{5 s} à vitesse 5, puis racler les parois avec la #spatule{}.
+
+[Cuire le bœuf]
+- Ajouter l'@huile d'olive{20 g}, la @viande hachée{500 g, de bœuf}, le @cumin en poudre{1 c. à café} et le @paprika{1 c. à café}.
+- Cuire ~{5 min} à ^{120 C}, sens inverse, vitesse cuillère.
+
+[Mijoter le chili]
+- Ajouter le @coulis de tomate{400 g}, le @sel{} et le @poivre moulu{}, puis cuire ~{8 min} à ^{120 C}, sens inverse, vitesse cuillère.
+- Ajouter les @haricots rouges{500 g, en conserve, égouttés} et le @maïs{140 g, en conserve, égoutté}, puis cuire ~{5 min} à ^{110 C}, sens inverse, vitesse cuillère.
+- Transvaser, parsemer de @coriandre fraîche{2 brins, ciselés} et servir aussitôt.

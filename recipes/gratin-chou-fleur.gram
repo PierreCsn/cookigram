@@ -1,0 +1,43 @@
+---
+title: Gratin de chou-fleur
+portions: 6
+prep_time: 20 min
+total_time: 55 min
+description: Chou-fleur vapeur nappé de béchamel et gratiné au gruyère.
+tags: [gratin, chou-fleur, thermomix, béchamel, végétarien]
+source: https://cookidoo.fr/recipes/recipe/fr-FR/r54153
+author: Vorwerk Home & Co. KmG
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: Les quantités sont calibrées pour six portions et un plat à gratin familial.
+spiciness: 0
+image: images/gratin-chou-fleur.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration originale générée pour CookiGram, sans reprise de la photographie source.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/gratin-chou-fleur.md
+---
+
+[Râper le fromage]
+- Mettre le @gruyère{200 g, en morceaux} dans le bol et râper ~{8 s} à vitesse 7. Transvaser et réserver.
+
+[Cuire le chou-fleur à la vapeur]
+- Mettre l'@eau{500 g} dans le bol, installer le #Varoma{} et y déposer le @chou-fleur{1000 g, en bouquets}. Cuire ~{25 min} à ^{Varoma}, vitesse 1, puis réserver et vider le bol.
+
+[Préparer la béchamel]
+- Mettre la @farine{50 g}, le @beurre{40 g}, le @lait{500 g}, le @sel{1/2 c. à café} et le @poivre blanc moulu{2 pincées} dans le bol, puis cuire ~{7 min} à ^{90 C}, vitesse 3.
+- Ajouter la @noix de muscade{1 à 2 pincées, fraîchement râpée, facultatif} et 70 g de gruyère râpé, puis mélanger ~{5 s} à vitesse 5.
+
+[Gratiner]
+- Préchauffer le gril du #four{} à ^{210 C}.
+- Disposer le chou-fleur dans un #plat à gratin{}, couvrir de sauce et parsemer du reste de gruyère.
+- Gratiner ~{10 min} à ^{210 C}, jusqu'à ce que la surface soit bien dorée. Servir chaud.
