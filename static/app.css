@@ -6,7 +6,7 @@
   --cream:#f3ead9;
   --card:#ffffff;
   --orange:#e96f3a;
-  --accent-text:#b8471b;
+  --accent-text:#af4815;
   --green:#244f43;
   --line:#ded6c7;
   --banner-bg:#fff1dc;
@@ -72,7 +72,7 @@
   --cream:#f3ead9;
   --card:#ffffff;
   --orange:#e96f3a;
-  --accent-text:#b8471b;
+  --accent-text:#af4815;
   --green:#244f43;
   --line:#ded6c7;
   --banner-bg:#fff1dc;
@@ -527,7 +527,7 @@ a {
 .advanced-filter-toggle:hover {
   background:var(--btn-hover);
   border-color:var(--orange);
-  color:var(--orange);
+  color:var(--accent-text);
   transform:translateY(-1px);
 }
 

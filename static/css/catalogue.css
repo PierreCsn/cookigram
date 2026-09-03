@@ -254,7 +254,7 @@
 .advanced-filter-toggle:hover {
   background:var(--btn-hover);
   border-color:var(--orange);
-  color:var(--orange);
+  color:var(--accent-text);
   transform:translateY(-1px);
 }
 
