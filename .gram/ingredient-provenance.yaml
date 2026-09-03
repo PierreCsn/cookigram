@@ -727,6 +727,18 @@ ingredients:
     status: manual
     source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
       chiches, pâtes)
+  vinaigre-balsamique:
+    source: ANSES-CIQUAL
+    status: verified
+  poivre-vert:
+    source: ANSES-CIQUAL
+    status: verified
+  cognac:
+    source: ANSES-CIQUAL
+    status: verified
+  cepes:
+    source: ANSES-CIQUAL
+    status: verified
   orange:
     source: ANSES-CIQUAL
     status: verified

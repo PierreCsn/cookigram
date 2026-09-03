@@ -240,6 +240,7 @@ ingredients:
     aliases:
     - crème fraîche épaisse
     - crème épaisse
+    - crème fraîche
     category: Produits laitiers et matières grasses
     nutrition:
       calories: 292
@@ -2196,6 +2197,8 @@ ingredients:
     name: Vinaigre de vin
     aliases:
     - vinaigre de vin rouge
+    - vinaigre de vin blanc
+    - vinaigre de vin
     category: Condiments et assaisonnements
   pois-chiches:
     name: Pois chiches
@@ -2250,6 +2253,53 @@ ingredients:
     aliases:
     - clou de girofle
     category: Condiments et assaisonnements
+  vinaigre-balsamique:
+    name: Vinaigre balsamique
+    aliases:
+    - vinaigre balsamique
+    - vinaigre balsamique de Modène
+    - crème de vinaigre balsamique
+    category: Condiments et assaisonnements
+    nutrition:
+      calories: 88
+      protein: 0.5
+      carbs: 17.0
+      fat: 0.0
+  poivre-vert:
+    name: Poivre vert
+    aliases:
+    - poivre vert
+    - poivre vert en saumure
+    - poivre vert en grains
+    category: Condiments et assaisonnements
+    nutrition:
+      calories: 38
+      protein: 1.5
+      carbs: 6.4
+      fat: 0.7
+  cognac:
+    name: Cognac
+    aliases:
+    - cognac
+    - armagnac
+    category: Boissons
+    nutrition:
+      calories: 231
+      protein: 0.0
+      carbs: 0.1
+      fat: 0.0
+  cepes:
+    name: Cèpes
+    aliases:
+    - cèpes
+    - cèpes séchés
+    - bolets
+    category: Fruits, légumes, légumineuses et oléagineux
+    nutrition:
+      calories: 28
+      protein: 3.1
+      carbs: 2.2
+      fat: 0.4
   orange:
     name: Orange
     aliases:
