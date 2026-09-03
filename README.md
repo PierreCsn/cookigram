@@ -6,28 +6,46 @@
 [![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)](pyproject.toml)
 [![Gram Language](https://img.shields.io/badge/Gram-Gram%20Language-orange.svg)](https://gram-lang.org)
 
-Carnet de recettes statique, moderne et installable (PWA), propulsé par des fichiers culinaires `.gram`.
+> **Le Système d'Exploitation de la Cuisine · Local-First, Libre et Conçu pour le Plan de Travail.**
 
-> 🌐 **Démo en direct :** [https://pierrecsn.github.io/cookigram/](https://pierrecsn.github.io/cookigram/)  
-> 🇬🇧 **English documentation:** [README.en.md](README.en.md) | 🤝 **Contribuer :** [CONTRIBUTING.md](CONTRIBUTING.md)
+🌐 **Démo en direct :** [https://pierrecsn.github.io/cookigram/](https://pierrecsn.github.io/cookigram/)  
+📜 **Manifeste & Charte :** [CHARTER.md](CHARTER.md) | 🎯 **Principes Produit :** [PRODUCT_PRINCIPLES.md](PRODUCT_PRINCIPLES.md) | 🗺️ **Roadmap v1–v10 :** [Issue #51](https://github.com/PierreCsn/cookigram/issues/51) | 🤝 **Contribuer :** [CONTRIBUTING.md](CONTRIBUTING.md)
 
-Le projet utilise [Gram](https://gram-lang.org/fr/), un langage open source conçu pour écrire des recettes structurées, calculables et versionnables avec Git. Consultez la [documentation officielle de Gram](https://gram-lang.org/fr/docs/) pour découvrir la syntaxe complète et son écosystème.
+---
+
+## Philosophie : Le « Produit Égoïste Éclairé »
+
+CookiGram n'a pas été conçu pour maximiser des clics publicitaires ou vendre des abonnements. Il est construit d'abord et avant tout pour son créateur et utilisateur n°1 ([CHARTER.md](CHARTER.md)), selon les principes du logiciel libre et du **Local-First** :
+
+* **Vos recettes vous appartiennent** : Chaque recette est un fichier texte brut [`.gram`](https://gram-lang.org/fr/) stocké chez vous, versionné avec Git, calculable par des machines et lisible dans 50 ans sans format propriétaire.
+* **Local-First & 100% Hors-Ligne** : Fonctionne sans réseau 4G sur votre plan de travail grâce à l'architecture PWA. Zéro compte forcé, zéro tracking, confidentialité absolue.
+* **Zéro Publicité, Zéro Sponsoring** : Aucun encart commercial, aucune recette sponsorisée pour préserver la sérénité en cuisine.
+* **Frugalité & Vitesse Instantanée** : Pas de framework JavaScript obèse : du HTML sémantique, des ES Modules natifs, du CSS modulaire et un affichage instantané lisible à 1 mètre.
+* **Déterminisme Culinaire** : L'IA (LLM) aide à comprendre et formuler, mais les calculs nutritionnels, les portions, les minuteurs et l'ordonnancement mathématique sous contraintes sont garantis à 100 % par des algorithmes stricts sans hallucination.
+
+---
 
 ## Fonctionnalités clés
 
-- 📱 **PWA Offline-first** : consultable partout, sans connexion réseau, installable sur mobile & bureau ;
-- 🍳 **Mode cuisine guidée pas-à-pas** : étapes grand format avec sous-étapes cochables interactives ;
-- 🔍 **Recherche instantanée et filtres avancés** : recherche en temps réel par titre ou ingrédient, filtres rapides par catégorie (*volaille, poisson, porc, mijoté, curry, pâtes, gratin, soupe...*) et panneau de filtres avancés multi-tags ;
-- 🎙️ **Commande vocale mains libres** : pilotez la recette (« *suivant* », « *précédent* », « *minuteur* ») sans toucher l'écran ;
-- 🗣️ **Synthèse vocale intégrée** : lecture audio des instructions avec synthèse vocale naturelle du navigateur ;
-- ⏱️ **Minuteurs multiples** : alertes sonores Web Audio, vibrations et reprise locale ;
-- 🛒 **Évaluation intelligente des courses** : filtre le fond de placard, calcule les rayons et exporte directement vers **Google Keep** ;
-- 📊 **Analyse nutritionnelle CIQUAL** : calcul automatique des calories et macronutriments (protéines, glucides, lipides) par portion ;
-- 🧠 **Savoir-faire d'ingestion LLM & IA** : méthodologie et outillage éprouvés (compétence d'agent dédiée, schéma strict, réconciliation automatique) permettant aux modèles de langage d'importer des recettes du web et de les convertir proprement dans le format standardisé et calculable `.gram` ;
-- 🤖 **Réglages pour robots culinaires (Thermomix)** : badges visuels compacts avec temps, température, vitesse, fouet et sens inverse ;
+- 📱 **PWA Offline-first complète** : 38 recettes emblématiques consultables partout, sans connexion réseau, installable sur mobile & bureau ;
+- 🍳 **Mode cuisine guidée pas-à-pas (Cooking First)** :
+  - **Ingrédients pour cette étape** : carte contrastée isolant les ingrédients requis (« Nécessaire maintenant ») au-dessus de chaque action ;
+  - **Sous-étapes interactives** : décomposition en gestes atomiques avec cases à cocher persistées localement ;
+  - **Mains libres total** : commande vocale (*« suivant »*, *« précédent »*, *« minuteur »*) et synthèse vocale naturelle ;
+  - **Maintien de l'écran allumé (Wake Lock)** : l'écran ne s'éteint jamais pendant la préparation ;
+- ⏱️ **Minuteurs intégrés & durées composées** : alertes sonores Web Audio mélodieuses, vibrations et gestion des durées scalaires ou composées ;
+- 🌶️ **Aide à la décision anti-fatigue** :
+  - Affichage du **temps total d'exécution** en gras sur les cartes pour arbitrer en 2 secondes ;
+  - Nombre de portions réelles et badge d'indicateur de piquant (`🌶️`) pour les repas familiaux ;
+  - Recherche instantanée par titre ou ingrédient et filtres par catégories culinaires ;
+- 🤖 **Réglages pour robots culinaires (Thermomix)** : badges visuels Cookomix (durée, température, Varoma, sens inverse, vitesse cuillère ou lames, accessoires) ;
+- 📊 **Analyse nutritionnelle CIQUAL traçable** : calcul automatique des calories et macronutriments (protéines, glucides, lipides) par portion issu de l'ANSES ;
+- 🛒 **Évaluation intelligente des courses** : filtre les basiques de placard, classe les ingrédients par rayon et exporte en 1 clic vers **Google Keep** ;
+- 🧠 **Outillage et compétences d'ingestion IA** : skill d'agent standardisé ([`import-recipe-gram`](.agents/skills/import-recipe-gram/SKILL.md)), contrat de schéma strict (`generator/schema.py`) et réconciliation d'ingrédients (`.gram/ingredients.yaml`) ;
 - 🌙 **Thème sombre & clair** : adaptation automatique aux préférences système ou bascule manuelle instantanée ;
-- 🌐 **SEO & Données structurées** : microdonnées Schema.org `Recipe` (JSON-LD), métadonnées Open Graph / Twitter Cards, `sitemap.xml`, `robots.txt` et flux RSS (`feed.xml`) ;
-- 🔒 **Maintien de l'écran allumé (Wake Lock)** : évite la mise en veille de l'écran pendant la cuisine.
+- 🌐 **SEO & Données structurées** : Schema.org `Recipe` JSON-LD avec sous-étapes (`HowToStep` / `HowToDirection`), Open Graph, `sitemap.xml`, canonicals, et flux RSS (`feed.xml`).
+
+---
 
 ## Savoir-faire et import assisté par LLM / IA
 
@@ -169,16 +187,18 @@ variantes officielles plutôt que de les approximer.
 
 ## Ajouter une recette
 
-Créer un fichier `.gram` avec un frontmatter et une instruction par paragraphe :
+Créer un fichier `.gram` avec un frontmatter YAML complet et des instructions découpées en étapes logiques :
 
 ```gram
 ---
-title: Ma recette
+title: Poulet rôti au citron
 portions: 4
 prep_time: 15 min
-total_time: 50 min
-tags: [rapide]
-source: https://example.com/ma-recette
+total_time: 1 h 05 min
+spiciness: 0
+description: Poulet doré à la peau croustillante, jus court parfumé au citron et éclats d'ail en chemise.
+tags: [poulet, four, familial]
+source: https://example.com/poulet-citron
 author: Nom de l'auteur
 scaling:
   enabled: true
@@ -186,19 +206,33 @@ scaling:
   max_portions: 8
   step: 1
   note: Les temps de cuisson restent inchangés.
+flavors:
+  pairing: [poulet, citron, ail, thym]
+  notes: [rôti, acidulé, herbacé]
+  harmony: "L'acidité vive du citron dégraisse la chair du poulet tandis que le thym infuse le jus court."
+  tips: "Arroser le poulet avec son jus à mi-cuisson pour une peau dorée."
+conservation:
+  fridge_days: 3
+  freezable: true
+  reheat: "15 min au four à 150°C"
 ---
 
-[Cuire] Cuire les @pommes de terre{800 g} au #four{} pendant ~{35 min} à ^{190 C}.
+[Préchauffer] Préchauffer le #four{} à ^{200 C}.
+
+[Assaisonner]
+- Frotter le @poulet{1.5 kg} avec le @gros sel{1 c. à soupe} et le @thym frais{4 brins}.
+- Glisser le @citron{1 pièce} coupé en deux et l'@ail{6 gousses} à l'intérieur.
+
+[Rôtir] Enfourner sur une #plaque{} et cuire ~{50 min} jusqu'à ce que la peau soit bien dorée.
 ```
 
-Le générateur utilise un modèle canonique interne. L'adaptateur Gram du MVP
-prend en charge actions, ingrédients, matériel, minuteurs et températures. Son
-remplacement futur par le compilateur officiel ne modifiera ni les templates ni
-les plugins.
+### Règles d'or d'une recette CookiGram
 
-`prep_time` et `total_time` sont affichés sur la fiche ; le temps de
-préparation apparaît également dans le catalogue. Ils sont exportés dans
-`_site/recipes.json` avec le reste du modèle canonique.
+1. **Balisage systématique des ingrédients par étape (Cooking First)** : Chaque ingrédient incorporé à une étape **doit impérativement être balisé** `@ingrédient{quantité}` dans la ligne d'action ou de sous-étape (`- `). C'est ce balisage qui alimente la carte *« Ingrédients pour cette étape »* en Mode Cuisine.
+2. **Intégrité temporelle** : `prep_time` et `total_time` doivent être renseignés et distincts (`total_time` englobe la préparation, les cuissons au four ou Varoma, et les temps de repos indispensables).
+3. **Piquant décisionnel** : `spiciness: 0..3` (0: non épicé, 1: doux, 2: relevé, 3: pimenté).
+4. **Description évocatrice** : 100 à 120 caractères décrivant saveurs et textures clés (pas de texte générique).
+5. **Minuteurs stricts** : Durées scalaires uniques (`~{90 s}`, `~{4 min}`, `~{1 h}`).
 
 ### Déclarer un appareil et sa validation
 
@@ -386,7 +420,7 @@ réussi.
 
 Le build génère un service worker versionné qui précharge le catalogue,
 `recipes.json`, toutes les fiches et tous les modes cuisine, les scripts, les
-styles et les images. Après une première visite terminée, les 23 recettes sont
+styles et les images. Après une première visite terminée, les 38 recettes sont
 donc utilisables en mode avion, image comprise.
 
 Les navigations HTML utilisent une stratégie **network-first** pour obtenir la
@@ -394,3 +428,25 @@ dernière version en ligne, avec repli sur le cache hors ligne. Les autres asset
 utilisent **cache-first**. Le hash des assets change le nom du cache à chaque
 version et l'ancien cache est supprimé lors de l'activation du nouveau service
 worker.
+
+## Vision Produit & Feuille de route (v1 à v10)
+
+CookiGram suit une feuille de route stratégique progressive pour passer de la recette au copilote d'exécution complet ([PDR-0003](decisions/PDR-0003-validation-roadmap-strategique-v1-v10.md) & [ROADMAP_STRATEGIQUE.md](ROADMAP_STRATEGIQUE.md)) :
+
+* **v1 — Recipe OS** : Socle de données déterministe en format `.gram` et moteur nutritionnel CIQUAL traçable.
+* **v2 — Cooking Assistant** : Guidage interactif mains libres en cuisine à 1 mètre avec ingrédients d'étape et minuteurs intégrés (Sprint actuel).
+* **v3 — Kitchen Scheduler** : Ordonnanceur mathématique d'exécution multi-plats sous contraintes (Solveur Google OR-Tools CP-SAT) pour que tout soit prêt simultanément sans stress ([Issue #51](https://github.com/PierreCsn/cookigram/issues/51)).
+* **v4 — Smart Meal Planner** : Planificateur de repas hebdomadaire et liste de courses consolidée sans gâchis avec fond de placard.
+* **v5 — Batch Cooking & Meal Prep** : Mutualisation des découpes, rotation fluide des équipements et chaîne de conservation / remise en température.
+* **v6 — Pragmatic Kitchen Inventory** : Gestion de placard à friction zéro et valorisation intelligente des restes du réfrigérateur.
+* **v7 — Shopping Agent** : Remplissage assisté des paniers Drive marchands sous validation humaine stricte (*Human-in-the-loop*).
+* **v8 — Kitchen Intelligence** : Apprentissage passif des temps réels d'exécution et personnalisation locale (*Privacy-First*).
+* **v9 — Multi-Cook** : Coordination d'une brigade familiale sur plusieurs écrans synchronisés en réseau local.
+* **v10 — CookiGram Pro** : Système d'exécution léger (MES) pour traiteurs et artisans culinaires.
+
+---
+
+## Licence
+
+Ce projet est distribué sous [Licence libre MIT](LICENSE).  
+Copyright (c) 2026 Pierre Cousin.
