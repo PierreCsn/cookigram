@@ -13,7 +13,8 @@
       "branch": "feat/mise-en-place-step",
       "claimed_at": "2026-09-03T17:00:00+02:00",
       "last_heartbeat": "2026-09-03T17:00:00+02:00",
-      "status": "in_progress"
+      "status": "pr_open",
+      "pr": 81
     }
   },
   "completed_claims": [
