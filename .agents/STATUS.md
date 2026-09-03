@@ -20,8 +20,12 @@
   - Cases à cocher d'incorporation par étape
   - Synthèse et reconnaissance vocale mains-libres (« Lancer la cuisson », « Suivant », « Minuteur »)
   - Rendu responsive mobile/tablette sans défilement parasite
-* **🔶 Jalon 3 — Kitchen Scheduler (Prochain cap prioritaire)** :
-  - **Epic #51** : Ordonnanceur mathématique multi-préparations sous contraintes (Solveur Google OR-Tools CP-SAT).
+* **🔶 Jalon 3 — Kitchen Scheduler (Prochain cap prioritaire — Epic #51)** :
+  - **Issue #91** : Typologie d'effort (actif humain vs passif machine) & élasticité thermique.
+  - **Issue #92** : Ergonomie du « Live Cooking Feed » multi-tâches en Mode Cuisine.
+  - **Issue #93** : Verrous d'équipements exclusifs & micro-étapes de transition de lavage.
+  - **Issue #94** : Stratégie Dual-Engine (Python OR-Tools au build vs Micro-Solveur JS natif PWA client).
+  - **Issue #95** : « Le Panier du Menu » (Sélection multi-recettes, courses consolidées & audit matériel).
 
 ---
 

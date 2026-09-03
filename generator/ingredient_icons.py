@@ -157,6 +157,62 @@ ICON_FAMILY_BY_SLUG = {
     "tahini": "tahini",
     "tomates-sechees": "tomate",
     "whisky": "whisky",
+    "levure-boulangere": "levure-chimique",
+    "romarin": "herbes-de-provence",
+    "gousse-de-vanille": "extrait-de-vanille",
+    "kirsch": "whisky",
+    "cacao-en-poudre": "chocolat-noir",
+    "copeaux-de-chocolat": "chocolat-noir",
+    "chocolat-noir": "chocolat-noir",
+    "cerise": "cerise",
+    "poivre-vert": "poivre",
+    "cognac": "whisky",
+    "cepes": "champignon",
+    "harissa": "piment",
+    "pain-d-epices": "pain-de-mie",
+    "biere-brune": "whisky",
+    "jarret-de-veau": "boeuf",
+    "orange": "jus-d-orange",
+}
+
+CATEGORY_FALLBACK_ICONS = {
+    "boissons": "eau",
+    "boissons et alcools": "whisky",
+    "boissons et liquides": "eau",
+    "boucherie et charcuterie": "boeuf",
+    "boucherie et volaille": "boeuf",
+    "boucherie et volailles": "boeuf",
+    "boulangerie": "pain-de-mie",
+    "charcuterie": "lardons",
+    "condiments": "epices-cajun",
+    "condiments et assaisonnements": "epices-cajun",
+    "conserves et bocaux": "concentre-tomate",
+    "crèmerie et oeufs": "produit-laitier",
+    "céréales et féculents": "riz",
+    "fromages": "fromage-rape",
+    "fruits": "pomme",
+    "fruits et légumes": "pomme",
+    "fruits secs": "fruits-secs",
+    "fruits à coque et graines": "fruits-secs",
+    "fruits, légumes, légumineuses et oléagineux": "pomme",
+    "féculents et céréales": "riz",
+    "herbes et épices": "herbes-de-provence",
+    "lait et produits laitiers": "produit-laitier",
+    "légumes et aromates": "oignon",
+    "matières grasses": "huile-vegetale",
+    "poissons et fruits de mer": "filet-de-poisson",
+    "poissons, viandes, œufs": "filet-de-poisson",
+    "produits céréaliers": "pain-de-mie",
+    "produits laitiers": "produit-laitier",
+    "produits laitiers et matières grasses": "produit-laitier",
+    "produits laitiers et substituts": "produit-laitier",
+    "produits sucrés": "sucre",
+    "pâtes et préparations": "pates",
+    "viandes": "boeuf",
+    "viandes et volailles": "boeuf",
+    "épicerie": "farine",
+    "épicerie salée": "farine",
+    "épicerie sucrée": "sucre",
 }
 
 
@@ -173,9 +229,19 @@ class IngredientIconResolver:
         slug = get_ingredient_slug(name, self.database)
         icon_slug = self._variant_slug(slug, quantity)
         filename = f"{icon_slug}.svg"
-        if not (self.icons_dir / filename).is_file():
-            return ""
-        return f"icons/ingredients/{filename}"
+        if (self.icons_dir / filename).is_file():
+            return f"icons/ingredients/{filename}"
+
+        # Category-based fallback if specific icon does not exist
+        entry = self.database.get(slug, {})
+        category = entry.get("category", "").strip().casefold()
+        fallback_slug = CATEGORY_FALLBACK_ICONS.get(category)
+        if fallback_slug:
+            fallback_filename = f"{fallback_slug}.svg"
+            if (self.icons_dir / fallback_filename).is_file():
+                return f"icons/ingredients/{fallback_filename}"
+
+        return ""
 
     @staticmethod
     def _variant_slug(slug: str, quantity: str) -> str:
