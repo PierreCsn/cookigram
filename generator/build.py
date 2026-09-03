@@ -17,6 +17,7 @@ from .seo import (
     build_robots_txt,
     build_rss_feed,
     build_sitemap_xml,
+    compute_similar_recipes,
     is_thermomix_compatible,
 )
 from .utensils import resolve_utensil_icon
@@ -188,6 +189,7 @@ def build(output: Path, site_url: str = DEFAULT_SITE_URL) -> None:
         (recipe_dir / "index.html").write_text(
             env.get_template("recipe.html").render(
                 recipe=recipe,
+                related_recipes=compute_similar_recipes(recipe, recipes),
                 asset_version=version,
                 site_url=clean_site_url,
                 schema_json=schema_json,

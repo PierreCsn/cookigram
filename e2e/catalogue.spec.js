@@ -83,6 +83,31 @@ test.describe('Catalogue: recherche et filtres', () => {
     }
   });
 
+  test('les badges de tags des fiches relient au catalogue filtré via ancre', async ({ page }) => {
+    await page.goto('/recipes/curry-poulet-noix-coco/');
+
+    // Les badges de tags sont des liens explorables vers le catalogue.
+    const curryTag = page.locator('.tag-link', { hasText: 'curry' }).first();
+    await expect(curryTag).toBeVisible();
+    await expect(curryTag).toHaveAttribute('href', '../../#tag-curry');
+
+    // Le clic ramène à l'accueil et active le filtre correspondant.
+    await curryTag.click();
+    await expect(page).toHaveURL(/#tag-curry$/);
+
+    const chip = page.locator('.filter-chips .chip[data-tag="curry"]');
+    await expect(chip).toHaveClass(/active/);
+
+    const visibleCards = page.locator('.recipe-card:visible');
+    const visibleCount = await visibleCards.count();
+    expect(visibleCount).toBeGreaterThan(0);
+    // Chaque carte filtrée affiche bien le tag "curry".
+    const curryCards = await page.locator('.recipe-card:visible').evaluateAll((cards) =>
+      cards.filter((c) => c.getAttribute('data-tags')?.split(' ').includes('curry')).length
+    );
+    expect(curryCards).toBe(visibleCount);
+  });
+
   test('filtre par durée de préparation et cuisson dans les filtres avancés', async ({ page }) => {
     await page.goto('/');
 

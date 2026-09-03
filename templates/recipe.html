@@ -37,7 +37,7 @@
 <header class="topbar"><a class="brand" href="../../"><span class="brand-badge" aria-hidden="true">🍳</span> CookiGram</a><div class="topbar-actions"><button class="share-btn share-btn-compact" type="button" aria-label="Partager la recette" title="Partager la recette">↗</button><button class="theme-toggle" type="button" aria-label="Changer de thème" title="Basculer le mode sombre">🌙</button></div></header>
 <main class="recipe-page">
   <a class="back" href="../../">← Toutes les recettes</a>
-  <section class="recipe-heading"><div><div class="tags">{% for tag in recipe.tags %}<span>{{ tag }}</span>{% endfor %}</div><h1>{{ recipe.title }}</h1><p>{{ recipe.description }}</p>{% if recipe.metadata.flavors %}{% set flavors = recipe.metadata.flavors %}<div class="flavor-panel"><div class="flavor-panel-head"><span class="flavor-label">Saveurs & accord</span>{% if recipe.metadata.spiciness %}<span class="flavor-spice" title="Niveau de piquant sur 5">🌶 {{ recipe.metadata.spiciness }}/5</span>{% endif %}</div>{% if flavors.pairing %}<ul class="flavor-chips flavor-pairing">{% for item in flavors.pairing %}<li>{{ item }}</li>{% endfor %}</ul>{% endif %}{% if flavors.notes %}<ul class="flavor-chips flavor-notes">{% for note in flavors.notes %}<li>{{ note }}</li>{% endfor %}</ul>{% endif %}{% if flavors.harmony %}<p class="flavor-harmony">{{ flavors.harmony }}</p>{% endif %}{% if flavors.tips %}<p class="flavor-tips">{{ flavors.tips }}</p>{% endif %}</div>{% endif %}<div class="facts" data-variant-target="facts">{{ facts(view) }}</div>{% if recipe.metadata.source %}<p class="source">Source : <a href="{{ recipe.metadata.source }}" rel="noreferrer">{{ recipe.metadata.author or recipe.metadata.source }}</a></p>{% endif %}</div><div class="plate">{% if recipe.image %}<img src="../../assets/{{ recipe.image }}" alt="Illustration de {{ recipe.title }}" fetchpriority="high">{% else %}{{ recipe.title[:2]|upper }}{% endif %}</div>{% if recipe.metadata.image_credit %}<p class="image-credit">{{ "Illustration" if recipe.metadata.image_generation else "Photo" }} : <a href="{{ recipe.metadata.image_credit.source }}" rel="noreferrer">{{ recipe.metadata.image_credit.author }}</a> · <a href="{{ recipe.metadata.image_credit.license_url }}" rel="license noreferrer">{{ recipe.metadata.image_credit.license }}</a>{% if recipe.metadata.image_credit.modifications %} · {{ recipe.metadata.image_credit.modifications }}{% endif %}</p>{% endif %}</section>
+  <section class="recipe-heading"><div><div class="tags">{% for tag in recipe.tags %}<a class="tag-link" href="../../#tag-{{ tag }}">{{ tag }}</a>{% endfor %}</div><h1>{{ recipe.title }}</h1><p>{{ recipe.description }}</p>{% if recipe.metadata.flavors %}{% set flavors = recipe.metadata.flavors %}<div class="flavor-panel"><div class="flavor-panel-head"><span class="flavor-label">Saveurs & accord</span>{% if recipe.metadata.spiciness %}<span class="flavor-spice" title="Niveau de piquant sur 5">🌶 {{ recipe.metadata.spiciness }}/5</span>{% endif %}</div>{% if flavors.pairing %}<ul class="flavor-chips flavor-pairing">{% for item in flavors.pairing %}<li>{{ item }}</li>{% endfor %}</ul>{% endif %}{% if flavors.notes %}<ul class="flavor-chips flavor-notes">{% for note in flavors.notes %}<li>{{ note }}</li>{% endfor %}</ul>{% endif %}{% if flavors.harmony %}<p class="flavor-harmony">{{ flavors.harmony }}</p>{% endif %}{% if flavors.tips %}<p class="flavor-tips">{{ flavors.tips }}</p>{% endif %}</div>{% endif %}<div class="facts" data-variant-target="facts">{{ facts(view) }}</div>{% if recipe.metadata.source %}<p class="source">Source : <a href="{{ recipe.metadata.source }}" rel="noreferrer">{{ recipe.metadata.author or recipe.metadata.source }}</a></p>{% endif %}</div><div class="plate">{% if recipe.image %}<img src="../../assets/{{ recipe.image }}" alt="Illustration de {{ recipe.title }}" fetchpriority="high">{% else %}{{ recipe.title[:2]|upper }}{% endif %}</div>{% if recipe.metadata.image_credit %}<p class="image-credit">{{ "Illustration" if recipe.metadata.image_generation else "Photo" }} : <a href="{{ recipe.metadata.image_credit.source }}" rel="noreferrer">{{ recipe.metadata.image_credit.author }}</a> · <a href="{{ recipe.metadata.image_credit.license_url }}" rel="license noreferrer">{{ recipe.metadata.image_credit.license }}</a>{% if recipe.metadata.image_credit.modifications %} · {{ recipe.metadata.image_credit.modifications }}{% endif %}</p>{% endif %}</section>
   {% if recipe.metadata.required_equipment %}<aside class="appliance-required"><b>Matériel indispensable</b><div class="utensils-list">{% for item in (recipe.metadata.equipment_items if recipe.metadata.equipment_items is defined and recipe.metadata.equipment_items else recipe.metadata.required_equipment) %}{% set name = item.name if item.name is defined else item %}{% set icon = item.icon if item.icon is defined else None %}<span class="utensil-badge {% if icon %}has-icon{% else %}no-icon{% endif %}">{% if icon %}<img src="{{ prefix }}assets/icons/utensils/{{ icon }}.webp" alt="" class="utensil-icon" width="24" height="24" loading="lazy">{% else %}<span class="utensil-fallback-icon" aria-hidden="true">🍳</span>{% endif %}<span class="utensil-name">{{ name }}</span></span>{% endfor %}</div>{% if recipe.metadata.appliance_validation %}{% for model, validation in recipe.metadata.appliance_validation.items() %}<small>{{ model }} · compatibilité testée par un humain{% if validation.portions %} sur {{ validation.portions }} portions{% endif %}</small>{% endfor %}{% endif %}</aside>{% endif %}
   {% if recipe.variants|length > 1 %}
   <section class="variant-picker" data-default-variant="{{ view.id }}">
@@ -228,5 +228,26 @@
       </div>
     </div>
   </dialog>
+
+  {% if related_recipes %}
+  <section class="related-recipes" aria-labelledby="related-title">
+    <div class="related-heading">
+      <h2 id="related-title">Recettes similaires</h2>
+      <span class="related-count">{{ related_recipes|length }} recette{% if related_recipes|length > 1 %}s{% endif %}</span>
+    </div>
+    <div class="related-grid">
+      {% for other in related_recipes %}
+      <a class="related-card" href="../{{ other.slug }}/">
+        <div class="card-visual">{% if other.image %}<img src="../../assets/{{ other.image }}" alt="Recette de {{ other.title }}" loading="lazy">{% else %}<span class="card-initials">{{ other.title[:2]|upper }}</span>{% endif %}</div>
+        <div class="related-body">
+          <div class="tags">{% for tag in other.tags[:2] %}<span>{{ tag }}</span>{% endfor %}</div>
+          <h3>{{ other.title }}</h3>
+          <small class="recipe-meta">{% if other.total_time %}<span class="meta-item">⏱ {{ other.total_time }}</span>{% endif %}{% if other.portions %}<span class="meta-item"> · 🍽️ {{ other.portions }} portion{% if other.portions > 1 %}s{% endif %}</span>{% endif %}</small>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
 </main>
 {% endblock %}

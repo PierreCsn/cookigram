@@ -21,10 +21,15 @@ def is_thermomix_compatible(recipe: Recipe) -> bool:
 
 
 def build_recipe_meta_description(recipe: Recipe) -> str:
-    """Build a search snippet in the 120–155 character recommendation range."""
+    """Build a search snippet in the 120–155 character recommendation range.
+
+    The length is measured on the HTML-escaped form (as rendered into a
+    ``<meta>`` tag), so the encoded output never overflows the recommendation
+    even when the copy contains apostrophes or quotes.
+    """
     description = " ".join(str(recipe.description or "").split())
-    if 120 <= len(description) <= 155:
-        return description
+    if len(description) >= 120:
+        return _fit_meta(description)
 
     thermomix_hint = " Préparation guidée au Thermomix." if is_thermomix_compatible(recipe) else ""
     fallback = (
@@ -33,10 +38,138 @@ def build_recipe_meta_description(recipe: Recipe) -> str:
     )
     if len(fallback) < 120:
         fallback += " Cuisinez simplement, pas à pas."
-    if len(fallback) <= 155:
-        return fallback
+    return _fit_meta(fallback)
 
-    return fallback[:152].rsplit(" ", 1)[0].rstrip(".,;:") + "..."
+
+def _escaped_len(text: str) -> int:
+    """Length of the text once HTML-escaped, as emitted in a <meta> tag."""
+    return len(html.escape(text))
+
+
+def _fit_meta(text: str) -> str:
+    """Truncate copy so its HTML-escaped form stays at most 155 characters.
+
+    The caller guarantees the raw text is already at least 120 characters, so
+    the escaped length (which is always >= the raw length) stays within the
+    recommended search-snippet range.
+    """
+    if _escaped_len(text) <= 155:
+        return text
+
+    words = text.split()
+    candidate = text
+    while words and _escaped_len(candidate) > 155:
+        words = words[:-1]
+        candidate = " ".join(words).rstrip(".,;:")
+    if candidate != text and words:
+        candidate = candidate.rstrip(".,;:") + "..."
+    while _escaped_len(candidate) > 155 and len(candidate) > 60:
+        candidate = candidate[:-1]
+    return candidate
+
+
+# Tags that are too generic to convey thematic similarity; they must not
+# dominate the related-recipes scoring ("réconfort", "rapide", ...).
+GENERIC_TAGS = {"rapide", "réconfort", "traditionnel", "thermomix"}
+
+
+def _ingredient_families(recipe: Recipe) -> set[str]:
+    """Normalized ingredient families (main protein/produce) used for topical matches."""
+    families = set()
+    for item in recipe.ingredients:
+        name = item.name.casefold().strip()
+        for family in (
+            "poulet",
+            "porc",
+            "boeuf",
+            "poisson",
+            "saumon",
+            "crevettes",
+            "gambas",
+            "lentilles",
+            "pomme de terre",
+            "carotte",
+            "potiron",
+            "butternut",
+            "asperge",
+            "pois",
+            "pates",
+            "riz",
+        ):
+            if family in name:
+                families.add(family)
+    return families
+
+
+def compute_similar_recipes(recipe: Recipe, all_recipes: list[Recipe], limit: int = 4) -> list[Recipe]:
+    """Deterministically rank the most topically-related recipes.
+
+    Scoring is based on shared meaningful tags (weight 3), overlapping
+    ingredient families (weight 2) and Thermomix compatibility (weight 1).
+    A reciprocal tiebreak prefers candidates whose own broader selection also
+    features this recipe, keeping the internal-linking mesh balanced and
+    bidirectional. The result is stable across builds (score desc, then
+    reciprocity, then slug asc).
+    """
+    candidates = [other for other in all_recipes if other.slug != recipe.slug]
+    own_tags = {str(tag).casefold() for tag in recipe.tags}
+    own_families = _ingredient_families(recipe)
+    own_tmx = is_thermomix_compatible(recipe)
+
+    scored: list[tuple[int, str, Recipe]] = []
+    for other in candidates:
+        score = _similarity_score(recipe, other, own_tags, own_families, own_tmx)
+        if score > 0:
+            scored.append((score, other.slug, other))
+
+    scored.sort(key=lambda item: (-item[0], item[1]))
+
+    if len(scored) <= limit:
+        return [item[2] for item in scored]
+
+    # Favour candidates that already rank this recipe in their own top-K, so
+    # the mesh is reciprocated (bidirectional) rather than one-way. Based purely
+    # on the symmetric score, it is deterministic and independent of the order
+    # recipes are processed in.
+    wider_window = limit + 2
+    reciprocal_pool: set[str] = set()
+    for other in candidates:
+        other_tags = {str(tag).casefold() for tag in other.tags}
+        other_families = _ingredient_families(other)
+        other_tmx = is_thermomix_compatible(other)
+        ranked: list[tuple[int, str]] = []
+        for candidate in all_recipes:
+            if candidate.slug == other.slug:
+                continue
+            s = _similarity_score(other, candidate, other_tags, other_families, other_tmx)
+            if s > 0:
+                ranked.append((s, candidate.slug))
+        ranked.sort(key=lambda item: (-item[0], item[1]))
+        top = {slug for _, slug in ranked[:wider_window]}
+        if recipe.slug in top:
+            reciprocal_pool.add(other.slug)
+
+    ordered = [(score, 0 if slug in reciprocal_pool else 1, slug, other) for score, slug, other in scored]
+    ordered.sort(key=lambda item: (-item[0], item[1], item[2]))
+    return [item[3] for item in ordered[:limit]]
+
+
+def _similarity_score(
+    a: Recipe,
+    b: Recipe,
+    a_tags: set[str] | None = None,
+    a_families: set[str] | None = None,
+    a_tmx: bool | None = None,
+) -> int:
+    """Raw symmetric topical-similarity score between two recipes."""
+    a_tag_set = a_tags if a_tags is not None else {str(tag).casefold() for tag in a.tags}
+    b_tag_set = {str(tag).casefold() for tag in b.tags}
+    meaningful_shared = len((a_tag_set & b_tag_set) - GENERIC_TAGS)
+    a_family_set = a_families if a_families is not None else _ingredient_families(a)
+    shared_families = len(a_family_set & _ingredient_families(b))
+    a_is_tmx = a_tmx if a_tmx is not None else is_thermomix_compatible(a)
+    shared_tmx = 1 if a_is_tmx and is_thermomix_compatible(b) else 0
+    return meaningful_shared * 3 + shared_families * 2 + shared_tmx
 
 
 def format_iso_duration(time_str: str | None) -> str | None:
