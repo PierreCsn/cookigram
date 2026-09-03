@@ -82,4 +82,37 @@ test.describe('Catalogue: recherche et filtres', () => {
       await expect(advChip).not.toHaveClass(/active/);
     }
   });
+
+  test('filtre par durée de préparation et cuisson dans les filtres avancés', async ({ page }) => {
+    await page.goto('/');
+
+    const initialTotal = await page.locator('.recipe-card:visible').count();
+    const advToggle = page.locator('.advanced-filter-toggle');
+    const advPanel = page.locator('#advanced-filters-panel');
+
+    await expect(advPanel).toBeHidden();
+    await advToggle.click();
+    await expect(advPanel).toBeVisible();
+
+    // Filtre "Prêt en <= 30 min"
+    const under30Chip = advPanel.locator('.time-chip[data-time-filter="under-30"]');
+    await under30Chip.click();
+    await expect(under30Chip).toHaveClass(/active/);
+
+    const filteredCards = page.locator('.recipe-card:visible');
+    const filteredCount = await filteredCards.count();
+    expect(filteredCount).toBeGreaterThan(0);
+    expect(filteredCount).toBeLessThan(initialTotal);
+
+    // Vérifier que le badge de filtres actifs affiche 1
+    const badge = page.locator('.adv-badge');
+    await expect(badge).toBeVisible();
+    await expect(badge).toHaveText('1');
+
+    // Cliquer à nouveau pour désactiver le filtre de durée
+    await under30Chip.click();
+    await expect(under30Chip).not.toHaveClass(/active/);
+    await expect(page.locator('.recipe-card:visible')).toHaveCount(initialTotal);
+    await expect(badge).toBeHidden();
+  });
 });

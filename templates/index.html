@@ -44,29 +44,41 @@
         <button type="button" class="chip" data-tag="{{ tag }}">{{ tag|capitalize }}</button>
         {% endfor %}
       </div>
-      {% if advanced_tags is defined and advanced_tags %}
       <button type="button" class="advanced-filter-toggle" aria-expanded="false" aria-controls="advanced-filters-panel" title="Ouvrir les filtres avancés">
         <span class="adv-icon">⚙️</span>
         <span class="adv-label">Filtres avancés</span>
         <span class="adv-badge" hidden>0</span>
         <span class="adv-chevron" aria-hidden="true">▾</span>
       </button>
-      {% endif %}
     </div>
 
-    {% if advanced_tags is defined and advanced_tags %}
     <div id="advanced-filters-panel" class="advanced-filters-panel" hidden>
       <div class="advanced-filters-header">
-        <span class="adv-header-title">Options & Tags avancés</span>
+        <span class="adv-header-title">Filtres avancés</span>
         <button type="button" class="clear-advanced-btn" hidden>Réinitialiser</button>
       </div>
-      <div class="advanced-chips-group">
-        {% for tag in advanced_tags %}
-        <button type="button" class="chip adv-chip" data-advanced-tag="{{ tag }}">{{ tag }}</button>
-        {% endfor %}
+
+      <div class="advanced-filter-section">
+        <span class="adv-section-label">⏱ Temps disponible & Préparation</span>
+        <div class="advanced-chips-group time-chips-group" role="group" aria-label="Filtrer par durée">
+          <button type="button" class="chip time-chip" data-time-filter="under-30">⚡ Prêt en ≤ 30 min</button>
+          <button type="button" class="chip time-chip" data-time-filter="under-45">⏱ Moins de 45 min</button>
+          <button type="button" class="chip time-chip" data-time-filter="over-45">🍲 Plats mijotés (> 45 min)</button>
+          <button type="button" class="chip time-chip" data-time-filter="prep-under-15">🔪 Prép. express (≤ 15 min)</button>
+        </div>
       </div>
+
+      {% if advanced_tags is defined and advanced_tags %}
+      <div class="advanced-filter-section">
+        <span class="adv-section-label">🏷️ Catégories spécifiques</span>
+        <div class="advanced-chips-group">
+          {% for tag in advanced_tags %}
+          <button type="button" class="chip adv-chip" data-advanced-tag="{{ tag }}">{{ tag }}</button>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
     </div>
-    {% endif %}
   </div>
 
     <div class="section-title">

@@ -16,6 +16,30 @@ export const normalizeText = (str) =>
     .trim();
 
 /**
+ * Parses duration strings like "35 min", "1 h 10 min", "2 h" into total minutes.
+ * Returns null if duration cannot be parsed.
+ *
+ * @param {string} str
+ * @returns {number|null}
+ */
+export const parseDurationMinutes = (str) => {
+  if (!str || typeof str !== 'string') return null;
+  let total = 0;
+  let matched = false;
+  const hourMatch = str.match(/(\d+)\s*h/i);
+  if (hourMatch) {
+    total += parseInt(hourMatch[1], 10) * 60;
+    matched = true;
+  }
+  const minMatch = str.match(/(\d+)\s*min/i);
+  if (minMatch) {
+    total += parseInt(minMatch[1], 10);
+    matched = true;
+  }
+  return matched ? total : null;
+};
+
+/**
  * Initializes catalogue search, chips, and advanced filter drawer.
  */
 export const initCatalogueSearch = () => {
@@ -46,15 +70,17 @@ export const initCatalogueSearch = () => {
 
   let activeTag = 'all';
   const activeAdvancedTags = new Set();
+  let activeTimeFilter = null;
 
   const advancedToggleBtn = document.querySelector('.advanced-filter-toggle');
   const advancedPanel = document.getElementById('advanced-filters-panel');
   const advChips = document.querySelectorAll('.adv-chip');
+  const timeChips = document.querySelectorAll('.time-chip');
   const clearAdvancedBtn = document.querySelector('.clear-advanced-btn');
   const advBadge = document.querySelector('.adv-badge');
 
   const updateAdvancedUI = () => {
-    const count = activeAdvancedTags.size;
+    const count = activeAdvancedTags.size + (activeTimeFilter ? 1 : 0);
     if (advBadge) {
       advBadge.textContent = count;
       advBadge.hidden = count === 0;
@@ -75,6 +101,24 @@ export const initCatalogueSearch = () => {
     });
   }
 
+  timeChips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.timeFilter;
+      if (activeTimeFilter === filter) {
+        activeTimeFilter = null;
+        chip.classList.remove('active');
+      } else {
+        activeTimeFilter = filter;
+        timeChips.forEach((c) => {
+          c.classList.remove('active');
+        });
+        chip.classList.add('active');
+      }
+      updateAdvancedUI();
+      filterCatalogue();
+    });
+  });
+
   advChips.forEach((chip) => {
     chip.addEventListener('click', () => {
       const tag = chip.dataset.advancedTag;
@@ -92,7 +136,11 @@ export const initCatalogueSearch = () => {
 
   clearAdvancedBtn?.addEventListener('click', () => {
     activeAdvancedTags.clear();
+    activeTimeFilter = null;
     advChips.forEach((c) => {
+      c.classList.remove('active');
+    });
+    timeChips.forEach((c) => {
       c.classList.remove('active');
     });
     updateAdvancedUI();
@@ -120,12 +168,29 @@ export const initCatalogueSearch = () => {
       const matchesAdvanced =
         activeAdvancedTags.size === 0 ||
         [...activeAdvancedTags].every((t) => tags.includes(normalizeText(t)));
+
+      let matchesTime = true;
+      if (activeTimeFilter) {
+        const totalMinutes = parseDurationMinutes(card.dataset.totalTime);
+        const prepMinutes = parseDurationMinutes(card.dataset.prepTime);
+
+        if (activeTimeFilter === 'under-30') {
+          matchesTime = totalMinutes !== null && totalMinutes <= 30;
+        } else if (activeTimeFilter === 'under-45') {
+          matchesTime = totalMinutes !== null && totalMinutes <= 45;
+        } else if (activeTimeFilter === 'over-45') {
+          matchesTime = totalMinutes !== null && totalMinutes > 45;
+        } else if (activeTimeFilter === 'prep-under-15') {
+          matchesTime = prepMinutes !== null && prepMinutes <= 15;
+        }
+      }
+
       const fullText = `${title} ${desc} ${tags} ${ingredients}`;
       const matchesQuery =
         queryTokens.length === 0 ||
         queryTokens.every((token) => fullText.includes(token));
 
-      const isVisible = matchesTag && matchesAdvanced && matchesQuery;
+      const isVisible = matchesTag && matchesAdvanced && matchesTime && matchesQuery;
       card.style.display = isVisible ? '' : 'none';
       if (isVisible) visibleCount++;
     });
@@ -167,7 +232,11 @@ export const initCatalogueSearch = () => {
       c.classList.toggle('active', c.dataset.tag === 'all');
     });
     activeAdvancedTags.clear();
+    activeTimeFilter = null;
     advChips.forEach((c) => {
+      c.classList.remove('active');
+    });
+    timeChips.forEach((c) => {
       c.classList.remove('active');
     });
     updateAdvancedUI();
