@@ -140,3 +140,52 @@ test.describe('Responsive : cibles tactiles >= 44px sur mobile', () => {
     expect(box.width).toBeGreaterThanOrEqual(MIN);
   });
 });
+
+test.describe('Responsive : alignement et lisibilité des ingrédients', () => {
+  for (const width of [360, 390]) {
+    test(`les noms d'ingrédients restent lisibles et non tronqués à ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto('/recipes/butter-chicken/');
+
+      const ingredientNames = await page.evaluate(() => {
+        return [...document.querySelectorAll('.ingredient-item')].map((li) => {
+          const labelEl = li.querySelector('.ingredient-label');
+          const nameEl = li.querySelector('.ingredient-name');
+          const strongEl = li.querySelector('strong');
+          const labelRect = labelEl.getBoundingClientRect();
+          const nameRect = nameEl.getBoundingClientRect();
+          return {
+            name: nameEl.textContent.trim(),
+            labelWidth: labelRect.width,
+            nameHeight: nameRect.height,
+            strongText: strongEl ? strongEl.textContent.trim() : '',
+          };
+        });
+      });
+
+      for (const item of ingredientNames) {
+        expect(item.labelWidth, `largeur conteneur nom "${item.name}"`).toBeGreaterThanOrEqual(100);
+        // Empêcher l'écrasement vertical en lettre-par-lettre (hauteur anormale > 60px)
+        expect(item.nameHeight, `hauteur nom "${item.name}"`).toBeLessThanOrEqual(55);
+      }
+    });
+
+    test(`les ingrédients en mode cuisine ne débordent pas à ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto('/recipes/butter-chicken/cook/');
+
+      const card = page.locator('.cook-step.active .step-ingredients-card').first();
+      if ((await card.count()) > 0) {
+        const cardBox = await card.boundingBox();
+        expect(cardBox).not.toBeNull();
+        const items = page.locator('.cook-step.active .step-ingredient-item');
+        const count = await items.count();
+        for (let i = 0; i < count; i += 1) {
+          const itemBox = await items.nth(i).boundingBox();
+          expect(itemBox).not.toBeNull();
+          expect(itemBox.x + itemBox.width).toBeLessThanOrEqual(cardBox.x + cardBox.width + 2);
+        }
+      }
+    });
+  }
+});
