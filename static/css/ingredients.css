@@ -57,7 +57,6 @@
 .shopping-btn.highlight:hover {
   background:#d85f2c;
 }
-
 .shopping-hint {
   margin:0 0 16px;
   color:var(--muted);
@@ -84,8 +83,8 @@
 
 .ingredient-label {
   display:flex;
-  align-items:flex-start;
-  gap:12px;
+  align-items:center;
+  gap:10px;
   cursor:pointer;
   flex:1 1 auto;
   min-width:0;
@@ -129,6 +128,19 @@
 .ingredient-item.checked strong {
   opacity:.4;
   text-decoration:line-through;
+}
+
+.ingredient-icon {
+  display:block;
+  flex:0 0 auto;
+  width:24px;
+  height:24px;
+  object-fit:contain;
+}
+
+.ingredient-icon--cook {
+  width:32px;
+  height:32px;
 }
 
 @media (max-width: 480px) {

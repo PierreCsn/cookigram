@@ -8,6 +8,7 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from .gram import parse_recipe
+from .ingredient_icons import IngredientIconResolver, attach_ingredient_icons
 from .plugins import PluginManager
 from .seo import (
     DEFAULT_SITE_URL,
@@ -115,8 +116,10 @@ def build(output: Path, site_url: str = DEFAULT_SITE_URL) -> None:
 
     recipes = [parse_recipe(path) for path in sorted((ROOT / "recipes").glob("*.gram"))]
     plugin_manager = PluginManager.from_directory(ROOT / "plugins")
+    icon_resolver = IngredientIconResolver(ROOT)
     for recipe in recipes:
         plugin_manager.apply(recipe)
+        attach_ingredient_icons(recipe, icon_resolver)
 
     version = compute_asset_version(output / "assets")
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape())

@@ -79,7 +79,88 @@ test.describe('Catalogue: recherche et filtres', () => {
       const clearAdvBtn = advPanel.locator('.clear-advanced-btn');
       await expect(clearAdvBtn).toBeVisible();
       await clearAdvBtn.click();
-      await expect(advChip).not.toHaveClass(/active/);
+      await expect(clearAdvBtn).not.toHaveClass(/active/);
     }
+  });
+
+  test('filtre par durée de préparation et cuisson dans les filtres avancés', async ({ page }) => {
+    await page.goto('/');
+
+    const initialTotal = await page.locator('.recipe-card:visible').count();
+    const advToggle = page.locator('.advanced-filter-toggle');
+    const advPanel = page.locator('#advanced-filters-panel');
+
+    await expect(advPanel).toBeHidden();
+    await advToggle.click();
+    await expect(advPanel).toBeVisible();
+
+    // Filtre "Prêt en <= 30 min"
+    const under30Chip = advPanel.locator('.time-chip[data-time-filter="under-30"]');
+    await under30Chip.click();
+    await expect(under30Chip).toHaveClass(/active/);
+
+    const filteredCards = page.locator('.recipe-card:visible');
+    const filteredCount = await filteredCards.count();
+    expect(filteredCount).toBeGreaterThan(0);
+    expect(filteredCount).toBeLessThan(initialTotal);
+
+    // Vérifier que le badge de filtres actifs affiche 1
+    const badge = page.locator('.adv-badge');
+    await expect(badge).toBeVisible();
+    await expect(badge).toHaveText('1');
+
+    // Cliquer à nouveau pour désactiver le filtre de durée
+    await under30Chip.click();
+    await expect(under30Chip).not.toHaveClass(/active/);
+    await expect(page.locator('.recipe-card:visible')).toHaveCount(initialTotal);
+    await expect(badge).toBeHidden();
+  });
+});
+
+test.describe('Catalogue: harmonisation des cartes (#34)', () => {
+  test('les visuels chargent avec un fondu et désactivent le shimmer', async ({ page }) => {
+    await page.goto('/');
+
+    const visual = page.locator('.card-visual').first();
+    const img = visual.locator('img');
+
+    await expect(img).toBeVisible();
+    // Une fois l'image décodée, le shimmer s'arrête et le fondu se déclenche.
+    await expect(visual).toHaveClass(/is-loaded/, { timeout: 15000 });
+    // Le fondu termine sur une opacité pleine (transition 0.25s).
+    await expect(img).toHaveCSS('opacity', '1', { timeout: 5000 });
+
+    const transitionDuration = await img.evaluate((el) => {
+      const { transitionDuration: d } = getComputedStyle(el);
+      return parseFloat(d);
+    });
+    expect(transitionDuration).toBeGreaterThanOrEqual(0.25);
+  });
+
+  test('les métadonnées des cartes d\'une même rangée sont alignées en bas', async ({ page }) => {
+    await page.goto('/');
+
+    const rows = await page.evaluate(() => {
+      const metas = [...document.querySelectorAll('.recipe-card .recipe-meta')];
+      const positions = metas.map((meta) => {
+        const card = meta.closest('.recipe-card');
+        const cardRect = card.getBoundingClientRect();
+        const metaRect = meta.getBoundingClientRect();
+        return {
+          top: Math.round(cardRect.top),
+          gapFromBottom: Math.round(cardRect.bottom - metaRect.bottom),
+        };
+      });
+      positions.sort((a, b) => a.top - b.top);
+      return positions;
+    });
+
+    // Les cartes d'une même rangée visuelle partagent le même offset haut.
+    const firstRowTop = rows[0].top;
+    const firstRow = rows.filter((r) => r.top === firstRowTop);
+    // Tous les pieds reposent au même niveau : écart au bas identique.
+    const gaps = new Set(firstRow.map((r) => r.gapFromBottom));
+    expect(firstRow.length).toBeGreaterThan(1);
+    expect(gaps.size).toBe(1);
   });
 });

@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 from generator.build import build
@@ -132,6 +133,33 @@ def test_build_generates_seo_assets_and_metadata(tmp_path: Path):
     assert '<meta property="og:type" content="website">' in index_html
     assert 'href="https://custom.domain.com/cook/feed.xml"' in index_html
     assert 'href="https://custom.domain.com/cook/sitemap.xml"' in index_html
+
+
+def test_build_home_declares_title_and_websites_organization_schema(tmp_path: Path):
+    output_dir = tmp_path / "_site"
+    site_url = "https://custom.domain.com/cook"
+    build(output_dir, site_url=site_url)
+
+    index_html = (output_dir / "index.html").read_text(encoding="utf-8")
+
+    # Balise <title> explicite et calibrée (45-65 caractères) avec ancrage culinaire.
+    assert "<title>CookiGram 🍳 — Carnet de recettes guidées et Thermomix</title>" in index_html
+    title_match = re.search(r"<title>(.*?)</title>", index_html)
+    assert title_match is not None
+    title_len = len(title_match.group(1))
+    assert 45 <= title_len <= 65, f"<title> de {title_len} caractères hors périmètre 45-65"
+
+    # JSON-LD : WebSite (avec SearchAction) et Organization.
+    assert 'type="application/ld+json"' in index_html
+    assert '"@type": "WebSite"' in index_html
+    assert '"@type": "SearchAction"' in index_html
+    assert '"urlTemplate": "https://custom.domain.com/cook/?q={search_term_string}"' in index_html
+    assert '"@type": "Organization"' in index_html
+    assert "https://custom.domain.com/cook/assets/icons/icon-512.png" in index_html
+
+    # H1 et sous-titre présents, ancrés sur la thématique culinaire.
+    assert "<h1" in index_html
+    assert "Thermomix" in index_html and "guidées" in index_html
 
 
 def test_build_declares_rel_icon_and_serves_icon_assets(tmp_path: Path):

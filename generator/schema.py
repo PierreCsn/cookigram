@@ -156,3 +156,44 @@ def validate_recipe_contract(recipe: Recipe, path: Path, metadata: dict[str, Any
                     models,
                     f"models for appliance '{app_name}' must be a list of supported model strings",
                 )
+
+    # 9. Piquant (spiciness) & profil de saveurs (flavors) — champ facultatif
+    spiciness = metadata.get("spiciness")
+    if spiciness is not None:
+        if not isinstance(spiciness, int) or isinstance(spiciness, bool) or not 0 <= spiciness <= 5:
+            raise RecipeValidationError(path, "spiciness", spiciness, "spiciness must be an integer between 0 and 5")
+
+    flavors = metadata.get("flavors")
+    if flavors is not None:
+        if not isinstance(flavors, dict):
+            raise RecipeValidationError(path, "flavors", flavors, "flavors must be a dictionary")
+
+        pairing = flavors.get("pairing")
+        if (
+            not isinstance(pairing, list)
+            or not pairing
+            or not all(isinstance(item, str) and item.strip() for item in pairing)
+        ):
+            raise RecipeValidationError(
+                path, "flavors.pairing", pairing, "flavors.pairing must be a non-empty list of non-empty strings"
+            )
+
+        notes = flavors.get("notes")
+        if (
+            not isinstance(notes, list)
+            or not notes
+            or not all(isinstance(item, str) and item.strip() for item in notes)
+        ):
+            raise RecipeValidationError(
+                path, "flavors.notes", notes, "flavors.notes must be a non-empty list of non-empty strings"
+            )
+
+        for text_field in ("harmony", "tips"):
+            value = flavors.get(text_field)
+            if value is not None and (not isinstance(value, str) or not value.strip()):
+                raise RecipeValidationError(
+                    path,
+                    f"flavors.{text_field}",
+                    value,
+                    f"flavors.{text_field} must be a non-empty string when declared",
+                )

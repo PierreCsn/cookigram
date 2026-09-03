@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test, { describe } from 'node:test';
 
-import { normalizeText } from '../../static/js/modules/search.js';
+import { normalizeText, parseDurationMinutes } from '../../static/js/modules/search.js';
 import {
   formatSpeechText,
   parseVoiceCommand,
@@ -15,6 +15,31 @@ describe('Frontend Pure Helper Unit Tests', () => {
       assert.strictEqual(normalizeText('  Coupé en morceaux  '), 'coupe en morceaux');
       assert.strictEqual(normalizeText(''), '');
       assert.strictEqual(normalizeText(null), '');
+    });
+  });
+
+  describe('parseDurationMinutes (Duration Parsing)', () => {
+    test('parses minute-only strings', () => {
+      assert.strictEqual(parseDurationMinutes('35 min'), 35);
+      assert.strictEqual(parseDurationMinutes('10 min'), 10);
+      assert.strictEqual(parseDurationMinutes('45min'), 45);
+    });
+
+    test('parses hour-only strings', () => {
+      assert.strictEqual(parseDurationMinutes('1 h'), 60);
+      assert.strictEqual(parseDurationMinutes('2 h'), 120);
+    });
+
+    test('parses combined hours and minutes', () => {
+      assert.strictEqual(parseDurationMinutes('1 h 10 min'), 70);
+      assert.strictEqual(parseDurationMinutes('1 h 30 min'), 90);
+    });
+
+    test('handles empty or invalid duration tokens gracefully', () => {
+      assert.strictEqual(parseDurationMinutes(''), null);
+      assert.strictEqual(parseDurationMinutes(null), null);
+      assert.strictEqual(parseDurationMinutes(undefined), null);
+      assert.strictEqual(parseDurationMinutes('inconnu'), null);
     });
   });
 

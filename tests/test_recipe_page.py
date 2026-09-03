@@ -77,3 +77,26 @@ def test_shopping_toolbar_is_pared_down_but_export_remains_in_modal():
     assert "copy-list" in modal
     assert "keep-list" in modal
     assert "share-list" in modal
+
+
+def test_recipe_page_renders_flavor_panel_when_present():
+    recipe = parse_recipe(Path("recipes/porc-au-caramel.gram"))
+    env = Environment(loader=FileSystemLoader(Path("templates")), autoescape=select_autoescape())
+    rendered = env.get_template("recipe.html").render(recipe=recipe)
+
+    assert "flavor-panel" in rendered
+    assert "Saveurs & accord" in rendered
+    assert "flavor-pairing" in rendered
+    assert "échine de porc" in rendered
+    assert "flavor-notes" in rendered
+    assert "sucré-salé" in rendered
+    assert "flavor-harmony" in rendered
+    assert "flavor-spice" in rendered
+
+
+def test_recipe_page_omits_flavor_panel_when_absent():
+    recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
+    env = Environment(loader=FileSystemLoader(Path("templates")), autoescape=select_autoescape())
+    rendered = env.get_template("recipe.html").render(recipe=recipe)
+
+    assert "flavor-panel" not in rendered

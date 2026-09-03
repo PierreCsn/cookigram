@@ -127,3 +127,34 @@ def test_unknown_ingredient_raises_validation_error(tmp_path):
         parse_recipe(recipe_file, validate=True)
     assert exc.value.field == "ingredients"
     assert "ingredient_totalement_inconnu_xyz" in str(exc.value)
+
+
+def test_valid_flavors_and_spiciness_pass_contract(tmp_path):
+    content = VALID_FRONTMATTER.replace(
+        "scaling:",
+        "spiciness: 2\nflavors:\n  pairing:\n  - poulet\n  - citron\n  notes:\n  - acidulé\n  - frais\n  harmony: Un accord vif et léger.\nscaling:",
+    )
+    recipe_file = tmp_path / "flavored.gram"
+    recipe_file.write_text(content, encoding="utf-8")
+    recipe = parse_recipe(recipe_file, validate=True)
+    assert recipe.metadata["spiciness"] == 2
+    assert recipe.metadata["flavors"]["pairing"] == ["poulet", "citron"]
+    assert recipe.metadata["flavors"]["notes"] == ["acidulé", "frais"]
+
+
+def test_invalid_spiciness_raises_validation_error(tmp_path):
+    content = VALID_FRONTMATTER.replace("scaling:", "spiciness: 9\nscaling:")
+    recipe_file = tmp_path / "invalid.gram"
+    recipe_file.write_text(content, encoding="utf-8")
+    with pytest.raises(RecipeValidationError) as exc:
+        parse_recipe(recipe_file, validate=True)
+    assert exc.value.field == "spiciness"
+
+
+def test_malformed_flavors_raises_validation_error(tmp_path):
+    content = VALID_FRONTMATTER.replace("scaling:", "flavors:\n  pairing: []\nscaling:")
+    recipe_file = tmp_path / "invalid.gram"
+    recipe_file.write_text(content, encoding="utf-8")
+    with pytest.raises(RecipeValidationError) as exc:
+        parse_recipe(recipe_file, validate=True)
+    assert exc.value.field == "flavors.pairing"

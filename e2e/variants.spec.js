@@ -28,3 +28,24 @@ test('le sélecteur mobile reste accessible et transmet la variante au mode cuis
   await expect(page.getByText('À réaliser en parallèle')).toBeVisible();
   await expect(page.locator('.parallel-checkbox')).toHaveCount(2);
 });
+
+test('affiche le panneau saveurs (accord, notes, piquant) sur une recette riche', async ({ page }) => {
+  await page.goto('/recipes/porc-au-caramel/');
+  const panel = page.locator('.flavor-panel');
+  await expect(panel).toBeVisible();
+  await expect(panel.locator('.flavor-label')).toHaveText('Saveurs & accord');
+  await expect(panel.locator('.flavor-chips.flavor-pairing li')).toHaveText([
+    'échine de porc',
+    'caramel',
+    'gingembre',
+    'sauce soja',
+  ]);
+  await expect(panel.locator('.flavor-chips.flavor-notes li')).toHaveText(['sucré-salé', 'umami', 'laqué']);
+  await expect(panel.locator('.flavor-harmony')).toBeVisible();
+  await expect(panel.locator('.flavor-spice')).toContainText('1/5');
+});
+
+test("n'affiche pas de panneau saveurs sans flavors", async ({ page }) => {
+  await page.goto('/recipes/blanquette-de-poulet/');
+  await expect(page.locator('.flavor-panel')).toHaveCount(0);
+});
