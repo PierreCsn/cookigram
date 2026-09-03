@@ -66,8 +66,7 @@ Dernier audit : 3 septembre 2026.
   navigateur.
 - [x] Faire dépendre le déploiement GitHub Pages de la réussite de la CI, ou
   fusionner build, tests et déploiement dans un pipeline ordonné.
-- [x] Aligner les versions Python annoncées dans le README et celles testées par
-  la matrice CI, notamment Python 3.13.
+- [x] Unifier la validation CI sur Python 3.12 unique (suppression de la matrice multi-versions redondante, compatibilité 3.11 garantie par Ruff et Mypy).
 - [x] Remplacer le badge de couverture statique par une mesure générée, ou le
   mettre à jour automatiquement.
 

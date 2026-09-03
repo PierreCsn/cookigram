@@ -3,7 +3,7 @@
 [![Deploy GitHub Pages](https://github.com/PierreCsn/cookigram/actions/workflows/pages.yml/badge.svg)](https://github.com/PierreCsn/cookigram/actions/workflows/pages.yml)
 [![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen.svg)](#tests-et-qualité)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)](pyproject.toml)
+[![Python](https://img.shields.io/badge/python-3.12-blue.svg)](pyproject.toml)
 [![Gram Language](https://img.shields.io/badge/Gram-Gram%20Language-orange.svg)](https://gram-lang.org)
 
 > **Le Système d'Exploitation de la Cuisine · Local-First, Libre et Conçu pour le Plan de Travail.**
@@ -80,7 +80,9 @@ Ouvrir [http://localhost:8000](http://localhost:8000) dans votre navigateur. Les
 
 ## Tests et qualité
 
-Le projet est validé par une suite complète de tests automatisés (Python & JavaScript) atteignant **89% de couverture** :
+Le projet est validé par une suite complète de tests automatisés (Python & JavaScript) atteignant **89% de couverture**.
+
+> **Environnement CI unifié :** L'intégration continue (`ci.yml`) s'exécute sur une version unique **Python 3.12** (alignée avec les jobs Playwright E2E et de déploiement GitHub Pages), divisant le temps de pipeline par trois. La compatibilité descendante avec Python 3.11+ est garantie statiquement via Ruff (`target-version = "py311"`) et Mypy (`python_version = "3.11"`).
 
 ```bash
 # Tests unitaires Python avec rapport de couverture
@@ -409,12 +411,11 @@ Une page protégée peut nécessiter une capture ou un export fourni par
 l'utilisateur. Les réglages d'un appareil ne doivent jamais être déduits d'une
 recette incomplète.
 
-## GitHub Pages
+## Intégration continue (CI) & GitHub Pages
 
-Dans le dépôt GitHub, ouvrir **Settings → Pages → Source** et sélectionner
-**GitHub Actions**. Chaque push sur `main` lance d'abord la CI ; le workflow de
-déploiement ne reconstruit et ne publie le site que si tous les contrôles ont
-réussi.
+Dans le dépôt GitHub, chaque pull request et chaque push sur `main` déclenche le workflow d'intégration continue (`ci.yml`) :
+* **Validation unifiée** : Les suites de tests unitaires, de typage, de linting et de parcours E2E sont exécutées sous **Python 3.12** et **Node.js 22**.
+* **Déploiement conditionnel** : GitHub Pages (`pages.yml`) ne reconstruit et ne publie le site en production que si tous les contrôles de la CI ont réussi avec succès.
 
 ## Fonctionnement hors ligne
 

@@ -3,7 +3,7 @@
 [![Deploy GitHub Pages](https://github.com/PierreCsn/cookigram/actions/workflows/pages.yml/badge.svg)](https://github.com/PierreCsn/cookigram/actions/workflows/pages.yml)
 [![Coverage](https://img.shields.io/badge/coverage-88%25-brightgreen.svg)](#testing-and-quality)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)](pyproject.toml)
+[![Python](https://img.shields.io/badge/python-3.12-blue.svg)](pyproject.toml)
 [![Gram Language](https://img.shields.io/badge/Gram-Gram%20Language-orange.svg)](https://gram-lang.org)
 
 A modern, offline-first static recipe notebook and Progressive Web App (PWA) powered by [Gram language](https://gram-lang.org) files.
@@ -70,7 +70,9 @@ Open [http://localhost:8000](http://localhost:8000) in your browser. Recipe file
 
 ## Testing and Quality
 
-CookiGram maintains a strict test suite across Python and JavaScript achieving **89% code coverage**:
+CookiGram maintains a strict test suite across Python and JavaScript achieving **89% code coverage**.
+
+> **Unified CI Environment:** Continuous integration (`ci.yml`) runs on a single **Python 3.12** runtime (aligned with Playwright E2E and GitHub Pages deployment jobs), speeding up build cycles threefold. Backward compatibility with Python 3.11+ remains strictly enforced via Ruff (`target-version = "py311"`) and Mypy (`python_version = "3.11"`).
 
 ```bash
 # Python unit tests with coverage report
@@ -154,11 +156,10 @@ appliance_validation:
 Only record `human-tested` after an explicit report, and include the yield that
 was actually tested.
 
-## GitHub Pages and offline use
+## Continuous Integration (CI) & GitHub Pages
 
-Configure **Settings → Pages → Source** to use **GitHub Actions**. A push to
-`main` runs CI first; Pages deploys the exact tested commit only after CI
-succeeds.
+Configure **Settings → Pages → Source** to use **GitHub Actions**. Every pull request and push to
+`main` triggers the CI workflow (`ci.yml`) running tests and Playwright on Python 3.12 and Node.js 22. Pages deploys the exact tested commit only after all CI checks succeed.
 
 The generated, versioned service worker pre-caches the catalogue,
 `recipes.json`, every recipe and cook page, frontend assets, and recipe images.
