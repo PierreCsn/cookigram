@@ -68,9 +68,14 @@ def _duration_seconds(time_str: str | None) -> int | None:
     iso = format_iso_duration(time_str)
     if not iso:
         return None
-    hours = int(re.search(r"(\d+)H", iso).group(1)) if "H" in iso else 0
-    minutes = int(re.search(r"(\d+)M", iso).group(1)) if "M" in iso else 0
-    seconds = int(re.search(r"(\d+)S", iso).group(1)) if "S" in iso else 0
+
+    def component(pattern: str) -> int:
+        match = re.search(pattern, iso)
+        return int(match.group(1)) if match else 0
+
+    hours = component(r"(\d+)H")
+    minutes = component(r"(\d+)M")
+    seconds = component(r"(\d+)S")
     return hours * 3600 + minutes * 60 + seconds
 
 
