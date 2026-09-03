@@ -33,6 +33,20 @@ def test_resolver_covers_pilot_family_variants():
         assert resolver.resolve(name) == f"icons/ingredients/{filename}"
 
 
+def test_resolver_covers_common_missing_ingredient_icons():
+    resolver = IngredientIconResolver()
+
+    expected = {
+        "eau": "eau.svg",
+        "poivre blanc moulu": "poivre-moulu.svg",
+        "vin blanc": "vin-blanc.svg",
+        "bouquet garni": "bouquet-garni.svg",
+    }
+
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
 def test_resolver_returns_empty_string_when_icon_is_missing():
     resolver = IngredientIconResolver()
 
