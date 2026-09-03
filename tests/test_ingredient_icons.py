@@ -83,10 +83,32 @@ def test_resolver_covers_the_first_common_missing_batch():
         assert resolver.resolve(name) == f"icons/ingredients/{filename}"
 
 
+def test_resolver_covers_the_second_common_missing_batch():
+    resolver = IngredientIconResolver()
+
+    expected = {
+        "concombre": "concombre.svg",
+        "aubergines": "aubergine.svg",
+        "courgette": "courgette.svg",
+        "chou-fleur": "chou-fleur.svg",
+        "petits pois": "petits-pois.svg",
+        "crevettes": "crevettes.svg",
+        "feta": "feta.svg",
+        "cannelle en poudre": "cannelle.svg",
+        "cumin": "cumin.svg",
+        "curcuma": "curcuma.svg",
+        "maïzena": "maizena.svg",
+        "lentilles corail": "lentilles-corail.svg",
+    }
+
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
 def test_resolver_returns_empty_string_when_icon_is_missing():
     resolver = IngredientIconResolver()
 
-    assert resolver.resolve("aubergine", "1") == ""
+    assert resolver.resolve("ingrédient totalement inconnu", "1") == ""
 
 
 def test_attach_icons_covers_recipe_steps_and_shopping():

@@ -59,6 +59,18 @@ ICON_FAMILY_BY_SLUG = {
     "olives-noires": "olives-noires",
     "paprika": "paprika",
     "sauce-soja": "sauce-soja",
+    "concombre": "concombre",
+    "aubergine": "aubergine",
+    "courgette": "courgette",
+    "chou-fleur": "chou-fleur",
+    "petits-pois": "petits-pois",
+    "crevettes": "crevettes",
+    "feta": "feta",
+    "cannelle": "cannelle",
+    "cumin": "cumin",
+    "curcuma": "curcuma",
+    "maizena": "maizena",
+    "lentilles-corail": "lentilles-corail",
 }
 
 
