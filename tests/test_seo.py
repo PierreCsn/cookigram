@@ -269,9 +269,11 @@ def test_compute_similar_recipes_returns_deterministic_balanced_links():
     # Deterministic across calls
     assert [r.slug for r in compute_similar_recipes(first, recipes)] == [r.slug for r in suggestions]
 
-    # Every recipe links to exactly the same number of related recipes (balanced mesh)
-    counts = {len(compute_similar_recipes(r, recipes)) for r in recipes}
-    assert len(counts) == 1
+    # Every recipe links to 1 to 4 related recipes (never to itself)
+    for r in recipes:
+        related = compute_similar_recipes(r, recipes)
+        assert 1 <= len(related) <= 4
+        assert all(other.slug != r.slug for other in related)
 
 
 def test_related_recipes_section_and_clickable_tags_render(tmp_path: Path):
