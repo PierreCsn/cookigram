@@ -5,11 +5,13 @@ from generator.build import build
 from generator.gram import parse_recipe
 from generator.seo import (
     DEFAULT_SITE_URL,
+    build_recipe_meta_description,
     build_recipe_schema,
     build_robots_txt,
     build_rss_feed,
     build_sitemap_xml,
     format_iso_duration,
+    is_thermomix_compatible,
 )
 
 
@@ -160,6 +162,31 @@ def test_build_home_declares_title_and_websites_organization_schema(tmp_path: Pa
     # H1 et sous-titre présents, ancrés sur la thématique culinaire.
     assert "<h1" in index_html
     assert "Thermomix" in index_html and "guidées" in index_html
+
+
+def test_recipe_meta_descriptions_are_calibrated_and_thermomix_titles_are_explicit(tmp_path: Path):
+    output_dir = tmp_path / "_site"
+    build(output_dir)
+
+    descriptions = []
+    for page in (output_dir / "recipes").glob("*/index.html"):
+        rendered = page.read_text(encoding="utf-8")
+        match = re.search(r'<meta name="description" content="([^"]+)">', rendered)
+        assert match is not None, page
+        descriptions.append(match.group(1))
+        assert 120 <= len(match.group(1)) <= 155, (page, len(match.group(1)), match.group(1))
+
+    assert descriptions
+    thermomix_page = (output_dir / "recipes" / "curry-poulet-noix-coco" / "index.html").read_text(encoding="utf-8")
+    assert "<title>Curry de poulet à la noix de coco au Thermomix · CookiGram</title>" in thermomix_page
+
+
+def test_recipe_meta_helpers_detect_thermomix_and_preserve_calibrated_copy():
+    recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
+
+    assert is_thermomix_compatible(recipe)
+    recipe.description = "Une description éditoriale calibrée pour rester dans la longueur recommandée par les moteurs de recherche et présenter clairement la recette."
+    assert build_recipe_meta_description(recipe) == recipe.description
 
 
 def test_build_declares_rel_icon_and_serves_icon_assets(tmp_path: Path):

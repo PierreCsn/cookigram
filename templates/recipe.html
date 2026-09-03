@@ -6,14 +6,14 @@
 {% macro equipment_list(view) -%}{% if view.equipment %}<section class="equipment-card"><h2>Matériel</h2><ul>{% for item in view.equipment %}<li>{{ item }}</li>{% endfor %}</ul>{% if view.appliances %}<div class="compatibility"><strong>Compatibilité</strong>{% for family, models in view.appliances.items() %}<span>{{ family|replace('_', ' ')|title }} : {{ models|join(', ') if models is sequence and models is not string else ('oui' if models else 'non') }}</span>{% endfor %}</div>{% endif %}</section>{% endif %}{%- endmacro %}
 {% macro steps_preview(view) -%}{% for step in view.steps %}<li class="step-item" data-step-id="{{ step.id }}"><div class="step-body"><h3 class="step-title">{{ step.action }}</h3>{% if step.text %}<p class="step-intro" data-scale-text="{{ step.text }}">{{ step.text }}</p>{% endif %}{% if step.substeps %}<ul class="substeps-preview-list">{% for substep in step.substeps %}<li data-scale-text="{{ substep }}">{{ substep }}</li>{% endfor %}</ul>{% endif %}{% if step.parallel %}<div class="parallel-block"><strong class="parallel-heading">⏱ En parallèle</strong><div class="parallel-grid">{% for operation in step.parallel %}<article><b>{{ operation.label }}</b><p data-scale-text="{{ operation.text }}">{{ operation.text }}</p></article>{% endfor %}</div></div>{% endif %}{{ tmx_badge(step.plugins.thermomix_settings, compact=true) }}</div></li>{% endfor %}{%- endmacro %}
 
-{% block title %}{{ recipe.title }} · CookiGram{% endblock %}
+{% block title %}{{ recipe.title }}{% if is_thermomix_compatible(recipe) %} au Thermomix{% endif %} · CookiGram{% endblock %}
 {% block meta %}
-  <meta name="description" content="{{ recipe.description or (recipe.title ~ ' — recette pas-à-pas sur CookiGram.') }}">
+  <meta name="description" content="{{ recipe_meta_description(recipe) }}">
   <link rel="canonical" href="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/recipes/{{ recipe.slug }}/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="CookiGram">
   <meta property="og:title" content="{{ recipe.title }} · CookiGram">
-  <meta property="og:description" content="{{ recipe.description or (recipe.title ~ ' — recette pas-à-pas sur CookiGram.') }}">
+  <meta property="og:description" content="{{ recipe_meta_description(recipe) }}">
   <meta property="og:url" content="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/recipes/{{ recipe.slug }}/">
   <meta property="og:locale" content="fr_FR">
   {% if recipe.image %}
@@ -22,7 +22,7 @@
   {% endif %}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ recipe.title }} · CookiGram">
-  <meta name="twitter:description" content="{{ recipe.description or (recipe.title ~ ' — recette pas-à-pas sur CookiGram.') }}">
+  <meta name="twitter:description" content="{{ recipe_meta_description(recipe) }}">
   {% if recipe.image %}
   <meta name="twitter:image" content="{{ site_url | default('https://pierrecsn.github.io/cookigram') }}/assets/{{ recipe.image }}">
   {% endif %}

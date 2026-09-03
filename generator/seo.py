@@ -12,6 +12,33 @@ if TYPE_CHECKING:
 DEFAULT_SITE_URL = "https://pierrecsn.github.io/cookigram"
 
 
+def is_thermomix_compatible(recipe: Recipe) -> bool:
+    """Return whether a recipe advertises a Thermomix-compatible preparation."""
+    if any(str(tag).casefold() == "thermomix" for tag in recipe.tags):
+        return True
+    appliances = recipe.metadata.get("appliances", {}) if recipe.metadata else {}
+    return bool(appliances.get("thermomix")) if isinstance(appliances, dict) else False
+
+
+def build_recipe_meta_description(recipe: Recipe) -> str:
+    """Build a search snippet in the 120–155 character recommendation range."""
+    description = " ".join(str(recipe.description or "").split())
+    if 120 <= len(description) <= 155:
+        return description
+
+    thermomix_hint = " Préparation guidée au Thermomix." if is_thermomix_compatible(recipe) else ""
+    fallback = (
+        f"Recette de {recipe.title} : prête en {recipe.total_time or recipe.prep_time or 'quelques étapes'} "
+        f"pour {recipe.portions} portions.{thermomix_hint} Ingrédients, étapes détaillées et nutrition sur CookiGram."
+    )
+    if len(fallback) < 120:
+        fallback += " Cuisinez simplement, pas à pas."
+    if len(fallback) <= 155:
+        return fallback
+
+    return fallback[:152].rsplit(" ", 1)[0].rstrip(".,;:") + "..."
+
+
 def format_iso_duration(time_str: str | None) -> str | None:
     """Converts human-readable culinary time strings into ISO 8601 duration format.
 

@@ -12,10 +12,12 @@ from .ingredient_icons import IngredientIconResolver, attach_ingredient_icons
 from .plugins import PluginManager
 from .seo import (
     DEFAULT_SITE_URL,
+    build_recipe_meta_description,
     build_recipe_schema,
     build_robots_txt,
     build_rss_feed,
     build_sitemap_xml,
+    is_thermomix_compatible,
 )
 from .utensils import resolve_utensil_icon
 
@@ -124,6 +126,8 @@ def build(output: Path, site_url: str = DEFAULT_SITE_URL) -> None:
 
     version = compute_asset_version(output / "assets")
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape())
+    env.globals["recipe_meta_description"] = build_recipe_meta_description
+    env.globals["is_thermomix_compatible"] = is_thermomix_compatible
     env.filters["utensil_icon"] = resolve_utensil_icon
     PRIMARY_THEMES = [
         "pâtes",
