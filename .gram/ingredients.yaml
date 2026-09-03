@@ -382,6 +382,7 @@ ingredients:
     - épinards
     - épinards frais
     - épinards surgelés
+    - pousses d'épinards
     category: Légumes et aromates
     nutrition:
       calories: 23
@@ -414,6 +415,7 @@ ingredients:
     name: Levure boulangère
     aliases:
     - levure fraîche
+    - levure boulangère fraîche
     - levure seche instantanee
     - levure sèche instantanée
     - levure boulangère
@@ -428,6 +430,7 @@ ingredients:
     aliases:
     - gousse de vanille
     - gousses de vanille
+    - vanille
     category: Condiments
     nutrition:
       calories: 288
@@ -907,7 +910,11 @@ ingredients:
     - poivron
     - poivrons
     - poivron vert
+    - poivrons verts
     - poivron rouge
+    - poivrons rouges
+    - poivron jaune
+    - poivrons jaunes
     category: Légumes et aromates
     name: Poivron
     nutrition:
@@ -1260,6 +1267,7 @@ ingredients:
     aliases:
     - jus de citron
     - citron
+    - zeste de citron
     category: Fruits et légumes
     nutrition:
       calories: 29
@@ -1659,6 +1667,7 @@ ingredients:
     aliases:
     - céleri
     - branche de céleri
+    - branches de céleri
     - céleri-branche
     - céleri-rave
     category: Légumes et aromates
@@ -2291,3 +2300,65 @@ ingredients:
       protein: 3.1
       carbs: 2.2
       fat: 0.4
+  orange:
+    name: Orange
+    aliases:
+    - orange
+    - zeste d'orange
+    - jus d'orange
+    category: Fruits et légumes
+    nutrition:
+      calories: 47
+      protein: 0.9
+      carbs: 11.8
+      fat: 0.1
+    piece_weight: 150.0
+  biere-brune:
+    name: Bière brune
+    aliases:
+    - bière brune
+    - bière ambrée
+    - bière trappiste
+    - bière
+    category: Boissons
+    nutrition:
+      calories: 45
+      protein: 0.5
+      carbs: 3.5
+      fat: 0.0
+  pain-d-epices:
+    name: Pain d'épices
+    aliases:
+    - pain d'épices
+    - pain d'épice
+    - tranches de pain d'épices
+    category: Produits céréaliers
+    nutrition:
+      calories: 330
+      protein: 4.5
+      carbs: 72.0
+      fat: 2.5
+  jarret-de-veau:
+    name: Jarret de veau
+    aliases:
+    - jarret de veau
+    - rouelles de jarret de veau
+    - jarret de veau avec os
+    - osso buco
+    category: Boucherie et volailles
+    nutrition:
+      calories: 165
+      protein: 26.0
+      carbs: 0.0
+      fat: 6.8
+  harissa:
+    name: Harissa
+    aliases:
+    - harissa
+    - pâte de harissa
+    category: Condiments et assaisonnements
+    nutrition:
+      calories: 85
+      protein: 3.0
+      carbs: 6.0
+      fat: 5.0

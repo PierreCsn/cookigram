@@ -739,6 +739,21 @@ ingredients:
   cepes:
     source: ANSES-CIQUAL
     status: verified
+  orange:
+    source: ANSES-CIQUAL
+    status: verified
+  biere-brune:
+    source: ANSES-CIQUAL
+    status: verified
+  pain-d-epices:
+    source: ANSES-CIQUAL
+    status: verified
+  jarret-de-veau:
+    source: ANSES-CIQUAL
+    status: verified
+  harissa:
+    source: ANSES-CIQUAL
+    status: verified
 sources:
   ciqual:
     name: Table Ciqual de l'ANSES
