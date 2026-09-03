@@ -50,6 +50,10 @@ Ce document définit les règles impératives que tout agent d'assistance ou dé
 * **PWA & Offline-First** :
   * Le Service Worker précharge l'ensemble des recettes, images et assets.
   * Toute modification d'asset ou d'image doit mettre à jour le hash de version du cache.
+* **Icônes d'ingrédients & Graphisme (Codex & Agents)** :
+  * Respecter impérativement la spécification [`.agents/rules/ingredient-icons.md`](.agents/rules/ingredient-icons.md).
+  * Style « spot illustration / sticker manga », optimisé pour l'affichage en 24×24 px et 32×32 px (silhouette identifiable, contours encrés nets, fond transparent).
+  * Affichage autorisé : liste d'ingrédients, modale de courses, bloc étape en Mode Cuisine. Interdit dans le corps de texte des étapes.
 
 ---
 
