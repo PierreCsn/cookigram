@@ -205,6 +205,46 @@ def test_resolver_covers_the_herb_and_spice_batch():
         assert resolver.resolve(name) == f"icons/ingredients/{filename}"
 
 
+def test_resolver_covers_the_final_ingredient_batch():
+    resolver = IngredientIconResolver()
+    expected = {
+        "La Vache qui rit": "produit-laitier.svg",
+        "clous de girofle": "clou-de-girofle.svg",
+        "coriandre moulue": "coriandre-moulue.svg",
+        "croûtons": "croutons.svg",
+        "cube de bouillon": "cube-de-bouillon.svg",
+        "cube de bouillon de boeuf": "cube-de-bouillon.svg",
+        "câpres": "capres.svg",
+        "fond de légumes": "fond-de-legumes.svg",
+        "fond de viande": "fond-de-viande.svg",
+        "fruits secs variés": "fruits-secs.svg",
+        "ghee": "ghee.svg",
+        "huile de coco": "huile-vegetale.svg",
+        "huile végétale": "huile-vegetale.svg",
+        "jaunes d'œufs": "oeuf.svg",
+        "jus de canneberge": "jus-de-canneberge.svg",
+        "lait de soja": "lait.svg",
+        "lard": "lardons.svg",
+        "mascarpone": "produit-laitier.svg",
+        "maïs en boîte": "mais.svg",
+        "mozzarella": "produit-laitier.svg",
+        "olives vertes dénoyautées": "olives-vertes.svg",
+        "origan": "origan.svg",
+        "piments verts": "piment-vert.svg",
+        "pâte miso": "pate-miso.svg",
+        "pâte tikka": "pate-tikka.svg",
+        "ricotta": "produit-laitier.svg",
+        "sauce worcestershire": "sauce-worcestershire.svg",
+        "sauge fraîche": "sauge.svg",
+        "sucre roux": "sucre-roux.svg",
+        "tahini - crème de sésame": "tahini.svg",
+        "tomates séchées": "tomate.svg",
+        "whisky": "whisky.svg",
+    }
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
 def test_resolver_returns_empty_string_when_icon_is_missing():
     resolver = IngredientIconResolver()
 
