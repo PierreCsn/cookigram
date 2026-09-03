@@ -444,6 +444,54 @@
   font-size:55px;
 }
 
+.card-visual {
+  position:relative;
+  overflow:hidden;
+  contain:paint;
+}
+
+.card-visual::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,0.28) 50%,transparent 80%);
+  transform:translateX(-100%);
+  animation:card-shimmer 1.6s ease-in-out infinite;
+  pointer-events:none;
+}
+
+.card-visual.is-loaded::before {
+  display:none;
+}
+
+.card-visual > img {
+  position:relative;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  opacity:0;
+  transition:opacity .25s ease;
+}
+
+.card-visual > img.is-loaded {
+  opacity:1;
+}
+
+.card-visual .card-initials {
+  font-size:48px;
+  line-height:1;
+  letter-spacing:.04em;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.28));
+  user-select:none;
+}
+
+@keyframes card-shimmer {
+  0% { transform:translateX(-100%); }
+  100% { transform:translateX(100%); }
+}
+
 .recipe-card>div:last-child {
   padding:22px;
   display:flex;
