@@ -62,6 +62,18 @@ ingredients:
       fat: 82.5
       protein: 0.8
     density: 0.91
+  cacao-en-poudre:
+    name: Cacao en poudre non sucré
+    aliases:
+    - cacao amer
+    - cacao en poudre
+    category: Épicerie sucrée
+    pantry_staple: true
+    nutrition:
+      calories: 228
+      carbs: 14.0
+      fat: 14.0
+      protein: 20.0
   bouquet-garni:
     name: Bouquet garni
     aliases:
@@ -87,6 +99,29 @@ ingredients:
       fat: 0.6
       protein: 3.1
     piece_weight: 300.0
+  cerise:
+    name: Cerises
+    aliases:
+    - cerise
+    - cerises
+    category: Fruits
+    nutrition:
+      calories: 63
+      carbs: 13.0
+      fat: 0.2
+      protein: 1.1
+    piece_weight: 8.0
+  chocolat-noir:
+    name: Chocolat noir
+    aliases:
+    - chocolat noir
+    - copeaux de chocolat
+    category: Épicerie sucrée
+    nutrition:
+      calories: 598
+      carbs: 46.0
+      fat: 43.0
+      protein: 7.8
   cannelle:
     name: Cannelle en poudre
     aliases:
@@ -363,6 +398,29 @@ ingredients:
       carbs: 71.0
       fat: 1.2
       protein: 10.0
+  gousse-de-vanille:
+    name: Gousse de vanille
+    aliases:
+    - gousse de vanille
+    - gousses de vanille
+    category: Condiments
+    nutrition:
+      calories: 288
+      carbs: 12.7
+      fat: 0.1
+      protein: 0.1
+    piece_weight: 5.0
+  kirsch:
+    name: Kirsch
+    aliases:
+    - kirsch
+    category: Boissons et alcools
+    pantry_staple: true
+    nutrition:
+      calories: 240
+      carbs: 0.0
+      fat: 0.0
+      protein: 0.0
   fromage-frais-philadelphia:
     name: Fromage frais Philadelphia
     aliases:
