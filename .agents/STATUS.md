@@ -6,24 +6,28 @@
 
 ## 🚦 Tâches en cours (Claims actifs)
 
-* **Aucun claim actif.** Le backlog est disponible pour un nouveau claim.
+* **Aucun claim actif.** Le backlog est disponible pour le Jalon 3.
 
 ---
 
-## 🎯 Prochaines Priorités Approuvées (Disponibles pour Claim)
+## 🏆 Jalons de Maturité Produit (Kitchen OS)
 
-1. **🔥 PRIORITÉ IMMÉDIATE (Jalon 2 — Sprint actif)** :
-   * **Issue #80** : `feat(cooking): étape 0 « Mise en place du plan de travail » en Mode Cuisine` [P1 / Lot 1]
-   * Statut : **Approuvé par le PO et spécifié par le Product Lead** (`potential-dev-work`).
-   * *Prêt à être pris par un développeur (poser un claim dans `claims.json` avant de coder).*
-
-2. **Horizon Jalon 3** :
-   * **Epic #51** : `Kitchen Scheduler v3 (Solveur CP-SAT)`.
+* **✅ Jalon 1 — Recipe OS (Livré)** : Fiches canoniques `.gram`, moteur nutritionnel CIQUAL, portions dynamiques, 100% hors-ligne.
+* **✅ Jalon 2 — Cooking Copilot & Mise en Place (Livré — v2.0.0-stable)** : 
+  - Étape 0 « Mise en place du plan de travail » avec checklist tactile des découpes et sortie du matériel (#80 / #81)
+  - Minuteurs persistants absolus (wall-clock) avec Web Audio et vibrations (#78 / #79)
+  - Sticky active timer bar et temps restant estimé en direct (#67 / #78)
+  - Cases à cocher d'incorporation par étape
+  - Synthèse et reconnaissance vocale mains-libres (« Lancer la cuisson », « Suivant », « Minuteur »)
+  - Rendu responsive mobile/tablette sans défilement parasite
+* **🔶 Jalon 3 — Kitchen Scheduler (Prochain cap prioritaire)** :
+  - **Epic #51** : Ordonnanceur mathématique multi-préparations sous contraintes (Solveur Google OR-Tools CP-SAT).
 
 ---
 
 ## ✅ Dernières Livraisons Clôturées
 
+* **Issue #80 / PR #81** : Étape 0 « Mise en place du plan de travail » en Mode Cuisine — *Fusionné dans `main`*.
 * **Issue #78 / PR #79** : Persistance de la progression en Mode Cuisine (minuteurs wall-clock, sticky bar contextuelle, cases à cocher ingrédients) — *Fusionné dans `main`*.
 * **PR #76** : Import de 2 nouvelles recettes desserts (Cheesecake japonais & Flan aux œufs) — *Fusionné dans `main`*.
 * **Issue #67 / PR #77** : Affichage du temps restant estimé dans le header du Mode Cuisine — *Fusionné dans `main`*.

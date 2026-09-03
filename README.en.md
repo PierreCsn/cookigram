@@ -174,8 +174,8 @@ CookiGram aims to be the **Kitchen Operating System (Kitchen OS)**. Development 
 | Milestone | Name | Status | Cook Experience & Value |
 | :--- | :--- | :---: | :--- |
 | **v1** | **Recipe OS** | ✅ **Shipped** | **Deterministic foundation**: Canonical `.gram` recipes, exact mathematical portion scaling, traceable ANSES/CIQUAL nutrition, instant search, and 100% offline functionality. |
-| **v2** | **Cooking Copilot** | 🔶 **Active Sprint** | **Countertop copilot**: Full-screen cook mode readable from 1 meter, persistent countdown timers with Web Audio alerts, hands-free voice commands, sensory flavor profiles, and utensil recognition. |
-| **v3** | **Kitchen Scheduler** | ⏳ *Next Horizon* | **Multi-dish orchestration**: Constraint-based mathematical scheduler (Google OR-Tools CP-SAT solver). Automatically synchronizes oven, stovetop, and robot so all courses are ready together without stress ([Issue #51](https://github.com/PierreCsn/cookigram/issues/51)). |
+| **v2** | **Cooking Copilot** | ✅ **Shipped (v2.0)** | **Countertop copilot**: Stage 0 mise en place & ingredient prep checklist, full-screen cook mode readable from 1 meter, persistent wall-clock countdown timers with Web Audio & vibration alerts, sticky timer bar, hands-free voice commands, sensory flavor profiles, and utensil recognition. |
+| **v3** | **Kitchen Scheduler** | 🔶 **Next Horizon** | **Multi-dish orchestration**: Constraint-based mathematical scheduler (Google OR-Tools CP-SAT solver). Automatically synchronizes oven, stovetop, and robot so all courses are ready together without stress ([Issue #51](https://github.com/PierreCsn/cookigram/issues/51)). |
 | **v4** | **Smart Meal Planner** | ⏳ *Planned* | **Zero mental fatigue**: Weekly meal planning, ingredient consolidation, aisle-sorted shopping lists, and export to note apps. |
 | **v5+** | **Kitchen Intelligence** | ⏳ *Exploration* | **Pragmatic pantry & Local-First**: Smart recipe suggestions based on fridge leftovers, local personalization, and privacy-first architecture. |
 
