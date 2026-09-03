@@ -132,6 +132,9 @@ ingredients:
   farine:
     source: ANSES-CIQUAL
     status: verified
+  levure-boulangere:
+    source: Estimation nutritionnelle pour levure boulangère fraîche ou sèche.
+    status: estimated
   filet-de-poulet:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
@@ -278,6 +281,9 @@ ingredients:
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
     sources:
     - ciqual
+    status: verified
+  romarin:
+    source: ANSES-CIQUAL
     status: verified
   sauce-tomate:
     source: ANSES-CIQUAL
