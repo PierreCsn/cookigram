@@ -27,6 +27,7 @@
 
 ## ✅ Dernières Livraisons Clôturées
 
+* **PR #89** : Pack 2 d'icônes d'ustensiles (planche, plat à gratin, thermomix, moule, panier vapeur, économe) et couverture à 100% de `required_equipment` sur les 46 recettes — *Fusionné dans `main`*.
 * **Issue #80 / PR #81** : Étape 0 « Mise en place du plan de travail » en Mode Cuisine — *Fusionné dans `main`*.
 * **Issue #78 / PR #79** : Persistance de la progression en Mode Cuisine (minuteurs wall-clock, sticky bar contextuelle, cases à cocher ingrédients) — *Fusionné dans `main`*.
 * **PR #76** : Import de 2 nouvelles recettes desserts (Cheesecake japonais & Flan aux œufs) — *Fusionné dans `main`*.
