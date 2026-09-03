@@ -398,6 +398,19 @@ ingredients:
       carbs: 71.0
       fat: 1.2
       protein: 10.0
+  levure-boulangere:
+    name: Levure boulangère
+    aliases:
+    - levure fraîche
+    - levure seche instantanee
+    - levure sèche instantanée
+    - levure boulangère
+    category: Épicerie salée
+    nutrition:
+      calories: 105
+      carbs: 18.0
+      fat: 1.5
+      protein: 8.4
   gousse-de-vanille:
     name: Gousse de vanille
     aliases:
@@ -922,6 +935,17 @@ ingredients:
       carbs: 77.0
       fat: 0.9
       protein: 8.5
+  romarin:
+    name: Romarin frais
+    aliases:
+    - romarin
+    - romarin frais
+    category: Herbes et épices
+    nutrition:
+      calories: 131
+      carbs: 20.7
+      fat: 5.9
+      protein: 3.3
   riz-long-blanc:
     name: Riz long blanc
     aliases:

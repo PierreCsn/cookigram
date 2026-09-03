@@ -141,6 +141,9 @@ ingredients:
   farine:
     source: ANSES-CIQUAL
     status: verified
+  levure-boulangere:
+    source: Estimation nutritionnelle pour levure boulangère fraîche ou sèche.
+    status: estimated
   gousse-de-vanille:
     source: Estimation nutritionnelle pour une gousse de vanille.
     status: estimated
@@ -293,6 +296,9 @@ ingredients:
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
     sources:
     - ciqual
+    status: verified
+  romarin:
+    source: ANSES-CIQUAL
     status: verified
   sauce-tomate:
     source: ANSES-CIQUAL

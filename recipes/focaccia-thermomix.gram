@@ -1,0 +1,64 @@
+---
+title: Focaccia aux tomates cerises et au romarin
+portions: 12
+prep_time: 15 min
+total_time: 3 h
+description: Focaccia moelleuse à l'huile d'olive, garnie de tomates cerises, de romarin frais et de gros sel.
+tags: [pain, focaccia, thermomix, italien, tomates, romarin]
+source: https://cookidoo.fr/recipes/recipe/fr-FR/r80558
+author: Vorwerk Home & Co. KmG
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: La quantité de pâte et le temps de pousse sont calibrés pour une grande plaque de cuisson et 12 portions.
+spiciness: 0
+required_equipment:
+  - Grand saladier
+  - Film réutilisable ou film alimentaire
+  - Grande plaque de cuisson
+  - Spatule
+  - Grille de refroidissement
+image: images/focaccia-thermomix.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration originale générée pour la fiche recette, sans reprise de la photographie source.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/focaccia-thermomix.md
+---
+
+## Focaccia aux tomates cerises et au romarin
+
+[Préparer le matériel]
+- Huiler légèrement un #grand saladier{} et préparer un morceau de film réutilisable ou de film alimentaire pour le couvrir.
+
+[Pétrir la pâte au Thermomix]
+- Mettre la @farine{500 g}, le @sucre{1 c. à café, facultatif}, la @levure boulangère{20 g de levure fraîche, ou 1 1/2 c. à café de levure sèche instantanée}, l'@huile d'olive{30 g}, l'@eau{350 g, tiède} et le @sel{1 c. à café} dans le #bol Thermomix{}.
+- Mélanger ~{20 s} à vitesse 6, puis pétrir ~{2 min} en mode pétrin.
+
+[Faire lever la pâte]
+- Transvaser la pâte, qui est collante, dans le saladier préparé.
+- Replacer le bol sur sa base et faire tourner les couteaux ~{5 s} à vitesse 6 pour décoller la pâte restante, puis racler le surplus dans le saladier.
+- Couvrir et laisser lever ~{1 à 2 h}, jusqu'à ce que la pâte ait doublé de volume.
+
+[Étaler et faire pousser]
+- Huiler généreusement une #grande plaque de cuisson{}.
+- Étaler la pâte sur la plaque avec une #spatule{} huilée, puis laisser pousser ~{30 min}.
+
+[Garnir la focaccia]
+- Préchauffer le #four{} à ^{220 C}.
+- Avec les doigts huilés, faire des creux sur toute la surface de la pâte.
+- Enfoncer les @tomates cerises{30 pièces, coupées en deux, face coupée vers le haut} dans la pâte.
+- Parsemer de @romarin{2 c. à soupe, frais et haché} et de @gros sel{1 c. à café}.
+- Arroser d'un peu d'eau et d'un filet d'huile d'olive.
+
+[Cuire et refroidir]
+- Cuire ~{20 min} à ^{220 C}, jusqu'à ce que la focaccia soit bien dorée.
+- Laisser refroidir ~{5 min} sur la plaque, puis transférer sur une #grille de refroidissement{}.
+- Servir tiède ou laisser refroidir complètement.
