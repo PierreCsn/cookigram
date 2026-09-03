@@ -157,4 +157,31 @@ test.describe('Mode cuisine: navigation et sous-étapes', () => {
     await expect(lastStepTime).toBeVisible();
     await expect(lastStepTime).toContainText('⏱ ~8 min');
   });
+
+  test('conserve un minuteur actif et le rend accessible depuis une autre étape (#78)', async ({ page }) => {
+    await page.goto('/recipes/veloute-potiron-cannelle/cook/');
+    const timer = page.locator('.cook-step').first().locator('.timer').first();
+    await timer.locator('.timer-toggle').click();
+    await page.locator('button.next').click();
+
+    const bar = page.locator('.active-timer-bar');
+    await expect(bar).toBeVisible();
+    await expect(bar.locator('.active-timer-step')).toHaveText('(Étape 1)');
+    await expect(bar.locator('.active-timer-pause')).toBeVisible();
+
+    await page.reload();
+    await expect(page.locator('.cook-step').first().locator('.timer')).toHaveClass(/running/);
+    await expect(page.locator('.active-timer-bar')).toBeVisible();
+  });
+
+  test('conserve les ingrédients cochés pendant la navigation (#78)', async ({ page }) => {
+    await page.goto(COOK_URL);
+    const checkbox = page.locator('.cook-step').first().locator('.step-ingredient-checkbox').first();
+    await checkbox.check();
+    await page.locator('button.next').click();
+    await page.locator('button.prev').click();
+    await expect(page.locator('.cook-step').first().locator('.step-ingredient-checkbox').first()).toBeChecked();
+    await page.reload();
+    await expect(page.locator('.cook-step').first().locator('.step-ingredient-checkbox').first()).toBeChecked();
+  });
 });
