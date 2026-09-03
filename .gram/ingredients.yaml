@@ -429,11 +429,11 @@ ingredients:
     - kirsch
     category: Boissons et alcools
     pantry_staple: true
-     nutrition:
-       calories: 240
-       carbs: 0.0
-       fat: 0.0
-       protein: 0.0
+    nutrition:
+      calories: 240
+      carbs: 0.0
+      fat: 0.0
+      protein: 0.0
   fromage-frais-philadelphia:
     name: Fromage frais Philadelphia
     aliases:
