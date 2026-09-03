@@ -7,6 +7,12 @@ description: Risotto crémeux et parfumé aux échalotes, poulet doré et champi
 tags: [risotto, volaille, thermomix, champignons, fromage, italien, réconfort]
 source: https://www.cookomix.com/recettes/risotto-poulet-champignons-thermomix/
 author: Lisa
+spiciness: 0
+flavors:
+  pairing: [poulet, champignons, parmesan, vin blanc]
+  notes: [boisé, crémeux, umami, velouté]
+  harmony: "Le parfum sous-bois des champignons poêlés fusionne avec la richesse saline du parmesan et la texture mantecata du riz arborio."
+  tips: "Monter au beurre bien froid et parmesan hors du feu en remuant vivement pour obtenir la consistance crémeuse à l'onde parfaite."
 image: images/risotto-poulet-champignons.jpg
 image_credit:
   author: CookiGram

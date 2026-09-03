@@ -23,6 +23,12 @@ scaling:
   enabled: false
   reason: Les quantités et les cuissons sont calibrées pour le bol et le panier du
     Thermomix ; une autre échelle n'est pas validée.
+spiciness: 0
+flavors:
+  pairing: [langoustines, fumet, coriandre, crème]
+  notes: [iodé, raffiné, anisé, soyeux]
+  harmony: "La chair noble et délicatement sucrée des langoustines est soulignée par la profondeur corsée du fumet et l'arôme hespéridé de la coriandre."
+  tips: "Châtrer et poêler les queues de langoustines rapidement dans un beurre noisette juste avant de les déposer sur le velouté fumant."
 image: images/veloute-langoustines-coriandre.jpg
 image_credit:
   author: CookiGram

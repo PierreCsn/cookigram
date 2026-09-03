@@ -9,14 +9,9 @@ tags: [salade, méditerranéen, végétarien, rapide, été, fromage]
 source: https://www.marmiton.org/recettes/recette_salade-grecque-a-l-origan_29355.aspx
 author: lise_14056503
 required_equipment:
-<<<<<<< HEAD
   - Grand saladier
   - Couteau de chef
-=======
-  - Couteau d'office
   - Planche à découper
-  - Plat de service
->>>>>>> 123fda4 (fix(recipes): optimiser le parallélisme des lentilles, clarifier le 4e œuf César et ajouter le matériel de la salade grecque (#63))
 scaling:
   enabled: true
   min_portions: 2

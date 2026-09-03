@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#fff8ed">
   <script>
     (function() {
-      var saved = localStorage.getItem('cookigram:theme') || localStorage.getItem('cookgram:theme');
+      var saved = localStorage.getItem('cookigram:theme');
       var dark = saved ? saved === 'dark' : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
       document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
       var meta = document.querySelector('meta[name="theme-color"]');

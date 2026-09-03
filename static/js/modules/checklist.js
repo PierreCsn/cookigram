@@ -11,16 +11,10 @@ export const initChecklist = () => {
   const recipeSlug = checklistEl.dataset.recipe || '';
   const variantId = checklistEl.dataset.variant || 'main';
   const storageKey = `cookigram:${recipeSlug}:${variantId}:checked`;
-  const legacyStorageKey = `cookigram:${recipeSlug}:checked`;
-  const oldStorageKey = `cookgram:${recipeSlug}:checked`;
-  const legacyValue =
-    variantId === 'main'
-      ? localStorage.getItem(legacyStorageKey) || localStorage.getItem(oldStorageKey)
-      : null;
 
   const getSavedChecked = () => {
     try {
-      return JSON.parse(localStorage.getItem(storageKey) || legacyValue || '[]');
+      return JSON.parse(localStorage.getItem(storageKey) || '[]');
     } catch (_) {
       return [];
     }
@@ -58,8 +52,6 @@ export const initChecklist = () => {
   const resetBtn = document.querySelector('.reset-checklist');
   resetBtn?.addEventListener('click', () => {
     localStorage.removeItem(storageKey);
-    if (variantId === 'main') localStorage.removeItem(legacyStorageKey);
-    localStorage.removeItem(oldStorageKey);
     checklistEl.querySelectorAll('.ingredient-item').forEach((item) => {
       updateItemState(item, false);
     });

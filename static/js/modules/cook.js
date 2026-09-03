@@ -38,12 +38,11 @@ export const initSubsteps = () => {
     if (!card) return;
     const stepId = stepEl.dataset.stepId;
     const storageKey = `cookigram:${cook.dataset.recipe}:substeps:${stepId}`;
-    const oldStorageKey = `cookgram:${cook.dataset.recipe}:substeps:${stepEl.dataset.step}`;
 
     let saved = [];
     try {
       saved = JSON.parse(
-        localStorage.getItem(storageKey) || localStorage.getItem(oldStorageKey) || '[]'
+        localStorage.getItem(storageKey) || '[]'
       );
     } catch (_) {}
     const savedSet = new Set(saved);
@@ -91,19 +90,16 @@ export const initCookMode = () => {
 
   const steps = [...document.querySelectorAll('.cook-steps:not([hidden]) .cook-step')];
   const key = `cookigram:${cook.dataset.recipe}:step-id`;
-  const oldKey = `cookgram:${cook.dataset.recipe}:step`;
   const savedStepId = localStorage.getItem(key);
   const matchedStep = savedStepId
     ? steps.findIndex((step) => step.dataset.stepId === savedStepId)
     : -1;
-  const legacyStep = Number(localStorage.getItem(oldKey) || 0);
-  let current = matchedStep >= 0 ? matchedStep : Math.min(legacyStep, steps.length - 1);
+  let current = matchedStep >= 0 ? matchedStep : 0;
 
   if (cook.dataset.scalable === 'true') {
     const basePortions = Number(cook.dataset.basePortions);
     const portions = Number(
       localStorage.getItem(`cookigram:${cook.dataset.recipe}:portions`) ||
-        localStorage.getItem(`cookgram:${cook.dataset.recipe}:portions`) ||
         basePortions
     );
     const factor = portions / basePortions;
@@ -117,11 +113,8 @@ export const initCookMode = () => {
   }
 
   const autoSpeakKey = 'cookigram:autospeak';
-  const oldAutoSpeakKey = 'cookgram:autospeak';
   const autoSpeakBtn = document.querySelector('.auto-speak');
-  let autoSpeakEnabled =
-    (localStorage.getItem(autoSpeakKey) || localStorage.getItem(oldAutoSpeakKey)) ===
-    'true';
+  let autoSpeakEnabled = localStorage.getItem(autoSpeakKey) === 'true';
 
   let activeSpeakingBtn = null;
   const stopStepSpeaking = () => {

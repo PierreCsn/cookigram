@@ -20,6 +20,12 @@ appliances:
 scaling:
   enabled: false
   reason: La texture et les temps de refroidissement sont calibrés pour 4 portions.
+spiciness: 0
+flavors:
+  pairing: [petits pois, menthe, crème, bouillon]
+  notes: [frais, herbacé, sucré végétal, soyeux]
+  harmony: "Le vert végétal sucré des petits pois nouveaux est sublimé par le souffle rafraîchissant de la menthe fraîche ciselée."
+  tips: "Plonger immédiatement le velouté mixé dans un bain de glaçons pour fixer sa couleur vert éclatant avant de le réfrigérer."
 image: images/veloute-glace-petits-pois.jpg
 image_credit:
   author: CookiGram

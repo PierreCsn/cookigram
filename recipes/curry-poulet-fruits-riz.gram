@@ -21,6 +21,12 @@ appliances:
 scaling:
   enabled: false
   reason: Cuisson simultanée du poulet, du riz et des fruits calibrée pour 4 portions.
+spiciness: 1
+flavors:
+  pairing: [poulet, fruits, curry doux, riz basmati]
+  notes: [sucré-salé, doux, fruité, onctueux]
+  harmony: "L'acidité naturelle des fruits exotiques s'équilibre avec le curry doux pour créer un contraste gourmand avec le poulet mijoté."
+  tips: "Dorer légèrement les dés de fruits avant de les incorporer pour développer des notes caramélisées sans les déstructurer."
 image: images/curry-poulet-fruits-riz.jpg
 image_credit:
   author: CookiGram
