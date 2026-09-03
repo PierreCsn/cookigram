@@ -170,6 +170,22 @@ def test_resolver_covers_the_dry_pantry_batch():
         assert resolver.resolve(name) == f"icons/ingredients/{filename}"
 
 
+def test_resolver_covers_the_sauce_and_liquid_batch():
+    resolver = IngredientIconResolver()
+    expected = {
+        "sauce tomate": "sauce-tomate.svg",
+        "béchamel": "bechamel.svg",
+        "caramel liquide": "caramel-liquide.svg",
+        "jus de citron vert": "jus-de-citron-vert.svg",
+        "vin rouge": "vin-rouge.svg",
+        "vinaigre blanc": "vinaigre-blanc.svg",
+        "vinaigre de riz": "vinaigre-de-riz.svg",
+        "vinaigre de vin": "vinaigre-de-vin.svg",
+    }
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
 def test_resolver_returns_empty_string_when_icon_is_missing():
     resolver = IngredientIconResolver()
 

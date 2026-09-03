@@ -102,6 +102,14 @@ ICON_FAMILY_BY_SLUG = {
     "pain-de-mie": "pain-de-mie",
     "emmental-rape": "fromage-rape",
     "fromage-rape": "fromage-rape",
+    "sauce-tomate": "sauce-tomate",
+    "bechamel": "bechamel",
+    "caramel-liquide": "caramel-liquide",
+    "jus-de-citron-vert": "jus-de-citron-vert",
+    "vin-rouge": "vin-rouge",
+    "vinaigre-blanc": "vinaigre-blanc",
+    "vinaigre-de-riz": "vinaigre-de-riz",
+    "vinaigre-de-vin": "vinaigre-de-vin",
 }
 
 
