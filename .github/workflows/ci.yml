@@ -52,6 +52,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e .[dev]
 
+      - name: Validate YAML integrity (.gram)
+        run: |
+          python -c "
+          from pathlib import Path
+          import yaml
+
+          for yml in sorted(Path('.gram').glob('*.yaml')):
+              print(f'Validating {yml}...')
+              with open(yml, encoding='utf-8') as f:
+                  yaml.safe_load(f)
+          print('All .gram YAML files are syntactically valid.')
+          "
+
       - name: Lint with Ruff
         run: |
           ruff check generator plugins tests

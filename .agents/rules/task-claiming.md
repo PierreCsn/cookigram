@@ -45,3 +45,22 @@ Dès qu'un développeur choisit une tâche approuvée :
 ## 5. Libération du Claim
 1. Dès que la PR est ouverte, passer le statut du claim à `pr_open`.
 2. Dès que la PR est mergée dans `main`, déplacer l'entrée vers `completed_claims` et retirer le label `in-progress` de l'issue.
+
+---
+
+## 6. Protocole de vérification pré-PR (Qualité & Anti-Régression)
+Avant d'ouvrir ou de fusionner toute PR, le développeur ou l'agent doit impérativement exécuter en local :
+```bash
+# 1. Vérification du contrat de données, des recettes et des icônes
+pytest tests/test_schema.py tests/test_ingredients_database.py tests/test_ingredient_icons.py
+
+# 2. Vérification du formatage et du linter
+ruff check generator plugins tests
+ruff format --check generator plugins tests
+```
+
+Tout ajout d'ingrédient dans `.gram/ingredients.yaml` doit obligatoirement respecter :
+1. **Intégrité YAML** : Indentation rigoureuse à 2 ou 4 espaces (aucun décalage de bloc `nutrition`).
+2. **Provenance** : Enregistrement miroir dans `.gram/ingredient-provenance.yaml` avec statut (`verified`, `estimated`, `manual`).
+3. **Couverture d'icône** : Vérification que l'ingrédient résout bien une icône (`pytest tests/test_ingredient_icons.py`).
+
