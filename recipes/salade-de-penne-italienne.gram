@@ -7,10 +7,12 @@ spiciness: 0
 description: Pâtes penne enrobées d'un pesto maison à la ricotta, garnies de billes de mozzarella, tomates cerises et jambon cru.
 tags: [salade, pâtes, italien, rapide, quotidien, fromage]
 source: https://www.cookomix.com/recettes/salade-penne-italienne-thermomix/
-author: Cookomix
+author: CookiGram (Inspiré de Cookomix)
 required_equipment:
   - Casserole
   - Saladier
+  - Planche à découper
+  - Couteau de chef
 scaling:
   enabled: true
   min_portions: 2
@@ -45,10 +47,10 @@ image_generation:
 - Verser un léger filet d'huile d'olive pour éviter qu'elles ne collent et laisser tiédir.
 
 [Préparer le pesto minute à la ricotta au saladier]
-- Hacher très finement la @gousse d'ail{1 pièce, épluchée} et ciseler le @basilic frais{30 g, feuilles}.
-- Dans le fond d'un grand #saladier{}, écraser à la fourchette les @pignons de pin{20 g, préalablement toastés à sec 2 min} avec l'ail et le basilic.
+- Sur une #planche à découper{}, hacher très finement la @gousse d'ail{1 pièce, épluchée}, ciseler le @basilic frais{30 g, feuilles} et concasser très finement au #couteau de chef{} les @pignons de pin{20 g, préalablement toastés à sec 2 min}.
+- Transvaser ce hachis aromatique dans le fond d'un grand #saladier{}.
 - Incorporer le @parmesan{30 g, râpé}, l'@huile d'olive{40 g}, la @ricotta{50 g}, le @jus de citron{1 c. à soupe}, le @sel{1 pincée} et le @poivre{1 pincée}.
-- Fouetter ~{30 s} à la fourchette pour lier une sauce onctueuse et parfumée.
+- Fouetter ~{30 s} à la fourchette pour émulsionner une sauce crémeuse et parfumée.
 
 [Assembler la salade méditerranéenne]
 - Verser les penne tiédies directement dans le saladier sur la sauce pesto à la ricotta et mélanger pour bien napper chaque pâte.

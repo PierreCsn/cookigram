@@ -1,16 +1,18 @@
 ---
 title: Salade de pois chiches méditerranéenne
 portions: 4
-prep_time: 15 min
-total_time: 15 min
+prep_time: 20 min
+total_time: 35 min
 spiciness: 0
 description: Pois chiches fondants, dés de concombre, poivron et tomates cerises liés d'une vinaigrette émulsionnée au citron.
 tags: [salade, méditerranéen, végétarien, rapide, quotidien, été]
 source: https://www.cookomix.com/recettes/salade-de-pois-chiches-thermomix/
-author: Popolipo
+author: CookiGram (Inspiré de Popolipo)
 required_equipment:
   - Saladier
   - Fouet de cuisine
+  - Planche à découper
+  - Couteau de chef
 scaling:
   enabled: true
   min_portions: 2
@@ -55,4 +57,4 @@ image_generation:
 - Verser les pois chiches égouttés, les dés de concombre, de poivron rouge, les demi-tomates cerises et les lamelles d'oignon directement dans le saladier contenant la vinaigrette.
 - Remuer délicatement à l'aide de deux cuillères pour bien enrober tous les ingrédients de sauce.
 - Émietter la @feta{100 g} sur le dessus.
-- Servir aussitôt ou placer au réfrigérateur pendant 15 minutes pour que les saveurs se marient.
+- Servir aussitôt ou placer au réfrigérateur pendant ~{15 min} pour que les saveurs se marient et que les légumes s'imprègnent de la vinaigrette.
