@@ -9,6 +9,14 @@ source: https://www.cookomix.com/recettes/ragout-porc-legumes-thermomix/
 author: Minou
 appliances:
   thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Fouet
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Économe
+  - Plat de service
 scaling:
   enabled: false
   reason: Capacité maximale du bol pour le ragoût mijoté avec le fouet.

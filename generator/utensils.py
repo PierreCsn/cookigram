@@ -52,6 +52,64 @@ UTENSIL_ICON_KEYWORDS: dict[str, list[str]] = {
         "cuillere",
         "cuillère en bois",
         "maryse",
+        "pince de cuisine",
+        "pince",
+    ],
+    "planche": [
+        "planche a decouper",
+        "planche à découper",
+        "planche de decoupe",
+        "planche",
+    ],
+    "plat-gratin": [
+        "plat a gratin",
+        "plat à gratin",
+        "plat a rotir",
+        "plat à rôtir",
+        "plat de service",
+        "plat pour bain-marie",
+        "plat profond",
+        "bain-marie",
+        "plat au four",
+    ],
+    "thermomix": [
+        "thermomix",
+        "robot cuiseur",
+        "robot multifonction",
+        "robot",
+        "instant pot",
+        "multicuiseur",
+        "tm31",
+        "tm5",
+        "tm6",
+        "tm7",
+    ],
+    "moule": [
+        "moule a charniere",
+        "moule à charnière",
+        "moule a flan",
+        "moule à flan",
+        "moule a cake",
+        "moule a gateau",
+        "moule à gâteau",
+        "moule",
+    ],
+    "panier-vapeur": [
+        "panier cuisson",
+        "panier vapeur",
+        "varoma",
+        "plateau vapeur",
+        "passoire",
+        "panier",
+    ],
+    "econome": [
+        "econome",
+        "économe",
+        "epluche-legumes",
+        "épluche-légumes",
+        "eplucheur",
+        "éplucheur",
+        "rasoir a legumes",
     ],
 }
 
@@ -69,13 +127,18 @@ def resolve_utensil_icon(equipment_name: str) -> str | None:
         return None
 
     norm = normalize_keyword(equipment_name)
-    tokens = norm.split()
+    padded_norm = f" {norm} "
+    tokens = set(norm.split())
 
     for icon, keywords in UTENSIL_ICON_KEYWORDS.items():
         for kw in keywords:
             kw_norm = normalize_keyword(kw)
-            if kw_norm in norm or any(token == kw_norm for token in tokens):
-                return icon
+            if " " in kw_norm:
+                if f" {kw_norm} " in padded_norm:
+                    return icon
+            else:
+                if kw_norm in tokens:
+                    return icon
     return None
 
 

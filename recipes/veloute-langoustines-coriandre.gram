@@ -19,6 +19,14 @@ appliances:
   - TM5
   - TM6
   - TM7
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Panier cuisson
+  - Passoire
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Économe
 scaling:
   enabled: false
   reason: Les quantités et les cuissons sont calibrées pour le bol et le panier du

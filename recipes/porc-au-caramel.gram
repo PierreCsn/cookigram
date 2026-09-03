@@ -31,6 +31,13 @@ appliances:
   thermomix:
   - TM6
   - TM7
+required_equipment:
+  - Thermomix TM6 ou TM7
+  - Saladier
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Plat de service
 scaling:
   enabled: false
   reason: Recette calibrée pour le mode Hautes températures du bol Thermomix (TM6/TM7)

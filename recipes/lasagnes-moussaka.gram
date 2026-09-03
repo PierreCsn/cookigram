@@ -19,6 +19,15 @@ image_generation:
   model: ChatGPT image generation
   generated_at: "2026-09-02"
   prompt_file: image-prompts/lasagnes-moussaka.md
+required_equipment:
+  - Plat à gratin
+  - Grande poêle
+  - Casserole
+  - Fouet
+  - Passoire
+  - Couteau de chef
+  - Planche à découper
+  - Spatule en bois
 scaling:
   enabled: true
   min_portions: 2

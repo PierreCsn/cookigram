@@ -23,11 +23,11 @@ scaling:
   enabled: false
   reason: Quantités et chauffe calibrées pour 4 portions dans le bol du Thermomix.
 required_equipment:
-  - Casserole
-  - Poêle
+  - Thermomix TM31, TM5, TM6 ou TM7
   - Saladier
+  - Spatule
   - Couteau de chef
-  - Spatule en bois
+  - Planche à découper
 image: images/butter-chicken.jpg
 image_credit:
   author: CookiGram

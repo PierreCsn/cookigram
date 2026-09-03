@@ -9,6 +9,13 @@ source: https://www.cookomix.com/recettes/one-pot-pasta-aubergines-lardons-champ
 author: Nessa
 appliances:
   thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Panier cuisson
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Plat de service
 scaling:
   enabled: false
   reason: Volume de pâtes et absorption de liquide calibrés pour le bol du Thermomix.

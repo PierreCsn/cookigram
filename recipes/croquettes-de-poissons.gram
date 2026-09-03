@@ -9,6 +9,13 @@ source: https://www.cookomix.com/recettes/croquettes-de-poissons-thermomix/
 author: Tatamix
 appliances:
   thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Poêle
+  - Saladier
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
 scaling:
   enabled: true
 image: images/croquettes-de-poissons.jpg

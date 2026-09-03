@@ -9,6 +9,15 @@ source: https://www.cookomix.com/recettes/gratin-pommes-de-terre-saumon-epinards
 author: Jenny
 appliances:
   thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Varoma avec plateau vapeur
+  - Panier cuisson
+  - Plat à gratin
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Économe
 scaling:
   enabled: false
   reason: Capacité maximale du Varoma et du panier pour la précuisson combinée.
