@@ -3,6 +3,7 @@
  * Orchestrates independently initialized, isolated feature modules.
  */
 
+import { initCardVisuals } from './js/modules/card-visuals.js';
 import { initChecklist } from './js/modules/checklist.js';
 import { initCookMode, initSubsteps } from './js/modules/cook.js';
 import { initOfflineSave } from './js/modules/offline-save.js';
@@ -38,6 +39,7 @@ initFeature('offline-save', initOfflineSave);
 
 // Catalogue page features
 initFeature('search', initCatalogueSearch);
+initFeature('card-visuals', initCardVisuals);
 
 // Cook mode features
 initFeature('cook', () => {

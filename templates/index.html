@@ -83,7 +83,7 @@
          data-ingredients="{% for item in recipe.ingredients %}{{ item.name }} {% endfor %}"
          data-total-time="{{ recipe.total_time }}"
          data-prep-time="{{ recipe.prep_time }}">
-        <div class="card-visual">{% if recipe.image %}<img src="assets/{{ recipe.image }}" alt="" loading="lazy">{% else %}<span>{{ recipe.title[:2]|upper }}</span>{% endif %}</div>
+        <div class="card-visual">{% if recipe.image %}<img src="assets/{{ recipe.image }}" alt="" loading="lazy">{% else %}<span class="card-initials">{{ recipe.title[:2]|upper }}</span>{% endif %}</div>
         <div><div class="tags">{% for tag in recipe.tags[:2] %}<span>{{ tag }}</span>{% endfor %}{{ appliance_tags(recipe) }}{% if recipe.nutrition and recipe.nutrition.calories and recipe.nutrition.is_reliable %}<span class="nutrition-tag">🔥 {{ recipe.nutrition.calories }} kcal</span>{% endif %}</div><h3>{{ recipe.title }}</h3><p>{{ recipe.description }}</p><small class="recipe-meta">{% if recipe.total_time and recipe.prep_time and recipe.total_time != recipe.prep_time %}<span class="meta-item meta-total">⏱ {{ recipe.total_time }} total</span> · <span class="meta-item meta-prep">Prép. {{ recipe.prep_time }}</span> · {% elif recipe.total_time %}<span class="meta-item meta-total">⏱ {{ recipe.total_time }}</span> · {% elif recipe.prep_time %}<span class="meta-item meta-prep">Prép. {{ recipe.prep_time }}</span> · {% endif %}<span class="meta-item meta-portions">🍽️ {{ recipe.portions }} portion{% if recipe.portions > 1 %}s{% endif %}</span></small></div>
       </a>
     {% endfor %}

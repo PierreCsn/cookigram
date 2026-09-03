@@ -79,7 +79,55 @@ test.describe('Catalogue: recherche et filtres', () => {
       const clearAdvBtn = advPanel.locator('.clear-advanced-btn');
       await expect(clearAdvBtn).toBeVisible();
       await clearAdvBtn.click();
-      await expect(advChip).not.toHaveClass(/active/);
+      await expect(clearAdvBtn).not.toHaveClass(/active/);
     }
+  });
+});
+
+test.describe('Catalogue: harmonisation des cartes (#34)', () => {
+  test('les visuels chargent avec un fondu et désactivent le shimmer', async ({ page }) => {
+    await page.goto('/');
+
+    const visual = page.locator('.card-visual').first();
+    const img = visual.locator('img');
+
+    await expect(img).toBeVisible();
+    // Une fois l'image décodée, le shimmer s'arrête et le fondu se déclenche.
+    await expect(visual).toHaveClass(/is-loaded/, { timeout: 15000 });
+    // Le fondu termine sur une opacité pleine (transition 0.25s).
+    await expect(img).toHaveCSS('opacity', '1', { timeout: 5000 });
+
+    const transitionDuration = await img.evaluate((el) => {
+      const { transitionDuration: d } = getComputedStyle(el);
+      return parseFloat(d);
+    });
+    expect(transitionDuration).toBeGreaterThanOrEqual(0.25);
+  });
+
+  test('les métadonnées des cartes d\'une même rangée sont alignées en bas', async ({ page }) => {
+    await page.goto('/');
+
+    const rows = await page.evaluate(() => {
+      const metas = [...document.querySelectorAll('.recipe-card .recipe-meta')];
+      const positions = metas.map((meta) => {
+        const card = meta.closest('.recipe-card');
+        const cardRect = card.getBoundingClientRect();
+        const metaRect = meta.getBoundingClientRect();
+        return {
+          top: Math.round(cardRect.top),
+          gapFromBottom: Math.round(cardRect.bottom - metaRect.bottom),
+        };
+      });
+      positions.sort((a, b) => a.top - b.top);
+      return positions;
+    });
+
+    // Les cartes d'une même rangée visuelle partagent le même offset haut.
+    const firstRowTop = rows[0].top;
+    const firstRow = rows.filter((r) => r.top === firstRowTop);
+    // Tous les pieds reposent au même niveau : écart au bas identique.
+    const gaps = new Set(firstRow.map((r) => r.gapFromBottom));
+    expect(firstRow.length).toBeGreaterThan(1);
+    expect(gaps.size).toBe(1);
   });
 });
