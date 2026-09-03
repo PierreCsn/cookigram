@@ -1771,6 +1771,59 @@ a {
   display:none;
 }
 
+.step-ingredients-card {
+  background:var(--cream);
+  border:1px solid var(--line);
+  border-left:4px solid var(--orange);
+  border-radius:16px;
+  padding:16px 20px;
+  margin:20px auto;
+  max-width:540px;
+  text-align:left;
+}
+
+.step-ingredients-title {
+  display:block;
+  font-size:12px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--orange);
+  margin-bottom:12px;
+}
+
+.step-ingredients-list {
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.step-ingredient-item {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  line-height:1.4;
+}
+
+.step-ingredient-name {
+  font-weight:700;
+  color:var(--ink);
+}
+
+.step-ingredient-qty {
+  flex-shrink:0;
+  background:var(--btn-bg);
+  border:1px solid var(--line);
+  border-radius:99px;
+  padding:5px 12px;
+  font-weight:800;
+  color:var(--ink);
+}
+
 .cook-nav {
   display:flex;
   justify-content:space-between;

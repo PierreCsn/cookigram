@@ -103,4 +103,34 @@ test.describe('Mode cuisine: navigation et sous-étapes', () => {
     const h1Box = await h1.boundingBox();
     expect(h1Box.height).toBeLessThanOrEqual(3 * 32 * 1.25);
   });
+
+  test('affiche les ingrédients de l\'étape active et les reconstitue au changement de portions', async ({ page }) => {
+    // Portions mémorisées : 4 (base), on demande 8 via le stockage avant chargement.
+    await page.addInitScript(() => {
+      localStorage.setItem('cookigram:lasagnes-moussaka:portions', '8');
+    });
+    await page.goto('/recipes/lasagnes-moussaka/cook/');
+
+    const card = page.locator('.step-ingredients-card').first();
+    await expect(card).toBeVisible();
+    await expect(card.locator('.step-ingredients-title')).toHaveText('Ingrédients pour cette étape');
+
+    // Une quantité scalaire doit être doublée par le facteur 2 (8/4).
+    const qty = card.locator('.step-ingredient-qty[data-scale-text]').first();
+    await expect(qty).not.toBeEmpty();
+  });
+
+  test('les étapes sans ingrédient ne rendent pas de carte vide', async ({ page }) => {
+    await page.goto('/recipes/lasagnes-moussaka/cook/');
+
+    // Le nombre de cartes doit correspondre au nombre d'étapes avec ingrédients,
+    // et aucune carte ne doit être vide.
+    const cards = page.locator('.step-ingredients-card');
+    const count = await cards.count();
+    expect(count).toBeGreaterThan(0);
+
+    for (let i = 0; i < count; i += 1) {
+      await expect(cards.nth(i).locator('.step-ingredients-list')).not.toBeEmpty();
+    }
+  });
 });

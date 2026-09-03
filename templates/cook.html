@@ -65,6 +65,21 @@
         </button>
       </div>
       <h1>{{ step.action }}</h1>
+      {% if step.ingredients %}
+      <div class="step-ingredients-card" aria-label="Ingrédients nécessaires pour cette étape">
+        <strong class="step-ingredients-title">Ingrédients pour cette étape</strong>
+        <ul class="step-ingredients-list">
+          {% for ing in step.ingredients %}
+          <li class="step-ingredient-item">
+            <span class="step-ingredient-name">{{ ing.name }}</span>
+            {% if ing.quantity %}
+            <span class="step-ingredient-qty" data-scale-text="{{ ing.quantity }}">{{ ing.quantity }}</span>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
       {% if step.text %}<p class="instruction" data-scale-text="{{ step.text }}">{{ step.text }}</p>{% endif %}
       {% if step.substeps %}
       <div class="substeps-card">
