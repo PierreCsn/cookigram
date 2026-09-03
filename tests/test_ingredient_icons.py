@@ -1,6 +1,7 @@
 from pathlib import Path
 from types import SimpleNamespace
 
+from generator.gram import parse_recipe
 from generator.ingredient_icons import IngredientIconResolver, attach_ingredient_icons
 from generator.models import Ingredient
 
@@ -249,6 +250,18 @@ def test_resolver_returns_empty_string_when_icon_is_missing():
     resolver = IngredientIconResolver()
 
     assert resolver.resolve("ingrédient totalement inconnu", "1") == ""
+
+
+def test_all_recipe_ingredients_have_existing_icons():
+    resolver = IngredientIconResolver()
+    missing = []
+    for path in sorted(Path("recipes").glob("*.gram")):
+        recipe = parse_recipe(path)
+        for ingredient in recipe.ingredients:
+            if not resolver.resolve(ingredient.name, ingredient.quantity):
+                missing.append(f"{path.name}: {ingredient.name}")
+
+    assert missing == []
 
 
 def test_attach_icons_covers_recipe_steps_and_shopping():
