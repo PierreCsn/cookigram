@@ -15,6 +15,7 @@ from .models import Ingredient, ParallelOperation, Recipe, RecipeVariant, Step
 from .nutrition import calculate_recipe_nutrition
 from .schema import ROOT, RecipeValidationError, validate_recipe_contract
 from .shopping import evaluate_recipe_shopping
+from .utensils import attach_utensil_icons
 
 ACTION = re.compile(r"^\[([^]]+)]\s*(.*)$")
 SUBSTEP = re.compile(r"^[-*]\s+(.+)$")
@@ -359,6 +360,7 @@ def parse_recipe(path: Path, validate: bool = True, root: Path = ROOT) -> Recipe
     recipe.nutrition = calculate_recipe_nutrition(recipe, db_path=root / ".gram/ingredients.yaml")
     recipe.shopping = evaluate_recipe_shopping(recipe, db_path=root / ".gram/ingredients.yaml")
     recipe.variants = _build_variants(metadata, steps, portions, path)
+    attach_utensil_icons(recipe)
 
     if validate:
         validate_recipe_contract(recipe, path, metadata, root=root)

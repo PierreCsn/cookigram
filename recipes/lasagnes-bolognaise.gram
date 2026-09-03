@@ -22,6 +22,13 @@ scaling:
   enabled: false
   reason: Les quantités sont calibrées pour le bol et un plat de 40 x 25 x 6 cm ;
     la mise à l'échelle n'est pas validée.
+required_equipment:
+  - Plat à gratin
+  - Grande poêle
+  - Casserole
+  - Couteau de chef
+  - Fouet
+  - Spatule en bois
 image: images/lasagnes-bolognaise.jpg
 image_credit:
   author: CookiGram

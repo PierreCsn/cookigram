@@ -616,3 +616,55 @@
     padding-inline:12px;
   }
 }
+
+.cook-appliance-required {
+  background:var(--cream);
+  border-bottom:1px solid var(--line);
+  padding:12px 24px;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+  font-size:13px;
+}
+
+.cook-appliance-required>b {
+  color:var(--accent-text);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-size:11.5px;
+}
+
+.cook-utensils-list {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+
+.cook-utensil-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:99px;
+  padding:4px 10px 4px 6px;
+  font-size:12.5px;
+  font-weight:600;
+  color:var(--ink);
+}
+
+.cook-utensil-icon {
+  width:20px;
+  height:20px;
+  object-fit:contain;
+  flex-shrink:0;
+}
+
+.cook-utensil-fallback-icon {
+  font-size:13px;
+  line-height:1;
+}
+
