@@ -1,7 +1,5 @@
 from pathlib import Path
 
-from jinja2 import Environment, FileSystemLoader, select_autoescape
-
 from generator.gram import parse_recipe
 from generator.shopping import clean_shopping_quantity, evaluate_recipe_shopping
 
@@ -38,13 +36,9 @@ def test_evaluate_recipe_shopping_curry():
     assert "courgette" in to_buy_slugs
 
 
-def test_shopping_modal_rendered():
+def test_shopping_modal_rendered(render_template):
     curry = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
-    env = Environment(
-        loader=FileSystemLoader(Path("templates")),
-        autoescape=select_autoescape(),
-    )
-    rendered = env.get_template("recipe.html").render(recipe=curry)
+    rendered = render_template("recipe.html", recipe=curry)
 
     assert "open-shopping-modal" in rendered
     assert "shopping-modal" in rendered

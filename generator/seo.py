@@ -46,10 +46,15 @@ def is_thermomix_compatible(recipe: Recipe) -> bool:
 
 
 def build_recipe_meta_description(recipe: Recipe) -> str:
-    """Build a search snippet in the 120–155 character recommendation range."""
+    """Build a search snippet in the 120–155 character recommendation range.
+
+    The length is measured on the HTML-escaped form (as rendered into a
+    ``<meta>`` tag), so the encoded output never overflows the recommendation
+    even when the copy contains apostrophes or quotes.
+    """
     description = " ".join(str(recipe.description or "").split())
-    if 120 <= len(description) and len(html.escape(description, quote=True)) <= 155:
-        return description
+    if len(description) >= 120:
+        return _fit_meta(description)
 
     thermomix_hint = " Préparation guidée au Thermomix." if is_thermomix_compatible(recipe) else ""
     fallback = (
@@ -58,16 +63,138 @@ def build_recipe_meta_description(recipe: Recipe) -> str:
     )
     if len(fallback) < 120:
         fallback += " Cuisinez simplement, pas à pas."
-    if len(html.escape(fallback, quote=True)) <= 155:
-        return fallback
+    return _fit_meta(fallback)
 
-    # Leave room for HTML escaping in rendered attributes (for example, an
-    # ampersand becomes ``&amp;`` and adds four characters). Trim on word
-    # boundaries so the generated snippet remains readable.
-    candidate = fallback
-    while len(html.escape(candidate + "...", quote=True)) > 155:
-        candidate = candidate.rsplit(" ", 1)[0]
-    return candidate.rstrip(".,;:") + "..."
+
+def _escaped_len(text: str) -> int:
+    """Length of the text once HTML-escaped, as emitted in a <meta> tag."""
+    return len(html.escape(text))
+
+
+def _fit_meta(text: str) -> str:
+    """Truncate copy so its HTML-escaped form stays at most 155 characters.
+
+    The caller guarantees the raw text is already at least 120 characters, so
+    the escaped length (which is always >= the raw length) stays within the
+    recommended search-snippet range.
+    """
+    if _escaped_len(text) <= 155:
+        return text
+
+    words = text.split()
+    candidate = text
+    while words and _escaped_len(candidate) > 155:
+        words = words[:-1]
+        candidate = " ".join(words).rstrip(".,;:")
+    if candidate != text and words:
+        candidate = candidate.rstrip(".,;:") + "..."
+    while _escaped_len(candidate) > 155 and len(candidate) > 60:
+        candidate = candidate[:-1]
+    return candidate
+
+
+# Tags that are too generic to convey thematic similarity; they must not
+# dominate the related-recipes scoring ("réconfort", "rapide", ...).
+GENERIC_TAGS = {"rapide", "réconfort", "traditionnel", "thermomix"}
+
+
+def _ingredient_families(recipe: Recipe) -> set[str]:
+    """Normalized ingredient families (main protein/produce) used for topical matches."""
+    families = set()
+    for item in recipe.ingredients:
+        name = item.name.casefold().strip()
+        for family in (
+            "poulet",
+            "porc",
+            "boeuf",
+            "poisson",
+            "saumon",
+            "crevettes",
+            "gambas",
+            "lentilles",
+            "pomme de terre",
+            "carotte",
+            "potiron",
+            "butternut",
+            "asperge",
+            "pois",
+            "pates",
+            "riz",
+        ):
+            if family in name:
+                families.add(family)
+    return families
+
+
+def compute_similar_recipes(recipe: Recipe, all_recipes: list[Recipe], limit: int = 4) -> list[Recipe]:
+    """Deterministically rank the most topically-related recipes.
+
+    Scoring is based on shared meaningful tags (weight 3), overlapping
+    ingredient families (weight 2) and Thermomix compatibility (weight 1).
+    A reciprocal tiebreak prefers candidates whose own broader selection also
+    features this recipe, keeping the internal-linking mesh balanced and
+    bidirectional. The result is stable across builds (score desc, then
+    reciprocity, then slug asc).
+    """
+    candidates = [other for other in all_recipes if other.slug != recipe.slug]
+    own_tags = {str(tag).casefold() for tag in recipe.tags}
+    own_families = _ingredient_families(recipe)
+    own_tmx = is_thermomix_compatible(recipe)
+
+    scored: list[tuple[int, str, Recipe]] = []
+    for other in candidates:
+        score = _similarity_score(recipe, other, own_tags, own_families, own_tmx)
+        if score > 0:
+            scored.append((score, other.slug, other))
+
+    scored.sort(key=lambda item: (-item[0], item[1]))
+
+    if len(scored) <= limit:
+        return [item[2] for item in scored]
+
+    # Favour candidates that already rank this recipe in their own top-K, so
+    # the mesh is reciprocated (bidirectional) rather than one-way. Based purely
+    # on the symmetric score, it is deterministic and independent of the order
+    # recipes are processed in.
+    wider_window = limit + 2
+    reciprocal_pool: set[str] = set()
+    for other in candidates:
+        other_tags = {str(tag).casefold() for tag in other.tags}
+        other_families = _ingredient_families(other)
+        other_tmx = is_thermomix_compatible(other)
+        ranked: list[tuple[int, str]] = []
+        for candidate in all_recipes:
+            if candidate.slug == other.slug:
+                continue
+            s = _similarity_score(other, candidate, other_tags, other_families, other_tmx)
+            if s > 0:
+                ranked.append((s, candidate.slug))
+        ranked.sort(key=lambda item: (-item[0], item[1]))
+        top = {slug for _, slug in ranked[:wider_window]}
+        if recipe.slug in top:
+            reciprocal_pool.add(other.slug)
+
+    ordered = [(score, 0 if slug in reciprocal_pool else 1, slug, other) for score, slug, other in scored]
+    ordered.sort(key=lambda item: (-item[0], item[1], item[2]))
+    return [item[3] for item in ordered[:limit]]
+
+
+def _similarity_score(
+    a: Recipe,
+    b: Recipe,
+    a_tags: set[str] | None = None,
+    a_families: set[str] | None = None,
+    a_tmx: bool | None = None,
+) -> int:
+    """Raw symmetric topical-similarity score between two recipes."""
+    a_tag_set = a_tags if a_tags is not None else {str(tag).casefold() for tag in a.tags}
+    b_tag_set = {str(tag).casefold() for tag in b.tags}
+    meaningful_shared = len((a_tag_set & b_tag_set) - GENERIC_TAGS)
+    a_family_set = a_families if a_families is not None else _ingredient_families(a)
+    shared_families = len(a_family_set & _ingredient_families(b))
+    a_is_tmx = a_tmx if a_tmx is not None else is_thermomix_compatible(a)
+    shared_tmx = 1 if a_is_tmx and is_thermomix_compatible(b) else 0
+    return meaningful_shared * 3 + shared_families * 2 + shared_tmx
 
 
 def _duration_seconds(time_str: str | None) -> int | None:
@@ -79,10 +206,7 @@ def _duration_seconds(time_str: str | None) -> int | None:
         match = re.search(pattern, iso)
         return int(match.group(1)) if match else 0
 
-    hours = component(r"(\d+)H")
-    minutes = component(r"(\d+)M")
-    seconds = component(r"(\d+)S")
-    return hours * 3600 + minutes * 60 + seconds
+    return component(r"(\d+)H") * 3600 + component(r"(\d+)M") * 60 + component(r"(\d+)S")
 
 
 def _seconds_to_iso_duration(seconds: int) -> str:
@@ -111,7 +235,6 @@ def recipe_cook_time(recipe: Recipe) -> str | None:
 
 
 def recipe_cuisine(recipe: Recipe) -> str | None:
-    """Map the first recognized cuisine tag to Schema.org's recipeCuisine value."""
     for tag in recipe.tags:
         if cuisine := RECIPE_CUISINES.get(str(tag).casefold()):
             return cuisine
@@ -119,7 +242,6 @@ def recipe_cuisine(recipe: Recipe) -> str | None:
 
 
 def recipe_category(recipe: Recipe) -> str:
-    """Map dish-type tags to stable culinary categories instead of raw ingredients."""
     tags = {str(tag).casefold() for tag in recipe.tags}
     for tag, category in RECIPE_CATEGORIES:
         if tag in tags:
@@ -128,7 +250,6 @@ def recipe_category(recipe: Recipe) -> str:
 
 
 def recipe_published_date(recipe: Recipe) -> str | None:
-    """Get a deterministic ISO publication date from recipe metadata."""
     metadata = recipe.metadata or {}
     date = metadata.get("date") or metadata.get("date_published") or metadata.get("published")
     image_generation = metadata.get("image_generation", {})
@@ -215,22 +336,13 @@ def build_recipe_schema(recipe: Recipe, site_url: str = DEFAULT_SITE_URL) -> dic
     if cuisine := recipe_cuisine(recipe):
         schema["recipeCuisine"] = cuisine
 
-    if published_date := recipe_published_date(recipe):
-        schema["datePublished"] = published_date
-        schema["dateModified"] = published_date
+    if published := recipe_published_date(recipe):
+        schema["datePublished"] = published
+        schema["dateModified"] = published
 
     if recipe.tags:
         schema["keywords"] = ", ".join(recipe.tags)
     schema["recipeCategory"] = recipe_category(recipe)
-
-    schema["breadcrumb"] = {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Accueil", "item": f"{base_url}/"},
-            {"@type": "ListItem", "position": 2, "name": "Recettes", "item": f"{base_url}/"},
-            {"@type": "ListItem", "position": 3, "name": recipe.title, "item": canonical_url},
-        ],
-    }
 
     # Ingredients list formatted cleanly
     ingredients_list = []
@@ -271,6 +383,15 @@ def build_recipe_schema(recipe: Recipe, site_url: str = DEFAULT_SITE_URL) -> dic
         step_obj["text"] = directions_obj
         instructions.append(step_obj)
     schema["recipeInstructions"] = instructions
+
+    schema["breadcrumb"] = {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Accueil", "item": f"{base_url}/"},
+            {"@type": "ListItem", "position": 2, "name": "Recettes", "item": f"{base_url}/#recipes"},
+            {"@type": "ListItem", "position": 3, "name": recipe.title, "item": canonical_url},
+        ],
+    }
 
     # Nutrition details if available
     nutrition = recipe.nutrition

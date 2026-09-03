@@ -1,7 +1,5 @@
 from pathlib import Path
 
-from jinja2 import Environment, FileSystemLoader, select_autoescape
-
 from generator.gram import parse_recipe
 from generator.plugins import apply_plugins
 from plugins.thermomix import parse_thermomix_settings
@@ -34,17 +32,12 @@ def test_parse_thermomix_settings():
     assert res2["reverse"] is False
 
 
-def test_thermomix_badges_rendered_in_templates():
+def test_thermomix_badges_rendered_in_templates(render_template):
     risotto = parse_recipe(Path("recipes/risotto-poulet-champignons.gram"))
     apply_plugins(risotto, Path("plugins"))
 
-    env = Environment(
-        loader=FileSystemLoader(Path("templates")),
-        autoescape=select_autoescape(),
-    )
-
-    rendered_recipe = env.get_template("recipe.html").render(recipe=risotto)
-    rendered_cook = env.get_template("cook.html").render(recipe=risotto)
+    rendered_recipe = render_template("recipe.html", recipe=risotto)
+    rendered_cook = render_template("cook.html", recipe=risotto)
 
     # Check presence of Cookomix-style badges and SVG icons
     assert "tmx-badge" in rendered_recipe

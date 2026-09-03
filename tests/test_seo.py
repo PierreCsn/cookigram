@@ -10,6 +10,7 @@ from generator.seo import (
     build_robots_txt,
     build_rss_feed,
     build_sitemap_xml,
+    compute_similar_recipes,
     format_iso_duration,
     is_thermomix_compatible,
     recipe_category,
@@ -255,3 +256,37 @@ def test_build_404_page_is_noindex_and_has_no_canonical(tmp_path: Path):
     assert '<meta name="robots" content="noindex, follow">' in notfound_html
     assert '<link rel="canonical"' not in notfound_html
     assert '<meta name="description" content="Page introuvable sur CookiGram.">' in notfound_html
+
+
+def test_compute_similar_recipes_returns_deterministic_balanced_links():
+    recipes = [parse_recipe(path) for path in sorted(Path("recipes").glob("*.gram"))]
+    first = recipes[0]
+
+    suggestions = compute_similar_recipes(first, recipes)
+    # 3-4 links, never the recipe itself
+    assert 3 <= len(suggestions) <= 4
+    assert all(r.slug != first.slug for r in suggestions)
+    # Deterministic across calls
+    assert [r.slug for r in compute_similar_recipes(first, recipes)] == [r.slug for r in suggestions]
+
+    # Every recipe links to exactly the same number of related recipes (balanced mesh)
+    counts = {len(compute_similar_recipes(r, recipes)) for r in recipes}
+    assert len(counts) == 1
+
+
+def test_related_recipes_section_and_clickable_tags_render(tmp_path: Path):
+    output_dir = tmp_path / "_site"
+    build(output_dir)
+
+    page = (output_dir / "recipes" / "curry-poulet-noix-coco" / "index.html").read_text(encoding="utf-8")
+    # Semantic section present
+    assert 'class="related-recipes"' in page
+    assert "Recettes similaires" in page
+    # 3-4 internal links to sibling recipes with descriptive title anchors
+    cards = re.findall(r'class="related-card" href="\.\./([^"]+)/"', page)
+    assert 3 <= len(cards) <= 4
+    assert "curry-poulet-noix-coco" not in cards
+    # Each link carries a descriptive anchor (recipe title) for internal linking
+    assert "related-card" in page and "<h3>" in page
+    # Clickable tag badges link to the filtered catalogue
+    assert 'class="tag-link" href="../../#tag-' in page

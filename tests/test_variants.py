@@ -1,7 +1,6 @@
 from pathlib import Path
 
 import pytest
-from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from generator.gram import parse_recipe
 
@@ -68,11 +67,10 @@ def test_variant_validation(tmp_path, frontmatter, message):
         parse_recipe(_write(tmp_path, frontmatter))
 
 
-def test_variant_selector_and_direct_link_hooks_are_rendered():
+def test_variant_selector_and_direct_link_hooks_are_rendered(render_template):
     recipe = parse_recipe(ROAST)
-    env = Environment(loader=FileSystemLoader(Path("templates")), autoescape=select_autoescape())
-    recipe_html = env.get_template("recipe.html").render(recipe=recipe)
-    cook_html = env.get_template("cook.html").render(recipe=recipe)
+    recipe_html = render_template("recipe.html", recipe=recipe)
+    cook_html = render_template("cook.html", recipe=recipe)
     assert 'data-default-variant="thermomix-varoma"' in recipe_html
     assert 'data-variant="sous-vide-four"' in recipe_html
     assert "variant-select" in recipe_html
