@@ -39,7 +39,7 @@
       <button class="wake" type="button" aria-pressed="false" title="Garder l'écran allumé">☀</button>
     </div>
   </header>
-  {% if recipe.metadata.required_equipment %}<aside class="cook-appliance-required"><b>Matériel requis :</b> {{ recipe.metadata.required_equipment|join(', ') }}</aside>{% endif %}
+  {% if recipe.metadata.required_equipment %}<aside class="cook-appliance-required"><b>Matériel requis :</b><div class="cook-utensils-list">{% for item in (recipe.metadata.equipment_items if recipe.metadata.equipment_items is defined and recipe.metadata.equipment_items else recipe.metadata.required_equipment) %}{% set name = item.name if item.name is defined else item %}{% set icon = item.icon if item.icon is defined else None %}<span class="cook-utensil-badge {% if icon %}has-icon{% else %}no-icon{% endif %}">{% if icon %}<img src="{{ prefix }}assets/icons/utensils/{{ icon }}.webp" alt="" class="cook-utensil-icon" width="20" height="20">{% else %}<span class="cook-utensil-fallback-icon" aria-hidden="true">🍳</span>{% endif %}<span class="cook-utensil-name">{{ name }}</span></span>{% endfor %}</div></aside>{% endif %}
   <aside class="voice-feedback" hidden>
     <span class="voice-indicator" aria-hidden="true"></span>
     <span class="voice-feedback-text">Mains libres actif : dites <em>« Suivant »</em>, <em>« Précédent »</em>, <em>« Répéter »</em> ou <em>« Minuteur »</em></span>

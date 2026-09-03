@@ -8,6 +8,9 @@ description: Tomates mûres, concombre croquant, olives Kalamata et bloc de feta
 tags: [salade, méditerranéen, végétarien, rapide, été, fromage]
 source: https://www.marmiton.org/recettes/recette_salade-grecque-a-l-origan_29355.aspx
 author: lise_14056503
+required_equipment:
+  - Grand saladier
+  - Couteau de chef
 scaling:
   enabled: true
   min_portions: 2

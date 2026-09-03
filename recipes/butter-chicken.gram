@@ -22,6 +22,12 @@ appliances:
 scaling:
   enabled: false
   reason: Quantités et chauffe calibrées pour 4 portions dans le bol du Thermomix.
+required_equipment:
+  - Casserole
+  - Poêle
+  - Saladier
+  - Couteau de chef
+  - Spatule en bois
 image: images/butter-chicken.jpg
 image_credit:
   author: CookiGram
