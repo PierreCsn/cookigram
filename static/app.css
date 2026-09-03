@@ -1023,6 +1023,28 @@ a {
 .shopping-btn.highlight:hover {
   background:#d85f2c;
 }
+.ingredient-icon {
+  display:block;
+  flex:0 0 auto;
+  width:24px;
+  height:24px;
+  object-fit:contain;
+}
+
+.ingredient-icon--cook {
+  width:32px;
+  height:32px;
+}
+
+.step-ingredient-name {
+  flex:1;
+}
+
+.ingredient-label,
+.eval-item-label,
+.step-ingredient-item {
+  align-items:center;
+}
 
 /* === modal.css === */
 .shopping-modal {

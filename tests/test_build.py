@@ -27,6 +27,11 @@ def test_build_generates_complete_static_site(tmp_path: Path):
     risotto_dir = output_dir / "recipes" / "risotto-poulet-champignons"
     assert (risotto_dir / "index.html").is_file()
     assert (risotto_dir / "cook" / "index.html").is_file()
+    assert (output_dir / "assets" / "icons" / "ingredients" / "ail.svg").is_file()
+
+    recipe_html = (risotto_dir / "index.html").read_text(encoding="utf-8")
+    assert 'class="ingredient-icon ingredient-icon--standard"' in recipe_html
+    assert "icons/ingredients/" in recipe_html
 
     # Re-run build to verify clean overwrite
     build(output_dir)

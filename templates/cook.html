@@ -71,6 +71,7 @@
         <ul class="step-ingredients-list">
           {% for ing in step.ingredients %}
           <li class="step-ingredient-item">
+            {% if ing.icon %}<img class="ingredient-icon ingredient-icon--cook" src="../../../assets/{{ ing.icon }}" alt="" aria-hidden="true">{% endif %}
             <span class="step-ingredient-name">{{ ing.name }}</span>
             {% if ing.quantity %}
             <span class="step-ingredient-qty" data-scale-text="{{ ing.quantity }}">{{ ing.quantity }}</span>

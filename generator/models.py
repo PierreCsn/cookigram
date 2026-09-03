@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 class Ingredient:
     name: str
     quantity: str = ""
+    icon: str = ""
 
 
 @dataclass
