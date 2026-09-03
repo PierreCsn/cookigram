@@ -81,6 +81,13 @@ ICON_FAMILY_BY_SLUG = {
     "salade-romaine": "salade-romaine",
     "oignon-nouveau": "oignon-nouveau",
     "celeri": "celeri",
+    "anchois": "anchois",
+    "filet-de-poisson": "filet-de-poisson",
+    "langoustines": "langoustines",
+    "viande-hachee": "viande-hachee",
+    "lardons": "lardons",
+    "jambon-cru": "jambon-cru",
+    "chorizo": "chorizo",
 }
 
 

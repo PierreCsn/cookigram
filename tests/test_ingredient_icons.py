@@ -125,6 +125,21 @@ def test_resolver_covers_the_fruit_and_vegetable_batch():
         assert resolver.resolve(name) == f"icons/ingredients/{filename}"
 
 
+def test_resolver_covers_the_protein_batch():
+    resolver = IngredientIconResolver()
+    expected = {
+        "filets d'anchois": "anchois.svg",
+        "filets de merlan": "filet-de-poisson.svg",
+        "langoustines": "langoustines.svg",
+        "viande hachée": "viande-hachee.svg",
+        "lardons": "lardons.svg",
+        "jambon cru": "jambon-cru.svg",
+        "chorizo": "chorizo.svg",
+    }
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
 def test_resolver_returns_empty_string_when_icon_is_missing():
     resolver = IngredientIconResolver()
 
