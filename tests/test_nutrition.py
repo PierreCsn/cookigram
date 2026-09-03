@@ -12,6 +12,7 @@ from generator.nutrition import (
     parse_quantity,
     parse_quantity_grams,
 )
+from generator.seo import build_recipe_meta_description, is_thermomix_compatible
 
 
 def test_parse_quantity_grams():
@@ -187,7 +188,9 @@ def test_nutrition_rendered_in_templates():
         loader=FileSystemLoader(Path("templates")),
         autoescape=select_autoescape(),
     )
-    rendered_recipe = env.get_template("recipe.html").render(recipe=curry)
+    env.globals["recipe_meta_description"] = build_recipe_meta_description
+    env.globals["is_thermomix_compatible"] = is_thermomix_compatible
+    rendered_recipe = env.get_template("recipe.html").render(recipe=curry, related_recipes=[])
     rendered_index = env.get_template("index.html").render(recipes=[curry], all_tags=[])
 
     assert "nutrition-card" in rendered_recipe

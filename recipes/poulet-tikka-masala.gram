@@ -23,6 +23,12 @@ scaling:
   enabled: false
   reason: Cuisson vapeur et volume de sauce calibrés pour 4 portions dans le bol du
     Thermomix.
+spiciness: 2
+flavors:
+  pairing: [poulet, garam masala, tomate, crème]
+  notes: [épicé, acidulé, velouté, toasté]
+  harmony: "La marinade acidulée au yaourt attendrit le poulet tandis que la sauce tomate beurrée aux épices chaudes apporte une profondeur inimitable."
+  tips: "Saisir vigoureusement les morceaux de poulet mariné avant de les napper de sauce masala pour retrouver le goût grillé du tandoor."
 image: images/poulet-tikka-masala.jpg
 image_credit:
   author: CookiGram

@@ -29,6 +29,12 @@ required_equipment:
   - Couteau de chef
   - Fouet
   - Spatule en bois
+spiciness: 0
+flavors:
+  pairing: [bœuf, tomate, béchamel, muscade]
+  notes: [riche, umami, gratiné, réconfortant]
+  harmony: "L'acidité mijotée de la sauce tomate au bœuf est enveloppée par l'onctuosité de la béchamel parfumée à la noix de muscade."
+  tips: "Laisser reposer le plat 10 minutes hors du four avant de trancher pour que les couches se stabilisent et retiennent les sucs."
 image: images/lasagnes-bolognaise.jpg
 image_credit:
   author: CookiGram

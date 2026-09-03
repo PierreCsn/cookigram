@@ -12,8 +12,8 @@ required_equipment:
   - Grand saladier
   - Couteau de chef
   - Couteau d'office
-  - Planche à découper
   - Plat de service
+  - Planche à découper
 scaling:
   enabled: true
   min_portions: 2

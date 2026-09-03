@@ -225,6 +225,22 @@ export const initCatalogueSearch = () => {
     });
   });
 
+  const hashMatch = window.location.hash.match(/^#tag-(.+)$/);
+  if (hashMatch) {
+    const target = decodeURIComponent(hashMatch[1]);
+    for (const chip of chips) {
+      if (chip.dataset.tag === target) {
+        chips.forEach((c) => {
+          c.classList.remove('active');
+        });
+        chip.classList.add('active');
+        activeTag = target;
+        filterCatalogue();
+        break;
+      }
+    }
+  }
+
   resetSearchBtn?.addEventListener('click', () => {
     if (searchInput) searchInput.value = '';
     activeTag = 'all';

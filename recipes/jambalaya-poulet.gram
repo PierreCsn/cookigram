@@ -24,6 +24,12 @@ scaling:
   enabled: false
   reason: Quantités calibrées pour 8 portions et une cuisson simultanée au Varoma
     et au panier cuisson.
+spiciness: 2
+flavors:
+  pairing: [poulet, chorizo, épices cajun, poivron]
+  notes: [fumé, corsé, épicé, généreux]
+  harmony: "Le gras parfumé et fumé du chorizo enrobe les grains de riz et s'associe au mélange d'épices cajun pour un plat festif et relevé."
+  tips: "Bien faire suer le 'trinitariat' cajun (oignon, poivron, céleri) dans les sucs de cuisson du chorizo pour une base aromatique profonde."
 image: images/jambalaya-poulet.jpg
 image_credit:
   author: CookiGram

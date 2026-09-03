@@ -1,30 +1,20 @@
 from pathlib import Path
 
-from jinja2 import Environment, FileSystemLoader, select_autoescape
-
 from generator.gram import parse_recipe
 
 
-def test_recipe_page_contains_share_button():
+def test_recipe_page_contains_share_button(render_template):
     recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
-    env = Environment(
-        loader=FileSystemLoader(Path("templates")),
-        autoescape=select_autoescape(),
-    )
-    rendered = env.get_template("recipe.html").render(recipe=recipe)
+    rendered = render_template("recipe.html", recipe=recipe)
 
     assert "share-btn" in rendered
     assert "recipe-actions" in rendered
     assert "Partager" in rendered
 
 
-def test_recipe_page_contains_shopping_checklist_and_export():
+def test_recipe_page_contains_shopping_checklist_and_export(render_template):
     recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
-    env = Environment(
-        loader=FileSystemLoader(Path("templates")),
-        autoescape=select_autoescape(),
-    )
-    rendered = env.get_template("recipe.html").render(recipe=recipe)
+    rendered = render_template("recipe.html", recipe=recipe)
 
     assert "checklist" in rendered
     assert "copy-list" in rendered
@@ -35,10 +25,9 @@ def test_recipe_page_contains_shopping_checklist_and_export():
     assert "toast" in rendered
 
 
-def test_recipe_page_distinguishes_source_and_human_appliance_compatibility():
+def test_recipe_page_distinguishes_source_and_human_appliance_compatibility(render_template):
     recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
-    env = Environment(loader=FileSystemLoader(Path("templates")), autoescape=select_autoescape())
-    rendered = env.get_template("recipe.html").render(recipe=recipe)
+    rendered = render_template("recipe.html", recipe=recipe)
 
     assert "Matériel indispensable" in rendered
     assert "Thermomix TM31, TM5, TM6 ou TM7" in rendered
@@ -47,22 +36,23 @@ def test_recipe_page_distinguishes_source_and_human_appliance_compatibility():
     assert "Illustration générée par IA pour CookiGram" in rendered
 
 
-def test_recipe_illustration_is_present_in_heading_with_lcp_hint():
+def test_recipe_illustration_is_present_in_heading_with_lcp_hint(render_template):
     recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
-    env = Environment(loader=FileSystemLoader(Path("templates")), autoescape=select_autoescape())
-    rendered = env.get_template("recipe.html").render(recipe=recipe)
+    rendered = render_template("recipe.html", recipe=recipe)
 
     assert 'class="plate"' in rendered
     assert 'fetchpriority="high"' in rendered
+    # Explicit dimensions preserve the 16:9 ratio to avoid CLS; informative alt for image SEO
+    assert 'width="1280" height="720"' in rendered
+    assert 'alt="Illustration de Curry de poulet à la noix de coco"' in rendered
     # The image credit must be visually attached to the plate (inside the heading)
     heading = rendered.split('<section class="recipe-heading">', 1)[1].split("</section>", 1)[0]
     assert "image-credit" in heading
 
 
-def test_shopping_toolbar_is_pared_down_but_export_remains_in_modal():
+def test_shopping_toolbar_is_pared_down_but_export_remains_in_modal(render_template):
     recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
-    env = Environment(loader=FileSystemLoader(Path("templates")), autoescape=select_autoescape())
-    rendered = env.get_template("recipe.html").render(recipe=recipe)
+    rendered = render_template("recipe.html", recipe=recipe)
 
     toolbar = rendered.split('class="shopping-toolbar"', 1)[1].split("</div>", 1)[0]
     # Only the main evaluation + reset buttons remain in the compact toolbar
@@ -79,10 +69,9 @@ def test_shopping_toolbar_is_pared_down_but_export_remains_in_modal():
     assert "share-list" in modal
 
 
-def test_recipe_page_renders_flavor_panel_when_present():
+def test_recipe_page_renders_flavor_panel_when_present(render_template):
     recipe = parse_recipe(Path("recipes/porc-au-caramel.gram"))
-    env = Environment(loader=FileSystemLoader(Path("templates")), autoescape=select_autoescape())
-    rendered = env.get_template("recipe.html").render(recipe=recipe)
+    rendered = render_template("recipe.html", recipe=recipe)
 
     assert "flavor-panel" in rendered
     assert "Saveurs & accord" in rendered
@@ -94,9 +83,8 @@ def test_recipe_page_renders_flavor_panel_when_present():
     assert "flavor-spice" in rendered
 
 
-def test_recipe_page_omits_flavor_panel_when_absent():
+def test_recipe_page_omits_flavor_panel_when_absent(render_template):
     recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
-    env = Environment(loader=FileSystemLoader(Path("templates")), autoescape=select_autoescape())
-    rendered = env.get_template("recipe.html").render(recipe=recipe)
+    rendered = render_template("recipe.html", recipe=recipe)
 
     assert "flavor-panel" not in rendered

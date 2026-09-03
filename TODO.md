@@ -4,24 +4,37 @@
 > Arbitrage validé par le Product Owner (@PierreCsn, utilisateur n°1) et le Product Lead.  
 > Référence GitHub : Issue épinglée **[#35](https://github.com/PierreCsn/cookigram/issues/35)** et **[`PRODUCT_PRINCIPLES.md`](PRODUCT_PRINCIPLES.md)**.
 >
-> 1. 🍳 **Lot 1 — UX Cuisine & Ergonomie Mobile (P0/P1)** : #28, #29, #27 (**EN COURS / PRIORITÉ ABSOLUE**)
-> 2. 🔍 **Lot 2 — SEO Critique & Indexation (P1)** : #15 (fait), #16 (fait), #20
-> 3. 📱 **Lot 3 — Ergonomie & Fiche Recette (P1)** : #26, #30, #32, #31
-> 4. 🎨 **Lot 4 — SEO Avancé & Performance (P2)** : #33, #34, #17, #19, #18, #21, #22, #23, #24
-> 5. 🧱 **Lot 5 — Dette Technique & Évolution Socle (P3/P4)** : #8, #1
+> 1. 🍳 **Lot 1 — UX Cuisine & Ergonomie Mobile (P0/P1)** : #28, #29, #27, #37 (**TERMINÉ**)
+> 2. 🔍 **Lot 2 — SEO Critique & Indexation (P1)** : #15, #16, #20 (**TERMINÉ**)
+> 3. 📱 **Lot 3 — Ergonomie & Fiche Recette (P1)** : #26, #30, #31, #32, #39, #49 (**TERMINÉ**)
+> 4. 🎨 **Lot 4 — SEO Avancé, Design System & Performance (P2)** : #17, #24, #34, #23, #21, #22, #19, #18, #33 (**TERMINÉ**)
+> 5. 🧱 **Lot 5 — Dette Technique & Évolution Socle (P3/P4)** : #8 (fait), #1 (en attente)
 
 Dernier audit : 3 septembre 2026.
 
 ## État du projet au moment de l'audit
 
 
-- 23 recettes et 111 entrées dans la base d'ingrédients.
-- 41 tests Python réussis.
-- Couverture Python : 88 %.
-- Ruff, Biome et génération complète du site réussis.
-- Site généré : environ 3,9 Mo.
+- 43 fichiers de recettes `.gram` et 170 entrées dans la base d'ingrédients.
+- 100 tests Python collectés dans la CI, avec seuil de couverture configuré à 80 %.
+- Ruff, Biome, tests JavaScript et génération complète du site sont contrôlés par la CI.
+- Le site est généré et déployé uniquement après validation de la CI.
 - La branche principale locale suit désormais l'historique GitHub ; l'ancien
   historique local reste conservé dans `legacy/codex-pre-gemini`.
+
+### État des travaux récents
+
+- [x] Ajouter les icônes d'instruments de cuisine (#56).
+- [x] Ajouter les icônes d'ingrédients du lot pilote et résoudre les variantes Gram.
+- [x] Ajouter les icônes manquantes eau, poivre, vin blanc et bouquet garni (#71).
+- [x] Ajouter les descriptions éditoriales approuvées (#45).
+- [x] Corriger les quantités et ingrédients manquants (#43).
+- [ ] Finaliser les cas ambigus d'ingrédients répétés (#42).
+- [ ] Finaliser l'audit des cinq salades (#63).
+- [x] Fusionner les PR #69 et #70 pour clôturer #23, #19, #18 et #33.
+- [ ] Valider avec Design / UX l'affichage du temps restant en mode pas à pas (#67).
+- [ ] Obtenir l'analyse Recipe Expert sur le panier cuisson à l'étape 3 (#68).
+- [ ] Obtenir l'arbitrage du Product Owner sur la compatibilité TM31 à 120 °C (#40).
 
 ## P0 — Stabiliser les parcours principaux
 
@@ -187,7 +200,8 @@ Dernier audit : 3 septembre 2026.
 - [ ] Vérifier la dégradation progressive des API Web non universelles : voix,
   partage, vibration, notifications, Wake Lock et presse-papiers.
 - [ ] Définir des budgets de poids pour HTML, JavaScript, CSS et images.
-- [x] Ajouter des données structurées Schema.org `Recipe`.
+- [x] Ajouter des données structurées Schema.org `Recipe` avec durée, cuisine,
+  dates et fil d'Ariane (#19).
 - [x] Ajouter les URL canoniques, métadonnées Open Graph et cartes sociales.
 - [x] Générer un sitemap et, si utile, un flux des nouvelles recettes.
 - [ ] Mesurer Lighthouse dans la CI sans imposer de seuils instables au départ.
@@ -206,12 +220,12 @@ Dernier audit : 3 septembre 2026.
 
 ## Ordre de réalisation recommandé
 
-1. Compléter les scénarios Playwright du parcours principal.
-2. Valider strictement les recettes et rendre les chemins reproductibles.
-3. Fiabiliser les données nutritionnelles et leur niveau de confiance.
-4. Ajouter une page de secours hors ligne et tester les mises à jour PWA.
-5. Modulariser le frontend.
-6. Reprendre ensuite le développement de nouvelles fonctionnalités.
+1. Finaliser l'audit recette #63 et clarifier les cas restants de #42.
+2. Faire valider par Design / UX puis traiter la fonctionnalité du temps restant
+   en mode pas à pas (#67).
+3. Obtenir l'analyse Recipe Expert sur l'usage du panier cuisson à l'étape 3 (#68).
+4. Obtenir la décision du Product Owner sur #40.
+5. Reprendre ensuite les chantiers P3/P4 et les nouvelles fonctionnalités validées.
 
 ## Définition de « terminé » pour une tâche
 

@@ -5,11 +5,18 @@ from generator.build import build
 from generator.gram import parse_recipe
 from generator.seo import (
     DEFAULT_SITE_URL,
+    build_recipe_meta_description,
     build_recipe_schema,
     build_robots_txt,
     build_rss_feed,
     build_sitemap_xml,
+    compute_similar_recipes,
     format_iso_duration,
+    is_thermomix_compatible,
+    recipe_category,
+    recipe_cook_time,
+    recipe_cuisine,
+    recipe_published_date,
 )
 
 
@@ -38,6 +45,13 @@ def test_build_recipe_schema(tmp_path: Path):
     assert schema["recipeYield"] == f"{recipe.portions} portions"
     assert schema["prepTime"] == "PT12M"
     assert schema["totalTime"] == "PT48M"
+    assert schema["cookTime"] == "PT36M"
+    assert schema["recipeCuisine"] == "Italian"
+    assert schema["recipeCategory"] == "Plat principal"
+    assert schema["datePublished"] == "2026-09-02"
+    assert schema["dateModified"] == "2026-09-02"
+    assert schema["breadcrumb"]["@type"] == "BreadcrumbList"
+    assert schema["breadcrumb"]["itemListElement"][-1]["name"] == recipe.title
     assert len(schema["recipeIngredient"]) == len(recipe.ingredients)
     assert len(schema["recipeInstructions"]) == len(recipe.steps)
     assert schema["recipeInstructions"][0]["@type"] == "HowToStep"
@@ -162,6 +176,41 @@ def test_build_home_declares_title_and_websites_organization_schema(tmp_path: Pa
     assert "Thermomix" in index_html and "guidées" in index_html
 
 
+def test_recipe_meta_descriptions_are_calibrated_and_thermomix_titles_are_explicit(tmp_path: Path):
+    output_dir = tmp_path / "_site"
+    build(output_dir)
+
+    descriptions = []
+    for page in (output_dir / "recipes").glob("*/index.html"):
+        rendered = page.read_text(encoding="utf-8")
+        match = re.search(r'<meta name="description" content="([^"]+)">', rendered)
+        assert match is not None, page
+        descriptions.append(match.group(1))
+        assert 120 <= len(match.group(1)) <= 155, (page, len(match.group(1)), match.group(1))
+
+    assert descriptions
+    thermomix_page = (output_dir / "recipes" / "curry-poulet-noix-coco" / "index.html").read_text(encoding="utf-8")
+    assert "<title>Curry de poulet à la noix de coco au Thermomix · CookiGram</title>" in thermomix_page
+
+
+def test_recipe_meta_helpers_detect_thermomix_and_preserve_calibrated_copy():
+    recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
+
+    assert is_thermomix_compatible(recipe)
+    recipe.description = "Une description éditoriale calibrée pour rester dans la longueur recommandée par les moteurs de recherche et présenter clairement la recette."
+    assert build_recipe_meta_description(recipe) == recipe.description
+
+
+def test_recipe_schema_helpers_handle_categories_and_explicit_cook_time():
+    recipe = parse_recipe(Path("recipes/salade-cesar.gram"))
+
+    assert recipe_category(recipe) == "Salade"
+    assert recipe_cuisine(recipe) is None
+    assert recipe_published_date(recipe) == "2026-09-03"
+    recipe.metadata["cook_time"] = "18 min"
+    assert recipe_cook_time(recipe) == "PT18M"
+
+
 def test_build_declares_rel_icon_and_serves_icon_assets(tmp_path: Path):
     output_dir = tmp_path / "_site"
     build(output_dir, site_url="https://custom.domain.com/cook")
@@ -196,3 +245,48 @@ def test_build_cook_page_is_noindex_and_canonical_to_recipe(tmp_path: Path):
     assert (
         '<link rel="canonical" href="https://custom.domain.com/cook/recipes/risotto-poulet-champignons/">' in cook_html
     )
+
+
+def test_build_404_page_is_noindex_and_has_no_canonical(tmp_path: Path):
+    output_dir = tmp_path / "_site"
+    site_url = "https://custom.domain.com/cook"
+    build(output_dir, site_url=site_url)
+
+    notfound_html = (output_dir / "404.html").read_text(encoding="utf-8")
+    assert '<meta name="robots" content="noindex, follow">' in notfound_html
+    assert '<link rel="canonical"' not in notfound_html
+    assert '<meta name="description" content="Page introuvable sur CookiGram.">' in notfound_html
+
+
+def test_compute_similar_recipes_returns_deterministic_balanced_links():
+    recipes = [parse_recipe(path) for path in sorted(Path("recipes").glob("*.gram"))]
+    first = recipes[0]
+
+    suggestions = compute_similar_recipes(first, recipes)
+    # 3-4 links, never the recipe itself
+    assert 3 <= len(suggestions) <= 4
+    assert all(r.slug != first.slug for r in suggestions)
+    # Deterministic across calls
+    assert [r.slug for r in compute_similar_recipes(first, recipes)] == [r.slug for r in suggestions]
+
+    # Every recipe links to exactly the same number of related recipes (balanced mesh)
+    counts = {len(compute_similar_recipes(r, recipes)) for r in recipes}
+    assert len(counts) == 1
+
+
+def test_related_recipes_section_and_clickable_tags_render(tmp_path: Path):
+    output_dir = tmp_path / "_site"
+    build(output_dir)
+
+    page = (output_dir / "recipes" / "curry-poulet-noix-coco" / "index.html").read_text(encoding="utf-8")
+    # Semantic section present
+    assert 'class="related-recipes"' in page
+    assert "Recettes similaires" in page
+    # 3-4 internal links to sibling recipes with descriptive title anchors
+    cards = re.findall(r'class="related-card" href="\.\./([^"]+)/"', page)
+    assert 3 <= len(cards) <= 4
+    assert "curry-poulet-noix-coco" not in cards
+    # Each link carries a descriptive anchor (recipe title) for internal linking
+    assert "related-card" in page and "<h3>" in page
+    # Clickable tag badges link to the filtered catalogue
+    assert 'class="tag-link" href="../../#tag-' in page

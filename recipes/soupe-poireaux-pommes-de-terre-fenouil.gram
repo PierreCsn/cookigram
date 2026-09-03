@@ -21,6 +21,12 @@ scaling:
   enabled: false
   reason: Les quantités et paramètres de chauffe sont calibrés pour 6 portions dans
     le bol Thermomix.
+spiciness: 0
+flavors:
+  pairing: [poireaux, pommes de terre, fenouil, beurre]
+  notes: [herbacé, anisé, doux, velouté]
+  harmony: "La fraîcheur anisée et vive du fenouil sublime la rondeur rustique et réconfortante du duo poireaux-pommes de terre."
+  tips: "Conserver les pluches vertes et tendres du fenouil pour décorer le bol et apporter une touche anisée fraîche en bouche."
 image: images/soupe-poireaux-pommes-de-terre-fenouil.jpg
 image_credit:
   author: CookiGram
