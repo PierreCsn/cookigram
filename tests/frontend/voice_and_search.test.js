@@ -85,6 +85,7 @@ describe('Frontend Pure Helper Unit Tests', () => {
 
     test('recognizes timer and validation commands', () => {
       assert.strictEqual(parseVoiceCommand('lance le minuteur'), 'timer');
+      assert.strictEqual(parseVoiceCommand('Lancer la cuisson'), 'next');
       assert.strictEqual(parseVoiceCommand('c’est fait'), 'check');
       assert.strictEqual(parseVoiceCommand('validé'), 'check');
     });

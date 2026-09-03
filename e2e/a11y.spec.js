@@ -84,6 +84,7 @@ test.describe('Accessibilité (WCAG 2.2 AA) — Lot 3 #31', () => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto('/recipes/lasagnes-moussaka/cook/');
 
+    await page.locator('.mep-start:visible').click();
     const stepSpeak = page.locator('.step-speak').first();
     await expect(stepSpeak).toBeVisible();
     // Active l'état pulsant (indépendamment de l'API voix) pour vérifier la règle CSS.

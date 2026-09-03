@@ -11,6 +11,8 @@ test('une recette préchargée reste disponible hors ligne', async ({ page, cont
   await expect(page.getByRole('heading', { name: 'Curry de poulet à la noix de coco' })).toBeVisible();
   await expect(page.locator('.plate img')).toHaveAttribute('src', /curry-poulet-noix-coco\.jpg/);
   await page.locator('.start-cooking').click();
+  await expect(page.getByRole('heading', { name: '🥣 Mise en place du plan de travail' })).toBeVisible();
+  await page.locator('.mep-start:visible').click();
   await expect(page.getByText('Étape 1 sur 8')).toBeVisible();
   await context.setOffline(false);
 });

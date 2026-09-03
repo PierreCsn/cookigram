@@ -117,6 +117,9 @@ export const parseVoiceCommand = (rawText) => {
   if (/\b(stop|arret|arrete|tais-toi|silence|coupe|merci)\b/.test(text)) {
     return 'stop';
   }
+  if (/\b(lanc|lance|demarr|demarre|commenc|continue).*(cuisson|recette)\b/.test(text)) {
+    return 'next';
+  }
   if (/\b(suivant|suivante|avanc|apres|continuer|continues)\b/.test(text)) {
     return 'next';
   }

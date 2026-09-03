@@ -12,15 +12,15 @@ test.describe('Mode cuisine: navigation et sous-étapes', () => {
     const steps = page.locator('.cook-step');
 
     const totalSteps = await steps.count();
-    expect(totalSteps).toBe(6);
+    expect(totalSteps).toBe(7);
 
     // Étape 1 initiale
     await expect(steps.nth(0)).toHaveClass(/active/);
     await expect(prevBtn).toBeDisabled();
-    await expect(nextBtn).toHaveText('Suivant →');
+    await expect(nextBtn).toHaveText('Lancer la cuisson →');
     await expect(progressBar).toHaveCSS('width', /.+/);
 
-    // Avancer à l'étape 2
+    // Lancer la cuisson depuis l'étape de mise en place
     await nextBtn.click();
     await expect(steps.nth(0)).not.toHaveClass(/active/);
     await expect(steps.nth(1)).toHaveClass(/active/);
@@ -50,8 +50,9 @@ test.describe('Mode cuisine: navigation et sous-étapes', () => {
 
   test('gestion et persistance des sous-étapes', async ({ page }) => {
     await page.goto(COOK_URL);
+    await page.locator('.mep-start:visible').click();
 
-    const firstStep = page.locator('.cook-step').first();
+    const firstStep = page.locator('.cook-step:not(.cook-mep-step)').first();
     const substepsProgress = firstStep.locator('.substeps-progress');
     const firstCheckbox = firstStep.locator('.substep-checkbox').first();
     const firstItem = firstStep.locator('.substep-item').first();
@@ -67,7 +68,7 @@ test.describe('Mode cuisine: navigation et sous-étapes', () => {
 
     // Recharger la page
     await page.reload();
-    const firstStepReloaded = page.locator('.cook-step').first();
+    const firstStepReloaded = page.locator('.cook-step:not(.cook-mep-step)').first();
     await expect(firstStepReloaded.locator('.substep-checkbox').first()).toBeChecked();
     await expect(firstStepReloaded.locator('.substeps-progress')).toHaveText('1 / 2');
 
@@ -79,10 +80,11 @@ test.describe('Mode cuisine: navigation et sous-étapes', () => {
   test('la barre de navigation ne chevauche pas les minuteurs ni les sous-étapes sur mobile', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/recipes/roti-de-porc-sauce-echalote/cook/');
+    await page.locator('.mep-start:visible').click();
 
     // Étape 1 du rôti de porc : plusieurs sous-étapes + minuteurs.
     // Le bas du contenu doit être atteignable sans être masqué par .cook-nav.
-    const firstStep = page.locator('.cook-step').first();
+    const firstStep = page.locator('.cook-step:not(.cook-mep-step)').first();
     const nav = page.locator('.cook-nav');
 
     const lastElement = firstStep.locator('.substeps-card, .timer').last();
@@ -110,6 +112,7 @@ test.describe('Mode cuisine: navigation et sous-étapes', () => {
       localStorage.setItem('cookigram:lasagnes-moussaka:portions', '8');
     });
     await page.goto('/recipes/lasagnes-moussaka/cook/');
+    await page.locator('.mep-start:visible').click();
 
     const card = page.locator('.step-ingredients-card').first();
     await expect(card).toBeVisible();
@@ -136,6 +139,7 @@ test.describe('Mode cuisine: navigation et sous-étapes', () => {
 
   test('affiche et met à jour le temps restant au fil des étapes (#67)', async ({ page }) => {
     await page.goto('/recipes/butter-chicken/cook/');
+    await page.locator('.mep-start:visible').click();
 
     const activeStep = page.locator('.cook-step.active');
     const timeEl = activeStep.locator('.step-remaining-time');
@@ -160,7 +164,9 @@ test.describe('Mode cuisine: navigation et sous-étapes', () => {
 
   test('conserve un minuteur actif et le rend accessible depuis une autre étape (#78)', async ({ page }) => {
     await page.goto('/recipes/veloute-potiron-cannelle/cook/');
-    const timer = page.locator('.cook-step').first().locator('.timer').first();
+    const firstStep = page.locator('.cook-step:not(.cook-mep-step)').first();
+    await page.locator('.mep-start:visible').click();
+    const timer = firstStep.locator('.timer').first();
     await timer.locator('.timer-toggle').click();
     await page.locator('button.next').click();
 
@@ -170,18 +176,41 @@ test.describe('Mode cuisine: navigation et sous-étapes', () => {
     await expect(bar.locator('.active-timer-pause')).toBeVisible();
 
     await page.reload();
-    await expect(page.locator('.cook-step').first().locator('.timer')).toHaveClass(/running/);
+    await expect(firstStep.locator('.timer')).toHaveClass(/running/);
     await expect(page.locator('.active-timer-bar')).toBeVisible();
   });
 
   test('conserve les ingrédients cochés pendant la navigation (#78)', async ({ page }) => {
     await page.goto(COOK_URL);
-    const checkbox = page.locator('.cook-step').first().locator('.step-ingredient-checkbox').first();
+    const firstStep = page.locator('.cook-step:not(.cook-mep-step)').first();
+    await page.locator('.mep-start:visible').click();
+    const checkbox = firstStep.locator('.step-ingredient-checkbox').first();
     await checkbox.check();
     await page.locator('button.next').click();
     await page.locator('button.prev').click();
-    await expect(page.locator('.cook-step').first().locator('.step-ingredient-checkbox').first()).toBeChecked();
+    await expect(firstStep.locator('.step-ingredient-checkbox').first()).toBeChecked();
     await page.reload();
-    await expect(page.locator('.cook-step').first().locator('.step-ingredient-checkbox').first()).toBeChecked();
+    await expect(firstStep.locator('.step-ingredient-checkbox').first()).toBeChecked();
+  });
+
+  test('affiche la mise en place, ses ingrédients et persiste les coches (#80)', async ({ page }) => {
+    await page.goto(COOK_URL);
+
+    const mep = page.locator('.cook-mep-step');
+    await expect(mep).toBeVisible();
+    await expect(mep.locator('h1')).toHaveText('🥣 Mise en place du plan de travail');
+    await expect(mep.locator('.mep-ingredients-list')).toBeVisible();
+    const checkbox = mep.locator('.mep-ingredient-checkbox').first();
+    await checkbox.check();
+    await page.reload();
+    await expect(page.locator('.cook-mep-step .mep-ingredient-checkbox').first()).toBeChecked();
+    await expect(page.locator('.cook-eta')).toContainText('au total');
+  });
+
+  test('le CTA de mise en place lance la première étape de cuisson (#80)', async ({ page }) => {
+    await page.goto(COOK_URL);
+    await page.locator('.mep-start:visible').click();
+    await expect(page.locator('.cook-step:not(.cook-mep-step)').first()).toHaveClass(/active/);
+    await expect(page.locator('button.next')).toHaveText('Suivant →');
   });
 });
