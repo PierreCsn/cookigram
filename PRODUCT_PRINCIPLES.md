@@ -29,6 +29,7 @@ Le smartphone posé sur le plan de travail et la tablette sur son support sont l
 CookiGram cultive une identité graphique chaleureuse et reconnaissable.
 * **Illustrations originales** : privilégier le langage d'illustrations culinaires original plutôt que des photos génériques d'Internet.
 * **Mise en valeur sur tous les écrans** : l'illustration ne doit pas être masquée sur mobile mais intégrée harmonieusement (bannière responsive, ratio respecté sans troncature punitive).
+* **Icônes d'ingrédients cohérentes** : décliner l'identité manga culinaire en mini-icônes « spot illustration » (24-32 px, contours nets) pour scroller rapidement les listes d'ingrédients en cuisine sans surcharger le texte narratif.
 
 ## 5. Recettes structurées et données déterministes
 L'information culinaire est un actif calculable et pérenne.

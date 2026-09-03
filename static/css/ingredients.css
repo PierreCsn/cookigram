@@ -22,9 +22,9 @@
   border:1px solid var(--line);
   background:var(--btn-bg);
   color:var(--ink);
-  border-radius:10px;
-  padding:7px 11px;
-  font-size:13px;
+  border-radius:12px;
+  padding:11px 14px;
+  font-size:14px;
   font-weight:700;
   cursor:pointer;
   transition:all .2s;
@@ -32,6 +32,7 @@
   display:inline-flex;
   align-items:center;
   gap:4px;
+  min-height:44px;
 }
 
 .shopping-btn:hover {
@@ -40,7 +41,7 @@
 }
 
 .shopping-btn.keep-list {
-  color:#d97706;
+  color:#b45309;
 }
 
 [data-theme="dark"] .shopping-btn.keep-list {

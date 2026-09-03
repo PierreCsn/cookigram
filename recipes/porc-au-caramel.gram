@@ -3,8 +3,15 @@ title: Porc au caramel
 portions: 4
 prep_time: 20 min
 total_time: 45 min
-description: Porc caramélisé et fondant aux épices douces et gingembre, nappé d'un caramel laqué au Thermomix.
-tags: [porc, viande, asie, thermomix, réconfort, quotidien]
+description: Porc caramélisé et fondant aux épices douces et gingembre, nappé d'un
+  caramel laqué au Thermomix.
+tags:
+- porc
+- viande
+- asie
+- thermomix
+- réconfort
+- quotidien
 source: https://cookidoo.fr/recipes/recipe/fr-FR/r505976
 author: Vorwerk Home & Co. KmG
 image: images/porc-au-caramel.jpg
@@ -13,17 +20,36 @@ image_credit:
   source: https://github.com/PierreCsn/cookigram
   license: Illustration générée par IA pour CookiGram
   license_url: https://openai.com/policies/terms-of-use/
-  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en
+    JPEG 1280 × 720.
 image_generation:
   provider: OpenAI
   model: ChatGPT image generation
-  generated_at: "2026-09-02"
+  generated_at: '2026-09-02'
   prompt_file: image-prompts/porc-au-caramel.md
 appliances:
-  thermomix: [TM6, TM7]
+  thermomix:
+  - TM6
+  - TM7
 scaling:
   enabled: false
-  reason: Recette calibrée pour le mode Hautes températures du bol Thermomix (TM6/TM7) ; les quantités et la chauffe ne sont pas validées à une autre échelle.
+  reason: Recette calibrée pour le mode Hautes températures du bol Thermomix (TM6/TM7)
+    ; les quantités et la chauffe ne sont pas validées à une autre échelle.
+spiciness: 1
+flavors:
+  pairing:
+  - échine de porc
+  - caramel
+  - gingembre
+  - sauce soja
+  notes:
+  - sucré-salé
+  - umami
+  - laqué
+  harmony: La douceur enveloppante du caramel compense le piquant frais du gingembre
+    et la salinité de la sauce soja sur le gras fondant du porc.
+  tips: Pour apporter une touche acidulée et vivifiante, presser quelques gouttes
+    de jus de citron vert juste avant de servir.
 ---
 
 ## Porc au caramel

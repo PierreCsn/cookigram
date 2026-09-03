@@ -3,11 +3,21 @@ title: Saumon à la Toscane
 portions: 2
 prep_time: 10 min
 total_time: 35 min
-tags: [poisson, thermomix, saumon, épinards, italien, rapide]
+tags:
+- poisson
+- thermomix
+- saumon
+- épinards
+- italien
+- rapide
 source: https://www.cookomix.com/recettes/saumon-toscane-thermomix/
 author: 🐱UnchatEnCuisine
 appliances:
-  thermomix: [TM31, TM5, TM6, TM7]
+  thermomix:
+  - TM31
+  - TM5
+  - TM6
+  - TM7
 scaling:
   enabled: true
 image: images/saumon-a-la-toscane.jpg
@@ -16,12 +26,28 @@ image_credit:
   source: https://github.com/PierreCsn/cookigram
   license: Illustration générée par IA pour CookiGram
   license_url: https://openai.com/policies/terms-of-use/
-  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en
+    JPEG 1280 × 720.
 image_generation:
   provider: OpenAI
   model: ChatGPT image generation
-  generated_at: "2026-09-02"
+  generated_at: '2026-09-02'
   prompt_file: image-prompts/saumon-a-la-toscane.md
+spiciness: 0
+flavors:
+  pairing:
+  - saumon
+  - épinards
+  - parmesan
+  - tomates cerises
+  notes:
+  - crémeux
+  - acidulé
+  - herbacé
+  harmony: L'acidité vive des tomates cerises et la salinité corsée du parmesan équilibrent
+    la richesse fondante du saumon et de la sauce crème.
+  tips: Pour accentuer le caractère toscan, ajouter une pincée de piment d'Espelette
+    ou remplacer l'aneth par de l'origan frais.
 ---
 
 [Préparer les aromates]

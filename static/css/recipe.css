@@ -15,9 +15,23 @@
   font-size:clamp(42px,6vw,72px);
 }
 
+.recipe-heading>.plate {
+  grid-column:2;
+  grid-row:1;
+}
+
+.recipe-heading>.image-credit {
+  grid-column:2;
+  grid-row:2;
+  margin-top:10px;
+}
+
 .plate {
-  height:320px;
-  border-radius:50%;
+  width:100%;
+  max-width:360px;
+  margin-inline:auto;
+  aspect-ratio:16/9;
+  border-radius:24px;
 }
 
 .facts {
@@ -86,6 +100,10 @@
   padding:9px 12px;
   font-size:15px;
   line-height:1;
+  min-width:44px;
+  min-height:44px;
+  display:inline-grid;
+  place-items:center;
 }
 
 .recipe-grid {

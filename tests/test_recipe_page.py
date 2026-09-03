@@ -45,3 +45,35 @@ def test_recipe_page_distinguishes_source_and_human_appliance_compatibility():
     assert "TM31 · compatibilité testée par un humain sur 6 portions" in rendered
     assert "Illustration :" in rendered
     assert "Illustration générée par IA pour CookiGram" in rendered
+
+
+def test_recipe_illustration_is_present_in_heading_with_lcp_hint():
+    recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
+    env = Environment(loader=FileSystemLoader(Path("templates")), autoescape=select_autoescape())
+    rendered = env.get_template("recipe.html").render(recipe=recipe)
+
+    assert 'class="plate"' in rendered
+    assert 'fetchpriority="high"' in rendered
+    # The image credit must be visually attached to the plate (inside the heading)
+    heading = rendered.split('<section class="recipe-heading">', 1)[1].split("</section>", 1)[0]
+    assert "image-credit" in heading
+
+
+def test_shopping_toolbar_is_pared_down_but_export_remains_in_modal():
+    recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
+    env = Environment(loader=FileSystemLoader(Path("templates")), autoescape=select_autoescape())
+    rendered = env.get_template("recipe.html").render(recipe=recipe)
+
+    toolbar = rendered.split('class="shopping-toolbar"', 1)[1].split("</div>", 1)[0]
+    # Only the main evaluation + reset buttons remain in the compact toolbar
+    assert "open-shopping-modal" in toolbar
+    assert "reset-checklist" in toolbar
+    assert "copy-list" not in toolbar
+    assert "keep-list" not in toolbar
+    assert "share-list" not in toolbar
+
+    # The modal still hosts the secondary export actions
+    modal = rendered.split('id="shopping-modal"', 1)[1]
+    assert "copy-list" in modal
+    assert "keep-list" in modal
+    assert "share-list" in modal

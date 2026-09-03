@@ -52,8 +52,11 @@
   font-size:26px;
   line-height:1;
   cursor:pointer;
-  padding:2px 8px;
+  min-width:44px;
+  min-height:44px;
   border-radius:50%;
+  display:grid;
+  place-items:center;
 }
 
 .modal-close-btn:hover {
@@ -91,11 +94,14 @@
   background:var(--btn-bg);
   border:1px solid var(--line);
   color:var(--ink);
-  padding:4px 9px;
-  border-radius:6px;
-  font-size:11px;
+  padding:8px 11px;
+  border-radius:8px;
+  font-size:12px;
   font-weight:700;
   cursor:pointer;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
 }
 
 .eval-btn-mini:hover {
@@ -133,7 +139,7 @@
   font-size:11px;
   text-transform:uppercase;
   letter-spacing:.08em;
-  color:var(--orange);
+  color:var(--accent-text);
   font-weight:800;
 }
 
@@ -271,9 +277,10 @@
 }
 
 .ingredient-list li {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:start;
+  column-gap:14px;
   padding:14px 0;
   border-bottom:1px solid var(--line);
   transition:opacity .2s ease;
@@ -281,7 +288,7 @@
 
 .ingredient-label {
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   gap:12px;
   cursor:pointer;
   flex:1;
@@ -289,11 +296,26 @@
   user-select:none;
 }
 
+.ingredient-name {
+  min-width:0;
+  font-weight:600;
+  overflow-wrap:break-word;
+}
+
 .ingredient-checkbox {
   width:18px;
   height:18px;
+  margin-top:1px;
   accent-color:var(--orange);
   cursor:pointer;
+  flex-shrink:0;
+}
+
+.ingredient-list li>strong {
+  font-weight:800;
+  white-space:normal;
+  text-align:right;
+  max-width:45%;
   flex-shrink:0;
 }
 

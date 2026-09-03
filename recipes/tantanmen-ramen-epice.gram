@@ -3,11 +3,22 @@ title: Tantanmen – Ramen épicé
 portions: 4
 prep_time: 20 min
 total_time: 50 min
-tags: [soupe, pâtes, thermomix, asiatique, porc, japon, épicé]
+tags:
+- soupe
+- pâtes
+- thermomix
+- asiatique
+- porc
+- japon
+- épicé
 source: https://www.cookomix.com/recettes/tantanmen-ramen-epice-thermomix/
 author: clarouroux
 appliances:
-  thermomix: [TM31, TM5, TM6, TM7]
+  thermomix:
+  - TM31
+  - TM5
+  - TM6
+  - TM7
 scaling:
   enabled: false
   reason: Équilibre et contenance du bol Thermomix pour le bouillon émulsionné.
@@ -17,12 +28,28 @@ image_credit:
   source: https://github.com/PierreCsn/cookigram
   license: Illustration générée par IA pour CookiGram
   license_url: https://openai.com/policies/terms-of-use/
-  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en
+    JPEG 1280 × 720.
 image_generation:
   provider: OpenAI
   model: ChatGPT image generation
-  generated_at: "2026-09-02"
+  generated_at: '2026-09-02'
   prompt_file: image-prompts/tantanmen-ramen-epice.md
+spiciness: 3
+flavors:
+  pairing:
+  - porc haché
+  - sésame
+  - pâte miso
+  - piment
+  notes:
+  - umami
+  - torréfié
+  - piquant
+  harmony: La richesse beurrée du tahini et du lait de soja vient tempérer l'ardeur
+    du piment tout en amplifiant la profondeur fermentée du miso.
+  tips: Ajouter quelques gouttes d'huile de sésame grillé au moment de dresser pour
+    une explosion aromatique dès le premier coup de baguette.
 ---
 
 [Préparer l'huile pimentée parfumée]
