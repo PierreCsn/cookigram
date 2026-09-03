@@ -71,6 +71,16 @@ ICON_FAMILY_BY_SLUG = {
     "curcuma": "curcuma",
     "maizena": "maizena",
     "lentilles-corail": "lentilles-corail",
+    "banane": "banane",
+    "pomme": "pomme",
+    "potiron": "potiron",
+    "courge-butternut": "potiron",
+    "asperges": "asperges",
+    "panais": "panais",
+    "mache": "mache",
+    "salade-romaine": "salade-romaine",
+    "oignon-nouveau": "oignon-nouveau",
+    "celeri": "celeri",
 }
 
 

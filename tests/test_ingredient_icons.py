@@ -105,6 +105,26 @@ def test_resolver_covers_the_second_common_missing_batch():
         assert resolver.resolve(name) == f"icons/ingredients/{filename}"
 
 
+def test_resolver_covers_the_fruit_and_vegetable_batch():
+    resolver = IngredientIconResolver()
+
+    expected = {
+        "banane": "banane.svg",
+        "pomme": "pomme.svg",
+        "chair de potiron": "potiron.svg",
+        "courge butternut": "potiron.svg",
+        "asperges vertes": "asperges.svg",
+        "panais": "panais.svg",
+        "mâche": "mache.svg",
+        "salade romaine": "salade-romaine.svg",
+        "oignon nouveau": "oignon-nouveau.svg",
+        "céleri": "celeri.svg",
+    }
+
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
 def test_resolver_returns_empty_string_when_icon_is_missing():
     resolver = IngredientIconResolver()
 
