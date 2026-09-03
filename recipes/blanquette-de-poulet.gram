@@ -37,7 +37,7 @@ image_generation:
 
 [Cuire le poulet et les légumes]
 - Ajouter les @escalopes de poulet{500 g, coupées en dés}, les @champignons de Paris{200 g, en lamelles}, l'@eau{380 g}, le @vin blanc{100 g}, les @cubes de bouillon de volaille{2 pièces}, le @bouquet garni{1 pièce}, le @sel{1 pincée} et le @poivre{1 pincée}.
-- Poser le #panier cuisson{} sur le couvercle à la place du gobelet doseur.
+- Poser le #panier cuisson{} sur le couvercle à la place du gobelet doseur pour favoriser l'évaporation sans risquer de projections.
 - Cuire ~{20 min} à ^{100 C}, sens inverse et vitesse cuillère.
 
 [Épaissir la sauce veloutée]

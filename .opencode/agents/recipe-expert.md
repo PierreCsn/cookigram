@@ -58,6 +58,7 @@ Every recipe in `recipes/<slug>.gram` must satisfy:
    * Sub-steps checklist items (`- `).
    * **Mandatory step ingredient tagging** : `@ingrédient{quantité}` on every mobilized ingredient. Zero unbracketed plain-text ingredient names. Zero empty brackets `@{}`.
    * **Utensil tagging** : `#casserole{}`, `#poêle{}`, `#saladier{}`, `#fouet{}`.
+   * **Intention culinaire & Pédagogie ("Le Pourquoi du Geste")** : Expliciter brièvement la finalité technique dès qu'un geste spécifique est prescrit (réduction, évaporation sans projections, préservation de texture, émulsion).
    * **Timers** : `~{30 s}`, `~{6 min}`, `~{25 min}`.
 
 ---

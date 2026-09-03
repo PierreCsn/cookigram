@@ -95,6 +95,7 @@ Every recipe file in `recipes/<slug>.gram` must satisfy the following contract:
   * *Distinguish multi-step usage (e.g. `@eau{300 g, sur 500 g au total}`).*
 * Utensil Tagging: Explicit equipment mentions using `#casserole{}`, `#poêle{}`, `#saladier{}`, `#fouet{}`, `#bol Thermomix{}`.
 * Timers: Single scalar durations (`~{30 s}`, `~{6 min}`, `~{25 min}`). Compound durations (`~{4 min 50 s}`) and ranges (`~{30-35 min}`) are supported by the engine.
+* **Intention culinaire & Pédagogie ("Le Pourquoi du Geste")** : Ne jamais se limiter à des consignes mécaniques aveugles. Dès qu'un geste technique spécifique est prescrit (ex: *poser le panier sur le couvercle à la place du gobelet pour favoriser l'évaporation sans projections*, *saler 5 minutes avant la fin pour éviter de durcir la peau des lentilles*, *monter au beurre bien froid hors du feu pour l'émulsion*), expliciter brièvement la finalité culinaire directement dans l'instruction.
 
 ---
 
