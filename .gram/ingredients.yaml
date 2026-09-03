@@ -312,7 +312,7 @@ ingredients:
       carbs: 14.5
       fat: 0.1
       protein: 2.5
-      piece_weight: 25.0
+    piece_weight: 25.0
   eau-de-fleur-d-oranger:
     name: Eau de fleur d'oranger
     aliases:

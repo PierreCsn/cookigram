@@ -37,6 +37,7 @@ image_generation:
   provider: OpenAI
   model: ChatGPT image generation
   generated_at: "2026-09-03"
+  prompt_file: image-prompts/flan-aux-oeufs-caramel.md
 ---
 
 ## Flan aux œufs au caramel
