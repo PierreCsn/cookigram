@@ -6,7 +6,8 @@ test.describe('Minuteur de cuisson', () => {
   test('démarrage, pause, reprise et remise à zéro', async ({ page }) => {
     await page.goto(COOK_URL);
 
-    const firstStep = page.locator('.cook-step').first();
+    await page.locator('.mep-start:visible').click();
+    const firstStep = page.locator('.cook-step:not(.cook-mep-step)').first();
     const timer = firstStep.locator('.timer').first();
 
     const statusEl = timer.locator('.timer-status');

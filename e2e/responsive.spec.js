@@ -107,6 +107,7 @@ test.describe('Responsive : cibles tactiles >= 44px sur mobile', () => {
 
   test('les contrôles du mode cuisine atteignent la taille tactile minimale', async ({ page }) => {
     await page.goto('/recipes/curry-poulet-noix-coco/cook/');
+    await page.locator('.mep-start:visible').click();
 
     const pick = (sel) =>
       page.evaluate((s) => {
@@ -174,6 +175,7 @@ test.describe('Responsive : alignement et lisibilité des ingrédients', () => {
       await page.setViewportSize({ width, height: 844 });
       await page.goto('/recipes/butter-chicken/cook/');
 
+      await page.locator('.mep-start:visible').click();
       const card = page.locator('.cook-step.active .step-ingredients-card').first();
       if ((await card.count()) > 0) {
         const cardBox = await card.boundingBox();

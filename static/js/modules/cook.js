@@ -185,7 +185,8 @@ export const initCookMode = () => {
 
   const steps = [...document.querySelectorAll('.cook-steps:not([hidden]) .cook-step')];
   const totalTimeMinutes = parseDurationMinutes(cook.dataset.totalTime || '');
-  const stepsData = steps.map((stepEl) => {
+  const cookingSteps = steps.filter((stepEl) => stepEl.dataset.mep !== 'true');
+  const stepsData = cookingSteps.map((stepEl) => {
     const timerEls = stepEl.querySelectorAll('.timer[data-seconds]');
     const totalSeconds = [...timerEls].reduce(
       (acc, el) => acc + (Number(el.dataset.seconds) || 0),
@@ -224,6 +225,24 @@ export const initCookMode = () => {
       else checkedIngredients.delete(key);
       checkbox.closest('.step-ingredient-item')?.classList.toggle('checked', checkbox.checked);
       saveCheckedIngredients(checkedIngredients);
+    });
+  });
+
+  const mepStorageKey = `cookigram:mep:${cook.dataset.recipe}`;
+  let checkedMepIngredients = new Set();
+  try {
+    checkedMepIngredients = new Set(JSON.parse(localStorage.getItem(mepStorageKey) || '[]'));
+  } catch (_) {}
+  document.querySelectorAll('.mep-ingredient-checkbox').forEach((checkbox) => {
+    const item = checkbox.closest('.mep-ingredient-item');
+    const key = checkbox.dataset.mepKey;
+    checkbox.checked = checkedMepIngredients.has(key);
+    item?.classList.toggle('checked', checkbox.checked);
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) checkedMepIngredients.add(key);
+      else checkedMepIngredients.delete(key);
+      item?.classList.toggle('checked', checkbox.checked);
+      localStorage.setItem(mepStorageKey, JSON.stringify([...checkedMepIngredients]));
     });
   });
 
@@ -272,11 +291,14 @@ export const initCookMode = () => {
     ].map((el) => el.textContent.trim());
     const stepNum = current + 1;
 
-    const speechParts = [`Étape ${stepNum} sur ${steps.length}.`];
-    if (remainingTimes.length === steps.length) {
+    const speechParts = activeStep.dataset.mep
+      ? ['Mise en place du plan de travail. Préparez vos ingrédients et votre matériel. Dites « Suivant » quand vous êtes prêt à lancer la cuisson.']
+      : [`Étape ${stepNum} sur ${steps.length - 1}.`];
+    const cookingIndex = steps.slice(0, current + 1).filter((step) => step.dataset.mep !== 'true').length - 1;
+    if (remainingTimes.length === cookingSteps.length && cookingIndex >= 0) {
       const speechTime = formatRemainingSpeech(
-        remainingTimes[current],
-        current === steps.length - 1
+        remainingTimes[cookingIndex],
+        cookingIndex === cookingSteps.length - 1
       );
       if (speechTime) speechParts.push(speechTime);
     }
@@ -568,11 +590,13 @@ export const initCookMode = () => {
     });
     const progressEl = document.querySelector('.progress i');
     if (progressEl) {
-      progressEl.style.width = `${((current + 1) / steps.length) * 100}%`;
+      progressEl.style.width = `${steps.length > 1 ? (current / (steps.length - 1)) * 100 : 100}%`;
     }
-    if (remainingTimes.length === steps.length) {
-      const remainingMinutes = remainingTimes[current];
-      const isLast = current === steps.length - 1;
+    const isMep = steps[current]?.dataset.mep === 'true';
+    const cookingIndex = steps.slice(0, current + 1).filter((step) => step.dataset.mep !== 'true').length - 1;
+    if (remainingTimes.length === cookingSteps.length && !isMep && cookingIndex >= 0) {
+      const remainingMinutes = remainingTimes[cookingIndex];
+      const isLast = cookingIndex === cookingSteps.length - 1;
       const formattedTime = formatRemainingTime(remainingMinutes, isLast);
       const etaEl = document.querySelector('.cook-eta');
       if (etaEl) {
@@ -592,14 +616,25 @@ export const initCookMode = () => {
           }
         }
       });
+    } else if (isMep) {
+      const etaEl = document.querySelector('.cook-eta');
+      if (etaEl && totalTimeMinutes) {
+        etaEl.textContent = `~${Math.round(totalTimeMinutes)} min au total`;
+        etaEl.hidden = false;
+      }
+      steps.forEach((step) => {
+        const timeEl = step.querySelector('.step-remaining-time');
+        if (timeEl) timeEl.hidden = true;
+      });
     }
     updateTimerBar();
     const prevBtn = document.querySelector('.prev');
     if (prevBtn) prevBtn.disabled = current === 0;
     const nextBtn = document.querySelector('.next');
     if (nextBtn) {
-      nextBtn.textContent =
-        current === steps.length - 1 ? 'Terminer ✓' : 'Suivant →';
+      nextBtn.textContent = isMep
+        ? 'Lancer la cuisson →'
+        : current === steps.length - 1 ? 'Terminer ✓' : 'Suivant →';
     }
     localStorage.setItem(key, steps[current]?.dataset.stepId || '');
     if (autoSpeakEnabled) {
@@ -615,6 +650,13 @@ export const initCookMode = () => {
     }
   });
 
+  document.querySelectorAll('.mep-start, .mep-skip').forEach((button) => {
+    button.addEventListener('click', () => {
+      current = Math.min(1, steps.length - 1);
+      render();
+    });
+  });
+
   document.querySelector('.next')?.addEventListener('click', () => {
     getAudioContext();
     if (current < steps.length - 1) {
@@ -626,6 +668,7 @@ export const initCookMode = () => {
         t.stopAlarmOnly();
       });
       localStorage.removeItem(checkedIngredientsKey);
+      localStorage.removeItem(mepStorageKey);
       if (voiceCmdActive && recognition) {
         voiceCmdActive = false;
         try {

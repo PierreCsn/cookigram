@@ -5,7 +5,17 @@
     "max_heartbeat_age_minutes": 15,
     "require_approved_label": "potential-dev-work"
   },
-  "active_claims": {},
+  "active_claims": {
+    "80": {
+      "title": "feat(cooking): étape 0 Mise en place du plan de travail",
+      "agent": "Darryl (DEV)",
+      "workspace": "/home/pierrecsn/Work/DEV/DARRYL-DEV/cookigram",
+      "branch": "feat/mise-en-place-step",
+      "claimed_at": "2026-09-03T17:00:00+02:00",
+      "last_heartbeat": "2026-09-03T17:00:00+02:00",
+      "status": "in_progress"
+    }
+  },
   "completed_claims": [
     {
       "issue": 78,

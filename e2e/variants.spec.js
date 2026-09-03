@@ -25,6 +25,7 @@ test('le sélecteur mobile reste accessible et transmet la variante au mode cuis
   await expect(page).toHaveURL(/cook\/\?variant=sous-vide-four/);
   await page.locator('.next').click();
   await page.locator('.next').click();
+  await page.locator('.next').click();
   await expect(page.getByText('À réaliser en parallèle')).toBeVisible();
   await expect(page.locator('.parallel-checkbox')).toHaveCount(2);
 });

@@ -57,6 +57,40 @@
   <div class="cook-stage">
   {% for view in views %}
   <div class="cook-steps" data-cook-variant="{{ view.id if recipe.variants else 'main' }}"{% if recipe.variants and not view.default %} hidden{% endif %}>
+    <article class="cook-step cook-mep-step active" data-step="0" data-step-id="mise-en-place" data-mep="true">
+      <div class="step-meta">
+        <p class="step-count"><span>Mise en place · Étape préliminaire</span></p>
+      </div>
+      <h1>🥣 Mise en place du plan de travail</h1>
+      <p class="instruction mep-intro">Préparez vos ingrédients et votre matériel avant d'allumer les feux.</p>
+      {% if view.metadata.required_equipment or recipe.metadata.required_equipment %}
+      <div class="mep-equipment-card">
+        <strong>Matériel à sortir</strong>
+        <div class="cook-utensils-list">
+          {% set equipment_items = view.metadata.equipment_items if view.metadata.equipment_items is defined and view.metadata.equipment_items else recipe.metadata.equipment_items %}
+          {% for item in equipment_items or [] %}
+          {% set name = item.name if item.name is defined else item %}
+          {% set icon = item.icon if item.icon is defined else None %}
+          <span class="cook-utensil-badge {% if icon %}has-icon{% else %}no-icon{% endif %}">{% if icon %}<img src="{{ prefix }}assets/icons/utensils/{{ icon }}.webp" alt="" class="cook-utensil-icon" width="20" height="20">{% else %}<span class="cook-utensil-fallback-icon" aria-hidden="true">🍳</span>{% endif %}<span class="cook-utensil-name">{{ name }}</span></span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      <div class="mep-ingredients-card">
+        <strong class="mep-ingredients-title">Ingrédients à préparer</strong>
+        <ul class="mep-ingredients-list">
+          {% for ing in view.ingredients %}
+          <li class="mep-ingredient-item">
+            <label class="mep-ingredient-check"><input type="checkbox" class="mep-ingredient-checkbox" data-mep-key="{{ loop.index0 }}" aria-label="Préparer {{ ing.name }}"><span class="mep-ingredient-name">{{ ing.name }}</span></label>
+            {% if ing.icon %}<img class="ingredient-icon ingredient-icon--cook" src="{{ prefix }}assets/{{ ing.icon }}" alt="" aria-hidden="true">{% endif %}
+            {% if ing.quantity %}<span class="mep-ingredient-qty" data-scale-text="{{ ing.quantity }}">{{ ing.quantity }}</span>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <button class="mep-start primary" type="button">✓ Mon plan de travail est prêt — Lancer la cuisson →</button>
+      <button class="mep-skip" type="button">Passer directement à la cuisson ⏩</button>
+    </article>
   {% for step in view.steps %}
     {% set step_idx = loop.index0 %}
     {% set step_num = loop.index %}
