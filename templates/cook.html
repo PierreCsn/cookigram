@@ -29,7 +29,7 @@
   <header>
     <a class="leave-cook" href="../{% if default_variant %}?variant={{ default_variant.id }}{% endif %}" aria-label="Quitter">×</a>
     <div>
-      <small>{{ recipe.title }} · <span class="cook-portions">{{ recipe.portions }} portions</span></small>
+      <small>{{ recipe.title }} · <span class="cook-portions">{{ recipe.portions }} portions</span> · <span class="cook-eta" title="Temps restant estimé"></span></small>
       <div class="progress"><i></i></div>
     </div>
     <div class="cook-tools">
@@ -39,6 +39,10 @@
       <button class="wake" type="button" aria-pressed="false" title="Garder l'écran allumé">☀</button>
     </div>
   </header>
+  <aside class="active-timer-bar" hidden aria-live="polite">
+    <span class="active-timer-message"><span class="active-timer-icon" aria-hidden="true">⏱</span><strong class="active-timer-label"></strong><span class="active-timer-time"></span><span class="active-timer-step"></span></span>
+    <span class="active-timer-actions"><button class="active-timer-view" type="button">↗ Voir</button><button class="active-timer-pause" type="button">⏸ Pause</button><button class="active-timer-stop" type="button" hidden>Arrêter l’alarme</button></span>
+  </aside>
   {% if recipe.metadata.required_equipment %}<aside class="cook-appliance-required"><b>Matériel requis :</b><div class="cook-utensils-list">{% for item in (recipe.metadata.equipment_items if recipe.metadata.equipment_items is defined and recipe.metadata.equipment_items else recipe.metadata.required_equipment) %}{% set name = item.name if item.name is defined else item %}{% set icon = item.icon if item.icon is defined else None %}<span class="cook-utensil-badge {% if icon %}has-icon{% else %}no-icon{% endif %}">{% if icon %}<img src="{{ prefix }}assets/icons/utensils/{{ icon }}.webp" alt="" class="cook-utensil-icon" width="20" height="20">{% else %}<span class="cook-utensil-fallback-icon" aria-hidden="true">🍳</span>{% endif %}<span class="cook-utensil-name">{{ name }}</span></span>{% endfor %}</div></aside>{% endif %}
   <aside class="voice-feedback" hidden>
     <span class="voice-indicator" aria-hidden="true"></span>
@@ -71,6 +75,7 @@
         <ul class="step-ingredients-list">
           {% for ing in step.ingredients %}
           <li class="step-ingredient-item">
+            <label class="step-ingredient-check"><input type="checkbox" class="step-ingredient-checkbox" data-ingredient-key="{{ step.id }}:{{ loop.index0 }}" aria-label="Valider {{ ing.name }}"><span class="step-ingredient-checkmark" aria-hidden="true"></span></label>
             {% if ing.icon %}<img class="ingredient-icon ingredient-icon--cook" src="../../../assets/{{ ing.icon }}" alt="" aria-hidden="true">{% endif %}
             <span class="step-ingredient-name">{{ ing.name }}</span>
             {% if ing.quantity %}
@@ -115,7 +120,7 @@
       {{ tmx_badge(step.plugins.thermomix_settings, compact=false) }}
       {% if step.temperatures %}<div class="chips">{% for temp in step.temperatures %}<span>🌡 {{ temp }}</span>{% endfor %}</div>{% endif %}
       {% for timer in step.timers %}
-        <div class="timer" data-seconds="{{ timer.seconds }}" data-step="{{ step_idx }}" data-step-num="{{ step_num }}" data-label="{{ timer.label }}">
+        <div class="timer" data-seconds="{{ timer.seconds }}" data-step="{{ step_idx }}" data-step-num="{{ step_num }}" data-timer-id="{{ step.id }}:{{ loop.index0 }}" data-label="{{ timer.label }}">
           <div class="timer-info">
             <span class="timer-status">Minuteur</span>
             <strong class="timer-display">{{ timer.label }}</strong>

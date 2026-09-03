@@ -202,6 +202,31 @@ export const initCookMode = () => {
     : -1;
   let current = matchedStep >= 0 ? matchedStep : 0;
 
+  const checkedIngredientsKey = `cookigram:ingredients-checked:${cook.dataset.recipe}`;
+  const getCheckedIngredients = () => {
+    try {
+      return new Set(JSON.parse(localStorage.getItem(checkedIngredientsKey) || '[]'));
+    } catch (_) {
+      return new Set();
+    }
+  };
+  const saveCheckedIngredients = (checked) => {
+    localStorage.setItem(checkedIngredientsKey, JSON.stringify([...checked]));
+  };
+
+  const checkedIngredients = getCheckedIngredients();
+  document.querySelectorAll('.step-ingredient-checkbox').forEach((checkbox) => {
+    const key = checkbox.dataset.ingredientKey;
+    checkbox.checked = checkedIngredients.has(key);
+    checkbox.closest('.step-ingredient-item')?.classList.toggle('checked', checkbox.checked);
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) checkedIngredients.add(key);
+      else checkedIngredients.delete(key);
+      checkbox.closest('.step-ingredient-item')?.classList.toggle('checked', checkbox.checked);
+      saveCheckedIngredients(checkedIngredients);
+    });
+  });
+
   if (cook.dataset.scalable === 'true') {
     const basePortions = Number(cook.dataset.basePortions);
     const portions = Number(
@@ -320,9 +345,49 @@ export const initCookMode = () => {
     }
   });
 
+  const timerBar = document.querySelector('.active-timer-bar');
+  const timerBarLabel = timerBar?.querySelector('.active-timer-label');
+  const timerBarTime = timerBar?.querySelector('.active-timer-time');
+  const timerBarStep = timerBar?.querySelector('.active-timer-step');
+  const timerBarView = timerBar?.querySelector('.active-timer-view');
+  const timerBarPause = timerBar?.querySelector('.active-timer-pause');
+  const timerBarStop = timerBar?.querySelector('.active-timer-stop');
+  let activeBarTimer = null;
+
+  const formatTimerSeconds = (seconds) => {
+    const safeSeconds = Math.max(0, Math.round(seconds));
+    return `${Math.floor(safeSeconds / 60).toString().padStart(2, '0')}:${(safeSeconds % 60).toString().padStart(2, '0')}`;
+  };
+
+  const updateTimerBar = () => {
+    if (!timerBar) return;
+    const runningTimers = timers.filter((timer) => timer.state === 'running' || timer.state === 'paused' || timer.state === 'ringing');
+    activeBarTimer = runningTimers.find((timer) => Number(timer.el.dataset.step) !== current) || null;
+    if (!activeBarTimer) {
+      timerBar.hidden = true;
+      return;
+    }
+    timerBar.hidden = false;
+    timerBar.classList.toggle('ringing', activeBarTimer.state === 'ringing');
+    timerBarLabel.textContent = activeBarTimer.label;
+    timerBarTime.textContent = activeBarTimer.state === 'ringing' ? 'Terminé !' : formatTimerSeconds(activeBarTimer.remaining);
+    timerBarStep.textContent = `(Étape ${activeBarTimer.stepNum})`;
+    timerBarPause.hidden = activeBarTimer.state === 'ringing';
+    timerBarPause.textContent = activeBarTimer.state === 'paused' ? '▶ Reprendre' : '⏸ Pause';
+    timerBarStop.hidden = activeBarTimer.state !== 'ringing';
+  };
+
   const timers = [
     ...document.querySelectorAll('.cook-steps:not([hidden]) .timer'),
-  ].map((el) => new RecipeTimer(el));
+  ].map((el) => new RecipeTimer(el, null, updateTimerBar));
+
+  timerBarView?.addEventListener('click', () => {
+    if (!activeBarTimer) return;
+    current = Number(activeBarTimer.el.dataset.step) || 0;
+    render();
+  });
+  timerBarPause?.addEventListener('click', () => activeBarTimer?.pause());
+  timerBarStop?.addEventListener('click', () => activeBarTimer?.stopAlarmAndReset());
 
   // --- Speech Recognition ---
   const SpeechRecognition =
@@ -509,6 +574,11 @@ export const initCookMode = () => {
       const remainingMinutes = remainingTimes[current];
       const isLast = current === steps.length - 1;
       const formattedTime = formatRemainingTime(remainingMinutes, isLast);
+      const etaEl = document.querySelector('.cook-eta');
+      if (etaEl) {
+        etaEl.textContent = `~${Math.max(1, Math.round(remainingMinutes))} min restantes`;
+        etaEl.hidden = false;
+      }
 
       steps.forEach((step, idx) => {
         const timeEl = step.querySelector('.step-remaining-time');
@@ -523,6 +593,7 @@ export const initCookMode = () => {
         }
       });
     }
+    updateTimerBar();
     const prevBtn = document.querySelector('.prev');
     if (prevBtn) prevBtn.disabled = current === 0;
     const nextBtn = document.querySelector('.next');
@@ -554,6 +625,7 @@ export const initCookMode = () => {
       timers.forEach((t) => {
         t.stopAlarmOnly();
       });
+      localStorage.removeItem(checkedIngredientsKey);
       if (voiceCmdActive && recognition) {
         voiceCmdActive = false;
         try {

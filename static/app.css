@@ -1784,6 +1784,70 @@ a {
   transition:.25s;
 }
 
+.active-timer-bar {
+  position:sticky;
+  top:48px;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 24px;
+  background:var(--banner-bg);
+  color:var(--banner-text);
+  border-block:1px solid var(--line);
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.active-timer-message,
+.active-timer-actions {
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.active-timer-message {
+  min-width:0;
+  font-size:14px;
+}
+
+.active-timer-label {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.active-timer-time,
+.active-timer-step {
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+
+.active-timer-bar button {
+  min-height:44px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:8px 12px;
+  background:var(--btn-bg);
+  color:var(--ink);
+  font:inherit;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.active-timer-bar.ringing {
+  background:#451a1a;
+  color:#fff;
+  border-color:#ef4444;
+}
+
+.active-timer-bar.ringing .active-timer-stop {
+  background:#ef4444;
+  border-color:#ef4444;
+  color:#fff;
+}
+
 .cook-tools {
   display:flex;
   gap:8px;
@@ -2048,6 +2112,29 @@ a {
   border-bottom:1px dashed var(--line);
 }
 
+.step-ingredient-check {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  min-width:44px;
+  height:44px;
+  cursor:pointer;
+}
+
+.step-ingredient-checkbox {
+  width:22px;
+  height:22px;
+  accent-color:var(--orange);
+  cursor:pointer;
+}
+
+.step-ingredient-item.checked .step-ingredient-name,
+.step-ingredient-item.checked .step-ingredient-qty {
+  text-decoration:line-through;
+  opacity:.6;
+}
+
 .step-ingredient-item:last-child {
   border-bottom:none;
   padding-bottom:0;
@@ -2103,6 +2190,18 @@ a {
 }
 
 @media(max-width:820px) {
+  .active-timer-bar {
+    top:48px;
+    align-items:flex-start;
+    flex-direction:column;
+    padding:8px 12px;
+  }
+  .active-timer-actions {
+    width:100%;
+  }
+  .active-timer-actions button {
+    flex:1;
+  }
   .cook>header {
     padding:15px;
     gap:12px;
