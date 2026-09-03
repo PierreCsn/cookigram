@@ -225,6 +225,9 @@ ingredients:
   paleron-de-boeuf:
     source: ANSES-CIQUAL
     status: verified
+  plat-de-cote-de-boeuf:
+    source: ANSES-CIQUAL
+    status: verified
   paprika:
     source: ANSES-CIQUAL
     status: verified
@@ -313,6 +316,9 @@ ingredients:
     source: ANSES CIQUAL 2024 / Open Food Facts
     status: verified
   basilic-frais:
+    source: ANSES CIQUAL 2024 / Open Food Facts
+    status: verified
+  bouillon-de-boeuf:
     source: ANSES CIQUAL 2024 / Open Food Facts
     status: verified
   bouillon-de-legumes:
