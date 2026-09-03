@@ -23,6 +23,12 @@ scaling:
   enabled: false
   reason: La cuisson simultanée au Varoma et au panier est calibrée pour le bol Thermomix
     ; une autre échelle n'est pas validée.
+spiciness: 0
+flavors:
+  pairing: [poulet, riesling, carotte, crème fraîche]
+  notes: [doux, soyeux, vineux, beurré]
+  harmony: "La minéralité fruitée du Riesling d'Alsace réveille la tendreté du blanc de poulet vapeur et la douceur des carottes fondantes."
+  tips: "Réduire le jus de cuisson au Riesling avant d'incorporer la crème pour concentrer les arômes sans masquer la volaille."
 image: images/ballotines-poulet-legumes-riesling.jpg
 image_credit:
   author: CookiGram
