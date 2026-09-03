@@ -434,6 +434,30 @@ worker.
 
 CookiGram suit une feuille de route stratégique progressive pour passer de la recette au copilote d'exécution complet ([PDR-0003](decisions/PDR-0003-validation-roadmap-strategique-v1-v10.md) & [ROADMAP_STRATEGIQUE.md](ROADMAP_STRATEGIQUE.md)) :
 
+```mermaid
+flowchart LR
+    v1["✅ v1<br/>Recipe OS<br/><small>Socle livré</small>"] --> v2["🔶 v2<br/>Cooking Assistant<br/><small>Sprint actuel</small>"]
+    v2 --> v3["⏳ v3<br/>Kitchen Scheduler"]
+    v3 --> v4["⏳ v4<br/>Smart Meal Planner"]
+    v4 --> v5["⏳ v5<br/>Batch Cooking"]
+    v5 --> v6["⏳ v6<br/>Kitchen Inventory"]
+    v6 --> v7["⏳ v7<br/>Shopping Agent"]
+    v7 --> v8["⏳ v8<br/>Kitchen Intelligence"]
+    v8 --> v9["⏳ v9<br/>Multi-Cook"]
+    v9 --> v10["⏳ v10<br/>CookiGram Pro"]
+
+    classDef done fill:#d8f3dc,stroke:#2d6a4f,color:#1b4332
+    classDef current fill:#ffe8b6,stroke:#d97706,color:#7c2d12,stroke-width:3px
+    classDef planned fill:#f1f5f9,stroke:#94a3b8,color:#475569
+    class v1 done
+    class v2 current
+    class v3,v4,v5,v6,v7,v8,v9,v10 planned
+```
+
+**Légende :** ✅ livré · 🔶 en cours · ⏳ à venir. Le jalon actif est **v2 —
+Cooking Assistant**, avec le mode cuisine guidé, les minuteurs et les
+interactions mains libres comme priorités.
+
 * **v1 — Recipe OS** : Socle de données déterministe en format `.gram` et moteur nutritionnel CIQUAL traçable.
 * **v2 — Cooking Assistant** : Guidage interactif mains libres en cuisine à 1 mètre avec ingrédients d'étape et minuteurs intégrés (Sprint actuel).
 * **v3 — Kitchen Scheduler** : Ordonnanceur mathématique d'exécution multi-plats sous contraintes (Solveur Google OR-Tools CP-SAT) pour que tout soit prêt simultanément sans stress ([Issue #51](https://github.com/PierreCsn/cookigram/issues/51)).
