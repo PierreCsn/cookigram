@@ -4,6 +4,7 @@
  */
 
 import { scaleText } from './portions.js';
+import { parseDurationMinutes } from './search.js';
 import { RecipeTimer, getAudioContext } from './timers.js';
 import {
   formatSpeechText,
@@ -14,6 +15,100 @@ import {
   speak,
   stopSpeech,
 } from './voice.js';
+
+/**
+ * Calculates estimated remaining minutes for each step index.
+ *
+ * @param {Array<{ timerSeconds?: number }>} stepsData
+ * @param {number|null} totalRecipeMinutes
+ * @returns {number[]}
+ */
+export const calculateRemainingTimes = (stepsData, totalRecipeMinutes) => {
+  if (!Array.isArray(stepsData) || stepsData.length === 0) return [];
+  const count = stepsData.length;
+
+  const stepTimerMins = stepsData.map((s) => (s?.timerSeconds ? s.timerSeconds / 60 : 0));
+  const totalTimerMins = stepTimerMins.reduce((acc, v) => acc + v, 0);
+
+  let stepDurations = [];
+
+  if (totalRecipeMinutes && totalRecipeMinutes > 0) {
+    const manualStepsCount = stepTimerMins.filter((m) => m === 0).length;
+    if (manualStepsCount > 0) {
+      const nonTimerPool = Math.max(0, totalRecipeMinutes - totalTimerMins);
+      const perManualStep =
+        nonTimerPool > 0
+          ? nonTimerPool / manualStepsCount
+          : Math.max(1, totalRecipeMinutes / count);
+      stepDurations = stepTimerMins.map((m) => (m > 0 ? m : perManualStep));
+    } else {
+      stepDurations = [...stepTimerMins];
+    }
+  } else if (totalTimerMins > 0) {
+    stepDurations = stepTimerMins.map((m) => (m > 0 ? m : 2));
+  } else {
+    return [];
+  }
+
+  const remaining = new Array(count).fill(0);
+  let acc = 0;
+  for (let i = count - 1; i >= 0; i -= 1) {
+    acc += stepDurations[i];
+    remaining[i] = Math.round(acc);
+  }
+
+  return remaining;
+};
+
+/**
+ * Formats remaining minutes into a friendly French string.
+ *
+ * @param {number|null|undefined} minutes
+ * @param {boolean} [isLastStep=false]
+ * @returns {string}
+ */
+export const formatRemainingTime = (minutes, _isLastStep = false) => {
+  if (minutes == null || Number.isNaN(minutes) || minutes <= 0) return '';
+  const rounded = Math.max(1, Math.round(minutes));
+
+  if (rounded < 60) {
+    return `⏱ ~${rounded} min`;
+  }
+
+  const hours = Math.floor(rounded / 60);
+  const remainingMins = rounded % 60;
+  if (remainingMins === 0) {
+    return `⏱ ~${hours} h`;
+  }
+  return `⏱ ~${hours} h ${remainingMins < 10 ? '0' : ''}${remainingMins}`;
+};
+
+/**
+ * Formats remaining time for speech synthesis.
+ *
+ * @param {number|null|undefined} minutes
+ * @param {boolean} [isLastStep=false]
+ * @returns {string}
+ */
+export const formatRemainingSpeech = (minutes, isLastStep = false) => {
+  if (minutes == null || Number.isNaN(minutes) || minutes <= 0) return '';
+  const rounded = Math.max(1, Math.round(minutes));
+
+  if (isLastStep) {
+    return `Dernière étape, environ ${rounded} minute${rounded > 1 ? 's' : ''} restante${rounded > 1 ? 's' : ''}.`;
+  }
+
+  if (rounded < 60) {
+    return `Environ ${rounded} minute${rounded > 1 ? 's' : ''} restante${rounded > 1 ? 's' : ''}.`;
+  }
+
+  const hours = Math.floor(rounded / 60);
+  const remainingMins = rounded % 60;
+  const hoursWord = `${hours} heure${hours > 1 ? 's' : ''}`;
+  const minsWord =
+    remainingMins > 0 ? ` et ${remainingMins} minute${remainingMins > 1 ? 's' : ''}` : '';
+  return `Environ ${hoursWord}${minsWord} restante${hours > 1 || (hours === 1 && remainingMins > 0) ? 's' : ''}.`;
+};
 
 export const initSubsteps = () => {
   const cook = document.querySelector('.cook');
@@ -90,6 +185,17 @@ export const initCookMode = () => {
   if (!cook) return;
 
   const steps = [...document.querySelectorAll('.cook-steps:not([hidden]) .cook-step')];
+  const totalTimeMinutes = parseDurationMinutes(cook.dataset.totalTime || '');
+  const stepsData = steps.map((stepEl) => {
+    const timerEls = stepEl.querySelectorAll('.timer[data-seconds]');
+    const totalSeconds = [...timerEls].reduce(
+      (acc, el) => acc + (Number(el.dataset.seconds) || 0),
+      0
+    );
+    return { timerSeconds: totalSeconds };
+  });
+  const remainingTimes = calculateRemainingTimes(stepsData, totalTimeMinutes);
+
   const key = `cookigram:${cook.dataset.recipe}:step-id`;
   const oldKey = `cookgram:${cook.dataset.recipe}:step`;
   const savedStepId = localStorage.getItem(key);
@@ -148,7 +254,15 @@ export const initCookMode = () => {
     ].map((el) => el.textContent.trim());
     const stepNum = current + 1;
 
-    const speechParts = [`Étape ${stepNum} sur ${steps.length}. ${action}.`];
+    const speechParts = [`Étape ${stepNum} sur ${steps.length}.`];
+    if (remainingTimes.length === steps.length) {
+      const speechTime = formatRemainingSpeech(
+        remainingTimes[current],
+        current === steps.length - 1
+      );
+      if (speechTime) speechParts.push(speechTime);
+    }
+    if (action) speechParts.push(`${action}.`);
     if (instruction) speechParts.push(instruction);
     if (substepsTexts.length > 0) {
       speechParts.push(substepsTexts.join('. '));
@@ -397,6 +511,24 @@ export const initCookMode = () => {
     const progressEl = document.querySelector('.progress i');
     if (progressEl) {
       progressEl.style.width = `${((current + 1) / steps.length) * 100}%`;
+    }
+    if (remainingTimes.length === steps.length) {
+      const remainingMinutes = remainingTimes[current];
+      const isLast = current === steps.length - 1;
+      const formattedTime = formatRemainingTime(remainingMinutes, isLast);
+
+      steps.forEach((step, idx) => {
+        const timeEl = step.querySelector('.step-remaining-time');
+        if (timeEl) {
+          if (idx === current && formattedTime) {
+            timeEl.textContent = `· ${formattedTime}`;
+            timeEl.hidden = false;
+          } else {
+            timeEl.textContent = '';
+            timeEl.hidden = true;
+          }
+        }
+      });
     }
     const prevBtn = document.querySelector('.prev');
     if (prevBtn) prevBtn.disabled = current === 0;

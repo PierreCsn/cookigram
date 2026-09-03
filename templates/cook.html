@@ -25,7 +25,7 @@
 {% block body %}
 {% set default_variant = (recipe.variants|selectattr('default')|first) if recipe.variants else none %}
 {% set views = recipe.variants if recipe.variants else [recipe] %}
-<main class="cook" data-recipe="{{ recipe.slug }}" data-variant="{{ default_variant.id if default_variant else 'main' }}" data-base-portions="{{ recipe.portions }}" data-scalable="{{ 'true' if recipe.scalable else 'false' }}">
+<main class="cook" data-recipe="{{ recipe.slug }}" data-variant="{{ default_variant.id if default_variant else 'main' }}" data-base-portions="{{ recipe.portions }}" data-scalable="{{ 'true' if recipe.scalable else 'false' }}" data-total-time="{{ recipe.total_time }}">
   <header>
     <a class="leave-cook" href="../{% if default_variant %}?variant={{ default_variant.id }}{% endif %}" aria-label="Quitter">×</a>
     <div>
@@ -58,7 +58,7 @@
     {% set step_num = loop.index %}
     <article class="cook-step{% if loop.first %} active{% endif %}" data-step="{{ step_idx }}" data-step-id="{{ step.id }}">
       <div class="step-meta">
-        <p class="step-count">Étape {{ step_num }} sur {{ view.steps|length }}</p>
+        <p class="step-count"><span>Étape {{ step_num }} sur {{ view.steps|length }}</span><span class="step-remaining-time" aria-label="Temps restant estimé" hidden></span></p>
         <button class="step-speak" type="button" aria-label="Lire cette étape à voix haute" title="Écouter l'instruction">
           <span class="speak-icon">🔊</span>
           <span class="speak-label">Écouter</span>

@@ -133,4 +133,28 @@ test.describe('Mode cuisine: navigation et sous-étapes', () => {
       await expect(cards.nth(i).locator('.step-ingredients-list')).not.toBeEmpty();
     }
   });
+
+  test('affiche et met à jour le temps restant au fil des étapes (#67)', async ({ page }) => {
+    await page.goto('/recipes/butter-chicken/cook/');
+
+    const activeStep = page.locator('.cook-step.active');
+    const timeEl = activeStep.locator('.step-remaining-time');
+    await expect(timeEl).toBeVisible();
+    await expect(timeEl).toContainText('⏱ ~50 min');
+
+    // Avancer à l'étape 2
+    await page.locator('button.next').click();
+    const step2Time = page.locator('.cook-step.active .step-remaining-time');
+    await expect(step2Time).toBeVisible();
+    await expect(step2Time).toContainText('⏱ ~42 min');
+
+    // Naviguer jusqu'à la dernière étape
+    const nextBtn = page.locator('button.next');
+    while ((await nextBtn.textContent()) !== 'Terminer ✓') {
+      await nextBtn.click();
+    }
+    const lastStepTime = page.locator('.cook-step.active .step-remaining-time');
+    await expect(lastStepTime).toBeVisible();
+    await expect(lastStepTime).toContainText('⏱ ~8 min');
+  });
 });
