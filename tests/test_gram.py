@@ -66,3 +66,22 @@ def test_cookidoo_recipe_exposes_preparation_times():
     assert recipe.image == "images/curry-poulet-noix-coco.jpg"
     assert recipe.metadata["image_credit"]["license"] == "Illustration générée par IA pour CookiGram"
     assert recipe.metadata["image_generation"]["generated_at"] == "2026-09-02"
+
+
+def test_compound_durations_are_parsed():
+    for path, seconds, label in [
+        ("recipes/curry-poulet-express.gram", 290, "4 min 50 s"),
+        ("recipes/gratin-pommes-de-terre-saumon-epinards.gram", 270, "4 min 30 s"),
+        ("recipes/lasagnes-bolognaise.gram", 630, "10 min 30 s"),
+        ("recipes/saumon-a-la-toscane.gram", 90, "1 min 30 s"),
+        ("recipes/veloute-langoustines-coriandre.gram", 90, "1 min 30 s"),
+    ]:
+        recipe = parse_recipe(Path(path), validate=False)
+        timer = next(t for step in recipe.steps for t in step.timers if t["seconds"] == seconds)
+        assert timer["label"] == label, path
+
+
+def test_duration_range_is_parsed_with_preserved_label():
+    recipe = parse_recipe(Path("recipes/lasagnes-bolognaise.gram"), validate=False)
+    timer = next(t for step in recipe.steps for t in step.timers if t["label"] == "30-35 min")
+    assert timer["seconds"] == 2100

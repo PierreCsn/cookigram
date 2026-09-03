@@ -21,14 +21,42 @@ SUBSTEP = re.compile(r"^[-*]\s+(.+)$")
 PARALLEL = re.compile(r"^\|\|\s*(?:(?P<id>[a-z0-9][a-z0-9-]*)\s*\|\s*)?(?P<label>[^:]+):\s*(?P<body>.+)$")
 INGREDIENT = re.compile(r"@([^@{}]+)\{([^}]*)}")
 EQUIPMENT = re.compile(r"#([^#{}]+)\{[^}]*}")
-TIMER = re.compile(r"~(?:_[\w-]+)?\{\s*(\d+(?:[.,]\d+)?)\s*(s|sec|m|min|h)\s*}", re.IGNORECASE)
+TIMER = re.compile(r"~(?:_[\w-]+)?\{\s*(.+?)\s*}", re.IGNORECASE)
 TEMPERATURE = re.compile(r"\^\{\s*([^}]+)\s*}")
+
+
+_UNIT_FACTOR = {"h": 3600, "min": 60, "m": 60, "sec": 1, "s": 1}
 
 
 def _seconds(value: str, unit: str) -> int:
     number = float(value.replace(",", "."))
-    factor = 3600 if unit.lower() == "h" else 60 if unit.lower() in {"m", "min"} else 1
-    return round(number * factor)
+    return round(number * _UNIT_FACTOR[unit.lower()])
+
+
+def _parse_timer(content: str) -> tuple[str, int] | None:
+    """Parse a timer duration into a (label, seconds) pair.
+
+    Supports single values (``20 min``), compound values (``4 min 50 s``) and
+    ranges (``30-35 min``, where a deterministic bound is used for the timer and
+    the full label is preserved for display).
+    """
+    original = " ".join(content.split())
+    text = " ".join(content.replace(",", ".").split()).casefold()
+    parts = re.findall(r"(\d+(?:\.\d+)?)\s*(h|min|m|sec|s)", text)
+    if not parts:
+        return None
+    total_seconds = sum(_seconds(value, unit) for value, unit in parts)
+    label = " ".join(f"{value} {unit}" for value, unit in parts)
+    label = label.replace("sec", "s").replace(" m ", " min ")
+    if total_seconds >= 60 and "h" not in label and "min" in text:
+        minutes, seconds = divmod(total_seconds, 60)
+        if seconds:
+            label = f"{minutes} min {seconds} s"
+        else:
+            label = f"{minutes} min"
+    if re.search(r"\d\s*[-–]\s*\d", original):
+        label = original
+    return label, total_seconds
 
 
 def _clean(text: str) -> str:
@@ -36,7 +64,7 @@ def _clean(text: str) -> str:
         lambda m: f"{m.group(1).strip()}" + (f" ({m.group(2).strip()})" if m.group(2).strip() else ""), text
     )
     text = EQUIPMENT.sub(lambda m: m.group(1).strip(), text)
-    text = TIMER.sub(lambda m: f"{m.group(1)} {m.group(2)}", text)
+    text = TIMER.sub(lambda m: (_parse_timer(m.group(1)) or ("", 0))[0] or m.group(1), text)
     text = TEMPERATURE.sub(lambda m: m.group(1).strip(), text)
     return re.sub(r"\s+", " ", text).strip()
 
@@ -51,10 +79,12 @@ def _slug(value: str) -> str:
 def _mentions(text: str) -> tuple[list[Ingredient], list[str], list[dict], list[str]]:
     ingredients = [Ingredient(m.group(1).strip(), m.group(2).strip()) for m in INGREDIENT.finditer(text)]
     equipment = [m.group(1).strip() for m in EQUIPMENT.finditer(text)]
-    timers = [
-        {"seconds": _seconds(m.group(1), m.group(2)), "label": f"{m.group(1)} {m.group(2)}"}
-        for m in TIMER.finditer(text)
-    ]
+    timers = []
+    for m in TIMER.finditer(text):
+        parsed = _parse_timer(m.group(1))
+        if parsed:
+            label, seconds = parsed
+            timers.append({"seconds": seconds, "label": label})
     temperatures = [m.group(1).strip() for m in TEMPERATURE.finditer(text)]
     return ingredients, equipment, timers, temperatures
 
