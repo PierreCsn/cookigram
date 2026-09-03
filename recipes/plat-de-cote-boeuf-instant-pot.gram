@@ -1,0 +1,96 @@
+---
+title: Short ribs de bœuf fondants braisés au vin rouge à l'Instant Pot
+portions: 6
+prep_time: 15 min
+total_time: 1 h 25 min
+spiciness: 0
+description: "Plat de côte de bœuf fondant braisé au vin rouge, carottes et aromates à l'Instant Pot, décongelé ou congelé direct."
+tags: [bœuf, instant pot, mijoté, réconfort, vin rouge, carottes]
+source: https://github.com/PierreCsn/cookigram
+author: Pierre Cousin
+appliances:
+  instant_pot:
+  - instant_pot_6qt
+required_equipment:
+  - Instant Pot
+  - Pince de cuisine
+  - Cuillère en bois
+  - Planche à découper
+  - Couteau de chef
+scaling:
+  enabled: false
+  reason: Volume calibré pour la cuve de l'Instant Pot 6-quart avec 2 kg de viande et os.
+flavors:
+  pairing: [plat de côte de bœuf, vin rouge, échalotes, carottes]
+  notes: [corsé, fondant, vineux, umami]
+  harmony: "La réduction corsée de vin rouge et de sucs de viande enrobe la gélatine fondante du plat de côte longuement braisé."
+  tips: "Bien gratter le fond de la cuve en inox avec la cuillère en bois lors du déglaçage au vin rouge pour éviter la mise en sécurité BURN de l'Instant Pot."
+variants:
+- id: decongele
+  name: Bœuf décongelé (avec dorage Sauté)
+  description: Saisie préalable de la viande en mode Sauté pour développer de puissants sucs de caramélisation avant le braisage sous pression.
+  default: true
+- id: congele
+  name: Bœuf congelé direct (sans décongélation)
+  description: Braisage direct des morceaux sortant du congélateur avec légumes revenus seuls et temps sous pression prolongé à 70 min.
+  prep_time: 10 min
+  total_time: 1 h 40 min
+  steps:
+    replace:
+      sear-meat: |
+        [sweat-veg | Faire suer les légumes et aromates en mode Sauté]
+        - Sélectionner le mode **Sauté** sur l'#instant pot{}.
+        - Verser l'@huile d'olive{2 c. à soupe}.
+        - Ajouter les @échalotes{4 pièces, épluchées et coupées en deux}, les @carottes{3 pièces, épluchées et en biseaux} et les @gousses d'ail{4 pièces, écrasées}.
+        - Faire suer ~{4 min} en remuant avec une #cuillère en bois{} jusqu'à légère coloration.
+        - Ajouter le @concentré de tomates{2 c. à soupe} et remuer ~{1 min}.
+        - Déglacer avec le @vin rouge{250 g} en raclant soigneusement le fond de la cuve pour éviter l'alerte BURN.
+        - Ajouter le @bouillon de bœuf{250 g}, le @thym{3 branches}, les feuilles de @laurier{2 feuilles}, le @sel{1.5 c. à café} et le @poivre{1 c. à café}.
+        - Déposer les morceaux de @plat de côte de bœuf{2000 g, congelés} directement dans le bouillon chaud.
+      pressure-cook: |
+        [pressure-cook-frozen | Cuire sous haute pression (bœuf congelé)]
+        - Fermer le couvercle de l'#instant pot{} et positionner la soupape sur **Sealing**.
+        - Cuire sous haute pression (**Pressure Cook / High Pressure**) pendant ~{70 min} (la montée en pression est plus longue pour décongeler le cœur de la viande).
+image: images/plat-de-cote-boeuf-instant-pot.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: Google
+  model: Antigravity image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/plat-de-cote-boeuf-instant-pot.md
+---
+
+## Short ribs de bœuf fondants braisés au vin rouge à l'Instant Pot
+
+[sear-meat | Dorer le bœuf en mode Sauté]
+- Sélectionner le mode **Sauté** (High) sur l'#instant pot{}.
+- Verser l'@huile d'olive{2 c. à soupe} dans la cuve.
+- Saisir les morceaux de @plat de côte de bœuf{2000 g, décongelés, en tronçons avec os} sur toutes les faces pendant ~{8 min} par petites fournées jusqu'à belle coloration dorée.
+- Retirer et réserver la viande dorée sur une assiette.
+
+[deglaze-pot | Faire suer les légumes et déglacer]
+- Dans la cuve encore chaude, ajouter les @échalotes{4 pièces, épluchées et coupées en deux}, les @carottes{3 pièces, épluchées et en biseaux} et les @gousses d'ail{4 pièces, écrasées}.
+- Faire suer ~{3 min} en remuant.
+- Ajouter le @concentré de tomates{2 c. à soupe} et mélanger ~{1 min}.
+- Verser le @vin rouge{250 g} pour déglacer. Gratter énergiquement le fond de la cuve avec une #cuillère en bois{} pour dissoudre tous les sucs caramélisés et prévenir l'alerte BURN.
+- Ajouter le @bouillon de bœuf{250 g}, le @thym{3 branches}, le @laurier{2 feuilles}, le @sel{1.5 c. à café} et le @poivre{1 c. à café}.
+
+[pressure-cook | Cuire sous haute pression]
+- Remettre les morceaux de plat de côte dorés et leur jus réservé dans la cuve.
+- Fermer le couvercle de l'#instant pot{} et vérifier que la soupape vapeur est bien sur **Sealing**.
+- Cuire sous haute pression (**Pressure Cook / High Pressure**) pendant ~{50 min}.
+
+[natural-release | Décompression naturelle et repos]
+- Laisser la pression descendre naturellement pendant ~{15 min} sans toucher la soupape pour éviter le dessèchement de la viande.
+- Tourner ensuite la soupape sur **Venting** pour libérer la vapeur résiduelle, puis ouvrir le couvercle.
+- Transférer délicatement les morceaux de bœuf confits dans un plat creux à l'aide d'une #pince de cuisine{}.
+
+[reduce-sauce | Réduire et napper la sauce]
+- Retirer le thym et le laurier.
+- Réactiver le mode **Sauté** de l'Instant Pot et laisser réduire la sauce à gros bouillons pendant ~{8 min} jusqu'à consistance nappeuse et brillante.
+- Napper généreusement le bœuf fondant de sauce au vin rouge et servir bien chaud.

@@ -695,6 +695,21 @@ ingredients:
       carbs: 0.0
       fat: 8.0
       protein: 21.0
+  plat-de-cote-de-boeuf:
+    name: Plat de côte de bœuf
+    aliases:
+    - plat de côte de bœuf
+    - plat de cote de boeuf
+    - plat de côte
+    - plat de cote
+    - short ribs
+    - short ribs de bœuf
+    category: Boucherie et volailles
+    nutrition:
+      calories: 250
+      carbs: 0.0
+      fat: 19.0
+      protein: 20.0
   paprika:
     name: Paprika
     aliases:
@@ -1069,6 +1084,17 @@ ingredients:
       carbs: 9.3
       fat: 0.3
     piece_weight: 120.0
+  bouillon-de-boeuf:
+    name: Bouillon de boeuf
+    aliases:
+    - bouillon de boeuf
+    - bouillon de bœuf
+    category: Épicerie salée
+    nutrition:
+      calories: 7
+      protein: 0.8
+      carbs: 0.5
+      fat: 0.2
   cube-de-bouillon-de-boeuf:
     name: Cube de bouillon de boeuf
     aliases:
