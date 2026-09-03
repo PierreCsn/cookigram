@@ -1,0 +1,60 @@
+---
+title: Sauce au poivre vert & cognac façon bistrot
+portions: 4
+prep_time: 10 min
+total_time: 20 min
+spiciness: 2
+description: "Sauce onctueuse au poivre vert concassé, échalotes suées, flambée au cognac et liée à la crème fraîche épaisse."
+tags: [sauce, thermomix, bistrot, bœuf, poivre, réconfort]
+source: https://cookidoo.fr
+author: Pierre Cousin
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Saucière
+scaling:
+  enabled: true
+  min_portions: 2
+  max_portions: 8
+  step: 2
+  note: Multiplier la garniture et la crème selon le nombre de convives.
+flavors:
+  pairing: [entrecôte, bavette, magret de canard, rôti de bœuf]
+  notes: [poivré, corsé, crémeux, boisé]
+  harmony: "La chaleur résineuse du poivre vert et les notes ambrées du cognac tranchent la rondeur veloutée de la crème."
+  tips: "Écraser légèrement la moitié des grains de poivre vert au couteau pour libérer les huiles essentielles tout en gardant des grains entiers fondants sous la dent."
+image: images/sauce-au-poivre-vert.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: Google
+  model: Antigravity image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/sauce-au-poivre-vert.md
+---
+
+## Sauce au poivre vert & cognac façon bistrot
+
+[chop-aromatics | Hacher et suer l'échalote]
+- Mettre l'@échalotes{1 pièce, épluchée et coupée en deux} dans le bol du Thermomix.
+- Hacher ~{5 s} à vitesse 5. Racler les parois à la #spatule{}.
+- Ajouter le @beurre{20 g}.
+- Faire rissoler ~{3 min} à ^{100 C}, vitesse 1.
+
+[flambe-cognac | Déglacer au cognac et poivre vert]
+- Égoutter le @poivre vert en saumure{20 g}. Concasser grossièrement 10 g sur une #planche à découper{} et laisser le reste entier.
+- Ajouter le poivre vert et le @cognac{30 g} dans le bol.
+- Chauffer ~{2 min} à ^{Varoma} (ou 120°C sur TM5/TM6/TM7), sens inverse, vitesse mijotage sans gobelet pour évaporer l'alcool et concentrer les arômes.
+
+[simmer-cream | Lier à la crème fraîche et au bouillon]
+- Ajouter le @bouillon de bœuf{100 g}, la @crème fraîche épaisse{150 g} et le @sel{1 pincée}.
+- Cuire ~{8 min} à ^{90 C}, sens inverse, vitesse 1 en posant le panier cuisson sur le couvercle pour épaissir la sauce sans projections.
+- Goûter, rectifier l'assaisonnement si nécessaire et verser dans une #saucière{}. Napper généreusement vos viandes rouges chaudes.
