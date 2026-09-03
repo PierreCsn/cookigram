@@ -18,12 +18,10 @@ export const initShoppingModal = () => {
     document.querySelector('.cook')?.dataset.recipe ||
     '';
   const evalStorageKey = `cookigram:${recipeSlug}:shopping-eval`;
-  const oldEvalStorageKey = `cookgram:${recipeSlug}:shopping-eval`;
 
   const getSavedEval = () => {
     try {
-      const stored =
-        localStorage.getItem(evalStorageKey) || localStorage.getItem(oldEvalStorageKey);
+      const stored = localStorage.getItem(evalStorageKey);
       return stored ? JSON.parse(stored) : null;
     } catch (_) {
       return null;

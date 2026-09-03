@@ -11,6 +11,7 @@ import { initPortions } from './js/modules/portions.js';
 import { initCatalogueSearch } from './js/modules/search.js';
 import { initShare } from './js/modules/share.js';
 import { initShoppingModal } from './js/modules/shopping.js';
+import { migrateLegacyStorage } from './js/modules/storage-migration.js';
 import {
   initPwaInstall,
   initServiceWorker,
@@ -20,6 +21,9 @@ import { initTimers } from './js/modules/timers.js';
 import { initFeature } from './js/modules/utils.js';
 import { initVariants } from './js/modules/variants.js';
 import { initVoice } from './js/modules/voice.js';
+
+// Normalize persisted data before any feature reads localStorage.
+migrateLegacyStorage();
 
 // Global features (present on all pages)
 initFeature('theme', initTheme);
