@@ -196,3 +196,15 @@ def test_build_cook_page_is_noindex_and_canonical_to_recipe(tmp_path: Path):
     assert (
         '<link rel="canonical" href="https://custom.domain.com/cook/recipes/risotto-poulet-champignons/">' in cook_html
     )
+
+
+def test_build_404_page_is_noindex_and_has_no_canonical_to_home(tmp_path: Path):
+    output_dir = tmp_path / "_site"
+    build(output_dir, site_url="https://custom.domain.com/cook")
+
+    not_found_html = (output_dir / "404.html").read_text(encoding="utf-8")
+
+    # The 404 must be excluded from the index and must not canonically point to the home page
+    assert '<meta name="robots" content="noindex, follow">' in not_found_html
+    assert '<meta name="description" content="Page introuvable sur CookiGram.">' in not_found_html
+    assert 'rel="canonical"' not in not_found_html

@@ -54,6 +54,9 @@ def test_recipe_illustration_is_present_in_heading_with_lcp_hint():
 
     assert 'class="plate"' in rendered
     assert 'fetchpriority="high"' in rendered
+    # Explicit dimensions preserve the 16:9 ratio to avoid CLS; informative alt for image SEO
+    assert 'width="1280" height="720"' in rendered
+    assert 'alt="Illustration de Curry de poulet à la noix de coco"' in rendered
     # The image credit must be visually attached to the plate (inside the heading)
     heading = rendered.split('<section class="recipe-heading">', 1)[1].split("</section>", 1)[0]
     assert "image-credit" in heading
