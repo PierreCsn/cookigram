@@ -1,4 +1,3 @@
-# Base locale CookiGram enrichie avec les données nutritionnelles ANSES CIQUAL.
 ingredients:
   ail:
     aliases:
@@ -458,6 +457,7 @@ ingredients:
   huile-vegetale:
     aliases:
     - huile végétale
+    - huile de tournesol
     category: Matières grasses
     name: Huile végétale
     nutrition:
@@ -624,6 +624,7 @@ ingredients:
     - oignon jaune
     - oignons
     - oignons rouges
+    - oignon rouge
     category: Légumes et aromates
     name: Oignon
     nutrition:
@@ -1892,3 +1893,107 @@ ingredients:
       carbs: 45.0
       fat: 5.0
       protein: 6.0
+  anchois:
+    name: Filets d'anchois
+    aliases:
+    - anchois
+    - anchois à l'huile
+    - filet d'anchois
+    - filets d'anchois
+    category: Poissons, viandes, œufs
+  sauce-worcestershire:
+    name: Sauce Worcestershire
+    aliases:
+    - sauce worcestershire
+    - sauce anglaise
+    category: Condiments et assaisonnements
+  salade-romaine:
+    name: Salade romaine
+    aliases:
+    - laitue romaine
+    - cœurs de romaine
+    - cœur de romaine
+    - laitue
+    category: Fruits, légumes, légumineuses et oléagineux
+  croutons:
+    name: Croûtons
+    aliases:
+    - croûtons dorés
+    - croûtons de pain
+    - croutons
+    category: Produits céréaliers
+  concombre:
+    name: Concombre
+    aliases:
+    - concombre frais
+    category: Fruits, légumes, légumineuses et oléagineux
+  feta:
+    name: Feta
+    aliases:
+    - feta AOP
+    - fromage feta
+    category: Lait et produits laitiers
+  lentilles-vertes:
+    name: Lentilles vertes
+    aliases:
+    - lentilles vertes du Puy
+    - lentilles
+    category: Fruits, légumes, légumineuses et oléagineux
+  vinaigre-de-vin:
+    name: Vinaigre de vin
+    aliases:
+    - vinaigre de vin rouge
+    category: Condiments et assaisonnements
+  pois-chiches:
+    name: Pois chiches
+    aliases:
+    - pois chiches en conserve
+    - pois chiches égouttés
+    - pois chiches cuits
+    - pois chiches en boîte
+    category: Fruits, légumes, légumineuses et oléagineux
+  thon:
+    name: Thon au naturel
+    aliases:
+    - thon
+    - thon en boîte
+    - thon égoutté
+    category: Poissons, viandes, œufs
+  avocat:
+    name: Avocat
+    aliases:
+    - avocats
+    - dés d'avocat
+    category: Fruits, légumes, légumineuses et oléagineux
+  pignons-de-pin:
+    name: Pignons de pin
+    aliases:
+    - pignons
+    category: Fruits, légumes, légumineuses et oléagineux
+  ricotta:
+    name: Ricotta
+    aliases:
+    - fromage ricotta
+    category: Lait et produits laitiers
+  mozzarella:
+    name: Mozzarella
+    aliases:
+    - billes de mozzarella
+    - mozzarella di bufala
+    category: Lait et produits laitiers
+  jambon-cru:
+    name: Jambon cru
+    aliases:
+    - prosciutto
+    - jambon de Parme
+    category: Poissons, viandes, œufs
+  mache:
+    name: Mâche
+    aliases:
+    - salade de mâche
+    category: Fruits, légumes, légumineuses et oléagineux
+  clou-de-girofle:
+    name: Clous de girofle
+    aliases:
+    - clou de girofle
+    category: Condiments et assaisonnements

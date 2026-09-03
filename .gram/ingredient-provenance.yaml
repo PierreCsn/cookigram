@@ -1,4 +1,3 @@
-# Suivi de la provenance des ingrédients et niveaux de confiance.
 ingredients:
   ail:
     locked: false
@@ -540,6 +539,74 @@ ingredients:
   jus-de-cuisson-sous-vide:
     source: Estimation jus de cuisson
     status: estimated
+  anchois:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  sauce-worcestershire:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  salade-romaine:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  croutons:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  concombre:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  feta:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  lentilles-vertes:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  vinaigre-de-vin:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  pois-chiches:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  thon:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  avocat:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  pignons-de-pin:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  ricotta:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  mozzarella:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  jambon-cru:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  mache:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
+  clou-de-girofle:
+    status: manual
+    source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
+      chiches, pâtes)
 sources:
   ciqual:
     name: Table Ciqual de l'ANSES

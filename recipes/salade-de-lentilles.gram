@@ -1,0 +1,63 @@
+---
+title: Salade tiède de lentilles vertes aux échalotes & lardons
+portions: 4
+prep_time: 10 min
+total_time: 35 min
+spiciness: 0
+description: Lentilles vertes du Puy cuites au bouillon aromatique, servies tièdes avec lardons dorés et vinaigrette moutardée.
+tags: [salade, traditionnel, bistrot, réconfort, quotidien, charcuterie]
+source: https://www.cookomix.com/recettes/salade-de-lentilles-thermomix/
+author: Cookomix
+required_equipment:
+  - Casserole
+  - Poêle
+  - Saladier
+scaling:
+  enabled: true
+  min_portions: 2
+  max_portions: 8
+  step: 2
+  note: Doubler ou diviser les quantités de lentilles et de garniture selon le nombre de convives.
+flavors:
+  pairing: [lentilles, lardons, échalotes, moutarde de Dijon]
+  notes: [terreux, fumé, acidulé]
+  harmony: "Le piquant net de la moutarde de Dijon et l'acidité du vinaigre de vin réveillent la saveur terreuse et fondante des lentilles."
+  tips: "Arroser les lentilles de vinaigrette dès la fin de la cuisson quand elles sont encore bien tièdes pour qu'elles s'imprègnent à cœur."
+image: images/salade-de-lentilles.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: Google
+  model: Antigravity image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/salade-de-lentilles.md
+---
+
+## Salade tiède de lentilles vertes aux échalotes & lardons
+
+[Cuire les lentilles vertes à la casserole]
+- Rincer les @lentilles vertes{300 g} à l'eau froide dans une passoire.
+- Les verser dans une grande #casserole{} et couvrir largement d'@eau{1000 g} froide non salée (saler en début de cuisson durcit la peau des lentilles).
+- Piquer l'@oignon{1 pièce, pelé et coupé en deux} avec les @clous de girofle{3 pièces} et l'ajouter dans la casserole avec le @thym{1 c. à café} et la feuille de @laurier{1 feuille}.
+- Porter à ébullition, puis baisser le feu et laisser frémir à couvert pendant ~{25 min} jusqu'à ce que les lentilles soient tendres mais encore fermes sous la dent.
+- Ajouter le @sel{1 c. à café} seulement 5 minutes avant la fin de cuisson.
+
+[Dorer les lardons fumés]
+- Pendant que les lentilles cuisent, faire chauffer une #poêle{} à sec à feu moyen.
+- Ajouter les @lardons{150 g, fumés} et les laisser dorer ~{6 min} en remuant régulièrement jusqu'à ce qu'ils soient bien croustillants.
+- Égoutter les lardons sur une assiette tapissée de papier absorbant en réservant une cuillère de sucs de cuisson.
+
+[Préparer la vinaigrette tiède au saladier]
+- Éplucher et ciseler très finement les @échalotes{2 pièces}.
+- Hacher le @persil frais{10 branches, effeuillées}.
+- Dans le fond d'un grand #saladier{}, mélanger l'@huile d'olive{30 g}, le @vinaigre de vin{15 g}, la @moutarde de dijon{1 c. à café}, le @poivre{1 pincée}, les échalotes et le persil ciselés.
+
+[Égoutter et assembler la salade de bistrot]
+- Égoutter soigneusement les lentilles cuites dans une passoire en retirant l'oignon piqué et la feuille de laurier.
+- Verser les lentilles encore bien chaudes directement dans le saladier sur la vinaigrette.
+- Ajouter les lardons dorés croustillants.
+- Mélanger délicatement pour que les lentilles absorbent les sucs et la vinaigrette. Déguster tiède ou à température ambiante.
