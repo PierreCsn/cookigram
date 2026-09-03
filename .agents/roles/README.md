@@ -18,6 +18,8 @@ Chaque fichier de ce dossier correspond à un rôle spécialisé dans l'équipe 
 | Rôle | Fichier | Description & Responsabilités |
 | :--- | :--- | :--- |
 | **Product Lead Agent** | [`product-lead.md`](product-lead.md) | Head of Product proactif coordonnant l'évolution du produit, les arbitrages avec le Product Owner (@PierreCsn), le filtrage des recommandations d'experts et l'ordonnancement du backlog (workflow : *observe → investigate → consolidate → challenge → recommend → discuss → decide with PO → specify → coordinate → verify → learn*). |
+| **Recipe Expert Agent** | [`recipe-expert.md`](recipe-expert.md) | Autorité culinaire et garant de la rigueur des fiches recettes, de l'exactitude des données Gram, de la taxonomie des ingrédients et de la reproductibilité en cuisine réelle (cuisine robot et traditionnelle sans robot). |
+| **Cooking Execution Expert Agent** | [`cooking-execution-expert.md`](cooking-execution-expert.md) | Expert en assistance d'exécution pas-à-pas en cuisine. Garantit que CookiGram rend les recettes limpides à cuisiner sur le plan de travail sans jamais altérer le contenu canonique (workflow : *observe → simulate kitchen context → analyze execution step → classify → propose UI assistance or report to specialists*). |
 | **Senior Development Agent** | [`senior-developer.md`](senior-developer.md) | Ingénieur logiciel senior chargé de l'implémentation rigoureuse, incrémentale et vérifiée des tâches approuvées (workflow : *synchronize → understand → select approved work → investigate → plan → implement → test → visually verify → commit → push → update GitHub → synchronize again*). |
 
 ---

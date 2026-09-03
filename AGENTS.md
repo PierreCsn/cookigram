@@ -82,6 +82,12 @@ Ce document définit les règles impératives que tout agent d'assistance ou dé
 
 Le projet CookiGram s'appuie sur une collaboration multi-agents. Les personas, directives opérationnelles et contraintes d'exécution propres à chaque rôle sont consignés dans le dossier [`.agents/roles/`](.agents/roles/) :
 
+* **Recipe Expert Agent** : [`recipe-expert.md`](.agents/roles/recipe-expert.md)
+  Directives pour l'autorité culinaire garantissant l'exactitude des recettes Gram, la taxonomie des ingrédients, la traçabilité nutritionnelle CIQUAL et la reproductibilité sur le plan de travail (cuisine robot et traditionnelle sans robot).
+
+* **Cooking Execution Expert Agent** : [`cooking-execution-expert.md`](.agents/roles/cooking-execution-expert.md)
+  Directives pour l'expert en assistance d'exécution culinaire garantissant la clarté et l'ergonomie du Mode Cuisine pas-à-pas sur le plan de travail, sans altération de la recette canonique (source de vérité).
+
 * **Senior Development Agent** : [`senior-developer.md`](.agents/roles/senior-developer.md)
   Directives exhaustives pour l'ingénieur logiciel senior chargé d'implémenter les tâches approuvées, avec discipline Git/GitHub, validation mobile-first, respect absolu de la gouvernance et de la source de vérité Gram.
 
