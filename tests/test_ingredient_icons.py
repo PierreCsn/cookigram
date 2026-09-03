@@ -13,6 +13,26 @@ def test_resolver_uses_canonical_aliases_and_existing_assets():
     assert resolver.resolve("huile d'olive", "2 c. à soupe") == "icons/ingredients/huile-olive.svg"
 
 
+def test_resolver_covers_pilot_family_variants():
+    resolver = IngredientIconResolver()
+
+    expected = {
+        "crème fraîche liquide": "creme-fraiche.svg",
+        "filets de poulet": "poulet.svg",
+        "paleron de boeuf": "boeuf.svg",
+        "riz basmati": "riz.svg",
+        "penne": "pates.svg",
+        "champignons de Paris": "champignon.svg",
+        "concentré de tomate": "concentre-tomate.svg",
+        "cube de bouillon de volaille": "bouillon-volaille.svg",
+        "moutarde": "moutarde.svg",
+        "piment de Cayenne": "piment.svg",
+    }
+
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
 def test_resolver_returns_empty_string_when_icon_is_missing():
     resolver = IngredientIconResolver()
 

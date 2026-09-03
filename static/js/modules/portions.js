@@ -108,10 +108,9 @@ export const initPortions = () => {
   const max = Number(portionPicker.dataset.max);
   const step = Number(portionPicker.dataset.step) || 1;
   const storageKey = `cookigram:${portionPicker.dataset.recipe}:portions`;
-  const oldStorageKey = `cookgram:${portionPicker.dataset.recipe}:portions`;
 
   const getSavedPortions = () => {
-    const raw = localStorage.getItem(storageKey) || localStorage.getItem(oldStorageKey);
+    const raw = localStorage.getItem(storageKey);
     const parsed = Number(raw);
     if (!Number.isFinite(parsed) || parsed < min || parsed > max) {
       return base;

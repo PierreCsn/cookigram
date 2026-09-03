@@ -3,7 +3,6 @@
  */
 
 export const THEME_KEY = 'cookigram:theme';
-export const OLD_THEME_KEY = 'cookgram:theme';
 
 /**
  * Applies the given theme ('dark' or 'light') to the document.
@@ -30,7 +29,7 @@ export const applyTheme = (theme) => {
  * @returns {'dark' | 'light'}
  */
 export const getInitialTheme = () => {
-  const saved = localStorage.getItem(THEME_KEY) || localStorage.getItem(OLD_THEME_KEY);
+  const saved = localStorage.getItem(THEME_KEY);
   if (saved === 'dark' || saved === 'light') return saved;
   return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
@@ -44,7 +43,7 @@ export const initTheme = () => {
 
   if (window.matchMedia) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem(THEME_KEY) && !localStorage.getItem(OLD_THEME_KEY)) {
+      if (!localStorage.getItem(THEME_KEY)) {
         currentTheme = e.matches ? 'dark' : 'light';
         applyTheme(currentTheme);
       }
