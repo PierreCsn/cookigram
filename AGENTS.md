@@ -76,3 +76,12 @@ Ce document définit les règles impératives que tout agent d'assistance ou dé
     5. **Lot 5 — Dette Technique & Socle (P3/P4)** : issues #8, #1
   * **Interdiction de sauter un lot** pour travailler sur des améliorations secondaires tant que le lot en cours n'est pas soldé, testé et validé.
 
+---
+
+## 4. Rôles et profils d'agents spécialisés
+
+Le projet CookiGram s'appuie sur une collaboration multi-agents. Les personas, directives opérationnelles et contraintes d'exécution propres à chaque rôle sont consignés dans le dossier [`.agents/roles/`](.agents/roles/) :
+
+* **Senior Development Agent** : [`senior-developer.md`](.agents/roles/senior-developer.md)
+  Directives exhaustives pour l'ingénieur logiciel senior chargé d'implémenter les tâches approuvées, avec discipline Git/GitHub, validation mobile-first, respect absolu de la gouvernance et de la source de vérité Gram.
+
