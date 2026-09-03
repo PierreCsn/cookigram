@@ -36,12 +36,16 @@
   border:1px solid var(--line);
   background:var(--btn-bg);
   border-radius:99px;
-  padding:9px 12px;
+  padding:12px 13px;
   cursor:pointer;
   font-size:15px;
   line-height:1;
   color:var(--ink);
   transition:all .2s;
+  min-width:44px;
+  min-height:44px;
+  display:inline-grid;
+  place-items:center;
 }
 
 .install:hover,.wake:hover,.auto-speak:hover,.theme-toggle:hover,.voice-cmd:hover {

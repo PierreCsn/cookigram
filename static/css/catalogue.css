@@ -15,7 +15,7 @@
   gap:8px;
   flex-wrap:wrap;
   font-size:12px;
-  color:var(--orange);
+  color:var(--accent-text);
   margin-bottom:8px;
 }
 
@@ -161,12 +161,15 @@
   background:var(--card);
   color:var(--ink);
   border-radius:99px;
-  padding:7px 14px;
-  font-size:13px;
+  padding:11px 16px;
+  font-size:14px;
   font-weight:700;
   cursor:pointer;
   transition:all .2s ease;
   font-family:inherit;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
 }
 
 .chip:hover {
@@ -197,8 +200,8 @@
   background:var(--card);
   color:var(--ink);
   border-radius:99px;
-  padding:7px 13px;
-  font-size:13px;
+  padding:11px 13px;
+  font-size:14px;
   font-weight:700;
   display:inline-flex;
   align-items:center;
@@ -208,6 +211,7 @@
   flex-shrink:0;
   transition:all .2s ease;
   font-family:inherit;
+  min-height:44px;
 }
 
 .advanced-filter-toggle:hover {
@@ -218,7 +222,7 @@
 .advanced-filter-toggle[aria-expanded="true"] {
   background:var(--cream);
   border-color:var(--orange);
-  color:var(--orange);
+  color:var(--accent-text);
 }
 
 .advanced-filter-toggle[aria-expanded="true"] .adv-chevron {
@@ -283,13 +287,14 @@
 .clear-advanced-btn {
   background:none;
   border:none;
-  color:var(--orange);
+  color:var(--accent-text);
   font-size:12px;
   font-weight:700;
   cursor:pointer;
-  padding:2px 6px;
+  padding:10px 8px;
   border-radius:4px;
   font-family:inherit;
+  min-height:44px;
 }
 
 .clear-advanced-btn:hover {
