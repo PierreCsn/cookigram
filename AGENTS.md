@@ -2,6 +2,20 @@
 
 Ce document définit les règles impératives que tout agent d'assistance ou développeur doit respecter dans ce dépôt.
 
+## Chargement persistant du profil d'agent
+
+Ce fichier est le point d'entrée commun du dépôt pour Codex et OpenCode. Pour
+une session de développement, l'agent doit lire, dans cet ordre :
+
+1. ce fichier (`AGENTS.md`) ;
+2. [`PRODUCT_PRINCIPLES.md`](PRODUCT_PRINCIPLES.md) ;
+3. [`.agents/roles/senior-developer.md`](.agents/roles/senior-developer.md) pour le profil complet et le workflow ;
+4. les règles spécialisées pertinentes dans [`.agents/rules/`](.agents/rules/).
+
+[`GEMINI.md`](GEMINI.md) est l'adaptateur d'entrée pour Gemini Code. Il pointe
+vers les mêmes sources versionnées : ne pas créer une variante locale du
+profil dans un autre outil.
+
 ---
 
 ## 1. Règle impérative : Versionnement Git systématique (Commit & Push)
@@ -90,4 +104,3 @@ Le projet CookiGram s'appuie sur une collaboration multi-agents. Les personas, d
 
 * **Senior Development Agent** : [`senior-developer.md`](.agents/roles/senior-developer.md)
   Directives exhaustives pour l'ingénieur logiciel senior chargé d'implémenter les tâches approuvées, avec discipline Git/GitHub, validation mobile-first, respect absolu de la gouvernance et de la source de vérité Gram.
-
