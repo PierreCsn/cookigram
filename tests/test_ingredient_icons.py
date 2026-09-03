@@ -47,10 +47,168 @@ def test_resolver_covers_common_missing_ingredient_icons():
         assert resolver.resolve(name) == f"icons/ingredients/{filename}"
 
 
+def test_resolver_reuses_icons_for_ingredient_variants():
+    resolver = IngredientIconResolver()
+
+    expected = {
+        "ail en poudre": "ail.svg",
+        "tomates cerises": "tomate.svg",
+        "tomates concassées": "tomate.svg",
+    }
+
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
+def test_resolver_covers_the_first_common_missing_batch():
+    resolver = IngredientIconResolver()
+
+    expected = {
+        "poivron rouge": "poivron.svg",
+        "poireaux": "poireau.svg",
+        "feuilles de laurier": "laurier.svg",
+        "thym": "thym.svg",
+        "basilic frais": "basilic-frais.svg",
+        "lait demi-écrémé": "lait.svg",
+        "noix de muscade": "noix-de-muscade.svg",
+        "bouillon de légumes": "bouillon-de-legumes.svg",
+        "œufs": "oeuf.svg",
+        "miel": "miel.svg",
+        "olives noires": "olives-noires.svg",
+        "paprika": "paprika.svg",
+        "sauce soja salée": "sauce-soja.svg",
+    }
+
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
+def test_resolver_covers_the_second_common_missing_batch():
+    resolver = IngredientIconResolver()
+
+    expected = {
+        "concombre": "concombre.svg",
+        "aubergines": "aubergine.svg",
+        "courgette": "courgette.svg",
+        "chou-fleur": "chou-fleur.svg",
+        "petits pois": "petits-pois.svg",
+        "crevettes": "crevettes.svg",
+        "feta": "feta.svg",
+        "cannelle en poudre": "cannelle.svg",
+        "cumin": "cumin.svg",
+        "curcuma": "curcuma.svg",
+        "maïzena": "maizena.svg",
+        "lentilles corail": "lentilles-corail.svg",
+    }
+
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
+def test_resolver_covers_the_fruit_and_vegetable_batch():
+    resolver = IngredientIconResolver()
+
+    expected = {
+        "banane": "banane.svg",
+        "pomme": "pomme.svg",
+        "chair de potiron": "potiron.svg",
+        "courge butternut": "potiron.svg",
+        "asperges vertes": "asperges.svg",
+        "panais": "panais.svg",
+        "mâche": "mache.svg",
+        "salade romaine": "salade-romaine.svg",
+        "oignon nouveau": "oignon-nouveau.svg",
+        "céleri": "celeri.svg",
+    }
+
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
+def test_resolver_covers_the_protein_batch():
+    resolver = IngredientIconResolver()
+    expected = {
+        "filets d'anchois": "anchois.svg",
+        "filets de merlan": "filet-de-poisson.svg",
+        "langoustines": "langoustines.svg",
+        "viande hachée": "viande-hachee.svg",
+        "lardons": "lardons.svg",
+        "jambon cru": "jambon-cru.svg",
+        "chorizo": "chorizo.svg",
+    }
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
+def test_resolver_covers_the_legume_and_nut_batch():
+    resolver = IngredientIconResolver()
+    expected = {
+        "châtaignes": "chataignes.svg",
+        "pois chiches": "pois-chiches.svg",
+        "pois gourmands": "pois-gourmands.svg",
+        "lentilles vertes": "lentilles-vertes.svg",
+        "pistaches": "pistaches.svg",
+        "pignons de pin": "pignons-de-pin.svg",
+    }
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
+def test_resolver_covers_the_dry_pantry_batch():
+    resolver = IngredientIconResolver()
+    expected = {
+        "amandes effilées": "amandes-effilees.svg",
+        "amandes en poudre": "amandes-en-poudre.svg",
+        "chapelure": "chapelure.svg",
+        "feuilles de lasagne": "feuilles-de-lasagne.svg",
+        "pâte sèche à lasagne": "feuilles-de-lasagne.svg",
+        "pain de mie": "pain-de-mie.svg",
+        "emmental râpé": "fromage-rape.svg",
+        "fromage râpé": "fromage-rape.svg",
+    }
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
+def test_resolver_covers_the_sauce_and_liquid_batch():
+    resolver = IngredientIconResolver()
+    expected = {
+        "sauce tomate": "sauce-tomate.svg",
+        "béchamel": "bechamel.svg",
+        "caramel liquide": "caramel-liquide.svg",
+        "jus de citron vert": "jus-de-citron-vert.svg",
+        "vin rouge": "vin-rouge.svg",
+        "vinaigre blanc": "vinaigre-blanc.svg",
+        "vinaigre de riz": "vinaigre-de-riz.svg",
+        "vinaigre de vin": "vinaigre-de-vin.svg",
+    }
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
+def test_resolver_covers_the_herb_and_spice_batch():
+    resolver = IngredientIconResolver()
+    expected = {
+        "aneth": "aneth.svg",
+        "cerfeuil frais": "cerfeuil-frais.svg",
+        "estragon frais": "estragon-frais.svg",
+        "herbes de Provence": "herbes-de-provence.svg",
+        "gingembre moulu": "gingembre-moulu.svg",
+        "quatre-épices": "quatre-epices.svg",
+        "garam masala": "garam-masala.svg",
+        "graines de fenouil": "graines-de-fenouil.svg",
+        "graines de moutarde": "graines-de-moutarde.svg",
+        "graines de sésame blanc": "graines-de-sesame-blanc.svg",
+        "épices cajun": "epices-cajun.svg",
+    }
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
 def test_resolver_returns_empty_string_when_icon_is_missing():
     resolver = IngredientIconResolver()
 
-    assert resolver.resolve("aubergine", "1") == ""
+    assert resolver.resolve("ingrédient totalement inconnu", "1") == ""
 
 
 def test_attach_icons_covers_recipe_steps_and_shopping():
