@@ -894,6 +894,76 @@ a {
   color:var(--ink);
 }
 
+.flavor-panel {
+  margin-top:22px;
+  padding:16px 18px;
+  background:var(--cream);
+  border:1px solid var(--line);
+  border-radius:16px;
+}
+
+.flavor-panel-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+.flavor-label {
+  font-size:13px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--muted);
+}
+
+.flavor-spice {
+  font-size:13px;
+  font-weight:800;
+  color:var(--accent-text);
+  white-space:nowrap;
+}
+
+.flavor-chips {
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:0 0 10px;
+  padding:0;
+  list-style:none;
+}
+
+.flavor-chips li {
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:99px;
+  padding:6px 11px;
+  font-size:12.5px;
+  font-weight:700;
+  color:var(--ink);
+}
+
+.flavor-chips.flavor-notes li {
+  background:var(--banner-bg);
+  border-color:var(--orange);
+  color:var(--accent-text);
+}
+
+.flavor-harmony {
+  margin:0;
+  font-size:13.5px;
+  line-height:1.55;
+  color:var(--ink);
+}
+
+.flavor-tips {
+  margin:8px 0 0;
+  font-size:13px;
+  line-height:1.5;
+  color:var(--muted);
+}
+
 .primary {
   display:flex;
   justify-content:space-between;
