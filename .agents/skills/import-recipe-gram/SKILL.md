@@ -52,6 +52,65 @@ Structure the recipe into clear, readable, bite-sized steps with interactive sub
 - Doneness cues accompany timing when timing alone is unreliable;
 - Appliance instructions name the compatible model or capability without pretending to control the device.
 
+### Normes de Qualité & Exigences Produit CookiGram
+
+Toute recette importée ou adaptée dans CookiGram doit se conformer aux décisions produit actées (PDR-0001 à PDR-0004) et aux exigences du Mode Cuisine en temps réel :
+
+1. **Description éditoriale calibrée et évocatrice** (`description:`) :
+   - Obligatoire dans le frontmatter YAML.
+   - Longueur : 100 à 120 caractères.
+   - Contenu : Évocatrice, descriptive des textures, saveurs clés et méthode (ex: *« Pavé de saumon fondant nappé d'une sauce onctueuse à la crème, parmesan et épinards frais. »*).
+   - Proscrire impérativement les textes génériques du type « [Titre] — recette pas-à-pas sur CookiGram » ou la simple répétition du titre.
+
+2. **Intégrité temporelle (`prep_time` et `total_time`)** :
+   - `prep_time` et `total_time` doivent être TOUS LES DEUX renseignés, distincts et fiables.
+   - `total_time` englobe la totalité du processus : préparation active, mijotages passifs, passage au four, cuissons vapeur (Varoma) et temps de repos/refroidissement indispensables avant dégustation.
+   - Ne jamais déclarer un `total_time` égal au `prep_time` lorsqu'une cuisson ou un temps d'attente intervient.
+
+3. **Indicateur de piquant décisionnel (`spiciness: 0..3`)** :
+   - Obligatoire dans le frontmatter pour guider le choix du repas au quotidien :
+     - `0` : non épicé (doux pour les enfants)
+     - `1` : doux / chaleureux
+     - `2` : relevé
+     - `3` : pimenté / très épicé
+
+4. **Profil sensoriel et accords de saveurs (`flavors:`)** :
+   - Fortement recommandé pour les recettes signatures ou emblématiques :
+     ```yaml
+     flavors:
+       pairing: [saumon, épinards, parmesan, citron]  # 2 à 4 ingrédients signature
+       notes: [crémeux, acidulé, iodé]                # Dominantes sensorielles
+       harmony: "L'acidité vive du citron vient trancher la richesse du saumon et de la crème."
+       tips: "Pour une note printanière, remplacer les épinards par des pousses d'oseille."
+     ```
+
+5. **Traçabilité stricte des ingrédients par étape (`step.ingredients`)** :
+   - En Mode Cuisine, CookiGram isole et affiche la carte « Ingrédients pour cette étape » directement au-dessus de chaque action.
+   - **RÈGLE ABSOLUE : Chaque ingrédient incorporé à une étape DOIT être formellement balisé `@ingrédient{quantité}`** dans la ligne d'action ou de sous-étape (`- `).
+   - Ne jamais mentionner un ingrédient uniquement en texte brut sans balise (ex: *« Verser l'huile dans la poêle »* est interdit ; écrire *« Faire chauffer l'@huile d'olive{1 c. à soupe} dans une #poêle{}. »*).
+
+6. **Zéro ingrédient fantôme ou quantité vide pour la nutrition CIQUAL** :
+   - Ne jamais laisser de crochet vide `@eau{}` ou de matière grasse non quantifiée `@huile{}`.
+   - Les féculents, protéines, produits laitiers et huiles de cuisson doivent tous porter une quantité mesurable pour alimenter le calculateur nutritionnel CIQUAL et la liste de courses consolidée.
+
+7. **Syntaxe stricte des minuteurs scalaires (`~{}`)** :
+   - Chaque balise minuteur doit porter une unité scalaire unique et standard : `~{90 s}`, `~{4 min}`, `~{1 h}`.
+   - Ne jamais générer de durées composées (`~{4 min 50 s}` ou `~{1 min 30 s}`) ni de plages (`~{30-35 min}`) qui brisent le parseur.
+   - Pour une plage de cuisson, annoter la durée minimale dans le minuteur (ex: `~{30 min}`) et préciser le critère sensoriel de fin de cuisson dans le texte.
+
+8. **Cohérence des modèles Thermomix (120°C vs TM31)** :
+   - Une recette prescrivant `^{120 C}` est physiquement incompatible avec le TM31 (qui plafonne à 100°C et Varoma). Déclarer `appliances.thermomix: [TM5, TM6, TM7]`.
+   - Si une compatibilité TM31 est revendiquée, utiliser `^{Varoma}` ou adapter la consigne thermique.
+
+9. **Conservation et Batch Cooking (`conservation:`)** :
+   - Déclarer les métadonnées de conservation lorsque pertinent :
+     ```yaml
+     conservation:
+       fridge_days: 3
+       freezable: true
+       reheat: "10 min au four à 160°C"
+     ```
+
 ### Marmiton
 
 When importing from marmiton.org:

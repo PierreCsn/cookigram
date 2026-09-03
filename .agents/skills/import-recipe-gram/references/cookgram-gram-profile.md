@@ -8,7 +8,10 @@ CookGram currently reads the following stable subset of Gram. Stay within this p
 ---
 title: Poulet rôti au citron
 portions: 4
-description: Poulet doré, jus court au citron et à l'ail.
+prep_time: 15 min
+total_time: 1 h 05 min
+spiciness: 0
+description: Poulet doré à la peau croustillante, jus court parfumé au citron et éclats d'ail en chemise.
 tags: [poulet, four, familial]
 source: https://example.org/recipe
 author: Nom affiché sur la source
@@ -18,10 +21,28 @@ scaling:
   max_portions: 8
   step: 1
   note: Les temps de cuisson ne sont pas recalculés.
+flavors:
+  pairing: [poulet, citron, ail, thym]
+  notes: [rôti, acidulé, herbacé]
+  harmony: "L'acidité vive du citron dégraisse la chair du poulet tandis que le thym infuse le jus court."
+  tips: "Arroser le poulet avec son jus à mi-cuisson pour une peau parfaitement dorée."
+conservation:
+  fridge_days: 3
+  freezable: true
+  reheat: "15 min au four à 150°C"
 ---
 ```
 
-Required for a well-finished recipe: `title`, `portions`, `description`, and `tags`. Add `source` and `author` for an Internet import. Omit `author` when the source does not identify one.
+Required for a well-finished recipe:
+- `title` : clear French culinary title.
+- `portions` : baseline integer yield.
+- `prep_time` & `total_time` : mandatory and distinct (`total_time` must account for all active, passive, baking and resting durations).
+- `spiciness` : integer `0..3` (0: non épicé, 1: doux, 2: relevé, 3: pimenté).
+- `description` : 100 to 120 characters, evocative of texture, key flavor and method. No generic filler.
+- `tags` : lowercase categorized tags.
+- `scaling` : explicit scaling rules.
+- `flavors` : recommended for signature recipes (pairing, notes, harmony, tips).
+- `source` and `author` : mandatory for web imports.
 
 Every recipe must also declare scaling. For a fixed appliance recipe:
 
@@ -59,32 +80,41 @@ CookGram renders sub-steps as interactive checklists in Cook Mode, allowing cook
 ```gram
 @pommes de terre{800 g}
 @œufs{3}
-@sel{}
+@huile d'olive{1 c. à soupe}
+@sel{1 pincée}
 ```
 
-The first use should carry the useful quantity. An empty quantity means “au goût” or “quantité non fournie”, never a guessed value. Repeat an ingredient later without inventing an additional quantity.
+Rules for ingredients:
+- **Step-Ingredient Systematic Annotation (Cooking First)** : Every ingredient incorporated during a step **MUST** be explicitly annotated with `@ingredient{quantity}` in the action line or sub-step (`- `). CookiGram extracts these to populate the "Ingrédients pour cette étape" card in Cook Mode. Never mention an ingredient in plain text only.
+- **Nutritional Integrity (CIQUAL)** : Fats, proteins, dairy, produce, and carbs must always carry a concrete quantity or volume. Never leave empty brackets like `@huile{}` or `@eau{}` without a measure, as this prevents CIQUAL nutritional calculation and grocery list compilation.
+- **Multi-step ingredients** : When an ingredient is used across multiple steps (e.g. part of the butter for dough, part for greasing), specify the step quantity clearly to ensure accurate grocery list consolidation.
 
 ## Equipment
 
 ```gram
 #four{}
 #cocotte{}
-#Thermomix TM31{}
+#poêle{}
+#bol Thermomix{}
 ```
 
 Annotate equipment when it is required or affects instructions. Ordinary utensils need not all be listed.
 
 ## Timers
 
-CookGram recognizes seconds, minutes, and hours:
+CookGram recognizes seconds, minutes, and hours as single scalar units:
 
 ```gram
 ~{30 s}
+~{90 s}
 ~{8 min}
 ~{2 h}
 ```
 
-Put the timer in the step that starts it. Prefer `min` over ambiguous abbreviations in new files.
+Strict rules for timers:
+- Put the timer in the step that starts it. Prefer `min` over ambiguous abbreviations in new files.
+- **Single scalar unit only** : Never use composite timers like `~{4 min 50 s}` or `~{1 min 30 s}` (convert to `~{290 s}` or `~{90 s}`).
+- **No timer ranges** : Never use ranges like `~{30-35 min}` that break the parser. Annotate the minimum duration in the timer (`~{30 min}`) and describe the visual/sensory doneness cue in prose (*« prolonger de 5 min si le dessus n'est pas doré »*).
 
 ## Temperatures
 
