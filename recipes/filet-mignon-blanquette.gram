@@ -9,6 +9,14 @@ source: https://www.cookomix.com/recettes/filet-mignon-blanquette-thermomix/
 author: Pierrette
 appliances:
   thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Varoma avec plateau vapeur
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Économe
+  - Plat de service
 scaling:
   enabled: false
   reason: Format du filet mignon et volume de sauce calibrés pour le Thermomix.

@@ -19,6 +19,13 @@ appliances:
   - TM5
   - TM6
   - TM7
+required_equipment:
+  - Thermomix TM5, TM6 ou TM7
+  - Poêle
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Économe
 scaling:
   enabled: false
   reason: Le volume et les paramètres de chauffe du bol Thermomix ne sont pas validés

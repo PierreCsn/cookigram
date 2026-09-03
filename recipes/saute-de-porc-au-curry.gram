@@ -9,6 +9,12 @@ source: https://www.cookomix.com/recettes/saute-de-porc-au-curry-thermomix/
 author: Pierro
 appliances:
   thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Plat de service
 scaling:
   enabled: false
   reason: Cuisson au bol Thermomix avec préservation de la texture de la viande.

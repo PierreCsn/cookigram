@@ -17,6 +17,12 @@ appliances:
   - TM5
   - TM6
   - TM7
+required_equipment:
+  - Thermomix TM5, TM6 ou TM7
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Économe
 scaling:
   enabled: false
   reason: Les quantités et paramètres de chauffe sont calibrés pour 6 portions dans

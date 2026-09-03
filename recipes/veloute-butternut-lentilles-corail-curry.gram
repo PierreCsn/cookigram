@@ -9,6 +9,12 @@ source: https://www.cookomix.com/recettes/veloute-butternut-lentilles-corail-cur
 author: Mandy-62
 appliances:
   thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+  - Économe
 scaling:
   enabled: false
   reason: Équilibre liquide et capacité du bol optimisés pour le Thermomix.

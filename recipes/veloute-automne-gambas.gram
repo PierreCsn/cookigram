@@ -17,6 +17,12 @@ appliances:
   - TM5
   - TM6
   - TM7
+required_equipment:
+  - Thermomix TM5, TM6 ou TM7
+  - Varoma avec plateau vapeur
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
 scaling:
   enabled: false
   reason: La cuisson vapeur et le volume du velouté sont calibrés pour 4 portions

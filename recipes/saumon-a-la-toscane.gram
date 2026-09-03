@@ -19,6 +19,12 @@ appliances:
   - TM5
   - TM6
   - TM7
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Plat à gratin
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
 scaling:
   enabled: true
 image: images/saumon-a-la-toscane.jpg
