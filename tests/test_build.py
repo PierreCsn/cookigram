@@ -114,3 +114,52 @@ def test_compile_css_assembles_modular_stylesheets(tmp_path: Path):
     assert "--test-var: 1" in content
     assert "/* === base.css === */" in content
     assert "body { margin: 0; }" in content
+
+
+def test_compile_css_folds_root_component_stylesheets_into_bundle(tmp_path: Path):
+    from generator.build import compile_css
+
+    css_dir = tmp_path / "css"
+    css_dir.mkdir()
+    (css_dir / "variables.css").write_text(":root { --test-var: 1; }")
+    (tmp_path / "scaling.css").write_text(".portion-picker { display: grid; }")
+    (tmp_path / "variants.css").write_text(".variant-picker { margin: 26px 0; }")
+    (tmp_path / "images.css").write_text(".plate img { object-fit: cover; }")
+
+    out_file = tmp_path / "bundled.css"
+    compile_css(css_dir, out_file)
+
+    content = out_file.read_text(encoding="utf-8")
+    assert "/* === variables.css === */" in content
+    assert "/* === scaling.css === */" in content
+    assert ".portion-picker" in content
+    assert "/* === variants.css === */" in content
+    assert "/* === images.css === */" in content
+    assert ".plate img" in content
+
+
+def test_single_css_bundle_no_separate_root_stylesheets(tmp_path: Path):
+    output_dir = tmp_path / "_site"
+    build(output_dir)
+
+    index = (output_dir / "index.html").read_text(encoding="utf-8")
+    recipe = (output_dir / "recipes" / "curry-poulet-noix-coco" / "index.html").read_text(encoding="utf-8")
+    cook = (output_dir / "recipes" / "curry-poulet-noix-coco" / "cook" / "index.html").read_text(encoding="utf-8")
+
+    for html in (index, recipe, cook):
+        assert html.count('rel="stylesheet"') == 1
+        assert "assets/app.css" in html
+        assert "scaling.css" not in html
+        assert "variants.css" not in html
+        assert "images.css" not in html
+
+    # The separate stylesheets are no longer emitted in the build output.
+    assert not (output_dir / "assets" / "scaling.css").exists()
+    assert not (output_dir / "assets" / "variants.css").exists()
+    assert not (output_dir / "assets" / "images.css").exists()
+
+    # Component rules are actually present in the single compiled bundle.
+    app_css = (output_dir / "assets" / "app.css").read_text(encoding="utf-8")
+    assert ".portion-picker" in app_css
+    assert ".variant-picker" in app_css
+    assert ".plate img" in app_css

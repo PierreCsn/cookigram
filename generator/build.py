@@ -20,7 +20,7 @@ from .seo import (
 ROOT = Path(__file__).resolve().parents[1]
 
 
-ASSETS_TO_VERSION = ("app.css", "scaling.css", "variants.css", "images.css", "app.js")
+ASSETS_TO_VERSION = ("app.css", "app.js")
 
 
 def compute_asset_version(assets_path: Path) -> str:
@@ -70,6 +70,11 @@ CSS_SOURCES = (
     "thermomix.css",
 )
 
+# Standalone component stylesheets shipped at the `static/` root (portion and
+# variant pickers, recipe images). They are folded into the single app.css so the
+# pages no longer issue separate render-blocking CSS requests.
+ROOT_CSS_SOURCES = ("scaling.css", "variants.css", "images.css")
+
 
 def compile_css(css_dir: Path, output_file: Path) -> None:
     """Concatenates modular CSS source files into a unified production stylesheet."""
@@ -78,6 +83,10 @@ def compile_css(css_dir: Path, output_file: Path) -> None:
     parts = []
     for filename in CSS_SOURCES:
         file_path = css_dir / filename
+        if file_path.exists():
+            parts.append(f"/* === {filename} === */\n" + file_path.read_text(encoding="utf-8").strip())
+    for filename in ROOT_CSS_SOURCES:
+        file_path = css_dir.parent / filename
         if file_path.exists():
             parts.append(f"/* === {filename} === */\n" + file_path.read_text(encoding="utf-8").strip())
     if parts:
@@ -94,6 +103,11 @@ def build(output: Path, site_url: str = DEFAULT_SITE_URL) -> None:
     # Compile modular CSS sources into a unified app.css
     compile_css(ROOT / "static" / "css", output / "assets" / "app.css")
     compile_css(ROOT / "static" / "css", ROOT / "static" / "app.css")
+
+    # The root component stylesheets are now merged into app.css; drop the
+    # redundant copies so they are neither served nor precached separately.
+    for extra_css in ROOT_CSS_SOURCES:
+        (output / "assets" / extra_css).unlink(missing_ok=True)
 
     # Keep the site root as the single, correct service worker location.
     # static/sw.js acts as a template rendered with the build version.
