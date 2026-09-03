@@ -1,0 +1,65 @@
+---
+title: Île flottante & crème anglaise à la vanille Bourbon
+portions: 4
+prep_time: 15 min
+total_time: 35 min
+spiciness: 0
+description: "Blancs en neige aériens cuits à la vapeur douce du Varoma, posés sur une crème anglaise veloutée à la vanille Bourbon."
+tags: [dessert, classique, bistrot, thermomix, vanille, caramel, doux]
+source: https://cookidoo.fr
+author: Pierre Cousin
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Fouet de cuisine
+  - Ensemble Varoma (plateau et panier)
+  - Papier cuisson
+  - Spatule
+  - Saladier
+scaling:
+  enabled: false
+  reason: L'émulsion de la crème anglaise et la cuisson vapeur des blancs utilisent l'espace exact du bol et du plateau Varoma.
+flavors:
+  pairing: [caramel au beurre salé, amandes effilées grillées, tuiles aux amandes]
+  notes: [doux, vanillé, onctueux, aérien, croustillant]
+  harmony: "La vapeur douce préserve une texture de blanc vaporeuse qui fond instantanément sur la richesse parfumée de la crème anglaise."
+  tips: "Pour monter des blancs fermes et brillants, veiller à ce que le bol et le fouet soient parfaitement dégraissés et sans la moindre trace d'humidité."
+image: images/ile-flottante-creme-anglaise.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: Google
+  model: Antigravity image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/ile-flottante-creme-anglaise.md
+---
+
+## Île flottante & crème anglaise à la vanille Bourbon
+
+[whip-steams-whites | Monter et cuire les blancs en neige au Varoma]
+- Séparer les blancs des jaunes de 4 @œufs{4 pièces} (réserver précieusement les jaunes pour la crème).
+- Insérer le #fouet{} dans le bol parfaitement propre et sec.
+- Mettre les 4 blancs d'œufs et le @sel{1 pincée} dans le bol.
+- Monter en neige ~{3 min 30 s} à vitesse 3.5.
+- Ajouter le @sucre{30 g} par l'orifice du couvercle et fouetter encore ~{30 s} à vitesse 3.5 pour serrer les blancs.
+- Retirer le fouet. Huiler légèrement une feuille de papier cuisson posée au fond du #plateau Varoma{}.
+- Façonner 4 gros dômes de blancs montés à l'aide de deux cuillères à soupe et les déposer espacés sur le plateau.
+- Rincer le bol, y verser de l'@eau{500 g}, poser l'ensemble Varoma avec son couvercle et cuire à la vapeur ~{10 min} à ^{Varoma}, vitesse 1 : les blancs gonflent et deviennent soyeux.
+- Laisser tiédir le Varoma et vider l'eau du bol.
+
+[cook-custard | Cuire la crème anglaise à 80°C]
+- Insérer à nouveau le #fouet{} dans le bol.
+- Mettre dans le bol les 4 jaunes d'œufs réservés, le @lait{500 g}, le @sucre{60 g} et les graines grattées d'une @gousse de vanille{1 pièce}.
+- Cuire ~{7 min} à ^{80 C}, vitesse 2.5 : la crème nappe la spatule sans jamais surchauffer ni faire coaguler les jaunes.
+- Retirer le fouet, verser immédiatement la crème anglaise dans un récipient frais et la placer au réfrigérateur pendant ~{30 min} pour qu'elle prenne toute sa consistance.
+
+[assemble-dessert | Dresser et napper de caramel]
+- Faire dorer les @amandes effilées{20 g} quelques instants à sec dans une petite poêle.
+- Répartir la crème anglaise bien froide dans 4 coupes individuelles ou assiettes creuses.
+- Déposer délicatement une île de blanc cuit au centre de chaque coupe.
+- Napper d'un filet généreux de @caramel liquide{40 g} et parsemer d'amandes effilées croustillantes. Servir immédiatement.

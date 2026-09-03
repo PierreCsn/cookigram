@@ -1,0 +1,60 @@
+---
+title: Brioche Butchy allemande à la mie filante
+portions: 8
+prep_time: 25 min
+total_time: 2 h 45 min
+spiciness: 0
+description: "Brioche allemande ultra-moelleuse sans beurre, enrichie à la crème fraîche épaisse pour une mie filante irrésistible."
+tags: [boulangerie, brioche, thermomix, petit-déjeuner, goûter, doux]
+source: https://cookidoo.fr
+author: Pierre Cousin
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Plat à gratin ou moule carré
+  - Pinceau de cuisine
+  - Spatule
+  - Four traditionnel
+scaling:
+  enabled: false
+  reason: La quantité de pâte correspond au volume de pétrissage optimal du bol et à un moule standard de 20x20 cm.
+flavors:
+  pairing: [café noisette, thé noir Earl Grey, confiture de framboise]
+  notes: [moelleux, lacté, beurré sans lourdeur, aérien, vanillé]
+  harmony: "La crème fraîche entière apporte l'émulsion lipidique idéale sans alourdir le réseau de gluten, donnant une mie cotonneuse incomparable."
+  tips: "Laisser lever la pâte à l'abri des courants d'air dans le four éteint avec un bol d'eau chaude au fond pour créer une étuve tiède et humide."
+image: images/brioche-butchy.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: Google
+  model: Antigravity image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/brioche-butchy.md
+---
+
+## Brioche Butchy allemande à la mie filante
+
+[activate-yeast | Activer la levure dans le lait tiède]
+- Mettre le @lait{100 g} et la @levure boulangère{20 g, fraîche émiettée} dans le bol du Thermomix.
+- Chauffer ~{3 min} à ^{37 C}, vitesse 2 pour réveiller les ferments vivants sans les brûler.
+
+[knead-dough | Pétrir avec la crème fraîche épaisse]
+- Ajouter les @œufs{2 pièces, à température ambiante}, le @sucre{60 g}, la @farine de blé{500 g, type T45}, la @crème fraîche épaisse{200 g, entière 30% MG} et le @sel{1 c. à café}.
+- Pétrir en mode pétrin pendant ~{6 min} : la pâte doit devenir lisse, élastique et légèrement collante au toucher.
+- Transvaser la pâte dans un #saladier{} légèrement fariné, couvrir d'un torchon propre et laisser lever ~{1 h 30 min} dans un endroit tiède jusqu'à ce qu'elle double de volume.
+
+[shape-bake | Façonner en boules serrées et cuire]
+- Dégazer délicatement la pâte sur un plan de travail légèrement fariné.
+- Diviser en 16 pâtons égaux d'environ 55 g et les façonner en boules bien rondes et lisses.
+- Beurrer un #plat à gratin{} ou moule carré (environ 22 × 22 cm) et déposer les 16 boules les unes à côté des autres en rangées de 4 × 4.
+- Couvrir et laisser lever à nouveau ~{45 min} : les boules vont gonfler et se coller harmonieusement.
+- Préchauffer le four à 160°C (chaleur tournante).
+- Badigeonner délicatement le dessus d'un peu de @lait{1 c. à soupe} à l'aide d'un #pinceau de cuisine{}.
+- Enfourner et cuire pendant ~{25 min} à 160°C jusqu'à ce que la surface soit légèrement dorée et blonde.
+- Laisser tiédir avant de démouler, saupoudrer d'un voile de @sucre glace{1 c. à soupe} et détacher les boules à la main.

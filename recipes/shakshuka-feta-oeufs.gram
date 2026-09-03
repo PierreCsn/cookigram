@@ -1,0 +1,58 @@
+---
+title: Shakshuka méditerranéenne aux œufs coulants & feta
+portions: 4
+prep_time: 15 min
+total_time: 35 min
+spiciness: 2
+description: "Poivrons et tomates confits aux épices chaudes, surmontés d'œufs délicatement pochés, feta émiettée et coriandre."
+tags: [shakshuka, œufs, oriental, végétarien, thermomix, brunch, poivrons]
+source: https://cookidoo.fr
+author: Pierre Cousin
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Ensemble Varoma (plateau et panier)
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+scaling:
+  enabled: false
+  reason: La disposition des 4 ramequins d'œufs nécessite la surface exacte du plateau Varoma.
+flavors:
+  pairing: [pain pita chaud, baguette tradition, salade de concombre menthe]
+  notes: [doux, fumé, acidulé, fondant, crémeux]
+  harmony: "Le jaune d'œuf coulant et la fraîcheur saline de la feta apaisent le piquant relevé de la sauce poivron-tomate."
+  tips: "Huiler légèrement 4 petits ramequins pour pocher les œufs au Varoma afin d'assurer un démoulage impeccable au cœur de la sauce."
+image: images/shakshuka-feta-oeufs.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: Google
+  model: Antigravity image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/shakshuka-feta-oeufs.md
+---
+
+## Shakshuka méditerranéenne aux œufs coulants & feta
+
+[chop-peppers | Émincer et confire les poivrons]
+- Mettre l'@oignon{1 pièce, coupé en deux} et les @gousses d'ail{2 pièces} dans le bol du Thermomix.
+- Hacher ~{5 s} à vitesse 5. Racler les parois à la #spatule{}.
+- Ajouter l'@huile d'olive{30 g}, les @poivrons rouges{250 g, en lanières} et les @poivrons jaunes{150 g, en lanières}.
+- Faire revenir ~{8 min} à ^{120 C} (ou Varoma), sens inverse, vitesse mijotage sans gobelet doseur pour attendrir les poivrons.
+
+[simmer-sauce | Mijoter la sauce tomate aux épices orientales]
+- Ajouter les @tomates concassées{400 g}, le @concentré de tomates{30 g}, le @cumin{1 c. à café}, le @paprika doux{1 c. à café}, l'@harissa{1 c. à café}, le @sel{1 c. à café} et le @poivre{2 pincées}.
+- Cuire ~{12 min} à ^{100 C}, sens inverse, vitesse mijotage.
+
+[poach-eggs | Pocher les œufs à la vapeur douce Varoma]
+- Huiler légèrement 4 petits ramequins adaptés au #plateau Varoma{}.
+- Casser délicatement un @œuf{1 pièce} dans chaque ramequin (4 œufs au total), puis saler et poivrer légèrement le blanc.
+- Poser le Varoma sur le bol contenant la sauce frémissante.
+- Cuire à la vapeur ~{10 min} à ^{Varoma}, vitesse 1 jusqu'à ce que le blanc soit pris mais le jaune encore parfaitement coulant.
+- Verser la sauce chaude dans un grand plat de service (ou dans des poêlons individuels), déposer délicatement un œuf au centre de chaque part, parsemer de la @feta{80 g, émiettée} et de la @coriandre fraîche{2 c. à soupe, ciselée}. Servir avec du pain chaud.
