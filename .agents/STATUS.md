@@ -6,11 +6,16 @@
 
 ## 🚦 Tâches en cours (Claims actifs)
 
-* **Issue #78** : `feat(cooking): persistance de la progression en Mode Cuisine`
-  - Développeur : Darryl
-  - Branche : `feat/cooking-persistent-progress`
-  - Statut : **PR #79 ouverte** (en cours de revue / validation)
-  - *Interdiction aux autres développeurs de travailler sur ce sujet.*
+* **Aucun claim actif en cours.** Le backlog de dev est prêt pour de nouveaux claims approuvés.
+
+---
+
+## ✅ Dernières Livraisons Clôturées
+
+* **Issue #78 / PR #79** : Persistance de la progression en Mode Cuisine (minuteurs wall-clock, sticky bar contextuelle, cases à cocher ingrédients) — *Fusionné dans `main`*.
+* **PR #76** : Import de 2 nouvelles recettes desserts (Cheesecake japonais & Flan aux œufs) — *Fusionné dans `main`*.
+* **Issue #67 / PR #77** : Affichage du temps restant estimé dans le header du Mode Cuisine — *Fusionné dans `main`*.
+* **Issue #68** : Explicitation pédagogique de l'évaporation sans projection au panier cuisson — *Fusionné dans `main`*.
 
 ---
 

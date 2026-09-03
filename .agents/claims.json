@@ -5,8 +5,9 @@
     "max_heartbeat_age_minutes": 15,
     "require_approved_label": "potential-dev-work"
   },
-  "active_claims": {
-    "78": {
+  "active_claims": {},
+  "completed_claims": [
+    {
       "issue": 78,
       "title": "feat(cooking): persistance de la progression en Mode Cuisine",
       "agent": "Darryl (DEV)",
@@ -15,8 +16,8 @@
       "pr": 79,
       "claimed_at": "2026-09-03T16:30:00+02:00",
       "last_heartbeat": "2026-09-03T16:47:00+02:00",
-      "status": "pr_open"
+      "status": "merged",
+      "merged_at": "2026-09-03T16:58:00+02:00"
     }
-  },
-  "completed_claims": []
+  ]
 }
