@@ -154,6 +154,22 @@ def test_resolver_covers_the_legume_and_nut_batch():
         assert resolver.resolve(name) == f"icons/ingredients/{filename}"
 
 
+def test_resolver_covers_the_dry_pantry_batch():
+    resolver = IngredientIconResolver()
+    expected = {
+        "amandes effilées": "amandes-effilees.svg",
+        "amandes en poudre": "amandes-en-poudre.svg",
+        "chapelure": "chapelure.svg",
+        "feuilles de lasagne": "feuilles-de-lasagne.svg",
+        "pâte sèche à lasagne": "feuilles-de-lasagne.svg",
+        "pain de mie": "pain-de-mie.svg",
+        "emmental râpé": "fromage-rape.svg",
+        "fromage râpé": "fromage-rape.svg",
+    }
+    for name, filename in expected.items():
+        assert resolver.resolve(name) == f"icons/ingredients/{filename}"
+
+
 def test_resolver_returns_empty_string_when_icon_is_missing():
     resolver = IngredientIconResolver()
 

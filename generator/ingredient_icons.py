@@ -94,6 +94,14 @@ ICON_FAMILY_BY_SLUG = {
     "lentilles-vertes": "lentilles-vertes",
     "pistaches": "pistaches",
     "pignons-de-pin": "pignons-de-pin",
+    "amandes-effilees": "amandes-effilees",
+    "amande-en-poudre": "amandes-en-poudre",
+    "chapelure": "chapelure",
+    "feuilles-de-lasagne": "feuilles-de-lasagne",
+    "pate-seche-a-lasagne": "feuilles-de-lasagne",
+    "pain-de-mie": "pain-de-mie",
+    "emmental-rape": "fromage-rape",
+    "fromage-rape": "fromage-rape",
 }
 
 
