@@ -91,6 +91,11 @@ body {
   background:var(--paper);
   color:var(--ink);
   transition:background-color .25s ease,color .25s ease;
+  overflow-x:clip;
+}
+
+html {
+  overflow-x:clip;
 }
 
 a {
@@ -1793,7 +1798,7 @@ a {
   opacity:.3;
 }
 
-@media(max-width:720px) {
+@media(max-width:820px) {
   .hero {
     padding:20px 0 14px;
   }
