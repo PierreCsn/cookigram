@@ -159,6 +159,17 @@ ingredients:
       carbs: 1.9
       fat: 0.5
       protein: 2.1
+  coulis-de-tomate:
+    name: Coulis de tomate
+    aliases:
+    - coulis de tomate
+    - coulis de tomates
+    category: Conserves et bocaux
+    nutrition:
+      calories: 29
+      carbs: 5.0
+      fat: 0.2
+      protein: 1.4
     conversions:
       brin: 2.0
       branche: 5.0
@@ -369,6 +380,10 @@ ingredients:
     - fromage blanc Philadelphia
     - Philadelphia nature
     category: Fromages
+  fromage-frais:
+    name: Fromage frais
+    aliases: [fromage frais]
+    category: Produits laitiers et matières grasses
   blancs-d-oeufs:
     name: Blancs d'œufs
     aliases:
@@ -973,18 +988,99 @@ ingredients:
       fat: 1.5
       protein: 12.5
   vin-blanc:
+    name: Vin blanc
     aliases:
     - vin blanc
     - vin blanc sec
     - riesling
+  ail-des-ours:
+    name: Ail des ours
+    aliases: [ail des ours, feuilles d'ail des ours]
+    category: Légumes et aromates
+  abricot-sec:
+    name: Abricots secs
+    aliases: [abricot sec, abricots secs]
+    category: Fruits secs
+  bicarbonate-de-sodium:
+    name: Bicarbonate de sodium
+    aliases: [bicarbonate de sodium]
+    category: Épicerie sucrée
+  briochette:
+    name: Briochettes
+    aliases: [briochette, briochettes]
+    category: Boulangerie
+  comte:
+    name: Comté
+    aliases: [comté]
+    category: Fromages
+  extrait-de-vanille:
+    name: Extrait naturel de vanille
+    aliases: [extrait naturel de vanille]
+    category: Épicerie sucrée
+  farine-d-epeautre:
+    name: Farine d'épeautre
+    aliases: [farine d'épeautre]
+    category: Féculents et céréales
+  graines-variees:
+    name: Graines variées
+    aliases: [graines variées]
+    category: Fruits à coque et graines
+  gruyere:
+    name: Gruyère
+    aliases: [gruyère]
+    category: Fromages
+  haricot-rouge:
+    name: Haricots rouges
+    aliases: [haricot rouge, haricots rouges]
+    category: Conserves et bocaux
+  jambon:
+    name: Jambon
+    aliases: [jambon]
+    category: Boucherie et charcuterie
+  jus-d-orange:
+    name: Jus d'orange
+    aliases: [jus d'orange]
     category: Boissons et liquides
-    name: Vin blanc
-    nutrition:
-      calories: 82
-      carbs: 1.5
-      fat: 0.0
-      protein: 0.1
-    density: 0.99
+  jus-de-raisin:
+    name: Jus de raisin
+    aliases: [jus de raisin]
+    category: Boissons et liquides
+  levure-chimique:
+    name: Levure chimique
+    aliases: [levure chimique]
+    category: Épicerie sucrée
+  moutarde-a-l-ancienne:
+    name: Moutarde à l'ancienne
+    aliases: [moutarde à l'ancienne]
+    category: Condiments
+  noix-de-pecan:
+    name: Noix de pécan
+    aliases: [noix de pécan]
+    category: Fruits à coque et graines
+  noisette:
+    name: Noisettes
+    aliases: [noisette, noisettes]
+    category: Fruits à coque et graines
+  oignon-grelot:
+    name: Oignons grelot
+    aliases: [oignon grelot, oignons grelot]
+    category: Légumes et aromates
+  pate-feuilletee:
+    name: Pâte feuilletée
+    aliases: [pâte feuilletée]
+    category: Pâtes et préparations
+  roquefort:
+    name: Roquefort
+    aliases: [roquefort]
+    category: Fromages
+  sirop-d-erable:
+    name: Sirop d'érable
+    aliases: [sirop d'érable]
+    category: Épicerie sucrée
+  gingembre-en-poudre:
+    name: Gingembre en poudre
+    aliases: [gingembre en poudre]
+    category: Herbes et épices
   vinaigre-blanc:
     name: Vinaigre blanc
     aliases:
@@ -998,6 +1094,10 @@ ingredients:
       fat: 0.0
       protein: 0.0
     density: 1.01
+  vinaigre-balsamique:
+    name: Vinaigre balsamique
+    aliases: [vinaigre balsamique]
+    category: Condiments
   aneth:
     name: Aneth
     aliases:

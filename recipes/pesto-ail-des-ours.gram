@@ -1,0 +1,37 @@
+---
+title: Pesto à l'ail des ours
+portions: 8
+prep_time: 5 min
+total_time: 10 min
+description: Pesto frais à l'ail des ours, parmesan, pignons de pin et huile d'olive.
+tags: [pesto, ail des ours, thermomix, sauce, végétarien]
+source: https://cookidoo.fr/recipes/recipe/fr-FR/r355931
+author: Vorwerk Home & Co. KmG
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: La texture et l'émulsion sont calibrées pour cette quantité dans le bol.
+spiciness: 0
+image: images/pesto-ail-des-ours.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration originale générée pour CookiGram, sans reprise de la photographie source.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/pesto-ail-des-ours.md
+---
+
+[Mixer les ingrédients]
+- Mettre le @parmesan{50 g, en morceaux}, l'@ail des ours{50 g de feuilles fraîches}, les @pignons de pin{30 g} et le @sel{2 pincées} dans le bol.
+- Mixer ~{10 s} à vitesse 10, puis racler les parois avec la #spatule{}.
+
+[Émulsionner]
+- Ajouter l'@huile d'olive{120 g} et mixer ~{30 s} à vitesse 4.
+- Racler les parois, mixer encore ~{30 s} à vitesse 8, puis transvaser dans un récipient hermétique.
+- Réserver au frais et servir avec des pâtes ou du poisson froid.

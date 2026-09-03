@@ -42,6 +42,7 @@ UTENSIL_ICON_KEYWORDS: dict[str, list[str]] = {
         "saladiers",
         "bol",
         "bols",
+        "bol thermomix",
         "cul-de-poule",
         "cul de poule",
     ],
@@ -81,10 +82,23 @@ def resolve_utensil_icon(equipment_name: str) -> str | None:
 
 def attach_utensil_icons(recipe: Any) -> None:
     """Attach structured equipment items with resolved icons to recipe metadata."""
-    equipment = recipe.metadata.get("required_equipment")
-    if equipment and isinstance(equipment, list):
-        recipe.metadata["equipment_items"] = [
-            {"name": str(item), "icon": resolve_utensil_icon(str(item))} for item in equipment
+    required_equipment = recipe.metadata.get("required_equipment") or []
+    step_equipment = getattr(recipe, "equipment", [])
+
+    def structured_items(equipment: Any) -> list[dict[str, str | None]]:
+        if not equipment or not isinstance(equipment, list):
+            return []
+        return [
+            {
+                "name": str(item.get("name", "")) if isinstance(item, dict) else str(item),
+                "icon": (
+                    item.get("icon")
+                    if isinstance(item, dict) and item.get("icon")
+                    else resolve_utensil_icon(str(item.get("name", "")) if isinstance(item, dict) else str(item))
+                ),
+            }
+            for item in equipment
         ]
-    else:
-        recipe.metadata["equipment_items"] = []
+
+    recipe.metadata["equipment_items"] = structured_items(required_equipment)
+    recipe.metadata["step_equipment_items"] = structured_items(step_equipment)

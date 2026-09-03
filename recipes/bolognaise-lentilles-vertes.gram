@@ -1,0 +1,40 @@
+---
+title: Bolognaise aux lentilles vertes
+portions: 6
+prep_time: 10 min
+total_time: 40 min
+description: Sauce bolognaise végétale aux lentilles vertes, tomates, légumes et herbes.
+tags: [lentilles, bolognaise, thermomix, végétarien, sauce]
+source: https://cookidoo.fr/recipes/recipe/fr-FR/r148069
+author: Vorwerk Home & Co. KmG
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+scaling:
+  enabled: false
+  reason: La quantité de lentilles et de sauce est calibrée pour six portions.
+spiciness: 0
+image: images/bolognaise-lentilles-vertes.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration originale générée pour CookiGram, sans reprise de la photographie source.
+image_generation:
+  provider: OpenAI
+  model: ChatGPT image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/bolognaise-lentilles-vertes.md
+---
+
+[Hacher les légumes]
+- Mettre les @oignons{150 g, coupés en deux}, l'@ail{2 gousses}, les @carottes{150 g, en tronçons} et le @céleri{1 branche, en tronçons} dans le bol, puis mixer ~{5 s} à vitesse 5. Racler les parois avec la #spatule{}.
+
+[Faire revenir les lentilles]
+- Ajouter les @lentilles vertes{150 g, sèches} et l'@huile d'olive{60 g}, puis faire revenir ~{5 min} à ^{120 C}, sens inverse, vitesse 1, sans gobelet doseur.
+- Ajouter le @vin rouge{100 g} et chauffer ~{5 min} à ^{120 C}, sens inverse, vitesse 1, sans gobelet doseur.
+
+[Mijoter la sauce]
+- Ajouter les @tomates concassées{800 g}, le @laurier{2 feuilles}, le @thym{1 c. à café, déshydraté}, l'@origan{1 c. à café, déshydraté}, le @sel{1/2 c. à café} et le @poivre blanc moulu{2 pincées}.
+- Cuire ~{20 min} à ^{100 C}, sens inverse, vitesse 1.
+- Servir chaud avec des pâtes ou pour garnir des lasagnes.

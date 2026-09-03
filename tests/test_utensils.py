@@ -17,6 +17,7 @@ def test_resolve_utensil_icon_standard():
     assert resolve_utensil_icon("Fouet de cuisine") == "fouet"
     assert resolve_utensil_icon("Saladier") == "saladier"
     assert resolve_utensil_icon("Grand saladier") == "saladier"
+    assert resolve_utensil_icon("Bol Thermomix") == "saladier"
     assert resolve_utensil_icon("Cul-de-poule") == "saladier"
     assert resolve_utensil_icon("Spatule") == "spatule"
     assert resolve_utensil_icon("Spatule en bois") == "spatule"

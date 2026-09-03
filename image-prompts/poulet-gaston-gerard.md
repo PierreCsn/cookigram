@@ -1,0 +1,1 @@
+Original editorial food photograph of French Poulet Gaston Gérard: golden chicken thighs in creamy mustard and Comté sauce, rustic gratin dish, warm natural kitchen light, realistic, no text, logos or watermark.

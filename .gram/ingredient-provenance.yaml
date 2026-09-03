@@ -50,6 +50,9 @@ ingredients:
     sources:
     - ciqual
     status: verified
+  coulis-de-tomate:
+    source: Estimation nutritionnelle pour coulis de tomate nature.
+    status: estimated
   courge-butternut:
     source: ANSES-CIQUAL
     status: verified
@@ -107,6 +110,9 @@ ingredients:
     status: incomplete
   fromage-frais-philadelphia:
     source: Ingrédient de marque, valeurs nutritionnelles à documenter.
+    status: incomplete
+  fromage-frais:
+    source: Produit laitier ; valeurs nutritionnelles variables selon le produit.
     status: incomplete
   blancs-d-oeufs:
     source: Sous-ingrédient dérivé de l'œuf, valeurs nutritionnelles à documenter.
@@ -309,9 +315,78 @@ ingredients:
     sources:
     - ciqual
     status: verified
+  ail-des-ours:
+    source: Ingrédient botanique utilisé dans la recette Cookidoo.
+    status: incomplete
+  abricot-sec:
+    source: Ingrédient de garniture ; valeurs nutritionnelles à documenter.
+    status: incomplete
+  bicarbonate-de-sodium:
+    source: Agent levant non calorique.
+    status: incomplete
+  briochette:
+    source: Produit boulanger ; valeurs nutritionnelles variables selon la recette.
+    status: incomplete
+  comte:
+    source: Fromage AOP ; valeurs nutritionnelles à documenter.
+    status: incomplete
+  extrait-de-vanille:
+    source: Arôme utilisé dans la recette Cookidoo.
+    status: incomplete
+  farine-d-epeautre:
+    source: Farine de céréale ; valeurs nutritionnelles à documenter.
+    status: incomplete
+  graines-variees:
+    source: Mélange de graines ; composition variable.
+    status: incomplete
+  gruyere:
+    source: Fromage ; valeurs nutritionnelles à documenter.
+    status: incomplete
+  haricot-rouge:
+    source: Légumineuse en conserve ; valeurs nutritionnelles à documenter.
+    status: incomplete
+  jambon:
+    source: Charcuterie ; valeurs nutritionnelles variables selon le produit.
+    status: incomplete
+  jus-d-orange:
+    source: Jus d'orange ; valeurs nutritionnelles à documenter.
+    status: incomplete
+  jus-de-raisin:
+    source: Jus de raisin ; valeurs nutritionnelles à documenter.
+    status: incomplete
+  levure-chimique:
+    source: Agent levant non consommé en quantité significative.
+    status: incomplete
+  moutarde-a-l-ancienne:
+    source: Condiment ; valeurs nutritionnelles à documenter.
+    status: incomplete
+  noix-de-pecan:
+    source: Fruit à coque ; valeurs nutritionnelles à documenter.
+    status: incomplete
+  noisette:
+    source: Fruit à coque ; valeurs nutritionnelles à documenter.
+    status: incomplete
+  oignon-grelot:
+    source: Variété d'oignon ; valeurs nutritionnelles à documenter.
+    status: incomplete
+  pate-feuilletee:
+    source: Préparation boulangère ; composition variable selon la recette.
+    status: incomplete
+  roquefort:
+    source: Fromage AOP ; valeurs nutritionnelles à documenter.
+    status: incomplete
+  sirop-d-erable:
+    source: Produit sucrant ; valeurs nutritionnelles à documenter.
+    status: incomplete
+  gingembre-en-poudre:
+    source: Épice ; valeurs nutritionnelles à documenter.
+    status: incomplete
   vinaigre-blanc:
     source: ANSES-CIQUAL
     status: verified
+  vinaigre-balsamique:
+    source: Condiment ; valeurs nutritionnelles à documenter.
+    status: incomplete
   aneth:
     source: ANSES CIQUAL 2024 / Open Food Facts
     status: verified
