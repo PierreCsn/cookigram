@@ -6,7 +6,19 @@
 
 ## 🚦 Tâches en cours (Claims actifs)
 
-* **Aucun claim actif en cours.** Le backlog de dev est prêt pour de nouveaux claims approuvés.
+* **Aucun claim actif.** Le backlog est disponible pour un nouveau claim.
+
+---
+
+## 🎯 Prochaines Priorités Approuvées (Disponibles pour Claim)
+
+1. **🔥 PRIORITÉ IMMÉDIATE (Jalon 2 — Sprint actif)** :
+   * **Issue #80** : `feat(cooking): étape 0 « Mise en place du plan de travail » en Mode Cuisine` [P1 / Lot 1]
+   * Statut : **Approuvé par le PO et spécifié par le Product Lead** (`potential-dev-work`).
+   * *Prêt à être pris par un développeur (poser un claim dans `claims.json` avant de coder).*
+
+2. **Horizon Jalon 3** :
+   * **Epic #51** : `Kitchen Scheduler v3 (Solveur CP-SAT)`.
 
 ---
 
@@ -16,15 +28,6 @@
 * **PR #76** : Import de 2 nouvelles recettes desserts (Cheesecake japonais & Flan aux œufs) — *Fusionné dans `main`*.
 * **Issue #67 / PR #77** : Affichage du temps restant estimé dans le header du Mode Cuisine — *Fusionné dans `main`*.
 * **Issue #68** : Explicitation pédagogique de l'évaporation sans projection au panier cuisson — *Fusionné dans `main`*.
-
----
-
-## 🎯 Prochaines Priorités Approuvées (Disponibles pour Claim)
-
-1. **Lot 1 & Lot 3 : Clôturés à 100%** (Mode Cuisine mobile, ergonomie, contraste, saveurs, ustensiles, 120+ icônes d'ingrédients).
-2. **Lot 4 : SEO Avancé & Performance (95% terminé)**.
-3. **Lot 5 : Dette technique** (Compilateur officiel Gram #1).
-4. **Horizon v3 : Epic #51 (Kitchen Scheduler - solveur CP-SAT)**.
 
 ---
 
