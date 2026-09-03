@@ -134,6 +134,26 @@ def test_build_generates_seo_assets_and_metadata(tmp_path: Path):
     assert 'href="https://custom.domain.com/cook/sitemap.xml"' in index_html
 
 
+def test_build_declares_rel_icon_and_serves_icon_assets(tmp_path: Path):
+    output_dir = tmp_path / "_site"
+    build(output_dir, site_url="https://custom.domain.com/cook")
+
+    # SVG + PNG 192 favicon links are present in the <head> of every page type
+    recipe_html = (output_dir / "recipes" / "risotto-poulet-champignons" / "index.html").read_text(encoding="utf-8")
+    assert '<link rel="icon" type="image/svg+xml" href="../../assets/icons/icon.svg">' in recipe_html
+    assert '<link rel="icon" type="image/png" sizes="192x192" href="../../assets/icons/icon-192.png">' in recipe_html
+
+    index_html = (output_dir / "index.html").read_text(encoding="utf-8")
+    assert '<link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">' in index_html
+
+    offline_html = (output_dir / "offline.html").read_text(encoding="utf-8")
+    assert '<link rel="icon" type="image/svg+xml" href="./assets/icons/icon.svg">' in offline_html
+
+    # The icon files must exist in the built output and be served with HTTP 200
+    for icon in ("icon.svg", "icon-192.png"):
+        assert (output_dir / "assets" / "icons" / icon).is_file()
+
+
 def test_build_cook_page_is_noindex_and_canonical_to_recipe(tmp_path: Path):
     output_dir = tmp_path / "_site"
     site_url = "https://custom.domain.com/cook"

@@ -30,6 +30,23 @@ test.describe('PWA et mode hors ligne', () => {
     expect(png512?.status()).toBe(200);
   });
 
+  test('le rel="icon" est déclaré et les favicons sont servis en HTTP 200', async ({ page }) => {
+    await page.goto('/recipes/poulet-tikka-masala/');
+
+    const svg = page.locator('link[rel="icon"][type="image/svg+xml"]');
+    await expect(svg).toHaveAttribute('href', /icon\.svg$/);
+
+    const png192 = page.locator('link[rel="icon"][type="image/png"][sizes="192x192"]');
+    await expect(png192).toHaveAttribute('href', /icon-192\.png$/);
+
+    const svgResp = await page.request.get('/assets/icons/icon.svg');
+    expect(svgResp?.status()).toBe(200);
+    expect(svgResp?.headers()['content-type']).toContain('image/svg+xml');
+
+    const pngResp = await page.request.get('/assets/icons/icon-192.png');
+    expect(pngResp?.status()).toBe(200);
+  });
+
   test('la page 404 personnalisée contient le bon contenu', async ({ page }) => {
     await page.goto('/404.html');
     await expect(page.getByRole('heading', { name: 'Page introuvable' })).toBeVisible();
