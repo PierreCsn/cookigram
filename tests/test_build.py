@@ -100,7 +100,9 @@ def test_build_versions_assets_consistently(tmp_path: Path):
     for html in (index, recipe, cook):
         assert f"assets/app.css?v={version}" in html
         assert f"assets/app.js?v={version}" in html
-        assert "assets/app.css?v=23" not in html
+        # The generated hash may legitimately start with these digits; check
+        # for the old fixed query value including its closing quote.
+        assert 'assets/app.css?v=23"' not in html
 
 
 def test_compile_css_assembles_modular_stylesheets(tmp_path: Path):
