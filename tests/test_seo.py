@@ -12,6 +12,10 @@ from generator.seo import (
     build_sitemap_xml,
     format_iso_duration,
     is_thermomix_compatible,
+    recipe_category,
+    recipe_cook_time,
+    recipe_cuisine,
+    recipe_published_date,
 )
 
 
@@ -40,6 +44,13 @@ def test_build_recipe_schema(tmp_path: Path):
     assert schema["recipeYield"] == f"{recipe.portions} portions"
     assert schema["prepTime"] == "PT12M"
     assert schema["totalTime"] == "PT48M"
+    assert schema["cookTime"] == "PT36M"
+    assert schema["recipeCuisine"] == "Italian"
+    assert schema["recipeCategory"] == "Plat principal"
+    assert schema["datePublished"] == "2026-09-02"
+    assert schema["dateModified"] == "2026-09-02"
+    assert schema["breadcrumb"]["@type"] == "BreadcrumbList"
+    assert schema["breadcrumb"]["itemListElement"][-1]["name"] == recipe.title
     assert len(schema["recipeIngredient"]) == len(recipe.ingredients)
     assert len(schema["recipeInstructions"]) == len(recipe.steps)
     assert schema["recipeInstructions"][0]["@type"] == "HowToStep"
@@ -187,6 +198,16 @@ def test_recipe_meta_helpers_detect_thermomix_and_preserve_calibrated_copy():
     assert is_thermomix_compatible(recipe)
     recipe.description = "Une description éditoriale calibrée pour rester dans la longueur recommandée par les moteurs de recherche et présenter clairement la recette."
     assert build_recipe_meta_description(recipe) == recipe.description
+
+
+def test_recipe_schema_helpers_handle_categories_and_explicit_cook_time():
+    recipe = parse_recipe(Path("recipes/salade-cesar.gram"))
+
+    assert recipe_category(recipe) == "Salade"
+    assert recipe_cuisine(recipe) is None
+    assert recipe_published_date(recipe) == "2026-09-03"
+    recipe.metadata["cook_time"] = "18 min"
+    assert recipe_cook_time(recipe) == "PT18M"
 
 
 def test_build_declares_rel_icon_and_serves_icon_assets(tmp_path: Path):
