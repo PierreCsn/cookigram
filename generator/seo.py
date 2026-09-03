@@ -48,7 +48,7 @@ def is_thermomix_compatible(recipe: Recipe) -> bool:
 def build_recipe_meta_description(recipe: Recipe) -> str:
     """Build a search snippet in the 120–155 character recommendation range."""
     description = " ".join(str(recipe.description or "").split())
-    if 120 <= len(description) <= 155:
+    if 120 <= len(description) and len(html.escape(description, quote=True)) <= 155:
         return description
 
     thermomix_hint = " Préparation guidée au Thermomix." if is_thermomix_compatible(recipe) else ""
@@ -58,10 +58,16 @@ def build_recipe_meta_description(recipe: Recipe) -> str:
     )
     if len(fallback) < 120:
         fallback += " Cuisinez simplement, pas à pas."
-    if len(fallback) <= 155:
+    if len(html.escape(fallback, quote=True)) <= 155:
         return fallback
 
-    return fallback[:152].rsplit(" ", 1)[0].rstrip(".,;:") + "..."
+    # Leave room for HTML escaping in rendered attributes (for example, an
+    # ampersand becomes ``&amp;`` and adds four characters). Trim on word
+    # boundaries so the generated snippet remains readable.
+    candidate = fallback
+    while len(html.escape(candidate + "...", quote=True)) > 155:
+        candidate = candidate.rsplit(" ", 1)[0]
+    return candidate.rstrip(".,;:") + "..."
 
 
 def _duration_seconds(time_str: str | None) -> int | None:
