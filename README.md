@@ -430,6 +430,25 @@ utilisent **cache-first**. Le hash des assets change le nom du cache à chaque
 version et l'ancien cache est supprimé lors de l'activation du nouveau service
 worker.
 
+## Progression des jalons de réalisation
+
+Les jalons de développement suivent l'ordre validé dans [l'issue #35](https://github.com/PierreCsn/cookigram/issues/35) et sont détaillés dans [`TODO.md`](TODO.md) :
+
+```mermaid
+flowchart LR
+    lot1["✅ LOT 1<br/>UX Cuisine & Mobile<br/><small>#28 · #29 · #27 · #37<br/>4/4 terminés</small>"] --> lot2["✅ LOT 2<br/>SEO & Indexation<br/><small>#15 · #16 · #20<br/>3/3 terminés</small>"]
+    lot2 --> lot3["✅ LOT 3<br/>Fiche Recette<br/><small>#26 · #30 · #31 · #32 · #39 · #49<br/>6/6 terminés</small>"]
+    lot3 --> lot4["✅ LOT 4<br/>SEO · Design · Performance<br/><small>#17 · #24 · #34 · #23 · #21 · #22 · #19 · #18 · #33<br/>9/9 terminés</small>"]
+    lot4 --> lot5["🔶 LOT 5<br/>Dette technique & Socle<br/><small>#8 terminé · #1 en attente<br/>1/2 terminés</small>"]
+
+    classDef done fill:#d8f3dc,stroke:#2d6a4f,color:#1b4332
+    classDef current fill:#ffe8b6,stroke:#d97706,color:#7c2d12,stroke-width:3px
+    class lot1,lot2,lot3,lot4 done
+    class lot5 current
+```
+
+**Légende :** ✅ lot terminé · 🔶 lot en cours · `#XX` issue GitHub suivie.
+
 ## Vision Produit & Feuille de route (v1 à v10)
 
 CookiGram suit une feuille de route stratégique progressive pour passer de la recette au copilote d'exécution complet ([PDR-0003](decisions/PDR-0003-validation-roadmap-strategique-v1-v10.md) & [ROADMAP_STRATEGIQUE.md](ROADMAP_STRATEGIQUE.md)) :
