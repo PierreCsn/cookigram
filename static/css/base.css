@@ -7,6 +7,11 @@ body {
   background:var(--paper);
   color:var(--ink);
   transition:background-color .25s ease,color .25s ease;
+  overflow-x:clip;
+}
+
+html {
+  overflow-x:clip;
 }
 
 a {
