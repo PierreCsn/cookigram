@@ -11,6 +11,31 @@ if TYPE_CHECKING:
 
 DEFAULT_SITE_URL = "https://pierrecsn.github.io/cookigram"
 
+RECIPE_CUISINES = {
+    "asiatique": "Asian",
+    "cajun": "Cajun",
+    "chinois": "Chinese",
+    "espagnol": "Spanish",
+    "français": "French",
+    "indien": "Indian",
+    "italien": "Italian",
+    "japonais": "Japanese",
+    "mexicain": "Mexican",
+    "méditerranéen": "Mediterranean",
+    "thaï": "Thai",
+}
+
+RECIPE_CATEGORIES = (
+    ("dessert", "Dessert"),
+    ("gâteau", "Dessert"),
+    ("tarte", "Dessert"),
+    ("salade", "Salade"),
+    ("soupe", "Soupe"),
+    ("velouté", "Soupe"),
+    ("entrée", "Entrée"),
+    ("apéritif", "Apéritif"),
+)
+
 
 def is_thermomix_compatible(recipe: Recipe) -> bool:
     """Return whether a recipe advertises a Thermomix-compatible preparation."""
@@ -172,6 +197,70 @@ def _similarity_score(
     return meaningful_shared * 3 + shared_families * 2 + shared_tmx
 
 
+def _duration_seconds(time_str: str | None) -> int | None:
+    iso = format_iso_duration(time_str)
+    if not iso:
+        return None
+
+    def component(pattern: str) -> int:
+        match = re.search(pattern, iso)
+        return int(match.group(1)) if match else 0
+
+    return component(r"(\d+)H") * 3600 + component(r"(\d+)M") * 60 + component(r"(\d+)S")
+
+
+def _seconds_to_iso_duration(seconds: int) -> str:
+    hours, remainder = divmod(seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    parts = ["PT"]
+    if hours:
+        parts.append(f"{hours}H")
+    if minutes:
+        parts.append(f"{minutes}M")
+    if seconds:
+        parts.append(f"{seconds}S")
+    return "".join(parts) if len(parts) > 1 else "PT0S"
+
+
+def recipe_cook_time(recipe: Recipe) -> str | None:
+    """Return explicit cook time or the positive total-minus-preparation duration."""
+    explicit = recipe.metadata.get("cook_time") if recipe.metadata else None
+    if explicit and (iso := format_iso_duration(str(explicit))):
+        return iso
+    total_seconds = _duration_seconds(recipe.total_time)
+    prep_seconds = _duration_seconds(recipe.prep_time)
+    if total_seconds is None or prep_seconds is None or total_seconds <= prep_seconds:
+        return None
+    return _seconds_to_iso_duration(total_seconds - prep_seconds)
+
+
+def recipe_cuisine(recipe: Recipe) -> str | None:
+    for tag in recipe.tags:
+        if cuisine := RECIPE_CUISINES.get(str(tag).casefold()):
+            return cuisine
+    return None
+
+
+def recipe_category(recipe: Recipe) -> str:
+    tags = {str(tag).casefold() for tag in recipe.tags}
+    for tag, category in RECIPE_CATEGORIES:
+        if tag in tags:
+            return category
+    return "Plat principal"
+
+
+def recipe_published_date(recipe: Recipe) -> str | None:
+    metadata = recipe.metadata or {}
+    date = metadata.get("date") or metadata.get("date_published") or metadata.get("published")
+    image_generation = metadata.get("image_generation", {})
+    if not date and isinstance(image_generation, dict):
+        date = image_generation.get("generated_at")
+    if not date:
+        return None
+    match = re.match(r"^(\d{4}-\d{2}-\d{2})", str(date).strip())
+    return match.group(1) if match else None
+
+
 def format_iso_duration(time_str: str | None) -> str | None:
     """Converts human-readable culinary time strings into ISO 8601 duration format.
 
@@ -241,9 +330,19 @@ def build_recipe_schema(recipe: Recipe, site_url: str = DEFAULT_SITE_URL) -> dic
     if iso_total := format_iso_duration(recipe.total_time):
         schema["totalTime"] = iso_total
 
+    if iso_cook := recipe_cook_time(recipe):
+        schema["cookTime"] = iso_cook
+
+    if cuisine := recipe_cuisine(recipe):
+        schema["recipeCuisine"] = cuisine
+
+    if published := recipe_published_date(recipe):
+        schema["datePublished"] = published
+        schema["dateModified"] = published
+
     if recipe.tags:
         schema["keywords"] = ", ".join(recipe.tags)
-        schema["recipeCategory"] = recipe.tags[0].capitalize()
+    schema["recipeCategory"] = recipe_category(recipe)
 
     # Ingredients list formatted cleanly
     ingredients_list = []
@@ -284,6 +383,15 @@ def build_recipe_schema(recipe: Recipe, site_url: str = DEFAULT_SITE_URL) -> dic
         step_obj["text"] = directions_obj
         instructions.append(step_obj)
     schema["recipeInstructions"] = instructions
+
+    schema["breadcrumb"] = {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Accueil", "item": f"{base_url}/"},
+            {"@type": "ListItem", "position": 2, "name": "Recettes", "item": f"{base_url}/#recipes"},
+            {"@type": "ListItem", "position": 3, "name": recipe.title, "item": canonical_url},
+        ],
+    }
 
     # Nutrition details if available
     nutrition = recipe.nutrition
