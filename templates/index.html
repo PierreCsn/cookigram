@@ -18,24 +18,22 @@
 {% block body %}
 
 
-<header class="topbar"><a class="brand" href="./"><span>CG</span> CookiGram</a><div class="topbar-actions"><button class="theme-toggle" type="button" aria-label="Changer de thème" title="Basculer le mode sombre">🌙</button><button class="install" hidden>Installer</button></div></header>
+<header class="topbar"><a class="brand" href="./"><span class="brand-badge" aria-hidden="true">🍳</span> CookiGram</a><div class="topbar-actions"><button class="theme-toggle" type="button" aria-label="Changer de thème" title="Basculer le mode sombre">🌙</button><button class="install" hidden>Installer</button></div></header>
 <main class="home">
-  <section class="hero hero-compact">
-    <div class="hero-top-line">
-      <span class="eyebrow-text">Votre cuisine, simplement</span>
-      <span class="hero-sep" aria-hidden="true">·</span>
-      <span class="hero-subpill">📶 Hors ligne</span>
-      <span class="hero-subpill">🗣 Guidage vocal</span>
-      <span class="hero-subpill">🥣 Thermomix</span>
+  <section class="hero hero-banner">
+    <div class="hero-banner-content">
+      <h1 class="hero-title">Qu'est-ce qu'on cuisine aujourd'hui ?</h1>
+      <p class="hero-lead">Votre carnet de recettes guidées pas-à-pas, pensées pour cuisiner avec plaisir et sans friction.</p>
     </div>
-    <h1 class="hero-title">Des recettes qui vous <span class="hero-highlight">guident vraiment</span>.</h1>
-    <p class="hero-lead">Écrites en Gram, disponibles hors ligne et pensées pour cuisiner une étape à la fois.</p>
+    <div class="hero-banner-visual" aria-hidden="true">
+      <img src="assets/illustrations/hero-banner.jpg" alt="" class="hero-banner-img" fetchpriority="high">
+    </div>
   </section>
   <section class="catalogue">
     <div class="search-section">
       <div class="search-bar">
         <span class="search-icon" aria-hidden="true">🔍</span>
-        <input type="search" id="recipe-search" class="search-input" placeholder="Rechercher une recette, un ingrédient..." aria-label="Rechercher une recette">
+        <input type="search" id="recipe-search" class="search-input" placeholder="Une envie ? Rechercher un plat, un ingrédient..." aria-label="Rechercher une recette">
         <button type="button" class="search-clear" aria-label="Effacer la recherche" hidden>×</button>
       </div>
     <div class="filter-bar-row">
