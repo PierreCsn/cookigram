@@ -1,0 +1,88 @@
+---
+title: Carbonnade flamande à la bière brune & pain d'épices
+portions: 6
+prep_time: 20 min
+total_time: 1 h 30 min
+spiciness: 1
+description: "Paleron de bœuf fondant compoté à la bière brune et tartine de pain d'épices à la moutarde, lié et caramélisé."
+tags: [bœuf, bière, mijoté, thermomix, bistrot, nord, réconfort]
+source: https://cookidoo.fr
+author: Pierre Cousin
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+scaling:
+  enabled: true
+  min_portions: 4
+  max_portions: 8
+  step: 2
+  note: Adapter la quantité de bœuf sans dépasser la jauge maximale du bol Thermomix (2,2 L).
+flavors:
+  pairing: [frites fraîches, purée maison, bière trappiste]
+  notes: [sucré-salé, malté, caramélisé, moutardé, épicé]
+  harmony: "Le pain d'épices moutardé fond au cours du mijotage pour lier la sauce et arrondir l'amertume maltée de la bière brune."
+  tips: "Tartiner généreusement le pain d'épices de moutarde de Dijon et le déposer côté moutarde vers le bas au contact direct du bouillon."
+variants:
+  - id: thermomix
+    name: Thermomix (Mijotage doux régulé)
+    default: true
+    description: Cuisson douce en sens inverse dans le bol Thermomix.
+    prep_time: 20 min
+    total_time: 1 h 30 min
+    appliances:
+      thermomix: [TM31, TM5, TM6, TM7]
+  - id: instant-pot
+    name: Instant Pot (Haute Pression Express)
+    description: Saisie en mode Sauté puis braisage express sous pression en 45 minutes.
+    prep_time: 15 min
+    total_time: 1 h 05 min
+    steps:
+      replace:
+        simmer-carbonnade: "[simmer-carbonnade | Cuisson sous haute pression Instant Pot]\n- Poser les @tranches de pain d'épices{3 tranches, tartinées de moutarde} sur la viande dans la cuve de l'#autocuiseur Instant Pot{}.\n- Fermer le couvercle et positionner la valve sur Sealing.\n- Lancer la cuisson sous haute pression (High Pressure) pendant ~{45 min}.\n- Laisser la pression redescendre naturellement pendant ~{10 min}, puis libérer le reste de vapeur.\n- Ouvrir, mélanger à la spatule pour incorporer le pain d'épices dissous : la sauce est brillante et onctueuse."
+  - id: cocotte-fonte
+    name: Cocotte en fonte traditionnelle (Sans robot)
+    description: Cuisine traditionnelle sans robot avec mijotage très doux à couvert pendant 2 h 45.
+    prep_time: 20 min
+    total_time: 3 h 10 min
+    steps:
+      replace:
+        chop-aromatics: "[chop-aromatics | Émincer les oignons au couteau]\n- Éplucher les @oignons{400 g} et les émincer finement au couteau de chef sur une #planche à découper{}."
+        brown-meat: "[brown-meat | Dorer le bœuf et les oignons en cocotte]\n- Chauffer le @beurre doux{40 g} et l'@huile d'olive{1 c. à soupe} dans une grande #cocotte en fonte{}.\n- Faire suer les oignons émincés ~{8 min} à feu moyen jusqu'à légère coloration.\n- Débarrasser les oignons et saisir les morceaux de @paleron de bœuf{800 g, en cubes de 4 cm} sur feu vif pendant ~{10 min} pour obtenir une belle caramélisation de Maillard.\n- Remettre les oignons, saupoudrer de la @cassonade{20 g} et arroser du @vinaigre de vin{20 g}."
+        simmer-carbonnade: "[simmer-carbonnade | Mijotage traditionnel à couvert]\n- Verser la @bière brune{400 g} et le @bouillon de bœuf{150 g} pour décoller tous les sucs au fond de la cocotte.\n- Ajouter le @thym{2 brins}, le @laurier{2 feuilles}, le @sel{1 c. à café} et le @poivre{2 pincées}.\n- Tartiner les @tranches de pain d'épices{3 tranches} avec la @moutarde de dijon{30 g} et les poser face moutarde contre le bouillon.\n- Couvrir hermétiquement et laisser mijoter à feu très doux (ou au four à 150°C) pendant ~{2 h 45}.\n- Retirer le couvercle, mélanger : le pain d'épices a totalement fondu et la viande s'effiloche à la fourchette."
+image: images/carbonnade-flamande.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: Google
+  model: Antigravity image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/carbonnade-flamande.md
+---
+
+## Carbonnade flamande à la bière brune & pain d'épices
+
+[chop-aromatics | Hacher et suer les oignons]
+- Mettre les @oignons{400 g, coupés en deux} et les @gousses d'ail{2 gousses} dans le bol du Thermomix.
+- Hacher ~{5 s} à vitesse 5. Racler les parois à la #spatule{}.
+- Ajouter le @beurre doux{30 g}.
+- Faire suer ~{7 min} à ^{120 C} (ou Varoma), vitesse 1.
+
+[brown-meat | Dorer le bœuf et assaisonner]
+- Ajouter les morceaux de @paleron de bœuf{800 g, coupés en cubes de 3 à 4 cm}.
+- Faire rissoler ~{8 min} à ^{120 C} (ou Varoma), sens inverse, vitesse mijotage sans gobelet pour faire colorer la viande.
+- Ajouter la @cassonade{20 g} et le @vinaigre de vin{20 g} pour déglacer les sucs.
+
+[simmer-carbonnade | Braisage à la bière et au pain d'épices]
+- Verser la @bière brune{400 g} et le @bouillon de bœuf{150 g}.
+- Ajouter le @thym{2 brins}, le @laurier{2 feuilles}, le @sel{1 c. à café} et le @poivre{2 pincées}.
+- Tartiner les @tranches de pain d'épices{3 tranches} avec la @moutarde de dijon{30 g} et les déposer délicatement sur la viande, face moutardée contre le liquide.
+- Cuire ~{70 min} à ^{100 C}, sens inverse, vitesse mijotage en remplaçant le gobelet par le panier cuisson sur le couvercle pour permettre l'évaporation sans projections.
+- Mélanger délicatement à la spatule : le pain d'épices fondu a transformé le bouillon en une sauce onctueuse et laquée. Servir très chaud avec des frites maison.

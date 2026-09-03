@@ -1,0 +1,63 @@
+---
+title: Pains pita maison gonflés à la poêle
+portions: 6
+prep_time: 20 min
+total_time: 1 h 20 min
+spiciness: 0
+description: "Pains orientaux légers et aériens, pétris en quelques minutes puis gonflés en poche creuse sur poêle en fonte bien chaude."
+tags: [boulangerie, pain, oriental, thermomix, pita, street-food]
+source: https://cookidoo.fr
+author: Pierre Cousin
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Poêle en fonte ou poêle à crêpe
+  - Rouleau à pâtisserie
+  - Spatule
+scaling:
+  enabled: true
+  min_portions: 4
+  max_portions: 12
+  step: 2
+  note: Le Thermomix peut pétrir jusqu'à 600 g de farine sans échauffement moteur.
+flavors:
+  pairing: [falafels dorés, poulet chawarma, houmous crémeux, dhal]
+  notes: [croustillant dehors, moelleux dedans, aérien, toasté]
+  harmony: "Le choc thermique d'une poêle en fonte sèche très chaude vaporise l'eau de la pâte et la fait gonfler instantanément en montgolfière."
+  tips: "Abaisser chaque disque à 3 ou 4 mm d'épaisseur avec un rouleau sans trop insister sur les bords pour favoriser l'ouverture de la poche d'air."
+image: images/pains-pita-maison.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: Google
+  model: Antigravity image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/pains-pita-maison.md
+---
+
+## Pains pita maison gonflés à la poêle
+
+[activate-yeast | Tiédir l'eau et dissoudre la levure]
+- Mettre l'@eau{240 g}, le @sucre{5 g} et la @levure boulangère{15 g, fraîche émiettée} dans le bol du Thermomix.
+- Chauffer ~{2 min} à ^{37 C}, vitesse 2.
+
+[knead-dough | Pétrir la pâte à pita]
+- Ajouter la @farine de blé{400 g, type T55 ou T65}, l'@huile d'olive{20 g} et le @sel{1 c. à café}.
+- Pétrir en mode pétrin pendant ~{3 min} jusqu'à obtenir une boule de pâte souple et non collante.
+- Transvaser dans un #saladier{} huilé, couvrir d'un linge propre et laisser pointer ~{50 min} à température ambiante jusqu'à ce que la pâte ait doublé de volume.
+
+[roll-cook | Abaisser et gonfler à sec à la poêle]
+- Déposer la pâte sur un plan de travail légèrement fariné et diviser en 6 pâtons égaux (environ 110 g chacun).
+- Former de petites boules et les laisser détendre ~{5 min} sous un linge.
+- À l'aide d'un #rouleau à pâtisserie{}, étaler chaque boule en un disque régulier d'environ 15 cm de diamètre et 3 à 4 mm d'épaisseur.
+- Chauffer une grande #poêle en fonte{} à feu vif à sec (sans matière grasse).
+- Déposer un disque de pâte dans la poêle fumante :
+  - Cuire ~{30 s} sur la première face jusqu'à apparition de petites bulles.
+  - Retourner et cuire ~{1 min} : le pain se met à gonfler spectaculairement comme un ballon.
+  - Retourner une dernière fois ~{30 s} pour dorer légèrement les deux côtés.
+- Débarrasser sur une assiette et envelopper d'un torchon pour conserver toute l'humidité et le moelleux. Garnir de viandes mijotées, légumes ou tartinables.

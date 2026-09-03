@@ -1,0 +1,79 @@
+---
+title: Poulet basquaise traditionnel aux trois poivrons & piment d'Espelette
+portions: 4
+prep_time: 20 min
+total_time: 55 min
+spiciness: 2
+description: "Cuisses de poulet mijotées dans une piperade parfumée de poivrons doux, tomates mûres, jambon cru et piment d'Espelette."
+tags: [poulet, basque, mijoté, thermomix, poivrons, terroir]
+source: https://cookidoo.fr
+author: Pierre Cousin
+appliances:
+  thermomix: [TM31, TM5, TM6, TM7]
+required_equipment:
+  - Thermomix TM31, TM5, TM6 ou TM7
+  - Spatule
+  - Couteau de chef
+  - Planche à découper
+scaling:
+  enabled: true
+  min_portions: 2
+  max_portions: 6
+  step: 2
+  note: Choisir des cuisses fermières coupées en deux (haut de cuisse et pilon).
+flavors:
+  pairing: [riz blanc de Camargue, pommes vapeur, vin rouge d'Irouléguy]
+  notes: [doux, poivré, fruité, mijoté, ensoleillé]
+  harmony: "Le piment d'Espelette et les dés de jambon cru apportent du caractère à la douceur sucrée des poivrons compotés."
+  tips: "Retirer la peau des poivrons à l'économe pour une piperade particulièrement digeste et fondante."
+variants:
+  - id: thermomix
+    name: Thermomix (Mijotage sens inverse)
+    default: true
+    description: Cuisson étagée et mijotée douce en sens inverse.
+    prep_time: 20 min
+    total_time: 55 min
+    appliances:
+      thermomix: [TM31, TM5, TM6, TM7]
+  - id: cocotte-fonte
+    name: Cocotte en fonte traditionnelle (Sans robot)
+    description: Saisie vive du poulet en cocotte puis mijotage doux de la piperade 45 minutes.
+    prep_time: 20 min
+    total_time: 1 h 05 min
+    steps:
+      replace:
+        chop-piperade: "[chop-piperade | Émincer la piperade au couteau]\n- Émincer l'@oignon{1 pièce}, les @poivrons rouges{200 g} et les @poivrons verts{200 g} en lanières régulières sur une #planche à découper{}.\n- Hacher finement les @gousses d'ail{2 gousses} et tailler le @jambon cru{100 g} en dés."
+        brown-poulet: "[brown-poulet | Saisir le poulet et la piperade en cocotte]\n- Faire chauffer l'@huile d'olive{30 g} dans une #cocotte en fonte{}.\n- Dorer les @cuisses de poulet{4 pièces, 800 g} côté peau sur feu vif pendant ~{8 min} jusqu'à ce qu'elles soient bien croustillantes, puis réserver.\n- Dans la même cocotte, faire suer l'oignon, l'ail et les dés de jambon cru ~{5 min}.\n- Ajouter les lanières de poivrons et faire fondre ~{8 min} à feu moyen en remuant."
+        simmer-basquaise: "[simmer-basquaise | Mijoter à couvert en cocotte]\n- Déglacer avec le @vin blanc sec{80 g}.\n- Ajouter les @tomates concassées{400 g}, le @piment d'Espelette{1 c. à café}, le @thym{2 brins}, le @laurier{1 feuille}, le @sel{1 c. à café} et le @poivre{2 pincées}.\n- Replacer les morceaux de poulet sur la piperade.\n- Couvrir et laisser mijoter à feu doux pendant ~{35 min}.\n- Parsemer de persil frais haché et servir bien chaud avec du riz de Camargue."
+image: images/poulet-basquaise.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée par un humain, recadrée et optimisée en JPEG 1280 × 720.
+image_generation:
+  provider: Google
+  model: Antigravity image generation
+  generated_at: "2026-09-03"
+  prompt_file: image-prompts/poulet-basquaise.md
+---
+
+## Poulet basquaise traditionnel aux trois poivrons & piment d'Espelette
+
+[chop-piperade | Hacher et suer la base de piperade]
+- Mettre l'@oignon{1 pièce, coupé en deux}, les @gousses d'ail{2 pièces} et le @jambon cru{100 g, en morceaux} dans le bol du Thermomix.
+- Hacher ~{5 s} à vitesse 5. Racler les parois avec la #spatule{}.
+- Ajouter l'@huile d'olive{30 g}.
+- Faire suer ~{4 min} à ^{120 C} (ou Varoma), vitesse 1.
+
+[brown-poulet | Ajouter les poivrons et déglacer au vin blanc]
+- Ajouter les @poivrons rouges{200 g, coupés en lanières} et les @poivrons verts{200 g, coupés en lanières}.
+- Faire rissoler ~{6 min} à ^{120 C} (ou Varoma), sens inverse, vitesse mijotage sans gobelet doseur pour faire tomber les poivrons.
+- Ajouter le @vin blanc sec{80 g} et chauffer ~{2 min} à ^{Varoma}, sens inverse, vitesse mijotage pour évaporer l'alcool.
+
+[simmer-basquaise | Mijoter les morceaux de poulet en sauce parfumée]
+- Ajouter les @tomates concassées{400 g}, le @piment d'Espelette{1 c. à café}, le @thym{2 brins}, le @laurier{1 feuille}, le @sel{1 c. à café} et le @poivre{2 pincées}.
+- Disposer les @cuisses de poulet{4 pièces, 800 g, coupées en hauts de cuisse et pilons} dans le bol au contact de la sauce.
+- Cuire ~{35 min} à ^{100 C}, sens inverse, vitesse mijotage en posant le panier cuisson sur le couvercle pour favoriser le mijotage sans éclaboussures.
+- Dresser le poulet dans un plat chaud, napper généreusement de piperade aux poivrons et déguster avec du riz nature.
