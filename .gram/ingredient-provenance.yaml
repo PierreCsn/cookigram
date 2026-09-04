@@ -787,6 +787,12 @@ ingredients:
   bouillon-de-volaille:
     status: verified
     source: ANSES-CIQUAL 11100
+  faux-filet:
+    status: verified
+    source: ANSES-CIQUAL 21515
+  souris-d-agneau:
+    status: verified
+    source: ANSES-CIQUAL 21013
 sources:
   ciqual:
     name: Table Ciqual de l'ANSES

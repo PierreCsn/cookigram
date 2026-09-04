@@ -1,0 +1,82 @@
+---
+title: L'Œuf parfait à 64°C sur crème de champignons & éclats de noisettes
+portions: 4
+prep_time: 15 min
+total_time: 1 h 05 min
+spiciness: 0
+description: "Œufs parfaits à 64°C au jaune crémeux et blanc soyeux, dressés sur un velouté de champignons de Paris et noisettes."
+tags: [œuf, végétarien, sous-vide, basse température, champignons, gastronomique, bistrot]
+source: https://anovaculinary.com/pages/recipes
+author: Pierre Cousin & CookiGram
+appliances:
+  sous_vide:
+  - anova_precision_cooker
+required_equipment:
+  - Thermoplongeur sous-vide (sans sac, œufs immergés directement)
+  - Casserole ou sauteuse
+  - Mixeur plongeant ou blender
+  - Écumoire
+  - Couteau de chef
+  - Ramequins ou assiettes creuses
+scaling:
+  enabled: true
+  min: 2
+  max: 8
+  step: 2
+flavors:
+  pairing: [mouillettes de pain au levain grillé, truffe noire, vin blanc sec boisé, ciboulette]
+  notes: [onctueux, terreux, torréfié, noisette, réconfort]
+  harmony: "Le jaune d'œuf à 64°C nappe comme une sauce crémeuse et veloutée le sauté de champignons bruns et le croquant des noisettes dorées."
+  tips: "Pour écaler un œuf parfait sans le déchirer : casser délicatement le gros bout de la coquille dans un ramequin d'eau tiède, puis faire glisser l'œuf avec précaution."
+image: images/oeuf-parfait-64c-creme-champignons.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: CC-BY-SA-4.0
+image_generation:
+  prompt_file: image-prompts/oeuf-parfait-64c-creme-champignons.md
+variants:
+- id: sous-vide
+  name: Thermoplongeur Anova (Bain direct à 64°C)
+  description: Œufs entiers en coquille plongés directement dans l'eau régulée à 64°C pendant 45 min sans sachet sous vide.
+  default: true
+- id: thermomix
+  name: Thermomix TM6 / TM5
+  description: Cuisson des œufs au panier de cuisson immergés dans l'eau régulée à 64°C pendant 45 min avec velouté au bol.
+  appliances:
+    thermomix:
+    - TM5
+    - TM6
+    - TM7
+  steps:
+    replace:
+      bath-eggs: |
+        [thermomix-eggs | Cuisson des œufs au panier vapeur Thermomix]
+        - Verser 1000 g d'eau dans le bol du #thermomix{}.
+        - Disposer les @œufs{4 pièces, extra-frais de calibre moyen} dans le panier de cuisson et l'insérer dans le bol.
+        - Programmer ~{45 min} à ^{64 C} en vitesse 2 (mode Sous-vide ou mijotage).
+        - À la sonnerie, retirer le panier avec la spatule et plonger brièvement les œufs dans un bol d'eau froide pour stopper l'inertie.
+---
+[prep-setup | Préparer le bain thermostaté et les noisettes]
+- Remplir un récipient d'eau et y installer le #thermoplongeur{}. Régler la température précisément sur ^{64 C}.
+- Dans une petite poêle à sec, faire torréfier les @noisettes{30 g, concassées et torréfiées} à feu moyen pendant ~{3 min} jusqu'à ce qu'elles exhalent un parfum gourmand de noisette grillée. Réserver.
+
+[bath-eggs | Cuisson des œufs entiers en coquille à 64°C]
+- Dès que l'eau atteint ^{64 C}, déposer délicatement les @œufs{4 pièces, extra-frais de calibre moyen} entiers avec leur coquille directement au fond du bain à l'aide d'une #écumoire{}.
+- Laisser cuire pendant ~{45 min} à ^{64 C}.
+- À cette température précise, l'ovotransferrine coagule pour figer le jaune en une crème dense et voluptueuse, tandis que l'ovalbumine du blanc reste laiteuse et délicatement prise.
+
+[creme-champignons | Préparer le velouté et la poêlée de champignons]
+- Pendant la cuisson des œufs, faire fondre le @beurre{25 g} dans une #sauteuse{}.
+- Ajouter les @échalotes{2 pièces, ciselées} et la @gousse d'ail{1 pièce, hachée}. Faire suer ~{2 min} sans coloration.
+- Ajouter les @champignons de Paris{350 g, nettoyés et émincés}, le @sel{1 c. à café} et le @poivre{0.5 c. à café}. Faire sauter vivement ~{6 min} jusqu'à évaporation de l'eau de végétation.
+- Prélever deux cuillères à soupe de champignons poêlés pour le décor.
+- Verser la @crème liquide{100 g, entière 30% MG} sur le reste des champignons et mixer finement au #mixeur plongeant{} pour obtenir un velouté chaud et soyeux.
+
+[peel-and-plate | Écalage délicat et dressage bistronomique]
+- Sortir les œufs du bain d'eau tiède avec l'#écumoire{}.
+- Tapoter doucement la coquille sur le plan de travail, puis ouvrir l'œuf délicatement au-dessus d'une assiette creuse ou d'un bol : le blanc soyeux glisse tout seul sans résistance.
+- Verser le velouté de champignons chaud au fond de 4 assiettes creuses.
+- Déposer un œuf parfait au centre de chaque assiette.
+- Garnir avec les champignons poêlés réservés, les noisettes torréfiées concassées et le @persil{2 branches, ciselées}.
+- Déguster immédiatement avec des mouillettes de pain grillé.

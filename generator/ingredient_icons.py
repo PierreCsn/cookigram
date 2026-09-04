@@ -22,6 +22,8 @@ ICON_FAMILY_BY_SLUG = {
     "filet-de-poulet": "poulet",
     "cuisse-de-poulet": "poulet",
     "paleron-de-boeuf": "boeuf",
+    "faux-filet": "boeuf",
+    "souris-d-agneau": "plat-de-cote-de-boeuf",
     "porc-hache": "porc",
     "filet-mignon-de-porc": "porc",
     "echine-de-porc": "porc",

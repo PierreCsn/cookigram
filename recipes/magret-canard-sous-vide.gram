@@ -1,0 +1,89 @@
+---
+title: Magret de canard rosé au miel & romarin
+portions: 2
+prep_time: 15 min
+total_time: 2 h 05 min
+spiciness: 0
+description: "Magret de canard rosé uniforme cuit sous vide à 57°C, sublimé d'une peau dorée croustillante et d'un jus au miel."
+tags: [canard, magret, sous-vide, basse température, terroir, miel, romarin]
+source: https://anovaculinary.com/pages/recipes
+author: Pierre Cousin & CookiGram
+appliances:
+  sous_vide:
+  - anova_precision_cooker
+required_equipment:
+  - Thermoplongeur sous-vide (Anova ou équivalent)
+  - Sacs sous-vide renforcés
+  - Poêle en fonte ou poêle épaisse en inox
+  - Couteau d'office bien affûté
+  - Planche à découper
+  - Pince de cuisine
+scaling:
+  enabled: true
+  min: 2
+  max: 6
+  step: 2
+flavors:
+  pairing: [écrasé de pommes de terre, figues rôties, poêlée de cèpes, vin rouge de Cahors]
+  notes: [sucré-salé, résineux, croustillant, fondant, corsé]
+  harmony: "Le gras de canard fondu et caramélisé en surface contraste magnifiquement avec la chair rosée uniforme et tendre de la volaille."
+  tips: "Démarrer la coloration de la peau du magret dans une poêle froide à feu très doux : la graisse fond progressivement sans brûler et la peau devient croustillante comme une chips."
+image: images/magret-canard-sous-vide.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: CC-BY-SA-4.0
+image_generation:
+  prompt_file: image-prompts/magret-canard-sous-vide.md
+variants:
+- id: sous-vide
+  name: Thermoplongeur Anova (Bain régulé à 57°C)
+  description: Cuisson douce sous vide à 57°C pendant 1 h 45 pour un rosé homogène sans gradient gris, puis peau rendue croustillante à sec en poêle.
+  default: true
+- id: poele-traditionnelle
+  name: Poêle et four traditionnel (Sans robot)
+  description: Cuisson classique démarrée à la poêle froide côté peau 10 min, puis 8 min au four à 180°C et 8 min de repos.
+  prep_time: 15 min
+  total_time: 30 min
+  steps:
+    replace:
+      prep-duck: |
+        [prep-pan-duck | Parer et quadriller le magret]
+        - Éliminer le surplus de gras débordant sur les côtés du @magret de canard{1 pièce, beau magret de 400 g}.
+        - À l'aide d'un couteau bien aiguisé, quadriller la peau en losanges sans inciser la chair rouge.
+        - Frotter généreusement toutes les faces avec le @sel{1 c. à café} et le @poivre{0.5 c. à café, du moulin}.
+      sous-vide-bath: |
+        [cook-traditional-duck | Cuisson poêlée et réduction au miel]
+        - Déposer le magret côté peau dans une #poêle{} froide sans aucune matière grasse.
+        - Allumer à feu moyen-doux et laisser fondre la graisse pendant ~{10 min} en retirant l'excès d'huile avec une cuillère.
+        - Retourner côté chair, ajouter le @romarin{2 brins, frais} et les @gousses d'ail{2 pièces, écrasées}, puis cuire ~{4 min}.
+        - Débarrasser sur une assiette et couvrir de papier alu pendant ~{8 min}.
+        - Vider le gras de la poêle, déglacer les sucs avec le @vinaigre balsamique{1 c. à soupe} et le @miel{1.5 c. à soupe}, laisser réduire ~{2 min} pour former un jus sirupeux.
+---
+[prep-duck | Parer, quadriller et ensacher le magret]
+- Préchauffer le bain d'eau avec le #thermoplongeur{} réglé à ^{57 C} pour une cuisson rosée idéale (ou 54°C pour un magret saignant).
+- Déposer le @magret de canard{1 pièce, beau magret de 400 g} sur une #planche à découper{}.
+- Parer les excédents de peau et les membranes blanches sur les côtés.
+- À l'aide d'un #couteau{} d'office très tranchant, inciser la peau en formant un quadrillage serré en losanges d'environ 1 cm, en prenant soin de ne pas entailler la chair.
+- Assaisonner des deux côtés avec le @sel{1 c. à café} et le @poivre{0.5 c. à café, du moulin}.
+- Glisser le magret dans un #sac sous vide{} avec le @romarin{2 brins, frais} et les @gousses d'ail{2 pièces, écrasées}.
+- Faire le vide d'air et sceller le sachet hermétiquement.
+
+[sous-vide-bath | Cuisson lente au thermoplongeur]
+- Plonger le sac dans le bain d'eau à ^{57 C}.
+- Laisser cuire pendant ~{1 h 45} à ^{57 C}.
+- La chair monte doucement et uniformément à température sans perdre ses sucs naturels.
+
+[crisp-skin | Rendre la peau ultra-croustillante à la poêle]
+- Sortir le magret du sac et récupérer le jus de cuisson dans un petit bol pour la sauce.
+- Éponger soigneusement le magret, surtout le côté peau, avec du papier absorbant.
+- Déposer le magret côté peau dans une #poêle{} froide posée sur feu doux à moyen.
+- Chauffer doucement pendant ~{6 min} : la graisse restante dans la peau fond progressivement et la peau devient fine, dorée et intensément croustillante.
+- Retourner le magret côté chair pendant seulement ~{1 min} pour lui donner une légère coloration chaude.
+- Débarrasser le magret sur une planche et le laisser reposer 3 minutes avant la découpe.
+
+[sauce-finish | Réduire le jus de canard au miel]
+- Jeter le surplus de graisse de canard de la poêle en n'en conservant qu'une cuillère à café.
+- Verser dans la poêle chaude le jus de canard réservé, le @vinaigre balsamique{1 c. à soupe} et le @miel{1.5 c. à soupe}.
+- Laisser bouillonner à feu vif pendant ~{2 min} en raclant les sucs au fond de la poêle jusqu'à consistance de sauce sirupeuse et brillante.
+- Trancher le magret en tranches régulières, napper de sauce au miel et servir sans attendre.

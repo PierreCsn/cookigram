@@ -493,6 +493,8 @@ ingredients:
     - filets de poulet
     - escalopes de poulet
     - escalope de poulet
+    - suprême de poulet
+    - suprêmes de poulet
     category: Viandes
     name: Filet de poulet
     nutrition:
@@ -1027,6 +1029,8 @@ ingredients:
     aliases:
     - sel
     - gros sel
+    - fleur de sel
+    - sel fin
     category: Condiments
     name: Sel
     nutrition:
@@ -2544,3 +2548,31 @@ ingredients:
       protein: 0.8
       carbs: 0.4
       fat: 0.2
+  faux-filet:
+    name: Faux-filet de bœuf
+    aliases:
+    - faux-filet de bœuf
+    - faux-filet
+    - faux-filets
+    - entrecôte
+    - steak de bœuf
+    category: Boucherie et volailles
+    piece_weight: 250.0
+    nutrition:
+      calories: 155
+      protein: 22.0
+      carbs: 0.0
+      fat: 7.5
+  souris-d-agneau:
+    name: Souris d'agneau
+    aliases:
+    - souris d'agneau
+    - souris d'agneaux
+    category: Boucherie et volailles
+    piece_weight: 400.0
+    nutrition:
+      calories: 180
+      protein: 19.5
+      carbs: 0.0
+      fat: 11.5
+
