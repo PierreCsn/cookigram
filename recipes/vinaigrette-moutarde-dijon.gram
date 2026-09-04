@@ -1,0 +1,43 @@
+---
+title: Vinaigrette moutarde de Dijon
+portions: 4
+prep_time: 5 min
+total_time: 5 min
+spiciness: 1
+description: Vinaigrette soyeuse à la moutarde de Dijon, vive au vinaigre de vin blanc et équilibrée d'une pointe de sucre.
+tags: [sauce, vinaigrette, salade, végétarien, rapide]
+source: https://www.bbcgoodfood.com/recipes/easy-salad-dressing
+author: Barney Desmazery
+scaling:
+  enabled: true
+  min_portions: 2
+  max_portions: 8
+  step: 2
+  note: Les proportions se multiplient ; fouetter à nouveau avant chaque service.
+flavors:
+  pairing: [moutarde de Dijon, huile d'olive, vinaigre de vin, salade verte]
+  notes: [acidulé, piquant, soyeux]
+  harmony: "La moutarde lie l'huile et le vinaigre tandis qu'une pointe de sucre arrondit leur vivacité."
+  tips: "Verser l'huile en filet régulier pour obtenir une émulsion lisse qui nappe les feuilles sans les détremper."
+conservation:
+  fridge_days: 30
+  freezable: false
+image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation:
+  prompt_file: image-prompts/vinaigrette-moutarde-dijon.md
+---
+
+## Vinaigrette moutarde de Dijon
+
+[Former l'émulsion]
+- Déposer la @moutarde de dijon{15 g} dans un #saladier{}.
+- Fouetter en ajoutant progressivement l'@huile d'olive{100 ml} pour former une base crémeuse.
+- Incorporer peu à peu le @vinaigre de vin{30 ml} et l'@eau{5 ml} afin de détendre la sauce.
+
+[Assaisonner et conserver]
+- Ajouter le @sucre{1 pincée} et le @sel{1 pincée}, puis fouetter ~{30 s}.
+- Transvaser dans un bocal fermé et réfrigérer ; fouetter à nouveau avant de napper la salade.

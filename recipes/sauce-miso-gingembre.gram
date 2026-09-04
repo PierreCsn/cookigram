@@ -1,0 +1,43 @@
+---
+title: Sauce miso-gingembre
+portions: 4
+prep_time: 10 min
+total_time: 10 min
+spiciness: 0
+description: Sauce japonaise onctueuse au miso et gingembre frais, relevée d'ail et adoucie pour napper les salades vertes.
+tags: [sauce, salade, japonais, végétarien, rapide]
+source: https://www.bonappetit.com/recipe/green-salad-with-miso-ginger-dressing
+author: Ivy Manning
+scaling:
+  enabled: true
+  min_portions: 2
+  max_portions: 8
+  step: 2
+  note: Multiplier les ingrédients ; la sauce se mélange à nouveau avant le service si elle épaissit.
+flavors:
+  pairing: [pâte miso, gingembre, vinaigre de riz, concombre]
+  notes: [umami, acidulé, chaleureux]
+  harmony: "Le miso apporte l'umami, le gingembre réveille la sauce et le vinaigre de riz garde l'ensemble léger."
+  tips: "Râper le gingembre très finement pour qu'il se répartisse sans former de bouchées fibreuses dans la sauce."
+conservation:
+  fridge_days: 5
+  freezable: false
+image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation:
+  prompt_file: image-prompts/sauce-miso-gingembre.md
+---
+
+## Sauce miso-gingembre
+
+[Mélanger la base]
+- Râper le @gingembre{10 g} et hacher finement l'@ail{5 g} dans un #bol{}.
+- Ajouter la @pâte miso{18 g}, le @vinaigre de riz{15 ml}, le @sucre{2 g} et le @poivre moulu{0.5 g}.
+- Fouetter jusqu'à obtenir une pâte homogène afin de dissoudre le miso avant d'ajouter l'huile.
+
+[Émulsionner et servir]
+- Verser progressivement l'@huile végétale{45 ml} en fouettant ~{60 s} pour stabiliser l'émulsion.
+- Goûter, ajuster avec le @sel{1 pincée} si nécessaire, puis napper une salade verte.

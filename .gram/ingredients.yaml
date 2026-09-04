@@ -2575,4 +2575,28 @@ ingredients:
       protein: 19.5
       carbs: 0.0
       fat: 11.5
-
+  yaourt-grec:
+    name: Yaourt grec nature
+    aliases:
+    - yaourt grec
+    - yaourt grec nature
+    - yogourt grec
+    category: Lait et produits laitiers
+  mayonnaise:
+    name: Mayonnaise
+    aliases:
+    - mayonnaise
+    category: Condiments et assaisonnements
+  ciboulette:
+    name: Ciboulette fraîche
+    aliases:
+    - ciboulette
+    - ciboulette fraîche
+    category: Légumes et aromates
+  beurre-de-cacahuete:
+    name: Beurre de cacahuète
+    aliases:
+    - beurre de cacahuète
+    - beurre de cacahouète
+    - peanut butter
+    category: Fruits à coque et graines

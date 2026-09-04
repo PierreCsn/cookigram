@@ -793,6 +793,18 @@ ingredients:
   souris-d-agneau:
     status: verified
     source: ANSES-CIQUAL 21013
+  yaourt-grec:
+    status: incomplete
+    source: Valeur nutritionnelle à vérifier contre CIQUAL pour un yaourt grec nature générique.
+  mayonnaise:
+    status: incomplete
+    source: Valeur nutritionnelle dépendante de la formulation ; à vérifier contre CIQUAL ou l'étiquette.
+  ciboulette:
+    status: incomplete
+    source: Valeur nutritionnelle à vérifier contre CIQUAL pour de la ciboulette fraîche.
+  beurre-de-cacahuete:
+    status: incomplete
+    source: Valeur nutritionnelle à vérifier contre CIQUAL pour un beurre de cacahuète nature.
 sources:
   ciqual:
     name: Table Ciqual de l'ANSES
