@@ -8,7 +8,10 @@ tags: [gratin, volaille, thermomix, brocolis, fromage, réconfort]
 source: https://www.cookomix.com/recettes/gratin-poulet-brocolis-thermomix/
 author: Minou
 appliances:
-  thermomix: [TM31, TM5, TM6, TM7]
+  thermomix:
+  - TM5
+  - TM6
+  - TM7
 required_equipment:
   - Thermomix TM31, TM5, TM6 ou TM7
   - Varoma avec plateau vapeur

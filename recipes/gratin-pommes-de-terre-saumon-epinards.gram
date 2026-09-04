@@ -8,7 +8,10 @@ tags: [gratin, poisson, thermomix, saumon, épinards, fromage, réconfort]
 source: https://www.cookomix.com/recettes/gratin-pommes-de-terre-saumon-epinards-thermomix/
 author: Jenny
 appliances:
-  thermomix: [TM31, TM5, TM6, TM7]
+  thermomix:
+  - TM5
+  - TM6
+  - TM7
 required_equipment:
   - Thermomix TM31, TM5, TM6 ou TM7
   - Varoma avec plateau vapeur
