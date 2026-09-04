@@ -5,19 +5,19 @@
     "max_heartbeat_age_minutes": 15,
     "require_approved_label": "potential-dev-work"
   },
-  "active_claims": {
-    "123": {
+  "active_claims": {},
+  "completed_claims": [
+    {
       "issue": 123,
-      "title": "feat(architecture): decouplage logique et contribution agent-native de recettes (Phase 1)",
+      "title": "feat(architecture): decouplage logique et scission physique du moteur (Phase 1 & 2)",
       "agent": "Product Lead",
       "workspace": "/home/pierrecsn/Work/cookigram",
       "branch": "feat/agent-native-recipe-contribution-phase1",
       "claimed_at": "2026-09-04T13:34:00+02:00",
-      "pr": 124,
-      "status": "pr_open"
-    }
-  },
-  "completed_claims": [
+      "pr": 125,
+      "status": "merged",
+      "merged_at": "2026-09-04T14:45:00+02:00"
+    },
     {
       "issue": 102,
       "title": "fix(ui): simplifier les mentions d'illustration (« Illustration originale CookiGram »)",
