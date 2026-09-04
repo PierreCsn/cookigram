@@ -11,6 +11,7 @@ from .gram import parse_recipe
 from .ingredient_icons import IngredientIconResolver, attach_ingredient_icons
 from .plugins import PluginManager
 from .seo import (
+    CATEGORY_PAGES,
     DEFAULT_SITE_URL,
     build_recipe_meta_description,
     build_recipe_schema,
@@ -19,6 +20,7 @@ from .seo import (
     build_rss_feed,
     build_sitemap_xml,
     compute_similar_recipes,
+    get_category_recipes,
     is_thermomix_compatible,
 )
 from .utensils import resolve_utensil_icon
@@ -214,8 +216,30 @@ def build(output: Path, site_url: str = DEFAULT_SITE_URL) -> None:
     (output / "manifest.webmanifest").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     (output / ".nojekyll").touch()
 
+    # Curated category hubs: only pages with enough recipes are generated.
+    published_categories = []
+    for category in CATEGORY_PAGES:
+        category_recipes = get_category_recipes(category, recipes)
+        if len(category_recipes) < 3:
+            continue
+        category_dir = output / "recettes" / str(category["slug"])
+        category_dir.mkdir(parents=True, exist_ok=True)
+        (category_dir / "index.html").write_text(
+            env.get_template("category.html").render(
+                category=category,
+                recipes=category_recipes,
+                asset_version=version,
+                site_url=clean_site_url,
+                canonical_url=f"{clean_site_url}/recettes/{category['slug']}/",
+            ),
+            encoding="utf-8",
+        )
+        published_categories.append(category)
+
     # Generate sitemap, robots.txt, and RSS feed
-    (output / "sitemap.xml").write_text(build_sitemap_xml(recipes, clean_site_url), encoding="utf-8")
+    (output / "sitemap.xml").write_text(
+        build_sitemap_xml(recipes, clean_site_url, categories=published_categories), encoding="utf-8"
+    )
     (output / "robots.txt").write_text(build_robots_txt(clean_site_url), encoding="utf-8")
     (output / "feed.xml").write_text(build_rss_feed(recipes, clean_site_url), encoding="utf-8")
 

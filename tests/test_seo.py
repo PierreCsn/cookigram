@@ -5,6 +5,7 @@ from pathlib import Path
 from generator.build import build
 from generator.gram import parse_recipe
 from generator.seo import (
+    CATEGORY_PAGES,
     DEFAULT_SITE_URL,
     build_recipe_meta_description,
     build_recipe_schema,
@@ -14,6 +15,7 @@ from generator.seo import (
     build_sitemap_xml,
     compute_similar_recipes,
     format_iso_duration,
+    get_category_recipes,
     is_thermomix_compatible,
     recipe_category,
     recipe_cook_time,
@@ -290,14 +292,19 @@ def test_build_404_page_is_noindex_and_has_no_canonical(tmp_path: Path):
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 def test_build_offline_page_is_noindex_and_excluded_from_sitemap(tmp_path: Path):
 =======
 def test_build_home_has_social_image(tmp_path: Path):
 >>>>>>> d2822b7 (feat(seo): ajouter image sociale dediee a l'accueil (#109))
+=======
+def test_category_pages_are_crawlable_with_unique_metadata(tmp_path: Path):
+>>>>>>> 16f2cbb (feat(seo): creer pages categories crawlables pour silos thematiques (#107))
     output_dir = tmp_path / "_site"
     site_url = "https://custom.domain.com/cook"
     build(output_dir, site_url=site_url)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     offline_html = (output_dir / "offline.html").read_text(encoding="utf-8")
     assert '<meta name="robots" content="noindex, follow">' in offline_html
@@ -345,6 +352,45 @@ def test_built_recipe_titles_stay_within_65_characters(tmp_path: Path):
     # Image accessible in built output (HTTP 200 equivalent).
     assert (output_dir / "assets" / "illustrations" / "hero-banner.jpg").is_file()
 >>>>>>> d2822b7 (feat(seo): ajouter image sociale dediee a l'accueil (#109))
+=======
+    recipes = [parse_recipe(path) for path in sorted(Path("recipes").glob("*.gram"))]
+    titles = set()
+    descriptions = set()
+    h1s = set()
+    for category in CATEGORY_PAGES:
+        category_recipes = get_category_recipes(category, recipes)
+        if len(category_recipes) < 3:
+            continue
+        page = output_dir / "recettes" / str(category["slug"]) / "index.html"
+        assert page.is_file(), category["slug"]
+        rendered = page.read_text(encoding="utf-8")
+
+        # Stable self-canonicalized URL.
+        assert f'<link rel="canonical" href="{site_url}/recettes/{category["slug"]}/">' in rendered
+
+        # Unique title, meta description and H1.
+        title_match = re.search(r"<title>(.*?)</title>", rendered)
+        desc_match = re.search(r'<meta name="description" content="([^"]+)">', rendered)
+        h1_match = re.search(r"<h1>(.*?)</h1>", rendered)
+        assert title_match and desc_match and h1_match, category["slug"]
+        assert title_match.group(1) not in titles, category["slug"]
+        assert desc_match.group(1) not in descriptions, category["slug"]
+        assert h1_match.group(1) not in h1s, category["slug"]
+        titles.add(title_match.group(1))
+        descriptions.add(desc_match.group(1))
+        h1s.add(h1_match.group(1))
+
+        # Recipes accessible without JavaScript as plain HTML links.
+        links = re.findall(r'href="\.\./\.\./recipes/([^"/]+)/"', rendered)
+        assert len(links) == len(category_recipes), category["slug"]
+        assert len(links) >= 3, category["slug"]
+
+    # Sitemap only contains editorialized categories.
+    sitemap = (output_dir / "sitemap.xml").read_text(encoding="utf-8")
+    for category in CATEGORY_PAGES:
+        if len(get_category_recipes(category, recipes)) >= 3:
+            assert f"/recettes/{category['slug']}/" in sitemap
+>>>>>>> 16f2cbb (feat(seo): creer pages categories crawlables pour silos thematiques (#107))
 
 
 def test_compute_similar_recipes_returns_deterministic_balanced_links():
