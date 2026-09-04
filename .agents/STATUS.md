@@ -28,9 +28,10 @@
   - **Issue #95** : « Le Panier du Menu » (Sélection multi-recettes, courses consolidées & audit matériel).
   - **Issue #98** : Moteur d'accords sensoriels & équilibre macro-nutritionnel de menu (« Smart Pairing »).
   - **Issue #99** : Cuisson sous-vide & basse température (Thermodynamique & Tables Baldwin).
-* **🎨 Améliorations UX & Design Transverses** :
+* **🎨 Améliorations UX, Design & Imports Transverses** :
   - **Issue #101** : Clarification de la redondance du matériel (suppression du doublon sur fiche recette).
   - **Issue #102** : Simplification sobre des mentions d'illustration (« Illustration originale CookiGram »).
+  - **Issue #103** : Support et conversion des mesures américaines et impériales (cups, oz, lbs, °F, sticks).
 
 ---
 
