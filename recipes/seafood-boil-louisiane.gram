@@ -1,0 +1,85 @@
+---
+title: Seafood Boil express de Louisiane au beurre d'ail & épices cajun
+portions: 4
+prep_time: 15 min
+total_time: 30 min
+spiciness: 2
+description: "Crevettes, tronçons de maïs doux, grenailles et saucisse fumée arrosés d'un beurre chaud à l'ail et cajun."
+tags: [fruits de mer, crevettes, instant pot, cajun, louisiane, express, convivial]
+source: https://instantpot.com/blogs/recipes/spicy-garlic-seafood-boil
+author: Instant Pot Culinary Team
+appliances:
+  instant_pot:
+  - instant_pot_6qt
+required_equipment:
+  - Autocuiseur Instant Pot (ou Faitout traditionnel)
+  - Petite casserole (pour le beurre d'ail)
+  - Planche à découper
+  - Couteau de chef
+  - Écumoire ou grand plat de service
+scaling:
+  enabled: true
+  min: 2
+  max: 6
+  step: 2
+flavors:
+  pairing: [bière fraîche blonde ou IPA, tranches de pain de campagne grillé, quartiers de citron, salade coleslaw]
+  notes: [beurré, aillé, épicé, iodé, réconfortant]
+  harmony: "La douceur sucrée du maïs et des crevettes absorbe le piquant boisé des épices cajun et la richesse gourmande du beurre fondu à l'ail."
+  tips: "Les crevettes ne doivent jamais cuire sous pression : on les dépose sur le dessus cuve éteinte, et la vapeur résiduelle les poche à la perfection en 3 minutes sans les durcir."
+image: images/seafood-boil-louisiane.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: CC-BY-SA-4.0
+image_generation:
+  prompt_file: image-prompts/seafood-boil-louisiane.md
+variants:
+- id: instant-pot
+  name: Instant Pot (Autocuiseur)
+  description: Cuisson sous pression de 5 min des féculents puis pochage doux à la vapeur résiduelle des crevettes.
+  default: true
+- id: faitout-traditionnel
+  name: Faitout traditionnel (Sans robot)
+  description: Grand bouillonnement à l'américaine dans une grande marmite d'eau épicée pendant 25 min.
+  prep_time: 15 min
+  total_time: 35 min
+  required_equipment:
+    - Grand faitout
+    - Planche à découper
+    - Couteau de chef
+    - Petite casserole
+  steps:
+    replace:
+      cook-pressure: |
+        [boil-faitout | Bouillonnement traditionnel étagé]
+        - Dans un #grand faitout{}, porter à vive ébullition 3 litres d'eau avec le @bouillon de volaille{240 g}, la moitié des @épices cajun{10 g} et 1 cuillère à café de sel.
+        - Plonger les @pommes de terre grenailles{450 g} et les @épis de maïs{350 g}. Laisser bouillir à feu moyen pendant ~{15 min}.
+        - Ajouter les morceaux de @saucisse fumée{250 g} et poursuivre l'ébullition ~{5 min}.
+        - Couper le feu, ajouter immédiatement les @crevettes{500 g} crues, couvrir et laisser pocher hors du feu pendant ~{4 min} jusqu'à ce qu'elles deviennent roses et opaques.
+        - Égoutter l'ensemble au panier ou à l'écumoire et dresser sur un grand plat.
+---
+
+[prep-ingredients | Découper les légumes et la saucisse fumée]
+- Sur une #planche à découper{}, laver les @pommes de terre grenailles{450 g, ~1 lb} et couper les plus grosses en deux pour uniformiser la cuisson.
+- Couper les @épis de maïs{350 g, ~2 épis doux frais} en gros tronçons de 4 cm d'épaisseur avec un #couteau de chef{} bien aiguisé.
+- Trancher la @saucisse fumée{250 g, ~9 oz} en grosses rondelles de 2 cm.
+- Hacher finement les @gousses d'ail{18 g, ~6 gousses}.
+
+[cook-pressure | Cuisson sous haute pression des féculents et saucisses]
+- Verser le @bouillon de volaille{240 g, ~1 cup} dans la cuve de l'#instant pot{}.
+- Ajouter la moitié des @épices cajun{10 g, ~1 c. à soupe}.
+- Déposer les @pommes de terre grenailles{450 g}, les tronçons d'@épis de maïs{350 g} et les rondelles de @saucisse fumée{250 g}.
+- Fermer le couvercle de l'#instant pot{}, tourner la valve sur **Sealing** et programmer en mode **Pressure Cook** (High Pressure) pendant ~{5 min}.
+- Dès la sonnerie, procéder **immédiatement** à une décompression rapide (*Quick Release*) en ouvrant la valve pour évacuer toute la vapeur.
+
+[poach-shrimp | Pochage délicat des crevettes à la vapeur résiduelle]
+- Retirer le couvercle de l'Instant Pot dès que la tige retombe.
+- Déposer immédiatement les @crevettes{500 g, ~1.1 lbs, crues entières} sur le dessus des légumes brûlants.
+- **Le secret de chef pour des crevettes fondantes :** Refermer aussitôt le couvercle sans relancer de programme. La chaleur emmagasinée et la vapeur intense vont pocher les crevettes à cœur en ~{4 min} : elles deviennent d'un rose corail éclatant, juteuses et tendres à souhait.
+
+[garlic-butter-serve | Préparer le beurre d'ail cajun et napper généreusement]
+- Pendant le pochage, faire fondre le @beurre{115 g, ~1/2 cup} dans une #petite casserole{} sur feu doux.
+- Ajouter l'ail haché et le restant des @épices cajun{10 g, ~1 c. à soupe}. Laisser infuser et frémir ~{2 min} sans brunir, puis incorporer le @citron{30 g, ~2 c. à soupe de jus frais pressé}.
+- Sortir les ingrédients de la cuve à l'aide d'une écumoire pour éliminer l'eau de cuisson et les disposer sur un grand plateau de partage convivial.
+- Arroser immédiatement et copieusement tout le festin avec le beurre chaud à l'ail et aux épices, remuer délicatement pour bien laquer chaque morceau et déguster avec les doigts !

@@ -1,0 +1,104 @@
+---
+title: Lu Rou Fan — Porc braisé taïwanais & œufs marbrés
+portions: 4
+prep_time: 20 min
+total_time: 55 min
+spiciness: 1
+description: "Petits dés de poitrine de porc compotés au soja, vin Shaoxing et cinq-épices, servis avec œufs marinés."
+tags: [porc, instant pot, taïwanais, asiatique, réconfort, mijoté, œufs]
+source: https://instantpot.com/blogs/recipes/taiwanese-braised-pork-belly
+author: Instant Pot Culinary Team
+appliances:
+  instant_pot:
+  - instant_pot_6qt
+required_equipment:
+  - Autocuiseur Instant Pot (ou Cookeo) ou Cocotte en fonte
+  - Planche à découper
+  - Couteau de chef
+  - Casserole (pour cuire les œufs durs)
+  - Cuillère en bois
+scaling:
+  enabled: true
+  min: 2
+  max: 6
+  step: 2
+flavors:
+  pairing: [bol de riz blanc japonica, bok choy vapeur, concombre mariné au vinaigre de riz, thé oolong]
+  notes: [sucré-salé, confit, gélatineux, cinq-épices, umami]
+  harmony: "La sauce sirupeuse au vin de Shaoxing et aux deux sojas enrobe le gras fondant de la poitrine, tandis que les échalotes frites épaississent la laque."
+  tips: "Dorer la poitrine de porc à sec dans la cuve chaude sans ajout de matière grasse permet d'extraire l'excédent de graisse tout en caramélisant la couenne."
+image: images/lu-rou-fan-porc-taiwanais.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: CC-BY-SA-4.0
+image_generation:
+  prompt_file: image-prompts/lu-rou-fan-porc-taiwanais.md
+variants:
+- id: instant-pot
+  name: Instant Pot (Autocuiseur)
+  description: Dorage à sec en mode Sauté puis 30 min sous haute pression pour une poitrine ultra-fondante.
+  default: true
+- id: cookeo
+  name: Moulinex Cookeo
+  description: Mode Dorer pour rendre le gras de la poitrine puis 25 min sous pression express et réduction.
+  prep_time: 20 min
+  total_time: 50 min
+  appliances:
+    cookeo: true
+  steps:
+    replace:
+      sear-pork: |
+        [sear-cookeo | Dorer la poitrine de porc]
+        - Activer le mode **Dorer** sur le #cookeo{}.
+        - Déposer les petits dés de @poitrine de porc{800 g, ~1.75 lbs, en lardons de 1x2 cm} à sec dans la cuve. Faire dorer ~{6 min} en remuant à la spatule silicone.
+        - Jeter l'excédent de gras fondu si désiré.
+        - Ajouter l'@ail{12 g, ~4 gousses hachées}, le @sucre de canne{30 g, ~2 c. à soupe}, le @cinq-épices{3 g, ~1 c. à café} et la @badiane{1 pièce}. Faire caraméliser ~{2 min}.
+      pressure-cook: |
+        [pressure-cookeo | Cuisson sous pression de la laque]
+        - Mouiller avec la @sauce soja claire{60 g, ~1/4 cup}, la @sauce soja foncée{30 g, ~2 c. à soupe}, le @vin de shaoxing{60 g, ~1/4 cup} et l'@eau{350 g, ~1.5 cups}.
+        - Ajouter les @échalotes frites{50 g, ~1/2 cup} et déposer les @œufs{4 pièces, durs et écalés}.
+        - Lancer le mode **Cuisson sous pression** pendant ~{25 min}.
+        - Laisser décompresser naturellement ~{8 min}. Réactiver le mode Dorer ~{3 min} pour épaissir la sauce si nécessaire.
+- id: cocotte-fonte
+  name: Cocotte en fonte traditionnelle (Sans robot)
+  description: Mijotage doux à couvert pendant 1 h 45 pour faire confire doucement le collagène de la poitrine.
+  prep_time: 20 min
+  total_time: 2 h 10 min
+  required_equipment:
+    - Cocotte en fonte avec couvercle
+    - Planche à découper
+    - Couteau de chef
+    - Cuillère en bois
+  steps:
+    replace:
+      pressure-cook: |
+        [simmer-cocotte | Doux mijotage de la poitrine]
+        - Dans la #cocotte en fonte{}, après avoir fait dorer la viande et caraméliser les épices, verser les sauces soja, le vin Shaoxing, les échalotes frites et l'@eau{500 g, volume adapté à l'évaporation}.
+        - Déposer les @œufs{4 pièces, cuits durs et écalés}.
+        - Porter à ébullition, couvrir et baisser à feu très doux pour laisser compoter doucement pendant ~{1 h 45}.
+---
+
+[prep-pork-eggs | Découper le porc et préparer les œufs durs]
+- Dans une petite #casserole{}, faire cuire les @œufs{4 pièces} dans de l'eau frémissante pendant ~{9 min} pour obtenir des œufs durs, puis les refroidir sous l'eau glacée et les écaler soigneusement.
+- Sur une #planche à découper{}, découper la @poitrine de porc{800 g, ~1.75 lbs} en petits lardons épais de 1 cm sur 2 cm avec le #couteau de chef{}.
+- Hacher finement les @gousses d'ail{12 g, ~4 gousses}.
+
+[sear-pork | Dorer la poitrine et caraméliser les aromates en mode Sauté]
+- Activer le mode **Sauté** (niveau Normal) sur l'#instant pot{}.
+- Déposer les dés de @poitrine de porc{800 g} directement dans la cuve chaude à sec (le porc contient suffisamment de gras).
+- Faire revenir pendant ~{6 min} en remuant avec la #cuillère en bois{} pour faire fondre une partie du gras et dorer légèrement la viande. (Si le porc a rendu énormément de graisse, en prélever 2 ou 3 cuillères à soupe pour alléger).
+- Ajouter l'ail haché, le @sucre de canne{30 g, ~2 c. à soupe}, le @cinq-épices{3 g, ~1 c. à café} et l'étoile de @badiane{1 pièce}. Faire caraméliser ~{2 min} : le sucre enrobe la viande d'une laque brillante et parfumée.
+
+[pressure-cook | Cuisson sous haute pression avec les œufs durs]
+- Déglacer la cuve avec la @sauce soja claire{60 g, ~1/4 cup}, la @sauce soja foncée{30 g, ~2 c. à soupe} (pour la teinte noir d'encre typique) et le @vin de shaoxing{60 g, ~1/4 cup}.
+- Racler minutieusement les parois et le fond de la cuve avec la #cuillère en bois{}.
+- Verser l'@eau{350 g, ~1.5 cups} et ajouter les @échalotes frites{50 g, ~1/2 cup} (qui vont fondre pour épaissir naturellement le jus).
+- Déposer délicatement les @œufs{4 pièces} écalés dans le liquide pour qu'ils baignent dans la sauce.
+- Verrouiller le couvercle de l'#instant pot{}, placer la valve sur **Sealing** et lancer en mode **Pressure Cook** (High Pressure) pendant ~{30 min}.
+- À la fin du temps, laisser descendre la pression naturellement pendant ~{10 min} avant d'évacuer le reste de vapeur.
+
+[reduce-serve | Réduire la sauce et servir sur bol de riz]
+- Ouvrir le couvercle : la poitrine est ultra-fondante, presque confite, et les œufs ont pris une somptueuse teinte brune marbrée.
+- Si la sauce est encore un peu fluide, réactiver le mode **Sauté** pendant ~{4 min} pour la faire réduire jusqu'à consistance sirupeuse et laquée.
+- Servir de généreuses cuillerées de porc compoté et de sauce brillante sur un bol de riz blanc chaud, surmonté d'un œuf coupé en deux et de quelques légumes verts croquants.

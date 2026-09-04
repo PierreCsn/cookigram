@@ -1,0 +1,125 @@
+---
+title: Barbacoa de bœuf effiloché aux piments chipotle & agrumes
+portions: 6
+prep_time: 20 min
+total_time: 1 h 25 min
+spiciness: 3
+description: "Effiloché de bœuf fondant braisé aux piments chipotle fumés, ail, cumin et jus de lime, idéal en tacos."
+tags: [bœuf, instant pot, mexicain, tacos, mijoté, pimenté]
+source: https://instantpot.com/blogs/recipes/barbacoa-beef
+author: Instant Pot Culinary Team
+appliances:
+  instant_pot:
+  - instant_pot_6qt
+required_equipment:
+  - Autocuiseur Instant Pot (ou Cookeo) ou Cocotte en fonte
+  - Mixeur plongeant ou blender
+  - Planche à découper
+  - Couteau de chef
+  - Cuillère en bois
+  - Deux fourchettes (pour effilocher)
+scaling:
+  enabled: true
+  min: 3
+  max: 8
+  step: 1
+flavors:
+  pairing: [tacos de maïs, oignons rouges marinés, coriandre fraîche, avocat, bière blonde mexicaine]
+  notes: [fumé, piquant, acidulé, fondant, umami]
+  harmony: "La rondeur gélatineuse du bœuf longuement confit s'équilibre avec l'acidité piquante du citron vert et la note de fumée boisée du piment chipotle."
+  tips: "La décompression naturelle de 15 minutes est capitale pour les viandes riches en collagène : elle évite que l'ébullition brutale ne chasse l'eau des fibres musculaires."
+image: images/barbacoa-boeuf-effiloche.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: CC-BY-SA-4.0
+image_generation:
+  prompt_file: image-prompts/barbacoa-boeuf-effiloche.md
+variants:
+- id: instant-pot
+  name: Instant Pot (Autocuiseur)
+  description: Saisie des sucs en mode Sauté puis 50 min sous haute pression et 15 min de repos sous vapeur.
+  default: true
+- id: cookeo
+  name: Moulinex Cookeo
+  description: Saisie en mode Dorer puis 45 min en cuisson express sous pression et réduction minute.
+  prep_time: 20 min
+  total_time: 1 h 15 min
+  appliances:
+    cookeo: true
+  steps:
+    replace:
+      sear-beef: |
+        [sear-cookeo | Saisir le bœuf en mode Dorer]
+        - Sélectionner le mode **Dorer** sur le #cookeo{} et verser l'@huile d'olive{15 g, ~1 c. à soupe}.
+        - Déposer les cubes de @paleron de bœuf{1400 g, ~3 lbs, découpé en cubes de 5 cm} et les assaisonner de @sel{10 g, ~2 c. à café} et de @poivre noir{3 g, ~1 c. à café}.
+        - Faire dorer la viande par petites tournées pendant ~{8 min} au total à l'aide d'une spatule silicone pour ne pas rayer la cuve. Réserver dans un #saladier{}.
+      cook-pressure: |
+        [pressure-cookeo | Cuisson express sous pression]
+        - Dans la cuve encore chaude, verser la marinade mixée avec le @bouillon de bœuf{240 g, ~1 cup}, le @vinaigre de cidre{30 g, ~2 c. à soupe}, le @jus de citron vert{60 g, ~1/4 cup}, l'@oignon{150 g, ~1 gros oignon émincé}, l'@ail{15 g, ~5 gousses hachées}, le @piment chipotle{30 g, ~2 c. à soupe avec sauce adobo}, le @cumin{8 g, ~1 c. à soupe}, l'@origan{4 g, ~1 c. à soupe}, les @clous de girofle{1 g, ~1/4 c. à café} et les feuilles de @laurier{2 pièces}.
+        - Bien gratter le fond avec la spatule pour décoller tous les sucs caramélisés.
+        - Remettre la viande avec son jus écoulé.
+        - Fermer le couvercle et lancer le mode **Cuisson sous pression** (Express) pendant ~{45 min}.
+      shred-serve: |
+        [shred-cookeo | Effilocher et enrober de sauce]
+        - Laisser le Cookeo évacuer sa vapeur naturellement pendant ~{10 min}.
+        - Retirer les feuilles de @laurier{2 pièces}.
+        - Sortir la viande dans un grand plat creux et l'effilocher à l'aide de deux fourchettes.
+        - Réactiver le mode **Dorer** ~{5 min} pour faire réduire le jus restant en cuve jusqu'à consistance nappante, puis arroser le bœuf effiloché.
+- id: cocotte-fonte
+  name: Cocotte en fonte traditionnelle (Sans robot)
+  description: Braisage doux à l'étouffée au four à 150°C pendant 3 h 15 pour une texture confite d'anthologie.
+  prep_time: 25 min
+  total_time: 3 h 40 min
+  required_equipment:
+    - Cocotte en fonte avec couvercle
+    - Four traditionnel
+    - Planche à découper
+    - Couteau de chef
+    - Mixeur plongeant
+  steps:
+    replace:
+      sear-beef: |
+        [sear-cocotte | Dorer la viande en cocotte]
+        - Préchauffer le #four{} à 150°C (chaleur tournante).
+        - Faire chauffer l'@huile d'olive{15 g, ~1 c. à soupe} dans une #cocotte en fonte{} sur feu vif.
+        - Saler et poivrer les cubes de @paleron de bœuf{1400 g, ~3 lbs} avec le @sel{10 g} et le @poivre noir{3 g}.
+        - Saisir les morceaux sur toutes leurs faces pendant ~{10 min} pour développer de puissants arômes de Maillard. Réserver sur une assiette.
+      cook-pressure: |
+        [braise-cocotte | Braisage doux au four à l'étouffée]
+        - Baisser le feu sous la cocotte, ajouter l'@oignon{150 g, haché} et l'@ail{15 g, haché} et faire suer ~{3 min}.
+        - Déglacer avec le @vinaigre de cidre{30 g} et le @jus de citron vert{60 g} en raclant vigoureusement le fond de la cocotte à la #cuillère en bois{}.
+        - Ajouter le @bouillon de bœuf{400 g, ~1.7 cup, volume augmenté pour compenser l'évaporation}, le @piment chipotle{30 g}, le @cumin{8 g}, l'@origan{4 g}, les @clous de girofle{1 g} et les feuilles de @laurier{2 pièces}.
+        - Remettre la viande, couvrir hermétiquement avec le couvercle de la cocotte et enfourner à 150°C pendant ~{3 h 15}.
+      shred-serve: |
+        [shred-cocotte | Effilochage et réduction finale]
+        - Sortir la cocotte du four. La viande doit s'écraser sans résistance sous une simple pression.
+        - Retirer les feuilles de @laurier{2 pièces}.
+        - Effilocher le bœuf dans la cocotte ou sur un plat de service creux.
+        - Si le jus est trop liquide, faire réduire la cocotte sur feu moyen vif ~{6 min} avant de napper généreusement.
+---
+
+[sear-beef | Saisir les cubes de bœuf en mode Sauté]
+- Activer le mode **Sauté** (niveau High / Normal) sur l'#instant pot{} et verser l'@huile d'olive{15 g, ~1 c. à soupe}.
+- Découper le @paleron de bœuf{1400 g, ~3 lbs} en gros cubes de 5 cm sur une #planche à découper{} avec un #couteau de chef{}.
+- Assaisonner la viande avec le @sel{10 g, ~2 c. à café} et le @poivre noir{3 g, ~1 c. à café}.
+- Déposer les cubes de bœuf dans la cuve chaude sans les empiler et les laisser dorer ~{8 min} en les retournant à la #pince de cuisine{} pour créer une belle croûte dorée. Réserver dans un #saladier{}.
+
+[blend-sauce | Préparer et déglacer avec la marinade épicée]
+- Dans un blender ou le bol d'un mixeur plongeant, mixer l'@oignon{150 g, ~1 gros oignon épluché}, l'@ail{15 g, ~5 gousses pelées}, le @piment chipotle{30 g, ~2 c. à soupe avec son jus adobo}, le @jus de citron vert{60 g, ~1/4 cup}, le @vinaigre de cidre{30 g, ~2 c. à soupe}, le @cumin{8 g, ~1 c. à soupe}, l'@origan{4 g, ~1 c. à soupe} et les @clous de girofle{1 g, ~1/4 c. à café} jusqu'à consistance lisse.
+- Verser le @bouillon de bœuf{240 g, ~1 cup} et la marinade mixée dans la cuve de l'Instant Pot encore en mode Sauté.
+- **Le geste clé anti-burn :** Gratter énergiquement tout le fond de la cuve en inox avec la #cuillère en bois{} pour décoller tous les sucs caramélisés et éviter l'alerte de surchauffe.
+- Ajouter les feuilles de @laurier{2 pièces} et désactiver le mode Sauté.
+
+[cook-pressure | Cuisson sous haute pression]
+- Remettre les cubes de bœuf et leur jus rendu dans la cuve, en les enfonçant dans la sauce aromatique.
+- Verrouiller le couvercle de l'#instant pot{} et positionner la valve sur **Sealing**.
+- Programmer en mode **Manual / Pressure Cook** à haute pression (High Pressure) pendant ~{50 min}.
+- À la fin du minuteur, ne pas toucher à la valve et laisser la vapeur descendre d'elle-même en décompression naturelle (*Natural Pressure Release*) pendant ~{15 min} pour préserver la jutosité cellulaire de la viande.
+- Évacuer le reliquat de pression avec précaution puis ouvrir le couvercle.
+
+[shred-serve | Effilocher et lier la barbacoa]
+- Retirer et jeter les feuilles de @laurier{2 pièces}.
+- Transférer les morceaux de viande ultra-fondants dans un grand plat creux et les effilocher à l'aide de deux fourchettes.
+- Réactiver le mode **Sauté** pendant ~{5 min} pour faire bouillonner et épaissir la sauce restante dans la cuve.
+- Verser plusieurs louches de sauce réduite brûlante sur le bœuf effiloché, mélanger délicatement et servir fumant avec des tortillas de maïs chaudes.

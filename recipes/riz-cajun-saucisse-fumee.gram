@@ -1,0 +1,107 @@
+---
+title: Riz créole cajun à la saucisse fumée & trinité louisianaise
+portions: 4
+prep_time: 15 min
+total_time: 30 min
+spiciness: 2
+description: "Riz parfumé aux épices cajun, rondelles de saucisse fumée dorée, poivron vert, céleri et tomates en dés."
+tags: [riz, instant pot, cajun, louisiane, saucisse fumée, one pot, rapide]
+source: https://instantpot.com/blogs/recipes/cajun-sausage-rice
+author: Instant Pot Culinary Team
+appliances:
+  instant_pot:
+  - instant_pot_6qt
+required_equipment:
+  - Autocuiseur Instant Pot (ou Cookeo) ou Cocotte en fonte
+  - Planche à découper
+  - Couteau de chef
+  - Cuillère en bois
+  - Passoire fine (pour rincer le riz)
+scaling:
+  enabled: true
+  min: 2
+  max: 6
+  step: 2
+flavors:
+  pairing: [salade de maïs frais, sauce pimentée louisianaise, bière ambrée, pain de maïs cornbread]
+  notes: [fumé, épicé, poivré, herbeux, réconfortant]
+  harmony: "Le gras parfumé de la saucisse fumée enrobe les grains de riz en cuisson, tandis que la sainte trinité (oignon, poivron, céleri) apporte la fraîcheur aromatique."
+  tips: "Rincer le riz sous l'eau froide jusqu'à ce que l'eau soit claire retire l'excès d'amidon de surface et garantit un riz parfaitement égrainé qui ne colle pas."
+image: images/riz-cajun-saucisse-fumee.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: CC-BY-SA-4.0
+image_generation:
+  prompt_file: image-prompts/riz-cajun-saucisse-fumee.md
+variants:
+- id: instant-pot
+  name: Instant Pot (Autocuiseur)
+  description: Dorage de la saucisse en mode Sauté puis 7 min sous haute pression pour un riz égrainé gorgé de saveurs.
+  default: true
+- id: cookeo
+  name: Moulinex Cookeo
+  description: Mode Dorer pour colorer la trinité cajun et la saucisse, puis 6 min sous pression express.
+  prep_time: 15 min
+  total_time: 25 min
+  appliances:
+    cookeo: true
+  steps:
+    replace:
+      sear-sausage: |
+        [sear-cookeo | Dorer la saucisse et les aromates]
+        - Activer le mode **Dorer** sur le #cookeo{} et verser l'@huile d'olive{15 g, ~1 c. à soupe}.
+        - Déposer les rondelles de @saucisse fumée{400 g, ~14 oz, en rondelles de 1 cm}. Laisser dorer ~{4 min} avec une spatule silicone.
+        - Ajouter l'@oignon{120 g, ~1 pièce en dés}, le @poivron vert{150 g, ~1 pièce en dés}, les @branches de céleri{80 g, ~2 branches en dés} et l'@ail{10 g, ~3 gousses hachées}. Faire suer ~{3 min}.
+        - Saupoudrer les @épices cajun{10 g, ~1 c. à soupe bombée}, le @sel{3 g} et le @poivre noir{2 g} et mélanger ~{1 min}.
+      cook-rice: |
+        [rice-cookeo | Cuisson sous pression express du riz]
+        - Verser le @bouillon de volaille{420 g, ~1.75 cups} et gratter le fond pour décoller tous les sucs caramélisés.
+        - Verser le @riz{300 g, ~1.5 cups, rincé et égoutté} et les @tomates concassées{200 g, ~1/2 boîte} par-dessus. Aplatir délicatement sans mélanger jusqu'au fond.
+        - Fermer le couvercle et lancer la **Cuisson sous pression** pendant ~{6 min}.
+        - Laisser reposer cuve fermée ~{8 min} avant de relâcher la vapeur restante.
+        - Égrainer le riz à la fourchette et servir immédiatement.
+- id: cocotte-fonte
+  name: Cocotte traditionnelle (Sans robot)
+  description: Cuisson pilaf à l'étouffée à feu doux pendant 20 min pour une texture créole authentique.
+  prep_time: 15 min
+  total_time: 35 min
+  required_equipment:
+    - Cocotte en fonte avec couvercle
+    - Planche à découper
+    - Couteau de chef
+    - Cuillère en bois
+  steps:
+    replace:
+      cook-rice: |
+        [pilaf-cocotte | Cuisson pilaf à couvert]
+        - Dans la #cocotte en fonte{}, après avoir fait revenir la saucisse, les aromates et les épices, verser le @riz{300 g} rincé et remuer ~{2 min} pour nacrer le grain dans les sucs.
+        - Ajouter le @bouillon de volaille{500 g, ~2 cups, volume adapté à la casserole} et les @tomates concassées{200 g}.
+        - Porter à ébullition, couvrir hermétiquement, baisser le feu au minimum et laisser cuire sans ouvrir pendant ~{18 min}.
+        - Couper le feu et laisser reposer ~{5 min} à couvert avant d'égrainer.
+---
+
+[prep-trinity | Découper la saucisse et la sainte trinité cajun]
+- Sur une #planche à découper{}, trancher la @saucisse fumée{400 g, ~14 oz} en belles rondelles de 1 cm d'épaisseur avec le #couteau de chef{}.
+- Tailler l'@oignon{120 g, ~1 moyen}, le @poivron vert{150 g, ~1 moyen} et les @branches de céleri{80 g, ~2 branches} en petits dés de 8 mm (la fameuse « trinité » louisianaise).
+- Hacher finement l'@ail{10 g, ~3 gousses}.
+- Rincer le @riz{300 g, ~1.5 cups de riz long blanc} dans une #passoire fine{} sous l'eau froide jusqu'à ce que l'eau s'écoule parfaitement claire, puis égoutter soigneusement.
+
+[sear-sausage | Dorer la saucisse et suer les aromates en mode Sauté]
+- Sélectionner le mode **Sauté** (niveau Normal) sur l'#instant pot{} et verser l'@huile d'olive{15 g, ~1 c. à soupe}.
+- Dès que la cuve est chaude, jeter les rondelles de @saucisse fumée{400 g}. Les faire dorer pendant ~{4 min} jusqu'à ce qu'elles libèrent leur huile parfumée et soient croustillantes sur les bords.
+- Ajouter les dés d'oignon, de poivron et de céleri ainsi que l'ail. Faire revenir en remuant avec la #cuillère en bois{} pendant ~{3 min} pour attendrir les légumes.
+- Ajouter les @épices cajun{10 g, ~1 c. à soupe bombée}, le @sel{3 g, ~1/2 c. à café} et le @poivre noir{2 g, ~1/2 c. à café}, puis remuer ~{1 min} pour torréfier les épices.
+
+[cook-rice | Déglaçage et cuisson sous haute pression]
+- Verser le @bouillon de volaille{420 g, ~1.75 cups} dans la cuve.
+- **Le geste essentiel :** Racler vigoureusement le fond de la cuve en inox avec la #cuillère en bois{} pour dissoudre les sucs de saucisse caramélisés.
+- Répartir le @riz{300 g} rincé de manière uniforme à la surface du liquide.
+- Déposer les @tomates concassées{200 g, ~1/2 boîte} sur le riz. **Attention : ne pas mélanger le fond**, laisser les tomates et le riz reposer sur le bouillon pour garantir une cuisson homogène sans alerte burn.
+- Fermer le couvercle de l'#instant pot{}, positionner la valve sur **Sealing** et programmer en mode **Pressure Cook** (High Pressure) pendant ~{7 min}.
+- À la sonnerie, laisser reposer en décompression naturelle pendant ~{10 min}, puis libérer le reste de pression.
+
+[fluff-serve | Égrainer et dresser le plat créole]
+- Ouvrir le couvercle : le riz a bu l'intégralité du bouillon épicé et chaque grain est imprégné des saveurs fumées.
+- À l'aide d'une fourchette ou d'une spatule, égrainer le riz délicatement en soulevant la préparation de bas en haut pour mélanger harmonieusement la saucisse et les légumes.
+- Servir fumant dans des assiettes creuses avec quelques brins de persil ou des oignons nouveaux ciselés.

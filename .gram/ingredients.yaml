@@ -127,6 +127,8 @@ ingredients:
     aliases:
     - cannelle
     - cannelle en poudre
+    - bâton de cannelle
+    - bâtons de cannelle
     category: Condiments
     pantry_staple: true
     nutrition:
@@ -457,7 +459,8 @@ ingredients:
     category: Fromages
   fromage-frais:
     name: Fromage frais
-    aliases: [fromage frais]
+    aliases:
+    - fromage frais
     category: Produits laitiers et matières grasses
   blancs-d-oeufs:
     name: Blancs d'œufs
@@ -928,6 +931,7 @@ ingredients:
     aliases:
     - pommes de terre
     - pomme de terre
+    - pommes de terre grenailles
     category: Féculents et céréales
     nutrition:
       calories: 80
@@ -975,6 +979,8 @@ ingredients:
     - riz long blanc
     - riz thaï
     - riz jasmin
+    - riz
+    - riz long
     category: Céréales et féculents
     nutrition:
       calories: 355
@@ -1045,6 +1051,8 @@ ingredients:
     aliases:
     - sucre roux
     - cassonade
+    - sucre de canne
+    - sucre candi
     category: Condiments
     pantry_staple: true
     nutrition:
@@ -1085,91 +1093,119 @@ ingredients:
     - riesling
   ail-des-ours:
     name: Ail des ours
-    aliases: [ail des ours, feuilles d'ail des ours]
+    aliases:
+    - ail des ours
+    - feuilles d'ail des ours
     category: Légumes et aromates
   abricot-sec:
     name: Abricots secs
-    aliases: [abricot sec, abricots secs]
+    aliases:
+    - abricot sec
+    - abricots secs
     category: Fruits secs
   bicarbonate-de-sodium:
     name: Bicarbonate de sodium
-    aliases: [bicarbonate de sodium]
+    aliases:
+    - bicarbonate de sodium
     category: Épicerie sucrée
   briochette:
     name: Briochettes
-    aliases: [briochette, briochettes]
+    aliases:
+    - briochette
+    - briochettes
     category: Boulangerie
   comte:
     name: Comté
-    aliases: [comté]
+    aliases:
+    - comté
     category: Fromages
   extrait-de-vanille:
     name: Extrait naturel de vanille
-    aliases: [extrait naturel de vanille]
+    aliases:
+    - extrait naturel de vanille
     category: Épicerie sucrée
   farine-d-epeautre:
     name: Farine d'épeautre
-    aliases: [farine d'épeautre]
+    aliases:
+    - farine d'épeautre
     category: Féculents et céréales
   graines-variees:
     name: Graines variées
-    aliases: [graines variées]
+    aliases:
+    - graines variées
     category: Fruits à coque et graines
   gruyere:
     name: Gruyère
-    aliases: [gruyère]
+    aliases:
+    - gruyère
     category: Fromages
   haricot-rouge:
     name: Haricots rouges
-    aliases: [haricot rouge, haricots rouges]
+    aliases:
+    - haricot rouge
+    - haricots rouges
     category: Conserves et bocaux
   jambon:
     name: Jambon
-    aliases: [jambon]
+    aliases:
+    - jambon
     category: Boucherie et charcuterie
   jus-d-orange:
     name: Jus d'orange
-    aliases: [jus d'orange]
+    aliases:
+    - jus d'orange
     category: Boissons et liquides
   jus-de-raisin:
     name: Jus de raisin
-    aliases: [jus de raisin]
+    aliases:
+    - jus de raisin
     category: Boissons et liquides
   levure-chimique:
     name: Levure chimique
-    aliases: [levure chimique]
+    aliases:
+    - levure chimique
     category: Épicerie sucrée
   moutarde-a-l-ancienne:
     name: Moutarde à l'ancienne
-    aliases: [moutarde à l'ancienne]
+    aliases:
+    - moutarde à l'ancienne
     category: Condiments
   noix-de-pecan:
     name: Noix de pécan
-    aliases: [noix de pécan]
+    aliases:
+    - noix de pécan
     category: Fruits à coque et graines
   noisette:
     name: Noisettes
-    aliases: [noisette, noisettes]
+    aliases:
+    - noisette
+    - noisettes
     category: Fruits à coque et graines
   oignon-grelot:
     name: Oignons grelot
-    aliases: [oignon grelot, oignons grelot]
+    aliases:
+    - oignon grelot
+    - oignons grelot
     category: Légumes et aromates
   pate-feuilletee:
     name: Pâte feuilletée
-    aliases: [pâte feuilletée]
+    aliases:
+    - pâte feuilletée
     category: Pâtes et préparations
   roquefort:
     name: Roquefort
-    aliases: [roquefort]
+    aliases:
+    - roquefort
     category: Fromages
   sirop-d-erable:
     name: Sirop d'érable
-    aliases: [sirop d'érable]
+    aliases:
+    - sirop d'érable
     category: Épicerie sucrée
   gingembre-en-poudre:
     name: Gingembre en poudre
-    aliases: [gingembre en poudre]
+    aliases:
+    - gingembre en poudre
     category: Herbes et épices
   vinaigre-blanc:
     name: Vinaigre blanc
@@ -1186,8 +1222,16 @@ ingredients:
     density: 1.01
   vinaigre-balsamique:
     name: Vinaigre balsamique
-    aliases: [vinaigre balsamique]
-    category: Condiments
+    aliases:
+    - vinaigre balsamique
+    - vinaigre balsamique de Modène
+    - crème de vinaigre balsamique
+    category: Condiments et assaisonnements
+    nutrition:
+      calories: 88
+      protein: 0.5
+      carbs: 17.0
+      fat: 0.0
   aneth:
     name: Aneth
     aliases:
@@ -1407,6 +1451,7 @@ ingredients:
     - maïs en boîte
     - maïs
     - maïs doux
+    - épis de maïs
     category: Conserves et bocaux
     nutrition:
       calories: 96
@@ -1554,6 +1599,7 @@ ingredients:
     - sauce soja salée
     - sauce soja
     - sauce de soja
+    - sauce soja claire
     category: Condiments
     nutrition:
       calories: 53
@@ -1593,6 +1639,8 @@ ingredients:
     aliases:
     - thym
     - thym séché
+    - thym frais
+    - brins de thym
     category: Condiments
     nutrition:
       calories: 276
@@ -2253,18 +2301,6 @@ ingredients:
     aliases:
     - clou de girofle
     category: Condiments et assaisonnements
-  vinaigre-balsamique:
-    name: Vinaigre balsamique
-    aliases:
-    - vinaigre balsamique
-    - vinaigre balsamique de Modène
-    - crème de vinaigre balsamique
-    category: Condiments et assaisonnements
-    nutrition:
-      calories: 88
-      protein: 0.5
-      carbs: 17.0
-      fat: 0.0
   poivre-vert:
     name: Poivre vert
     aliases:
@@ -2362,3 +2398,149 @@ ingredients:
       protein: 3.0
       carbs: 6.0
       fat: 5.0
+  vinaigre-de-cidre:
+    name: Vinaigre de cidre
+    aliases:
+    - vinaigre de cidre
+    - vinaigre de pomme
+    category: Condiments et assaisonnements
+    nutrition:
+      calories: 22
+      protein: 0.0
+      carbs: 0.9
+      fat: 0.0
+  sauce-nuoc-mam:
+    name: Sauce nuoc-mâm
+    aliases:
+    - sauce nuoc-mâm
+    - nuoc-mâm
+    - sauce poisson
+    - sauce de poisson
+    category: Condiments et assaisonnements
+    nutrition:
+      calories: 52
+      protein: 10.0
+      carbs: 3.0
+      fat: 0.0
+  piment-chipotle:
+    name: Piment chipotle
+    aliases:
+    - piment chipotle
+    - chipotle en sauce adobo
+    - piments chipotle
+    - chipotle
+    category: Condiments et assaisonnements
+    nutrition:
+      calories: 70
+      protein: 2.5
+      carbs: 12.0
+      fat: 1.0
+  citronnelle:
+    name: Citronnelle
+    aliases:
+    - citronnelle
+    - tiges de citronnelle
+    - bâtons de citronnelle
+    category: Fruits, légumes, légumineuses et oléagineux
+    nutrition:
+      calories: 99
+      protein: 1.8
+      carbs: 25.3
+      fat: 0.5
+  badiane:
+    name: Badiane
+    aliases:
+    - badiane
+    - anis étoilé
+    - étoiles de badiane
+    category: Condiments et assaisonnements
+    nutrition:
+      calories: 337
+      protein: 17.6
+      carbs: 50.0
+      fat: 15.9
+  cinq-epices:
+    name: Cinq-épices
+    aliases:
+    - cinq-épices
+    - cinq épices
+    - poudre cinq épices
+    category: Condiments et assaisonnements
+    nutrition:
+      calories: 290
+      protein: 10.0
+      carbs: 45.0
+      fat: 8.0
+  vin-de-shaoxing:
+    name: Vin de Shaoxing
+    aliases:
+    - vin de shaoxing
+    - vin de riz shaoxing
+    - vin de riz chinois
+    category: Boissons et condiments
+    nutrition:
+      calories: 120
+      protein: 1.5
+      carbs: 8.0
+      fat: 0.0
+  poitrine-de-porc:
+    name: Poitrine de porc
+    aliases:
+    - poitrine de porc
+    - lard frais
+    - poitrine fraîche
+    category: Boucherie et volailles
+    nutrition:
+      calories: 310
+      protein: 17.0
+      carbs: 0.0
+      fat: 27.0
+  saucisse-fumee:
+    name: Saucisse fumée
+    aliases:
+    - saucisse fumée
+    - saucisses fumées
+    - saucisse de morteau
+    - saucisse de montbéliard
+    - andouille fumée
+    category: Charcuterie et traiteur
+    nutrition:
+      calories: 315
+      protein: 16.5
+      carbs: 1.0
+      fat: 27.5
+  echalotes-frites:
+    name: Échalotes frites
+    aliases:
+    - échalotes frites
+    - échalote frite
+    - oignons frits
+    category: Condiments et assaisonnements
+    nutrition:
+      calories: 550
+      protein: 6.0
+      carbs: 45.0
+      fat: 38.0
+  sauce-soja-foncee:
+    name: Sauce soja foncée
+    aliases:
+    - sauce soja foncée
+    - dark soy sauce
+    - sauce de soja foncée
+    category: Condiments et assaisonnements
+    nutrition:
+      calories: 65
+      protein: 9.0
+      carbs: 7.0
+      fat: 0.1
+  bouillon-de-volaille:
+    name: Bouillon de volaille
+    aliases:
+    - bouillon de volaille
+    - bouillon de poulet
+    category: Condiments et aides culinaires
+    nutrition:
+      calories: 7
+      protein: 0.8
+      carbs: 0.4
+      fat: 0.2
