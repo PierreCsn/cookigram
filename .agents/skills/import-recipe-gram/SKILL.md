@@ -22,7 +22,7 @@ Record the exact primary URL in frontmatter as `source:` and the displayed autho
 
 ## Convert
 
-Read [CookGram Gram profile](references/cookgram-gram-profile.md) before writing or modifying a recipe.
+Read [CookGram Gram profile](references/cookgram-gram-profile.md) and [US Customary conversion guide](references/us-customary-conversion.md) (when importing American or imperial recipes) before writing or modifying a recipe.
 
 Before choosing ingredient names, read `.gram/ingredients.yaml`. Match each researched ingredient against canonical keys, `name`, and `aliases`:
 
