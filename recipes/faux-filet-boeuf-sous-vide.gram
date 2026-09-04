@@ -1,0 +1,84 @@
+---
+title: Faux-filet de bœuf au beurre moussant & thym
+portions: 2
+prep_time: 10 min
+total_time: 1 h 35 min
+spiciness: 0
+description: "Faux-filet de bœuf fondant et rosé à cœur cuit à 54°C sous vide, arrosé d'un beurre moussant à l'ail et au thym frais."
+tags: [bœuf, sous-vide, basse température, bistrot, viande, rapide]
+source: https://anovaculinary.com/pages/recipes
+author: Anova Culinary Team & CookiGram
+appliances:
+  sous_vide:
+  - anova_precision_cooker
+required_equipment:
+  - Thermoplongeur sous-vide (Anova ou équivalent)
+  - Sacs sous-vide étanches (ou sac zip avec fermeture hermétique)
+  - Poêle en fonte ou poêle épaisse en inox
+  - Pince de cuisine
+  - Papier absorbant
+scaling:
+  enabled: true
+  min: 1
+  max: 4
+  step: 1
+flavors:
+  pairing: [pommes de terre grenailles, haricots verts, vin rouge corsé, beurre maître d'hôtel]
+  notes: [beurré, herbacé, caramélisé, fondant, umami]
+  harmony: "L'arrosage minute au beurre moussant noisette et thym crée une croûte croustillante qui sublime la tendreté uniforme du bœuf à 54°C."
+  tips: "Éponger soigneusement la viande au papier absorbant après la sortie du bain avant de la saisir : une surface sèche permet une réaction de Maillard immédiate sans surcuire le cœur."
+image: images/faux-filet-boeuf-sous-vide.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: CC-BY-SA-4.0
+image_generation:
+  prompt_file: image-prompts/faux-filet-boeuf-sous-vide.md
+variants:
+- id: sous-vide
+  name: Thermoplongeur Anova (Sous-vide basse température)
+  description: Bain d'eau régulé à 54°C pendant 1 h 30 pour une cuisson saignante parfaite de bord à bord, puis saisie vive en fonte.
+  default: true
+- id: poele-fonte
+  name: Poêle en fonte traditionnelle (Sans robot)
+  description: Cuisson classique saisie à la poêle en fonte avec arrosage continu au beurre moussant et repos de 8 min sous papier alu.
+  prep_time: 10 min
+  total_time: 25 min
+  steps:
+    replace:
+      prep-and-bag: |
+        [prep-pan | Assaisonner les pièces de viande]
+        - Sortir le @faux-filet{2 pièces, env. 250 g chacune et 3 cm d'épaisseur} du réfrigérateur ~{20 min} avant la cuisson pour détendre les fibres musculaires.
+        - Éponger la viande avec du #papier absorbant{}, puis assaisonner généreusement chaque face avec le @sel{1 c. à café} et le @poivre{0.5 c. à café, du moulin}.
+      sous-vide-waterbath: |
+        [sear-pan-traditional | Saisir et arroser au beurre moussant]
+        - Faire chauffer l'@huile d'olive{1 c. à soupe} dans une #poêle en fonte{} à feu très vif jusqu'à ce qu'elle soit légèrement fumante.
+        - Déposer les faux-filets et saisir ~{2 min} sans les bouger pour développer une croûte bien dorée.
+        - Retourner la viande à l'aide d'une #pince de cuisine{}, ajouter le @beurre{40 g}, les @gousses d'ail{3 pièces, écrasées en chemise} et le @thym{4 brins, frais}.
+        - Pencher la poêle et arroser continuellement la viande avec le beurre moussant pendant ~{2 min} pour nourrir les fibres et parfumer la chair.
+        - Débarrasser sur une assiette tiède, parsemer de @fleur de sel{2 pincées} et couvrir d'une feuille de papier aluminium pendant ~{8 min} de repos afin que la température et les sucs s'harmonisent.
+---
+[prep-and-bag | Assaisonner et ensacher le bœuf sous vide]
+- Remplir un grand récipient d'eau et fixer le #thermoplongeur{}. Régler la température à ^{54 C} pour une cuisson saignante idéale (ou 57°C pour une viande à point).
+- Éponger le @faux-filet{2 pièces, env. 250 g chacune et 3 cm d'épaisseur} avec du #papier absorbant{} pour retirer l'excès d'humidité en surface.
+- Saler et poivrer les deux faces avec le @sel{1 c. à café} et le @poivre{0.5 c. à café, du moulin}.
+- Glisser chaque pièce de bœuf dans un #sac sous vide{} étanche. Ajouter dans le sac les @gousses d'ail{2 pièces, écrasées en chemise} et le @thym{2 brins, frais}.
+- Faire le vide et sceller hermétiquement à l'aide d'une #machine sous vide{} (ou utiliser la méthode d'immersion progressive dans l'eau pour chasser l'air d'un sac zip).
+
+[sous-vide-waterbath | Cuisson régulée au thermoplongeur]
+- Lorsque le bain d'eau a atteint ^{54 C}, immerger complètement les sacs dans l'eau.
+- Laisser cuire au bain pendant ~{1 h 30} à ^{54 C}. Grâce à l'élasticité thermique du sous-vide (holding tolerance), la viande peut patienter jusqu'à 3 heures dans le bain sans aucune surcuisson ni dégradation de texture.
+
+[prep-sear | Égoutter et préparer la réaction de Maillard]
+- Sortir les sacs du bain d'eau avec une #pince de cuisine{}.
+- Ouvrir les sacs et déposer les faux-filets sur une assiette recouverte de #papier absorbant{}.
+- Éponger minutieusement toutes les faces de la viande : une humidité résiduelle transformerait la saisie en cuisson vapeur et empêcherait la caramélisation croustillante des protéines.
+- Récupérer les sucs concentrés restant au fond du sac pour enrichir une sauce d'accompagnement.
+
+[sear-finish | Saisie éclair au beurre moussant]
+- Chauffer une #poêle en fonte{} sur feu très vif avec l'@huile d'olive{1 c. à soupe} jusqu'à ce qu'un léger filet de fumée apparaisse.
+- Déposer les faux-filets dans la poêle fumante et saisir vigoureusement pendant ~{45 s} sans y toucher.
+- Retourner la viande avec la #pince de cuisine{}, puis ajouter immédiatement le @beurre{40 g}, le reste du @thym{2 brins, frais} et la dernière @gousses d'ail{1 pièce, écrasée}.
+- Pencher légèrement la poêle et arroser généreusement les steaks avec le beurre chaud moussant aux arômes de noisette pendant ~{45 s}.
+- Retirer immédiatement du feu : la viande étant déjà parfaitement chaude et cuite à cœur, le temps en poêle doit rester strictement inférieur à 2 minutes pour ne pas créer de zone grise en périphérie.
+- Trancher en biseaux épais, dresser sur assiettes chaudes et saupoudrer de @fleur de sel{2 pincées}.

@@ -1,0 +1,77 @@
+---
+title: Pavé de saumon mi-cuit confit à l'aneth & huile d'olive
+portions: 2
+prep_time: 10 min
+total_time: 50 min
+spiciness: 0
+description: "Pavés de saumon à la texture nacrée et fondante confits sous vide à 48°C à l'huile d'olive vierge, citron et aneth."
+tags: [saumon, poisson, sous-vide, basse température, aneth, sain, sans gluten]
+source: https://anovaculinary.com/pages/recipes
+author: Anova Culinary Team & CookiGram
+appliances:
+  sous_vide:
+  - anova_precision_cooker
+required_equipment:
+  - Thermoplongeur sous-vide (Anova ou équivalent)
+  - Sacs sous-vide de qualité alimentaire
+  - Spatule délicate ou spatule à poisson
+  - Planche à découper
+  - Couteau de chef
+scaling:
+  enabled: true
+  min: 2
+  max: 6
+  step: 2
+flavors:
+  pairing: [riz basmati, asperges vertes, sauce hollandaise, vin blanc minéral]
+  notes: [soyeux, anisé, frais, citronné, iodé]
+  harmony: "À 48°C, les protéines du saumon se détendent sans expulser l'albumine blanche, préservant une chair translucide et fondante au palais."
+  tips: "Ne jamais dépasser 50°C pour un pavé de saumon : au-delà, les fibres se contractent et expulsent les jus gras naturels sous forme de dépôts blanchâtres."
+image: images/saumon-confit-sous-vide.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: CC-BY-SA-4.0
+image_generation:
+  prompt_file: image-prompts/saumon-confit-sous-vide.md
+variants:
+- id: sous-vide
+  name: Thermoplongeur Anova (Bain régulé à 48°C)
+  description: Cuisson ultra-douce à 48°C pendant 40 min avec huile d'olive et aneth pour une texture mi-cuite fondante comme du beurre.
+  default: true
+- id: four-doux
+  name: Four traditionnel à basse température (Sans robot)
+  description: Cuisson douce au four à 80°C dans un plat huilé avec bain-marie d'eau chaude pendant 25 min.
+  prep_time: 10 min
+  total_time: 35 min
+  steps:
+    replace:
+      prep-and-bag: |
+        [prep-oven | Disposer le poisson dans le plat à four]
+        - Préchauffer le four traditionnel à ^{80 C} en chaleur statique et placer un plat rempli d'eau chaude sur la sole pour créer une atmosphère humide.
+        - Éponger les @pavés de saumon{2 pièces, frais de 150 g avec la peau} et les disposer côté peau vers le bas dans un #plat à gratin{} préalablement huilé.
+        - Arroser chaque pavé avec l'@huile d'olive{2 c. à soupe}, le @jus de citron{1 c. à soupe}, parsemer du @zeste de citron{1 c. à café}, de l'@aneth{4 brins, frais ciselés}, du @sel{1 c. à café, fin} et du @poivre{1 pincée}.
+      sous-vide-waterbath: |
+        [cook-oven-gentle | Cuisson lente et douce au four]
+        - Enfourner à mi-hauteur à ^{80 C} pendant ~{25 min}.
+        - Vérifier la texture au doigt : la chair doit être tiède et floconneuse sans aucune trace d'albumine blanche à la surface.
+---
+[prep-and-bag | Préparer et ensacher le saumon délicatement]
+- Remplir un bac ou une marmite d'eau tiède et fixer le #thermoplongeur{}. Programmer la température à ^{48 C} pour une texture mi-cuite soyeuse (ou 50°C pour une chair plus ferme).
+- Éponger délicatement les @pavés de saumon{2 pièces, frais de 150 g avec la peau} à l'aide de papier absorbant.
+- Assaisonner la chair avec le @sel{1 c. à café, fin} et le @poivre{1 pincée}.
+- Glisser soigneusement chaque pavé à plat dans un #sac sous vide{}, sans les superposer.
+- Ajouter dans le sac l'@huile d'olive{2 c. à soupe}, le @jus de citron{1 c. à soupe}, le @zeste de citron{1 c. à café} râpé et les brins d'@aneth{4 brins, frais ciselés}.
+- Sceller délicatement le sac avec une #machine sous vide{} en veillant à ne pas écraser la chair délicate (la méthode d'immersion progressive est idéale pour les poissons fragiles).
+
+[sous-vide-waterbath | Confire le saumon au bain régulé]
+- Lorsque l'eau atteint précisément ^{48 C}, immerger le sac dans le bain.
+- Laisser confire pendant ~{40 min} à ^{48 C}.
+- La chair s'attendrit tout en conservant sa couleur corail brillante et ses oméga-3 essentiels.
+
+[plating | Dressage et finition à la fleur de sel]
+- Retirer le sac de l'eau à l'aide d'une pince délicate et ouvrir le sac avec des ciseaux.
+- Glisser une #spatule{} large sous chaque pavé pour le soulever en douceur sans casser la chair.
+- Déposer les pavés de saumon dans des assiettes creuses chaudes.
+- Napper la chair avec l'huile parfumée au citron et à l'aneth restante au fond du sac.
+- Parsemer de @fleur de sel{2 pincées} au moment de servir.

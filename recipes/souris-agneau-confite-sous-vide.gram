@@ -1,0 +1,85 @@
+---
+title: Souris d'agneau confite 24h au romarin & ail en chemise
+portions: 4
+prep_time: 20 min
+total_time: 24 h 30 min
+spiciness: 0
+description: "Souris d'agneau ultra-fondantes confites 24h sous vide à 68°C au romarin et ail, laquées de leur jus de cuisson réduit."
+tags: [agneau, souris d'agneau, sous-vide, basse température, confit, fête, mijoté]
+source: https://anovaculinary.com/pages/recipes
+author: Pierre Cousin & CookiGram
+appliances:
+  sous_vide:
+  - anova_precision_cooker
+required_equipment:
+  - Thermoplongeur sous-vide (Anova ou équivalent)
+  - Sacs sous-vide renforcés résistant à la cuisson longue
+  - Grande poêle ou cocotte
+  - Plat à rôtir allant au four
+  - Petite casserole
+  - Pince de cuisine
+scaling:
+  enabled: true
+  min: 2
+  max: 6
+  step: 2
+flavors:
+  pairing: [purée de pommes de terre au beurre, polenta crémeuse, haricots tarbais, vin rouge charpenté]
+  notes: [gélatineux, caramélisé, résineux, confit, fondant]
+  harmony: "En 24 heures à 68°C, le collagène coriace autour de l'os se dissout intégralement en une gélatine succulente qui nourrit la viande de l'intérieur."
+  tips: "Après 24h de bain, récupérer tout le liquide accumulé dans les sachets : c'est un bouillon ultra-concentré en gélatine naturelle qu'il suffit de réduire 8 minutes à feu vif pour obtenir un jus de rôti miroitant."
+image: images/souris-agneau-confite-sous-vide.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: CC-BY-SA-4.0
+image_generation:
+  prompt_file: image-prompts/souris-agneau-confite-sous-vide.md
+variants:
+- id: sous-vide
+  name: Thermoplongeur Anova (Confit 24h à 68°C)
+  description: Cuisson longue marathon de 24 h à 68°C pour un fondant absolu qui se détache de l'os à la cuillère, puis glaçage au four.
+  default: true
+- id: cocotte-traditionnelle
+  name: Cocotte en fonte au four traditionnel (Sans robot)
+  description: Braisage classique en cocotte en fonte lutée au four à 140°C pendant 3 h 30 avec ail, herbes et fond de veau.
+  prep_time: 20 min
+  total_time: 3 h 50 min
+  steps:
+    replace:
+      prep-and-sear: |
+        [sear-cocotte-lamb | Saisir l'agneau en cocotte]
+        - Dans une #cocotte en fonte{}, chauffer l'@huile d'olive{2 c. à soupe} et le @beurre{15 g} à feu vif.
+        - Faire dorer les @souris d'agneau{4 pièces, env. 400 g chacune} sur toutes les faces pendant ~{8 min} pour caraméliser les sucs.
+        - Assaisonner avec le @sel{2 c. à café} et le @poivre{1 c. à café, du moulin}.
+        - Ajouter les @gousses d'ail{8 pièces, entières en chemise}, le @romarin{4 brins, frais} et le @thym{4 brins, frais}.
+      bath-24h: |
+        [braise-cocotte-oven | Braisage lent au four en cocotte]
+        - Verser le @fond de veau{150 g, bouillon préparé} dans la cocotte.
+        - Couvrir hermétiquement et enfourner à ^{140 C} pendant ~{3 h 30}.
+        - Arroser la viande toutes les heures avec son jus. En fin de cuisson, la chair doit être confite et fondante.
+---
+[prep-and-sear | Saisir les souris d'agneau et ensacher]
+- Remplir un bac ou récipient adapté de grand volume d'eau et fixer le #thermoplongeur{}. Programmer à ^{68 C} (couvrir le bac pour limiter l'évaporation sur 24 heures).
+- Faire chauffer l'@huile d'olive{2 c. à soupe} et la moitié du @beurre{15 g} dans une #grande poêle{} à feu vif.
+- Saisir les @souris d'agneau{4 pièces, env. 400 g chacune} pendant ~{6 min} en les tournant régulièrement avec une #pince de cuisine{} pour bien dorer chaque face.
+- Saler et poivrer avec le @sel{2 c. à café} et le @poivre{1 c. à café, du moulin}.
+- Répartir les souris dans des #sacs sous vide{} renforcés (deux souris par sachet) avec les @gousses d'ail{8 pièces, entières en chemise}, le @romarin{4 brins, frais} et le @thym{4 brins, frais}.
+- Faire le vide et sceller hermétiquement à la machine sous vide.
+
+[bath-24h | Cuisson marathon sous vide pendant 24 heures]
+- Immerger complètement les sachets dans le bain d'eau stabilisé à ^{68 C}.
+- Laisser confire pendant ~{24 h} à ^{68 C}.
+- Durant cette lente infusion sans aucune perte de vapeur, le collagène se transforme en gélatine soyeuse et la chair devient d'une tendreté incomparable.
+
+[reduce-sauce | Réduction du jus d'agneau concentré]
+- Sortir les sachets du bain d'eau. Couper un coin de chaque sac et verser l'intégralité du précieux jus de cuisson dans une #petite casserole{}.
+- Ajouter le @fond de veau{150 g, bouillon préparé} et faire réduire à feu vif pendant ~{8 min} jusqu'à consistance de sauce sirupeuse qui nappe généreusement la cuillère.
+- Monter la sauce hors du feu avec le reste du @beurre{15 g} bien froid.
+
+[glaze-oven | Glaçage miroitant au four sous le gril]
+- Préchauffer le gril du four à ^{220 C}.
+- Déposer délicatement les souris d'agneau et les gousses d'ail confites dans un #plat à rôtir{}.
+- Napper abondamment la viande avec plusieurs cuillères de jus d'agneau réduit.
+- Enfourner sous le gril pendant ~{6 min} en arrosant deux fois pour obtenir une croûte caramélisée et laquée.
+- Servir les souris d'agneau bien chaudes accompagnées de leur jus nappant et de purée maison.

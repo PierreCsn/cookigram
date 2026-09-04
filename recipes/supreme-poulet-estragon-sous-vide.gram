@@ -1,0 +1,86 @@
+---
+title: Suprême de poulet ultra-fondant à l'estragon & beurre citronné
+portions: 4
+prep_time: 15 min
+total_time: 1 h 35 min
+spiciness: 0
+description: "Suprêmes de poulet fermier ultra-moelleux cuits sous vide à 64°C, nappés d'un beurre émulsionné au citron et estragon."
+tags: [volaille, poulet, sous-vide, basse température, estragon, gastronomique, bistrot]
+source: https://anovaculinary.com/pages/recipes
+author: Pierre Cousin & CookiGram
+appliances:
+  sous_vide:
+  - anova_precision_cooker
+required_equipment:
+  - Thermoplongeur sous-vide (Anova ou équivalent)
+  - Sacs sous-vide pour cuisson
+  - Grande poêle ou sauteuse
+  - Couteau de chef
+  - Planche à découper
+  - Petite casserole
+scaling:
+  enabled: true
+  min: 2
+  max: 8
+  step: 2
+flavors:
+  pairing: [tagliatelles fraîches, riz pilaf, carottes glacées, vin blanc de Bourgogne]
+  notes: [herbacé, anisé, beurré, acidulé, juteux]
+  harmony: "L'estragon frais infuse son arôme poivré et anisé au cœur de la chair de volaille tout au long de la cuisson douce à 64°C."
+  tips: "La température de 64°C est la frontière d'or pour le blanc de volaille : elle pasteurise totalement la viande selon les tables HACCP de Douglas Baldwin tout en préservant 100% du jus cellulaire."
+image: images/supreme-poulet-estragon-sous-vide.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: CC-BY-SA-4.0
+image_generation:
+  prompt_file: image-prompts/supreme-poulet-estragon-sous-vide.md
+variants:
+- id: sous-vide
+  name: Thermoplongeur Anova (Bain régulé à 64°C)
+  description: Cuisson sous vide régulée à 64°C pendant 1 h 15 pour une volaille gorgée de jus, puis coloration dorée vive en poêle.
+  default: true
+- id: poele-traditionnelle
+  name: Poêle traditionnelle sous couvercle (Sans robot)
+  description: Cuisson poêlée classique douce 15 min sous couvercle avec le beurre, le citron et l'estragon frais.
+  prep_time: 15 min
+  total_time: 25 min
+  steps:
+    replace:
+      prep-chicken: |
+        [prep-pan-chicken | Assaisonner les suprêmes]
+        - Assaisonner les @suprêmes de poulet{4 pièces, fermiers de 160 g chacun} sur chaque face avec le @sel{1.5 c. à café} et le @poivre{0.5 c. à café}.
+      bath-chicken: |
+        [cook-pan-chicken | Cuire à la poêle et monter la sauce]
+        - Faire chauffer l'@huile d'olive{1 c. à soupe} et la moitié du @beurre{20 g} dans une #grande poêle{} à feu moyen.
+        - Faire dorer les suprêmes ~{3 min} par face jusqu'à jolie coloration dorée.
+        - Baisser le feu au minimum, couvrir la poêle et laisser cuire doucement à l'étouffée pendant ~{10 min}.
+        - Débarrasser les suprêmes sur une assiette et couvrir de papier alu.
+        - Dans la même poêle, ajouter le @jus de citron{1 c. à soupe}, le @zeste de citron{0.5 c. à café, râpé}, la @crème liquide{50 g, fleurette entière} et l'@estragon{4 brins, feuilles fraîches ciselées}.
+        - Laisser réduire ~{2 min} à feu doux puis incorporer le reste du @beurre{20 g} bien froid en fouettant pour napper la viande.
+---
+[prep-chicken | Assaisonner et conditionner la volaille]
+- Remplir un bac ou une grande casserole d'eau et fixer le #thermoplongeur{}. Régler la température à ^{64 C}.
+- Éponger les @suprêmes de poulet{4 pièces, fermiers de 160 g chacun} avec du papier absorbant.
+- Frotter uniformément les morceaux avec le @sel{1.5 c. à café} et le @poivre{0.5 c. à café}.
+- Glisser deux suprêmes par #sac sous vide{} en veillant à les placer bien à plat côte à côte.
+- Ajouter dans chaque sac l'@huile d'olive{1 c. à soupe} répartie et la moitié de l'@estragon{2 brins, feuilles fraîches ciselées}.
+- Mettre sous vide et sceller les sacs avec la #machine sous vide{}.
+
+[bath-chicken | Cuisson sous vide au thermoplongeur]
+- Placer les sacs dans le bain d'eau à ^{64 C} en s'assurant qu'ils sont totalement immergés.
+- Cuire pendant ~{1 h 15} à ^{64 C}.
+- Grâce à cette température précise, les protéines musculaires ne se recroquevillent pas et aucun jus n'est chassé de la viande.
+
+[sear-chicken | Coloration express au beurre noisette]
+- Sortir les sacs du bain d'eau. Récupérer soigneusement tout le jus de cuisson dans une #petite casserole{}.
+- Bien essuyer les blancs de poulet avec du papier absorbant.
+- Faire mousser la moitié du @beurre{20 g} dans une #grande poêle{} bien chaude.
+- Saisir les suprêmes de poulet pendant ~{1 min} sur chaque face, juste le temps d'obtenir un blond doré appétissant sans poursuivre la cuisson à cœur.
+- Réserver les suprêmes sur une planche à découper tiède.
+
+[sauce-estragon | Émulsion de la sauce citronnée à l'estragon]
+- Porter le jus de poulet réservé dans la #petite casserole{} à frémissement avec le @jus de citron{1 c. à soupe} et le @zeste de citron{0.5 c. à café, râpé}.
+- Ajouter la @crème liquide{50 g, fleurette entière} et laisser réduire ~{2 min} pour que la texture nappe la cuillère.
+- Hors du feu, incorporer le reste du @beurre{20 g} bien froid en fouettant vivement pour lier la sauce, puis ajouter le reste d'@estragon{2 brins, feuilles fraîches ciselées}.
+- Trancher les suprêmes de poulet en épaisses aiguillettes, dresser en éventail et napper de sauce émulsionnée onctueuse.
