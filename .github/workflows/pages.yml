@@ -22,11 +22,16 @@ jobs:
         with:
           ref: ${{ github.event_name == 'workflow_dispatch' && github.sha || github.event.workflow_run.head_sha }}
 
+      - name: Read pinned Core SHA
+        id: core-ref
+        run: echo "sha=$(cat .core-version | tr -d '[:space:]')" >> $GITHUB_OUTPUT
+
       - name: Checkout CookiGram Core Engine (Private)
         uses: actions/checkout@v4
         with:
           repository: PierreCsn/cookigram-core
           ssh-key: ${{ secrets.CORE_SSH_KEY }}
+          ref: ${{ steps.core-ref.outputs.sha }}
           path: core
 
       - name: Set up Python 3.12
@@ -42,6 +47,19 @@ jobs:
 
       - name: Build Static Site & PWA
         run: python -m generator.build --content-dir . --output _site
+
+      - name: Write build provenance
+        run: |
+          python -c "
+          import json, datetime
+          data = {
+              'content_sha': '${{ github.sha }}',
+              'core_sha': '${{ steps.core-ref.outputs.sha }}',
+              'built_at': datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          with open('_site/provenance.json', 'w') as f:
+              json.dump(data, f, indent=2)
+          "
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
