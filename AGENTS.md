@@ -14,6 +14,20 @@ Pour une efficacité maximale et une économie drastique de temps et de tokens :
 
 ---
 
+## 🍲 Contribution Culinaire & Importation de Recettes (Agents & Tiers)
+
+Si votre mission consiste à **ajouter, adapter, traduire ou vérifier une recette** :
+1. **Pas de verrou dev requis** : Vous n'avez pas besoin de claim dans `claims.json` ni d'exécuter la suite Playwright/E2E.
+2. **Guide impératif** : Consultez le skill culinaire universel [`.agents/skills/import-recipe-gram/SKILL.md`](.agents/skills/import-recipe-gram/SKILL.md).
+3. **Validation atomique instantanée (< 2 s)** :
+   ```bash
+   python -m generator.recipe_check recipes/<slug>.gram
+   ```
+4. **Illustration d'attente autorisée** : Si aucune image photoréaliste n'est générée immédiatement, déclarez `image: images/placeholder-recipe.jpg` et consignez le prompt dans `image-prompts/<slug>.md`.
+5. **Soumission** : Travaillez sur une branche isolée (`recipe/<slug>`) et ouvrez une Pull Request.
+
+---
+
 ## 1. Règle impérative : Versionnement Git systématique (Commit & Push)
 
 > **Règle d'or :** Tout travail achevé doit être systématiquement **gité, commité et poussé (`git push`)** avant de clore l'intervention. L'arbre de travail (`working tree`) doit être propre à la fin de chaque tâche.

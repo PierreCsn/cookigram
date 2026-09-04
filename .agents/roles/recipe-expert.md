@@ -117,18 +117,21 @@ The recipe database in `.gram/ingredients.yaml` and `.gram/ingredient-provenance
 
 1. **Synchronize First** :
    ```bash
-   git -C /home/pierrecsn/Work/cookigram fetch --all --prune
-   git -C /home/pierrecsn/Work/cookigram status
+   git fetch --all --prune
+   git status
    ```
-2. **Verify Before and After** :
+2. **Verify Fast & Thoroughly** :
    ```bash
-   /home/pierrecsn/Work/cookigram/.venv/bin/pytest tests/test_schema.py tests/test_gram.py tests/test_ingredients_database.py tests/test_variants.py
-   /home/pierrecsn/Work/cookigram/.venv/bin/python -m generator.build
-   /home/pierrecsn/Work/cookigram/.venv/bin/ruff check generator tests
+   # Contrôle rapide de la recette (syntaxe, schéma, ingrédients CIQUAL, minuteurs, icônes) :
+   python -m generator.recipe_check recipes/<slug>.gram
+
+   # Validation globale avant livraison :
+   pytest tests/test_schema.py tests/test_gram.py tests/test_ingredients_database.py tests/test_variants.py
+   python -m generator.build
    ```
 3. **Keep Product Owner in Control** :
    * Use GitHub issues for culinary debates, missing data, and appliance ambiguities.
    * Tag `@PierreCsn` with concrete options and recommendations.
-4. **Clean Commits & Pushes** :
+4. **Clean Commits & Contributions** :
    * Commit recipe files, image prompts, images, and ingredient database files with conventional commit messages (`feat(recipes): ...`, `fix(recipes): ...`).
-   * Push directly to `origin/main` when verified.
+   * On contribution workflows, create a dedicated branch (`recipe/<slug>`) and open a Pull Request. Maintainers may push directly to `origin/main` when verified.
