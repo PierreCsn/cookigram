@@ -6,7 +6,7 @@
 
 ## 🚦 Tâches en cours (Claims actifs)
 
-* **Aucun claim actif.** Le backlog est disponible pour le Jalon 3.
+* **Issue #102 / PR #104** (`feat/image-caption-provenance`) : Simplification sobre des mentions d'illustration (« Illustration originale CookiGram ») et documentation de la séparation provenance interne / attribution publique.
 
 ---
 
@@ -30,7 +30,7 @@
   - **Issue #99** : Cuisson sous-vide & basse température (Thermodynamique & Tables Baldwin).
 * **🎨 Améliorations UX, Design & Imports Transverses** :
   - **Issue #101** : Clarification de la redondance du matériel (suppression du doublon sur fiche recette).
-  - **Issue #102** : Simplification sobre des mentions d'illustration (« Illustration originale CookiGram »).
+  - **Issue #102** : Simplification sobre des mentions d'illustration (« Illustration originale CookiGram ») — *En cours de finalisation (PR #104)*.
   - **Issue #103** : Support et conversion des mesures américaines et impériales (cups, oz, lbs, °F, sticks).
 
 ---

@@ -110,9 +110,13 @@ python -m http.server 8000 -d _site
 ---
 
 ## Règles pour les images et licences
+
+CookiGram sépare la **provenance technique interne** (dans le dépôt et le frontmatter) et l'**attribution publique** sur la fiche recette (décision issue #102) :
+- **Illustrations originales CookiGram (internes)** : Déclarez `image_generation` (modèle, date, prompt_file) et `image_credit` dans le frontmatter pour la traçabilité. L'interface publique affiche sobrement « Illustration originale CookiGram ».
+- **Photographies réelles de contributeurs externes** : Renseignez `image_credit` (auteur, source, licence). L'interface publique affiche « Photo : [Auteur] · Licence [Licence] ».
 - Ne soumettez jamais d'images sans mention d'auteur et licence explicite.
-- Privilégiez les formats compressés JPEG ou WebP, dimensions recommandées ~1200x800px, poids inférieur à 200 Ko.
-- Renseignez systématiquement le bloc `image_credit` dans le frontmatter.
+- Privilégiez les formats compressés WebP ou JPEG (16:9, ~1280x720px, poids inférieur à 200 Ko).
+
 
 ---
 

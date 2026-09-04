@@ -84,6 +84,13 @@ contents are validated as published recipe images. Keep `generated_at` quoted:
 an unquoted ISO date is converted by YAML into a date object that cannot be
 exported to CookiGram's JSON catalogue.
 
+### Public rendering vs internal provenance
+
+In accordance with product decision #102:
+- **Internal provenance & auditability**: The `.gram` frontmatter retains technical generation metadata (`image_generation` with provider, model, generated_at, prompt_file) and the prompt file in `image-prompts/`.
+- **Public recipe page rendering**: The UI automatically displays the sober signature **`Illustration originale CookiGram`** whenever `image_generation` is present. Third-party provider terms or legalistic links are never shown in the public interface.
+- **External photography**: If real third-party photography is used (without `image_generation`), `image_credit` fields (`author`, `source`, `license`, `license_url`) are rendered publicly as `Photo : <author> · Licence <license>`.
+
 ## Validate
 
 Check the final dimensions, aspect ratio and file weight. From the repository
