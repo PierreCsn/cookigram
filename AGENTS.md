@@ -1,120 +1,90 @@
-# Directives et règles du projet CookiGram 🍳
+# Directives et règles du dépôt Recettes CookiGram 🍳
 
-Ce document définit les règles impératives que tout agent d'assistance ou développeur doit respecter dans ce dépôt.
-
-## Chargement persistant du profil d'agent & Registre vivant
-
-Ce fichier est le point d'entrée commun du dépôt pour Codex, OpenCode et Gemini Code.
-Pour une efficacité maximale et une économie drastique de temps et de tokens :
-
-1. Consulter en priorité absolue [`.agents/STATUS.md`](.agents/STATUS.md) et [`.agents/claims.json`](.agents/claims.json) pour connaître l'état vivant du projet et les claims en cours.
-2. Respecter scrupuleusement la règle de verrouillage anti-doublon [`.agents/rules/task-claiming.md`](.agents/rules/task-claiming.md) : **interdiction absolue de coder sans claim préalable ni validation officielle**.
-3. Pour le profil complet du développeur : [`.agents/roles/senior-developer.md`](.agents/roles/senior-developer.md).
-4. [`PRODUCT_PRINCIPLES.md`](PRODUCT_PRINCIPLES.md) et les règles spécialisées dans [`.agents/rules/`](.agents/rules/).
-5. Règles d'orchestration tri-agents (AGY, OpenCode, Codex) et frugalité de quotas : [`.agents/rules/token-frugality.md`](.agents/rules/token-frugality.md) et [`.agents/rules/multi-agent-orchestration.md`](.agents/rules/multi-agent-orchestration.md).
+> **Dépôt officiel :** https://github.com/PierreCsn/cookigram  
+> **Rôle du dépôt :** Carnet de recettes culinaires Gram, photographies, icônes et données nutritionnelles (PDR-0008).  
+> **Dépôt moteur :** Le moteur de génération statique, la PWA, la CLI et la suite de tests système résident dans [`PierreCsn/cookigram-core`](https://github.com/PierreCsn/cookigram-core).
 
 ---
 
-## 🍲 Contribution Culinaire & Importation de Recettes (Agents & Tiers)
+## 1. Chargement & Mission Fondamentale
 
-Si votre mission consiste à **ajouter, adapter, traduire ou vérifier une recette** :
-1. **Pas de verrou dev requis** : Vous n'avez pas besoin de claim dans `claims.json` ni d'exécuter la suite Playwright/E2E.
-2. **Guide impératif** : Consultez le skill culinaire universel [`.agents/skills/import-recipe-gram/SKILL.md`](.agents/skills/import-recipe-gram/SKILL.md).
-3. **Validation atomique instantanée (< 2 s)** :
+Ce fichier est le point d'entrée pour tout agent d'assistance ou contributeur culinaire travaillant sur le corpus de recettes :
+* **Découplage architectural (PDR-0008)** : Ce dépôt est purement axé sur le contenu culinaire, les images et les assets visuels. Aucun code de moteur ni de serveur n'est développé ici.
+* **Le Product Owner (@PierreCsn) est l'utilisateur n°1** : CookiGram est conçu pour une exécution parfaite sur le plan de travail en cuisine réelle.
+* **La recette est la source de vérité** : CookiGram aide à exécuter une recette sans créer silencieusement une autre recette.
+
+---
+
+## 2. 🍲 Contribution Culinaire & Standard Gram
+
+Toute contribution de recette doit respecter scrupuleusement les standards du langage `.gram` :
+
+### A. Hiérarchie & Granularité atomique (Issue #111) :
+1. **Hiérarchie à deux niveaux :**
+   * L'Étape `[Macro-action]` regroupe une phase logique de la recette (ex: `[Préparer la marinade]`, `[Cuisson des aromates]`).
+   * Les sous-étapes `- ` sont les unités atomiques d'exécution sur le plan de travail.
+2. **Atomisme opérationnel (1 geste ou 1 réglage machine par puce) :**
+   * Ne jamais mélanger une commande robot avec un geste manuel dans la même puce. Hacher est une puce. Racler les parois à la spatule est une puce distincte. Cuire est une puce distincte.
+3. **Granularité des ingrédients (Max 2 à 3 éléments par puce) :**
+   * Regrouper les ajouts par familles logiques au moment de verser. Jamais de bloc de 5+ ingrédients d'un coup.
+4. **Mise en place préalable :**
+   * Les découpes préalables doivent être précisées dans l'ingrédient (ex: `@oignons{150 g, coupés en quatre}`).
+5. **Checkpoints sensoriels observables :**
+   * Indiquer systématiquement l'état visuel ou olfactif d'arrêt (« jusqu'à ce que les oignons soient translucides », « la sauce doit napper la cuillère », « belle coloration dorée »).
+
+### B. Matériel & Règle Thermomix TM31 (Issue #40) :
+* Le Thermomix TM31 ne possède pas de palier à 120°C (sa molette passe de 100°C à Varoma).
+* Si une recette prescrit une cuisson à `^{120 C}`, elle doit impérativement restreindre sa compatibilité Thermomix à :
+  ```yaml
+  appliances:
+    thermomix:
+    - TM5
+    - TM6
+    - TM7
+  ```
+
+### C. Ingrédients & Provenance CIQUAL :
+* Tout ingrédient `@nom{quantité}` doit être répertorié dans `.gram/ingredients.yaml` avec son nom canonique ou alias.
+* Toute nouvelle entrée d'ingrédient doit être documentée dans `.gram/ingredient-provenance.yaml`.
+
+---
+
+## 3. Validation & Quality Gate Culinaire
+
+Avant de pousser toute modification de recette :
+
+1. **Validation atomique (< 2 s)** (si l'environnement core est disponible) :
    ```bash
    python -m generator.recipe_check recipes/<slug>.gram
    ```
-4. **Illustration d'attente autorisée** : Si aucune image photoréaliste n'est générée immédiatement, déclarez `image: images/placeholder-recipe.jpg` et consignez le prompt dans `image-prompts/<slug>.md`.
-5. **Soumission** : Travaillez sur une branche isolée (`recipe/<slug>`) et ouvrez une Pull Request.
+   Pour valider l'ensemble du carnet :
+   ```bash
+   python -m generator.recipe_check
+   ```
+
+2. **Validation YAML syntaxique de secours** :
+   ```bash
+   python -c "import yaml, glob; [yaml.safe_load(open(f, encoding='utf-8')) for f in glob.glob('.gram/*.yaml')]"
+   ```
+
+3. **Photographies & Prompts** :
+   * Image finale : placer l'illustration sous `static/images/<slug>.jpg` (ou `.webp`).
+   * Si aucune image n'est disponible immédiatement, utiliser `image: images/placeholder-recipe.jpg` et consigner le prompt dans `image-prompts/<slug>.md`.
 
 ---
 
-## 1. Règle impérative : Versionnement Git systématique (Commit & Push)
+## 4. Procédure Git & Clôture de Tâche
 
-> **Règle d'or :** Tout travail achevé doit être systématiquement **gité, commité et poussé (`git push`)** avant de clore l'intervention. L'arbre de travail (`working tree`) doit être propre à la fin de chaque tâche.
-
-### Procédure de clôture de tâche obligatoire :
-
-> ⚡ **Économie de temps et de tokens :** Pendant la phase de développement itératif, n'exécutez que les tests ciblés du composant modifié (ex: `npm run test:unit` ou `pytest tests/test_cible.py`). La suite complète (`pytest` globale + `playwright e2e` qui dure 12-14 min) ne doit être lancée **qu'une seule fois**, lors de la validation finale avant commit/push.
-
-1. **Validation qualité préalable** :
-   * S'assurer que le linter Python et le formateur sont satisfaits : `ruff check generator tests` et `ruff format --check generator tests`.
-   * S'assurer que le type checking Python est satisfait : `mypy generator/`.
-   * S'assurer que le linter JavaScript est satisfait : `npm run lint`.
-   * S'assurer que la syntaxe JavaScript est valide : `node --check static/app.js`, `node --check static/sw.js` et `for f in static/js/modules/*.js; do node --check "$f"; done`.
-   * Exécuter la suite complète de tests Python : `pytest`.
-   * Exécuter la suite de tests unitaires et E2E JavaScript : `npm test` (`npm run test:unit && npm run test:e2e`).
-   * Vérifier que la génération du site statique s'exécute sans erreur : `python -m generator.build`.
-2. **Staging des modifications** :
-   * Vérifier les fichiers modifiés et non suivis avec `git status`.
-   * Ajouter tous les fichiers pertinents avec `git add <fichiers>`.
-   * Ne jamais commiter de fichiers temporaires, de caches ou de captures de test (respecter le `.gitignore`).
-3. **Commit explicite et descriptif** :
-   * Créer un commit avec un message structuré résumant clairement les fonctionnalités ajoutées ou les corrections apportées :
-     ```bash
-     git commit -m "Description claire et concise des modifications"
-     ```
-4. **Push immédiat** :
-   * Pousser systématiquement les commits sur la branche distante active :
-     ```bash
-     git push
-     ```
-5. **Vérification finale** :
-   * Exécuter `git status` pour confirmer que l'arbre de travail est propre (`nothing to commit, working tree clean`).
-
----
-
-## 2. Architecture et principes techniques
-
-* **Recettes `.gram`** :
-  * Syntaxe canonique conforme au langage Gram.
-  * Chaque ingrédient `@nom{quantité}` doit être référencé dans `.gram/ingredients.yaml` et documenté dans `.gram/ingredient-provenance.yaml`.
-  * Tolérance zéro sur les conversions nutritionnelles silencieuses ou imprécises.
-* **Frontend modulaire sans framework** :
-  * Modules JavaScript ES natifs dans `static/js/modules/` (chargés via `<script type="module">`).
-  * Chaque module doit exposer une fonction d'initialisation indépendante et tolérante à l'absence de son DOM.
-  * Styles CSS découpés par domaine dans `static/css/`, automatiquement concaténés lors du build via `generator/build.py` dans `output/assets/app.css`.
-  * Tests unitaires JavaScript dans `tests/frontend/*.test.js` utilisant le runner natif Node (`node --test`).
-* **PWA & Offline-First** :
-  * Le Service Worker précharge l'ensemble des recettes, images et assets.
-  * Toute modification d'asset ou d'image doit mettre à jour le hash de version du cache.
-* **Icônes d'ingrédients & Graphisme (Codex & Agents)** :
-  * Respecter impérativement la spécification [`.agents/rules/ingredient-icons.md`](.agents/rules/ingredient-icons.md).
-  * Style « spot illustration / sticker manga », optimisé pour l'affichage en 24×24 px et 32×32 px (silhouette identifiable, contours encrés nets, fond transparent).
-  * Affichage autorisé : liste d'ingrédients, modale de courses, bloc étape en Mode Cuisine. Interdit dans le corps de texte des étapes.
-
----
-
-## 3. Gouvernance produit et priorisation des tâches (Human-in-the-loop)
-
-* **Le Product Owner (@PierreCsn) est l'utilisateur n°1** :
-  * CookiGram est construit avant tout pour son expérience réelle en cuisine.
-  * Ses retours qualitatifs prévalent sur les métriques théoriques ou les dogmes conventionnels.
-* **Document de référence : [`PRODUCT_PRINCIPLES.md`](PRODUCT_PRINCIPLES.md)** :
-  * **Principe 1 — Cooking first** : La lisibilité et l'ergonomie en cuisine (plan de travail, mains sales/mouillées, cibles 44 px min, minuteurs accessibles, zéro chevauchement de la barre de navigation `.cook-nav`) ont la priorité absolue.
-  * **Principe 2 — Mobile & tablette first** : Le smartphone et la tablette tactile sont les scénarios d'usage primaires. Aucun débordement horizontal toléré (360 px, 390 px, 768 px).
-  * **Principe 3 — Simplicité & frugalité** : Aucun framework lourd côté client, JavaScript ES natif, CSS compartimenté, rapidité d'exécution.
-* **Ordre officiel de réalisation des tâches** :
-  * L'ordre des travaux est impérativement fixé par l'issue épinglée **[#35](https://github.com/PierreCsn/cookigram/issues/35)** et les **Jalons GitHub (Milestones)**.
-  * Tout développeur ou agent doit respecter strictement l'ordre des lots :
-    1. **Lot 1 — UX Cuisine & Ergonomie Mobile (P0/P1)** : issues #28, #29, #27 (**URGENCE ABSOLUE**)
-    2. **Lot 2 — SEO Critique & Indexation (P1)** : issues #15 (clos), #16 (clos), #20
-    3. **Lot 3 — Ergonomie & Fiche Recette (P1)** : issues #26, #30, #32, #31
-    4. **Lot 4 — SEO Avancé & Performance (P2)** : issues #33, #34, #17, #19, #18, #21, #22, #23, #24
-    5. **Lot 5 — Dette Technique & Socle (P3/P4)** : issues #8, #1
-  * **Interdiction de sauter un lot** pour travailler sur des améliorations secondaires tant que le lot en cours n'est pas soldé, testé et validé.
-
----
-
-## 4. Rôles et profils d'agents spécialisés
-
-Le projet CookiGram s'appuie sur une collaboration multi-agents. Les personas, directives opérationnelles et contraintes d'exécution propres à chaque rôle sont consignés dans le dossier [`.agents/roles/`](.agents/roles/) :
-
-* **Recipe Expert Agent** : [`recipe-expert.md`](.agents/roles/recipe-expert.md)
-  Directives pour l'autorité culinaire garantissant l'exactitude des recettes Gram, la taxonomie des ingrédients, la traçabilité nutritionnelle CIQUAL et la reproductibilité sur le plan de travail (cuisine robot et traditionnelle sans robot).
-
-* **Cooking Execution Expert Agent** : [`cooking-execution-expert.md`](.agents/roles/cooking-execution-expert.md)
-  Directives pour l'expert en assistance d'exécution culinaire garantissant la clarté et l'ergonomie du Mode Cuisine pas-à-pas sur le plan de travail, sans altération de la recette canonique (source de vérité).
-
-* **Senior Development Agent** : [`senior-developer.md`](.agents/roles/senior-developer.md)
-  Directives exhaustives pour l'ingénieur logiciel senior chargé d'implémenter les tâches approuvées, avec discipline Git/GitHub, validation mobile-first, respect absolu de la gouvernance et de la source de vérité Gram.
+1. **Travailler sur une branche dédiée** : `recipe/<slug>` ou `fix/<description>`.
+2. **Valider** : Exécuter le contrôle de conformité culinaire `generator.recipe_check`.
+3. **Stager & Commiter** :
+   ```bash
+   git add recipes/ .gram/ static/images/
+   git commit -m "feat(recipe): ajouter <titre de la recette> (#<issue>)"
+   ```
+4. **Pousser & Ouvrir la PR** :
+   ```bash
+   git push -u origin <branche>
+   gh pr create --repo PierreCsn/cookigram --title "..." --body "Closes #..."
+   ```
+5. **Propreté de l'arbre** : Vérifier `git status` pour garantir un arbre de travail 100% propre (`working tree clean`).
