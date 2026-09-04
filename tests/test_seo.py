@@ -258,6 +258,19 @@ def test_build_404_page_is_noindex_and_has_no_canonical(tmp_path: Path):
     assert '<meta name="description" content="Page introuvable sur CookiGram.">' in notfound_html
 
 
+def test_build_offline_page_is_noindex_and_excluded_from_sitemap(tmp_path: Path):
+    output_dir = tmp_path / "_site"
+    site_url = "https://custom.domain.com/cook"
+    build(output_dir, site_url=site_url)
+
+    offline_html = (output_dir / "offline.html").read_text(encoding="utf-8")
+    assert '<meta name="robots" content="noindex, follow">' in offline_html
+    assert '<link rel="canonical"' not in offline_html
+
+    sitemap_content = (output_dir / "sitemap.xml").read_text(encoding="utf-8")
+    assert "offline.html" not in sitemap_content
+
+
 def test_compute_similar_recipes_returns_deterministic_balanced_links():
     recipes = [parse_recipe(path) for path in sorted(Path("recipes").glob("*.gram"))]
     first = recipes[0]
