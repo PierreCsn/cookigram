@@ -38,7 +38,7 @@ jobs:
       - name: Install Core Engine & Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install ./core
+          pip install -e ./core
 
       - name: Build Static Site & PWA
         run: python -m generator.build --content-dir . --output _site
