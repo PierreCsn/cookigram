@@ -93,6 +93,37 @@ def _fit_meta(text: str) -> str:
     return candidate
 
 
+def build_recipe_seo_title(recipe: Recipe, max_length: int = 65) -> str:
+    """Build a SERP-calibrated <title>: plat, intention Thermomix, marque.
+
+    Order is preserved (dish name, Thermomix intent when relevant, CookiGram
+    brand) with smart word-boundary truncation using an ellipsis so the
+    rendered title never exceeds ``max_length`` characters.
+    """
+    base = " ".join(str(recipe.title or "").split())
+    suffix = " · CookiGram"
+    tmx_part = " au Thermomix" if is_thermomix_compatible(recipe) else ""
+    full = f"{base}{tmx_part}{suffix}"
+    if len(full) <= max_length:
+        return full
+
+    budget = max_length - len(tmx_part) - len(suffix) - 1  # 1 for "…"
+    budget = max(budget, 10)
+    if len(base) <= budget:
+        truncated = base
+    else:
+        cut = base[:budget]
+        if " " in cut:
+            cut = cut.rsplit(" ", 1)[0]
+        truncated = cut.rstrip(".,;:-–—&").rstrip()
+        # Avoid dangling single "&" or isolated letter left by word-boundary cut.
+        if truncated.endswith("&"):
+            truncated = truncated[:-1].rstrip(" ").rstrip(".,;:-–—").rstrip()
+        if not truncated:
+            truncated = base[:budget].rstrip()
+    return f"{truncated}…{tmx_part}{suffix}"
+
+
 # Tags that are too generic to convey thematic similarity; they must not
 # dominate the related-recipes scoring ("réconfort", "rapide", ...).
 GENERIC_TAGS = {"rapide", "réconfort", "traditionnel", "thermomix"}
