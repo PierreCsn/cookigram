@@ -30,6 +30,7 @@ required_equipment:
   - Thermomix TM31, TM5, TM6 ou TM7
   - Varoma avec plateau vapeur
   - Panier cuisson
+  - Spatule
 appliance_validation:
   TM31:
     status: human-tested
@@ -44,40 +45,46 @@ scaling:
 
 [Préparer le bol et le riz]
 - Verser l'@eau{800 g} et le @sel{1 c. à café, sur 1 1/2 c. à café au total} dans le #bol Thermomix{}.
-- Peser le @riz basmati{200 g} dans le #panier cuisson{}.
-- Insérer le panier cuisson dans le bol et fermer avec le couvercle.
+- Peser le @riz basmati{200 g} dans le #panier cuisson{}, puis le rincer à l'eau froide jusqu'à ce que l'eau s'écoule claire.
+- Insérer le panier cuisson dans le bol.
+- Fermer le bol avec son couvercle sans le gobelet doseur.
 
 [Préparer la volaille et les légumes au Varoma]
-- Déposer le @filet de poulet{400 g, sans peau, en morceaux de 2 cm} dans le #Varoma{}.
-- Assaisonner le poulet avec une partie du @poivre moulu{3 pincées, plus selon le goût}.
+- Déposer le @filet de poulet{400 g, sans peau, en morceaux de 2 cm} dans le #Varoma{} en veillant à ne pas obstruer toutes les fentes de vapeur.
+- Assaisonner le poulet avec le @poivre moulu{3 pincées, plus selon le goût}.
 - Poser le #plateau vapeur{} au-dessus de la viande.
-- Disposer le @poivron{130 g, en lanières} et la @courgette{130 g, en morceaux de 2 cm}.
-- Saler et poivrer légèrement les légumes, puis fermer avec le couvercle du Varoma.
+- Disposer le @poivron{130 g, épépiné et en lanières} et la @courgette{130 g, en rondelles de 1 cm}.
+- Fermer avec le couvercle du Varoma.
 
-[Lancer la cuisson vapeur] Poser l'ensemble Varoma sur le couvercle du bol.
-- Cuire ~{20 min} en mode Varoma, vitesse 4.
+[Cuire à la vapeur]
+- Poser l'ensemble Varoma fermé sur le couvercle du bol.
+- Cuire ~{20 min} à ^{Varoma} et vitesse 4, jusqu'à ce que les grains de riz soient tendres et que la volaille soit cuite à cœur.
 
 [Débarrasser et réserver au chaud]
-- Retirer prudemment l'ensemble Varoma et réserver la viande et les légumes.
+- Retirer prudemment l'ensemble Varoma et réserver la viande et les légumes au chaud sous le couvercle.
 - Extraire le panier cuisson à l'aide de la #spatule{} et garder le riz au chaud.
-- Vider le bouillon restant dans le bol.
+- Vider le bouillon de cuisson restant dans le bol.
 
 [Hacher les aromates]
 - Mettre l'@oignon{80 g, coupé en deux} et l'@ail{1 gousse} dans le bol.
 - Ajouter le @concentré de tomate{20 g} et l'@huile végétale{20 g}.
-- Hacher ~{3 sec} à vitesse 5.
-- Racler les parois du bol avec la spatule.
+- Poser le couvercle avec le #gobelet doseur{}.
+- Hacher ~{3 s} à vitesse 5 pour obtenir un hachis fin.
+- Racler les parois du bol à l'aide de la spatule pour recentrer les aromates vers le fond.
 
 [Faire revenir les aromates]
-- Faire revenir ~{3 min} à ^{120 C}, vitesse 1 sans le gobelet doseur.
+- Faire revenir ~{3 min} à ^{120 C} et vitesse 1 sans le gobelet doseur, jusqu'à ce que les oignons soient translucides et que le mélange exhale ses parfums.
 
 [Mijoter la sauce curry avec le poulet]
 - Ajouter dans le bol les morceaux de poulet cuits à la vapeur.
-- Verser le @curry en poudre{1 c. à soupe}, le @lait de coco{270 g} et le @miel{20 g, facultatif}.
-- Ajouter le reste du sel et du poivre.
-- Cuire ~{10 min} à ^{95 C}, sens inverse, vitesse mijotage.
+- Verser le @lait de coco{270 g}.
+- Ajouter le @curry en poudre{1 c. à soupe} et le @miel{20 g, facultatif}.
+- Ajouter le @sel{1/2 c. à café, sur 1 1/2 c. à café au total}.
+- Poser le couvercle avec le gobelet doseur.
+- Cuire ~{10 min} à ^{95 C}, sens inverse et vitesse mijotage, jusqu'à ce que la sauce devienne onctueuse et nappe délicatement les morceaux de volaille.
 
 [Dresser et servir]
-- Répartir le riz basmati et les légumes vapeur dans des assiettes creuses.
-- Napper généreusement de sauce curry et de morceaux de poulet.
-- Parsemer de @coriandre fraîche{selon le goût} ciselée et servir bien chaud.
+- Répartir le riz basmati et les légumes vapeur croquants dans des assiettes creuses.
+- Napper généreusement de sauce curry onctueuse et de morceaux de poulet tendres.
+- Parsemer de @coriandre fraîche{selon le goût, ciselée} et servir immédiatement bien chaud.
+
