@@ -1,40 +1,23 @@
-# Guide de contribution à CookiGram 🍳
+# Guide de Contribution à CookiGram 🍳
 
 Merci de vous intéresser à CookiGram ! Ce projet vise à proposer un carnet de recettes moderne, résilient, offline-first et respectueux de la vie privée, propulsé par le langage culinaire [Gram](https://gram-lang.org).
 
 ---
 
-## Architecture du projet
+## 1. Deux Dépôts Découplés (PDR-0008)
 
-```
-cookigram/
-├── recipes/                  # Recettes au format .gram
-├── generator/                # Générateur statique Python
-│   ├── gram.py              # Parseur et modèle canonique
-│   ├── build.py             # Script de génération du site
-│   ├── nutrition.py         # Calculs caloriques & macronutriments
-│   ├── shopping.py          # Évaluation intelligente de liste de courses
-│   ├── plugins.py           # Chargeur d'extensions
-│   └── models.py            # Dataclasses
-├── templates/                # Templates HTML (Jinja2)
-├── static/                   # Assets Web (CSS, JS, Service Worker, images)
-│   ├── app.css              # Styles (Light / Dark, PWA, mobile-friendly)
-│   ├── app.js               # Logique PWA, commande vocale, Keep, synthèse vocale
-│   ├── sw.js                # Service Worker pour usage 100% hors-ligne
-│   └── images/              # Photographies optimisées (< 200 Ko)
-├── plugins/                  # Plugins de recettes (ex: thermomix_settings.py)
-├── .gram/                    # Base de données nutritionnelle CIQUAL
-│   ├── ingredients.yaml     # Valeurs nutritionnelles (100 g)
-│   └── ingredient-provenance.yaml # Source et niveau de confiance
-└── tests/                    # Tests unitaires et d'intégration (Pytest)
-```
+L'écosystème CookiGram s'articule en deux dépôts :
+* **`PierreCsn/cookigram` (Ce dépôt — Public) :** Le carnet de recettes vivant, les photographies culinaires et la base de données nutritionnelle CIQUAL. C'est ici que sont accueillies toutes les contributions de recettes (par des humains ou des agents d'IA).
+* **`PierreCsn/cookigram-core` (Privé) :** Le moteur logiciel Kitchen OS, l'application frontend PWA, les solveurs d'ordonnancement (CP-SAT) et la suite de tests E2E.
 
 ---
 
-## Ajouter ou modifier une recette
+## 2. Contribuer une Recette (Workflow en 3 étapes)
 
-### 1. Fichier `.gram`
-Placez votre recette dans `recipes/<slug>.gram` avec un frontmatter YAML :
+La contribution d'une recette est rapide, déterministe et validée en moins de 2 secondes.
+
+### Étape 1 : Créer le fichier `.gram` dans `recipes/`
+Placez votre recette dans `recipes/<slug>.gram` avec son frontmatter YAML obligatoire :
 
 ```yaml
 ---
@@ -42,91 +25,52 @@ title: Risotto crémeux aux champignons
 portions: 4
 prep_time: 15 min
 total_time: 40 min
-tags: [italien, réconfort, automne]
-source: https://example.com/ma-recette
-author: Nom de l'auteur
+spiciness: 0
 scaling:
-  enabled: true
-  min_portions: 2
-  max_portions: 8
-  step: 1
-  note: Les temps de cuisson restent inchangés.
-image: images/mon-risotto.jpg
-image_credit:
-  author: Photographe
-  source: https://example.com/photo
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0/
-  modifications: Recadrée et optimisée pour le web.
----
-```
-
-### 2. Instructions et sous-étapes
-Chaque étape commence par un paragraphe décrivant l'action :
-```
-[Râper le parmesan]
-- Mettre le @parmesan{60 g, coupé en morceaux} dans le #bol Thermomix{}.
-- Pulvériser ~{10 s} à vitesse 10.
-- Réserver dans un bol.
-```
-
-Balises supportées :
-- `@nom de l'ingrédient{quantité, préparation}`
-- `#équipement{}`
-- `~{durée}` (ex: `~{15 min}`, `~{30 s}`)
-- `^{température}` (ex: `^{180 C}`, `^{100 C}`)
-- `- sous-étape` (crée une sous-étape cochable en mode pas-à-pas)
-
-### 3. Référencement des ingrédients (Nutrition CIQUAL)
-Chaque ingrédient déclaré avec `@nom` doit être documenté dans `.gram/ingredients.yaml` et `.gram/ingredient-provenance.yaml` pour alimenter le calcul nutritionnel et la liste de courses.
-
+  default_portions: 4
+  min_portions: 1
+  max_portions: 12
+tags: [italien, réconfort, automne]
+source: https://example.com/recette
+author: Chef Pierre
+description: Un risotto fondant parfumé aux champignons de Paris et parmesan.
 ---
 
-## Environnement de développement
+[Préparer les ingrédients]
+- Émincer @oignon{1} et @gousses d'ail{2}.
+- Nettoyer et couper @champignons de Paris{300 g} en lamelles.
 
-### 1. Installation
+[Cuisson du risotto]
+- Faire suer l'oignon dans #casserole{} avec @huile d'olive{2 c. à soupe} pendant ~{5 min}.
+- Ajouter le @riz arborio{320 g} et nacrer ~{2 min}.
+- Mouiller progressivement avec @bouillon de légumes{1 l} chaud en remuant ~{18 min}.
+- Hors du feu, incorporer @parmesan râpé{60 g} et @beurre{30 g}.
+```
+
+### Étape 2 : Vérifier les ingrédients
+Si votre recette introduit de nouveaux ingrédients :
+1. Déclarez leurs valeurs nutritionnelles dans [`.gram/ingredients.yaml`](.gram/ingredients.yaml).
+2. Déclarez leur source et niveau de confiance dans [`.gram/ingredient-provenance.yaml`](.gram/ingredient-provenance.yaml).
+
+### Étape 3 : Contrôler la conformité en local (< 2 s)
+Exécutez le validateur atomique :
+
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # ou .venv\Scripts\activate sous Windows
-pip install -e .[dev]
+python -m generator.recipe_check recipes/<slug>.gram
 ```
 
-### 2. Lancer les tests et le linter
-```bash
-# Vérifier le code avec Ruff
-ruff check generator tests
-ruff format --check generator tests
+Si le terminal affiche `✅ CONFORME`, votre recette respecte 100 % du contrat de données CookiGram.
 
-# Exécuter les tests avec couverture
-pytest --cov=generator
-
-# Construire le site localement
-python -m generator.build
-
-# Prévisualiser dans votre navigateur
-python -m http.server 8000 -d _site
-```
+### Image de la recette
+* Si vous disposez d'une photographie (format 16:9, ratio recommandé 1280x720, < 200 Ko), déposez-la dans `static/images/<slug>.jpg`.
+* Si vous n'avez pas encore d'image, le validateur accepte le visuel par défaut système (`static/images/placeholder-recipe.jpg`).
 
 ---
 
-## Règles pour les images et licences
+## 3. Contribution par un Agent d'IA (Agent-Native)
 
-CookiGram sépare la **provenance technique interne** (dans le dépôt et le frontmatter) et l'**attribution publique** sur la fiche recette (décision issue #102) :
-- **Illustrations originales CookiGram (internes)** : Déclarez `image_generation` (modèle, date, prompt_file) et `image_credit` dans le frontmatter pour la traçabilité. L'interface publique affiche sobrement « Illustration originale CookiGram ».
-- **Photographies réelles de contributeurs externes** : Renseignez `image_credit` (auteur, source, licence). L'interface publique affiche « Photo : [Auteur] · Licence [Licence] ».
-- Ne soumettez jamais d'images sans mention d'auteur et licence explicite.
-- Privilégiez les formats compressés WebP ou JPEG (16:9, ~1280x720px, poids inférieur à 200 Ko).
-
-
----
-
-## Règle de validation et de versionnement Git
-
-Tout travail achevé doit être systématiquement validé, commité et poussé (`git push`) :
-1. Valider le code et les tests (`pytest`, `npm test`, `ruff check generator tests`, `npm run lint`).
-2. Vérifier que la génération du site fonctionne sans erreur : `python -m generator.build`.
-3. Stager les modifications avec `git add`.
-4. Créer un commit clair et précis avec `git commit -m "..."`.
-5. Pousser sur la branche distante avec `git push`.
-6. Vérifier que l'arbre de travail est propre (`nothing to commit, working tree clean`).
-
+CookiGram est conçu pour accueillir les contributions automatisées via Coding Agents (GitHub Copilot Workspace, Claude Code, Cursor, Devin...) :
+1. Créez une issue via le formulaire dédié : **[Demande d'importation de recette](.github/ISSUE_TEMPLATE/recipe_request.md)**.
+2. L'agent génère le fichier `.gram` en s'appuyant sur la compétence culinaire [`import-recipe-gram`](.agents/skills/import-recipe-gram/SKILL.md).
+3. L'agent exécute `python -m generator.recipe_check recipes/<slug>.gram` avant de soumettre la Pull Request.
+4. La CI GitHub Actions valide la conformité en moins de 15 secondes.

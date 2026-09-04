@@ -12,6 +12,21 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  recipe-check:
+    name: Validation Recettes (< 15s)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install PyYAML
+        run: pip install pyyaml
+      - name: Contrôle atomique de conformité des recettes
+        run: python -m generator.recipe_check
   e2e:
     name: End-to-end (Playwright)
     runs-on: ubuntu-latest
