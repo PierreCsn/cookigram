@@ -17,20 +17,42 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout CookiGram Recettes (Public)
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event_name == 'workflow_dispatch' && github.sha || github.event.workflow_run.head_sha }}
-      - uses: actions/setup-python@v5
+
+      - name: Checkout CookiGram Core Engine (Private)
+        uses: actions/checkout@v4
+        with:
+          repository: PierreCsn/cookigram-core
+          ssh-key: ${{ secrets.CORE_SSH_KEY }}
+          path: core
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install .
-      - run: python -m generator.build
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v5
+
+      - name: Install Core Engine & Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ./core
+
+      - name: Build Static Site & PWA
+        run: python -m generator.build --content-dir . --output _site
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _site
+
       - id: deployment
+        name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
     environment:
       name: github-pages
