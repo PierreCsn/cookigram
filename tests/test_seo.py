@@ -18,6 +18,7 @@ from generator.seo import (
     recipe_category,
     recipe_cook_time,
     recipe_cuisine,
+    recipe_modified_date,
     recipe_published_date,
 )
 
@@ -50,8 +51,14 @@ def test_build_recipe_schema(tmp_path: Path):
     assert schema["cookTime"] == "PT36M"
     assert schema["recipeCuisine"] == "Italian"
     assert schema["recipeCategory"] == "Plat principal"
-    assert schema["datePublished"] == "2026-09-02"
-    assert schema["dateModified"] == "2026-09-02"
+    # No explicit editorial date -> no dates emitted (image generation date ignored).
+    assert "datePublished" not in schema
+    assert "dateModified" not in schema
+    # Publisher is always declared as a typed Organization.
+    assert schema["publisher"]["@type"] == "Organization"
+    assert schema["publisher"]["name"] == "CookiGram"
+    assert schema["publisher"]["url"] == DEFAULT_SITE_URL
+    assert "icon-512.png" in schema["publisher"]["logo"]["url"]
     assert schema["breadcrumb"]["@type"] == "BreadcrumbList"
     assert schema["breadcrumb"]["itemListElement"][-1]["name"] == recipe.title
     assert len(schema["recipeIngredient"]) == len(recipe.ingredients)
@@ -208,9 +215,31 @@ def test_recipe_schema_helpers_handle_categories_and_explicit_cook_time():
 
     assert recipe_category(recipe) == "Salade"
     assert recipe_cuisine(recipe) is None
-    assert recipe_published_date(recipe) == "2026-09-03"
+    # Image-generation timestamp is not an editorial publication date.
+    assert recipe_published_date(recipe) is None
+    assert recipe_modified_date(recipe) is None
     recipe.metadata["cook_time"] = "18 min"
     assert recipe_cook_time(recipe) == "PT18M"
+
+
+def test_recipe_schema_dates_come_from_explicit_editorial_fields():
+    recipe = parse_recipe(Path("recipes/salade-cesar.gram"))
+    recipe.metadata = dict(recipe.metadata or {})
+    recipe.metadata["date_published"] = "2026-08-10"
+    recipe.metadata["date_modified"] = "2026-09-01"
+
+    assert recipe_published_date(recipe) == "2026-08-10"
+    assert recipe_modified_date(recipe) == "2026-09-01"
+
+    schema = build_recipe_schema(recipe, DEFAULT_SITE_URL)
+    assert schema["datePublished"] == "2026-08-10"
+    assert schema["dateModified"] == "2026-09-01"
+
+    # Publication alone backfills dateModified; ISO 8601 format enforced.
+    recipe.metadata = {"date_published": "2026-08-10T14:00:00"}
+    schema = build_recipe_schema(recipe, DEFAULT_SITE_URL)
+    assert schema["datePublished"] == "2026-08-10"
+    assert schema["dateModified"] == "2026-08-10"
 
 
 def test_build_declares_rel_icon_and_serves_icon_assets(tmp_path: Path):
