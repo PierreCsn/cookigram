@@ -1,0 +1,112 @@
+---
+title: Bò Kho — Ragoût de bœuf vietnamien à la citronnelle & badiane
+portions: 4
+prep_time: 20 min
+total_time: 1 h 10 min
+spiciness: 2
+description: "Ragoût de bœuf parfumé à la citronnelle fraîche, badiane et carottes fondantes, à savourer avec du pain."
+tags: [bœuf, instant pot, vietnamien, ragoût, mijoté, citronnelle, carottes]
+source: https://instantpot.com/blogs/recipes/vietnamese-braised-beef-stew
+author: Instant Pot Culinary Team
+appliances:
+  instant_pot:
+  - instant_pot_6qt
+required_equipment:
+  - Autocuiseur Instant Pot (ou Cookeo) ou Cocotte en fonte
+  - Planche à découper
+  - Couteau de chef
+  - Cuillère en bois
+  - Rouleau à pâtisserie (pour écraser la citronnelle)
+scaling:
+  enabled: true
+  min: 2
+  max: 6
+  step: 2
+flavors:
+  pairing: [baguette croustillante, nouilles de riz, coriandre fraîche, basilic thaï, quartiers de citron vert]
+  notes: [aromatique, anisé, gingembré, fondant, umami]
+  harmony: "La badiane et la citronnelle apportent une fraîcheur végétale puissante qui transcende la richesse et la gélatine naturelle du bœuf braisé."
+  tips: "Écraser fermement la tige de citronnelle au rouleau pour faire éclater ses fibres avant de la tronçonner libère 100% de ses huiles essentielles dans le bouillon."
+image: images/bo-kho-boeuf-vietnamien.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: CC-BY-SA-4.0
+image_generation:
+  prompt_file: image-prompts/bo-kho-boeuf-vietnamien.md
+variants:
+- id: instant-pot
+  name: Instant Pot (Autocuiseur)
+  description: Saisie aromatique en mode Sauté puis 40 min sous haute pression pour des fibres ultra-fondantes.
+  default: true
+- id: cookeo
+  name: Moulinex Cookeo
+  description: Saisie en mode Dorer puis 35 min en cuisson sous pression express et bouillon aromatique.
+  prep_time: 20 min
+  total_time: 1 h 00 min
+  appliances:
+    cookeo: true
+  steps:
+    replace:
+      sear-beef: |
+        [sear-cookeo | Dorer la garniture aromatique et le bœuf]
+        - Sélectionner le mode **Dorer** sur le #cookeo{} et verser l'@huile de tournesol{15 g, ~1 c. à soupe}.
+        - Ajouter l'@ail{12 g, ~4 gousses hachées}, le @gingembre{15 g, ~1 c. à soupe râpé}, la @citronnelle{3 pièces, tiges écrasées et coupées en 3}, la @badiane{3 pièces, étoiles} et la @cannelle{1 pièce, bâton}. Faire suer ~{2 min} pour exhaler les parfums.
+        - Ajouter le @concentré de tomates{30 g, ~2 c. à soupe} et remuer ~{1 min}.
+        - Ajouter les morceaux de @paleron de bœuf{1000 g, ~2.2 lbs, en cubes de 4 cm} et les saisir ~{6 min} en remuant à la spatule silicone.
+      pressure-cook: |
+        [pressure-cookeo | Cuisson sous pression parfumée]
+        - Verser la @sauce nuoc-mâm{45 g, ~3 c. à soupe}, la @sauce soja claire{15 g, ~1 c. à soupe}, le @sucre de canne{15 g, ~1 c. à soupe} et le @bouillon de bœuf{500 g, ~2 cups}.
+        - Bien décoller les sucs au fond de la cuve avec la spatule.
+        - Ajouter les @carottes{400 g, ~4 pièces, en rondelles biseautées de 2 cm}.
+        - Fermer le couvercle et lancer le mode **Cuisson sous pression** pendant ~{35 min}.
+        - Laisser décompresser naturellement pendant ~{10 min} avant d'ouvrir le couvercle.
+- id: cocotte-fonte
+  name: Cocotte en fonte traditionnelle (Sans robot)
+  description: Mijotage doux à feu très doux pendant 2 h 45 pour un bouillon infusé lentement dans les règles de l'art.
+  prep_time: 25 min
+  total_time: 3 h 15 min
+  required_equipment:
+    - Cocotte en fonte avec couvercle
+    - Planche à découper
+    - Couteau de chef
+    - Cuillère en bois
+  steps:
+    replace:
+      sear-beef: |
+        [sear-cocotte | Rissolage des épices et de la viande]
+        - Dans une #cocotte en fonte{} sur feu moyen, chauffer l'@huile de tournesol{15 g, ~1 c. à soupe}.
+        - Faire suer l'@ail{12 g}, le @gingembre{15 g}, la @citronnelle{3 pièces}, la @badiane{3 pièces} et le bâton de @cannelle{1 pièce} pendant ~{3 min}.
+        - Ajouter le @concentré de tomates{30 g} et faire caraméliser ~{1 min}.
+        - Augmenter le feu, ajouter les cubes de @paleron de bœuf{1000 g, ~2.2 lbs} et les faire colorer sur toutes leurs faces pendant ~{8 min}.
+      pressure-cook: |
+        [simmer-cocotte | Long mijotage à couvert]
+        - Mouiller avec la @sauce nuoc-mâm{45 g}, la @sauce soja claire{15 g}, le @sucre de canne{15 g} et le @bouillon de bœuf{750 g, ~3 cups, volume majoré pour le mijotage ouvert}.
+        - Gratter consciencieusement les sucs au fond de la cocotte à la #cuillère en bois{}.
+        - Porter à frémissement, puis couvrir hermétiquement et baisser le feu au minimum pour laisser mijoter doucement pendant ~{2 h 00}.
+        - Ajouter ensuite les @carottes{400 g} et poursuivre le mijotage à couvert pendant ~{45 min} jusqu'à ce que la viande et les carottes soient fondantes.
+---
+
+[prep-aromates | Préparer et réveiller la garniture aromatique]
+- Sur une #planche à découper{}, émincer les @gousses d'ail{12 g, ~4 gousses} et râper le @gingembre{15 g, ~1 c. à soupe frais}.
+- Prendre les tiges de @citronnelle{3 pièces}, écraser fermement la partie bulbeuse blanche à l'aide d'un rouleau à pâtisserie ou du plat du #couteau de chef{}, puis les couper en tronçons de 6 cm.
+- Éplucher les @carottes{400 g, ~4 pièces} et les tailler en gros biseaux réguliers de 2 cm d'épaisseur.
+- Découper le @paleron de bœuf{1000 g, ~2.2 lbs} en cubes généreux de 4 cm.
+
+[sear-beef | Dorer la viande et torréfier les épices en mode Sauté]
+- Activer le mode **Sauté** sur l'#instant pot{} et chauffer l'@huile de tournesol{15 g, ~1 c. à soupe}.
+- Déposer l'ail, le gingembre, les tronçons de citronnelle, les étoiles de @badiane{3 pièces} et le bâton de @cannelle{1 pièce}. Faire revenir ~{2 min} jusqu'à ce que les arômes embaument la cuisine.
+- Incorporer le @concentré de tomates{30 g, ~2 c. à soupe} et le faire rissoler ~{1 min} pour atténuer son acidité et enrichir la couleur du fond.
+- Ajouter les cubes de @paleron de bœuf{1000 g} et les faire dorer ~{6 min} en remuant avec la #cuillère en bois{}.
+
+[pressure-cook | Cuisson sous haute pression aromatique]
+- Déglacer la cuve avec la @sauce nuoc-mâm{45 g, ~3 c. à soupe}, la @sauce soja claire{15 g, ~1 c. à soupe}, le @sucre de canne{15 g, ~1 c. à soupe} et verser le @bouillon de bœuf{500 g, ~2 cups}.
+- **Geste anti-burn :** Bien racler le fond de la cuve en inox avec la #cuillère en bois{} pour s'assurer qu'aucun résidu de tomate ou de viande ne reste collé.
+- Disposer les morceaux de @carottes{400 g} sur le dessus de la viande sans remuer jusqu'au fond.
+- Fermer le couvercle de l'#instant pot{}, positionner la valve sur **Sealing** et programmer en mode **Pressure Cook** (High Pressure) pendant ~{40 min}.
+- À la sonnerie, laisser descendre la pression naturellement pendant ~{10 min}, puis libérer le restant de vapeur manuellement.
+
+[serve-stew | Finition et service traditionnel]
+- Ouvrir avec précaution. Retirer les bâtons de citronnelle, la badiane et la cannelle.
+- La sauce doit être d'une belle teinte acajou brillante, le bœuf extrêmement tendre et les carottes fondantes sans être en purée.
+- Servir bien chaud dans de grands bols creux parsemés d'herbes fraîches, accompagné d'une baguette de pain tradition croustillante ou de nouilles de riz.

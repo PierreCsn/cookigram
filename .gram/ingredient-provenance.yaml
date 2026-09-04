@@ -406,8 +406,8 @@ ingredients:
     source: ANSES-CIQUAL
     status: verified
   vinaigre-balsamique:
-    source: Condiment ; valeurs nutritionnelles à documenter.
-    status: incomplete
+    source: ANSES-CIQUAL
+    status: verified
   aneth:
     source: ANSES CIQUAL 2024 / Open Food Facts
     status: verified
@@ -727,9 +727,6 @@ ingredients:
     status: manual
     source: Recettes de salades CookiGram (salade César, grecque, lentilles, pois
       chiches, pâtes)
-  vinaigre-balsamique:
-    source: ANSES-CIQUAL
-    status: verified
   poivre-vert:
     source: ANSES-CIQUAL
     status: verified
@@ -754,6 +751,42 @@ ingredients:
   harissa:
     source: ANSES-CIQUAL
     status: verified
+  vinaigre-de-cidre:
+    status: verified
+    source: ANSES-CIQUAL 11019
+  sauce-nuoc-mam:
+    status: verified
+    source: ANSES-CIQUAL 11065
+  piment-chipotle:
+    status: verified
+    source: USDA FoodData Central 170940
+  citronnelle:
+    status: verified
+    source: ANSES-CIQUAL 20050
+  badiane:
+    status: verified
+    source: ANSES-CIQUAL 11000
+  cinq-epices:
+    status: verified
+    source: ANSES-CIQUAL 11002
+  vin-de-shaoxing:
+    status: manual
+    source: Étiquetage nutritionnel Shaoxing
+  poitrine-de-porc:
+    status: verified
+    source: ANSES-CIQUAL 22002
+  saucisse-fumee:
+    status: verified
+    source: ANSES-CIQUAL 28014
+  echalotes-frites:
+    status: verified
+    source: ANSES-CIQUAL 20029
+  sauce-soja-foncee:
+    status: manual
+    source: Étiquetage Dark Soy Sauce chinoise
+  bouillon-de-volaille:
+    status: verified
+    source: ANSES-CIQUAL 11100
 sources:
   ciqual:
     name: Table Ciqual de l'ANSES
