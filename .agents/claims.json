@@ -5,7 +5,19 @@
     "max_heartbeat_age_minutes": 15,
     "require_approved_label": "potential-dev-work"
   },
-  "active_claims": {},
+  "active_claims": {
+    "102": {
+      "issue": 102,
+      "title": "fix(ui): simplifier les mentions d'illustration (« Illustration originale CookiGram »)",
+      "agent": "Darryl (DEV)",
+      "workspace": "/home/pierrecsn/Work/DEV/DARRYL-DEV/cookigram",
+      "branch": "feat/image-caption-provenance",
+      "claimed_at": "2026-09-04T08:18:00+02:00",
+      "last_heartbeat": "2026-09-04T08:20:00+02:00",
+      "status": "in_progress",
+      "pr": 104
+    }
+  },
   "completed_claims": [
     {
       "issue": 78,

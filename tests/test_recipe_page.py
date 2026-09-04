@@ -32,8 +32,8 @@ def test_recipe_page_distinguishes_source_and_human_appliance_compatibility(rend
     assert "Matériel indispensable" in rendered
     assert "Thermomix TM31, TM5, TM6 ou TM7" in rendered
     assert "TM31 · compatibilité testée par un humain sur 6 portions" in rendered
-    assert "Illustration :" in rendered
-    assert "Illustration générée par IA pour CookiGram" in rendered
+    assert "Illustration originale CookiGram" in rendered
+    assert "Illustration générée par IA pour CookiGram" not in rendered
 
 
 def test_recipe_page_renders_equipment_icons_in_material_card(render_template):
@@ -59,6 +59,24 @@ def test_recipe_illustration_is_present_in_heading_with_lcp_hint(render_template
     # The image credit must be visually attached to the plate (inside the heading)
     heading = rendered.split('<section class="recipe-heading">', 1)[1].split("</section>", 1)[0]
     assert "image-credit" in heading
+
+
+def test_recipe_page_uses_photo_credit_for_external_image(render_template):
+    recipe = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
+    recipe.metadata.pop("image_generation")
+    recipe.metadata["image_credit"] = {
+        "author": "Photographe Test",
+        "source": "https://example.com/photo.jpg",
+        "license": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    }
+
+    rendered = render_template("recipe.html", recipe=recipe)
+
+    assert "Photo :" in rendered
+    assert "Photographe Test" in rendered
+    assert "Licence CC BY 4.0" in rendered
+    assert "Illustration originale CookiGram" not in rendered
 
 
 def test_shopping_toolbar_is_pared_down_but_export_remains_in_modal(render_template):
