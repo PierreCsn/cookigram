@@ -1,3 +1,4 @@
+import html
 import re
 from pathlib import Path
 
@@ -7,6 +8,7 @@ from generator.seo import (
     DEFAULT_SITE_URL,
     build_recipe_meta_description,
     build_recipe_schema,
+    build_recipe_seo_title,
     build_robots_txt,
     build_rss_feed,
     build_sitemap_xml,
@@ -269,6 +271,37 @@ def test_build_offline_page_is_noindex_and_excluded_from_sitemap(tmp_path: Path)
 
     sitemap_content = (output_dir / "sitemap.xml").read_text(encoding="utf-8")
     assert "offline.html" not in sitemap_content
+def test_build_recipe_seo_title_truncates_intelligently():
+    short = parse_recipe(Path("recipes/salade-cesar.gram"))
+    title = build_recipe_seo_title(short)
+    assert title.endswith(" · CookiGram")
+    assert len(title) <= 65
+
+    tmx = parse_recipe(Path("recipes/curry-poulet-noix-coco.gram"))
+    assert is_thermomix_compatible(tmx)
+    tmx_title = build_recipe_seo_title(tmx)
+    assert "au Thermomix" in tmx_title
+    assert len(tmx_title) <= 65
+
+    long_recipe = parse_recipe(Path("recipes/ballotines-poulet-legumes-riesling.gram"))
+    long_title = build_recipe_seo_title(long_recipe)
+    assert len(long_title) <= 65, long_title
+    assert "…" in long_title
+    assert long_title.endswith("au Thermomix · CookiGram")
+    assert long_recipe.title.split()[0] in long_title
+
+
+def test_built_recipe_titles_stay_within_65_characters(tmp_path: Path):
+    output_dir = tmp_path / "_site"
+    build(output_dir)
+
+    for page in (output_dir / "recipes").glob("*/index.html"):
+        rendered = page.read_text(encoding="utf-8")
+        match = re.search(r"<title>(.*?)</title>", rendered)
+        assert match is not None, page
+        # Search engines count decoded characters, not HTML entities.
+        decoded = html.unescape(match.group(1))
+        assert len(decoded) <= 65, (page, decoded)
 
 
 def test_compute_similar_recipes_returns_deterministic_balanced_links():
