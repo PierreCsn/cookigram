@@ -6,7 +6,7 @@
 
 ## 🚦 Tâches en cours (Claims actifs)
 
-* **Issue #102 / PR #104** (`feat/image-caption-provenance`) : Simplification sobre des mentions d'illustration (« Illustration originale CookiGram ») et documentation de la séparation provenance interne / attribution publique.
+* **Aucun claim actif.** Le backlog est disponible pour le Jalon 3.
 
 ---
 
@@ -30,13 +30,13 @@
   - **Issue #99** : Cuisson sous-vide & basse température (Thermodynamique & Tables Baldwin).
 * **🎨 Améliorations UX, Design & Imports Transverses** :
   - **Issue #101** : Clarification de la redondance du matériel (suppression du doublon sur fiche recette).
-  - **Issue #102** : Simplification sobre des mentions d'illustration (« Illustration originale CookiGram ») — *En cours de finalisation (PR #104)*.
   - **Issue #103** : Support et conversion des mesures américaines et impériales (cups, oz, lbs, °F, sticks).
 
 ---
 
 ## ✅ Dernières Livraisons Clôturées
 
+* **Issue #102 / PR #104** : Simplification sobre des mentions d'illustration (« Illustration originale CookiGram ») et documentation de la séparation stricte entre provenance technique et attribution publique — *Fusionné dans `main`*.
 * **PR #89** : Pack 2 d'icônes d'ustensiles (planche, plat à gratin, thermomix, moule, panier vapeur, économe) et couverture à 100% de `required_equipment` sur les 46 recettes — *Fusionné dans `main`*.
 * **Issue #80 / PR #81** : Étape 0 « Mise en place du plan de travail » en Mode Cuisine — *Fusionné dans `main`*.
 * **Issue #78 / PR #79** : Persistance de la progression en Mode Cuisine (minuteurs wall-clock, sticky bar contextuelle, cases à cocher ingrédients) — *Fusionné dans `main`*.

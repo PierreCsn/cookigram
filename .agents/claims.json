@@ -5,20 +5,20 @@
     "max_heartbeat_age_minutes": 15,
     "require_approved_label": "potential-dev-work"
   },
-  "active_claims": {
-    "102": {
+  "active_claims": {},
+  "completed_claims": [
+    {
       "issue": 102,
       "title": "fix(ui): simplifier les mentions d'illustration (« Illustration originale CookiGram »)",
       "agent": "Darryl (DEV)",
       "workspace": "/home/pierrecsn/Work/DEV/DARRYL-DEV/cookigram",
       "branch": "feat/image-caption-provenance",
+      "pr": 104,
       "claimed_at": "2026-09-04T08:18:00+02:00",
-      "last_heartbeat": "2026-09-04T08:20:00+02:00",
-      "status": "in_progress",
-      "pr": 104
-    }
-  },
-  "completed_claims": [
+      "last_heartbeat": "2026-09-04T08:21:00+02:00",
+      "status": "merged",
+      "merged_at": "2026-09-04T08:21:53+02:00"
+    },
     {
       "issue": 78,
       "title": "feat(cooking): persistance de la progression en Mode Cuisine",
