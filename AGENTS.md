@@ -11,6 +11,7 @@ Pour une efficacité maximale et une économie drastique de temps et de tokens :
 2. Respecter scrupuleusement la règle de verrouillage anti-doublon [`.agents/rules/task-claiming.md`](.agents/rules/task-claiming.md) : **interdiction absolue de coder sans claim préalable ni validation officielle**.
 3. Pour le profil complet du développeur : [`.agents/roles/senior-developer.md`](.agents/roles/senior-developer.md).
 4. [`PRODUCT_PRINCIPLES.md`](PRODUCT_PRINCIPLES.md) et les règles spécialisées dans [`.agents/rules/`](.agents/rules/).
+5. Règles d'orchestration tri-agents (AGY, OpenCode, Codex) et frugalité de quotas : [`.agents/rules/token-frugality.md`](.agents/rules/token-frugality.md) et [`.agents/rules/multi-agent-orchestration.md`](.agents/rules/multi-agent-orchestration.md).
 
 ---
 
