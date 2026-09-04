@@ -58,4 +58,6 @@ def test_recipe_images_exist_and_have_no_orphans():
             assert recipe.metadata["image_credit"]["author"] == "CookiGram"
 
     available = {path.relative_to("static").as_posix() for path in Path("static/images").iterdir() if path.is_file()}
-    assert referenced == available, f"images orphelines : {sorted(available - referenced)}"
+    system_assets = {"images/placeholder-recipe.jpg"}
+    orphans = (available - referenced) - system_assets
+    assert not orphans, f"images orphelines : {sorted(orphans)}"

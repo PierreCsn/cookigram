@@ -111,6 +111,19 @@ Toute recette importée ou adaptée dans CookiGram doit se conformer aux décisi
        reheat: "10 min au four à 160°C"
      ```
 
+10. **Gestion des illustrations et image placeholder (`image:`)** :
+    - Si une illustration personnalisée (1280×720) est disponible : `image: images/<slug>.jpg`.
+    - Si aucune image n'est générée immédiatement : utiliser l'image officielle d'attente `image: images/placeholder-recipe.jpg` avec :
+      ```yaml
+      image_credit:
+        author: CookiGram
+        source: https://github.com/PierreCsn/cookigram
+        license: Illustration temporaire
+      image_generation:
+        prompt_file: image-prompts/<slug>.md
+      ```
+      Rédiger impérativement le prompt de description culinaire dans `image-prompts/<slug>.md`.
+
 ### Marmiton
 
 When importing from marmiton.org:
@@ -201,10 +214,14 @@ Do not assume every Thermomix recipe is fixed, but treat bowl capacity, minimum 
 
 ## Validate
 
-Run the repository checks from its root:
-
+1. **Validation atomique rapide (< 2 s)** :
 ```bash
-python -m pytest -q
+python -m generator.recipe_check recipes/<slug>.gram
+```
+
+2. **Validation globale avant soumission de PR** :
+```bash
+python -m pytest tests/test_schema.py tests/test_gram.py tests/test_ingredients_database.py tests/test_variants.py
 python -m generator.build
 ```
 
