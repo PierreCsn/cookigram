@@ -260,11 +260,16 @@ def test_build_404_page_is_noindex_and_has_no_canonical(tmp_path: Path):
     assert '<meta name="description" content="Page introuvable sur CookiGram.">' in notfound_html
 
 
+<<<<<<< HEAD
 def test_build_offline_page_is_noindex_and_excluded_from_sitemap(tmp_path: Path):
+=======
+def test_build_home_has_social_image(tmp_path: Path):
+>>>>>>> d2822b7 (feat(seo): ajouter image sociale dediee a l'accueil (#109))
     output_dir = tmp_path / "_site"
     site_url = "https://custom.domain.com/cook"
     build(output_dir, site_url=site_url)
 
+<<<<<<< HEAD
     offline_html = (output_dir / "offline.html").read_text(encoding="utf-8")
     assert '<meta name="robots" content="noindex, follow">' in offline_html
     assert '<link rel="canonical"' not in offline_html
@@ -302,6 +307,15 @@ def test_built_recipe_titles_stay_within_65_characters(tmp_path: Path):
         # Search engines count decoded characters, not HTML entities.
         decoded = html.unescape(match.group(1))
         assert len(decoded) <= 65, (page, decoded)
+=======
+    index_html = (output_dir / "index.html").read_text(encoding="utf-8")
+    assert f'<meta property="og:image" content="{site_url}/assets/illustrations/hero-banner.jpg">' in index_html
+    assert f'<meta name="twitter:image" content="{site_url}/assets/illustrations/hero-banner.jpg">' in index_html
+    assert 'property="og:image:alt"' in index_html
+
+    # Image accessible in built output (HTTP 200 equivalent).
+    assert (output_dir / "assets" / "illustrations" / "hero-banner.jpg").is_file()
+>>>>>>> d2822b7 (feat(seo): ajouter image sociale dediee a l'accueil (#109))
 
 
 def test_compute_similar_recipes_returns_deterministic_balanced_links():
