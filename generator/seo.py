@@ -476,7 +476,74 @@ def build_recipe_schema(recipe: Recipe, site_url: str = DEFAULT_SITE_URL) -> dic
     return schema
 
 
-def build_sitemap_xml(recipes: list[Recipe], site_url: str = DEFAULT_SITE_URL) -> str:
+# Curated crawlable category hubs. Only these editorialized pages are
+# generated and added to the sitemap; thin or overlapping tags are
+# deliberately excluded to avoid doorway pages.
+CATEGORY_PAGES: list[dict[str, object]] = [
+    {
+        "slug": "thermomix",
+        "tags": ["thermomix"],
+        "title": "Recettes Thermomix guidées pas-à-pas · CookiGram",
+        "description": "Toutes les recettes CookiGram compatibles Thermomix TM31, TM5 et TM6, guidées pas-à-pas avec durées et réglages vérifiés.",
+        "h1": "Recettes Thermomix",
+        "intro": "Plats mijotés, soupes, currys et desserts pensés pour le bol du Thermomix, avec variantes sans robot quand c'est pertinent.",
+    },
+    {
+        "slug": "curry",
+        "tags": ["curry"],
+        "title": "Recettes de currys parfumés · CookiGram",
+        "description": "Currys de poulet, de bœuf, dhals et currys végétariens : recettes parfumées guidées pas-à-pas, au Thermomix ou sans robot.",
+        "h1": "Currys parfumés",
+        "intro": "Pâtes de curry, lait de coco, épices torréfiées : une sélection de currys testés pour un résultat crémeux et équilibré.",
+    },
+    {
+        "slug": "soupes",
+        "tags": ["soupe", "velouté"],
+        "title": "Soupes et veloutés maison · CookiGram",
+        "description": "Veloutés de butternut, soupes de poireaux, bouillons réconfortants : des soupes maison mixées au Thermomix, pas-à-pas.",
+        "h1": "Soupes et veloutés",
+        "intro": "Des soupes de saison mixées finement, avec garnitures croustillantes et conseils de conservation au frais.",
+    },
+    {
+        "slug": "rapides",
+        "tags": ["rapide"],
+        "title": "Recettes rapides du quotidien · CookiGram",
+        "description": "Des plats prêts en 30 minutes ou moins pour les soirs pressés : salades, pâtes, gratins express et cuissons guidées.",
+        "h1": "Recettes rapides",
+        "intro": "Le meilleur du catalogue quand le temps manque, sans sacrifier l'assaisonnement ni la cuisson juste.",
+    },
+    {
+        "slug": "vegetariennes",
+        "tags": ["végétarien"],
+        "title": "Recettes végétariennes gourmandes · CookiGram",
+        "description": "Gratins, dhals, salades et plats végétariens complets : des recettes sans viande riches en légumes et légumineuses.",
+        "h1": "Recettes végétariennes",
+        "intro": "Une sélection sans viande qui mise sur les légumes de saison, les épices et les cuissons au four ou au Thermomix.",
+    },
+]
+
+
+def match_category_recipes(recipe: Recipe, category: dict[str, object]) -> bool:
+    """Return whether a recipe belongs to a curated category hub."""
+    raw_tags = category.get("tags", [])
+    wanted = {str(tag).casefold() for tag in raw_tags} if isinstance(raw_tags, list) else set()
+    own = {str(tag).casefold() for tag in recipe.tags}
+    return bool(wanted & own)
+
+
+def get_category_recipes(category: dict[str, object], recipes: list[Recipe]) -> list[Recipe]:
+    """Deterministically list recipes of a category, ordered by slug."""
+    return sorted(
+        [recipe for recipe in recipes if match_category_recipes(recipe, category)],
+        key=lambda recipe: recipe.slug,
+    )
+
+
+def build_sitemap_xml(
+    recipes: list[Recipe],
+    site_url: str = DEFAULT_SITE_URL,
+    categories: list[dict[str, object]] | None = None,
+) -> str:
     """Generates an XML sitemap complying with sitemaps.org standards including Google Image extensions."""
     base_url = site_url.rstrip("/")
     lines = [
@@ -506,6 +573,16 @@ def build_sitemap_xml(recipes: list[Recipe], site_url: str = DEFAULT_SITE_URL) -
             lines.append(f"      <image:loc>{image_url}</image:loc>")
             lines.append(f"      <image:title>{safe_title}</image:title>")
             lines.append("    </image:image>")
+        lines.append("  </url>")
+
+    for category in categories or []:
+        slug = str(category.get("slug", "")).strip()
+        if not slug:
+            continue
+        lines.append("  <url>")
+        lines.append(f"    <loc>{base_url}/recettes/{slug}/</loc>")
+        lines.append("    <changefreq>weekly</changefreq>")
+        lines.append("    <priority>0.7</priority>")
         lines.append("  </url>")
 
     lines.append("</urlset>")
