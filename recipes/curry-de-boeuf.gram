@@ -8,7 +8,10 @@ tags: [viande, mijoté, curry, thermomix, indien, réconfort]
 source: https://www.cookomix.com/recettes/curry-de-boeuf-thermomix/
 author: Bibou
 appliances:
-  thermomix: [TM31, TM5, TM6, TM7]
+  thermomix:
+  - TM5
+  - TM6
+  - TM7
 required_equipment:
   - Thermomix TM31, TM5, TM6 ou TM7
   - Panier cuisson

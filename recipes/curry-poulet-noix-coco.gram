@@ -20,7 +20,10 @@ image_generation:
   generated_at: "2026-09-02"
   prompt_file: image-prompts/curry-poulet-noix-coco.md
 appliances:
-  thermomix: [TM31, TM5, TM6, TM7]
+  thermomix:
+  - TM5
+  - TM6
+  - TM7
 source_appliances:
   thermomix: [TM5, TM6, TM7]
 required_equipment:

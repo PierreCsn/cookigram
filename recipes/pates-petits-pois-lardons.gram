@@ -8,7 +8,10 @@ tags: [pâtes, rapide, thermomix, lardons, petits-pois, quotidien, italien]
 source: https://www.cookomix.com/recettes/pates-petits-pois-lardons-thermomix/
 author: papouillon
 appliances:
-  thermomix: [TM31, TM5, TM6, TM7]
+  thermomix:
+  - TM5
+  - TM6
+  - TM7
 required_equipment:
   - Thermomix TM31, TM5, TM6 ou TM7
   - Spatule
