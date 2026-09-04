@@ -280,16 +280,40 @@ def recipe_category(recipe: Recipe) -> str:
     return "Plat principal"
 
 
-def recipe_published_date(recipe: Recipe) -> str | None:
-    metadata = recipe.metadata or {}
-    date = metadata.get("date") or metadata.get("date_published") or metadata.get("published")
-    image_generation = metadata.get("image_generation", {})
-    if not date and isinstance(image_generation, dict):
-        date = image_generation.get("generated_at")
-    if not date:
+def _extract_iso_date(value: object | None) -> str | None:
+    if not value:
         return None
-    match = re.match(r"^(\d{4}-\d{2}-\d{2})", str(date).strip())
+    match = re.match(r"^(\d{4}-\d{2}-\d{2})", str(value).strip())
     return match.group(1) if match else None
+
+
+def recipe_published_date(recipe: Recipe) -> str | None:
+    """Editorial publication date (ISO 8601) or None when undated.
+
+    Only explicit editorial fields are considered. The image-generation
+    timestamp is deliberately ignored: it dates an illustration, not the
+    editorial publication of the recipe.
+    """
+    metadata = recipe.metadata or {}
+    date = (
+        metadata.get("date_published")
+        or metadata.get("datePublished")
+        or metadata.get("date")
+        or metadata.get("published")
+    )
+    return _extract_iso_date(date)
+
+
+def recipe_modified_date(recipe: Recipe) -> str | None:
+    """Editorial modification date (ISO 8601), independent from publication."""
+    metadata = recipe.metadata or {}
+    date = (
+        metadata.get("date_modified")
+        or metadata.get("dateModified")
+        or metadata.get("modified")
+        or metadata.get("updated")
+    )
+    return _extract_iso_date(date)
 
 
 def format_iso_duration(time_str: str | None) -> str | None:
@@ -369,7 +393,20 @@ def build_recipe_schema(recipe: Recipe, site_url: str = DEFAULT_SITE_URL) -> dic
 
     if published := recipe_published_date(recipe):
         schema["datePublished"] = published
+    if modified := recipe_modified_date(recipe):
+        schema["dateModified"] = modified
+    elif published:
         schema["dateModified"] = published
+
+    schema["publisher"] = {
+        "@type": "Organization",
+        "name": "CookiGram",
+        "url": base_url,
+        "logo": {
+            "@type": "ImageObject",
+            "url": f"{base_url}/assets/icons/icon-512.png",
+        },
+    }
 
     if recipe.tags:
         schema["keywords"] = ", ".join(recipe.tags)
