@@ -53,11 +53,12 @@ Si votre recette introduit de nouveaux ingrédients :
 2. Déclarez leur source et niveau de confiance dans [`.gram/ingredient-provenance.yaml`](.gram/ingredient-provenance.yaml).
 
 ### Étape 3 : Contrôler la conformité en local (< 2 s)
-Exécutez le validateur atomique :
+Exécutez le validateur atomique via la CLI unifiée :
 
 ```bash
-python -m generator.recipe_check recipes/<slug>.gram
+cookigram check recipes/<slug>.gram
 ```
+*(ou `python -m generator.recipe_check recipes/<slug>.gram`)*
 
 Si le terminal affiche `✅ CONFORME`, votre recette respecte 100 % du contrat de données CookiGram.
 
@@ -72,5 +73,5 @@ Si le terminal affiche `✅ CONFORME`, votre recette respecte 100 % du contrat d
 CookiGram est conçu pour accueillir les contributions automatisées via Coding Agents (GitHub Copilot Workspace, Claude Code, Cursor, Devin...) :
 1. Créez une issue via le formulaire dédié : **[Demande d'importation de recette](.github/ISSUE_TEMPLATE/recipe_request.md)**.
 2. L'agent génère le fichier `.gram` en s'appuyant sur la compétence culinaire [`import-recipe-gram`](.agents/skills/import-recipe-gram/SKILL.md).
-3. L'agent exécute `python -m generator.recipe_check recipes/<slug>.gram` avant de soumettre la Pull Request.
+3. L'agent exécute `cookigram check recipes/<slug>.gram` avant de soumettre la Pull Request.
 4. La CI GitHub Actions valide la conformité en moins de 15 secondes.
