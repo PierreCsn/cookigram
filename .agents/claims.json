@@ -13,8 +13,8 @@
       "workspace": "/home/pierrecsn/Work/cookigram",
       "branch": "feat/agent-native-recipe-contribution-phase1",
       "claimed_at": "2026-09-04T13:34:00+02:00",
-      "last_heartbeat": "2026-09-04T13:34:00+02:00",
-      "status": "in_progress"
+      "pr": 124,
+      "status": "pr_open"
     }
   },
   "completed_claims": [
