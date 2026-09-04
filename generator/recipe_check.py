@@ -99,9 +99,9 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument(
         "recipes",
-        nargs="+",
+        nargs="*",
         type=Path,
-        help="Chemin(s) vers le ou les fichiers .gram à valider",
+        help="Chemin(s) vers le ou les fichiers .gram à valider (toutes les recettes par défaut)",
     )
     parser.add_argument(
         "--root",
@@ -111,17 +111,18 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    total_files = len(args.recipes)
+    root_dir = args.root.resolve()
+    target_recipes = [p.resolve() for p in args.recipes] if args.recipes else sorted((root_dir / "recipes").glob("*.gram"))
+    total_files = len(target_recipes)
     failed_count = 0
 
     print(f"🔍 Validation CookiGram de {total_files} recette(s)...\n")
 
-    for path in args.recipes:
-        recipe_path = path.resolve()
-        errors = check_recipe(recipe_path, root=args.root.resolve())
+    for recipe_path in target_recipes:
+        errors = check_recipe(recipe_path, root=root_dir)
         if errors:
             failed_count += 1
-            print(f"❌ {path} : NON CONFORME ({len(errors)} erreur(s))")
+            print(f"❌ {recipe_path.name} : NON CONFORME ({len(errors)} erreur(s))")
             for err in errors:
                 print(f"   • {err}")
         else:
@@ -131,12 +132,12 @@ def main(argv: list[str] | None = None) -> int:
                 ing_count = len(rec.ingredients)
                 prep = rec.metadata.get("prep_time", "?")
                 tot = rec.metadata.get("total_time", "?")
-                print(f"✅ {path} : CONFORME")
+                print(f"✅ {recipe_path.name} : CONFORME")
                 print(
                     f"   « {title} » | {rec.portions} portions | Prep: {prep} | Total: {tot} | {ing_count} ingrédients"
                 )
             except Exception:
-                print(f"✅ {path} : CONFORME")
+                print(f"✅ {recipe_path.name} : CONFORME")
 
     print("\n" + ("=" * 50))
     if failed_count == 0:
