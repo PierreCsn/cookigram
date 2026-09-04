@@ -2,6 +2,8 @@ import html
 import re
 from pathlib import Path
 
+import pytest
+
 from generator.build import build
 from generator.gram import parse_recipe
 from generator.seo import (
@@ -23,6 +25,20 @@ from generator.seo import (
     recipe_modified_date,
     recipe_published_date,
 )
+
+
+@pytest.fixture(scope="module")
+def built_custom_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    out = tmp_path_factory.mktemp("site_custom") / "_site"
+    build(out, site_url="https://custom.domain.com/cook")
+    return out
+
+
+@pytest.fixture(scope="module")
+def built_default_site(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    out = tmp_path_factory.mktemp("site_default") / "_site"
+    build(out)
+    return out
 
 
 def test_format_iso_duration():
@@ -117,10 +133,8 @@ def test_build_rss_feed():
     assert "<link>https://example.com/cookigram/recipes/risotto-poulet-champignons/</link>" in feed
 
 
-def test_build_generates_seo_assets_and_metadata(tmp_path: Path):
-    output_dir = tmp_path / "_site"
-    site_url = "https://custom.domain.com/cook"
-    build(output_dir, site_url=site_url)
+def test_build_generates_seo_assets_and_metadata(built_custom_site: Path):
+    output_dir = built_custom_site
 
     # SEO files existence
     assert (output_dir / "sitemap.xml").is_file()
@@ -160,10 +174,8 @@ def test_build_generates_seo_assets_and_metadata(tmp_path: Path):
     assert 'href="https://custom.domain.com/cook/sitemap.xml"' in index_html
 
 
-def test_build_home_declares_title_and_websites_organization_schema(tmp_path: Path):
-    output_dir = tmp_path / "_site"
-    site_url = "https://custom.domain.com/cook"
-    build(output_dir, site_url=site_url)
+def test_build_home_declares_title_and_websites_organization_schema(built_custom_site: Path):
+    output_dir = built_custom_site
 
     index_html = (output_dir / "index.html").read_text(encoding="utf-8")
 
@@ -187,9 +199,8 @@ def test_build_home_declares_title_and_websites_organization_schema(tmp_path: Pa
     assert "Thermomix" in index_html and "guidées" in index_html
 
 
-def test_recipe_meta_descriptions_are_calibrated_and_thermomix_titles_are_explicit(tmp_path: Path):
-    output_dir = tmp_path / "_site"
-    build(output_dir)
+def test_recipe_meta_descriptions_are_calibrated_and_thermomix_titles_are_explicit(built_default_site: Path):
+    output_dir = built_default_site
 
     descriptions = []
     for page in (output_dir / "recipes").glob("*/index.html"):
@@ -264,10 +275,8 @@ def test_build_declares_rel_icon_and_serves_icon_assets(tmp_path: Path):
         assert (output_dir / "assets" / "icons" / icon).is_file()
 
 
-def test_build_cook_page_is_noindex_and_canonical_to_recipe(tmp_path: Path):
-    output_dir = tmp_path / "_site"
-    site_url = "https://custom.domain.com/cook"
-    build(output_dir, site_url=site_url)
+def test_build_cook_page_is_noindex_and_canonical_to_recipe(built_custom_site: Path):
+    output_dir = built_custom_site
 
     cook_html = (output_dir / "recipes" / "risotto-poulet-champignons" / "cook" / "index.html").read_text(
         encoding="utf-8"
@@ -280,10 +289,8 @@ def test_build_cook_page_is_noindex_and_canonical_to_recipe(tmp_path: Path):
     )
 
 
-def test_build_404_page_is_noindex_and_has_no_canonical(tmp_path: Path):
-    output_dir = tmp_path / "_site"
-    site_url = "https://custom.domain.com/cook"
-    build(output_dir, site_url=site_url)
+def test_build_404_page_is_noindex_and_has_no_canonical(built_custom_site: Path):
+    output_dir = built_custom_site
 
     notfound_html = (output_dir / "404.html").read_text(encoding="utf-8")
     assert '<meta name="robots" content="noindex, follow">' in notfound_html
@@ -291,10 +298,8 @@ def test_build_404_page_is_noindex_and_has_no_canonical(tmp_path: Path):
     assert '<meta name="description" content="Page introuvable sur CookiGram.">' in notfound_html
 
 
-def test_build_offline_page_is_noindex_and_excluded_from_sitemap(tmp_path: Path):
-    output_dir = tmp_path / "_site"
-    site_url = "https://custom.domain.com/cook"
-    build(output_dir, site_url=site_url)
+def test_build_offline_page_is_noindex_and_excluded_from_sitemap(built_custom_site: Path):
+    output_dir = built_custom_site
 
     offline_html = (output_dir / "offline.html").read_text(encoding="utf-8")
     assert '<meta name="robots" content="noindex, follow">' in offline_html
@@ -324,9 +329,8 @@ def test_build_recipe_seo_title_truncates_intelligently():
     assert long_recipe.title.split()[0] in long_title
 
 
-def test_built_recipe_titles_stay_within_65_characters(tmp_path: Path):
-    output_dir = tmp_path / "_site"
-    build(output_dir)
+def test_built_recipe_titles_stay_within_65_characters(built_default_site: Path):
+    output_dir = built_default_site
 
     for page in (output_dir / "recipes").glob("*/index.html"):
         rendered = page.read_text(encoding="utf-8")
@@ -337,10 +341,9 @@ def test_built_recipe_titles_stay_within_65_characters(tmp_path: Path):
         assert len(decoded) <= 65, (page, decoded)
 
 
-def test_build_home_has_social_image(tmp_path: Path):
-    output_dir = tmp_path / "_site"
+def test_build_home_has_social_image(built_custom_site: Path):
+    output_dir = built_custom_site
     site_url = "https://custom.domain.com/cook"
-    build(output_dir, site_url=site_url)
 
     index_html = (output_dir / "index.html").read_text(encoding="utf-8")
     assert f'<meta property="og:image" content="{site_url}/assets/illustrations/hero-banner.jpg">' in index_html
@@ -351,10 +354,9 @@ def test_build_home_has_social_image(tmp_path: Path):
     assert (output_dir / "assets" / "illustrations" / "hero-banner.jpg").is_file()
 
 
-def test_category_pages_are_crawlable_with_unique_metadata(tmp_path: Path):
-    output_dir = tmp_path / "_site"
+def test_category_pages_are_crawlable_with_unique_metadata(built_custom_site: Path):
+    output_dir = built_custom_site
     site_url = "https://custom.domain.com/cook"
-    build(output_dir, site_url=site_url)
 
     recipes = [parse_recipe(path) for path in sorted(Path("recipes").glob("*.gram"))]
     titles = set()
@@ -413,9 +415,8 @@ def test_compute_similar_recipes_returns_deterministic_balanced_links():
         assert all(other.slug != r.slug for other in related)
 
 
-def test_related_recipes_section_and_clickable_tags_render(tmp_path: Path):
-    output_dir = tmp_path / "_site"
-    build(output_dir)
+def test_related_recipes_section_and_clickable_tags_render(built_default_site: Path):
+    output_dir = built_default_site
 
     page = (output_dir / "recipes" / "curry-poulet-noix-coco" / "index.html").read_text(encoding="utf-8")
     # Semantic section present
