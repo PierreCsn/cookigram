@@ -14,7 +14,10 @@ ingredients:
   aubergine:
     source: ANSES-CIQUAL
     status: verified
-  beurre:
+  beurre-doux:
+    source: ANSES-CIQUAL
+    status: verified
+  beurre-demi-sel:
     source: ANSES-CIQUAL
     status: verified
   cacao-en-poudre:

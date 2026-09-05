@@ -49,11 +49,23 @@ ingredients:
       fat: 0.2
       protein: 0.9
     piece_weight: 250.0
-  beurre:
-    name: Beurre
+  beurre-doux:
+    name: Beurre doux
     aliases:
-    - beurre
     - beurre doux
+    - beurre
+    category: Produits laitiers et matières grasses
+    pantry_staple: true
+    nutrition:
+      calories: 751
+      carbs: 0.7
+      fat: 82.5
+      protein: 0.8
+    density: 0.91
+  beurre-demi-sel:
+    name: Beurre demi-sel
+    aliases:
+    - beurre demi-sel
     category: Produits laitiers et matières grasses
     pantry_staple: true
     nutrition:
@@ -1927,7 +1939,7 @@ ingredients:
     aliases:
     - ghee
     - beurre clarifié
-    category: Crèmerie et oeufs
+    category: Produits laitiers et matières grasses
     nutrition:
       calories: 900
       protein: 0.0

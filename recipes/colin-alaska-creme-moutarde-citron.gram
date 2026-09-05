@@ -22,12 +22,21 @@ flavors:
 conservation:
   fridge_days: 2
   freezable: false
-image: images/placeholder-recipe.jpg
+image: images/colin-alaska-creme-moutarde-citron.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée et intégrée par un humain.
 image_credit:
   author: CookiGram
   source: https://github.com/PierreCsn/cookigram
   license: Illustration temporaire
 image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
   prompt_file: image-prompts/colin-alaska-creme-moutarde-citron.md
 ---
 
@@ -46,7 +55,7 @@ image_generation:
 - Enfourner ~{20 min}, jusqu'à ce que la chair soit opaque et se détache facilement.
 
 [Préparer la crème]
-- Faire fondre le @beurre{15 g} dans une #casserole{}.
+- Faire fondre le @beurre doux{15 g} dans une #casserole{}.
 - Ajouter le jus du @citron{1 pièce}, la @crème fraîche liquide{100 ml}, la @moutarde de Dijon{15 g}, le @sel{1/2 c. à café} et le @poivre moulu{2 pincées}.
 - Mélanger doucement jusqu'à obtenir une sauce chaude et homogène.
 
