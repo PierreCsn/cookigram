@@ -8,7 +8,13 @@ description: "Filets de colin croustillants à la chapelure et aux herbes, avec 
 tags: [air-fryer, poisson, colin, pané]
 source: https://www.bbcgoodfood.com/recipes/air-fryer-or-oven-cooked-fish-chips
 author: Ailsa Burt
-image: images/placeholder-recipe.jpg
+image: images/air-fryer-colin-pane-herbes.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
 image_credit:
   author: CookiGram
   source: https://github.com/PierreCsn/cookigram

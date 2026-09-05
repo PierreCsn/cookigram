@@ -8,11 +8,13 @@ description: "Frites de patate douce légèrement huilées, parfumées au paprik
 tags: [air-fryer, patate-douce, végétarien, accompagnement]
 source: https://www.bbcgoodfood.com/recipes/air-fryer-sweet-potato-fries
 author: Samuel Goldsmith
-image: images/placeholder-recipe.jpg
+image: images/air-fryer-frites-patate-douce-paprika.webp
 image_credit:
   author: CookiGram
   source: https://github.com/PierreCsn/cookigram
-  license: Illustration temporaire
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
 image_generation: {prompt_file: image-prompts/air-fryer-frites-patate-douce-paprika.md}
 scaling: {enabled: true, min: 2, max: 4, step: 1}
 ---

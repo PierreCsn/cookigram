@@ -8,11 +8,13 @@ description: "Falafels de pois chiches, cumin et coriandre, dorés et légèreme
 tags: [air-fryer, végétarien, pois-chiches, falafels]
 source: https://www.bbcgoodfood.com/recipes/air-fryer-falafel
 author: Good Food team
-image: images/placeholder-recipe.jpg
+image: images/air-fryer-falafels-pois-chiches.webp
 image_credit:
   author: CookiGram
   source: https://github.com/PierreCsn/cookigram
-  license: Illustration temporaire
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
 image_generation: {prompt_file: image-prompts/air-fryer-falafels-pois-chiches.md}
 scaling: {enabled: true, min: 2, max: 6, step: 1}
 ---

@@ -8,7 +8,13 @@ description: "Fleurettes de chou-fleur croustillantes et épicées, une alternat
 tags: [air-fryer, chou-fleur, végétarien, épicé]
 source: https://www.bbcgoodfood.com/recipes/collection/vegetarian-air-fryer-recipes
 author: Good Food team
-image: images/placeholder-recipe.jpg
+image: images/air-fryer-chou-fleur-croustillant.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
 image_credit:
   author: CookiGram
   source: https://github.com/PierreCsn/cookigram

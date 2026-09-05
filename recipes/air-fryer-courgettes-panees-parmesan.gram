@@ -8,7 +8,13 @@ description: "Bâtonnets de courgette panés au parmesan, croustillants dehors e
 tags: [air-fryer, courgette, parmesan, végétarien]
 source: https://www.bbcgoodfood.com/recipes/collection/vegetarian-air-fryer-recipes
 author: Good Food team
-image: images/placeholder-recipe.jpg
+image: images/air-fryer-courgettes-panees-parmesan.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
 image_credit:
   author: CookiGram
   source: https://github.com/PierreCsn/cookigram
