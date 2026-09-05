@@ -33,3 +33,26 @@ La validation privée reste conditionnelle à `CORE_SSH_KEY` et ne s'exécute qu
 sur les pushes/exécutions de confiance; elle ne peut donc pas faire échouer
 les forks. L'audit des illustrations reste public et bloquant pour toutes les
 PR.
+
+## Contrôle déterministe des pins
+
+[`scripts/check-pins.py`](../scripts/check-pins.py) vérifie les références
+utilisées par les workflows, sans recopier le parseur `.gram` :
+
+```bash
+python scripts/check-pins.py --json
+python scripts/check-pins.py --markdown --no-remote
+```
+
+Le code de sortie `0` signifie que les pins contrôlables sont cohérents ; `1`
+signale une incohérence ou une référence introuvable ; `2` signale une erreur
+d'utilisation ou d'exécution. Le rapport JSON contient les valeurs et les
+codes de contrôle, et le rapport Markdown est lisible dans les logs ou par un
+agent.
+
+`CONTENT_SHA` est comparé au commit checkouté. `CONTRACT_VERSION` et
+`CONTRACT_SHA` sont lus dans le job public de CI, puis le tag public est résolu
+avec `git ls-remote`. `.core-version` est comparé au checkout local de Core
+dans les jobs privés. Si `CORE_SSH_KEY` est absent, la vérification distante de
+Core est explicitement ignorée : ce cas est attendu pour une PR depuis un fork
+et ne désactive aucun contrôle public.
