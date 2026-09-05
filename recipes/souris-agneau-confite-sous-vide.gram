@@ -49,7 +49,7 @@ variants:
     replace:
       prep-and-sear: |
         [sear-cocotte-lamb | Saisir l'agneau en cocotte]
-        - Dans une #cocotte en fonte{}, chauffer l'@huile d'olive{2 c. à soupe} et le @beurre{15 g} à feu vif.
+        - Dans une #cocotte en fonte{}, chauffer l'@huile d'olive{2 c. à soupe} et le @beurre doux{15 g} à feu vif.
         - Faire dorer les @souris d'agneau{4 pièces, env. 400 g chacune} sur toutes les faces pendant ~{8 min} pour caraméliser les sucs.
         - Assaisonner avec le @sel{2 c. à café} et le @poivre{1 c. à café, du moulin}.
         - Ajouter les @gousses d'ail{8 pièces, entières en chemise}, le @romarin{4 brins, frais} et le @thym{4 brins, frais}.
@@ -61,7 +61,7 @@ variants:
 ---
 [prep-and-sear | Saisir les souris d'agneau et ensacher]
 - Remplir un bac ou récipient adapté de grand volume d'eau et fixer le #thermoplongeur{}. Programmer à ^{68 C} (couvrir le bac pour limiter l'évaporation sur 24 heures).
-- Faire chauffer l'@huile d'olive{2 c. à soupe} et la moitié du @beurre{15 g} dans une #grande poêle{} à feu vif.
+- Faire chauffer l'@huile d'olive{2 c. à soupe} et la moitié du @beurre doux{15 g} dans une #grande poêle{} à feu vif.
 - Saisir les @souris d'agneau{4 pièces, env. 400 g chacune} pendant ~{6 min} en les tournant régulièrement avec une #pince de cuisine{} pour bien dorer chaque face.
 - Saler et poivrer avec le @sel{2 c. à café} et le @poivre{1 c. à café, du moulin}.
 - Répartir les souris dans des #sacs sous vide{} renforcés (deux souris par sachet) avec les @gousses d'ail{8 pièces, entières en chemise}, le @romarin{4 brins, frais} et le @thym{4 brins, frais}.
@@ -75,7 +75,7 @@ variants:
 [reduce-sauce | Réduction du jus d'agneau concentré]
 - Sortir les sachets du bain d'eau. Couper un coin de chaque sac et verser l'intégralité du précieux jus de cuisson dans une #petite casserole{}.
 - Ajouter le @fond de veau{150 g, bouillon préparé} et faire réduire à feu vif pendant ~{8 min} jusqu'à consistance de sauce sirupeuse qui nappe généreusement la cuillère.
-- Monter la sauce hors du feu avec le reste du @beurre{15 g} bien froid.
+- Monter la sauce hors du feu avec le reste du @beurre doux{15 g, bien froid en dés}.
 
 [glaze-oven | Glaçage miroitant au four sous le gril]
 - Préchauffer le gril du four à ^{220 C}.
