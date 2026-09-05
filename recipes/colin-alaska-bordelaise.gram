@@ -1,0 +1,50 @@
+---
+title: Colin d'Alaska à la bordelaise
+portions: 4
+prep_time: 10 min
+total_time: 30 min
+spiciness: 0
+description: Colin d'Alaska doré sous une chapelure aux échalotes, persil, citron et vin blanc, simple et croustillant.
+tags: [poisson, colin, bordelaise, four, économique, familial]
+source: https://www.mangerbouger.fr/manger-mieux/la-fabrique-a-menus/recettes/1223-poisson-a-la-bordelaise
+author: Manger Bouger
+scaling:
+  enabled: true
+  min_portions: 2
+  max_portions: 8
+  step: 2
+  note: Adapter le diamètre du plat pour garder une couche de garniture régulière.
+flavors:
+  pairing: [colin d'Alaska, chapelure, échalote, citron]
+  notes: [croustillant, citronné, herbacé]
+  harmony: "Le vin blanc et le citron allègent la chapelure tandis que l'échalote et le persil parfument le poisson."
+  tips: "Répartir la chapelure en couche fine pour qu'elle dore sans masquer la chair délicate du colin."
+conservation:
+  fridge_days: 2
+  freezable: false
+image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation:
+  prompt_file: image-prompts/colin-alaska-bordelaise.md
+---
+
+## Colin d'Alaska à la bordelaise
+
+[Préchauffer le four]
+- Préchauffer le #four{} à ^{180 C}.
+
+[Préparer la garniture]
+- Faire revenir les @échalotes{2 pièces, finement hachées} dans l'@huile d'olive{15 ml} jusqu'à ce qu'elles soient translucides.
+- Ajouter le @vin blanc sec{100 ml} et le @jus de citron{15 ml}, puis cuire ~{5 min}.
+- Incorporer la @chapelure{40 g} et le @persil frais{1 c. à soupe, haché} hors du feu.
+
+[Napper le poisson]
+- Déposer les @filets de poisson{4 pièces, colin d'Alaska surgelé décongelé} dans un #plat à four{}.
+- Répartir la garniture sur les filets en couche régulière.
+
+[Cuire et servir]
+- Enfourner ~{20 min}, jusqu'à ce que le poisson soit opaque et la chapelure dorée.
+- Servir immédiatement avec une salade ou des légumes cuits.

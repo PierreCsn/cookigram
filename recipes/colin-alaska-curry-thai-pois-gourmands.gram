@@ -1,0 +1,51 @@
+---
+title: Curry thaï de colin d'Alaska et pois gourmands
+portions: 4
+prep_time: 20 min
+total_time: 45 min
+spiciness: 2
+description: Colin d'Alaska nappé d'un curry thaï coco relevé, servi avec pois gourmands croquants et riz parfumé.
+tags: [poisson, colin, curry-thaï, lait-de-coco, pois-gourmands, riz]
+source: https://www.delhaize.lu/fr/recettes/single/curry-thai-au-poisson-et-pois-gourmands
+author: Non spécifié
+scaling:
+  enabled: false
+  reason: Les proportions de curry, de liquide et de pois gourmands sont calibrées pour un wok de quatre portions.
+flavors:
+  pairing: [colin d'Alaska, curry vert, lait de coco, pois gourmands]
+  notes: [épicé, coco, croquant]
+  harmony: "Le curry vert et la sauce de poisson donnent du relief au coco, tandis que les pois gourmands gardent leur croquant."
+  tips: "Décongeler le poisson et les pois gourmands au réfrigérateur avant de commencer pour une cuisson régulière."
+conservation:
+  fridge_days: 2
+  freezable: false
+image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation:
+  prompt_file: image-prompts/colin-alaska-curry-thai-pois-gourmands.md
+---
+
+## Curry thaï de colin d'Alaska et pois gourmands
+
+[Préparer les éléments]
+- Décongeler les @filets de poisson{600 g, colin d'Alaska surgelé} et les @pois gourmands{300 g, surgelés} au réfrigérateur.
+- Cuire le @riz long blanc{200 g} selon les indications du paquet, puis le maintenir couvert au chaud.
+
+[Lancer le curry]
+- Chauffer la @crème de coco{45 g} avec la @pâte de curry vert{45 g} dans un #wok{}.
+- Faire frémir ~{5 min}, jusqu'à ce que le curry libère ses parfums.
+
+[Former la sauce]
+- Ajouter la @sauce de poisson{30 ml}, les @feuilles de combava{6 feuilles} et le @lait de coco{300 ml}.
+- Incorporer le @piment rouge{15 g, émincé} et laisser frémir ~{5 min}.
+
+[Cuire le poisson]
+- Déposer les filets dans la sauce et cuire ~{10 min}, en les retournant une fois.
+- Vérifier que la chair est opaque et se détache facilement à la fourchette.
+
+[Ajouter les légumes]
+- Incorporer les pois gourmands déjà décongelés et cuire ~{5 min}, jusqu'à ce qu'ils soient tendres mais encore croquants.
+- Servir le curry avec le riz long blanc déjà cuit.

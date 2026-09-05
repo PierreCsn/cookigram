@@ -638,6 +638,21 @@ ingredients:
       fat: 18.0
       protein: 1.6
     density: 0.98
+  creme-de-coco:
+    name: Crème de coco
+    aliases:
+    - crème de coco
+    category: Boissons et liquides
+  fumet-de-poisson:
+    name: Fumet de poisson
+    aliases:
+    - fumet de poisson
+    category: Condiments et aides culinaires
+  pate-de-curry-vert:
+    name: Pâte de curry vert
+    aliases:
+    - pâte de curry vert
+    category: Condiments et assaisonnements
   lait-demi-ecreme:
     name: Lait demi-écrémé
     aliases:
@@ -1375,6 +1390,8 @@ ingredients:
     - filets de poisson
     - filets de merlan
     - merlan
+    - colin d'Alaska
+    - colin d’alaska
     category: Poissons et fruits de mer
     nutrition:
       calories: 80
@@ -2050,6 +2067,13 @@ ingredients:
       protein: 2.8
       carbs: 7.5
       fat: 0.2
+  feuille-de-combava:
+    name: Feuilles de combava
+    aliases:
+    - feuilles de combava
+    - feuilles de kaffir
+    - feuille de kaffir
+    category: Herbes et épices
   pomme:
     name: Pomme
     aliases:
