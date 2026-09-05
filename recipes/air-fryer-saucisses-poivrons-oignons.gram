@@ -1,0 +1,20 @@
+---
+title: Saucisses, poivrons et oignons à l’air fryer
+portions: 4
+prep_time: 10 min
+total_time: 30 min
+spiciness: 1
+description: "Saucisses dorées accompagnées de poivrons et d’oignons fondants, rôtis ensemble à l’air fryer sans poêle."
+tags: [air-fryer, saucisse, poivron, rapide]
+source: https://www.bbcgoodfood.com/recipes/air-fryer-recipes
+author: Good Food team
+image: images/placeholder-recipe.jpg
+image_generation: {prompt_file: image-prompts/air-fryer-saucisses-poivrons-oignons.md}
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+---
+[Préparer]
+- Mélanger les @poivrons{3 pièces, en lanières}, l'@oignon{1 pièce, émincé}, l'@huile d'olive{1 c. à soupe}, le @paprika{1 c. à café} et le @sel{1/2 c. à café}.
+- Ajouter la @saucisse fumée{4 pièces} et répartir dans le #panier air fryer{}.
+[Rôtir]
+- Cuire à ^{190 C} ~{20 min}, en secouant le panier à mi-cuisson.
+- Les saucisses doivent être dorées à cœur et les légumes légèrement caramélisés.

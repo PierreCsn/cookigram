@@ -1,0 +1,20 @@
+---
+title: Falafels de pois chiches à l’air fryer
+portions: 4
+prep_time: 20 min
+total_time: 40 min
+spiciness: 1
+description: "Falafels de pois chiches, cumin et coriandre, dorés et légèrement croustillants à l’air fryer, avec une mie tendre."
+tags: [air-fryer, végétarien, pois-chiches, falafels]
+source: https://www.bbcgoodfood.com/recipes/air-fryer-falafel
+author: Good Food team
+image: images/placeholder-recipe.jpg
+image_generation: {prompt_file: image-prompts/air-fryer-falafels-pois-chiches.md}
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+---
+[Préparer la pâte]
+- Mixer les @pois chiches{400 g, cuits et égouttés}, l'@oignon{1 pièce, haché}, l'@ail{1 gousse}, le @cumin{1 c. à café}, la @coriandre moulue{1 c. à café} et le @persil frais{1 poignée}.
+- Incorporer l'@œuf{1 pièce}, le @sel{1/2 c. à café} et le @poivre moulu{2 pincées}, puis former 12 galettes.
+[Cuire]
+- Huiler les falafels avec l'@huile végétale{1 c. à soupe} et cuire dans le #panier air fryer{} à ^{190 C} ~{15 min}.
+- Retourner à mi-cuisson; les falafels doivent être dorés et fermes.

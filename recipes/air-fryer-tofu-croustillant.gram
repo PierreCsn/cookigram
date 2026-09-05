@@ -1,0 +1,21 @@
+---
+title: Tofu croustillant à l’air fryer
+portions: 4
+prep_time: 15 min
+total_time: 30 min
+spiciness: 0
+description: "Bouchées de tofu croustillantes et dorées, panées à l’ail et au paprika pour un repas végétarien riche en protéines."
+tags: [air-fryer, tofu, végétarien, croustillant]
+source: https://www.bbcgoodfood.com/recipes/air-fryer-popcorn-tofu-nuggets/
+author: Samuel Goldsmith
+image: images/placeholder-recipe.jpg
+image_generation: {prompt_file: image-prompts/air-fryer-tofu-croustillant.md}
+scaling: {enabled: true, min: 2, max: 4, step: 1}
+---
+[Préparer le tofu]
+- Presser le @tofu ferme{400 g} sous un poids ~{30 min}, puis le couper en bouchées.
+- Mélanger la @farine{40 g}, la @moutarde de Dijon{1 c. à café} et le @lait demi-écrémé{125 ml}; préparer à part la @chapelure{75 g}, l'@ail en poudre{1/2 c. à café} et le @paprika{1/2 c. à café}.
+[Paner]
+- Enrober chaque bouchée de tofu dans le mélange liquide puis dans la chapelure.
+[Cuire]
+- Cuire en une couche dans le #panier air fryer{} à ^{190 C} ~{15 min}, jusqu'à obtenir une croûte dorée.
