@@ -1,0 +1,34 @@
+---
+title: Riz complet à la casserole
+portions: 4
+prep_time: 5 min
+total_time: 50 min
+spiciness: 0
+description: "Une cuisson douce du riz complet pour des grains tendres, nourrissants et encore légèrement fermes sous la dent."
+tags: [riz, complet, accompagnement, casserole]
+source: https://www.bbcgoodfood.com/howto/guide/how-cook-brown-rice
+author: Miriam Nice
+required_equipment:
+  - Casserole avec couvercle
+  - Passoire fine
+scaling:
+  enabled: true
+  min: 2
+  max: 6
+  step: 2
+image: images/placeholder-recipe.jpg
+image_generation:
+  prompt_file: image-prompts/riz-complet-casserole.md
+---
+
+[Préparer le riz]
+- Rincer le @riz-brun{300 g} dans une #passoire fine{} puis l'égoutter.
+- Verser le riz et l'@eau{600 g} dans la #casserole{} avec le @sel{4 g}.
+
+[Cuire doucement]
+- Porter à ébullition, couvrir et réduire à feu doux.
+- Cuire ~{30 min}; le liquide doit être absorbé et le grain tendre sous la dent.
+- Couper le feu et laisser reposer à couvert ~{10 min}.
+
+[Égrainer]
+- Égrainer le riz à la fourchette et servir sans attendre.

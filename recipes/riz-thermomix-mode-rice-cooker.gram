@@ -1,0 +1,37 @@
+---
+title: Riz vapeur au Thermomix en mode Rice Cooker
+portions: 4
+prep_time: 5 min
+total_time: 30 min
+spiciness: 0
+description: "Une cuisson automatisée au Thermomix pour un riz long blanc vapeur, tendre et régulier sans surveillance."
+tags: [riz, thermomix, vapeur, accompagnement]
+source: https://cookidoo.fr/recipes/recipe/fr-FR/r917416
+author: Thermomix / Cookidoo
+appliances:
+  thermomix:
+  - TM5
+  - TM6
+  - TM7
+required_equipment:
+  - Thermomix compatible
+  - Panier cuisson
+scaling:
+  enabled: false
+  reason: Le mode Rice Cooker adapte automatiquement la cuisson au poids chargé.
+image: images/placeholder-recipe.jpg
+image_generation:
+  prompt_file: image-prompts/riz-thermomix-mode-rice-cooker.md
+---
+
+[Préparer la cuve]
+- Verser l'@eau{910 g} dans le bol du #Thermomix{}.
+- Rincer le @riz-long-blanc{355 g} dans le #panier cuisson{} jusqu'à ce que l'eau soit presque claire.
+
+[Cuire en mode automatique]
+- Placer le panier dans le bol et fermer avec le couvercle, sans utiliser le gobelet doseur.
+- Lancer le **mode Rice Cooker**; laisser le Thermomix gérer la durée et la température.
+
+[Égoutter et servir]
+- Retirer le panier avec la spatule; laisser égoutter quelques instants.
+- Égrainer le riz et servir dès qu'il est tendre et fumant.

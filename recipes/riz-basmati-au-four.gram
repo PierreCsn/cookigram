@@ -1,0 +1,36 @@
+---
+title: Riz basmati cuit au four
+portions: 4
+prep_time: 5 min
+total_time: 45 min
+spiciness: 0
+description: "Une cuisson au four simple et régulière pour un riz basmati gonflé, parfumé et parfaitement séparé des grains."
+tags: [riz, basmati, four, accompagnement]
+source: https://www.bbcgoodfood.com/howto/guide/how-make-sticky-rice
+author: Good Food team
+appliances:
+  oven: true
+required_equipment:
+  - Plat allant au four avec couvercle
+  - Passoire fine
+scaling:
+  enabled: true
+  min: 2
+  max: 6
+  step: 2
+image: images/placeholder-recipe.jpg
+image_generation:
+  prompt_file: image-prompts/riz-basmati-au-four.md
+---
+
+[Préchauffer et rincer]
+- Préchauffer le #four{} à ^{180 C}.
+- Rincer le @riz-basmati{300 g} dans une #passoire fine{} puis l'égoutter.
+
+[Enfourner]
+- Déposer le riz dans le #plat allant au four{} avec l'@eau{600 g} et le @sel{4 g}.
+- Couvrir hermétiquement et cuire ~{35 min}; le liquide doit être absorbé.
+
+[Reposer et égrainer]
+- Sortir le plat et laisser reposer fermé ~{5 min}.
+- Égrainer le riz à la fourchette et servir.

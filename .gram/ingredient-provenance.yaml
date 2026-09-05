@@ -381,6 +381,15 @@ ingredients:
     sources:
     - ciqual
     status: verified
+  riz-brun:
+    source: ANSES-CIQUAL, catégorie riz complet (fiche nutritionnelle à compléter)
+    status: pending
+  riz-sauvage:
+    source: ANSES-CIQUAL, catégorie riz sauvage (fiche nutritionnelle à compléter)
+    status: pending
+  riz-sushi:
+    source: ANSES-CIQUAL, catégorie riz blanc à grain court (fiche nutritionnelle à compléter)
+    status: pending
   romarin:
     source: ANSES-CIQUAL
     status: verified

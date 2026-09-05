@@ -1,0 +1,35 @@
+---
+title: Riz basmati pilaf aux aromates
+portions: 4
+prep_time: 10 min
+total_time: 35 min
+spiciness: 0
+description: "Un riz basmati pilaf parfumé, nacré dans la matière grasse puis cuit doucement dans un bouillon aromatique."
+tags: [riz, basmati, pilaf, accompagnement]
+source: https://www.bbcgoodfood.com/recipes/easy-pilau-rice
+author: Barney Desmazery
+required_equipment:
+  - Casserole avec couvercle
+  - Passoire fine
+scaling:
+  enabled: true
+  min: 2
+  max: 6
+  step: 2
+image: images/placeholder-recipe.jpg
+image_generation:
+  prompt_file: image-prompts/riz-basmati-pilaf.md
+---
+
+[Préparer le riz]
+- Rincer le @riz-basmati{300 g} dans une #passoire fine{} puis l'égoutter soigneusement.
+- Émincer l'@oignon{100 g} et mesurer le @bouillon-de-legumes{500 g} chaud.
+
+[Nacrer les aromates]
+- Chauffer l'@huile-olive{15 g} dans la #casserole{} et faire revenir l'oignon ~{5 min}, jusqu'à ce qu'il soit translucide.
+- Ajouter le riz et le @cumin{2 g}; remuer ~{2 min}, jusqu'à ce que les grains soient brillants.
+
+[Cuire le pilaf]
+- Verser le bouillon et le @sel{3 g}, couvrir et porter à frémissement.
+- Baisser le feu et cuire à couvert ~{15 min}; le liquide doit être absorbé et le riz moelleux.
+- Couper le feu, laisser reposer ~{5 min} puis égrainer à la fourchette.

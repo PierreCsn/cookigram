@@ -997,6 +997,24 @@ ingredients:
       carbs: 77.0
       fat: 0.9
       protein: 8.5
+  riz-brun:
+    aliases:
+    - riz brun
+    - riz complet
+    category: Céréales et féculents
+    name: Riz brun
+  riz-sauvage:
+    aliases:
+    - riz sauvage
+    category: Céréales et féculents
+    name: Riz sauvage
+  riz-sushi:
+    aliases:
+    - riz à sushi
+    - riz sushi
+    - riz japonais à grain court
+    category: Céréales et féculents
+    name: Riz à sushi
   romarin:
     name: Romarin frais
     aliases:

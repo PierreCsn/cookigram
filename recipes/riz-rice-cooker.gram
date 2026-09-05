@@ -1,0 +1,36 @@
+---
+title: Riz blanc au rice cooker
+portions: 4
+prep_time: 5 min
+total_time: 35 min
+spiciness: 0
+description: "La méthode la plus simple pour un riz blanc régulier, avec le dosage adapté à un rice cooker classique."
+tags: [riz, rice cooker, accompagnement, bases]
+source: https://www.zojirushi.com/grains/npnvc10.html
+author: Zojirushi America Corporation
+appliances:
+  rice_cooker: true
+required_equipment:
+  - Rice cooker
+  - Passoire fine
+scaling:
+  enabled: true
+  min: 2
+  max: 6
+  step: 2
+image: images/placeholder-recipe.jpg
+image_generation:
+  prompt_file: image-prompts/riz-rice-cooker.md
+---
+
+[Rincer et doser]
+- Rincer le @riz-long-blanc{300 g} dans une #passoire fine{} jusqu'à ce que l'eau soit presque claire.
+- Mettre le riz dans la cuve du #rice cooker{} et ajouter l'@eau{375 g} ainsi que le @sel{3 g}.
+
+[Lancer la cuisson]
+- Fermer le couvercle et lancer le programme **Riz blanc**.
+- Attendre la fin automatique du programme; les grains doivent être tendres et le liquide absorbé.
+
+[Laisser reposer]
+- Laisser le riz fermé en maintien au chaud ~{10 min}.
+- Égrainer à la spatule à riz et servir.
