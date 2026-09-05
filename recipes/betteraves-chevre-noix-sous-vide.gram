@@ -9,6 +9,10 @@ tags: [légumes, betterave, sous-vide, chèvre]
 source: https://www.sousvidemagazine.com/recipes/fruits-vegetables/beet-salad/
 author: Sous-Vide Magazine
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/betteraves-chevre-noix-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 8, step: 1}
 flavors: {pairing: [betterave, chèvre, noix, vinaigre balsamique], notes: [terreux, acidulé, crémeux, croquant], harmony: "Le vinaigre réveille la betterave douce tandis que le chèvre et les noix apportent contraste."}

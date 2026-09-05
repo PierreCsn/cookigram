@@ -9,6 +9,10 @@ tags: [dessert, crème-brûlée, sous-vide, vanille]
 source: https://recipes.anovaculinary.com/recipe/sous-vide-ultimate-creme-brulee-with-variations
 author: Nicole Poirier
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/creme-brulee-vanille-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 8, step: 1}
 flavors: {pairing: [vanille, crème, œuf, sucre], notes: [soyeux, lacté, caramélisé], harmony: "La vanille parfume la crème tandis que le sucre brûlé apporte le croquant final."}

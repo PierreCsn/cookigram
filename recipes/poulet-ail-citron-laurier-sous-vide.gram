@@ -9,6 +9,10 @@ tags: [poulet, sous-vide, citron, ail]
 source: https://recipes.anovaculinary.com/recipe/poitrine-de-poulet-sous-vide-avec-citron-ail-et-laurier
 author: Anova Culinary
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/poulet-ail-citron-laurier-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 6, step: 1}
 flavors: {pairing: [poulet, citron, ail, laurier], notes: [moelleux, citronné, aromatique], harmony: "Le citron allège la chair du poulet tandis que l'ail et le laurier l'infusent doucement."}

@@ -9,6 +9,10 @@ tags: [porc, sous-vide, soja, piment]
 source: https://www.bonappetit.com/recipe/sous-vide-pork-belly-sweet-and-spicy
 author: Brad Leone
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/poitrine-porc-soja-miel-piment-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 6, step: 1}
 flavors: {pairing: [porc, sauce soja salée, miel, piment], notes: [umami, sucré-salé, fondant, relevé], harmony: "Le soja apporte la profondeur et le miel arrondit le piment."}

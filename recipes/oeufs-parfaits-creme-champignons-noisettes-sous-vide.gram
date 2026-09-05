@@ -9,6 +9,10 @@ tags: [œuf, champignons, sous-vide, végétarien]
 source: https://recipes.anovaculinary.com/recipe/sous-vide-poached-egg-with-morel-mushroom-cream-sauce
 author: Anova Culinary
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/oeufs-parfaits-creme-champignons-noisettes-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 8, step: 1}
 flavors: {pairing: [œuf, champignon, crème, noisette], notes: [crémeux, terreux, torréfié], harmony: "Le jaune coulant enrichit la crème de champignons et les noisettes ajoutent le contraste croquant."}

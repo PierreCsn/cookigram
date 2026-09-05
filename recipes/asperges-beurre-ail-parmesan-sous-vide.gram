@@ -9,6 +9,10 @@ tags: [légumes, asperges, sous-vide, parmesan]
 source: https://recipes.anovaculinary.com/recipe/sous-vide-garlic-parmesan-asparagus
 author: Carey Copeling
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/asperges-beurre-ail-parmesan-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 8, step: 1}
 flavors: {pairing: [asperge, beurre, ail, parmesan], notes: [végétal, beurré, umami], harmony: "Le parmesan renforce la douceur végétale des asperges et le beurre arrondit leur texture."}

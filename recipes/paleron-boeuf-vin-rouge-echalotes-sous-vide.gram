@@ -9,6 +9,10 @@ tags: [bœuf, paleron, sous-vide, vin-rouge]
 source: https://www.elivia-professionnels.fr/les-recettes-du-chef/paleron-de-boeuf-cuit-nature/
 author: Elivia Professionnels
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/paleron-boeuf-vin-rouge-echalotes-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 6, step: 1}
 flavors: {pairing: [bœuf, vin rouge, échalote, fond de viande], notes: [corsé, fondant, boisé], harmony: "Le jus réduit au vin rouge accompagne la texture gélatineuse du paleron."}

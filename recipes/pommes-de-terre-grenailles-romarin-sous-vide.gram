@@ -9,6 +9,10 @@ tags: [accompagnement, pomme-de-terre, sous-vide, romarin]
 source: https://www.joshuaweissman.com/recipes/best-sous-vide-potatoes-recipe
 author: Joshua Weissman
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/pommes-de-terre-grenailles-romarin-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 8, step: 1}
 flavors: {pairing: [pomme de terre, beurre, romarin, ail], notes: [fondant, herbacé, doré], harmony: "Le romarin parfume le beurre qui dore ensuite les pommes de terre fondantes."}

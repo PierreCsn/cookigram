@@ -9,6 +9,10 @@ tags: [poisson, colin, sous-vide, citron]
 source: https://cdn.accentuate.io/8124841656482/1701712262883/SO-314962_14727_Crux_Sous-vide_Macys_IM-R1.pdf
 author: Crux Kitchen
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/colin-beurre-citron-estragon-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 6, step: 1}
 flavors: {pairing: [colin d’Alaska, citron, beurre, estragon], notes: [nacré, beurré, acidulé], harmony: "Le citron réveille la douceur du colin et l'estragon prolonge sa fraîcheur anisée."}
