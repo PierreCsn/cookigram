@@ -1,0 +1,24 @@
+---
+title: One pot de riz aux champignons, poivrons et tomate
+portions: 4
+prep_time: 20 min
+total_time: 50 min
+spiciness: 0
+description: "Riz végétarien aux champignons et poivrons, mijoté dans la tomate et le bouillon pour un plat complet sans vaisselle."
+tags: [one-pot, végétarien, riz, champignons]
+source: https://www.bbcgoodfood.com/recipes/mushroom-rice-one-pot
+author: Mary Cadogan
+image: images/placeholder-recipe.jpg
+image_generation: {prompt_file: image-prompts/one-pot-riz-champignons-tomate.md}
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+flavors: {pairing: [riz, champignons, tomate, romarin], notes: [terreux, végétal, mijoté], harmony: "Les champignons donnent de la profondeur au riz tandis que la tomate apporte une acidité équilibrante."}
+---
+[Préparer la base]
+- Rincer le @riz basmati{200 g} et l'égoutter.
+- Chauffer l'@huile d'olive{1 c. à soupe} dans une #cocotte{} et faire revenir l'@oignon{1 pièce, haché} ~{5 min}.
+- Ajouter le @romarin{2 c. à café} et les @champignons de Paris{250 g, en quartiers}; cuire ~{3 min}.
+[Mijoter]
+- Ajouter le @riz basmati{200 g}, les @poivrons{2 pièces, émincés}, les @tomates concassées{400 g}, le @bouillon de légumes{425 ml} et le @poivre moulu{2 pincées}.
+- Porter à ébullition, couvrir et cuire au #four{} à ^{190 C} ~{25 min}; le riz doit être tendre et le liquide absorbé.
+[Servir]
+- Laisser reposer couvert ~{5 min}, puis incorporer le @persil frais{1 poignée, haché}.

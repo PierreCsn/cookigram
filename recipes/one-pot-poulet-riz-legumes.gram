@@ -1,0 +1,26 @@
+---
+title: One pot de poulet, riz et légumes
+portions: 4
+prep_time: 10 min
+total_time: 50 min
+spiciness: 0
+description: "Poulet doré et riz moelleux cuits dans une seule poêle, avec poireaux et légumes pour un dîner familial complet."
+tags: [one-pot, poulet, riz, familial]
+source: https://www.bbcgoodfood.com/recipes/one-pot-chicken-rice
+author: Sara Buenfeld
+image: images/placeholder-recipe.jpg
+image_generation: {prompt_file: image-prompts/one-pot-poulet-riz-legumes.md}
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+flavors: {pairing: [poulet, riz, poireau, paprika fumé], notes: [réconfortant, parfumé, familial], harmony: "Le riz absorbe les sucs du poulet et le bouillon arrondit les légumes."}
+---
+[Assaisonner le poulet]
+- Mélanger le @paprika fumé{1 c. à soupe}, la @coriandre moulue{1 c. à soupe}, l'@ail{2 gousses, râpées} et l'@huile végétale{2 c. à café}.
+- Enrober les @cuisses de poulet{600 g, désossées et sans peau}.
+[Dorer]
+- Chauffer une #poêle profonde{} et dorer le poulet ~{5 min}, puis réserver.
+[Cuire le riz]
+- Verser le @bouillon de légumes{700 ml}, ajouter le @riz brun{250 g}, les @poireaux{320 g, émincés}, l'@origan{1 c. à café} et le @laurier{2 feuilles}.
+- Déposer le poulet dessus, couvrir et mijoter ~{20 min}; le riz doit être tendre et le poulet cuit à cœur.
+[Ajouter les légumes]
+- Ajouter les @légumes surgelés{320 g}, couvrir et poursuivre ~{5 min}.
+- Couper le feu et laisser reposer ~{5 min} avant de servir.
