@@ -15,10 +15,6 @@ image_credit:
   license: Illustration générée par IA pour CookiGram
   license_url: https://openai.com/policies/terms-of-use
   modifications: Illustration sélectionnée et intégrée par un humain.
-image_credit:
-  author: CookiGram
-  source: https://github.com/PierreCsn/cookigram
-  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/betteraves-chevre-noix-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 8, step: 1}
 flavors: {pairing: [betterave, chèvre, noix, vinaigre balsamique], notes: [terreux, acidulé, crémeux, croquant], harmony: "Le vinaigre réveille la betterave douce tandis que le chèvre et les noix apportent contraste."}

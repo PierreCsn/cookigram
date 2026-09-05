@@ -1,0 +1,7 @@
+---
+title: Une recette de test avec un titre assez long
+description: Une description de test suffisamment longue pour le frontmatter.
+tags: [test]
+image_credit: {author: one}
+image_credit: {author: two}
+---

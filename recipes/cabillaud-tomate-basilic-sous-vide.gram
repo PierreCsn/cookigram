@@ -15,10 +15,6 @@ image_credit:
   license: Illustration générée par IA pour CookiGram
   license_url: https://openai.com/policies/terms-of-use
   modifications: Illustration sélectionnée et intégrée par un humain.
-image_credit:
-  author: CookiGram
-  source: https://github.com/PierreCsn/cookigram
-  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/cabillaud-tomate-basilic-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 6, step: 1}
 flavors: {pairing: [cabillaud, tomate, basilic, huile d’olive], notes: [iodé, méditerranéen, acidulé], harmony: "La tomate acidulée et le basilic donnent du relief à la chair douce du cabillaud."}

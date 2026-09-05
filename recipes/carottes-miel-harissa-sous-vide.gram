@@ -15,10 +15,6 @@ image_credit:
   license: Illustration générée par IA pour CookiGram
   license_url: https://openai.com/policies/terms-of-use
   modifications: Illustration sélectionnée et intégrée par un humain.
-image_credit:
-  author: CookiGram
-  source: https://github.com/PierreCsn/cookigram
-  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/carottes-miel-harissa-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 8, step: 1}
 flavors: {pairing: [carotte, miel, harissa, citron], notes: [sucré, épicé, fondant], harmony: "Le miel adoucit la harissa et concentre la douceur naturelle des carottes."}
