@@ -9,7 +9,7 @@ tags: [riz, basmati, four, accompagnement]
 source: https://www.bbcgoodfood.com/howto/guide/how-make-sticky-rice
 author: Good Food team
 appliances:
-  oven: true
+  four: [standard, convection, chaleur-tournante]
 required_equipment:
   - Plat allant au four avec couvercle
   - Passoire fine
@@ -34,7 +34,7 @@ image_generation:
 
 [Préchauffer et rincer]
 - Préchauffer le #four{} à ^{180 C}.
-- Rincer le @riz-basmati{300 g} dans une #passoire fine{} puis l'égoutter.
+- Rincer le @riz basmati{300 g} dans une #passoire fine{} puis l'égoutter.
 
 [Enfourner]
 - Déposer le riz dans le #plat allant au four{} avec l'@eau{600 g} et le @sel{4 g}.

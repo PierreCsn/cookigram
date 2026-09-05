@@ -9,7 +9,7 @@ tags: [riz, rice cooker, accompagnement, bases]
 source: https://www.zojirushi.com/grains/npnvc10.html
 author: Zojirushi America Corporation
 appliances:
-  rice_cooker: true
+  rice_cooker: [standard]
 required_equipment:
   - Rice cooker
   - Passoire fine
@@ -33,7 +33,7 @@ image_generation:
 ---
 
 [Rincer et doser]
-- Rincer le @riz-long-blanc{300 g} dans une #passoire fine{} jusqu'à ce que l'eau soit presque claire.
+- Rincer le @riz long blanc{300 g} dans une #passoire fine{} jusqu'à ce que l'eau soit presque claire.
 - Mettre le riz dans la cuve du #rice cooker{} et ajouter l'@eau{375 g} ainsi que le @sel{3 g}.
 
 [Lancer la cuisson]
