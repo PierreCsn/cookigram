@@ -18,12 +18,17 @@ scaling:
   min: 2
   max: 6
   step: 2
-image: images/placeholder-recipe.jpg
+image: images/riz-basmati-au-four.webp
 image_credit:
   author: CookiGram
   source: https://github.com/PierreCsn/cookigram
-  license: Illustration temporaire
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration originale générée pour la fiche recette.
 image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
   prompt_file: image-prompts/riz-basmati-au-four.md
 ---
 

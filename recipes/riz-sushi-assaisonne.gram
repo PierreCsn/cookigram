@@ -15,12 +15,17 @@ required_equipment:
 scaling:
   enabled: false
   reason: Les mesures sont calibrées pour le gobelet à riz japonais et ne se multiplient pas directement.
-image: images/placeholder-recipe.jpg
+image: images/riz-sushi-assaisonne.webp
 image_credit:
   author: CookiGram
   source: https://github.com/PierreCsn/cookigram
-  license: Illustration temporaire
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration originale générée pour la fiche recette.
 image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
   prompt_file: image-prompts/riz-sushi-assaisonne.md
 ---
 

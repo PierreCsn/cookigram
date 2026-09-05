@@ -1,1 +1,1 @@
-Photo culinaire manga réaliste d'un bol de riz blanc vapeur à côté d'un rice cooker ouvert, grains séparés, lumière douce, sans texte.
+Illustration-story CookiGram originale, paysage 16:9 : bol centré de riz blanc vapeur aux grains séparés, à côté d'un rice cooker générique ouvert et sans marque, cuve visible, sans commande lisible. Table de cuisine chaleureuse, vue trois-quarts à 45 degrés, marges sûres. Contours fins à l'encre, aquarelle, cel shading doux, textures appétissantes et lumière naturelle. Aucun texte, logo, filigrane, personne, marque ou emballage.
