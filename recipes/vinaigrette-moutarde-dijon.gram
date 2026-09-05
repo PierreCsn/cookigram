@@ -22,12 +22,16 @@ flavors:
 conservation:
   fridge_days: 30
   freezable: false
-image: images/placeholder-recipe.jpg
+image: images/vinaigrette-moutarde-dijon.jpg
 image_credit:
   author: CookiGram
   source: https://github.com/PierreCsn/cookigram
-  license: Illustration temporaire
+  license: Illustration générée par IA pour CookiGram
+  modifications: Illustration originale générée pour CookiGram, redimensionnée et optimisée en JPEG 1280 × 720.
 image_generation:
+  provider: OpenAI
+  model: gpt-image-2
+  generated_at: "2026-09-05"
   prompt_file: image-prompts/vinaigrette-moutarde-dijon.md
 ---
 

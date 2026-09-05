@@ -59,5 +59,7 @@ jobs:
                   yaml.safe_load(f)
           print('All .gram YAML files are syntactically valid.')
           "
+      - name: Audit des illustrations et prompts
+        run: python scripts/audit-recipe-images.py --check
         env:
           HAVE_CORE_KEY: ${{ secrets.CORE_SSH_KEY != '' }}
