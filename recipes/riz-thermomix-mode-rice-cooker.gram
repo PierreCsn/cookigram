@@ -20,6 +20,10 @@ scaling:
   enabled: false
   reason: Le mode Rice Cooker adapte automatiquement la cuisson au poids chargé.
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation:
   prompt_file: image-prompts/riz-thermomix-mode-rice-cooker.md
 ---

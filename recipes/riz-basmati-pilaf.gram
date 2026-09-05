@@ -17,6 +17,10 @@ scaling:
   max: 6
   step: 2
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation:
   prompt_file: image-prompts/riz-basmati-pilaf.md
 ---
