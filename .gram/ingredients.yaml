@@ -974,6 +974,60 @@ ingredients:
       fat: 0.1
       protein: 2.0
     piece_weight: 150.0
+  pate-a-pizza:
+    name: Pâte à pizza
+    aliases:
+    - pâte à pizza
+    - boule de pâte à pizza
+    category: Pâtes et produits céréaliers
+  gorgonzola:
+    name: Gorgonzola
+    aliases:
+    - gorgonzola
+    category: Produits laitiers et matières grasses
+  cheddar:
+    name: Cheddar
+    aliases:
+    - cheddar
+    category: Produits laitiers et matières grasses
+  burrata:
+    name: Burrata
+    aliases:
+    - burrata
+    category: Produits laitiers et matières grasses
+  pesto:
+    name: Pesto au basilic
+    aliases:
+    - pesto
+    - pesto de basilic
+    category: Condiments
+  artichaut:
+    name: Cœurs d'artichaut
+    aliases:
+    - cœur d'artichaut
+    - cœurs d'artichaut
+    category: Légumes et aromates
+  poire:
+    name: Poire
+    aliases:
+    - poire
+    category: Fruits
+  figue:
+    name: Figue
+    aliases:
+    - figue
+    category: Fruits
+  noix:
+    name: Noix
+    aliases:
+    - noix
+    category: Fruits à coque et graines
+  nduja:
+    name: Nduja
+    aliases:
+    - nduja
+    - 'nduja'
+    category: Viandes et charcuteries
   riz-a-risotto:
     aliases:
     - riz à risotto
@@ -1034,6 +1088,11 @@ ingredients:
       carbs: 2.5
       fat: 0.3
     piece_weight: 120.0
+  roquette:
+    name: Roquette
+    aliases:
+    - roquette
+    category: Légumes et aromates
   sauce-tomate:
     name: Sauce tomate
     aliases:
