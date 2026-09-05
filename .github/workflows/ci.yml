@@ -13,8 +13,10 @@ concurrency:
 
 jobs:
   recipe-check:
-    name: Validation Recettes & Build (< 15s)
+    name: Validation du contrat public (< 15s)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout CookiGram Recettes (Public)
         uses: actions/checkout@v4
@@ -24,6 +26,24 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+
+      - name: Contrat public non publié
+        run: |
+          echo "::error::Le contrat public CookiGram v1.0 n'est pas encore publié."
+          echo "::error::Publiez l'artefact versionné décrit dans docs/PUBLIC-CONTRACT.md avant d'activer cette validation."
+          exit 1
+
+  private-integration:
+    name: Intégration Core privée (push de confiance uniquement)
+    if: ${{ github.event_name != 'pull_request' }}
+    runs-on: ubuntu-latest
+    env:
+      HAVE_CORE_KEY: ${{ secrets.CORE_SSH_KEY != '' }}
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout CookiGram Recettes (Public)
+        uses: actions/checkout@v4
 
       - name: Read pinned Core SHA
         id: core-ref
@@ -37,8 +57,6 @@ jobs:
           ssh-key: ${{ secrets.CORE_SSH_KEY }}
           ref: ${{ steps.core-ref.outputs.sha }}
           path: core
-        env:
-          HAVE_CORE_KEY: ${{ secrets.CORE_SSH_KEY != '' }}
 
       - name: Validation avec CookiGram Core
         if: ${{ env.HAVE_CORE_KEY == 'true' }}
@@ -47,24 +65,6 @@ jobs:
           pip install -e ./core
           python -m generator.recipe_check --root .
           python -m generator.build --content-dir . --output /tmp/_test_site
-        env:
-          HAVE_CORE_KEY: ${{ secrets.CORE_SSH_KEY != '' }}
 
-      - name: Contrôle YAML de secours (Fork PR sans secret)
-        if: ${{ env.HAVE_CORE_KEY != 'true' }}
-        run: |
-          pip install pyyaml
-          python -c "
-          from pathlib import Path
-          import yaml
-
-          for yml in sorted(Path('.gram').glob('*.yaml')):
-              print(f'Validating {yml}...')
-              with open(yml, encoding='utf-8') as f:
-                  yaml.safe_load(f)
-          print('All .gram YAML files are syntactically valid.')
-          "
       - name: Audit des illustrations et prompts
         run: python scripts/audit-recipe-images.py --check
-        env:
-          HAVE_CORE_KEY: ${{ secrets.CORE_SSH_KEY != '' }}
