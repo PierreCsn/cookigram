@@ -8,7 +8,13 @@ description: "Paleron de bœuf longuement attendri sous vide, servi avec un jus 
 tags: [bœuf, paleron, sous-vide, vin-rouge]
 source: https://www.elivia-professionnels.fr/les-recettes-du-chef/paleron-de-boeuf-cuit-nature/
 author: Elivia Professionnels
-image: images/placeholder-recipe.jpg
+image: images/paleron-boeuf-vin-rouge-echalotes-sous-vide.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
 image_credit:
   author: CookiGram
   source: https://github.com/PierreCsn/cookigram

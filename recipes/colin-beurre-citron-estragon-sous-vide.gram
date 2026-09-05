@@ -8,7 +8,13 @@ description: "Colin d’Alaska nacré, cuit doucement dans un beurre citronné e
 tags: [poisson, colin, sous-vide, citron]
 source: https://cdn.accentuate.io/8124841656482/1701712262883/SO-314962_14727_Crux_Sous-vide_Macys_IM-R1.pdf
 author: Crux Kitchen
-image: images/placeholder-recipe.jpg
+image: images/colin-beurre-citron-estragon-sous-vide.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
 image_credit:
   author: CookiGram
   source: https://github.com/PierreCsn/cookigram
