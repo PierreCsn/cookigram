@@ -498,6 +498,9 @@ ingredients:
   sauce-soja:
     source: ANSES CIQUAL 2024 / Open Food Facts
     status: verified
+  sauce-soja-sucree:
+    source: Étiquetage nutritionnel Conimex Ketjap Manis Sweet Soy Sauce
+    status: estimated
   saumon-frais:
     source: ANSES CIQUAL 2024 / Open Food Facts
     status: verified

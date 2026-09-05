@@ -15,9 +15,9 @@ scaling:
   step: 2
   note: Multiplier les ingrédients et ajuster l'eau jusqu'à obtenir une texture nappante.
 flavors:
-  pairing: [beurre de cacahuète, citron vert, sauce soja, vinaigre de riz]
+  pairing: [beurre de cacahuète, citron vert, sauce soja salée, vinaigre de riz]
   notes: [crémeux, salé, acidulé]
-  harmony: "Le beurre de cacahuète enveloppe la salade, tandis que soja, vinaigre de riz et citron vert la réveillent."
+  harmony: "Le beurre de cacahuète enveloppe la salade, tandis que sauce soja salée, vinaigre de riz et citron vert la réveillent."
   tips: "Ajouter l'eau par petites quantités pour garder une sauce épaisse mais assez fluide pour napper les feuilles."
 conservation:
   fridge_days: 7
@@ -34,7 +34,7 @@ image_generation:
 ## Sauce cacahuète et citron vert
 
 [Dissoudre la base]
-- Verser le @beurre de cacahuète{64 g}, le @vinaigre de riz{30 ml}, le @sucre{12 g} et la @sauce soja{15 ml} dans un #bol{}.
+- Verser le @beurre de cacahuète{64 g}, le @vinaigre de riz{30 ml}, le @sucre{12 g} et la @sauce soja salée{15 ml} dans un #bol{}.
 - Fouetter jusqu'à ce que le mélange soit homogène et que le sucre soit dissous.
 
 [Détendre et aciduler]
