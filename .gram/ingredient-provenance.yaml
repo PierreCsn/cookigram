@@ -370,7 +370,7 @@ ingredients:
     source: ANSES-CIQUAL
     status: verified
   pate-a-pizza:
-    source: Produit préparé, composition variable selon la pâte choisie
+    source: Produit céréalier ; valeur nutritionnelle à compléter depuis CIQUAL.
     status: incomplete
   gorgonzola:
     source: ANSES-CIQUAL, fromage à pâte persillée

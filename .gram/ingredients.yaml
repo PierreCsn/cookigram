@@ -978,8 +978,10 @@ ingredients:
     name: Pâte à pizza
     aliases:
     - pâte à pizza
-    - boule de pâte à pizza
-    category: Pâtes et produits céréaliers
+    - pate a pizza
+    - pate-a-pizza
+    - pâtons de pizza
+    category: Produits céréaliers
   gorgonzola:
     name: Gorgonzola
     aliases:
