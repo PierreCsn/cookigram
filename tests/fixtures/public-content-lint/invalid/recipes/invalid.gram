@@ -1,0 +1,6 @@
+---
+title: Une recette de test avec un titre assez long
+description: Une description de test suffisamment longue pour le frontmatter.
+tags: [test, TEST]
+image_generation: {generated_at: '2026-02-30'}
+---

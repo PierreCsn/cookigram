@@ -15,10 +15,6 @@ image_credit:
   license: Illustration générée par IA pour CookiGram
   license_url: https://openai.com/policies/terms-of-use
   modifications: Illustration sélectionnée et intégrée par un humain.
-image_credit:
-  author: CookiGram
-  source: https://github.com/PierreCsn/cookigram
-  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/cheesecake-individuel-citron-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 8, step: 1}
 flavors: {pairing: [fromage frais, citron, sucre, vanille], notes: [crémeux, acidulé, frais], harmony: "Le citron tranche la richesse du fromage frais et laisse une finale nette."}

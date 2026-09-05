@@ -48,6 +48,9 @@ jobs:
       - name: Audit des illustrations et prompts
         run: python scripts/audit-recipe-images.py --check
 
+      - name: Linter public SEO et contenu
+        run: python scripts/lint-public-content.py --mode blocking --format json
+
   private-integration:
     name: Intégration Core privée (push de confiance uniquement)
     if: ${{ github.event_name != 'pull_request' }}

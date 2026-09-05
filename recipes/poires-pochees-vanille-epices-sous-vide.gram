@@ -15,10 +15,6 @@ image_credit:
   license: Illustration générée par IA pour CookiGram
   license_url: https://openai.com/policies/terms-of-use
   modifications: Illustration sélectionnée et intégrée par un humain.
-image_credit:
-  author: CookiGram
-  source: https://github.com/PierreCsn/cookigram
-  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/poires-pochees-vanille-epices-sous-vide.md}
 scaling: {enabled: true, min: 2, max: 8, step: 1}
 flavors: {pairing: [poire, vanille, cannelle, miel], notes: [fruité, épicé, fondant], harmony: "La cannelle et la vanille soulignent la douceur de la poire sans la masquer."}
