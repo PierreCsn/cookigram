@@ -1,79 +1,39 @@
-# Guide de Contribution à CookiGram 🍳
+# Contribuer à CookiGram 🍳
 
-Merci de vous intéresser à CookiGram ! Ce projet vise à proposer un carnet de recettes moderne, résilient, offline-first et respectueux de la vie privée, propulsé par le langage culinaire [Gram](https://gram-lang.org).
+Merci de contribuer au carnet de recettes public CookiGram. Ce dépôt accueille le contenu culinaire ; le moteur de génération et l’application sont maintenus séparément dans [`PierreCsn/cookigram-core`](https://github.com/PierreCsn/cookigram-core), un dépôt privé.
 
----
+## Ce qui est dans le périmètre
 
-## 1. Deux Dépôts Découplés (PDR-0008)
+Les changements attendus ici concernent les recettes `.gram`, [`.gram/ingredients.yaml`](.gram/ingredients.yaml), [`.gram/ingredient-provenance.yaml`](.gram/ingredient-provenance.yaml), les illustrations, les prompts et la documentation éditoriale. Ne modifiez pas le moteur, le build ou le code applicatif dans ce dépôt.
 
-L'écosystème CookiGram s'articule en deux dépôts :
-* **`PierreCsn/cookigram` (Ce dépôt — Public) :** Le carnet de recettes vivant, les photographies culinaires et la base de données nutritionnelle CIQUAL. C'est ici que sont accueillies toutes les contributions de recettes (par des humains ou des agents d'IA).
-* **`PierreCsn/cookigram-core` (Privé) :** Le moteur logiciel Kitchen OS, l'application frontend PWA, les solveurs d'ordonnancement (CP-SAT) et la suite de tests E2E.
+## Ajouter ou corriger une recette
 
----
+1. Créez ou modifiez `recipes/<slug>.gram`.
+2. Résolvez chaque `@ingrédient{quantité}` dans [`.gram/ingredients.yaml`](.gram/ingredients.yaml). Pour toute nouvelle donnée nutritionnelle ou physique, ajoutez sa source dans [`.gram/ingredient-provenance.yaml`](.gram/ingredient-provenance.yaml).
+3. Respectez la structure Gram : phases `[Action]`, puces atomiques `- `, quantités mesurables, réglages appareil explicites et critère sensoriel de fin.
+4. Ajoutez ou mettez à jour l’image dans `static/images/` et le prompt dans `image-prompts/` si nécessaire. Les chemins sont relatifs à la racine du dépôt.
 
-## 2. Contribuer une Recette (Workflow en 3 étapes)
+## Contrôles locaux réellement disponibles
 
-La contribution d'une recette est rapide, déterministe et validée en moins de 2 secondes.
-
-### Étape 1 : Créer le fichier `.gram` dans `recipes/`
-Placez votre recette dans `recipes/<slug>.gram` avec son frontmatter YAML obligatoire :
-
-```yaml
----
-title: Risotto crémeux aux champignons
-portions: 4
-prep_time: 15 min
-total_time: 40 min
-spiciness: 0
-scaling:
-  default_portions: 4
-  min_portions: 1
-  max_portions: 12
-tags: [italien, réconfort, automne]
-source: https://example.com/recette
-author: Chef Pierre
-description: Un risotto fondant parfumé aux champignons de Paris et parmesan.
----
-
-[Préparer les ingrédients]
-- Émincer @oignon{1} et @gousses d'ail{2}.
-- Nettoyer et couper @champignons de Paris{300 g} en lamelles.
-
-[Cuisson du risotto]
-- Faire suer l'oignon dans #casserole{} avec @huile d'olive{2 c. à soupe} pendant ~{5 min}.
-- Ajouter le @riz arborio{320 g} et nacrer ~{2 min}.
-- Mouiller progressivement avec @bouillon de légumes{1 l} chaud en remuant ~{18 min}.
-- Hors du feu, incorporer @parmesan râpé{60 g} et @beurre{30 g}.
-```
-
-### Étape 2 : Vérifier les ingrédients
-Si votre recette introduit de nouveaux ingrédients :
-1. Déclarez leurs valeurs nutritionnelles dans [`.gram/ingredients.yaml`](.gram/ingredients.yaml).
-2. Déclarez leur source et niveau de confiance dans [`.gram/ingredient-provenance.yaml`](.gram/ingredient-provenance.yaml).
-
-### Étape 3 : Contrôler la conformité en local (< 2 s)
-Exécutez le validateur atomique via la CLI unifiée :
+Depuis la racine du dépôt :
 
 ```bash
-cookigram check recipes/<slug>.gram
+python -c "import yaml, glob; [yaml.safe_load(open(f, encoding='utf-8')) for f in glob.glob('.gram/*.yaml')]"
+python scripts/audit-recipe-images.py --check
 ```
-*(ou `python -m generator.recipe_check recipes/<slug>.gram`)*
 
-Si le terminal affiche `✅ CONFORME`, votre recette respecte 100 % du contrat de données CookiGram.
+Le second contrôle échoue lorsqu’un prompt déclare une image placeholder, une image absente ou un prompt absent. Le validateur Gram complet et le build ne sont pas installés ici : ils appartiennent à `cookigram-core` et sont exécutés par la CI lorsque le secret du moteur est disponible. Les PR publiques sans ce secret passent par le contrôle YAML et l’audit des images.
 
-### Image de la recette
-* Si vous disposez d'une photographie (format 16:9, ratio recommandé 1280x720, < 200 Ko), déposez-la dans `static/images/<slug>.jpg`.
-* Si vous n'avez pas encore d'image, le validateur accepte le visuel par défaut système (`static/images/placeholder-recipe.jpg`).
-* Si vous ajoutez `image_generation.prompt_file`, générez l'illustration avant la PR et remplacez le placeholder par `images/<slug>.<ext>`. Si la génération doit être différée, ouvrez une issue d'asset visuel dédiée et référencez-la dans la PR.
-* Contrôlez les recettes en attente avec `python scripts/audit-recipe-images.py` ; le mode `--check` est bloquant et est exécuté par la CI.
+Ne lancez pas et ne documentez pas ici `cookigram check`, `python -m generator...`, `npm`, `pytest` ou `ruff` comme commandes locales : ces outils ne sont pas présents dans ce dépôt de contenu.
 
----
+## Images
 
-## 3. Contribution par un Agent d'IA (Agent-Native)
+Utilisez un nom en kebab-case dérivé du slug. Une image finale est placée dans `static/images/<slug>.<ext>`, et son prompt dans `image-prompts/<slug>.md`. Pour le style et les métadonnées, consultez [`generate-recipe-image`](.agents/skills/generate-recipe-image/SKILL.md).
 
-CookiGram est conçu pour accueillir les contributions automatisées via Coding Agents (GitHub Copilot Workspace, Claude Code, Cursor, Devin...) :
-1. Créez une issue via le formulaire dédié : **[Demande d'importation de recette](.github/ISSUE_TEMPLATE/recipe_request.md)**.
-2. L'agent génère le fichier `.gram` en s'appuyant sur la compétence culinaire [`import-recipe-gram`](.agents/skills/import-recipe-gram/SKILL.md).
-3. L'agent exécute `cookigram check recipes/<slug>.gram` avant de soumettre la Pull Request.
-4. La CI GitHub Actions valide la conformité en moins de 15 secondes.
+## Contributions assistées par agent
+
+Pour importer une recette depuis le Web, commencez par le formulaire [`recipe_request.md`](.github/ISSUE_TEMPLATE/recipe_request.md), puis suivez [`import-recipe-gram`](.agents/skills/import-recipe-gram/SKILL.md). Conservez l’URL et l’auteur de la source, et signalez toute incertitude qui affecte la préparation.
+
+## Pull request
+
+Décrivez le contenu modifié, les sources utilisées et les contrôles exécutés. Une PR doit rester limitée au contenu et à la documentation de ce dépôt. La CI et, après succès, le workflow [GitHub Pages](.github/workflows/pages.yml) gèrent la validation complète et la publication.

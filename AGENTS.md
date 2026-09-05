@@ -1,90 +1,40 @@
-# Directives et règles du dépôt Recettes CookiGram 🍳
+# Directives du dépôt public de recettes CookiGram 🍳
 
-> **Dépôt officiel :** https://github.com/PierreCsn/cookigram  
-> **Rôle du dépôt :** Carnet de recettes culinaires Gram, photographies, icônes et données nutritionnelles (PDR-0008).  
-> **Dépôt moteur :** Le moteur de génération statique, la PWA, la CLI et la suite de tests système résident dans [`PierreCsn/cookigram-core`](https://github.com/PierreCsn/cookigram-core).
+> Dépôt officiel : https://github.com/PierreCsn/cookigram<br>
+> Dépôt moteur privé : [`PierreCsn/cookigram-core`](https://github.com/PierreCsn/cookigram-core)
 
----
+## Périmètre
 
-## 1. Chargement & Mission Fondamentale
+Ce dépôt contient uniquement le corpus culinaire Gram, les données d’ingrédients et de provenance, les images, les prompts et la documentation. Le moteur de génération, le parseur et validateur complet, la PWA, le build et les tests applicatifs résident dans `cookigram-core`. Ne créez pas de code moteur ou applicatif ici et ne supposez pas que ce worktree peut construire le site seul.
 
-Ce fichier est le point d'entrée pour tout agent d'assistance ou contributeur culinaire travaillant sur le corpus de recettes :
-* **Découplage architectural (PDR-0008)** : Ce dépôt est purement axé sur le contenu culinaire, les images et les assets visuels. Aucun code de moteur ni de serveur n'est développé ici.
-* **Le Product Owner (@PierreCsn) est l'utilisateur n°1** : CookiGram est conçu pour une exécution parfaite sur le plan de travail en cuisine réelle.
-* **La recette est la source de vérité** : CookiGram aide à exécuter une recette sans créer silencieusement une autre recette.
+La recette sourcée est la source de vérité : ne jamais inventer silencieusement une quantité, une durée, un réglage d’appareil, une compatibilité ou une donnée nutritionnelle.
 
----
+## Standard des recettes `.gram`
 
-## 2. 🍲 Contribution Culinaire & Standard Gram
+- Une action `[Macro-action]` regroupe une phase logique ; les lignes `- ` sont les unités exécutables.
+- Une puce décrit un geste ou un réglage machine. Séparez commande robot, geste manuel et cuisson.
+- Regroupez au plus deux ou trois ingrédients par ajout cohérent et indiquez les découpes dans l’annotation de l’ingrédient.
+- Ajoutez un état d’arrêt observable : coloration, texture, odeur ou température.
+- Chaque `@ingrédient{quantité}` doit être résolu par [`.gram/ingredients.yaml`](.gram/ingredients.yaml). Toute nouvelle valeur nutritionnelle ou physique doit être sourcée dans [`.gram/ingredient-provenance.yaml`](.gram/ingredient-provenance.yaml).
+- Une température `^{120 C}` exclut le TM31 ; dans ce cas, limitez `appliances.thermomix` à TM5, TM6 et TM7.
 
-Toute contribution de recette doit respecter scrupuleusement les standards du langage `.gram` :
+## Images
 
-### A. Hiérarchie & Granularité atomique (Issue #111) :
-1. **Hiérarchie à deux niveaux :**
-   * L'Étape `[Macro-action]` regroupe une phase logique de la recette (ex: `[Préparer la marinade]`, `[Cuisson des aromates]`).
-   * Les sous-étapes `- ` sont les unités atomiques d'exécution sur le plan de travail.
-2. **Atomisme opérationnel (1 geste ou 1 réglage machine par puce) :**
-   * Ne jamais mélanger une commande robot avec un geste manuel dans la même puce. Hacher est une puce. Racler les parois à la spatule est une puce distincte. Cuire est une puce distincte.
-3. **Granularité des ingrédients (Max 2 à 3 éléments par puce) :**
-   * Regrouper les ajouts par familles logiques au moment de verser. Jamais de bloc de 5+ ingrédients d'un coup.
-4. **Mise en place préalable :**
-   * Les découpes préalables doivent être précisées dans l'ingrédient (ex: `@oignons{150 g, coupés en quatre}`).
-5. **Checkpoints sensoriels observables :**
-   * Indiquer systématiquement l'état visuel ou olfactif d'arrêt (« jusqu'à ce que les oignons soient translucides », « la sauce doit napper la cuillère », « belle coloration dorée »).
+Une image finale va dans `static/images/<slug>.<ext>` et son prompt dans `image-prompts/<slug>.md`. Suivez [`generate-recipe-image`](.agents/skills/generate-recipe-image/SKILL.md) pour les métadonnées et la vérification des droits.
 
-### B. Matériel & Règle Thermomix TM31 (Issue #40) :
-* Le Thermomix TM31 ne possède pas de palier à 120°C (sa molette passe de 100°C à Varoma).
-* Si une recette prescrit une cuisson à `^{120 C}`, elle doit impérativement restreindre sa compatibilité Thermomix à :
-  ```yaml
-  appliances:
-    thermomix:
-    - TM5
-    - TM6
-    - TM7
-  ```
+## Validation réellement disponible
 
-### C. Ingrédients & Provenance CIQUAL :
-* Tout ingrédient `@nom{quantité}` doit être répertorié dans `.gram/ingredients.yaml` avec son nom canonique ou alias.
-* Toute nouvelle entrée d'ingrédient doit être documentée dans `.gram/ingredient-provenance.yaml`.
+Depuis la racine, les contrôles publics sont :
 
----
+```bash
+python -c "import yaml, glob; [yaml.safe_load(open(f, encoding='utf-8')) for f in glob.glob('.gram/*.yaml')]"
+python scripts/audit-recipe-images.py --check
+```
 
-## 3. Validation & Quality Gate Culinaire
+Le second contrôle détecte les images manquantes, les prompts manquants et les images restées sur le placeholder. La CI exécute ces contrôles pour les PR sans secret Core. Avec le secret, elle récupère le commit de `cookigram-core` indiqué par [`.core-version`](.core-version), lance `python -m generator.recipe_check --root .` et construit le site. Le workflow Pages utilise la même dépendance privée après une CI réussie.
 
-Avant de pousser toute modification de recette :
+Ne documentez pas `cookigram check`, `python -m generator...`, `npm`, `pytest` ou `ruff` comme outils disponibles localement dans ce dépôt de contenu.
 
-1. **Validation atomique (< 2 s)** (si l'environnement core est disponible) :
-   ```bash
-   python -m generator.recipe_check recipes/<slug>.gram
-   ```
-   Pour valider l'ensemble du carnet :
-   ```bash
-   python -m generator.recipe_check
-   ```
+## Travail d’agent
 
-2. **Validation YAML syntaxique de secours** :
-   ```bash
-   python -c "import yaml, glob; [yaml.safe_load(open(f, encoding='utf-8')) for f in glob.glob('.gram/*.yaml')]"
-   ```
-
-3. **Photographies & Prompts** :
-   * Image finale : placer l'illustration sous `static/images/<slug>.jpg` (ou `.webp`).
-   * Si aucune image n'est disponible immédiatement, utiliser `image: images/placeholder-recipe.jpg` et consigner le prompt dans `image-prompts/<slug>.md`.
-
----
-
-## 4. Procédure Git & Clôture de Tâche
-
-1. **Travailler sur une branche dédiée** : `recipe/<slug>` ou `fix/<description>`.
-2. **Valider** : Exécuter le contrôle de conformité culinaire `generator.recipe_check`.
-3. **Stager & Commiter** :
-   ```bash
-   git add recipes/ .gram/ static/images/
-   git commit -m "feat(recipe): ajouter <titre de la recette> (#<issue>)"
-   ```
-4. **Pousser & Ouvrir la PR** :
-   ```bash
-   git push -u origin <branche>
-   gh pr create --repo PierreCsn/cookigram --title "..." --body "Closes #..."
-   ```
-5. **Propreté de l'arbre** : Vérifier `git status` pour garantir un arbre de travail 100% propre (`working tree clean`).
+Pour un import Web, suivre [`import-recipe-gram`](.agents/skills/import-recipe-gram/SKILL.md), conserver l’URL et l’auteur de la source et signaler les incertitudes. Pour une simple correction locale, aucune recherche Web n’est requise.
