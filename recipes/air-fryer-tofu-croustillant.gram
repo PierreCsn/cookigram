@@ -9,6 +9,10 @@ tags: [air-fryer, tofu, végétarien, croustillant]
 source: https://www.bbcgoodfood.com/recipes/air-fryer-popcorn-tofu-nuggets/
 author: Samuel Goldsmith
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/air-fryer-tofu-croustillant.md}
 scaling: {enabled: true, min: 2, max: 4, step: 1}
 ---

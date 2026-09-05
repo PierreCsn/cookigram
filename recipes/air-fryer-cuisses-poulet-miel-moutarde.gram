@@ -9,6 +9,10 @@ tags: [air-fryer, poulet, miel, moutarde]
 source: https://www.bbcgoodfood.com/recipes/air-fryer-roast-chicken
 author: Samuel Goldsmith
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/air-fryer-cuisses-poulet-miel-moutarde.md}
 scaling: {enabled: true, min: 2, max: 6, step: 1}
 ---

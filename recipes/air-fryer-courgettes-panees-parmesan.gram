@@ -9,6 +9,10 @@ tags: [air-fryer, courgette, parmesan, végétarien]
 source: https://www.bbcgoodfood.com/recipes/collection/vegetarian-air-fryer-recipes
 author: Good Food team
 image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
 image_generation: {prompt_file: image-prompts/air-fryer-courgettes-panees-parmesan.md}
 scaling: {enabled: true, min: 2, max: 6, step: 1}
 ---
