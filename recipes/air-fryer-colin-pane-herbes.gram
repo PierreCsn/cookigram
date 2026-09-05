@@ -1,0 +1,30 @@
+---
+title: Colin pané aux herbes à l’air fryer
+portions: 4
+prep_time: 15 min
+total_time: 30 min
+spiciness: 0
+description: "Filets de colin croustillants à la chapelure et aux herbes, avec une chair tendre cuite sans bain de friture."
+tags: [air-fryer, poisson, colin, pané]
+source: https://www.bbcgoodfood.com/recipes/air-fryer-or-oven-cooked-fish-chips
+author: Ailsa Burt
+image: images/air-fryer-colin-pane-herbes.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation: {prompt_file: image-prompts/air-fryer-colin-pane-herbes.md}
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+---
+[Paner]
+- Passer les @filets de poisson{600 g} dans la @farine{80 g}, puis dans les @œufs{2 pièces, battus}.
+- Mélanger la @chapelure{150 g}, le @persil frais{1 c. à soupe}, le @zeste de citron{1 citron} et le @sel{1 c. à café}; presser la panure sur le poisson.
+[Cuire]
+- Vaporiser l'@huile d'olive{1 c. à soupe} sur le poisson et cuire dans le #panier air fryer{} à ^{200 C} ~{12 min}.
+- Le panage doit être doré et le poisson opaque à cœur.

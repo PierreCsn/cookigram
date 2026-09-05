@@ -2678,3 +2678,59 @@ ingredients:
     name: Sambal oelek
     aliases: [sambal oelek]
     category: Condiments et assaisonnements
+  ailes-de-poulet:
+    name: Ailes de poulet
+    aliases: [ailes de poulet]
+    category: Boucherie et volailles
+  patate-douce:
+    name: Patate douce
+    aliases: [patate douce, patates douces]
+    category: Légumes et aromates
+  tofu-ferme:
+    name: Tofu ferme
+    aliases: [tofu ferme, tofu extra-ferme]
+    category: Produits végétaux
+  tortillas-de-ble:
+    name: Tortillas de blé
+    aliases: [tortillas de blé, tortilla de blé]
+    category: Produits céréaliers
+  orge-perle:
+    name: Orge perlé
+    aliases: [orge perlé, orge perlée]
+    category: Céréales et féculents
+  sauce-worcestershire:
+    name: Sauce Worcestershire
+    aliases: [sauce Worcestershire]
+    category: Condiments et assaisonnements
+  viande-de-boeuf-a-mijoter:
+    name: Viande de bœuf à mijoter
+    aliases: [viande de boeuf à mijoter]
+    category: Boucherie et volailles
+  pois-chiches:
+    name: Pois chiches
+    aliases: [pois chiches]
+    category: Légumineuses
+  orzo:
+    name: Orzo
+    aliases: [orzo, pâtes orzo]
+    category: Céréales et féculents
+  clous-de-girofle:
+    name: Clous de girofle
+    aliases: [clous de girofle]
+    category: Épices et condiments
+  legumes-surgeles:
+    name: Légumes surgelés
+    aliases: [légumes surgelés]
+    category: Légumes et aromates
+  paprika-fume:
+    name: Paprika fumé
+    aliases: [paprika-fume, paprika fumé]
+    category: Épices et condiments
+  riz-brun:
+    name: Riz brun
+    aliases: [riz brun]
+    category: Céréales et féculents
+  haricots-blancs:
+    name: Haricots blancs
+    aliases: [haricots-blancs, haricots blancs]
+    category: Légumineuses

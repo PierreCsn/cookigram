@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Paprika fumé">
+  <path d="M18 18h28l-2 34H20z" fill="#b84b2f" stroke="#2e211d" stroke-width="3"/>
+  <path d="M18 18h28l-3-7H21z" fill="#d9a24a" stroke="#2e211d" stroke-width="3"/>
+  <path d="M25 28h14M24 36h16M25 44h14" stroke="#f3d39a" stroke-width="3" stroke-linecap="round"/>
+</svg>

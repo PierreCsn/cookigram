@@ -1,0 +1,30 @@
+---
+title: Courgettes panées au parmesan à l’air fryer
+portions: 4
+prep_time: 15 min
+total_time: 30 min
+spiciness: 0
+description: "Bâtonnets de courgette panés au parmesan, croustillants dehors et encore tendres dedans, cuits sans friture."
+tags: [air-fryer, courgette, parmesan, végétarien]
+source: https://www.bbcgoodfood.com/recipes/collection/vegetarian-air-fryer-recipes
+author: Good Food team
+image: images/air-fryer-courgettes-panees-parmesan.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation: {prompt_file: image-prompts/air-fryer-courgettes-panees-parmesan.md}
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+---
+[Paner]
+- Couper les @courgettes{3 pièces} en bâtonnets et les passer dans les @œufs{2 pièces, battus}.
+- Mélanger la @chapelure{100 g}, le @parmesan{50 g}, l'@ail en poudre{1/2 c. à café} et le @sel{1/2 c. à café}; enrober les courgettes.
+[Cuire]
+- Vaporiser l'@huile d'olive{1 c. à soupe} puis cuire dans le #panier air fryer{} à ^{200 C} ~{12 min}, en retournant à mi-cuisson.
+- La panure doit être dorée et la courgette tendre.

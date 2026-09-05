@@ -20,6 +20,48 @@ ingredients:
   sambal-oelek:
     source: Produit préparé ; valeurs nutritionnelles variables selon la marque.
     status: incomplete
+  ailes-de-poulet:
+    source: Ingrédient générique ; valeur nutritionnelle à compléter depuis CIQUAL.
+    status: incomplete
+  patate-douce:
+    source: Ingrédient générique ; valeur nutritionnelle à compléter depuis CIQUAL.
+    status: incomplete
+  tofu-ferme:
+    source: Produit végétal ; valeurs nutritionnelles variables selon la marque.
+    status: incomplete
+  tortillas-de-ble:
+    source: Produit céréalier ; valeurs nutritionnelles variables selon la marque.
+    status: incomplete
+  orge-perle:
+    source: Ingrédient générique ; valeur nutritionnelle à compléter depuis CIQUAL.
+    status: incomplete
+  sauce-worcestershire:
+    source: Produit préparé ; valeurs nutritionnelles variables selon la marque.
+    status: incomplete
+  viande-de-boeuf-a-mijoter:
+    source: Ingrédient générique ; valeur nutritionnelle à compléter depuis CIQUAL.
+    status: incomplete
+  pois-chiches:
+    source: Ingrédient générique ; valeur nutritionnelle à compléter depuis CIQUAL.
+    status: incomplete
+  orzo:
+    source: Produit céréalier ; valeur nutritionnelle à compléter depuis CIQUAL.
+    status: incomplete
+  clous-de-girofle:
+    source: Épice générique ; contribution nutritionnelle faible.
+    status: incomplete
+  legumes-surgeles:
+    source: Mélange variable selon le produit ; valeurs nutritionnelles à vérifier.
+    status: incomplete
+  paprika-fume:
+    source: Épice préparée ; valeurs nutritionnelles variables selon le produit.
+    status: incomplete
+  riz-brun:
+    source: Ingrédient générique ; valeur nutritionnelle à compléter depuis CIQUAL.
+    status: incomplete
+  haricots-blancs:
+    source: Ingrédient générique ; valeur nutritionnelle à compléter depuis CIQUAL.
+    status: incomplete
   ail:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.

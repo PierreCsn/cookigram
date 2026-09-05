@@ -1,0 +1,30 @@
+---
+title: Boulettes de bœuf au parmesan à l’air fryer
+portions: 4
+prep_time: 20 min
+total_time: 45 min
+spiciness: 0
+description: "Boulettes de bœuf moelleuses au parmesan, dorées uniformément à l’air fryer pour un repas simple et convivial."
+tags: [air-fryer, bœuf, boulettes, familial]
+source: https://www.bbcgoodfood.com/recipes/air-fryer-meatballs
+author: Samuel Goldsmith
+image: images/air-fryer-boulettes-boeuf-parmesan.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation: {prompt_file: image-prompts/air-fryer-boulettes-boeuf-parmesan.md}
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+---
+[Former les boulettes]
+- Mélanger la @viande hachée{500 g}, la @saucisse fumée{4 pièces, chair sortie du boyau}, l'@oignon{1/2 pièce, ciselé}, le @parmesan{50 g}, la @chapelure{50 g}, le @persil frais{1 poignée} et l'@œuf{1 pièce}.
+- Saler avec le @sel{1/2 c. à café}, poivrer avec le @poivre moulu{1/2 c. à café}, puis former 20 à 25 boulettes.
+[Cuire]
+- Placer les boulettes en une couche dans le #panier air fryer{} et cuire à ^{180 C} ~{12 min}, en les retournant à mi-cuisson.
+- Elles doivent être dorées et cuites à cœur.

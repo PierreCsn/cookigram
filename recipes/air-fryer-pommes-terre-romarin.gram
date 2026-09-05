@@ -1,0 +1,23 @@
+---
+title: Pommes de terre croustillantes au romarin à l’air fryer
+portions: 4
+prep_time: 10 min
+total_time: 40 min
+spiciness: 0
+description: "Pommes de terre dorées et croustillantes à l’extérieur, fondantes au centre, parfumées au romarin frais."
+tags: [air-fryer, pomme-de-terre, accompagnement, romarin]
+source: https://www.bbcgoodfood.com/recipes/air-fryer-roast-potatoes
+author: Good Food team
+image: images/air-fryer-pommes-terre-romarin.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation: {prompt_file: image-prompts/air-fryer-pommes-terre-romarin.md}
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+---
+[Assaisonner]
+- Mélanger les @pommes de terre{800 g, en quartiers} avec l'@huile d'olive{2 c. à soupe}, le @romarin{2 brins} et le @sel{1 c. à café}.
+[Cuire]
+- Étaler dans le #panier air fryer{} et cuire à ^{200 C} ~{30 min}, en secouant à plusieurs reprises.
+- Les pommes de terre doivent être croustillantes et traversées facilement par la pointe d'un couteau.
