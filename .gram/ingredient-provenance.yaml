@@ -369,6 +369,36 @@ ingredients:
   pomme-de-terre:
     source: ANSES-CIQUAL
     status: verified
+  pate-a-pizza:
+    source: Produit céréalier ; valeur nutritionnelle à compléter depuis CIQUAL.
+    status: incomplete
+  gorgonzola:
+    source: ANSES-CIQUAL, fromage à pâte persillée
+    status: incomplete
+  cheddar:
+    source: ANSES-CIQUAL, fromage à pâte pressée
+    status: incomplete
+  burrata:
+    source: ANSES-CIQUAL, fromage frais
+    status: incomplete
+  pesto:
+    source: Produit préparé, composition variable selon la marque
+    status: incomplete
+  artichaut:
+    source: ANSES-CIQUAL, cœur d'artichaut
+    status: incomplete
+  poire:
+    source: ANSES-CIQUAL
+    status: verified
+  figue:
+    source: ANSES-CIQUAL
+    status: verified
+  noix:
+    source: ANSES-CIQUAL
+    status: verified
+  nduja:
+    source: Produit de charcuterie, composition variable selon le fabricant
+    status: incomplete
   riz-a-risotto:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.
@@ -393,6 +423,9 @@ ingredients:
   romarin:
     source: ANSES-CIQUAL
     status: verified
+  roquette:
+    source: ANSES-CIQUAL
+    status: incomplete
   sauce-tomate:
     source: ANSES-CIQUAL
     status: verified

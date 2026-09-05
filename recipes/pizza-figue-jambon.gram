@@ -1,0 +1,53 @@
+---
+title: Pizza figue, jambon cru et chèvre
+portions: 1
+prep_time: 10 min
+total_time: 20 min
+spiciness: 0
+description: "Une pizza estivale sucrée-salée avec figues, jambon cru, chèvre et roquette ajoutée au dernier moment."
+tags: [pizza, figue, jambon cru, chèvre]
+source: https://ooni.com/blogs/recipes/pizza-fig-prosciutto
+author: Ooni HQ
+appliances:
+  four: [standard, chaleur-tournante, convection]
+  pizza_oven: [ooni, koda, fyra, karu, roccbox, gozney]
+required_equipment:
+  - Pierre réfractaire ou plaque épaisse
+  - Pelle à pizza ou plaque fine
+scaling:
+  enabled: false
+  reason: Les quantités sont calibrées pour une boule de pâte de 250 g et une pizza de 30 cm.
+image: images/pizza-figue-jambon.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use/
+  modifications: Illustration sélectionnée et intégrée par un humain.
+image_generation:
+  provider: OpenAI
+  model: gpt-image-1
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/pizza-figue-jambon.md
+---
+
+[Préchauffer le four]
+- Pour un four à pizza extérieur (Ooni), chauffer la pierre réfractaire jusqu'à ^{450 C}; la chaleur doit être stable.
+- Pour un four traditionnel, préchauffer au maximum (^{250 C} à ^{275 C}) avec une pierre réfractaire ou une plaque épaisse; le support doit être brûlant.
+
+[Préparer la base]
+- Fariner légèrement la #pelle à pizza{} et étirer l'@pâte à pizza{250 g} en disque de 30 cm, en gardant un bord plus épais.
+- Déposer la pâte sur la pelle et vérifier qu'elle glisse librement avant de la garnir.
+
+[Garnir la pizza]
+- Répartir @mozzarella{60 g} et @figue{100 g, en quartiers} et @jambon cru{45 g} sur le centre en laissant 2 cm de bord.
+- Garnir avec l'@crottin de chèvre{45 g}.
+- Garnir avec l'@roquette{25 g}.
+
+[Cuire et tourner]
+- Méthode four à pizza extérieur (Ooni): faire glisser sur la pierre réfractaire et cuire ~{90 s}, en tournant toutes les ~{30 s}; le bord doit être gonflé, tacheté et doré.
+- Méthode four traditionnel: transférer sur la pierre ou plaque épaisse et cuire ~{6 min} à ~{8 min}; le bord doit être doré et le fromage fondu.
+- Retirer quand le bord est gonflé, tacheté et doré, et que le fromage est fondu.
+
+[Finaliser]
+- Laisser reposer ~{60 s} sur une #grille{}, puis servir.
