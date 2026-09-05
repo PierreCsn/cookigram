@@ -75,6 +75,15 @@ L'application ne réécrit jamais arbitrairement le geste d'un chef ou la recett
 * La recette définit **ce qui doit se passer**.
 * CookiGram aide le cuisinier à **comprendre, planifier et réussir l'exécution**.
 
+### VII. Nutrition Plaisir & Santé, à l’échelle de la semaine
+CookiGram refuse la culpabilisation alimentaire et la fausse opposition entre santé et gourmandise. Le [PDR-0010](decisions/PDR-0010-nutrition-plaisir-sante-meal-planning.md) inscrit cette promesse dans le futur Meal Planning hebdomadaire :
+* l’utilisateur place d’abord ses un ou deux « kiffs » de la semaine ;
+* l’algorithme compose autour d’eux une trajectoire indicative de 80 % Vitalité / 20 % Plaisir, sans comptage calorique punitif ;
+* la diversité est rendue tangible par l’objectif positif de 30 plantes distinctes, et non par une restriction arbitraire ;
+* [`menu_basket`](https://github.com/PierreCsn/cookigram-core/blob/main/generator/menu_basket.py) mutualise les ingrédients entre les repas pour limiter le gaspillage et la charge mentale.
+
+Cette nutrition positive reste compatible avec le déterminisme du [Pilier V](#v-le-déterminisme-culinaire-lia-comme-assistant-jamais-comme-oracle) : les profils, agrégats et suggestions sont explicables, les données inconnues ne sont pas inventées, et la recette `.gram` demeure souveraine. La vision détaillée et la séparation entre le socle livré et les jalons à venir sont décrites dans [MEAL_PLANNING_NUTRITION.md](docs/MEAL_PLANNING_NUTRITION.md).
+
 ---
 
 ## 4. Licence Libre & Esprit Communautaire

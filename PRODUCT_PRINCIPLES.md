@@ -1,7 +1,7 @@
 # CookiGram — Product Principles
 
 > **Document de référence produit**  
-> *Dernière mise à jour : 3 septembre 2026*  
+> *Dernière mise à jour : 5 septembre 2026*
 > *Product Owner (User #1) : Pierre (@PierreCsn)*  
 > *Product Lead : AI Assistant*  
 > *Décision de référence : PDR-0001*
@@ -47,3 +47,10 @@ SEO, Performance, Accessibilité, Design et Architecture sont des conseillers d'
 * Les recommandations spécialisées sont challengées au prisme de l'expérience culinaire globale.
 * Le Product Lead filtre, synthétise, priorise et apporte des options argumentées au Product Owner sans lui imposer de fatigue décisionnelle.
 * L'ordre des priorités de développement est fixé par les jalons GitHub et l'issue épinglée **#35**.
+
+## 8. Nutrition positive et décomplexée
+La santé se construit à l’échelle de la semaine, sans opposer les repas nourrissants aux repas de plaisir. Le futur Meal Planning applique la vision [PDR-0010](decisions/PDR-0010-nutrition-plaisir-sante-meal-planning.md) : l’utilisateur choisit d’abord ses moments gourmands, puis CookiGram propose environ 80 % de repas `vitality` et 20 % de repas `pleasure`, complétés par des repas `balanced`.
+* La cible 80/20 est un repère de composition des créneaux, jamais un quota calorique ni une sanction.
+* La diversité végétale est valorisée par le compteur explicable des 30 plantes distinctes par semaine.
+* La compensation signifie variété, digestion et mutualisation des courses ; elle ne retire jamais un plaisir choisi.
+* Les profils, les plantes et les paniers sont calculés de façon déterministe et traçable dans le moteur [`cookigram-core`](https://github.com/PierreCsn/cookigram-core), conformément à la [spécification Meal Planning](docs/MEAL_PLANNING_NUTRITION.md).
