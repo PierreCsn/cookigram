@@ -1,0 +1,42 @@
+---
+title: Riz blanc à la créole en grande eau
+portions: 4
+prep_time: 5 min
+total_time: 25 min
+spiciness: 0
+description: "La cuisson créole en grande eau, proche des pâtes, donne des grains blancs faciles à égoutter et bien séparés."
+tags: [riz, créole, grande eau, accompagnement, bases]
+source: https://www.usarice.com/docs/default-source/thinkrice/foodservice/ready-set-rice!-a-rice-cooking-playbook.pdf
+author: USA Rice Federation
+required_equipment:
+  - Grande casserole
+  - Passoire fine
+scaling:
+  enabled: true
+  min: 2
+  max: 8
+  step: 2
+image: images/riz-creole-grande-eau.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration originale générée pour la fiche recette.
+image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/riz-creole-grande-eau.md
+---
+
+[Chauffer l'eau]
+- Porter à forte ébullition l'@eau{3 l} dans une #grande casserole{} avec le @sel{15 g}.
+
+[Cuire le riz]
+- Rincer le @riz-long-blanc{300 g}, le verser dans l'eau bouillante et remuer une fois.
+- Cuire sans couvercle ~{12 min}; goûter un grain, qui doit être tendre sans être pâteux.
+
+[Égoutter et servir]
+- Égoutter immédiatement le riz dans la #passoire fine{}.
+- Laisser la vapeur s'échapper ~{2 min}, puis égrainer délicatement et servir.

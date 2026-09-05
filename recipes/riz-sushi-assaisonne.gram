@@ -1,0 +1,44 @@
+---
+title: Riz à sushi assaisonné
+portions: 4
+prep_time: 35 min
+total_time: 65 min
+spiciness: 0
+description: "Un riz japonais à grain court brillant et légèrement vinaigré, base idéale des sushis et bols garnis."
+tags: [riz, sushi, japonais, accompagnement]
+source: https://www.justonecookbook.com/how-to-make-sushi-rice/
+author: Namiko Hirasawa Chen
+required_equipment:
+  - Casserole avec couvercle
+  - Passoire fine
+  - Grand plat peu profond
+scaling:
+  enabled: false
+  reason: Les mesures sont calibrées pour le gobelet à riz japonais et ne se multiplient pas directement.
+image: images/riz-sushi-assaisonne.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration originale générée pour la fiche recette.
+image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/riz-sushi-assaisonne.md
+---
+
+[Laver et hydrater]
+- Rincer le @riz à sushi{300 g} dans une #passoire fine{} jusqu'à ce que l'eau soit presque claire.
+- Laisser le riz s'égoutter ~{10 min}, puis le mettre dans la #casserole{} avec l'@eau{330 g}.
+- Laisser tremper le riz ~{30 min} avant la cuisson.
+
+[Cuire le riz]
+- Couvrir, porter à ébullition puis cuire à feu très doux ~{13 min}; le liquide doit être absorbé.
+- Couper le feu et laisser reposer à couvert ~{10 min}.
+
+[Assaisonner]
+- Mélanger le @vinaigre de riz{60 g}, le @sucre{15 g} et le @sel{6 g} jusqu'à dissolution.
+- Transférer le riz dans le #grand plat{} et incorporer l'assaisonnement avec une spatule, en soulevant les grains.
+- Refroidir jusqu'à température ambiante avant de façonner les sushis.

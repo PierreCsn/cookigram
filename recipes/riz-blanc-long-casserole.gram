@@ -1,0 +1,40 @@
+---
+title: Riz blanc long à la casserole par absorption
+portions: 4
+prep_time: 5 min
+total_time: 25 min
+spiciness: 0
+description: "Une méthode fiable par absorption pour obtenir un riz blanc long léger, séparé et prêt à accompagner tous les plats."
+tags: [riz, accompagnement, casserole, bases]
+source: https://www.bbcgoodfood.com/howto/guide/how-make-sticky-rice
+author: Good Food team
+required_equipment:
+  - Casserole avec couvercle
+  - Passoire fine
+scaling:
+  enabled: true
+  min: 2
+  max: 6
+  step: 2
+image: images/riz-blanc-long-casserole.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration originale générée pour la fiche recette.
+image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/riz-blanc-long-casserole.md
+---
+
+[Rincer et mesurer]
+- Rincer le @riz-long-blanc{300 g} dans une #passoire fine{} jusqu'à ce que l'eau soit presque claire, puis l'égoutter.
+- Verser le @riz-long-blanc{300 g} et l'@eau{600 g} dans la #casserole{} avec le @sel{4 g}.
+
+[Cuire par absorption]
+- Porter l'eau à frémissement, couvrir et cuire à feu très doux ~{10 min} sans soulever le couvercle.
+- Couper le feu et laisser reposer à couvert ~{10 min}; l'eau doit être absorbée et les grains tendres.
+- Égrainer le riz à la fourchette et servir.

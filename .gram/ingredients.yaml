@@ -989,6 +989,7 @@ ingredients:
       protein: 7.5
   riz-basmati:
     aliases:
+    - riz-basmati
     - riz basmati
     category: Céréales et féculents
     name: Riz basmati
@@ -997,6 +998,27 @@ ingredients:
       carbs: 77.0
       fat: 0.9
       protein: 8.5
+  riz-brun:
+    aliases:
+    - riz-brun
+    - riz brun
+    - riz complet
+    category: Céréales et féculents
+    name: Riz brun
+  riz-sauvage:
+    aliases:
+    - riz-sauvage
+    - riz sauvage
+    category: Céréales et féculents
+    name: Riz sauvage
+  riz-sushi:
+    aliases:
+    - riz-sushi
+    - riz à sushi
+    - riz sushi
+    - riz japonais à grain court
+    category: Céréales et féculents
+    name: Riz à sushi
   romarin:
     name: Romarin frais
     aliases:
@@ -1011,6 +1033,7 @@ ingredients:
   riz-long-blanc:
     name: Riz long blanc
     aliases:
+    - riz-long-blanc
     - riz long blanc
     - riz thaï
     - riz jasmin
@@ -1318,6 +1341,7 @@ ingredients:
   bouillon-de-legumes:
     name: Bouillon de légumes
     aliases:
+    - bouillon-de-legumes
     - bouillon de légumes
     - bouillon de légumes réservé
     category: Épicerie salée
