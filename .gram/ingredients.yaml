@@ -1008,6 +1008,8 @@ ingredients:
     aliases:
     - cœur d'artichaut
     - cœurs d'artichaut
+    - artichaut
+    - artichauts
     category: Légumes et aromates
   poire:
     name: Poire
@@ -1029,7 +1031,7 @@ ingredients:
     aliases:
     - nduja
     - 'nduja'
-    category: Viandes et charcuteries
+    category: Charcuterie
   riz-a-risotto:
     aliases:
     - riz à risotto

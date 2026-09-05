@@ -36,13 +36,13 @@ image_generation:
 - Pour un four traditionnel, préchauffer au maximum (^{250 C} à ^{275 C}) avec une pierre réfractaire ou une plaque épaisse; le support doit être brûlant.
 
 [Préparer la base]
-- Fariner légèrement la #pelle à pizza{} et étirer l'@pate-a-pizza{250 g} en disque de 30 cm, en gardant un bord plus épais.
+- Fariner légèrement la #pelle à pizza{} et étirer l'@pâte à pizza{250 g} en disque de 30 cm, en gardant un bord plus épais.
 - Déposer la pâte sur la pelle et vérifier qu'elle glisse librement avant de la garnir.
 
 [Garnir la pizza]
-- Répartir @creme-fraiche-epaisse{55 g} et @mozzarella{70 g} et @courgette{80 g, en rubans} sur le centre en laissant 2 cm de bord.
-- Garnir avec l'@crottin-de-chevre{60 g, émietté}.
-- Garnir avec l'@herbes-de-provence{2 g}.
+- Répartir @crème fraîche épaisse{55 g} et @mozzarella{70 g} et @courgette{80 g, en rubans} sur le centre en laissant 2 cm de bord.
+- Garnir avec l'@crottin de chèvre{60 g, émietté}.
+- Garnir avec l'@herbes de Provence{2 g}.
 
 [Cuire et tourner]
 - Méthode four à pizza extérieur (Ooni): faire glisser sur la pierre réfractaire et cuire ~{90 s}, en tournant toutes les ~{30 s}; le bord doit être gonflé, tacheté et doré.
