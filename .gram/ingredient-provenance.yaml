@@ -1,4 +1,25 @@
 ingredients:
+  betterave:
+    source: Ingrédient générique ; valeur nutritionnelle à compléter depuis CIQUAL.
+    status: incomplete
+  noix:
+    source: Ingrédient générique ; valeur nutritionnelle à compléter depuis CIQUAL.
+    status: incomplete
+  extrait-de-vanille:
+    source: Arôme alimentaire ; valeur nutritionnelle variable selon le produit.
+    status: incomplete
+  fromage-frais-philadelphia:
+    source: Produit de marque ; valeurs nutritionnelles à vérifier sur l'étiquette.
+    status: incomplete
+  poire:
+    source: Ingrédient générique ; valeur nutritionnelle à compléter depuis CIQUAL.
+    status: incomplete
+  onglet-de-boeuf:
+    source: Ingrédient générique ; valeur nutritionnelle à compléter depuis CIQUAL.
+    status: incomplete
+  sambal-oelek:
+    source: Produit préparé ; valeurs nutritionnelles variables selon la marque.
+    status: incomplete
   ail:
     locked: false
     note: Valeurs nutritionnelles pour 100g issues de la table CIQUAL ANSES.

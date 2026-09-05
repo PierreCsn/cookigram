@@ -1,0 +1,35 @@
+---
+title: Crème brûlée vanille sous vide
+portions: 4
+prep_time: 15 min
+total_time: 5 h 15 min
+spiciness: 0
+description: "Crème brûlée à la vanille, soyeuse et régulière grâce au bain sous vide, cachée sous une fine croûte caramélisée."
+tags: [dessert, crème-brûlée, sous-vide, vanille]
+source: https://recipes.anovaculinary.com/recipe/sous-vide-ultimate-creme-brulee-with-variations
+author: Nicole Poirier
+image: images/creme-brulee-vanille-sous-vide.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation: {prompt_file: image-prompts/creme-brulee-vanille-sous-vide.md}
+scaling: {enabled: true, min: 2, max: 8, step: 1}
+flavors: {pairing: [vanille, crème, œuf, sucre], notes: [soyeux, lacté, caramélisé], harmony: "La vanille parfume la crème tandis que le sucre brûlé apporte le croquant final."}
+---
+[Préparer l'appareil]
+- Fouetter les @jaunes d'œufs{4 pièces} avec le @sucre{50 g} et l'@extrait-de-vanille{1 c. à café}.
+- Incorporer la @crème fraîche liquide{470 ml} et filtrer dans 4 pots hermétiques.
+[Cuire]
+- Régler le #thermoplongeur{} à ^{80 C}, fermer les pots sans forcer et cuire ~{1 h}.
+- La crème doit être prise sur les bords et encore légèrement tremblotante au centre.
+[Refroidir]
+- Refroidir les pots à température ambiante puis réfrigérer ~{4 h}.
+[Caraméliser]
+- Saupoudrer chaque pot de @sucre{2 c. à café} et caraméliser au chalumeau jusqu'à obtenir une croûte ambrée.

@@ -1,0 +1,34 @@
+---
+title: Poires pochées à la vanille et aux épices sous vide
+portions: 4
+prep_time: 15 min
+total_time: 1 h 35 min
+spiciness: 0
+description: "Poires fondantes pochées sous vide avec vanille et épices, servies avec leur sirop réduit et parfumé."
+tags: [dessert, poire, sous-vide, vanille]
+source: https://recipes.anovaculinary.com/recipe/sous-vide-cinnamon-poached-asian-pear
+author: Emily Farris et Jeff Akin
+image: images/poires-pochees-vanille-epices-sous-vide.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation: {prompt_file: image-prompts/poires-pochees-vanille-epices-sous-vide.md}
+scaling: {enabled: true, min: 2, max: 8, step: 1}
+flavors: {pairing: [poire, vanille, cannelle, miel], notes: [fruité, épicé, fondant], harmony: "La cannelle et la vanille soulignent la douceur de la poire sans la masquer."}
+---
+[Ensacher]
+- Placer les @poire{4 pièces, pelées et évidées} dans un #sac sous vide{} avec le @miel{60 g}, le @vin blanc{60 ml} et l'@extrait-de-vanille{1 c. à café}.
+- Ajouter la @cannelle{1/2 c. à café} et le @beurre{40 g}; sceller.
+[Cuire]
+- Régler le #thermoplongeur{} à ^{82 C}, immerger et cuire ~{90 min}.
+- Les poires doivent être tendres sous la pointe d'un couteau.
+[Réduire]
+- Réduire le jus du sac dans une #poêle{} ~{10 min}, jusqu'à ce qu'il nappe la cuillère.
+- Servir les poires avec le sirop chaud.

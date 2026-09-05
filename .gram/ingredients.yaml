@@ -466,9 +466,15 @@ ingredients:
   fromage-frais-philadelphia:
     name: Fromage frais Philadelphia
     aliases:
+    - fromage-frais-philadelphia
     - fromage blanc Philadelphia
     - Philadelphia nature
     category: Fromages
+    nutrition:
+      calories: 225
+      carbs: 4.1
+      fat: 21.5
+      protein: 5.4
   fromage-frais:
     name: Fromage frais
     aliases:
@@ -1153,8 +1159,14 @@ ingredients:
   extrait-de-vanille:
     name: Extrait naturel de vanille
     aliases:
+    - extrait-de-vanille
     - extrait naturel de vanille
     category: Épicerie sucrée
+    nutrition:
+      calories: 288
+      carbs: 12.7
+      fat: 0.1
+      protein: 0.1
   farine-d-epeautre:
     name: Farine d'épeautre
     aliases:
@@ -2646,3 +2658,23 @@ ingredients:
     - beurre de cacahouète
     - peanut butter
     category: Fruits à coque et graines
+  betterave:
+    name: Betterave
+    aliases: [betterave, betteraves]
+    category: Légumes et aromates
+  noix:
+    name: Noix
+    aliases: [noix]
+    category: Fruits à coque et graines
+  poire:
+    name: Poire
+    aliases: [poires, poire]
+    category: Fruits et légumes
+  onglet-de-boeuf:
+    name: Onglet de bœuf
+    aliases: [onglet de boeuf, onglet de bœuf]
+    category: Boucherie et volailles
+  sambal-oelek:
+    name: Sambal oelek
+    aliases: [sambal oelek]
+    category: Condiments et assaisonnements

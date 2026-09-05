@@ -1,0 +1,33 @@
+---
+title: Betteraves sous vide, chèvre et noix
+portions: 4
+prep_time: 15 min
+total_time: 2 h
+spiciness: 0
+description: "Betteraves fondantes cuites sous vide, relevées par le chèvre crémeux, le vinaigre et le croquant des noix."
+tags: [légumes, betterave, sous-vide, chèvre]
+source: https://www.sousvidemagazine.com/recipes/fruits-vegetables/beet-salad/
+author: Sous-Vide Magazine
+image: images/betteraves-chevre-noix-sous-vide.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation: {prompt_file: image-prompts/betteraves-chevre-noix-sous-vide.md}
+scaling: {enabled: true, min: 2, max: 8, step: 1}
+flavors: {pairing: [betterave, chèvre, noix, vinaigre balsamique], notes: [terreux, acidulé, crémeux, croquant], harmony: "Le vinaigre réveille la betterave douce tandis que le chèvre et les noix apportent contraste."}
+---
+[Cuire les betteraves]
+- Placer les @betteraves{600 g, pelées et en quartiers}, l'@huile d'olive{2 c. à soupe} et le @sel{1/2 c. à café} dans un #sac sous vide{}.
+- Régler le #thermoplongeur{} à ^{83 C}, immerger et cuire ~{90 min}.
+- Les betteraves doivent être tendres au centre; refroidir le sac dans l'eau froide.
+[Assaisonner]
+- Mélanger les betteraves avec le @vinaigre balsamique{1 c. à soupe} et les @échalotes{2 pièces, ciselées}.
+[Dresser]
+- Ajouter le @fromage de chèvre{120 g, émietté} et les @noix{60 g, concassées}; servir frais ou tiède.

@@ -1,0 +1,33 @@
+---
+title: Pommes de terre grenailles au beurre et romarin sous vide
+portions: 4
+prep_time: 10 min
+total_time: 1 h 40 min
+spiciness: 0
+description: "Pommes de terre grenailles fondantes, parfumées au romarin et dorées au beurre pour une garniture généreuse."
+tags: [accompagnement, pomme-de-terre, sous-vide, romarin]
+source: https://www.joshuaweissman.com/recipes/best-sous-vide-potatoes-recipe
+author: Joshua Weissman
+image: images/pommes-de-terre-grenailles-romarin-sous-vide.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation: {prompt_file: image-prompts/pommes-de-terre-grenailles-romarin-sous-vide.md}
+scaling: {enabled: true, min: 2, max: 8, step: 1}
+flavors: {pairing: [pomme de terre, beurre, romarin, ail], notes: [fondant, herbacé, doré], harmony: "Le romarin parfume le beurre qui dore ensuite les pommes de terre fondantes."}
+---
+[Ensacher]
+- Laver les @pommes de terre{800 g, grenailles coupées en deux} et les placer dans un #sac sous vide{}.
+- Ajouter le @beurre{50 g}, le @romarin{2 brins} et le @sel{1 c. à café}; répartir en couche régulière.
+[Cuire]
+- Régler le #thermoplongeur{} à ^{85 C}, immerger et cuire ~{90 min}.
+- Une lame doit traverser les pommes de terre sans résistance.
+[Dorer]
+- Égoutter puis dorer les pommes de terre dans une #poêle{} ~{5 min}, jusqu'à obtenir une peau croustillante.

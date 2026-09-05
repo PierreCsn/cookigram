@@ -1,0 +1,33 @@
+---
+title: Carottes glacées au miel et à la harissa sous vide
+portions: 4
+prep_time: 15 min
+total_time: 3 h 20 min
+spiciness: 2
+description: "Carottes fondantes et brillantes, glacées au miel et à la harissa puis servies avec une fraîcheur citronnée."
+tags: [légumes, carotte, sous-vide, harissa]
+source: https://www.sousvidemagazine.com/recipes/fruits-vegetables/honey-harissa-glazed-carrots/
+author: Sous-Vide Magazine
+image: images/carottes-miel-harissa-sous-vide.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation: {prompt_file: image-prompts/carottes-miel-harissa-sous-vide.md}
+scaling: {enabled: true, min: 2, max: 8, step: 1}
+flavors: {pairing: [carotte, miel, harissa, citron], notes: [sucré, épicé, fondant], harmony: "Le miel adoucit la harissa et concentre la douceur naturelle des carottes."}
+---
+[Ensacher]
+- Répartir les @carottes{800 g, épluchées et fendues} dans un #sac sous vide{} avec le @beurre{40 g}, le @miel{40 g}, la @harissa{15 g} et le @sel{1/2 c. à café}.
+[Cuire]
+- Régler le #thermoplongeur{} à ^{85 C}, immerger et cuire ~{3 h}.
+- Les carottes doivent être tendres à cœur tout en gardant leur tenue.
+[Glacer]
+- Verser le contenu du sac dans une #poêle{} et réduire ~{5 min} jusqu'à ce que le glaçage enrobe les carottes.
+- Ajouter le @jus de citron{15 ml} et servir aussitôt.

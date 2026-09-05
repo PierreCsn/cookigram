@@ -1,0 +1,34 @@
+---
+title: Poitrine de porc soja, miel et piment sous vide
+portions: 4
+prep_time: 15 min
+total_time: 8 h 30 min
+spiciness: 2
+description: "Poitrine de porc fondante, laquée de soja et de miel, avec une chaleur progressive de sambal et des oignons frais."
+tags: [porc, sous-vide, soja, piment]
+source: https://www.bonappetit.com/recipe/sous-vide-pork-belly-sweet-and-spicy
+author: Brad Leone
+image: images/poitrine-porc-soja-miel-piment-sous-vide.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation: {prompt_file: image-prompts/poitrine-porc-soja-miel-piment-sous-vide.md}
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+flavors: {pairing: [porc, sauce soja salée, miel, piment], notes: [umami, sucré-salé, fondant, relevé], harmony: "Le soja apporte la profondeur et le miel arrondit le piment."}
+---
+[Ensacher]
+- Placer la @poitrine de porc{900 g, en lanières épaisses}, les @oignons nouveaux{6 pièces} et la @sauce soja salée{60 ml} dans un #sac sous vide{}.
+- Ajouter le @miel{60 g}, le @sambal oelek{45 g} et l'@huile végétale{15 ml}; chasser l'air et sceller.
+[Cuire]
+- Régler le #thermoplongeur{} à ^{74 C}, immerger le sac et cuire ~{8 h}.
+- La viande doit être très tendre et se détacher facilement à la fourchette.
+[Dorer]
+- Égoutter et éponger la poitrine; la dorer dans une #poêle{} ~{2 min} par face.
+- Réduire le jus du sac ~{5 min} jusqu'à obtenir une laque brillante, puis en napper la viande.
