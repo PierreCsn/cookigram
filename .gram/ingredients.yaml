@@ -457,6 +457,11 @@ ingredients:
     - fromage blanc Philadelphia
     - Philadelphia nature
     category: Fromages
+    nutrition:
+      calories: 225
+      carbs: 4.1
+      fat: 21.5
+      protein: 5.4
   fromage-frais:
     name: Fromage frais
     aliases:
@@ -1143,6 +1148,11 @@ ingredients:
     aliases:
     - extrait naturel de vanille
     category: Épicerie sucrée
+    nutrition:
+      calories: 288
+      carbs: 12.7
+      fat: 0.1
+      protein: 0.1
   farine-d-epeautre:
     name: Farine d'épeautre
     aliases:
