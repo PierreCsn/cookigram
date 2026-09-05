@@ -3,6 +3,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import yaml
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("check_pins", ROOT / "scripts/check-pins.py")
@@ -83,3 +85,18 @@ def test_invalid_core_pin_fails_before_remote_lookup(tmp_path) -> None:
 
     assert report.exit_code == 1
     assert any(item.code == "invalid-core-sha" for item in report.findings)
+
+
+def test_pages_provenance_uses_the_checked_out_content_sha() -> None:
+    workflow = yaml.safe_load((ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8"))
+    build = workflow["jobs"]["build"]
+    expected_ref = "${{ github.event_name == 'workflow_dispatch' && github.sha || github.event.workflow_run.head_sha }}"
+
+    assert build["env"]["CONTENT_SHA"] == expected_ref
+    checkout = next(step for step in build["steps"] if step.get("name") == "Checkout CookiGram Recettes (Public)")
+    assert checkout["with"]["ref"] == "${{ env.CONTENT_SHA }}"
+
+    provenance = next(step for step in build["steps"] if step.get("name") == "Write build provenance")
+    assert provenance["env"]["CORE_SHA"] == "${{ steps.core-ref.outputs.sha }}"
+    assert 'os.environ["CONTENT_SHA"]' in provenance["run"]
+    assert "${{ github.sha }}" not in provenance["run"]
