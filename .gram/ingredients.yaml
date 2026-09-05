@@ -454,6 +454,7 @@ ingredients:
   fromage-frais-philadelphia:
     name: Fromage frais Philadelphia
     aliases:
+    - fromage-frais-philadelphia
     - fromage blanc Philadelphia
     - Philadelphia nature
     category: Fromages
@@ -1146,6 +1147,7 @@ ingredients:
   extrait-de-vanille:
     name: Extrait naturel de vanille
     aliases:
+    - extrait-de-vanille
     - extrait naturel de vanille
     category: Épicerie sucrée
     nutrition:
