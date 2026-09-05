@@ -1,0 +1,55 @@
+---
+title: Colin d'Alaska à la crème de moutarde et citron
+portions: 4
+prep_time: 10 min
+total_time: 30 min
+spiciness: 0
+description: Filets de colin au four nappés d'une crème citronnée à la moutarde, avec oignon fondant et persil frais.
+tags: [poisson, colin, citron, moutarde, four, rapide]
+source: https://www.mesrecettes.leclerc/sites/default/files/leclerc-recettes/pdf/filets-de-colin-et-crme-lgre-au-citron.pdf
+author: E.Leclerc
+scaling:
+  enabled: true
+  min_portions: 2
+  max_portions: 8
+  step: 2
+  note: Utiliser un plat juste assez grand pour que la crème nappe les filets.
+flavors:
+  pairing: [colin d'Alaska, citron, moutarde, crème]
+  notes: [crémeux, acidulé, doux]
+  harmony: "La moutarde soutient la douceur de la crème et le citron apporte la vivacité nécessaire au poisson blanc."
+  tips: "Verser la crème chaude juste avant le service pour conserver une sauce lisse et bien brillante."
+conservation:
+  fridge_days: 2
+  freezable: false
+image: images/placeholder-recipe.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation:
+  prompt_file: image-prompts/colin-alaska-creme-moutarde-citron.md
+---
+
+## Colin d'Alaska à la crème de moutarde et citron
+
+[Préparer le four]
+- Préchauffer le #four{} à ^{180 C}.
+- Huiler légèrement un #plat à four{} avec l'@huile d'olive{15 ml}.
+
+[Installer le poisson]
+- Déposer les @filets de poisson{4 pièces, colin d'Alaska surgelé décongelé} dans le plat.
+- Émincer l'@oignon{100 g} et le répartir sur les filets avec le @persil frais{1 c. à soupe, haché}.
+- Déposer les rondelles de @citron{1 pièce} sur le poisson.
+
+[Cuire les filets]
+- Enfourner ~{20 min}, jusqu'à ce que la chair soit opaque et se détache facilement.
+
+[Préparer la crème]
+- Faire fondre le @beurre{15 g} dans une #casserole{}.
+- Ajouter le jus du @citron{1 pièce}, la @crème fraîche liquide{100 ml}, la @moutarde de Dijon{15 g}, le @sel{1/2 c. à café} et le @poivre moulu{2 pincées}.
+- Mélanger doucement jusqu'à obtenir une sauce chaude et homogène.
+
+[Napper et servir]
+- Retirer les rondelles de citron si elles sont trop amères.
+- Napper les filets avec la crème et servir aussitôt.
