@@ -2724,7 +2724,7 @@ ingredients:
     category: Légumes et aromates
   paprika-fume:
     name: Paprika fumé
-    aliases: [paprika fumé]
+    aliases: [paprika-fume, paprika fumé]
     category: Épices et condiments
   riz-brun:
     name: Riz brun
@@ -2732,5 +2732,5 @@ ingredients:
     category: Céréales et féculents
   haricots-blancs:
     name: Haricots blancs
-    aliases: [haricots blancs]
+    aliases: [haricots-blancs, haricots blancs]
     category: Légumineuses
