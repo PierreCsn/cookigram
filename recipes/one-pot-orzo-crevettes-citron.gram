@@ -8,8 +8,18 @@ description: "Orzo crémeux aux crevettes, citron et persil, cuit dans une seule
 tags: [one-pot, crevettes, orzo, citron]
 source: https://www.foodnetwork.com/recipes/orzo-risotto-recipe-1963863
 author: Michele Urvater
-image: images/placeholder-recipe.jpg
-image_generation: {prompt_file: image-prompts/one-pot-orzo-crevettes-citron.md}
+image: images/one-pot-orzo-crevettes-citron.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration originale générée pour la fiche recette.
+image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/one-pot-orzo-crevettes-citron.md
 scaling: {enabled: true, min: 2, max: 6, step: 1}
 flavors: {pairing: [orzo, crevettes, citron, persil], notes: [iodé, crémeux, acidulé], harmony: "Le bouillon hydrate l’orzo et le citron allège la richesse du plat."}
 ---

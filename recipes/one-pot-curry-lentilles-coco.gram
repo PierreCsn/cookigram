@@ -8,8 +8,18 @@ description: "Curry végétal de lentilles corail, tomate et coco, mijoté dans 
 tags: [one-pot, végétarien, vegan, lentilles, curry]
 source: https://www.youtube.com/watch?v=0LrXnxhH5I0
 author: The Cooking Foodie
-image: images/placeholder-recipe.jpg
-image_generation: {prompt_file: image-prompts/one-pot-curry-lentilles-coco.md}
+image: images/one-pot-curry-lentilles-coco.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration originale générée pour la fiche recette.
+image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/one-pot-curry-lentilles-coco.md
 scaling: {enabled: true, min: 2, max: 6, step: 1}
 flavors: {pairing: [lentilles corail, coco, tomate, curry], notes: [crémeux, épicé, végétal], harmony: "La coco adoucit les épices et donne aux lentilles une texture veloutée."}
 ---

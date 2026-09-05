@@ -8,8 +8,18 @@ description: "Ragoût de bœuf et d’orge perlé, enrichi de carottes et de cé
 tags: [one-pot, bœuf, orge, mijoté]
 source: https://www.bonappetit.com/recipe/beef-and-barley-stew
 author: Jesse Szewczyk
-image: images/placeholder-recipe.jpg
-image_generation: {prompt_file: image-prompts/one-pot-boeuf-orge-legumes.md}
+image: images/one-pot-boeuf-orge-legumes.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration originale générée pour la fiche recette.
+image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/one-pot-boeuf-orge-legumes.md
 scaling: {enabled: true, min: 2, max: 6, step: 1}
 flavors: {pairing: [bœuf, orge, carotte, céleri], notes: [corsé, réconfortant, mijoté], harmony: "L’orge épaissit naturellement le bouillon et absorbe les sucs du bœuf."}
 ---

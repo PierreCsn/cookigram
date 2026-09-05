@@ -8,8 +8,18 @@ description: "Saucisses dorées mijotées avec haricots blancs et tomate, un pla
 tags: [one-pot, saucisse, haricot, tomate]
 source: https://www.foodnetwork.com/recipes/white-beans-with-sausage-basil-and-tomato-recipe-1908629
 author: David Rosengarten
-image: images/placeholder-recipe.jpg
-image_generation: {prompt_file: image-prompts/one-pot-saucisses-haricots-tomate.md}
+image: images/one-pot-saucisses-haricots-tomate.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration originale générée pour la fiche recette.
+image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/one-pot-saucisses-haricots-tomate.md
 scaling: {enabled: true, min: 2, max: 6, step: 1}
 flavors: {pairing: [saucisse, haricot blanc, tomate, basilic], notes: [tomaté, généreux, herbacé], harmony: "Le jus de tomate enrobe les haricots et recueille les sucs des saucisses."}
 ---

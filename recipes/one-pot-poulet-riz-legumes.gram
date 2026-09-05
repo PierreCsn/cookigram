@@ -8,8 +8,18 @@ description: "Poulet doré et riz moelleux cuits dans une seule poêle, avec poi
 tags: [one-pot, poulet, riz, familial]
 source: https://www.bbcgoodfood.com/recipes/one-pot-chicken-rice
 author: Sara Buenfeld
-image: images/placeholder-recipe.jpg
-image_generation: {prompt_file: image-prompts/one-pot-poulet-riz-legumes.md}
+image: images/one-pot-poulet-riz-legumes.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration originale générée pour la fiche recette.
+image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/one-pot-poulet-riz-legumes.md
 scaling: {enabled: true, min: 2, max: 6, step: 1}
 flavors: {pairing: [poulet, riz, poireau, paprika fumé], notes: [réconfortant, parfumé, familial], harmony: "Le riz absorbe les sucs du poulet et le bouillon arrondit les légumes."}
 ---

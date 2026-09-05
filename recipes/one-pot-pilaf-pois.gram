@@ -8,8 +8,18 @@ description: "Riz basmati pilaf aux petits pois, oignons fondants et épices ent
 tags: [one-pot, végétarien, riz, petits-pois]
 source: https://www.bbcgoodfood.com/recipes/pilau-peas
 author: Roopa Gulati
-image: images/placeholder-recipe.jpg
-image_generation: {prompt_file: image-prompts/one-pot-pilaf-pois.md}
+image: images/one-pot-pilaf-pois.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration originale générée pour la fiche recette.
+image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/one-pot-pilaf-pois.md
 scaling: {enabled: true, min: 2, max: 8, step: 1}
 flavors: {pairing: [riz basmati, petits pois, cumin, oignon], notes: [parfumé, épicé, léger], harmony: "Les épices parfument l’huile et le riz cuit ensuite par absorption, grain par grain."}
 ---
