@@ -1,0 +1,33 @@
+---
+title: One pot de saucisses, haricots blancs et tomate
+portions: 4
+prep_time: 10 min
+total_time: 30 min
+spiciness: 1
+description: "Saucisses dorées mijotées avec haricots blancs et tomate, un plat généreux qui concentre les saveurs dans une cocotte."
+tags: [one-pot, saucisse, haricot, tomate]
+source: https://www.foodnetwork.com/recipes/white-beans-with-sausage-basil-and-tomato-recipe-1908629
+author: David Rosengarten
+image: images/one-pot-saucisses-haricots-tomate.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration originale générée pour la fiche recette.
+image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/one-pot-saucisses-haricots-tomate.md
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+flavors: {pairing: [saucisse, haricot blanc, tomate, basilic], notes: [tomaté, généreux, herbacé], harmony: "Le jus de tomate enrobe les haricots et recueille les sucs des saucisses."}
+---
+[Dorer les saucisses]
+- Chauffer l'@huile d'olive{1 c. à soupe} dans une #cocotte{} et faire dorer la @saucisse fumée{4 pièces, sans la peau et émiettée} ~{8 min}.
+- Ajouter l'@ail{1 c. à soupe, haché} et cuire ~{1 min}; l'ail doit être odorant sans brunir.
+[Mijoter]
+- Ajouter les @tomates concassées{800 g} et la moitié du @basilic frais{10 g}; mélanger.
+- Incorporer les @haricots blancs{250 g, cuits}, couvrir et mijoter ~{10 min}.
+[Servir]
+- Goûter, rectifier avec le @sel{1/2 c. à café} et le @poivre moulu{2 pincées}, puis parsemer le reste du @basilic frais{10 g}.

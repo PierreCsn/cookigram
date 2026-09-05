@@ -1,0 +1,33 @@
+---
+title: One pot d’orzo aux crevettes et au citron
+portions: 4
+prep_time: 10 min
+total_time: 25 min
+spiciness: 0
+description: "Orzo crémeux aux crevettes, citron et persil, cuit dans une seule casserole pour un repas marin rapide et lumineux."
+tags: [one-pot, crevettes, orzo, citron]
+source: https://www.foodnetwork.com/recipes/orzo-risotto-recipe-1963863
+author: Michele Urvater
+image: images/one-pot-orzo-crevettes-citron.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration originale générée pour la fiche recette.
+image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/one-pot-orzo-crevettes-citron.md
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+flavors: {pairing: [orzo, crevettes, citron, persil], notes: [iodé, crémeux, acidulé], harmony: "Le bouillon hydrate l’orzo et le citron allège la richesse du plat."}
+---
+[Nacrer l’orzo]
+- Faire fondre le @beurre{30 g} dans une #casserole{} et cuire les @échalotes{2 c. à soupe, ciselées} ~{5 min}.
+- Ajouter l'@orzo{180 g} et mélanger ~{1 min} pour enrober les grains.
+[Cuire]
+- Verser le @bouillon de volaille{420 ml} et cuire ~{10 min} en remuant, jusqu'à ce que l'orzo soit tendre et le bouillon presque absorbé.
+- Ajouter les @crevettes{225 g, cuites et décortiquées}, couvrir et laisser réchauffer ~{2 min}.
+[Terminer]
+- Incorporer le @jus de citron{60 ml}, le @persil frais{2 c. à soupe, ciselé}, le @sel{1/2 c. à café} et le @poivre moulu{2 pincées}.
