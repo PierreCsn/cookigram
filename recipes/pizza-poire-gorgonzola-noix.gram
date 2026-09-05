@@ -13,6 +13,7 @@ appliances:
 required_equipment:
   - Four à pizza personnel
   - Pelle à pizza
+  - Pierre réfractaire
   - Thermomètre infrarouge
 scaling:
   enabled: false
@@ -27,7 +28,7 @@ image_generation:
 ---
 
 [Préchauffer le four]
-- Chauffer le #four à pizza personnel{} jusqu'à ce que la pierre atteigne ^{450 C}; la chaleur doit être stable.
+- Chauffer le #four à pizza personnel{} et contrôler la pierre avec le #thermomètre infrarouge{} jusqu'à ^{450 C}; la chaleur doit être stable.
 
 [Préparer la base]
 - Fariner légèrement la #pelle à pizza{} et étirer l'@pate-a-pizza{250 g} en disque de 30 cm, en gardant un bord plus épais.
@@ -39,7 +40,7 @@ image_generation:
 - Garnir avec l'@miel{10 g}.
 
 [Cuire et tourner]
-- Faire glisser la pizza sur la pierre et cuire ~{90 s}, en la tournant toutes les ~{30 s}.
+- Faire glisser la pizza sur la #pierre réfractaire{} et cuire ~{90 s}, en la tournant toutes les ~{30 s}.
 - Retirer quand le bord est gonflé, tacheté et doré, et que le fromage est fondu.
 
 [Finaliser]
