@@ -1,0 +1,72 @@
+---
+title: Pommes Anna
+portions: 8
+prep_time: 20 min
+total_time: 2 h 10 min
+spiciness: 0
+description: Gâteau de pommes de terre croustillant au beurre, fondant à cœur et retourné pour révéler ses couches dorées.
+tags: [accompagnement, pommes-de-terre, four, végétarien, cuisine-française]
+source: https://www.bonappetit.com/recipe/pommes-anna
+author: Alexia Duchêne
+scaling:
+  enabled: false
+  reason: Les quantités et la géométrie des couches sont calibrées pour une grande poêle allant au four.
+flavors:
+  pairing: [pommes de terre, beurre clarifié, beurre doux, sel]
+  notes: [beurré, croustillant, fondant]
+  harmony: "Le beurre clarifié dore les couches tandis que le cœur fondant contraste avec la croûte croustillante."
+  tips: "Sécher soigneusement les tranches et les serrer dans la poêle pour obtenir un gâteau qui se retourne sans se défaire."
+conservation:
+  fridge_days: 3
+  freezable: false
+  reheat: "15 min au four à 180 C"
+image: images/pommes-anna.webp
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
+image_generation:
+  provider: OpenAI Image Generation
+  model: gpt-image-1
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/pommes-anna.md
+---
+
+## Pommes Anna
+
+[Préparer les pommes de terre]
+- Préchauffer le #four{} à ^{200 C}.
+- Éplucher les @pommes de terre{2,25 kg} et les sécher soigneusement.
+- Trancher les pommes de terre à la mandoline en rondelles régulières d'environ 1 mm.
+
+[Préparer la poêle]
+- Choisir une grande #poêle{} haute allant au four et la graisser avec @ghee{30 ml}.
+- Découper un disque de papier cuisson au diamètre de la poêle et le déposer au fond.
+- Badigeonner le papier cuisson avec @ghee{20 ml}.
+
+[Former la première couche]
+- Disposer quelques rondelles au centre, puis les chevaucher en cercle jusqu'à couvrir le fond.
+- Aligner des rondelles contre la paroi en les faisant légèrement se chevaucher pour fermer le bord.
+- Arroser avec @ghee{50 ml} et saler avec le @sel{à doser selon le goût}.
+
+[Superposer les couches]
+- Répéter les cercles concentriques avec les rondelles restantes, sans découper les tranches en disques.
+- Arroser chaque couche avec le @ghee{200 ml} restant et saler avec le @sel{à doser selon le goût}.
+- Répartir le @beurre{115 g}, coupé en fines lamelles, sur la dernière couche.
+
+[Cuire à couvert]
+- Couvrir la #poêle{} avec son couvercle ou une feuille d'aluminium.
+- Enfourner ~{50 min}, jusqu'à ce qu'une lame traverse le centre sans résistance.
+
+[Dorer à découvert]
+- Retirer le couvercle ou l'aluminium.
+- Poursuivre la cuisson ~{45 min}, jusqu'à obtenir une surface profondément dorée par endroits.
+- Prolonger de 5 min si le centre n'est pas encore tendre ou si la surface manque de coloration.
+
+[Retourner et servir]
+- Laisser tiédir le gâteau quelques minutes pour que les couches se stabilisent.
+- Poser un plat de service à l'envers sur la #poêle{}.
+- Maintenir fermement le plat et la poêle, puis retourner d'un geste rapide et contrôlé.
+- Retirer la poêle et servir les pommes Anna encore chaudes, avec leur spirale dorée apparente.

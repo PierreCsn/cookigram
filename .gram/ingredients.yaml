@@ -1601,8 +1601,6 @@ ingredients:
     name: Sauce soja
     aliases:
     - sauce soja salée
-    - sauce soja
-    - sauce de soja
     - sauce soja claire
     category: Condiments
     nutrition:
@@ -1611,6 +1609,18 @@ ingredients:
       carbs: 4.9
       fat: 0.1
     density: 1.15
+  sauce-soja-sucree:
+    name: Sauce soja sucrée
+    aliases:
+    - sauce soja sucrée
+    - kecap manis
+    category: Condiments et assaisonnements
+    nutrition:
+      calories: 245
+      protein: 3.4
+      carbs: 57.0
+      fat: 0.5
+    density: 1.3
   saumon-frais:
     name: Saumon frais
     aliases:

@@ -25,12 +25,17 @@ jobs:
           python-version: "3.12"
           cache: pip
 
+      - name: Read pinned Core SHA
+        id: core-ref
+        run: echo "sha=$(cat .core-version | tr -d '[:space:]')" >> $GITHUB_OUTPUT
+
       - name: Checkout CookiGram Core Engine (Private)
         if: ${{ env.HAVE_CORE_KEY == 'true' }}
         uses: actions/checkout@v4
         with:
           repository: PierreCsn/cookigram-core
           ssh-key: ${{ secrets.CORE_SSH_KEY }}
+          ref: ${{ steps.core-ref.outputs.sha }}
           path: core
         env:
           HAVE_CORE_KEY: ${{ secrets.CORE_SSH_KEY != '' }}
