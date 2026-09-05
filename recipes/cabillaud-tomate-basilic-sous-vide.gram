@@ -1,0 +1,25 @@
+---
+title: Cabillaud sous vide, tomate et basilic
+portions: 4
+prep_time: 15 min
+total_time: 45 min
+spiciness: 0
+description: "Cabillaud nacré sous vide, accompagné d'une sauce tomate brillante et de basilic frais aux accents méditerranéens."
+tags: [poisson, cabillaud, sous-vide, tomate]
+source: https://vibc.ca/read/vide/TheCompleteSousVideSupremeCookbook.pdf
+author: Sous Vide Supreme
+image: images/placeholder-recipe.jpg
+image_generation: {prompt_file: image-prompts/cabillaud-tomate-basilic-sous-vide.md}
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+flavors: {pairing: [cabillaud, tomate, basilic, huile d’olive], notes: [iodé, méditerranéen, acidulé], harmony: "La tomate acidulée et le basilic donnent du relief à la chair douce du cabillaud."}
+---
+[Préparer le poisson]
+- Saler les @filets de poisson{600 g} avec le @sel{1 c. à café}; placer dans un #sac sous vide{} avec l'@huile d'olive{1 c. à soupe}.
+[Cuire]
+- Régler le #thermoplongeur{} à ^{52 C}, immerger et cuire ~{30 min}.
+- Le cabillaud doit être nacré et se détacher sans s'émietter.
+[Sauce tomate]
+- Faire réduire les @tomates concassées{400 g} dans une #casserole{} ~{10 min} avec l'@ail{1 gousse, hachée}.
+- Hors du feu, incorporer le @basilic frais{20 g, ciselé} et l'@huile d’olive{1 c. à soupe}; la sauce doit rester brillante.
+[Dresser]
+- Napper les assiettes de sauce et déposer délicatement le cabillaud dessus.

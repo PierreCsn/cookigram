@@ -1,0 +1,24 @@
+---
+title: Paleron de bœuf au vin rouge et aux échalotes sous vide
+portions: 4
+prep_time: 20 min
+total_time: 12 h 30 min
+spiciness: 0
+description: "Paleron de bœuf longuement attendri sous vide, servi avec un jus au vin rouge et des échalotes confites."
+tags: [bœuf, paleron, sous-vide, vin-rouge]
+source: https://www.elivia-professionnels.fr/les-recettes-du-chef/paleron-de-boeuf-cuit-nature/
+author: Elivia Professionnels
+image: images/placeholder-recipe.jpg
+image_generation: {prompt_file: image-prompts/paleron-boeuf-vin-rouge-echalotes-sous-vide.md}
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+flavors: {pairing: [bœuf, vin rouge, échalote, fond de viande], notes: [corsé, fondant, boisé], harmony: "Le jus réduit au vin rouge accompagne la texture gélatineuse du paleron."}
+---
+[Ensacher]
+- Saler le @paleron de boeuf{800 g} avec le @sel{1 c. à café} et le @poivre moulu{1/2 c. à café}.
+- Placer la viande, les @échalotes{4 pièces, émincées} et le @thym{2 brins} dans un #sac sous vide{}.
+[Cuire]
+- Régler le #thermoplongeur{} à ^{80 C}, immerger le sac et cuire ~{12 h}.
+- La viande doit être assez tendre pour se couper à la cuillère.
+[Réduire le jus]
+- Verser le jus du sac et le @vin rouge{500 ml} dans une #casserole{}.
+- Réduire ~{10 min} jusqu'à ce que la sauce nappe la cuillère, puis servir sur le paleron.

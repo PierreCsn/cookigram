@@ -1,0 +1,25 @@
+---
+title: Onglet sous vide, beurre maître d’hôtel
+portions: 2
+prep_time: 10 min
+total_time: 2 h 20 min
+spiciness: 0
+description: "Onglet de bœuf rosé et juteux, rapidement saisi puis surmonté d'un beurre maître d'hôtel au citron frais."
+tags: [bœuf, onglet, sous-vide, beurre]
+source: https://recipes.anovaculinary.com/recipe/sirloin-flap-or-flank-steak
+author: Zach Liston Dallas
+image: images/placeholder-recipe.jpg
+image_generation: {prompt_file: image-prompts/onglet-beurre-maitre-hotel-sous-vide.md}
+scaling: {enabled: true, min: 2, max: 4, step: 1}
+flavors: {pairing: [bœuf, beurre, citron, persil], notes: [grillé, beurré, acidulé], harmony: "Le beurre citronné apporte fraîcheur et onctuosité à l'onglet grillé."}
+---
+[Préparer]
+- Assaisonner l'@onglet de boeuf{400 g} avec le @sel{1 c. à café} et le @poivre moulu{1/2 c. à café}; placer dans un #sac sous vide{}.
+[Cuire]
+- Régler le #thermoplongeur{} à ^{52 C}, immerger et cuire ~{2 h}.
+- La viande doit être saignante et chaude à cœur.
+[Beurre maître d’hôtel]
+- Mélanger le @beurre{50 g}, le @persil frais{1 c. à soupe, ciselé} et le @jus de citron{1 c. à café}; réserver au frais.
+[Saisir]
+- Éponger l'onglet puis le saisir dans l'@huile végétale{1 c. à soupe} ~{1 min} par face.
+- Trancher contre les fibres et déposer le beurre sur la viande chaude.

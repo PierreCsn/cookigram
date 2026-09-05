@@ -2634,3 +2634,23 @@ ingredients:
     - beurre de cacahouète
     - peanut butter
     category: Fruits à coque et graines
+  betterave:
+    name: Betterave
+    aliases: [betterave, betteraves]
+    category: Légumes et aromates
+  noix:
+    name: Noix
+    aliases: [noix]
+    category: Fruits à coque et graines
+  poire:
+    name: Poire
+    aliases: [poires, poire]
+    category: Fruits et légumes
+  onglet-de-boeuf:
+    name: Onglet de bœuf
+    aliases: [onglet de boeuf, onglet de bœuf]
+    category: Boucherie et volailles
+  sambal-oelek:
+    name: Sambal oelek
+    aliases: [sambal oelek]
+    category: Condiments et assaisonnements

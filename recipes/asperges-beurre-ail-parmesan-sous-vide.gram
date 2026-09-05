@@ -1,0 +1,23 @@
+---
+title: Asperges vertes au beurre, ail et parmesan sous vide
+portions: 4
+prep_time: 5 min
+total_time: 20 min
+spiciness: 0
+description: "Asperges vertes tendres et lumineuses, infusées au beurre et à l'ail puis couvertes de parmesan fondant."
+tags: [légumes, asperges, sous-vide, parmesan]
+source: https://recipes.anovaculinary.com/recipe/sous-vide-garlic-parmesan-asparagus
+author: Carey Copeling
+image: images/placeholder-recipe.jpg
+image_generation: {prompt_file: image-prompts/asperges-beurre-ail-parmesan-sous-vide.md}
+scaling: {enabled: true, min: 2, max: 8, step: 1}
+flavors: {pairing: [asperge, beurre, ail, parmesan], notes: [végétal, beurré, umami], harmony: "Le parmesan renforce la douceur végétale des asperges et le beurre arrondit leur texture."}
+---
+[Ensacher]
+- Disposer les @asperges vertes{1 botte, parées} en une seule couche dans un #sac sous vide{}.
+- Ajouter le @beurre{55 g}, l'@ail{1 gousse, hachée} et le @sel{1/2 c. à café}; sceller.
+[Cuire]
+- Régler le #thermoplongeur{} à ^{85 C}, immerger et cuire ~{14 min}.
+- Les asperges doivent être tendres mais conserver une légère résistance.
+[Terminer]
+- Dresser les asperges avec leur beurre de cuisson et parsemer le @parmesan{25 g, en copeaux}.

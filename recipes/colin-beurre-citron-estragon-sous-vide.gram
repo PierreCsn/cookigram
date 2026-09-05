@@ -1,0 +1,23 @@
+---
+title: Colin d’Alaska, beurre citronné et estragon sous vide
+portions: 4
+prep_time: 10 min
+total_time: 40 min
+spiciness: 0
+description: "Colin d’Alaska nacré, cuit doucement dans un beurre citronné et fini avec un estragon frais et parfumé."
+tags: [poisson, colin, sous-vide, citron]
+source: https://cdn.accentuate.io/8124841656482/1701712262883/SO-314962_14727_Crux_Sous-vide_Macys_IM-R1.pdf
+author: Crux Kitchen
+image: images/placeholder-recipe.jpg
+image_generation: {prompt_file: image-prompts/colin-beurre-citron-estragon-sous-vide.md}
+scaling: {enabled: true, min: 2, max: 6, step: 1}
+flavors: {pairing: [colin d’Alaska, citron, beurre, estragon], notes: [nacré, beurré, acidulé], harmony: "Le citron réveille la douceur du colin et l'estragon prolonge sa fraîcheur anisée."}
+---
+[Ensacher]
+- Assaisonner les @filets de poisson{600 g} avec le @sel{1 c. à café} et le @poivre moulu{1/4 c. à café}.
+- Répartir le @beurre{40 g}, le @jus de citron{30 ml} et l'@estragon{2 c. à soupe} dans les sacs.
+[Cuire]
+- Régler le #thermoplongeur{} à ^{55 C}, immerger les sacs et cuire ~{30 min}.
+- Le poisson doit être nacré, opaque sur les bords et se détacher en pétales.
+[Servir]
+- Ouvrir les sacs, récupérer le beurre citronné et napper immédiatement les filets.
