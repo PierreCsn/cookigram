@@ -8,6 +8,56 @@
   "active_claims": {},
   "completed_claims": [
     {
+      "pr": 157,
+      "title": "feat(recipe): ajouter une collection de pizzas pour four personnel et ménager (20 recettes)",
+      "agent": "Merge-Lead",
+      "workspace": "/home/pierrecsn/Work/cookigram",
+      "branch": "recipe/pizzas-four-personnel",
+      "claimed_at": "2026-09-05T13:40:00+02:00",
+      "status": "merged",
+      "merged_at": "2026-09-05T14:04:31+02:00"
+    },
+    {
+      "pr": 155,
+      "title": "feat(recipe): ajouter les fondamentaux et méthodes de cuisson du riz (10 recettes)",
+      "agent": "Merge-Lead",
+      "workspace": "/home/pierrecsn/Work/cookigram",
+      "branch": "recipe/rice-basics-methods",
+      "claimed_at": "2026-09-05T13:40:00+02:00",
+      "status": "merged",
+      "merged_at": "2026-09-05T14:02:11+02:00"
+    },
+    {
+      "pr": 145,
+      "title": "feat(recipe): ajouter des recettes one-pot variées (8 recettes)",
+      "agent": "Merge-Lead",
+      "workspace": "/home/pierrecsn/Work/cookigram",
+      "branch": "recipe/one-pot-varied-cleanup",
+      "claimed_at": "2026-09-05T13:40:00+02:00",
+      "status": "merged",
+      "merged_at": "2026-09-05T14:01:02+02:00"
+    },
+    {
+      "pr": 148,
+      "title": "feat(recipe): ajouter une sélection air fryer (15 recettes)",
+      "agent": "Merge-Lead",
+      "workspace": "/home/pierrecsn/Work/cookigram",
+      "branch": "recipe/air-fryer-selection",
+      "claimed_at": "2026-09-05T13:38:00+02:00",
+      "status": "merged",
+      "merged_at": "2026-09-05T13:43:43+02:00"
+    },
+    {
+      "pr": 141,
+      "title": "feat(recipe): ajouter une collection sous vide complète (15 recettes)",
+      "agent": "Merge-Lead",
+      "workspace": "/home/pierrecsn/Work/cookigram",
+      "branch": "recipe/collection-sous-vide-15",
+      "claimed_at": "2026-09-05T13:38:00+02:00",
+      "status": "merged",
+      "merged_at": "2026-09-05T13:38:27+02:00"
+    },
+    {
       "issue": 123,
       "title": "feat(architecture): decouplage logique et scission physique du moteur (Phase 1 & 2)",
       "agent": "Product Lead",
