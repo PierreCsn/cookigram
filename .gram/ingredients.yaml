@@ -49,11 +49,23 @@ ingredients:
       fat: 0.2
       protein: 0.9
     piece_weight: 250.0
-  beurre:
-    name: Beurre
+  beurre-doux:
+    name: Beurre doux
     aliases:
-    - beurre
     - beurre doux
+    - beurre
+    category: Produits laitiers et matières grasses
+    pantry_staple: true
+    nutrition:
+      calories: 751
+      carbs: 0.7
+      fat: 82.5
+      protein: 0.8
+    density: 0.91
+  beurre-demi-sel:
+    name: Beurre demi-sel
+    aliases:
+    - beurre demi-sel
     category: Produits laitiers et matières grasses
     pantry_staple: true
     nutrition:
@@ -638,6 +650,21 @@ ingredients:
       fat: 18.0
       protein: 1.6
     density: 0.98
+  creme-de-coco:
+    name: Crème de coco
+    aliases:
+    - crème de coco
+    category: Boissons et liquides
+  fumet-de-poisson:
+    name: Fumet de poisson
+    aliases:
+    - fumet de poisson
+    category: Condiments et aides culinaires
+  pate-de-curry-vert:
+    name: Pâte de curry vert
+    aliases:
+    - pâte de curry vert
+    category: Condiments et assaisonnements
   lait-demi-ecreme:
     name: Lait demi-écrémé
     aliases:
@@ -1375,6 +1402,8 @@ ingredients:
     - filets de poisson
     - filets de merlan
     - merlan
+    - colin d'Alaska
+    - colin d’alaska
     category: Poissons et fruits de mer
     nutrition:
       calories: 80
@@ -1910,7 +1939,7 @@ ingredients:
     aliases:
     - ghee
     - beurre clarifié
-    category: Crèmerie et oeufs
+    category: Produits laitiers et matières grasses
     nutrition:
       calories: 900
       protein: 0.0
@@ -2050,6 +2079,13 @@ ingredients:
       protein: 2.8
       carbs: 7.5
       fat: 0.2
+  feuille-de-combava:
+    name: Feuilles de combava
+    aliases:
+    - feuilles de combava
+    - feuilles de kaffir
+    - feuille de kaffir
+    category: Herbes et épices
   pomme:
     name: Pomme
     aliases:

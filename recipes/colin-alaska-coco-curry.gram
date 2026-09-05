@@ -1,0 +1,59 @@
+---
+title: Colin d'Alaska surgelé au curry et lait de coco
+portions: 4
+prep_time: 5 min
+total_time: 15 min
+spiciness: 1
+description: Filets de colin moelleux cuits surgelés dans une sauce coco au curry, douce, crémeuse et parfumée à l'ail.
+tags: [poisson, colin, surgelé, curry, lait-de-coco, rapide]
+source: https://www.cookandbe.com/recettes/recette-colin-au-lait-de-coco-2992/
+author: Cook&Be
+scaling:
+  enabled: true
+  min_portions: 2
+  max_portions: 8
+  step: 2
+  note: Adapter le diamètre de la poêle ; le poisson doit rester en une seule couche.
+flavors:
+  pairing: [colin d'Alaska, lait de coco, curry, ail]
+  notes: [crémeux, doux, parfumé]
+  harmony: "Le lait de coco adoucit le curry et enveloppe la chair délicate du colin sans la masquer."
+  tips: "Retourner les filets avec précaution pour les garder entiers et vérifier que le centre est opaque."
+conservation:
+  fridge_days: 2
+  freezable: false
+image: images/colin-alaska-coco-curry.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée et intégrée par un humain.
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/colin-alaska-coco-curry.md
+---
+
+## Colin d'Alaska au curry et lait de coco
+
+[Parfumer la poêle]
+- Chauffer l'@huile d'olive{30 g} dans une #poêle{} à feu moyen.
+- Ajouter l'@ail{10 g, écrasé} et le faire revenir ~{1 min}, sans le laisser colorer.
+
+[Cuire le poisson]
+- Déposer les @filets de poisson{4 pièces, colin d'Alaska surgelé} dans la poêle.
+- Cuire ~{4 min}, puis retourner délicatement les filets.
+
+[Former la sauce]
+- Verser le @lait de coco{200 ml} autour du poisson.
+- Ajouter le @curry en poudre{1 c. à café}, le @sel{6 pincées} et le @poivre moulu{2 pincées}.
+
+[Terminer la cuisson]
+- Poursuivre la cuisson ~{4 min}, jusqu'à ce que le poisson soit opaque à cœur et que la sauce frémisse.
+- Mélanger doucement la sauce autour des filets, puis servir immédiatement avec du riz.

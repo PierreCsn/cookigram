@@ -1,0 +1,58 @@
+---
+title: Colin d'Alaska à la tomate et à l'estragon
+portions: 4
+prep_time: 10 min
+total_time: 50 min
+spiciness: 0
+description: Filets de colin fondants sous des tomates mijotées à l'estragon, avec une sauce légère à napper généreusement.
+tags: [poisson, colin, tomate, estragon, four, économique]
+source: https://www.colruyt.be/fr/recettes/colin-dalaska-a-la-tomate-et-a-lestragon
+author: Colruyt
+scaling:
+  enabled: false
+  reason: Le volume de tomates et la réduction de sauce sont calibrés pour un plat de quatre portions.
+flavors:
+  pairing: [colin d'Alaska, tomate, estragon, riz]
+  notes: [léger, herbacé, fondant]
+  harmony: "La tomate acidulée réveille le colin tandis que l'estragon apporte une finale fraîche et anisée."
+  tips: "Réduire le jus jusqu'à ce qu'il nappe la cuillère avant de le verser sur le poisson."
+conservation:
+  fridge_days: 2
+  freezable: false
+image: images/colin-alaska-tomate-estragon.jpg
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://policies.google.com/terms
+  modifications: Illustration sélectionnée et intégrée par un humain.
+image_credit:
+  author: CookiGram
+  source: https://github.com/PierreCsn/cookigram
+  license: Illustration temporaire
+image_generation:
+  provider: Google DeepMind Imagen
+  model: imagen-3.0
+  generated_at: "2026-09-05"
+  prompt_file: image-prompts/colin-alaska-tomate-estragon.md
+---
+
+## Colin d'Alaska à la tomate et à l'estragon
+
+[Préparer le four]
+- Préchauffer le #four{} à ^{200 C}.
+- Déposer les @filets de poisson{4 pièces, colin d'Alaska surgelé} dans un #plat à four{}.
+
+[Cuire avec la tomate]
+- Recouvrir le poisson avec les @tomates concassées{400 g, surgelées}.
+- Émietter le @cube de bouillon de volaille{1 pièce} sur les tomates.
+- Couvrir le plat et enfourner ~{30 min}, jusqu'à ce que le poisson soit opaque à cœur.
+
+[Réduire le jus]
+- Retirer les filets et les réserver au chaud.
+- Verser le jus dans une #poêle{} large et le réduire ~{5 min}.
+- Délayer la @fécule de maïs{1 c. à café} dans une cuillère de jus froid, puis l'incorporer.
+- Ajouter l'@estragon{1 c. à soupe} et réduire jusqu'à ce que la sauce nappe la cuillère.
+
+[Servir]
+- Napper les filets avec la sauce et servir avec du riz ou des pâtes fraîches.

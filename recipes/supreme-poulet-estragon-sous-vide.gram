@@ -52,12 +52,12 @@ variants:
         - Assaisonner les @suprêmes de poulet{4 pièces, fermiers de 160 g chacun} sur chaque face avec le @sel{1.5 c. à café} et le @poivre{0.5 c. à café}.
       bath-chicken: |
         [cook-pan-chicken | Cuire à la poêle et monter la sauce]
-        - Faire chauffer l'@huile d'olive{1 c. à soupe} et la moitié du @beurre{20 g} dans une #grande poêle{} à feu moyen.
+        - Faire chauffer l'@huile d'olive{1 c. à soupe} et la moitié du @beurre doux{20 g} dans une #grande poêle{} à feu moyen.
         - Faire dorer les suprêmes ~{3 min} par face jusqu'à jolie coloration dorée.
         - Baisser le feu au minimum, couvrir la poêle et laisser cuire doucement à l'étouffée pendant ~{10 min}.
         - Débarrasser les suprêmes sur une assiette et couvrir de papier alu.
         - Dans la même poêle, ajouter le @jus de citron{1 c. à soupe}, le @zeste de citron{0.5 c. à café, râpé}, la @crème liquide{50 g, fleurette entière} et l'@estragon{4 brins, feuilles fraîches ciselées}.
-        - Laisser réduire ~{2 min} à feu doux puis incorporer le reste du @beurre{20 g} bien froid en fouettant pour napper la viande.
+        - Laisser réduire ~{2 min} à feu doux puis incorporer le reste du @beurre doux{20 g, bien froid en dés} en fouettant pour napper la viande.
 ---
 [prep-chicken | Assaisonner et conditionner la volaille]
 - Remplir un bac ou une grande casserole d'eau et fixer le #thermoplongeur{}. Régler la température à ^{64 C}.
@@ -75,12 +75,12 @@ variants:
 [sear-chicken | Coloration express au beurre noisette]
 - Sortir les sacs du bain d'eau. Récupérer soigneusement tout le jus de cuisson dans une #petite casserole{}.
 - Bien essuyer les blancs de poulet avec du papier absorbant.
-- Faire mousser la moitié du @beurre{20 g} dans une #grande poêle{} bien chaude.
+- Faire mousser la moitié du @beurre doux{20 g} dans une #grande poêle{} bien chaude.
 - Saisir les suprêmes de poulet pendant ~{1 min} sur chaque face, juste le temps d'obtenir un blond doré appétissant sans poursuivre la cuisson à cœur.
 - Réserver les suprêmes sur une planche à découper tiède.
 
 [sauce-estragon | Émulsion de la sauce citronnée à l'estragon]
 - Porter le jus de poulet réservé dans la #petite casserole{} à frémissement avec le @jus de citron{1 c. à soupe} et le @zeste de citron{0.5 c. à café, râpé}.
 - Ajouter la @crème liquide{50 g, fleurette entière} et laisser réduire ~{2 min} pour que la texture nappe la cuillère.
-- Hors du feu, incorporer le reste du @beurre{20 g} bien froid en fouettant vivement pour lier la sauce, puis ajouter le reste d'@estragon{2 brins, feuilles fraîches ciselées}.
+- Hors du feu, incorporer le reste du @beurre doux{20 g, bien froid en dés} en fouettant vivement pour lier la sauce, puis ajouter le reste d'@estragon{2 brins, feuilles fraîches ciselées}.
 - Trancher les suprêmes de poulet en épaisses aiguillettes, dresser en éventail et napper de sauce émulsionnée onctueuse.

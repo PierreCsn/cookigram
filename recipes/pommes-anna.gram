@@ -20,12 +20,17 @@ conservation:
   fridge_days: 3
   freezable: false
   reheat: "15 min au four à 180 C"
-image: images/placeholder-recipe.jpg
+image: images/pommes-anna.webp
 image_credit:
   author: CookiGram
   source: https://github.com/PierreCsn/cookigram
-  license: Illustration temporaire
+  license: Illustration générée par IA pour CookiGram
+  license_url: https://openai.com/policies/terms-of-use
+  modifications: Illustration sélectionnée et intégrée par un humain.
 image_generation:
+  provider: OpenAI Image Generation
+  model: gpt-image-1
+  generated_at: "2026-09-05"
   prompt_file: image-prompts/pommes-anna.md
 ---
 
@@ -49,7 +54,7 @@ image_generation:
 [Superposer les couches]
 - Répéter les cercles concentriques avec les rondelles restantes, sans découper les tranches en disques.
 - Arroser chaque couche avec le @ghee{200 ml} restant et saler avec le @sel{à doser selon le goût}.
-- Répartir le @beurre{115 g}, coupé en fines lamelles, sur la dernière couche.
+- Répartir le @beurre doux{115 g}, coupé en fines lamelles, sur la dernière couche.
 
 [Cuire à couvert]
 - Couvrir la #poêle{} avec son couvercle ou une feuille d'aluminium.

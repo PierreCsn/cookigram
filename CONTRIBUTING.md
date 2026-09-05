@@ -65,6 +65,8 @@ Si le terminal affiche `✅ CONFORME`, votre recette respecte 100 % du contrat d
 ### Image de la recette
 * Si vous disposez d'une photographie (format 16:9, ratio recommandé 1280x720, < 200 Ko), déposez-la dans `static/images/<slug>.jpg`.
 * Si vous n'avez pas encore d'image, le validateur accepte le visuel par défaut système (`static/images/placeholder-recipe.jpg`).
+* Si vous ajoutez `image_generation.prompt_file`, générez l'illustration avant la PR et remplacez le placeholder par `images/<slug>.<ext>`. Si la génération doit être différée, ouvrez une issue d'asset visuel dédiée et référencez-la dans la PR.
+* Contrôlez les recettes en attente avec `python scripts/audit-recipe-images.py` ; le mode `--check` est bloquant et est exécuté par la CI.
 
 ---
 

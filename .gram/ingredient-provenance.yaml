@@ -14,7 +14,10 @@ ingredients:
   aubergine:
     source: ANSES-CIQUAL
     status: verified
-  beurre:
+  beurre-doux:
+    source: ANSES-CIQUAL
+    status: verified
+  beurre-demi-sel:
     source: ANSES-CIQUAL
     status: verified
   cacao-en-poudre:
@@ -162,6 +165,18 @@ ingredients:
     sources:
     - ciqual
     status: verified
+  creme-de-coco:
+    source: Ingrédient générique ; valeurs nutritionnelles à vérifier selon la marque.
+    status: incomplete
+  fumet-de-poisson:
+    source: Préparation culinaire ; valeurs nutritionnelles variables selon le produit.
+    status: incomplete
+  pate-de-curry-vert:
+    source: Produit préparé ; valeurs nutritionnelles variables selon la marque.
+    status: incomplete
+  feuille-de-combava:
+    source: Herbe aromatique ; contribution nutritionnelle négligeable.
+    status: incomplete
   filet-mignon-de-porc:
     source: ANSES-CIQUAL
     status: verified
